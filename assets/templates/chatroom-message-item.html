@@ -1,0 +1,17 @@
+<article class="chatroom-message-row d-flex flex-row mb-3 align-items-end {{rowClass}}" aria-label="Chat message from {{name}}">
+  <div class="chatroom-message-avatar-block d-flex flex-column align-items-center justify-content-end flex-shrink-0" style="min-width:56px;">
+    <img src="{{avatar}}" alt="Avatar of {{name}}" class="chatroom-message-avatar rounded-circle shadow-sm" width="40" height="40">
+    <div class="chatroom-message-avatar-meta text-center mt-1">
+      <span class="chatroom-message-avatar-name fw-semibold small">{{name}}</span><br>
+      <span class="chatroom-message-avatar-role badge bg-secondary align-middle">{{role}}</span>
+    </div>
+  </div>
+  <div class="chatroom-message-content flex-grow-1">
+    <div class="chatroom-message-bubble p-3 rounded-3 shadow-sm mb-1 {{textClass}}">
+      <p class="mb-1">{{text}}</p>
+    </div>
+    <div class="chatroom-message-meta d-flex align-items-center gap-2 {{metaClass}}">
+      <span class="text-muted small">{{timestamp}}</span>
+    </div>
+  </div>
+</article>
