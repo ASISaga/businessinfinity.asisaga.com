@@ -1,0 +1,14 @@
+<li class="boardroom-member-item d-flex gap-3 py-2 px-2 rounded-3 position-relative align-items-start" role="listitem" tabindex="0">
+  <span class="boardroom-member-avatar-block d-flex align-items-center justify-content-center me-2 mt-1">
+    <img src="{{avatar}}" alt="Avatar of {{name}}" class="boardroom-member-avatar rounded-circle border border-2" width="40" height="40">
+  </span>
+  <div class="boardroom-member-info flex-grow-1 d-flex flex-column">
+    <div class="d-flex align-items-center flex-wrap">
+      <span class="boardroom-member-name fw-semibold">{{name}}</span>
+      <span class="boardroom-member-role badge bg-secondary ms-2 align-middle">{{role}}</span>
+    </div>
+    <div class="boardroom-member-status text-success small mt-1">{{status}}</div>
+    <div class="boardroom-member-last-message text-secondary small mt-1">{{lastMessageText}}</div>
+  </div>
+  <span class="boardroom-member-unread badge bg-danger ms-2 align-self-start" title="Unread messages">{{unreadCount}}</span>
+</li>

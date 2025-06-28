@@ -8,7 +8,7 @@ class MembersRenderer {
   async render(members, lastMessages, unreadCounts, messages) {
     if (!this.membersList) return;
     this.membersList.innerHTML = '';
-    const template = await TemplateUtils.loadTemplate('/assets/templates/chatroom-member-item.html');
+    const template = await TemplateUtils.loadTemplate('/assets/templates/boardroom-member-item.html');
     for (const member of members) {
       const lastMsgObj = lastMessages.find(lm => lm.memberId === member.id) || {};
       const unreadObj = unreadCounts.find(u => u.memberId === member.id) || {};
@@ -17,10 +17,10 @@ class MembersRenderer {
         const msg = messages.find(m => m.id === lastMsgObj.lastMessageId);
         lastMessageText = msg ? msg.text : '';
       }
-      const badgeClass = member.status === 'online' ? 'chatroom-member-badge-success' :
-        member.status === 'away' ? 'chatroom-member-badge-warning' : 'chatroom-member-badge-danger';
+      const badgeClass = member.status === 'online' ? 'boardroom-member-badge-success' :
+        member.status === 'away' ? 'boardroom-member-badge-warning' : 'boardroom-member-badge-danger';
       const badgeLabel = member.status === 'online' ? 'Online' : member.status === 'away' ? 'Away' : 'Offline';
-      const unreadHtml = unreadObj.unread > 0 ? `<span class="chatroom-member-unread">${unreadObj.unread}</span>` : '';
+      const unreadHtml = unreadObj.unread > 0 ? `<span class="boardroom-member-unread">${unreadObj.unread}</span>` : '';
       const html = TemplateUtils.renderTemplate(template, {
         avatar: member.avatar,
         name: member.name,

@@ -1,8 +1,8 @@
 # CSS Component Partials
 
-This folder contains reusable SCSS partials for UI components in the BusinessInfinity boardroom/chatroom UI. Each partial should:
+This folder contains reusable SCSS partials for UI components in the BusinessInfinity boardroom/boardroom UI. Each partial should:
 
-- Be named with an underscore prefix (e.g., `_chatroom-members-sidebar.scss`)
+- Be named with an underscore prefix (e.g., `_boardroom-members-sidebar.scss`)
 - Contain styles for a single, isolated component only
 - Use a single, descriptive class per element
 - Be imported into page SCSS files as needed

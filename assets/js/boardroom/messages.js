@@ -8,7 +8,7 @@ class MessagesRenderer {
   async render(messages, members) {
     if (!this.chatMessages) return;
     this.chatMessages.innerHTML = '';
-    const template = await TemplateUtils.loadTemplate('/assets/templates/chatroom-message-item.html');
+    const template = await TemplateUtils.loadTemplate('/assets/templates/boardroom-message-item.html');
     for (const msg of messages) {
       const isReceived = msg.direction === 'received';
       const sender = members.find(m => m.id === msg.senderId) || {};
@@ -18,7 +18,7 @@ class MessagesRenderer {
       // Set rowClass for alignment: flex-row-reverse for sent, blank for received
       const rowClass = isReceived ? '' : 'flex-row-reverse';
       const textClass = isReceived ? 'bg-white text-dark' : 'bg-primary text-white';
-      const metaClass = isReceived ? 'chatroom-message-meta-received' : 'chatroom-message-meta-sent';
+      const metaClass = isReceived ? 'boardroom-message-meta-received' : 'boardroom-message-meta-sent';
       const html = TemplateUtils.renderLogicBlocks(template, {
         isReceived,
         avatar: senderAvatar,

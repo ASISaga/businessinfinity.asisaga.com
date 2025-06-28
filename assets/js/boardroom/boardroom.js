@@ -1,10 +1,9 @@
-// Refactored: Boardroom chatroom logic using classes and modules
-import TemplateUtils from './chatroom/template-utils.js';
-import MembersRenderer from './chatroom/members.js';
-import MessagesRenderer from './chatroom/messages.js';
-import SidebarToggle from './chatroom/sidebar-toggle.js';
+import TemplateUtils from './template-utils.js';
+import MembersRenderer from './members.js';
+import MessagesRenderer from './messages.js';
+import SidebarToggle from './sidebar-toggle.js';
 
-class BoardroomApp {
+class Boardroom {
   constructor() {
     this.membersRenderer = new MembersRenderer('membersListContainer');
     this.messagesRenderer = new MessagesRenderer('chatMessages');
@@ -23,7 +22,4 @@ class BoardroomApp {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const app = new BoardroomApp();
-  app.init();
-});
+export default Boardroom;

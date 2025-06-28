@@ -7,53 +7,53 @@
   <title>Boardroom | Business Infinity</title>
   <link rel="stylesheet" href="/assets/css/pages/boardroom.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script type="module" src="/assets/js/script.js"></script>
 </head>
 
 <body>
-  <main class="chatroom-boardroom-container">
-    <section class="chatroom-section">
-      <div class="chatroom-container-fluid">
-        <div class="chatroom-main-row flex-grow-1 d-flex flex-row min-vh-100">
+  <main class="boardroom-boardroom-container">
+    <section class="boardroom-section">
+      <div class="boardroom-container-fluid">
+        <div class="boardroom-main-row flex-grow-1 d-flex flex-row min-vh-100">
           <!-- Sidebar Container (toggle strip + sidebar) -->
-          <aside id="sidebarContainer" class="chatroom-sidebar-container">
-            <nav id="sidebarToggleStrip" class="chatroom-sidebar-toggle-strip" aria-label="Sidebar Toggle">
-              <button id="toggleMembersBtn" class="chatroom-toggle-members-btn" title="Toggle Members" aria-label="Toggle Members">
+          <aside id="sidebarContainer" class="boardroom-sidebar-container">
+            <nav id="sidebarToggleStrip" class="boardroom-sidebar-toggle-strip" aria-label="Sidebar Toggle">
+              <button id="toggleMembersBtn" class="boardroom-toggle-members-btn" title="Toggle Members" aria-label="Toggle Members">
                 <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/people.svg" alt="Users" width="20" height="20" class="icon-white" />
               </button>
-              <button class="chatroom-other-action-btn" title="Other Action" aria-label="Other Action">
+              <button class="boardroom-other-action-btn" title="Other Action" aria-label="Other Action">
                 <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/gear.svg" alt="Settings" width="20" height="20" class="icon-white" />
               </button>
-              <span class="chatroom-sidebar-strip-spacer"></span>
-              <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/chevron-double-left.svg" alt="Collapse Sidebar" class="chatroom-sidebar-toggle-icon icon-white" id="sidebarToggleIcon" width="18" height="18" />
+              <span class="boardroom-sidebar-strip-spacer"></span>
+              <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/chevron-double-left.svg" alt="Collapse Sidebar" class="boardroom-sidebar-toggle-icon icon-white" id="sidebarToggleIcon" width="18" height="18" />
             </nav>
-            <aside id="membersSidebar" class="chatroom-members-sidebar d-flex flex-column" aria-label="Members Sidebar">
-              <header class="chatroom-members-header d-flex align-items-center px-3 py-2 border-bottom">
-                <h2 class="chatroom-members-title h6 mb-0">Members</h2>
+            <aside id="membersSidebar" class="boardroom-members-sidebar d-flex flex-column" aria-label="Members Sidebar">
+              <header class="boardroom-members-header d-flex align-items-center px-3 py-2 border-bottom">
+                <h2 class="boardroom-members-title h6 mb-0">Members</h2>
                 <button class="btn btn-sm btn-outline-secondary" title="Invite Member" aria-label="Invite Member">
                   <i class="fas fa-user-plus"></i>
                 </button>
               </header>
-              <section class="chatroom-members-section flex-grow-1 d-flex flex-column" id="members">
-                <form class="chatroom-members-search-form chatroom-members-search-form-relative mb-2" role="search" aria-label="Search Members" style="position: relative;">
-                  <input type="search" class="chatroom-members-search-input" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                  <span class="chatroom-members-search-addon chatroom-members-search-addon-absolute" id="search-addon">
+              <section class="boardroom-members-section flex-grow-1 d-flex flex-column" id="members">
+                <form class="boardroom-members-search-form boardroom-members-search-form-relative mb-2" role="search" aria-label="Search Members" style="position: relative;">
+                  <input type="search" class="boardroom-members-search-input" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                  <span class="boardroom-members-search-addon boardroom-members-search-addon-absolute" id="search-addon">
                     <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/search.svg" alt="Search" width="16" height="16" class="icon-white" />
                   </span>
                 </form>
-                <ul class="chatroom-members-list flex-grow-1" role="list" id="membersListContainer" style="overflow-y: auto; height: 0; min-height: 0; max-height: 100%;">
+                <ul class="boardroom-members-list flex-grow-1" role="list" id="membersListContainer" style="overflow-y: auto; height: 0; min-height: 0; max-height: 100%;">
                   <!-- Example improved member item -->
                   <!--
-                  <li class="chatroom-member-item d-flex align-items-center gap-3 py-2 px-2 rounded-3 position-relative">
-                    <span class="chatroom-member-avatar-block d-flex align-items-center justify-content-center me-2">
-                      <img src="/assets/img/avatar1.png" alt="Member Name" class="chatroom-member-avatar rounded-circle border border-2" width="40" height="40">
+                  <li class="boardroom-member-item d-flex align-items-center gap-3 py-2 px-2 rounded-3 position-relative">
+                    <span class="boardroom-member-avatar-block d-flex align-items-center justify-content-center me-2">
+                      <img src="/assets/img/avatar1.png" alt="Member Name" class="boardroom-member-avatar rounded-circle border border-2" width="40" height="40">
                     </span>
-                    <div class="chatroom-member-info flex-grow-1">
-                      <span class="chatroom-member-name fw-semibold">Member Name</span>
-                      <span class="chatroom-member-role badge bg-secondary ms-2 align-middle">Admin</span>
-                      <div class="chatroom-member-status text-success small mt-1">Online</div>
+                    <div class="boardroom-member-info flex-grow-1">
+                      <span class="boardroom-member-name fw-semibold">Member Name</span>
+                      <span class="boardroom-member-role badge bg-secondary ms-2 align-middle">Admin</span>
+                      <div class="boardroom-member-status text-success small mt-1">Online</div>
                     </div>
-                    <span class="chatroom-member-unread badge bg-danger ms-2 align-self-start" title="Unread messages">3</span>
+                    <span class="boardroom-member-unread badge bg-danger ms-2 align-self-start" title="Unread messages">3</span>
                   </li>
                   -->
                   <!-- Members will be injected here by JavaScript -->
@@ -67,32 +67,30 @@
             </aside>
           </aside>
           <!-- Chat Area -->
-          <section id="chatArea" class="chatroom-chat-area d-flex flex-column flex-grow-1 min-vh-100" aria-label="Chat Area">
+          <section id="chatArea" class="boardroom-chat-area d-flex flex-column flex-grow-1 min-vh-100" aria-label="Chat Area">
             <header class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom bg-light">
               <h1 class="h5 mb-0">Boardroom</h1>
               <span class="badge bg-primary">Live</span>
             </header>
-            <section class="chatroom-chat-messages flex-grow-1 px-3 py-2" id="chatMessages" aria-label="Chat Messages" style="overflow-y: auto; min-height: 0; max-height: 100%;">
+            <section class="boardroom-chat-messages flex-grow-1 px-3 py-2" id="chatMessages" aria-label="Chat Messages" style="overflow-y: auto; min-height: 0; max-height: 100%;">
               <!-- Chat messages will be injected here by JavaScript -->
               <div class="text-center text-muted small mt-5" id="chat-empty-state" style="display:none;">
                 <i class="fas fa-comments fa-2x mb-2"></i><br>
                 No messages yet. Start the conversation!
               </div>
             </section>
-            <footer id="messageInput" class="chatroom-message-input px-3 py-2 border-top bg-white">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp" alt="avatar 3" class="chatroom-message-input-avatar">
-              <input type="text" class="chatroom-message-input-field form-control mx-2" id="message-input-control" placeholder="Type message" aria-label="Type message">
-              <a class="chatroom-message-input-attach btn btn-link p-0 mx-1" href="#" title="Attach File" aria-label="Attach File"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/paperclip.svg" alt="Attach" width="18" height="18" class="icon-white" /></a>
-              <a class="chatroom-message-input-emoji btn btn-link p-0 mx-1" href="#" title="Insert Emoji" aria-label="Insert Emoji"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/emoji-smile.svg" alt="Emoji" width="18" height="18" class="icon-white" /></a>
-              <a class="chatroom-message-input-send btn btn-primary btn-sm ms-2 d-flex align-items-center justify-content-center" href="#" title="Send Message" aria-label="Send Message"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/send.svg" alt="Send" width="18" height="18" class="icon-white" /></a>
+            <footer id="messageInput" class="boardroom-message-input px-3 py-2 border-top bg-white">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp" alt="avatar 3" class="boardroom-message-input-avatar">
+              <input type="text" class="boardroom-message-input-field form-control mx-2" id="message-input-control" placeholder="Type message" aria-label="Type message">
+              <a class="boardroom-message-input-attach btn btn-link p-0 mx-1" href="#" title="Attach File" aria-label="Attach File"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/paperclip.svg" alt="Attach" width="18" height="18" class="icon-white" /></a>
+              <a class="boardroom-message-input-emoji btn btn-link p-0 mx-1" href="#" title="Insert Emoji" aria-label="Insert Emoji"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/emoji-smile.svg" alt="Emoji" width="18" height="18" class="icon-white" /></a>
+              <a class="boardroom-message-input-send btn btn-primary btn-sm ms-2 d-flex align-items-center justify-content-center" href="#" title="Send Message" aria-label="Send Message"><img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/send.svg" alt="Send" width="18" height="18" class="icon-white" /></a>
             </footer>
           </section>
         </div>
       </div>
     </section>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="module" src="/assets/js/boardroom.js"></script>
 </body>
 
 </html>
