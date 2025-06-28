@@ -1,0 +1,28 @@
+# theme: jekyll-theme-minimal
+title: ASI Saga
+description: Genesis of Artificial Super Intelligence (ASI)
+ignore_theme_config: true
+
+sass:
+  load_paths:
+    - _sass
+    - assets/css
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude specific directories and files from being processed by Jekyll
+exclude:
+  - docs/
+  - LICENSE
+  - README.md
+  - website_structure.json
+
+# The defaults section allows you to set default values for certain variables
+  # The scope key defines the default values for specific types of files
+  - scope:
+      path: "" # Applies to all files in your site
+      type: "html" # Targets only HTML files
+    values: # Default values for the specified scope
+      layout: default # The name of the layout you want to apply
