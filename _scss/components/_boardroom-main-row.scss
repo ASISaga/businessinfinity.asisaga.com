@@ -1,0 +1,36 @@
+// boardroom-main-row.scss - SCSS version of boardroom-main-row.css
+
+.boardroom-main-row {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.boardroom-sidebar-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
+  border-right: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+  box-sizing: border-box;
+  &.collapsed {
+    .boardroom-members-sidebar {
+      width: 0 !important;
+      min-width: 0 !important;
+      max-width: 0 !important;
+      opacity: 0;
+      pointer-events: none;
+      transition: width 0.3s, min-width 0.3s, max-width 0.3s, opacity 0.3s;
+    }
+    ~ .boardroom-chat-area,
+    + .boardroom-chat-area {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
+}

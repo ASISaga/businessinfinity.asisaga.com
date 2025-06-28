@@ -1,4 +1,4 @@
-/* boardroom-chat-area.css - Compiled from _boardroom-chat-area.scss */
+// boardroom-chat-area.scss - SCSS version of boardroom-chat-area.css
 
 .boardroom-chat-area {
   flex-grow: 1;
@@ -23,12 +23,12 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 0.5rem;
-}
-.boardroom-message-row-start {
-  justify-content: flex-start;
-}
-.boardroom-message-row-end {
-  justify-content: flex-end;
+  &-start {
+    justify-content: flex-start;
+  }
+  &-end {
+    justify-content: flex-end;
+  }
 }
 
 .boardroom-message-avatar {
@@ -50,26 +50,26 @@
   padding: 0.5rem 0.75rem;
   margin-bottom: 0.25rem;
   border-radius: 0.75rem;
-}
-.boardroom-message-text-received {
-  background: #f8f9fa;
-  margin-left: 0.75rem;
-}
-.boardroom-message-text-sent {
-  background: #0d6efd;
-  color: #fff;
-  margin-right: 0.75rem;
+  &-received {
+    background: #f8f9fa;
+    margin-left: 0.75rem;
+  }
+  &-sent {
+    background: #0d6efd;
+    color: #fff;
+    margin-right: 0.75rem;
+  }
 }
 
 .boardroom-message-meta {
   font-size: 0.875rem;
   border-radius: 0.75rem;
   color: #6c757d;
-}
-.boardroom-message-meta-received {
-  margin-left: 0.75rem;
-  float: right;
-}
-.boardroom-message-meta-sent {
-  margin-right: 0.75rem;
+  &-received {
+    margin-left: 0.75rem;
+    float: right;
+  }
+  &-sent {
+    margin-right: 0.75rem;
+  }
 }

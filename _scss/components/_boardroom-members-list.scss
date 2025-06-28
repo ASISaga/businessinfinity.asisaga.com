@@ -1,21 +1,19 @@
-/* boardroom-members-list.css - List container and nav styles only. Member item styles are in boardroom-member-item.css */
+// boardroom-members-list.scss - SCSS version of boardroom-members-list.css
 
 .boardroom-members-search-form {
   display: flex;
   border-radius: 0.375rem;
   margin: 0;
-}
-
-.boardroom-members-search-form-relative {
-  position: relative;
-  width: 100%;
-}
-
-.boardroom-members-search-form-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  &-relative {
+    position: relative;
+    width: 100%;
+  }
+  &-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 .boardroom-members-search-input {
@@ -35,15 +33,14 @@
   align-items: center;
   justify-content: center;
   margin-left: 0.5rem;
-}
-
-.boardroom-members-search-addon-absolute {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 2;
+  &-absolute {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+  }
 }
 
 .boardroom-members-list-nav {

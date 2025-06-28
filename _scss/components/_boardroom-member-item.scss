@@ -1,7 +1,4 @@
-/* boardroom-member-item.css - Styles for boardroom-member-item.html component
-   All layout, spacing, and alignment for the boardroom member item is encapsulated here.
-   Uses Bootstrap 5 utility classes as reference for flex and spacing, but encapsulated in custom classes.
-*/
+// boardroom-member-item.scss - SCSS version of boardroom-member-item.css
 
 .boardroom-member-item {
   padding: 0.5rem 0.75rem;
@@ -10,12 +7,15 @@
   transition: background 0.15s, box-shadow 0.15s;
   cursor: pointer;
   outline: none;
-}
-
-.boardroom-member-item:focus,
-.boardroom-member-item:hover {
-  background: #f8f9fa;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  &:focus,
+  &:hover {
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  &:focus-visible {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+  }
 }
 
 .boardroom-member-avatar-block {
@@ -79,10 +79,4 @@
   margin-left: 0.5rem;
   margin-top: 0.1rem;
   box-shadow: 0 1px 2px rgba(220,53,69,0.08);
-}
-
-/* Accessibility: focus visible */
-.boardroom-member-item:focus-visible {
-  outline: 2px solid #0d6efd;
-  outline-offset: 2px;
 }
