@@ -1,62 +1,13 @@
-// boardroom.scss - Compiled from boardroom.scss
 // Imports all boardroom component SCSS files for the boardroom page layout.
 
-@import '../components/boardroom-section';
-@import '../components/boardroom-main-row';
-@import '../components/boardroom-sidebar-toggle-strip';
-@import '../components/boardroom-members-sidebar';
-@import '../components/boardroom-members-list';
-@import '../components/boardroom-chat-area';
-@import '../components/boardroom-message-input';
-@import '../components/boardroom-message-avatar-block';
-@import '../components/boardroom-utilities';
-@import '../components/boardroom-sidebar';
-
-// Layout and scrolling fixes for chat area
-html, body {
-  height: 100vh;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.boardroom-boardroom-container,
-.boardroom-section,
-.boardroom-container-fluid,
-.boardroom-main-row,
-.boardroom-chat-area,
-.boardroom-members-sidebar,
-.boardroom-members-section,
-.boardroom-members-list,
-.boardroom-message-input,
-.boardroom-message-input-field {
-  font-family: inherit !important;
-}
-
-.boardroom-boardroom-container,
-.boardroom-section,
-.boardroom-container-fluid,
-.boardroom-main-row,
-.boardroom-chat-area {
-  height: 100vh !important;
-  min-height: 0 !important;
-  max-height: 100vh !important;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 0;
-}
-
-.boardroom-main-row {
-  flex-direction: row;
-}
-
-.boardroom-chat-messages {
-  flex: 1 1 0;
-  overflow-y: auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
-}
-
-// No direct property definitions here. Use only imports and utility classes.
+@import 'boardroom/chat-area/main';
+@import 'boardroom/chat-area/header';
+@import 'boardroom/chat-area/footer';
+@import 'boardroom/chat-area/empty-state';
+@import 'boardroom/main-row/main';
+@import 'boardroom/members-sidebar/search-form';
+@import 'boardroom/members-sidebar/toggle-strip';
+@import 'boardroom/members-sidebar/main';
+@import 'boardroom/members-sidebar/header';
+@import 'boardroom/members-sidebar/empty-state';
+@import 'boardroom/section/main';
