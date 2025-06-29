@@ -2,15 +2,15 @@
 
 // Styles for the boardroom chat empty state
 .boardroom-chat-empty-state {
-  @extend text-center;
-  @extend text-muted;
-  @extend fs-6;
-  @extend mt-5;
-  @extend d-none;
+  @include text-align(center);
+  @include color($muted);
+  @include font-size(1rem); // fs-6 = 1rem
+  @include margin-top(3rem); // mt-5 = 3rem
+  @include display(none);
 }
 
 .boardroom-chat-empty-icon {
-  @extend fs-2;
-  @extend mb-2;
-  @extend text-secondary;
+  @include font-size(2rem); // fs-2 = 2rem
+  @include margin-bottom(0.5rem); // mb-2 = 0.5rem
+  @include color($secondary);
 }

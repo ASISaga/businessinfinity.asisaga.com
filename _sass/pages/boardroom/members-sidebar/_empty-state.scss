@@ -1,27 +1,27 @@
 // SCSS partial for boardroom members-sidebar empty state component
 
 .boardroom-members-empty-state {
-  @extend text-center;
-  @extend text-secondary;
-  @extend fs-6;
-  @extend mt-4;
-  @extend d-none;
+  @include text-align(center);
+  @include color($secondary);
+  @include font-size(1rem); // fs-6 = 1rem
+  @include margin-top(1.5rem); // mt-4 = 1.5rem
+  @include display(none);
 }
 
 .boardroom-members-empty-icon {
-  @extend d-inline-block;
-  @extend fs-2;
-  @extend mb-2;
-  @extend text-secondary;
+  @include display-inline-block;
+  @include font-size(2rem); // fs-2 = 2rem
+  @include margin-bottom(0.5rem); // mb-2 = 0.5rem
+  @include color($secondary);
 }
 
 .boardroom-members-empty-title {
-  @extend fw-semibold;
-  @extend fs-6;
-  @extend mb-1;
+  @include font-weight(600);
+  @include font-size(1rem);
+  @include margin-bottom(0.25rem);
 }
 
 .boardroom-members-empty-desc {
-  @extend fs-6;
-  @extend text-muted;
+  @include font-size(1rem);
+  @include color($muted);
 }

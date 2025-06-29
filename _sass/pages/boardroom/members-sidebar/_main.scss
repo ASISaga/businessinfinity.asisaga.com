@@ -1,63 +1,68 @@
 // SCSS partial for boardroom members-sidebar main component
 
 .boardroom-members-section {
-  @extend p-4;
+  @include padding(1.5rem); // p-4 = 1.5rem
 }
 
 // SCSS partial for boardroom members-sidebar member item
 
 .boardroom-member-item {
-  @extend p-3;
-  @extend border-bottom;
-  @extend bg-white;
-  @extend transition;
-  @extend pointer;
-  @extend outline-0;
+  @include padding(1rem); // p-3 = 1rem
+  @include border-bottom-width(1px);
+  @include border-bottom-style(solid);
+  @include border-bottom-color($border-color);
+  @include background-color($white);
+  @include transition(all 0.2s);
+  @include cursor(pointer);
+  @include outline(0);
   &:focus,
   &:hover {
-    @extend bg-light;
-    @extend shadow-sm;
+    @include background-color($light);
+    @include box-shadow(0 .125rem .25rem rgba(0,0,0,.075)); // shadow-sm
   }
   &:focus-visible {
-    @extend outline-primary;
-    @extend outline-2;
+    @include outline-color($primary);
+    @include outline-width(2px);
+    @include outline-style(solid);
   }
 }
 
 .boardroom-member-avatar-block {
-  @extend d-flex;
-  @extend align-items-center;
-  @extend justify-content-center;
-  @extend min-w-100;
-  @extend min-h-100;
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(center);
+  @include min-width(100%);
+  @include min-height(100%);
 }
 
 .boardroom-member-avatar {
-  @extend w-100;
-  @extend h-100;
-  @extend object-fit-cover;
-  @extend rounded-circle;
-  @extend border;
-  @extend bg-white;
-  @extend shadow-sm;
+  @include width(100%);
+  @include height(100%);
+  @include object-fit(cover);
+  @include border-radius(50%);
+  @include border-width(1px);
+  @include border-style(solid);
+  @include border-color($border-color);
+  @include background-color($white);
+  @include box-shadow(0 .125rem .25rem rgba(0,0,0,.075)); // shadow-sm
 }
 
 .boardroom-member-info {
-  @extend flex-grow-1;
-  @extend pt-2;
-  @extend min-w-0;
+  @include flex-grow(1);
+  @include padding-top(0.5rem);
+  @include min-width(0);
 }
 
 .boardroom-member-name {
-  @extend fw-bold;
-  @extend mb-0;
-  @extend fs-5;
+  @include font-weight(700);
+  @include margin-bottom(0);
+  @include font-size(1.25rem);
 }
 
 .boardroom-member-role {
-  @extend fs-6;
-  @extend align-middle;
-  @extend ms-2;
+  @include font-size(1rem);
+  @include vertical-align(middle);
+  @include margin-left(0.5rem);
 }
 
 .boardroom-member-status {

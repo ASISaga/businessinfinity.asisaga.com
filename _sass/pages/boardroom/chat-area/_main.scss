@@ -2,113 +2,115 @@
 
 // Styles for the boardroom chat area wrapper
 .boardroom-chat-area {
-  @include d-flex;
-  @include flex-column;
-  @include h-100;
-  @include min-vh-100;
-  @include min-w-100;
+  @include display-flex;
+  @include flex-direction(column);
+  @include height(100%);
+  @include min-viewport-height(100);
+  @include min-width(100%);
 }
 
 // Styles for the boardroom chat messages area
 .boardroom-chat-messages {
-  @include flex-fill;
-  @include overflow-auto;
-  @include position-relative;
-  @include pt-4;
+  @include flex(1 1 auto);
+  @include overflow(auto);
+  @include position(relative);
+  @include padding-top(1.5rem); // pt-4 = 1.5rem
 }
 
 // Styles for the boardroom message row
 .boardroom-message-row {
-  @include d-flex;
-  @include mb-2;
+  @include display-flex;
+  @include margin-bottom(0.5rem); // mb-2 = 0.5rem
   &-start {
-    @include justify-content-start;
+    @include justify-content(flex-start);
   }
   &-end {
-    @include justify-content-end;
+    @include justify-content(flex-end);
   }
 }
 
 // Styles for the boardroom message avatar
 .boardroom-message-avatar {
-  @include w-100;
-  @include h-100;
-  @include ratio-1x1;
-  @include object-fit-cover;
-  @include rounded-circle;
-  @include d-block;
-  @include overflow-hidden;
+  @include width(100%);
+  @include height(100%);
+  @include aspect-ratio(1, 1);
+  @include object-fit(cover);
+  @include border-radius(50%);
+  @include display-block;
+  @include overflow(hidden);
 }
 
 // Styles for the boardroom message text
 .boardroom-message-text {
-  @include fs-6;
-  @include p-3;
-  @include mb-1;
-  @include rounded-pill;
+  @include font-size(1rem); // fs-6 = 1rem
+  @include padding(1rem); // p-3 = 1rem
+  @include margin-bottom(0.25rem); // mb-1 = 0.25rem
+  @include border-radius(50rem); // rounded-pill
   &-received {
-    @include bg-light;
-    @include ms-3;
+    @include background-color($light);
+    @include margin-left(1rem); // ms-3 = 1rem
   }
   &-sent {
-    @include bg-primary;
-    @include text-white;
-    @include me-3;
+    @include background-color($primary);
+    @include color($white);
+    @include margin-right(1rem); // me-3 = 1rem
   }
 }
 
 // Styles for the boardroom message meta
 .boardroom-message-meta {
-  @include fs-6;
-  @include rounded-pill;
-  @include text-muted;
+  @include font-size(1rem);
+  @include border-radius(50rem);
+  @include color($text-muted);
   &-received {
-    @include ms-3;
-    @include float-end;
+    @include margin-left(1rem);
+    @include float(right);
   }
   &-sent {
-    @include me-3;
+    @include margin-right(1rem);
   }
 }
 
 // Styles for the boardroom message avatar block
 .boardroom-message-avatar-block {
-  @include d-flex;
-  @include flex-column;
-  @include align-items-center;
-  @include me-2;
-  @include ms-2;
-  @include align-self-end;
-  @include min-w-100;
-  @include max-w-100;
-  @include flex-shrink-0;
+  @include display-flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include margin-right(0.5rem);
+  @include margin-left(0.5rem);
+  @include align-self(flex-end);
+  @include min-width(100%);
+  @include max-width(100%);
+  @include flex-shrink(0);
 }
 
 .boardroom-message-avatar-meta {
-  @include d-flex;
-  @include flex-column;
-  @include align-items-center;
-  @include mt-2;
+  @include display-flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include margin-top(0.5rem);
 }
 
 // Additional styles for boardroom message avatar name and role
 .boardroom-message-avatar-name {
-  @include fs-6;
-  @include fw-semibold;
-  @include text-dark;
-  @include mb-1;
+  @include font-size(1rem);
+  @include font-weight(600);
+  @include color($dark);
+  @include margin-bottom(0.25rem);
 }
 
 .boardroom-message-avatar-role {
-  @include d-inline-block;
-  @include fs-6;
-  @include align-middle;
-  @include ms-2;
-  @include py-1;
-  @include px-2;
-  @include rounded;
-  @include bg-secondary;
-  @include text-white;
-  @include fw-medium;
-  @include lh-1;
+  @include display-inline-block;
+  @include font-size(1rem);
+  @include vertical-align(middle);
+  @include margin-left(0.5rem);
+  @include padding-top(0.25rem);
+  @include padding-bottom(0.25rem);
+  @include padding-left(0.5rem);
+  @include padding-right(0.5rem);
+  @include border-radius(0.375rem);
+  @include background-color($secondary);
+  @include color($white);
+  @include font-weight(500);
+  @include line-height(1);
 }

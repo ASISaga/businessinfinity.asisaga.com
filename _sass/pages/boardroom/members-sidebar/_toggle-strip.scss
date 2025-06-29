@@ -1,41 +1,45 @@
 // SCSS partial for boardroom members-sidebar toggle strip component
 
 .boardroom-members-sidebar-toggle-strip {
-  @extend d-flex;
-  @extend flex-column;
-  @extend align-items-center;
-  @extend bg-light;
-  @extend border-end;
-  @extend py-2;
-  @extend w-100;
+  @include display-flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include background-color($light);
+  @include border-end-width(1px);
+  @include border-end-style(solid);
+  @include border-end-color($border-color);
+  @include padding-top(0.5rem); // py-2 = 0.5rem
+  @include padding-bottom(0.5rem);
+  @include width(100%);
 }
 
 .boardroom-toggle-members-btn,
 .boardroom-other-action-btn {
-  @extend bg-transparent;
-  @extend border-0;
-  @extend my-2;
-  @extend p-2;
-  @extend rounded;
-  @extend text-secondary;
-  @extend d-flex;
-  @extend align-items-center;
-  @extend justify-content-center;
+  @include background-color(transparent);
+  @include border-width(0);
+  @include margin-top(0.5rem); // my-2 = 0.5rem
+  @include margin-bottom(0.5rem);
+  @include padding(0.5rem); // p-2 = 0.5rem
+  @include border-radius(0.375rem);
+  @include color($secondary);
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(center);
 }
 
 .boardroom-toggle-members-btn:hover,
 .boardroom-other-action-btn:hover {
-  @extend bg-secondary;
+  @include background-color($secondary);
 }
 
 .boardroom-members-sidebar-strip-spacer {
-  @extend flex-grow-1;
-  @extend w-100;
-  @extend h-100;
+  @include flex-grow(1);
+  @include width(100%);
+  @include height(100%);
 }
 
 .boardroom-members-sidebar-toggle-icon {
-  @extend mb-3;
-  @extend cursor-pointer;
-  @extend transition;
+  @include margin-bottom(1rem); // mb-3 = 1rem
+  @include cursor(pointer);
+  @include transition(all 0.2s);
 }

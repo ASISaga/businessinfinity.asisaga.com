@@ -1,49 +1,51 @@
 // SCSS partial for boardroom members-sidebar search form component
 
 .boardroom-members-search-form {
-  @extend d-flex;
-  @extend rounded;
-  @extend m-0;
+  @include display-flex;
+  @include border-radius(0.375rem);
+  @include margin(0);
   &-relative {
-    @extend position-relative;
-    @extend w-100;
+    @include position(relative);
+    @include width(100%);
   }
   &-center {
-    @extend d-flex;
-    @extend align-items-center;
-    @extend justify-content-center;
-    @extend w-100;
+    @include display-flex;
+    @include align-items(center);
+    @include justify-content(center);
+    @include width(100%);
   }
 }
 
 .boardroom-members-search-input {
-  @extend rounded;
-  @extend flex-grow-1;
-  @extend border;
-  @extend bg-white;
-  @extend w-100;
-  @extend p-2;
+  @include border-radius(0.375rem);
+  @include flex-grow(1);
+  @include border-width(1px);
+  @include border-style(solid);
+  @include border-color($border-color);
+  @include background-color($white);
+  @include width(100%);
+  @include padding(0.5rem); // p-2 = 0.5rem
 }
 
 .boardroom-members-search-addon {
-  @extend border-0;
-  @extend bg-transparent;
-  @extend d-flex;
-  @extend align-items-center;
-  @extend justify-content-center;
-  @extend ms-2;
+  @include border-width(0);
+  @include background-color(transparent);
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(center);
+  @include margin-left(0.5rem); // ms-2 = 0.5rem
   &-absolute {
-    @extend position-absolute;
-    @extend top-50;
-    @extend start-50;
-    @extend translate-middle;
-    @extend z-2;
-    @extend pointer-events-none;
+    @include position(absolute);
+    @include top(50%);
+    @include start(50%);
+    @include translate(-50%, -50%);
+    @include z-index(2);
+    @include pointer-events(none);
   }
 }
 
 .boardroom-members-list {
-  @extend list-unstyled;
-  @extend mb-0;
-  @extend ps-0;
+  @include list-style(none);
+  @include margin-bottom(0);
+  @include padding-left(0);
 }
