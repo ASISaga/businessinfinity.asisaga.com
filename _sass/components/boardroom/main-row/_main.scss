@@ -1,0 +1,36 @@
+// SCSS partial for boardroom main row component (migrated from _boardroom-main-row.scss)
+
+.boardroom-main-row {
+  @extend d-flex;
+  @extend flex-row;
+  @extend h-100;
+  @extend min-vh-100;
+  @extend m-0;
+  @extend flex-grow-1;
+}
+
+.boardroom-sidebar-container {
+  @extend d-flex;
+  @extend flex-row;
+  @extend h-100;
+  @extend min-vh-100;
+  @extend align-self-stretch;
+  @extend border-end;
+  @extend border-top;
+  @extend box-sizing-border-box;
+  &.collapsed {
+    .boardroom-members-sidebar {
+      width: 0 !important;
+      min-width: 0 !important;
+      max-width: 0 !important;
+      opacity: 0;
+      pointer-events: none;
+      transition: width 0.3s, min-width 0.3s, max-width 0.3s, opacity 0.3s;
+    }
+    ~ .boardroom-chat-area,
+    + .boardroom-chat-area {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
+}

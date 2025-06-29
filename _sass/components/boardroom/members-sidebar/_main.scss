@@ -1,0 +1,87 @@
+// SCSS partial for boardroom members-sidebar main component
+
+.boardroom-members-section {
+  @extend p-4;
+}
+
+// SCSS partial for boardroom members-sidebar member item
+
+.boardroom-member-item {
+  @extend p-3;
+  @extend border-bottom;
+  @extend bg-white;
+  @extend transition;
+  @extend pointer;
+  @extend outline-0;
+  &:focus,
+  &:hover {
+    @extend bg-light;
+    @extend shadow-sm;
+  }
+  &:focus-visible {
+    @extend outline-primary;
+    @extend outline-2;
+  }
+}
+
+.boardroom-member-avatar-block {
+  @extend d-flex;
+  @extend align-items-center;
+  @extend justify-content-center;
+  @extend min-w-100;
+  @extend min-h-100;
+}
+
+.boardroom-member-avatar {
+  @extend w-100;
+  @extend h-100;
+  @extend object-fit-cover;
+  @extend rounded-circle;
+  @extend border;
+  @extend bg-white;
+  @extend shadow-sm;
+}
+
+.boardroom-member-info {
+  @extend flex-grow-1;
+  @extend pt-2;
+  @extend min-w-0;
+}
+
+.boardroom-member-name {
+  @extend fw-bold;
+  @extend mb-0;
+  @extend fs-5;
+}
+
+.boardroom-member-role {
+  @extend fs-6;
+  @extend align-middle;
+  @extend ms-2;
+}
+
+.boardroom-member-status {
+  @extend fs-6;
+  @extend text-success;
+  @extend mt-1;
+}
+
+.boardroom-member-last-message {
+  @extend fs-6;
+  @extend text-muted;
+  @extend mt-2;
+  @extend text-truncate;
+}
+
+.boardroom-member-unread {
+  @extend bg-danger;
+  @extend text-white;
+  @extend rounded-pill;
+  @extend py-1;
+  @extend px-3;
+  @extend fs-6;
+  @extend align-self-start;
+  @extend ms-2;
+  @extend mt-1;
+  @extend shadow-sm;
+}

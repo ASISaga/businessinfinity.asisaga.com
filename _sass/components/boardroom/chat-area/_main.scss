@@ -1,0 +1,114 @@
+// SCSS partial for boardroom chat-area main component
+
+// Styles for the boardroom chat area wrapper
+.boardroom-chat-area {
+  @extend d-flex;
+  @extend flex-column;
+  @extend h-100;
+  @extend min-vh-100;
+  @extend min-w-100;
+}
+
+// Styles for the boardroom chat messages area
+.boardroom-chat-messages {
+  @extend flex-fill;
+  @extend overflow-auto;
+  @extend position-relative;
+  @extend pt-4;
+}
+
+// Styles for the boardroom message row
+.boardroom-message-row {
+  @extend d-flex;
+  @extend mb-2;
+  &-start {
+    @extend justify-content-start;
+  }
+  &-end {
+    @extend justify-content-end;
+  }
+}
+
+// Styles for the boardroom message avatar
+.boardroom-message-avatar {
+  @extend w-100;
+  @extend h-100;
+  @extend ratio-1x1;
+  @extend object-fit-cover;
+  @extend rounded-circle;
+  @extend d-block;
+  @extend overflow-hidden;
+}
+
+// Styles for the boardroom message text
+.boardroom-message-text {
+  @extend fs-6;
+  @extend p-3;
+  @extend mb-1;
+  @extend rounded-pill;
+  &-received {
+    @extend bg-light;
+    @extend ms-3;
+  }
+  &-sent {
+    @extend bg-primary;
+    @extend text-white;
+    @extend me-3;
+  }
+}
+
+// Styles for the boardroom message meta
+.boardroom-message-meta {
+  @extend fs-6;
+  @extend rounded-pill;
+  @extend text-muted;
+  &-received {
+    @extend ms-3;
+    @extend float-end;
+  }
+  &-sent {
+    @extend me-3;
+  }
+}
+
+// Styles for the boardroom message avatar block
+.boardroom-message-avatar-block {
+  @extend d-flex;
+  @extend flex-column;
+  @extend align-items-center;
+  @extend me-2;
+  @extend ms-2;
+  @extend align-self-end;
+  @extend min-w-100;
+  @extend max-w-100;
+  @extend flex-shrink-0;
+}
+
+.boardroom-message-avatar-meta {
+  @extend d-flex;
+  @extend flex-column;
+  @extend align-items-center;
+  @extend mt-2;
+}
+
+// Additional styles for boardroom message avatar name and role
+.boardroom-message-avatar-name {
+  @extend fs-6;
+  @extend fw-semibold;
+  @extend text-dark;
+  @extend mb-1;
+}
+
+.boardroom-message-avatar-role {
+  @extend d-inline-block;
+  @extend fs-6;
+  @extend align-middle;
+  @extend ms-2;
+  @extend py-1;
+  @extend px-2;
+  @extend rounded;
+  @extend bg-secondary;
+  @extend text-white;
+  @extend fw-medium;
+  @extend lh-1;
+}
