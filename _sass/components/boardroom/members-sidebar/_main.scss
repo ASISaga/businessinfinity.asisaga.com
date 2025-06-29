@@ -6,10 +6,19 @@
 }
 
 .boardroom-members-sidebar {
-  @extend .members-sidebar;
+  flex: 0 0 320px;
+  max-width: 320px;
+  min-width: 240px;
+  height: 100%;
+  background: $white;
+  border-right: 1px solid $gray-300;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  z-index: 1;
+  will-change: transform;
 }
 
 // Modifier for hidden state
 .boardroom-members-sidebar.hidden {
-  @extend .hidden;
+  transform: translateX(-100%);
+  pointer-events: none;
 }
