@@ -2,30 +2,15 @@
 layout: default
 title: "Boardroom | Business Infinity"
 ---
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <script type="module" src="{{ '/assets/js/script.js' | relative_url }}"></script>
-</head>
-
-<body>
-  <main class="boardroom-boardroom-container">
-    <section class="boardroom-section">
-      <div class="boardroom-container-fluid">
-        <div class="boardroom-main-row flex-grow-1 d-flex flex-row min-vh-100">
-          <!-- Sidebar Container (toggle strip + sidebar) -->
-          {% include boardroom/members-sidebar.html %}
-          <!-- Chat Area -->
-          {% include boardroom/chat-area.html %}
-        </div>
+<main class="boardroom-boardroom-container">
+  <section class="boardroom-section">
+    <div class="boardroom-container-fluid">
+      <div class="boardroom-main-row flex-grow-1 d-flex flex-row min-vh-100">
+        <!-- Sidebar Container (toggle strip + sidebar) -->
+        {% include boardroom/members-sidebar.html %}
+        <!-- Chat Area -->
+        {% include boardroom/chat-area.html %}
       </div>
-    </section>
-  </main>
-</body>
-
-</html>
+    </div>
+  </section>
+</main>
