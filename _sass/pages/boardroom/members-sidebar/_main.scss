@@ -73,20 +73,24 @@
 
 .boardroom-member-last-message {
   font-size: 1rem; // fs-6 = 1rem
-  @extend text-muted;
-  @extend mt-2;
-  @extend text-truncate;
+  color: $text-muted;
+  margin-top: 0.5rem; // mt-2 = 0.5rem
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .boardroom-member-unread {
-  @extend bg-danger;
-  @extend text-white;
-  @extend rounded-pill;
-  @extend py-1;
-  @extend px-3;
+  background-color: $danger;
+  color: $white;
+  border-radius: 50rem;
+  padding-top: 0.25rem; // py-1 = 0.25rem
+  padding-bottom: 0.25rem;
+  padding-left: 1rem; // px-3 = 1rem
+  padding-right: 1rem;
   font-size: 1rem; // fs-6 = 1rem
-  @extend align-self-start;
-  @extend ms-2;
-  @extend mt-1;
-  @extend shadow-sm;
+  align-self: flex-start;
+  margin-left: 0.5rem; // ms-2 = 0.5rem
+  margin-top: 0.25rem; // mt-1 = 0.25rem
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); // shadow-sm
 }
