@@ -2,28 +2,31 @@
 
 // Styles for the boardroom chat header
 .boardroom-chat-header {
-  @include display-flex;
-  @include align-items(center);
-  @include justify-content(space-between);
-  @include padding(0.5rem); // p-2 = 0.5rem
-  @include border-bottom-width(1px);
-  @include border-bottom-style(solid);
-  @include border-bottom-color($border-color);
-  @include background-color($light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem; // p-2 = 0.5rem
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $border-color;
+  background-color: $light;
 }
 
 .boardroom-chat-title {
-  @include font-size(1.5rem); // fs-4 = 1.5rem
-  @include font-weight(500); // fw-medium
-  @include margin-bottom(0);
+  font-size: 1.5rem; // fs-4 = 1.5rem
+  font-weight: 500; // fw-medium
+  margin-bottom: 0;
 }
 
 .boardroom-chat-status {
-  @include badge-variant($primary);
-  @include background-color($primary);
-  @include font-size(1.25rem); // fs-5 = 1.25rem
-  @include padding-top(0.5rem); // py-2 = 0.5rem
-  @include padding-bottom(0.5rem);
-  @include padding-left(1.5rem); // px-4 = 1.5rem
-  @include padding-right(1.5rem);
+  // badge-variant($primary) is not a Bootstrap 5 mixin, so use direct styles
+  background-color: $primary;
+  font-size: 1.25rem; // fs-5 = 1.25rem
+  padding-top: 0.5rem; // py-2 = 0.5rem
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem; // px-4 = 1.5rem
+  padding-right: 1.5rem;
+  color: $white;
+  border-radius: 0.375rem;
+  display: inline-block;
 }

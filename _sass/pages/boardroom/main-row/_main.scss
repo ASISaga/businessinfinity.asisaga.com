@@ -1,27 +1,27 @@
 // SCSS partial for boardroom main row component (migrated from _boardroom-main-row.scss)
 
 .boardroom-main-row {
-  @include display-flex;
-  @include flex-direction(row);
-  @include height(100%);
-  @include min-viewport-height(100);
-  @include margin(0);
-  @include flex(1 1 auto);
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  flex: 1 1 auto;
 }
 
 .boardroom-sidebar-container {
-  @include display-flex;
-  @include flex-direction(row);
-  @include height(100%);
-  @include min-viewport-height(100);
-  @include align-self(stretch);
-  @include border-end-width(1px);
-  @include border-end-style(solid);
-  @include border-end-color($border-color);
-  @include border-top-width(1px);
-  @include border-top-style(solid);
-  @include border-top-color($border-color);
-  @include box-sizing(border-box);
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  min-height: 100vh;
+  align-self: stretch;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: $border-color;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: $border-color;
+  box-sizing: border-box;
   &.collapsed {
     .boardroom-members-sidebar {
       width: 0 !important;

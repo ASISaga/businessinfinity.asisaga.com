@@ -1,68 +1,68 @@
 // SCSS partial for boardroom members-sidebar main component
 
 .boardroom-members-section {
-  @include padding(1.5rem); // p-4 = 1.5rem
+  padding: 1.5rem; // p-4 = 1.5rem
 }
 
 // SCSS partial for boardroom members-sidebar member item
 
 .boardroom-member-item {
-  @include padding(1rem); // p-3 = 1rem
-  @include border-bottom-width(1px);
-  @include border-bottom-style(solid);
-  @include border-bottom-color($border-color);
-  @include background-color($white);
-  @include transition(all 0.2s);
-  @include cursor(pointer);
-  @include outline(0);
+  padding: 1rem; // p-3 = 1rem
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $border-color;
+  background-color: $white;
+  transition: all 0.2s;
+  cursor: pointer;
+  outline: 0;
   &:focus,
   &:hover {
-    @include background-color($light);
-    @include box-shadow(0 .125rem .25rem rgba(0,0,0,.075)); // shadow-sm
+    background-color: $light;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); // shadow-sm
   }
   &:focus-visible {
-    @include outline-color($primary);
-    @include outline-width(2px);
-    @include outline-style(solid);
+    outline-color: $primary;
+    outline-width: 2px;
+    outline-style: solid;
   }
 }
 
 .boardroom-member-avatar-block {
-  @include display-flex;
-  @include align-items(center);
-  @include justify-content(center);
-  @include min-width(100%);
-  @include min-height(100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .boardroom-member-avatar {
-  @include width(100%);
-  @include height(100%);
-  @include object-fit(cover);
-  @include border-radius(50%);
-  @include border-width(1px);
-  @include border-style(solid);
-  @include border-color($border-color);
-  @include background-color($white);
-  @include box-shadow(0 .125rem .25rem rgba(0,0,0,.075)); // shadow-sm
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $border-color;
+  background-color: $white;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); // shadow-sm
 }
 
 .boardroom-member-info {
-  @include flex-grow(1);
-  @include padding-top(0.5rem);
-  @include min-width(0);
+  flex-grow: 1;
+  padding-top: 0.5rem;
+  min-width: 0;
 }
 
 .boardroom-member-name {
-  @include font-weight(700);
-  @include margin-bottom(0);
-  @include font-size(1.25rem);
+  font-weight: 700;
+  margin-bottom: 0;
+  font-size: 1.25rem;
 }
 
 .boardroom-member-role {
-  @include font-size(1rem);
-  @include vertical-align(middle);
-  @include margin-left(0.5rem);
+  font-size: 1rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
 }
 
 .boardroom-member-status {
