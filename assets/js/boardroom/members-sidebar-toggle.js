@@ -1,4 +1,4 @@
-class SidebarToggle {
+class MembersSidebarToggle {
   constructor(toggleBtnId, sidebarContainerId, sidebarToggleIconId) {
     this.toggleBtn = document.getElementById(toggleBtnId);
     this.sidebarContainer = document.getElementById(sidebarContainerId);
@@ -22,4 +22,4 @@ class SidebarToggle {
   }
 }
 
-export default SidebarToggle;
+export default MembersSidebarToggle;
