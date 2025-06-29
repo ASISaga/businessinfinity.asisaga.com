@@ -2,18 +2,19 @@
 layout: default
 title: "Boardroom | Business Infinity"
 ---
-<main class="boardroom-boardroom-container">
+<main class="boardroom-container">
   <section class="boardroom-section">
     <div class="boardroom-container-fluid">
       <div class="boardroom-main-row">
-        <!-- Members Sidebar Toggle Strip -->
-        {% include boardroom/toggle-strip.html %}
-
-        <!-- Members Sidebar Container (toggle strip + sidebar) -->
-        {% include boardroom/members-sidebar.html %}
-        
-        <!-- Chat Area -->
-        {% include boardroom/chat-area.html %}
+        <div class="toggle-strip-col">
+          {% include boardroom/toggle-strip.html %}
+        </div>
+        <div class="members-sidebar-col">
+          {% include boardroom/members-sidebar.html %}
+        </div>
+        <div class="chat-area-col">
+          {% include boardroom/chat-area.html %}
+        </div>
       </div>
     </div>
   </section>
