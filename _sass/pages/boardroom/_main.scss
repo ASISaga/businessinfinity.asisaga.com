@@ -3,27 +3,42 @@
 // Boardroom container component styles
 .boardroom-container {
   @extend .container-fluid;
+  min-height: 100vh;
+  background: linear-gradient(120deg, $gray-50 0%, $white 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
   // Main boardroom section
   .boardroom-section {
     @extend .py-4;
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 
     .boardroom-container-fluid {
       @extend .container-fluid;
 
       .boardroom-main-row {
         @extend .row, .gx-3;
+        min-height: 70vh;
+        align-items: stretch;
 
         .toggle-strip-col {
           @extend .col-1, .d-flex, .flex-column, .align-items-center, .px-0;
+          min-width: 60px;
         }
 
         .members-sidebar-col {
           @extend .col-3, .d-flex, .flex-column, .px-2;
+          min-width: 260px;
         }
 
         .chat-area-col {
           @extend .col-8, .d-flex, .flex-column, .px-2;
+          min-width: 0;
         }
       }
     }

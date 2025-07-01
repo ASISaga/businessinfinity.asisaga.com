@@ -1,3 +1,4 @@
+
 // Imports all boardroom component SCSS files for the boardroom page layout.
 
 // Chat area components
@@ -14,8 +15,45 @@
 @import 'members-sidebar/empty-state';
 @import 'members-sidebar/member-status';
 
-
 // Import component partials
 @import 'toggle-strip';
 @import 'icon-white';
 @import 'members';
+
+// Boardroom main layout enhancements
+.boardroom-section {
+  background: linear-gradient(135deg, $white 60%, $gray-100 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.08), 0 1.5px 4px 0 rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.boardroom-main-row {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+  background: $white;
+}
+
+.toggle-strip-col {
+  background: $gray-50;
+  border-right: 1px solid $gray-200;
+  min-width: 60px;
+  box-shadow: 2px 0 8px 0 rgba(0,0,0,0.03);
+}
+
+.members-sidebar-col {
+  background: $white;
+  border-right: 1px solid $gray-200;
+  min-width: 260px;
+  box-shadow: 2px 0 8px 0 rgba(0,0,0,0.02);
+  z-index: 2;
+}
+
+.chat-area-col {
+  background: $white;
+  min-width: 0;
+  z-index: 1;
+}
