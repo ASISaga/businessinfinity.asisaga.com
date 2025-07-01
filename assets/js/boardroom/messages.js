@@ -8,7 +8,7 @@ class MessagesRenderer {
   async render(messages, members) {
     if (!this.chatMessages) return;
     this.chatMessages.innerHTML = '';
-    const template = await TemplateUtils.loadTemplate('/assets/templates/boardroom-message-item.html');
+    const template = await TemplateUtils.loadTemplate('/templates/boardroom/message-item.html');
     for (const msg of messages) {
       const isReceived = msg.direction === 'received';
       const sender = members.find(m => m.id === msg.senderId) || {};

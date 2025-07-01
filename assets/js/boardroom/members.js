@@ -8,7 +8,7 @@ class MembersRenderer {
   async render(members, lastMessages, unreadCounts, messages) {
     if (!this.membersList) return;
     this.membersList.innerHTML = '';
-    const template = await TemplateUtils.loadTemplate('/assets/templates/boardroom-member-item.html');
+    const template = await TemplateUtils.loadTemplate('templates/boardroom/member-item.html');
     for (const member of members) {
       const lastMsgObj = lastMessages.find(lm => lm.memberId === member.id) || {};
       const unreadObj = unreadCounts.find(u => u.memberId === member.id) || {};
