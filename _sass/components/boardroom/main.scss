@@ -39,23 +39,48 @@
 
 
 // Use $gray-100 (Bootstrap) instead of $gray-50
+
+// Consistent Bootstrap grid-based layout for boardroom columns
+.boardroom-main-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
 .toggle-strip-col {
   background: $gray-100;
   border-right: 1px solid $gray-200;
-  min-width: 60px;
   box-shadow: 2px 0 8px 0 rgba(0,0,0,0.03);
+  flex: 0 0 72px;
+  max-width: 72px;
+  min-width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 }
 
 .members-sidebar-col {
   background: $white;
   border-right: 1px solid $gray-200;
-  min-width: 260px;
   box-shadow: 2px 0 8px 0 rgba(0,0,0,0.02);
   z-index: 2;
+  flex: 0 0 320px;
+  max-width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .chat-area-col {
   background: $white;
   min-width: 0;
   z-index: 1;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
