@@ -3,30 +3,13 @@ layout: default
 title: "Boardroom | Business Infinity"
 ---
 
-<!-- Main boardroom page container -->
 <main class="boardroom-container">
-  <!-- Primary boardroom section containing the full interface -->
-  <section class="boardroom-section">
-    <!-- Bootstrap-style fluid container for responsive layout -->
+  <section class="boardroom-section" aria-label="Boardroom Interface">
     <div class="boardroom-container-fluid">
-      <!-- Main row containing the three-column layout -->
       <div class="boardroom-main-row">
-        
-        <!-- Left column: Toggle strip for navigation/controls -->
-        <div class="toggle-strip-col">
-          {% include boardroom/toggle-strip.html %}
-        </div>
-        
-        <!-- Middle column: Sidebar showing boardroom members  -->
-        <div class="members-sidebar-col">
-          {% include boardroom/members-sidebar.html %}
-        </div>
-        
-        <!-- Right column: Main chat/conversation area -->
-        <div class="chat-area-col">
-          {% include boardroom/chat-area.html %}
-        </div>
-        
+        {% include boardroom/toggle-strip.html %}
+        {% include boardroom/members-sidebar.html %}
+        {% include boardroom/chat-area.html %}
       </div>
     </div>
   </section>
