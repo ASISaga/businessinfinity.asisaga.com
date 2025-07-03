@@ -1,42 +1,54 @@
 // SCSS partial for boardroom chat area component
 // Styles for .boardroom-chat-area
 
+
 .boardroom-chat-area {
-  flex: 1 1 auto;
-  height: 100%;
-  background: $body-bg;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .flex-grow-1;
+  @extend .overflow-auto;
   min-height: 100vh;
   min-width: 100%;
+  background: $body-bg;
 }
 
 
 // Styles for the boardroom chat messages area
 .boardroom-chat-messages {
-  flex: 1 1 auto;
-  overflow: auto;
-  position: relative;
-  padding-top: 1.5rem; // pt-4 = 1.5rem
+  @extend .flex-grow-1;
+  @extend .overflow-auto;
+  @extend .position-relative;
+  padding-top: 1.5rem;
 }
 
 // Styles for the boardroom message row
 .boardroom-message-row {
-  display: flex;
-  margin-bottom: 0.5rem; // mb-2 = 0.5rem
-  &-start {
+  @extend .d-flex;
+  margin-bottom: 0.5rem;
+  &.boardroom-message-row-start {
     justify-content: flex-start;
   }
-  &-end {
+  &.boardroom-message-row-end {
     justify-content: flex-end;
   }
 }
 
 // Styles for the boardroom message avatar
+.boardroom-message-avatar-block {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .align-items-center;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  align-self: flex-end;
+  min-width: 40px;
+  max-width: 40px;
+  flex-shrink: 0;
+}
+
 .boardroom-message-avatar {
-  width: 100%;
-  height: 100%;
+  width: 40px;
+  height: 40px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
@@ -45,57 +57,60 @@
 }
 
 // Styles for the boardroom message text
-.boardroom-message-text {
-  font-size: 1rem; // fs-6 = 1rem
-  padding: 1rem; // p-3 = 1rem
-  margin-bottom: 0.25rem; // mb-1 = 0.25rem
-  border-radius: 50rem; // rounded-pill
-  &-received {
+.boardroom-message-content {
+  @extend .d-flex;
+  @extend .flex-column;
+  flex: 1 1 auto;
+}
+
+.boardroom-message-bubble {
+  font-size: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+  border-radius: 50rem;
+  max-width: 32rem;
+  word-break: break-word;
+  &.boardroom-message-text-received {
     background-color: $light;
-    margin-left: 1rem; // ms-3 = 1rem
+    color: $body-color;
+    margin-left: 1rem;
+    align-self: flex-start;
   }
-  &-sent {
+  &.boardroom-message-text-sent {
     background-color: $primary;
     color: $white;
-    margin-right: 1rem; // me-3 = 1rem
+    margin-right: 1rem;
+    align-self: flex-end;
   }
 }
 
 // Styles for the boardroom message meta
 .boardroom-message-meta {
-  font-size: 1rem;
-  border-radius: 50rem;
+  font-size: 0.875rem;
   color: $text-muted;
-  &-received {
+  border-radius: 50rem;
+  margin-top: 0.25rem;
+  &.boardroom-message-meta-received {
     margin-left: 1rem;
-    float: right;
+    text-align: left;
   }
-  &-sent {
+  &.boardroom-message-meta-sent {
     margin-right: 1rem;
+    text-align: right;
   }
 }
 
 // Styles for the boardroom message avatar block
-.boardroom-message-avatar-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
-  align-self: flex-end;
-  min-width: 100%;
-  max-width: 100%;
-  flex-shrink: 0;
-}
 
 .boardroom-message-avatar-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .align-items-center;
   margin-top: 0.5rem;
 }
 
 // Additional styles for boardroom message avatar name and role
+
 .boardroom-message-avatar-name {
   font-size: 1rem;
   font-weight: 600;
@@ -103,15 +118,13 @@
   margin-bottom: 0.25rem;
 }
 
+
 .boardroom-message-avatar-role {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 0.875rem;
   vertical-align: middle;
   margin-left: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   background-color: $secondary;
   color: $white;
