@@ -25,9 +25,10 @@
 .boardroom-message-row {
   @extend .d-flex;
   margin-bottom: 0.5rem;
-  max-width: 100%;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
   &.boardroom-message-row-start {
     justify-content: flex-start;
   }
@@ -64,6 +65,9 @@
   @extend .d-flex;
   @extend .flex-column;
   flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .boardroom-message-bubble {
@@ -71,19 +75,23 @@
   padding: 1rem;
   margin-bottom: 0.25rem;
   border-radius: 50rem;
-  max-width: 32rem;
+  max-width: 100%;
   word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
   &.boardroom-message-text-received {
     background-color: $light;
     color: $body-color;
     margin-left: 1rem;
     align-self: flex-start;
+    max-width: 80%;
   }
   &.boardroom-message-text-sent {
     background-color: $primary;
     color: $white;
     margin-right: 1rem;
     align-self: flex-end;
+    max-width: 80%;
   }
 }
 
