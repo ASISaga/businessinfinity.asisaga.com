@@ -23,7 +23,7 @@
   transition: background 0.2s, box-shadow 0.2s;
   cursor: pointer;
   outline: 0;
-  width: 100%;
+  width: auto;
   max-width: 100%;
   box-sizing: border-box;
   overflow: hidden;
@@ -43,6 +43,9 @@
   justify-content: center;
   margin-right: 0.5rem;
   margin-top: 0.25rem;
+  min-width: 40px;
+  max-width: 40px;
+  flex-shrink: 0;
 }
 
 .boardroom-member-avatar {
@@ -107,6 +110,8 @@
   padding: 0.2em 0.7em;
   margin-left: 0.5rem;
   align-self: flex-start;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .boardroom-member-role {
