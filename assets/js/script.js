@@ -1,6 +1,7 @@
 // Central script loader for Boardroom | Business Infinity
 import './common.js';
 import Boardroom from './boardroom/boardroom.js';
+import './boardroom/ui-enhancements.js';
 
 // Initialize the Boardroom application when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {

@@ -1,15 +1,17 @@
-// SCSS partial for boardroom page layout
+// Enhanced SCSS partial for boardroom page layout
 
 // Boardroom container component styles
 .boardroom-container {
   @extend .container-fluid;
   min-height: 100vh;
-  background: linear-gradient(120deg, $gray-100 0%, $white 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
   display: flex;
   flex-direction: column;
   align-items: stretch;
   margin: 0;
   padding: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .boardroom-section {
@@ -18,18 +20,89 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .boardroom-container-fluid {
   @extend .container-fluid;
   margin: 0;
   padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .boardroom-main-row {
   @extend .row, .gx-0;
-  min-height: 70vh;
+  min-height: 100vh;
   align-items: stretch;
   margin: 0;
   padding: 0;
+  flex: 1;
+  background: #ffffff;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+// Smooth transitions for all interactive elements
+* {
+  transition: all 0.2s ease;
+}
+
+// Focus styles for better accessibility
+button:focus,
+input:focus,
+textarea:focus,
+[tabindex]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Custom scrollbar styles
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  
+  &:hover {
+    background: #a8a8a8;
+  }
+}
+
+// Selection styles
+::selection {
+  background: rgba(0, 123, 255, 0.2);
+  color: #212529;
+}
+
+// Improved mobile responsiveness
+@media (max-width: 768px) {
+  .boardroom-main-row {
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .boardroom-container {
+    padding: 0;
+  }
 }
