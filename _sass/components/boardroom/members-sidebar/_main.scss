@@ -2,19 +2,23 @@
 // Styles for .boardroom-members-sidebar-container and .boardroom-members-sidebar
 
 .boardroom-members-sidebar-container {
-  // No direct styles, acts as a wrapper
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .boardroom-members-sidebar {
   flex: 0 0 320px;
   max-width: 320px;
   min-width: 240px;
+  width: 320px;
   height: 100%;
   background: $white;
   border-right: 1px solid $gray-300;
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
   z-index: 1;
   will-change: transform;
+  overflow: hidden;
 }
 
 // Modifier for hidden state
