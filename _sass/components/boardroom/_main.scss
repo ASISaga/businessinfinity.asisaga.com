@@ -39,6 +39,23 @@
   background: $white;
 }
 
+// Responsive: Stack boardroom-main-row children vertically on mobile
+@media (max-width: 768px) {
+  .boardroom-main-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .boardroom-members-sidebar-toggle-strip {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    justify-content: flex-start;
+    padding: 0.5rem 0.25rem;
+  }
+}
+
 // Boardroom main row: three-column layout
 .boardroom-main-row {
   @extend .row;
