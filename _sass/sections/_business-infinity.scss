@@ -1,0 +1,260 @@
+// Business Infinity section specific styles
+.business-infinity-container {
+  width: 100%;
+  
+  // Header section
+  .business-header-section {
+    background: linear-gradient(135deg, lighten($primary, 35%) 0%, $white 100%);
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    padding: 3rem 1rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    
+    .business-header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .business-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $primary;
+      margin-bottom: 1rem;
+    }
+    
+    .business-subtitle {
+      font-size: $font-size-lg;
+      color: $secondary;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  // Feature section
+  .business-feature-section {
+    margin-bottom: 3rem;
+    
+    .feature-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: calc(var(--bs-gutter-x) * -0.5);
+      margin-left: calc(var(--bs-gutter-x) * -0.5);
+      
+      .feature-column {
+        flex: 0 0 auto;
+        width: 100%;
+        padding-right: calc(var(--bs-gutter-x) * 0.5);
+        padding-left: calc(var(--bs-gutter-x) * 0.5);
+        margin-bottom: 1.5rem;
+        
+        @media (min-width: 768px) {
+          width: 50%;
+        }
+        
+        @media (min-width: 992px) {
+          width: 33.333333%;
+        }
+      }
+    }
+    
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: $border-radius;
+      background-color: $white;
+      box-shadow: $box-shadow;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+      
+      .feature-icon {
+        font-size: 2.5rem;
+        color: $primary;
+        margin-bottom: 1rem;
+      }
+      
+      .feature-title {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        color: $primary;
+        margin-bottom: 0.75rem;
+      }
+      
+      .feature-description {
+        color: $body-color;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+      }
+    }
+  }
+  
+  // Pricing section
+  .business-pricing-section {
+    background: $gray-100;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+    
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      
+      .pricing-title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $primary;
+        margin-bottom: 0.75rem;
+      }
+      
+      .pricing-subtitle {
+        font-size: $font-size-lg;
+        color: $secondary;
+      }
+    }
+    
+    .pricing-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      
+      .pricing-column {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 350px;
+        
+        @media (min-width: 768px) {
+          width: calc(50% - 1rem);
+        }
+        
+        @media (min-width: 1200px) {
+          width: calc(33.333333% - 1.5rem);
+        }
+      }
+      
+      .pricing-plan {
+        background-color: $white;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        padding: 2rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        &.featured {
+          border: 2px solid $primary;
+          transform: scale(1.05);
+          
+          @media (max-width: 767.98px) {
+            transform: scale(1.02);
+          }
+        }
+        
+        .pricing-name {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-bold;
+          color: $primary;
+          margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price {
+          font-size: 2.5rem;
+          font-weight: $font-weight-bold;
+          margin-bottom: 1.5rem;
+          
+          .pricing-duration {
+            font-size: $font-size-base;
+            color: $secondary;
+            font-weight: $font-weight-normal;
+          }
+        }
+        
+        .pricing-features {
+          margin-bottom: 1.5rem;
+          flex-grow: 1;
+          
+          .pricing-feature-item {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            
+            &:before {
+              content: '✓';
+              color: $success;
+              margin-right: 0.5rem;
+              font-weight: bold;
+            }
+          }
+        }
+        
+        .pricing-button {
+          display: inline-block;
+          text-align: center;
+          font-weight: $font-weight-medium;
+          padding: 0.75rem 1.5rem;
+          border-radius: 50rem;
+          text-decoration: none;
+          transition: all 0.15s ease-in-out;
+          background-color: $primary;
+          color: $white;
+          border: 1px solid $primary;
+          
+          &:hover {
+            background-color: darken($primary, 7.5%);
+            border-color: darken($primary, 10%);
+          }
+          
+          &.secondary {
+            background-color: transparent;
+            border-color: $primary;
+            color: $primary;
+            
+            &:hover {
+              background-color: $primary;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // Privacy policy and other content pages
+  .business-content-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    
+    .content-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $primary;
+      margin-bottom: 1.5rem;
+    }
+    
+    .content-subtitle {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
+      color: $primary;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content-text {
+      margin-bottom: 1.5rem;
+    }
+    
+    .content-list {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+      
+      .content-list-item {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

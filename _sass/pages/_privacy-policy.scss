@@ -1,0 +1,61 @@
+// Styles for the Privacy Policy page
+.privacy-container {
+  @extend .container;
+  @extend .py-5; // Bootstrap padding
+
+  .privacy-header-section {
+    @extend .pb-4;
+    @extend .mb-5;
+    border-bottom: 1px solid var(--bs-border-color);
+
+    // .privacy-title styling is handled by Bootstrap heading classes in HTML
+
+    .privacy-last-updated {
+      @extend .text-muted;
+      // Suggest using Bootstrap .fs-sm or similar in HTML for font-size
+    }
+  }
+
+  .privacy-section {
+    @extend .mb-5;
+
+    .privacy-section-title {
+      // Suggest using Bootstrap .h2 or similar in HTML for styling
+      @extend .mb-4;
+      color: var(--bs-primary);
+    }
+
+    .privacy-section-content {
+      .privacy-text {
+        @extend .mb-3;
+        @extend .lh-lg; // Using Bootstrap line-height utility
+      }
+
+      .privacy-list {
+        @extend .list-unstyled;
+        @extend .ps-3;
+
+        .privacy-list-item {
+          @extend .mb-2;
+          position: relative;
+          padding-left: 1.5em;
+
+          &::before {
+            content: "\2022";
+            color: var(--bs-primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0.1em;
+          }
+        }
+      }
+
+      .privacy-contact {
+        @extend .mb-3;
+
+        // .privacy-link styling is handled by Bootstrap default link styles
+      }
+    }
+  }
+}

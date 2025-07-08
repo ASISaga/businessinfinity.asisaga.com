@@ -1,0 +1,123 @@
+// Entrepreneur page specific styles
+.entrepreneur-container {
+  // Hero section styles are handled by _hero.scss
+
+  // Challenges section
+  .entrepreneur-challenges-section {
+    @extend .py-5; // Bootstrap padding
+
+    // section-header.html styles are handled by _section-header.scss
+
+    .entrepreneur-challenges-grid {
+      @extend .container;
+      @extend .row;
+      @extend .justify-content-center;
+
+      .entrepreneur-challenge-card {
+        @extend .col-md-4;
+        @extend .p-4; // Bootstrap padding
+        @extend .mb-4; // Bootstrap margin
+        @extend .text-center;
+
+        .entrepreneur-challenge-title {
+          @extend .mb-3;
+          // Ensure heading level matches Bootstrap or use .fs-* classes
+        }
+
+        .entrepreneur-challenge-description {
+          color: var(--bs-gray-700); // Use Bootstrap CSS variable
+        }
+      }
+    }
+  }
+
+  // Solutions section
+  .entrepreneur-solutions-section {
+    @extend .bg-light;
+    @extend .py-5; // Bootstrap padding
+
+    // section-header.html styles are handled by _section-header.scss
+
+    .entrepreneur-solutions-container {
+      @extend .container;
+
+      .entrepreneur-solution-item {
+        @extend .row;
+        @extend .mb-5; // Bootstrap margin
+        @extend .align-items-start;
+
+        .entrepreneur-solution-icon {
+          @extend .col-md-2;
+          @extend .text-center;
+          // font-size: 2.5rem; // If specific size needed, create utility or use inline if truly unique
+          @extend .text-primary;
+        }
+
+        .entrepreneur-solution-content {
+          @extend .col-md-10;
+        }
+
+        .entrepreneur-solution-title {
+          @extend .mb-3;
+        }
+
+        .entrepreneur-solution-description {
+          @extend .mb-3;
+        }
+
+        .entrepreneur-solution-features {
+          @extend .list-unstyled;
+
+          .entrepreneur-feature-item {
+            @extend .ps-4; // Bootstrap padding for bullet
+            @extend .position-relative;
+            @extend .mb-2;
+
+            &::before {
+              content: "\2022"; // Bullet character
+              @extend .text-primary;
+              font-weight: bold; // Keep if specific, or create utility
+              @extend .position-absolute;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Success story section
+  .entrepreneur-success-section {
+    @extend .py-5; // Bootstrap padding
+
+    // section-header.html styles are handled by _section-header.scss
+
+    .entrepreneur-success-story {
+      @extend .container;
+      @extend .mw-800; // Assumes .mw-800 utility class exists
+
+      .entrepreneur-testimonial {
+        @extend .bg-primary-light; // Assumes .bg-primary-light utility class exists
+        @extend .rounded;
+        @extend .p-4; // Bootstrap padding
+        border-left: 4px solid var(--bs-primary);
+        @extend .m-0;
+
+        .entrepreneur-testimonial-text {
+          @extend .fst-italic;
+          @extend .mb-3;
+        }
+
+        .entrepreneur-testimonial-footer {
+          @extend .text-end;
+
+          .entrepreneur-testimonial-author {
+            @extend .fw-medium;
+          }
+        }
+      }
+    }
+  }
+
+  // CTA section styles are handled by _cta.scss
+}

@@ -1,0 +1,52 @@
+// Business Infinity page specific styles
+.business-infinity-container {
+  // Hero section styles are handled by _hero.scss
+
+  // Features section
+  .business-features-section {
+    // Styles for the feature-grid.html component are handled by _feature-grid.scss
+    // section-header.html styles are handled by _section-header.scss
+    @extend .py-5; // Bootstrap padding
+  }
+
+  // Use cases section
+  .business-use-cases-section {
+    @extend .py-5; // Bootstrap padding
+    @extend .bg-light;
+
+    // section-header.html styles are handled by _section-header.scss
+
+    .business-use-cases-nav {
+      @extend .container;
+      @extend .text-center;
+
+      .business-tabs-list {
+        @extend .nav;
+        @extend .nav-pills;
+        @extend .justify-content-center;
+        @extend .mb-4; // Bootstrap margin
+
+        .business-tab-item {
+          @extend .nav-item;
+          @extend .mx-2; // Bootstrap margin
+
+          .business-tab-link {
+            @extend .btn;
+            @extend .btn-outline-primary;
+            @extend .px-4; // Bootstrap padding
+            @extend .py-2; // Bootstrap padding
+
+            &:hover,
+            &:focus {
+              text-decoration: none; // Keep if specific, Bootstrap handles focus generally
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Testimonials section styles are handled by _testimonial.scss
+
+  // Contact section styles are handled by _cta.scss
+}
