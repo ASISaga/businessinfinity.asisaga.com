@@ -1,0 +1,63 @@
+---
+layout: default
+title: Business Infinity
+---
+
+{% assign product = site.data.business_infinity %}
+{% assign product_id = "business_infinity" %}
+
+<!-- 
+Business Infinity product page
+This page introduces the Business Infinity product, its features, benefits and use cases
+Uses Bootstrap's responsive grid system and components for layout and design
+-->
+
+{% capture product_content %}
+
+<!-- Key features section with feature cards -->
+<section id="features" class="product-section">
+  {% include section-header.html title=product.features.section_title %}
+  {% include product-feature-grid.html 
+    items=product.features.items
+  %}
+</section>
+
+<!-- Use cases section with tabs for different business segments -->
+<section class="product-section business-use-cases-section">
+  {% include section-header.html title=product.use_cases.section_title %}
+  <div class="business-use-cases-nav">
+    <!-- Tab navigation for different user segments -->
+    <ul class="business-tabs-list" role="tablist">
+      {% for segment in product.use_cases.segments %}
+      <li class="business-tab-item">
+        <a href="{{ segment.url }}" class="business-tab-link">{{ segment.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<!-- Testimonials section -->
+{% include testimonial.html 
+  title=product.testimonials.section_title
+  testimonials=product.testimonials.items
+%}
+
+<!-- Contact section -->
+{% include cta.html 
+  title=product.cta.title
+  description=product.cta.description
+  button_text=product.cta.button_text
+  button_url=product.cta.button_url
+%}
+
+{% endcapture %}
+
+{% include product.html 
+  title=page.title
+  description=product.description
+  product_class="business-infinity-container"
+  button_text="Explore Features"
+  button_url="#features"
+  content=product_content
+%}

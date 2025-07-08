@@ -1,0 +1,85 @@
+---
+layout: default
+title: Business Infinity for Entrepreneurs
+---
+
+<!-- 
+Entrepreneur focused page for Business Infinity product
+This page highlights how Business Infinity helps entrepreneurs
+Uses Bootstrap components for responsive layout and consistent styling
+-->
+<div class="entrepreneur-container">
+  <!-- Hero section -->
+  {% include hero.html 
+    title=site.data.business_infinity_entrepreneur.hero.title 
+    description=site.data.business_infinity_entrepreneur.hero.description
+    button_text=site.data.business_infinity_entrepreneur.hero.button_text
+    button_url=site.data.business_infinity_entrepreneur.hero.button_url
+  %}
+
+  <!-- Challenges section -->
+  <section id="challenges" class="entrepreneur-challenges-section">
+    {% include section-header.html 
+      title=site.data.business_infinity_entrepreneur.challenges.section_title 
+      description=site.data.business_infinity_entrepreneur.challenges.section_description
+    %}
+    
+    <div class="entrepreneur-challenges-grid">
+      {% for challenge in site.data.business_infinity_entrepreneur.challenges.items %}
+      <div class="entrepreneur-challenge-card">
+        <h3 class="entrepreneur-challenge-title">{{ challenge.title }}</h3>
+        <p class="entrepreneur-challenge-description">{{ challenge.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Solutions section -->
+  <section class="entrepreneur-solutions-section">
+    {% include section-header.html title=site.data.business_infinity_entrepreneur.solutions.section_title %}
+    
+    <div class="entrepreneur-solutions-container">
+      {% for solution in site.data.business_infinity_entrepreneur.solutions.items %}
+      <div class="entrepreneur-solution-item">
+        <div class="entrepreneur-solution-icon">
+          <i class="{{ solution.icon }}"></i>
+        </div>
+        <div class="entrepreneur-solution-content">
+          <h3 class="entrepreneur-solution-title">{{ solution.title }}</h3>
+          <p class="entrepreneur-solution-description">{{ solution.description }}</p>
+          <ul class="entrepreneur-solution-features">
+            {% for feature in solution.features %}
+            <li class="entrepreneur-feature-item">{{ feature }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Success story section -->
+  <section class="entrepreneur-success-section">
+    {% include section-header.html title=site.data.business_infinity_entrepreneur.success_story.section_title %}
+    
+    <div class="entrepreneur-success-story">
+      <blockquote class="entrepreneur-testimonial">
+        <p class="entrepreneur-testimonial-text">
+          "{{ site.data.business_infinity_entrepreneur.success_story.testimonial.text }}"
+        </p>
+        <footer class="entrepreneur-testimonial-footer">
+          <cite class="entrepreneur-testimonial-author">{{ site.data.business_infinity_entrepreneur.success_story.testimonial.author }}</cite>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CTA section -->
+  {% include cta.html 
+    title=site.data.business_infinity_entrepreneur.cta.title
+    description=site.data.business_infinity_entrepreneur.cta.description
+    button_text=site.data.business_infinity_entrepreneur.cta.button_text
+    button_url=site.data.business_infinity_entrepreneur.cta.button_url
+    style=site.data.business_infinity_entrepreneur.cta.style
+  %}
+</div>
