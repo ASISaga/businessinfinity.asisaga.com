@@ -1,0 +1,164 @@
+// Startup page specific styles
+.startup-container {
+  // Hero section styles are handled by _hero.scss
+
+  // Challenges section
+  .startup-challenges-section {
+    @extend .py-5; // Bootstrap padding
+
+    // section-header.html styles are handled by _section-header.scss
+
+    .startup-challenges-grid {
+      @extend .container;
+      @extend .row;
+      @extend .justify-content-center;
+
+      .startup-challenge-card {
+        @extend .col-md-4;
+        @extend .p-4; // Bootstrap padding
+        @extend .mb-4; // Bootstrap margin
+        border-top: 4px solid var(--bs-primary);
+        @extend .bg-white;
+        @extend .rounded;
+        @extend .shadow-sm;
+        @extend .h-100;
+        @include transition(transform, 0.3s, ease);
+
+        &:hover {
+          transform: translateY(-5px);
+          @extend .shadow;
+        }
+
+        .startup-challenge-title {
+          @extend .mb-3;
+        }
+
+        .startup-challenge-description {
+          color: var(--bs-gray-700);
+        }
+      }
+    }
+  }
+
+  // Solutions section
+  .startup-solutions-section {
+    @extend .bg-light;
+    @extend .py-5; // Bootstrap padding
+
+    // section-header.html styles are handled by _section-header.scss
+
+    .startup-solutions-container {
+      @extend .container;
+
+      .startup-solution-item {
+        @extend .row;
+        @extend .mb-5; // Bootstrap margin
+        @extend .align-items-start;
+
+        .startup-solution-icon {
+          @extend .col-md-2;
+          @extend .text-center;
+          // font-size: 2.5rem; // If specific size needed, create utility or use inline if truly unique
+          @extend .text-primary;
+        }
+
+        .startup-solution-content {
+          @extend .col-md-10;
+        }
+
+        .startup-solution-title {
+          @extend .mb-3;
+        }
+
+        .startup-solution-description {
+          @extend .mb-3;
+        }
+
+        .startup-solution-features {
+          @extend .list-unstyled;
+
+          .startup-feature-item {
+            @extend .ps-4;
+            @extend .position-relative;
+            @extend .mb-2;
+
+            &::before {
+              content: "\2022"; // Bullet character
+              @extend .text-primary;
+              font-weight: bold;
+              @extend .position-absolute;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Case study section
+  .startup-case-study-section {
+    @extend .py-5; // Bootstrap padding
+
+    // section-header.html styles are handled by _section-header.scss
+
+    .startup-case-study {
+      @extend .container;
+      @extend .mw-800; // Assumes .mw-800 utility class exists
+
+      .startup-case-study-content {
+        @extend .bg-white;
+        @extend .p-4; // Bootstrap padding
+        @extend .rounded;
+        @extend .shadow-sm;
+      }
+
+      .startup-case-study-title {
+        @extend .mb-3;
+      }
+
+      .startup-case-study-description {
+        @extend .mb-3;
+      }
+
+      .startup-case-study-results {
+        @extend .list-unstyled;
+        @extend .mb-4; // Bootstrap margin
+
+        .startup-result-item {
+          @extend .ps-4;
+          @extend .position-relative;
+          @extend .mb-2;
+
+          &::before {
+            content: "\2713"; // Checkmark character
+            color: var(--bs-success); // Using Bootstrap variable instead of extending class
+            font-weight: bold;
+            @extend .position-absolute;
+            left: 0;
+          }
+        }
+      }
+
+      .startup-case-study-quote {
+        @extend .bg-primary-light; // Assumes .bg-primary-light utility class exists
+        @extend .rounded;
+        @extend .p-3; // Bootstrap padding
+        border-left: 4px solid var(--bs-primary);
+        @extend .fst-italic;
+        @extend .mb-0;
+      }
+
+      .startup-quote-footer {
+        @extend .text-end;
+        @extend .mt-3; // Bootstrap margin
+        @extend .small; // Using Bootstrap's native .small class instead of custom fs-sm
+
+        cite {
+          @extend .fw-medium;
+        }
+      }
+    }
+  }
+
+  // CTA section styles are handled by _cta.scss
+}
