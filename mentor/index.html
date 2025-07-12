@@ -1,0 +1,33 @@
+---
+title: Mentor Mode
+layout: default
+---
+
+<section class="mentor-mode">
+  <h2>Mentor Mode</h2>
+  <div class="form-group">
+    <label for="mentor-domain">Domain</label>
+    <select id="mentor-domain" class="form-control"></select>
+  </div>
+
+  <section>
+    <h3>Test LLM Adapter</h3>
+    <textarea id="mentor-question" class="form-control" placeholder="Enter your question"></textarea>
+    <button id="mentor-test-btn" class="btn btn-primary mt-2">Ask</button>
+    <p id="mentor-answer" class="answer"></p>
+  </section>
+
+  <section class="mt-4">
+    <h3>Q&A Pairs</h3>
+    <button id="mentor-load-btn" class="btn btn-outline-secondary">Load Q&A</button>
+    <ul id="mentor-qa-list" class="list-unstyled mt-2"></ul>
+    <div class="new-qa">
+      <input id="new-qa-q" placeholder="Question" class="form-control"/>
+      <input id="new-qa-a" placeholder="Answer" class="form-control"/>
+      <button id="mentor-add-btn" class="btn btn-success">Add</button>
+    </div>
+    <button id="mentor-finetune-btn" class="btn btn-warning mt-2">Trigger Fine-Tune</button>
+  </section>
+</section>
+
+<script type="module" src="{{ '/assets/js/mentor.js' | relative_url }}"></script>

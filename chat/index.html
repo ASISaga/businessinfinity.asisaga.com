@@ -1,0 +1,26 @@
+---
+title: Agent Chat
+layout: default
+---
+
+<section class="chat-interface">
+  <h2>Agent Chat</h2>
+
+  <div class="start-chat form-inline mb-3">
+    <label class="mr-2" for="chat-agent">Agent:</label>
+    <select id="chat-agent" class="form-control mr-2"></select>
+    <button id="chat-start-btn" class="btn btn-primary">Start</button>
+  </div>
+
+  <div class="chat-window">
+    <div id="chat-messages" class="messages"></div>
+    <div class="input-group mt-2">
+      <input id="chat-input" type="text" class="form-control" placeholder="Type a message..."/>
+      <div class="input-group-append">
+        <button id="chat-send-btn" class="btn btn-success">Send</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="module" src="{{ '/assets/js/chat.js' | relative_url }}"></script>
