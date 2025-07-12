@@ -1,50 +1,60 @@
 import { API, authHeader } from './utils.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const agentSelect = document.getElementById('chat-agent');
-  const startBtn = document.getElementById('chat-start-btn');
-  const sendBtn = document.getElementById('chat-send-btn');
-  const msgInp = document.getElementById('chat-input');
-  const msgsDiv = document.getElementById('chat-messages');
-  let convId;
+class ChatUI {
+  constructor() {
+    this.agentSelect = document.getElementById('chat-agent');
+    this.startBtn = document.getElementById('chat-start-btn');
+    this.sendBtn = document.getElementById('chat-send-btn');
+    this.msgInp = document.getElementById('chat-input');
+    this.msgsDiv = document.getElementById('chat-messages');
+    this.convId = null;
+    this.init();
+  }
 
-  // load agents
-  fetch(`${API}/agents`, { headers: authHeader() })
-    .then(r=>r.json())
-    .then(arr => {
-      arr.forEach(a => agentSelect.add(new Option(a.name, a.agentId)));
-    });
+  async init() {
+    await this.loadAgents();
+    this.startBtn.onclick = () => this.startConversation();
+    this.sendBtn.onclick = () => this.sendMessage();
+  }
 
-  startBtn.onclick = async () => {
-    const domain = agentSelect.value;
+  async loadAgents() {
+    const res = await fetch(`${API}/agents`, { headers: authHeader() });
+    const arr = await res.json();
+    arr.forEach(a => this.agentSelect.add(new Option(a.name, a.agentId)));
+  }
+
+  async startConversation() {
+    const domain = this.agentSelect.value;
     const res = await fetch(`${API}/conversations`, {
       method:'POST',
       headers:{'Content-Type':'application/json', ...authHeader()},
       body: JSON.stringify({ domain })
     });
     const body = await res.json();
-    convId = body.conversationId;
-    msgsDiv.innerHTML = '';
-  };
+    this.convId = body.conversationId;
+    this.msgsDiv.innerHTML = '';
+  }
 
-  sendBtn.onclick = async () => {
-    const txt = msgInp.value;
-    await fetch(`${API}/conversations/${convId}/messages`, {
+  async sendMessage() {
+    const txt = this.msgInp.value;
+    await fetch(`${API}/conversations/${this.convId}/messages`, {
       method:'POST',
       headers:{'Content-Type':'application/json', ...authHeader()},
       body: JSON.stringify({ message: txt })
     });
-    msgInp.value = '';
-    loadMsgs();
-  };
-
-  function loadMsgs() {
-    fetch(`${API}/conversations/${convId}/messages`, { headers: authHeader() })
-      .then(r=>r.json())
-      .then(b => {
-        msgsDiv.innerHTML = b.messages.map(m=>
-          <div class="msg ${m.type}"><strong>${m.sender}:</strong> ${m.text}</div>
-        ).join('');
-      });
+    this.msgInp.value = '';
+    this.loadMsgs();
   }
+
+  async loadMsgs() {
+    const res = await fetch(`${API}/conversations/${this.convId}/messages`, { headers: authHeader() });
+    const b = await res.json();
+    this.msgsDiv.innerHTML = b.messages.map(m =>
+      `<div class="msg ${m.type}"><strong>${m.sender}:</strong> ${m.text}</div>`
+    ).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  new ChatUI();
 });

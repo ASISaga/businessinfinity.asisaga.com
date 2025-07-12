@@ -1,52 +1,64 @@
+
 import { API, authHeader } from './utils.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const domainSelect = document.getElementById('mentor-domain');
-  const questionInp = document.getElementById('mentor-question');
-  const answerP = document.getElementById('mentor-answer');
-  const testBtn = document.getElementById('mentor-test-btn');
-  const qaList = document.getElementById('mentor-qa-list');
-  const loadQaBtn = document.getElementById('mentor-load-btn');
-  const fineTuneBtn = document.getElementById('mentor-finetune-btn');
+class MentorUI {
+  constructor() {
+    this.domainSelect = document.getElementById('mentor-domain');
+    this.questionInp = document.getElementById('mentor-question');
+    this.answerP = document.getElementById('mentor-answer');
+    this.testBtn = document.getElementById('mentor-test-btn');
+    this.qaList = document.getElementById('mentor-qa-list');
+    this.loadQaBtn = document.getElementById('mentor-load-btn');
+    this.fineTuneBtn = document.getElementById('mentor-finetune-btn');
+    this.init();
+  }
 
-  // Load domains
-  fetch(`${API}/agents`, { headers: authHeader() })
-    .then(r => r.json())
-    .then(data => {
-      data.forEach(a => {
-        const o = new Option(a.domain, a.domain);
-        domainSelect.add(o);
-      });
+  async init() {
+    await this.loadDomains();
+    this.testBtn.addEventListener('click', () => this.testQuestion());
+    this.loadQaBtn.addEventListener('click', () => this.loadQaPairs());
+    this.fineTuneBtn.addEventListener('click', () => this.fineTune());
+  }
+
+  async loadDomains() {
+    const res = await fetch(`${API}/agents`, { headers: authHeader() });
+    const data = await res.json();
+    data.forEach(a => {
+      const o = new Option(a.domain, a.domain);
+      this.domainSelect.add(o);
     });
+  }
 
-  testBtn.addEventListener('click', async () => {
-    const domain = domainSelect.value;
-    const q = questionInp.value;
+  async testQuestion() {
+    const domain = this.domainSelect.value;
+    const q = this.questionInp.value;
     const res = await fetch(`${API}/mentor/test`, {
       method: 'POST',
       headers: { 'Content-Type':'application/json', ...authHeader() },
       body: JSON.stringify({ domain, question: q })
     });
     const body = await res.json();
-    answerP.textContent = body.answer;
-  });
+    this.answerP.textContent = body.answer;
+  }
 
-  loadQaBtn.addEventListener('click', () => {
-    const domain = domainSelect.value;
-    fetch(`${API}/mentor/qapairs?domain=${domain}`, { headers: authHeader() })
-      .then(r => r.json())
-      .then(list => {
-        qaList.innerHTML = list.map(p=><li><b>Q:</b>${p.question}<br/><b>A:</b>${p.answer}</li>).join('');
-      });
-  });
+  async loadQaPairs() {
+    const domain = this.domainSelect.value;
+    const res = await fetch(`${API}/mentor/qapairs?domain=${domain}`, { headers: authHeader() });
+    const list = await res.json();
+    this.qaList.innerHTML = list.map(p => `<li><b>Q:</b>${p.question}<br/><b>A:</b>${p.answer}</li>`).join('');
+  }
 
-  fineTuneBtn.addEventListener('click', async () => {
-    const domain = domainSelect.value;
+  async fineTune() {
+    const domain = this.domainSelect.value;
     await fetch(`${API}/mentor/fine-tune`, {
       method: 'POST',
       headers: { 'Content-Type':'application/json', ...authHeader() },
       body: JSON.stringify({ domain })
     });
     alert('Pipeline triggered');
-  });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  new MentorUI();
 });
