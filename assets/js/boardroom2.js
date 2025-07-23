@@ -1,82 +1,102 @@
-import { API, authHeader } from './utils.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const listEl = document.getElementById('boardroom-list');
-  const detailEl = document.querySelector('#profile-detail .card-body');
-  const msgsEl = document.getElementById('chat-messages');
-  const inputEl = document.getElementById('chat-input');
-  const sendBtn = document.getElementById('chat-send-btn');
+import { BoardroomAPI, API } from './boardroomApi.js';
+import { AgentProfileTemplate } from './AgentProfileTemplate.js';
+import { AgentListItemTemplate } from './AgentListItemTemplate.js';
+import { ChatMessageTemplate } from './ChatMessageTemplate.js';
 
-  let convId, currentAgent;
+class BoardroomApp extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.api = new BoardroomAPI();
+    this.convId = null;
+    this.currentAgent = null;
+    this.agentProfileTemplate = new AgentProfileTemplate();
+    this.agentListItemTemplate = new AgentListItemTemplate();
+    this.chatMessageTemplate = new ChatMessageTemplate();
+  }
 
-  // 1) Load C-suite avatars
-  const agents = await fetch(`${API}/agents`, { headers: authHeader() })
-                     .then(r=>r.json());
+  async connectedCallback() {
+    // Load template
+    const template = await fetch('/templates/boardroom-app.html').then(r => r.text());
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = template;
+    const templateEl = tempDiv.querySelector('template');
+    this.shadowRoot.appendChild(templateEl.content.cloneNode(true));
 
-  agents.forEach(a => {
-    const li = document.createElement('li');
-    li.dataset.id = a.agentId;
-    li.innerHTML = `<img src="${a.photo}" class="card-img-top mb-1"/> 
-                    <strong>${a.name}</strong>`;
-    listEl.appendChild(li);
-    li.onclick = () => selectAgent(a.agentId, li);
-  });
+    // Semantic element references
+    this.agentList = this.shadowRoot.getElementById('boardroom-list');
+    this.agentDetailCard = this.shadowRoot.querySelector('#profile-detail .card-body');
+    this.chatMessages = this.shadowRoot.getElementById('chat-messages');
+    this.chatInput = this.shadowRoot.getElementById('chat-input');
+    this.sendMessageButton = this.shadowRoot.getElementById('chat-send-btn');
+    this.linkedinLoginButton = this.shadowRoot.getElementById('linkedin-login-btn');
 
-  // 2) On avatar click: highlight + fetch detail + start conv
-  async function selectAgent(agentId, liEl) {
+    // LinkedIn Login Button Logic
+    if (this.linkedinLoginButton) {
+      this.linkedinLoginButton.onclick = () => {
+        window.location.href = `${API}/auth/linkedin`;
+      };
+    }
+
+    // Load C-suite avatars using <agent-list-item> web component
+    const agents = await this.api.getAgents();
+    for (const agent of agents) {
+      const agentListItem = document.createElement('agent-list-item');
+      agentListItem.setAgent(agent);
+      agentListItem.dataset.id = agent.agentId;
+      agentListItem.onclick = () => this.selectAgent(agent.agentId, agentListItem);
+      this.agentList.appendChild(agentListItem);
+    }
+
+    this.sendMessageButton.onclick = () => this.sendMessage();
+    this._msgInterval = setInterval(() => this.loadMsgs(), 3000);
+  }
+
+  async selectAgent(agentId, agentListItem) {
     // UI highlight
-    listEl.querySelectorAll('li').forEach(li=>li.classList.remove('active'));
-    liEl.classList.add('active');
+    this.agentList.querySelectorAll('li').forEach(li=>li.classList.remove('active'));
+    agentListItem.classList.add('active');
 
-    currentAgent = agentId;
+    this.currentAgent = agentId;
     // Fetch full profile
-    const data = await fetch(`${API}/agents/${agentId}`, { headers: authHeader() })
-                      .then(r=>r.json());
+    const agentProfile = await this.api.getAgentProfile(agentId);
 
-    // Render detail
-    detailEl.innerHTML = `
-      <h5>${data.name}</h5>
-      <p><em>${data.purpose}</em></p>
-      <p>${data.profile}</p>
-      <h6>Domains:</h6>
-      <ul>${data.domains.map(d=><li>${d}</li>).join('')}</ul>
-      <h6>Context:</h6>
-      <ul class="context">${data.context.map(l=><li>${l}</li>).join('')}</ul>
-    `;
+    // Render detail using <agent-profile-card> web component
+    this.agentDetailCard.innerHTML = '';
+    const profileCard = document.createElement('agent-profile-card');
+    profileCard.setProfile(agentProfile);
+    this.agentDetailCard.appendChild(profileCard);
 
     // Start (or reset) conversation
-    const res = await fetch(`${API}/conversations`, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json', ...authHeader()},
-      body: JSON.stringify({ domain: agentId })
-    });
-    convId = (await res.json()).conversationId;
-    msgsEl.innerHTML = '';
+    const conv = await this.api.startConversation(agentId);
+    this.convId = conv.conversationId;
+    this.chatMessages.innerHTML = '';
   }
 
-  // 3) Send message
-  sendBtn.onclick = async () => {
-    const text = inputEl.value.trim();
-    if (!text || !convId) return;
-    await fetch(`${API}/conversations/${convId}/messages`, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json', ...authHeader()},
-      body: JSON.stringify({ message: text })
-    });
-    inputEl.value = '';
-    loadMsgs();
-  };
-
-  // 4) Poll messages
-  setInterval(loadMsgs, 3000);
-  async function loadMsgs() {
-    if (!convId) return;
-    const msgs = await fetch(`${API}/conversations/${convId}/messages`, { headers: authHeader() })
-                       .then(r=>r.json())
-                       .then(b=>b.messages);
-    msgsEl.innerHTML = msgs.map(m => 
-      `<div class="msg ${m.type}"><strong>${m.sender}</strong>: ${m.text}</div>`
-    ).join('');
-    msgsEl.scrollTop = msgsEl.scrollHeight;
+  async sendMessage() {
+    const text = this.chatInput.value.trim();
+    if (!text || !this.convId) return;
+    await this.api.sendMessage(this.convId, text);
+    this.chatInput.value = '';
+    this.loadMsgs();
   }
-});
+
+  async loadMsgs() {
+    if (!this.convId) return;
+    const messages = await this.api.getMessages(this.convId);
+    this.chatMessages.innerHTML = '';
+    for (const message of messages) {
+      const msgEl = document.createElement('chat-message');
+      msgEl.setMessage(message);
+      this.chatMessages.appendChild(msgEl);
+    }
+    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+  }
+
+  disconnectedCallback() {
+    if (this._msgInterval) clearInterval(this._msgInterval);
+  }
+}
+
+customElements.define('boardroom-app', BoardroomApp);

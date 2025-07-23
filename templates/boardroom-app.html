@@ -1,0 +1,27 @@
+<template id="boardroom-app-template">
+  <div class="boardroom-mode row">
+    <!-- Sidebar: C-suite avatars -->
+    <aside class="col-md-3 profiles-sidebar">
+      <h4>C-Suite Panel</h4>
+      <ul id="boardroom-list" class="list-unstyled"></ul>
+    </aside>
+    <!-- Main: Chat + Profile Details -->
+    <section class="col-md-9">
+      <div id="profile-detail" class="card mb-4">
+        <div class="card-body"></div>
+      </div>
+      <div class="chat-window card">
+        <div class="card-header">Entrepreneur ↔ Agents</div>
+        <div class="card-body">
+          <div id="chat-messages" class="messages mb-3"></div>
+          <div class="input-group">
+            <input id="chat-input" type="text" class="form-control" placeholder="Your message…"/>
+            <div class="input-group-append">
+              <button id="chat-send-btn" class="btn btn-primary">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
