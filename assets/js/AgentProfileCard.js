@@ -1,4 +1,4 @@
-export class AgentProfileTemplate extends HTMLElement {
+export class AgentProfileCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -71,4 +71,4 @@ export class AgentProfileTemplate extends HTMLElement {
   }
 }
 
-customElements.define('agent-profile-card', AgentProfileTemplate);
+customElements.define('agent-profile-card', AgentProfileCard);

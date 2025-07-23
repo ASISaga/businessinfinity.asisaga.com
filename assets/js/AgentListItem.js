@@ -1,16 +1,17 @@
-export class ChatMessageTemplate extends HTMLElement {
+export class AgentListItem extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.templateUrl = '/templates/chat-message-template.html';
+    this.templateUrl = '/templates/agent-list-item-template.html';
   }
-  setMessage(message) {
-    this.message = message;
+
+  setAgent(agent) {
+    this.agent = agent;
     this.render();
   }
 
   async render() {
-    if (!this.message) return;
+    if (!this.agent) return;
     const response = await fetch(this.templateUrl);
     let templateText = await response.text();
     // Extract template from <template> tag
@@ -19,11 +20,10 @@ export class ChatMessageTemplate extends HTMLElement {
     const templateEl = tempDiv.querySelector('template');
     let templateHtml = templateEl ? templateEl.innerHTML : templateText;
     templateHtml = templateHtml
-      .replace('{{type}}', this.message.type || '')
-      .replace('{{sender}}', this.message.sender || '')
-      .replace('{{text}}', this.message.text || '');
+      .replace('{{photo}}', this.agent.photo || '')
+      .replace('{{name}}', this.agent.name || '');
     this.shadowRoot.innerHTML = templateHtml;
   }
 }
 
-customElements.define('chat-message', ChatMessageTemplate);
+customElements.define('agent-list-item', AgentListItem);
