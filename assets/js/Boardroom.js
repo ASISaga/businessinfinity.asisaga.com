@@ -33,8 +33,8 @@ class Boardroom extends HTMLElement {
     const template = await fetch('/templates/boardroom-app.html').then(r => r.text());
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = template;
-    const templateEl = tempDiv.querySelector('template');
-    this.shadowRoot.appendChild(templateEl.content.cloneNode(true));
+    const templateElement = tempDiv.querySelector('template');
+    this.shadowRoot.appendChild(templateElement.content.cloneNode(true));
 
     // Get references to key DOM elements in the shadow root
     this.agentList = this.shadowRoot.getElementById('boardroom-list');
