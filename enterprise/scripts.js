@@ -1,48 +1,77 @@
-// Reveal on scroll
-const reveals = document.querySelectorAll('.reveal');
-const reveal = () => {
-  const t = window.innerHeight * 0.85;
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < t) el.classList.add('visible');
-  });
-};
-window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
+(function(){
+  const doc = document;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Count-ups in hero
-function countUp(el){
-  const target = +el.getAttribute('data-count') || 0;
-  let cur = 0;
-  const inc = Math.max(1, Math.floor(target / 60));
-  const tick = () => {
-    cur += inc;
-    if (cur >= target){ el.textContent = target; return; }
-    el.textContent = cur;
-    requestAnimationFrame(tick);
+  // Smooth anchor scrolling enhancement (respects reduced motion)
+  if (!prefersReduced) {
+    doc.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        if (!id) return;
+        const el = doc.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Move focus for accessibility
+          el.setAttribute('tabindex', '-1');
+          el.focus({ preventScroll: true });
+        }
+      });
+    });
+  }
+
+  // Reveal on scroll with IntersectionObserver
+  const revealEls = Array.from(doc.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+          if (delay && !prefersReduced) {
+            setTimeout(() => el.classList.add('visible'), delay);
+          } else {
+            el.classList.add('visible');
+          }
+          io.unobserve(el);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    // Fallback: show everything
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  // Scroll progress bar
+  const progress = doc.getElementById('progress');
+  const setProgress = () => {
+    const h = doc.documentElement;
+    const scrolled = (h.scrollTop || doc.body.scrollTop);
+    const height = (h.scrollHeight - h.clientHeight);
+    const pct = height ? (scrolled / height) * 100 : 0;
+    progress.style.width = pct + '%';
   };
-  tick();
-}
-document.querySelectorAll('.hero-metrics .big[data-count]').forEach(countUp);
+  if (progress) {
+    document.addEventListener('scroll', setProgress, { passive: true });
+    window.addEventListener('load', setProgress);
+  }
 
-// ROI calculator
-const fmt = v => v.toLocaleString(undefined,{style:'currency', currency:'USD', maximumFractionDigits:0});
-function calcROI(){
-  const rev = +document.getElementById('rev').value || 0;
-  const gm = (+document.getElementById('gm').value || 0)/100;
-  const latency = (+document.getElementById('latency').value || 0)/100;
-  const adherence = (+document.getElementById('adherence').value || 0)/100;
-  const wc = (+document.getElementById('wc').value || 0)/100;
-
-  const tpLiftPct = Math.min(0.8, latency + 0.5*adherence);
-  const throughputLift = rev * tpLiftPct;
-  const grossProfitImpact = throughputLift * gm;
-  const workingCapitalFreed = rev * 0.2 * wc;
-
-  document.getElementById('throughput').textContent = fmt(throughputLift);
-  document.getElementById('profit').textContent = fmt(grossProfitImpact);
-  document.getElementById('working').textContent = fmt(workingCapitalFreed);
-}
-document.getElementById('calcBtn').addEventListener('click', calcROI);
-document.getElementById('roiForm').addEventListener('keydown', (e)=>{
-  if(e.key === 'Enter'){ e.preventDefault(); calcROI(); }
-});
+  // Subtle parallax for decorative orbs (CSS variables)
+  const orbs = doc.querySelector('.orbs');
+  const onParallax = () => {
+    if (!orbs || prefersReduced) return;
+    const y = window.scrollY || 0;
+    // Map scroll to small translations
+    doc.documentElement.style.setProperty('--parallax-y', String(y));
+    const k1 = y * 0.04, k2 = y * -0.03, k3 = y * 0.02;
+    const o1 = doc.querySelector('.orb-1');
+    const o2 = doc.querySelector('.orb-2');
+    const o3 = doc.querySelector('.orb-3');
+    if (o1) o1.style.transform = `translate3d(${k1}px, ${k1}px, 0)`;
+    if (o2) o2.style.transform = `translate3d(${k2}px, ${-k2}px, 0)`;
+    if (o3) o3.style.transform = `translate3d(${k3}px, ${-k3}px, 0)`;
+  };
+  document.addEventListener('scroll', onParallax, { passive: true });
+  window.addEventListener('load', onParallax);
+})();
