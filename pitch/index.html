@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Business Infinity Flywheel - Gauges + Data Pulses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Gauge.js (for radial KPI gauges) -->
+  <script src="https://cdn.jsdelivr.net/npm/gaugeJS/dist/gauge.min.js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Business Infinity: Recursive & Exponential Flywheel</h1>
+
+  <canvas id="flywheel"></canvas>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="close" id="closeBtn" aria-label="Close modal">×</button>
+      <h2 id="modal-title"></h2>
+      <p id="modal-detail"></p>
+      <div class="gauges" id="gaugeArea"></div>
+    </div>
+  </div>
+
+  <!-- App logic -->
+  <script src="app.js" defer></script>
+</body>
+</html>
