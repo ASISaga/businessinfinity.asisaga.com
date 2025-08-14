@@ -1,4 +1,4 @@
-// === Scroll reveal ===
+// IntersectionObserver for reveal animations
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -11,7 +11,14 @@ const io = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => io.observe(el));
 
-// === Composer chips ===
+// Features strip: staggered reveal and hover micro-interaction already handled by CSS
+const featuresStrip = document.querySelector('.features-strip');
+if (featuresStrip) {
+  featuresStrip.classList.add('staggered');
+  featuresStrip.querySelectorAll('.feature-card').forEach(card => io.observe(card));
+}
+
+// Composer chips
 const chips = document.querySelectorAll('.chip');
 const liveCopy = document.getElementById('liveCopy');
 
@@ -23,22 +30,23 @@ chips.forEach(chip => {
   });
 });
 
-// === Network slider ===
+// Network slider + constellation
 const nodesInput = document.getElementById('nodes');
 const rangeVal = document.getElementById('rangeVal');
-nodesInput?.addEventListener('input', (e) => {
-  const val = e.target.value;
-  rangeVal.textContent = val;
-  drawConstellation(val);
-});
-
-// === Simple constellation visual ===
+const metricsEl = document.getElementById('metrics');
 const canvas = document.getElementById('constellation');
-const ctx = canvas?.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
+
+function resizeCanvas() {
+  if (!canvas || !ctx) return;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = Math.floor(rect.width);
+  canvas.height = Math.floor(rect.height);
+}
+
 function drawConstellation(nodes = 24) {
-  if (!ctx) return;
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+  if (!ctx || !canvas) return;
+  resizeCanvas();
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
   const points = [];
@@ -49,39 +57,64 @@ function drawConstellation(nodes = 24) {
     });
   }
 
+  // Nodes
   ctx.fillStyle = '#ff9a3c';
-  points.forEach(p => ctx.beginPath() || ctx.arc(p.x, p.y, 4, 0, Math.PI*2) || ctx.fill());
-
-  ctx.strokeStyle = 'rgba(255,255,255,0.15)';
-  points.forEach((p, i) => {
-    points.forEach((q, j) => {
-      if (i !== j) {
-        const dx = p.x - q.x;
-        const dy = p.y - q.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 160) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.stroke();
-        }
-      }
-    });
+  points.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 3.5, 0, Math.PI*2);
+    ctx.fill();
   });
 
-  document.getElementById('metrics').textContent =
-    `Nodes: ${nodes} • Plays: ${Math.round(nodes*11.5)} • Lift: ${(nodes/24*3.3).toFixed(1)}×`;
-}
-drawConstellation();
+  // Connections
+  ctx.strokeStyle = 'rgba(255,255,255,0.14)';
+  ctx.lineWidth = 1;
+  const maxDist = Math.min(canvas.width, canvas.height) * 0.22;
+  points.forEach((p, i) => {
+    for (let j = i + 1; j < points.length; j++) {
+      const q = points[j];
+      const dx = p.x - q.x;
+      const dy = p.y - q.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < maxDist) {
+        ctx.globalAlpha = 1 - (dist / maxDist);
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.stroke();
+      }
+    }
+  });
+  ctx.globalAlpha = 1;
 
-// === Contact form simulation ===
+  // Metrics
+  const plays = Math.round(nodes * 11.5);
+  const lift = (nodes / 24 * 3.3).toFixed(1);
+  if (metricsEl) metricsEl.textContent = `Nodes: ${nodes} • Plays: ${plays} • Lift: ${lift}×`;
+}
+
+nodesInput?.addEventListener('input', (e) => {
+  const val = Number(e.target.value);
+  if (rangeVal) rangeVal.textContent = String(val);
+  drawConstellation(val);
+});
+
+window.addEventListener('resize', () => {
+  const val = Number(nodesInput?.value || 24);
+  drawConstellation(val);
+});
+
+// Initial draw
+drawConstellation(Number(nodesInput?.value || 24));
+
+// Contact form simulation
 const form = document.getElementById('contactForm');
 const msg = document.getElementById('formMsg');
 form?.addEventListener('submit', (e) => {
   e.preventDefault();
-  msg.textContent = 'Sending...';
+  if (msg) msg.textContent = 'Sending...';
   setTimeout(() => {
-    msg.textContent = 'Signal received — we’ll return with your first move.';
+    if (msg) msg.textContent = 'Signal received — we’ll return with your first move.';
     form.reset();
-  }, 1000);
+  }, 900);
 });
+```[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/surajpaul/testGlamyo/tree/f2a4b1204fbd789dccb3fbb4a648267620600ca8/resources%2Fviews%2Fauth%2Fregister.blade.php?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")
