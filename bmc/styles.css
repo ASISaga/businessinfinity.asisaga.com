@@ -1,114 +1,77 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   margin: 0;
-  background: #f9f9fb;
-  color: #333;
+  background: #0b0f17;
+  color: #e9eef5;
 }
 
 header {
-  background: #1e2a38;
-  color: #fff;
-  padding: 1rem 2rem;
+  background: #111827;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #1f2937;
 }
 
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #00e0ff;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #00bcd4, #3f51b5);
-  border-radius: 8px;
-}
-
-.sub {
+.subtitle {
   font-size: 0.9rem;
-  color: #cfd8dc;
-}
-
-.actions button {
-  margin-left: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  background: #00bcd4;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.actions button.primary {
-  background: #3f51b5;
-}
-
-.meta {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  color: #b0bec5;
+  color: #9aa3ad;
+  margin-top: 4px;
 }
 
 main {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
 }
 
 .grid article {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 1rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  background: #15171c;
+  padding: 0.8rem 1rem;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
 }
 
 .grid h2 {
+  font-size: 1.05rem;
   margin-top: 0;
-  font-size: 1.1rem;
-  color: #3f51b5;
+  color: #8ab6ff;
 }
 
-.grid ul {
-  padding-left: 1rem;
+ul {
+  padding-left: 18px;
 }
 
-.flex-row {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.panel {
-  flex: 1;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 1rem;
-}
-
-.panel h3 {
-  margin-top: 0;
-  color: #00bcd4;
-}
-
-.note {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: #607d8b;
+.actions {
   text-align: center;
+  margin-top: 1rem;
+}
+
+button {
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #1f2937;
+  background: #1f2937;
+  color: #e9eef5;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #00e0ff;
+  color: #0b0f17;
+  border-color: #00e0ff;
+}
+
+button:hover {
+  opacity: 0.85;
 }
