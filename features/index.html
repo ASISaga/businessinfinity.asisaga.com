@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Business Infinity — Features</title>
+  <meta name="description" content="Explore Business Infinity features: domain-tuned agents, decision ledger, orchestration, governance, integrations, observability, ROI analytics, and deployment." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1 class="site-title">Business Infinity</h1>
+          <div class="site-sub">The boardroom that never adjourns</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="tocToggle" class="btn btn-quiet" aria-expanded="false" aria-controls="toc">Contents</button>
+        <button id="themeToggle" class="btn btn-quiet" aria-pressed="false" title="Toggle theme">Dark mode</button>
+        <a class="btn btn-primary" href="#cta">Talk to us</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <!-- Sticky TOC -->
+    <nav id="toc" class="toc" aria-label="Table of contents">
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#capabilities">Core capabilities</a></li>
+        <li><a href="#agents">Domain-tuned agents</a></li>
+        <li><a href="#ledger">Decision ledger</a></li>
+        <li><a href="#orchestration">Orchestration & actions</a></li>
+        <li><a href="#integrations">Integrations</a></li>
+        <li><a href="#governance">Governance & security</a></li>
+        <li><a href="#observability">Observability & QA</a></li>
+        <li><a href="#analytics">Analytics & ROI</a></li>
+        <li><a href="#deployment">Deployment & residency</a></li>
+        <li><a href="#performance">Performance & SLOs</a></li>
+        <li><a href="#extensibility">Extensibility & SDK</a></li>
+        <li><a href="#matrix">Feature matrix</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <!-- Main content -->
+    <main id="main" class="content" tabindex="-1">
+      <!-- Overview -->
+      <section id="overview" class="section">
+        <h2>Overview</h2>
+        <p>Business Infinity runs a persistent AI boardroom across your ERP, MES, CRM, and SaaS stack — where domain‑tuned C‑suite agents deliberate with governance, execute guarded actions, and learn from outcomes. It collapses the gap between agreement and execution, and turns every decision into compounding capability.</p>
+        <div class="highlights grid-3">
+          <div class="card">
+            <h3>Decision power</h3>
+            <ul class="list">
+              <li><strong>Always‑on:</strong> Continuous deliberation beats meeting cadence.</li>
+              <li><strong>Quorum:</strong> Agents propose, contest, and converge.</li>
+              <li><strong>Explainable:</strong> Rationale and trade‑offs are first‑class.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Execution</h3>
+            <ul class="list">
+              <li><strong>Guarded writes:</strong> Dry‑runs, approvals, rollback.</li>
+              <li><strong>Blast radius:</strong> Canary, caps, scopes, kill switch.</li>
+              <li><strong>Traceable:</strong> Decision‑to‑action lineage.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Learning</h3>
+            <ul class="list">
+              <li><strong>Decision ledger:</strong> Outcomes feed playbooks.</li>
+              <li><strong>Evaluator commons:</strong> Reusable tests of “what good looks like.”</li>
+              <li><strong>Network effect:</strong> Patterns propagate by choice.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core capabilities -->
+      <section id="capabilities" class="section">
+        <h2>Core capabilities</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Domain agents</h3>
+            <p>Role‑specific agents for CEO, CFO, COO, CRO, CHRO, CPO with charters, KPIs, and limits.</p>
+          </div>
+          <div class="card">
+            <h3>Decision ledger</h3>
+            <p>Tamper‑evident records for intent, options, rationale, approvals, actions, and outcomes.</p>
+          </div>
+          <div class="card">
+            <h3>Inter‑boardroom protocol</h3>
+            <p>Cross‑company negotiation, shared sims, and collaboration with privacy controls.</p>
+          </div>
+          <div class="card">
+            <h3>Action layer</h3>
+            <p>Guarded execution adapters into ERP/MES/CRM/SaaS with policy gates and rollback.</p>
+          </div>
+          <div class="card">
+            <h3>Observability</h3>
+            <p>Decision traces, action telemetry, evaluators, and drift monitors for assurance.</p>
+          </div>
+          <div class="card">
+            <h3>Governance</h3>
+            <p>Charters, SoD, ABAC/RBAC, audit, and compliance primitives out‑of‑the‑box.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Domain agents -->
+      <section id="agents" class="section">
+        <h2>Domain‑tuned agents</h2>
+        <p>Specialized agents operate with explicit charters, KPIs, and risk budgets. They deliberate as a quorum, with humans able to set constraints, request justifications, and gate actions.</p>
+
+        <details class="accordion" open>
+          <summary class="acc-head" role="button" aria-expanded="true">Agent charter template (YAML)</summary>
+          <div class="acc-body">
+            <div class="codeblock">
+              <button class="copy" aria-label="Copy code">Copy</button>
+<pre><code>boardroom:
+  name: "Revenue & Resilience Council"
+  slas:
+    decision_latency: "≤ 4h medium-impact; ≤ 24h high-impact"
+agents:
+  - role: "CRO Agent"
+    kpis: ["ARR", "NRR", "Win rate"]
+    powers: ["Pricing experiments", "Pipeline prioritization"]
+    limits:
+      discount_floor: "≥ 18%"
+      experiment_exposure: "≤ 5%"
+  - role: "COO Agent"
+    kpis: ["On-time", "Cycle time", "Cost-to-serve"]
+    powers: ["Schedule rebalancing", "Supplier risk mitigation"]
+    limits:
+      overtime_cap: "≤ 10%"</code></pre>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary class="acc-head" role="button" aria-expanded="false">Deliberation and quorum</summary>
+          <div class="acc-body">
+            <ul class="list">
+              <li><strong>Proposal/Challenge:</strong> Agents generate options and critique assumptions.</li>
+              <li><strong>Scoring:</strong> Options scored against KPIs and risk constraints.</li>
+              <li><strong>Quorum:</strong> Decision passes when rules of agreement are met.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <!-- Decision ledger -->
+      <section id="ledger" class="section">
+        <h2>Decision ledger</h2>
+        <p>Every decision is a first‑class object: machine‑readable and human‑auditable.</p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Schema</h3>
+            <div class="codeblock">
+              <button class="copy" aria-label="Copy code">Copy</button>
+<pre><code>{
+  "id": "DR-2025-08-14-0421",
+  "intent": "Reduce involuntary churn",
+  "options": [
+    {"name": "Billing retrials", "impact": "+2.1 NRR pts", "risk": "Low"}
+  ],
+  "chosen": "Billing retrials",
+  "approvals": ["CFO Agent", "Legal (human)"],
+  "actions": [
+    "Update retrial policy: 3 attempts/7 days",
+    "Trigger reminders via CRM"
+  ],
+  "outcomes": {"NRR_delta": 1.9, "period": "6 weeks"},
+  "lessons": "Timing windows > copy variants"
+}</code></pre>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Capabilities</h3>
+            <ul class="list">
+              <li><strong>Tamper‑evident:</strong> Signed entries with integrity checks.</li>
+              <li><strong>Explainers:</strong> Why‑this‑not‑that rationales.</li>
+              <li><strong>Traceability:</strong> Decision → tickets/orders → outcomes.</li>
+              <li><strong>Search & API:</strong> Query by KPI, risk, approver, or outcome.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Orchestration & actions -->
+      <section id="orchestration" class="section">
+        <h2>Orchestration & actions</h2>
+        <p>Guarded action adapters write changes into your systems with policy enforcement and safety rails.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Safety</h3>
+            <ul class="list">
+              <li><strong>Dry‑run:</strong> Diff previews before apply.</li>
+              <li><strong>SoD:</strong> Proposer ≠ approver ≠ executor for high risk.</li>
+              <li><strong>Rollback:</strong> Automatic reversion plans.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Policy gates</h3>
+            <ul class="list">
+              <li><strong>Finance:</strong> Budget, margin, revenue recognition checks.</li>
+              <li><strong>Privacy:</strong> PII/PHI handling and masking.</li>
+              <li><strong>Compliance:</strong> Regional and industry rules.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Controls</h3>
+            <ul class="list">
+              <li><strong>Caps:</strong> Exposure, spend, and scope limits.</li>
+              <li><strong>Canary:</strong> Progressive rollout and monitoring.</li>
+              <li><strong>Kill:</strong> Hard stop on violation or drift.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integrations -->
+      <section id="integrations" class="section">
+        <h2>Integrations</h2>
+        <p>Connectors for ERP, MES, CRM, data warehouses, and productivity suites. Fit‑in, not rip‑and‑replace.</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Read</h3>
+            <ul class="list">
+              <li><strong>APIs/SQL:</strong> Live reads from systems of record.</li>
+              <li><strong>CDC/Events:</strong> Low‑latency updates for hotspots.</li>
+              <li><strong>Semantic layer:</strong> Shared ontology across domains.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Write</h3>
+            <ul class="list">
+              <li><strong>Adapters:</strong> Idempotent writes with retries.</li>
+              <li><strong>Id & policy:</strong> SSO, SCIM, ABAC/RBAC enforced.</li>
+              <li><strong>Audit:</strong> Full action telemetry.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Governance & security -->
+      <section id="governance" class="section">
+        <h2>Governance & security</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Charters & limits</h3>
+            <ul class="list">
+              <li><strong>Powers:</strong> What an agent can change.</li>
+              <li><strong>Escalation:</strong> Who/when to involve humans.</li>
+              <li><strong>Risk budgets:</strong> Exposure bands by domain.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Access & privacy</h3>
+            <ul class="list">
+              <li><strong>Least privilege:</strong> Scope‑exact permissions.</li>
+              <li><strong>Redaction:</strong> Sensitive fields masked by policy.</li>
+              <li><strong>Residency:</strong> Region locks by dataset.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Compliance</h3>
+            <ul class="list">
+              <li><strong>Audit trails:</strong> Tamper‑evident logs.</li>
+              <li><strong>Controls:</strong> SoD, approvals, retention.</li>
+              <li><strong>Reporting:</strong> Evidence for assessments.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Observability & QA -->
+      <section id="observability" class="section">
+        <h2>Observability & QA</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Quality</h3>
+            <ul class="list">
+              <li><strong>Evaluators:</strong> Tests for factuality, policy, and bias.</li>
+              <li><strong>Counterfactuals:</strong> Alternatives and reversals tracked.</li>
+              <li><strong>Drift:</strong> Input and outcome drift monitors.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Ops</h3>
+            <ul class="list">
+              <li><strong>Tracing:</strong> Proposals → approvals → actions.</li>
+              <li><strong>Metrics:</strong> Latency, win rate, reversal rate.</li>
+              <li><strong>Alerts:</strong> Threshold breaches and anomalies.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Analytics & ROI -->
+      <section id="analytics" class="section">
+        <h2>Analytics & ROI</h2>
+        <p>Tie decision improvements to business lift with out‑of‑the‑box models you can customize.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Decision KPIs</h3>
+            <ul class="list">
+              <li><strong>Latency:</strong> Time to decision and time to action.</li>
+              <li><strong>Win rate:</strong> Decision → intended outcome.</li>
+              <li><strong>Reversals:</strong> Changes walked back.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Business KPIs</h3>
+            <ul class="list">
+              <li><strong>ARR/NRR:</strong> Revenue lift and retention.</li>
+              <li><strong>Cycle time:</strong> Lead‑to‑close, order‑to‑cash.</li>
+              <li><strong>Cost to serve:</strong> Expedites, overtime, waste.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Attribution</h3>
+            <ul class="list">
+              <li><strong>Linkage:</strong> Decisions to tickets/orders.</li>
+              <li><strong>Counterfactuals:</strong> Baseline vs. intervention.</li>
+              <li><strong>Confidence:</strong> Sensitivity and error bars.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deployment & residency -->
+      <section id="deployment" class="section">
+        <h2>Deployment & data residency</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Models</h3>
+            <ul class="list">
+              <li><strong>SaaS:</strong> Fastest path with enterprise controls.</li>
+              <li><strong>VPC‑hosted:</strong> Private cloud per‑tenant.</li>
+              <li><strong>Hybrid:</strong> Data stays; control plane managed.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Residency</h3>
+            <ul class="list">
+              <li><strong>Regional:</strong> Data and processing locality.</li>
+              <li><strong>Isolation:</strong> Tenant‑level boundaries.</li>
+              <li><strong>Keys:</strong> Customer‑managed encryption options.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Performance & SLOs -->
+      <section id="performance" class="section">
+        <h2>Performance & SLOs</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Scale</h3>
+            <ul class="list">
+              <li><strong>Concurrency:</strong> Multi‑agent deliberation at load.</li>
+              <li><strong>Burst:</strong> Elastic capacity for spikes.</li>
+              <li><strong>Caching:</strong> Hot contexts and evaluators.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Reliability</h3>
+            <ul class="list">
+              <li><strong>Uptime:</strong> Multi‑AZ/region strategies.</li>
+              <li><strong>Backpressure:</strong> Degrade gracefully under load.</li>
+              <li><strong>Retries:</strong> Idempotent actions and queues.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Latency</h3>
+            <ul class="list">
+              <li><strong>Targets:</strong> P50/P95 action and approval paths.</li>
+              <li><strong>Priorities:</strong> Fast lanes for urgent decisions.</li>
+              <li><strong>Observability:</strong> End‑to‑end tracing.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Extensibility & SDK -->
+      <section id="extensibility" class="section">
+        <h2>Extensibility & SDK</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>APIs</h3>
+            <ul class="list">
+              <li><strong>GraphQL/REST:</strong> Query ledger, agents, evaluators.</li>
+              <li><strong>Webhooks:</strong> Subscribe to decisions and actions.</li>
+              <li><strong>Events:</strong> Emit to your bus (Kafka/PubSub).</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Custom logic</h3>
+            <ul class="list">
+              <li><strong>Evaluators:</strong> Plug your tests for quality and policy.</li>
+              <li><strong>Adapters:</strong> Build new action connectors.</li>
+              <li><strong>Prompts & tools:</strong> Tune agents per domain.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature matrix -->
+      <section id="matrix" class="section">
+        <h2>Feature matrix</h2>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Key features</th>
+                <th>Safety</th>
+                <th>What it unlocks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Agents</td>
+                <td>Role charters, KPIs, quorum</td>
+                <td>Limits, SoD</td>
+                <td>High‑quality decisions fast</td>
+              </tr>
+              <tr>
+                <td>Ledger</td>
+                <td>Rationale, outcomes, API</td>
+                <td>Tamper‑evident</td>
+                <td>Audit, learning, reuse</td>
+              </tr>
+              <tr>
+                <td>Orchestration</td>
+                <td>Adapters, gates</td>
+                <td>Dry‑run, rollback</td>
+                <td>Safe execution</td>
+              </tr>
+              <tr>
+                <td>Governance</td>
+                <td>ABAC/RBAC, charters</td>
+                <td>Policy checks</td>
+                <td>Trust & compliance</td>
+              </tr>
+              <tr>
+                <td>Observability</td>
+                <td>Tracing, evaluators</td>
+                <td>Alerts, drift</td>
+                <td>Reliability</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section">
+        <h2>FAQ</h2>
+
+        <details class="accordion">
+          <summary class="acc-head" role="button" aria-expanded="false">How is this different from dashboards or copilots?</summary>
+          <div class="acc-body">
+            <p>Dashboards inform; copilots assist. Business Infinity deliberates, decides, and acts — under governance — and learns from outcomes to raise future decision quality.</p>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary class="acc-head" role="button" aria-expanded="false">What’s the first safe step?</summary>
+          <div class="acc-body">
+            <p>Read‑only connectors, replayable simulations, and a decision ledger you can put in front of audit. Then enable guarded writes in a limited scope with rollback.</p>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary class="acc-head" role="button" aria-expanded="false">How do you protect privacy?</summary>
+          <div class="acc-body">
+            <p>Least‑privilege access, redaction for inter‑boardroom contexts, regional residency, and customer‑managed keys where required.</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta" class="section cta">
+        <div class="cta-box">
+          <h2>Put a persistent AI boardroom at your leadership table</h2>
+          <p>We’ll align charters and guardrails, connect your truth, and run a pilot that pays for itself.</p>
+          <a href="mailto:hello@businessinfinity.ai" class="btn btn-primary">Request a briefing</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <div>
+        <strong>Business Infinity</strong>
+        <div class="muted">Networked intelligence. Shared orchestration.</div>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#overview">Overview</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#governance">Trust</a>
+        <a href="#cta">Contact</a>
+      </nav>
+      <div class="muted">© 2025 Business Infinity</div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <noscript>
+    <style>.reveal{opacity:1 !important; transform:none !important}</style>
+  </noscript>
+</body>
+</html>
