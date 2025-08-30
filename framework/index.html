@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Business Infinity Boardroom</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>ASI Saga · Business Infinity</h1>
+    <p>Transcendent Pathway: Legend‑guided decisions with audit‑tight governance.</p>
+  </header>
+
+  <section id="controls">
+    <h2>Run Decision</h2>
+    <textarea id="evidence" placeholder="Paste evidence JSON..."></textarea>
+    <button id="run">Run</button>
+  </section>
+
+  <section id="legend-heatmap">
+    <h2>Legend Heatmap</h2>
+    <div id="heatmap"></div>
+  </section>
+
+  <section id="path">
+    <h2>Decision Path</h2>
+    <pre id="pathpre"></pre>
+  </section>
+
+  <section id="mcp">
+    <h2>Oversight Console</h2>
+    <div>
+      <label>Node ID</label><input id="nodeId" />
+      <label>Blend</label>
+      <select id="blend">
+        <option>mean</option>
+        <option>median</option>
+        <option>weighted</option>
+      </select>
+      <button id="setBlend">Set Blend</button>
+    </div>
+    <div>
+      <label>Role</label><input id="role" />
+      <label>Legend</label><input id="legend" />
+      <button id="switchAdapter">Switch Adapter</button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
