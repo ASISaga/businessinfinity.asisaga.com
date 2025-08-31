@@ -1,0 +1,31 @@
+// UI Utilities - Common utility classes and noscript fallbacks
+
+// LinkedIn button icon styling
+.btn-linkedin img {
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+// Noscript fallbacks for reveal animations - using CSS approach
+// This targets browsers with JS disabled
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  #progress {
+    display: none !important;
+  }
+}
+
+// Explicit noscript class for manual application
+.noscript .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.noscript #progress {
+  display: none !important;
+}
