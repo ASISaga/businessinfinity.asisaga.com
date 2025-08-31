@@ -1,147 +1,157 @@
----
-layout: default
-title: Business Infinity for Startups
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Business Infinity — Scale your judgement as fast as your product</title>
+  <meta name="description" content="For startups ready to play at enterprise strategic depth without losing speed. Cross the threshold to a persistent AI boardroom." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-<!-- 
-Startup focused page for Business Infinity product
-This page highlights how Business Infinity helps startup businesses
-Uses Bootstrap components for responsive layout and consistent styling
--->
-<div class="startup-container">
-  <!-- Hero section -->
-  {% include hero.html 
-    title="Business Infinity for Startups" 
-    description="AI-powered solution designed specifically for startups to accelerate growth and streamline operations."
-    button_text="Get Started" 
-    button_url="#challenges" 
-  %}
+<nav class="site-nav" style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+  <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+    <a href="/" style="font-size: 1.25rem; font-weight: 700; color: #007bff; text-decoration: none;">Business Infinity</a>
+    <ul style="display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0;">
+      <li><a href="/" style="text-decoration: none; color: #333; font-weight: 500;">Home</a></li>
+      <li><a href="/about/" style="text-decoration: none; color: #333; font-weight: 500;">About</a></li>
+      <li><a href="/features/" style="text-decoration: none; color: #333; font-weight: 500;">Features</a></li>
+      <li><a href="/enterprise/" style="text-decoration: none; color: #333; font-weight: 500;">Enterprise</a></li>
+      <li><a href="/startup/" style="text-decoration: none; color: #007bff; font-weight: 600;">Startups</a></li>
+      <li><a href="/boardroom/" style="text-decoration: none; color: #333; font-weight: 500;">Boardroom</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- Challenges section -->
-  <section id="challenges" class="startup-challenges-section">
-    {% include section-header.html 
-      title="Common Startup Challenges" 
-      description="We understand the unique challenges that startups face in today's competitive environment."
-    %}
-    
-    <div class="startup-challenges-grid">
-      <!-- Challenge 1: Limited Resources -->
-      <div class="startup-challenge-card">
-        <h3 class="startup-challenge-title">Limited Resources</h3>
-        <p class="startup-challenge-description">
-          Managing growth with limited budgets, small teams, and constrained infrastructure.
-        </p>
-      </div>
-      
-      <!-- Challenge 2: Market Validation -->
-      <div class="startup-challenge-card">
-        <h3 class="startup-challenge-title">Market Validation</h3>
-        <p class="startup-challenge-description">
-          Testing ideas quickly and pivoting based on real market feedback and data.
-        </p>
-      </div>
-      
-      <!-- Challenge 3: Scaling Operations -->
-      <div class="startup-challenge-card">
-        <h3 class="startup-challenge-title">Scaling Operations</h3>
-        <p class="startup-challenge-description">
-          Building processes and systems that can scale as your startup grows.
-        </p>
-      </div>
+<header class="hero" style="margin-top: 80px;">
+  <div class="wrap hero-inner">
+    <h1 class="headline reveal">Your runway deserves more than guesswork</h1>
+    <p class="sub lead reveal">
+      Burn, churn, pivots — you already know the odds. The hidden killer isn’t just capital; it’s **decision drag**.
+    </p>
+    <div class="hero-cta reveal">
+      <a href="#threshold" class="btn btn-primary">Cross the threshold</a>
+      <a href="#risk" class="btn btn-quiet">See how we de‑risk it</a>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Solutions section -->
-  <section class="startup-solutions-section">
-    {% include section-header.html title="How Business Infinity Helps" %}
-    
-    <div class="startup-solutions-container">
-      <!-- Solution 1: AI-Powered Analysis -->
-      <div class="startup-solution-item">
-        <div class="startup-solution-icon">
-          <i class="startup-icon-analysis"></i>
-        </div>
-        <div class="startup-solution-content">
-          <h3 class="startup-solution-title">AI-Powered Analysis</h3>
-          <p class="startup-solution-description">
-            Leverage advanced analytics to make data-driven decisions without needing a dedicated data science team.
-          </p>
-          <ul class="startup-solution-features">
-            <li class="startup-feature-item">Market trend identification</li>
-            <li class="startup-feature-item">Competitive landscape mapping</li>
-            <li class="startup-feature-item">Customer behavior insights</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Solution 2: Automated Operations -->
-      <div class="startup-solution-item">
-        <div class="startup-solution-icon">
-          <i class="startup-icon-operations"></i>
-        </div>
-        <div class="startup-solution-content">
-          <h3 class="startup-solution-title">Automated Operations</h3>
-          <p class="startup-solution-description">
-            Streamline workflows and automate repetitive tasks to maximize your small team's productivity.
-          </p>
-          <ul class="startup-solution-features">
-            <li class="startup-feature-item">Process automation templates</li>
-            <li class="startup-feature-item">Resource allocation optimization</li>
-            <li class="startup-feature-item">Scalable workflow design</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Solution 3: Growth Planning -->
-      <div class="startup-solution-item">
-        <div class="startup-solution-icon">
-          <i class="startup-icon-growth"></i>
-        </div>
-        <div class="startup-solution-content">
-          <h3 class="startup-solution-title">Growth Planning</h3>
-          <p class="startup-solution-description">
-            Create data-backed growth strategies with clear milestones and execution plans.
-          </p>
-          <ul class="startup-solution-features">
-            <li class="startup-feature-item">Market expansion roadmaps</li>
-            <li class="startup-feature-item">Customer acquisition planning</li>
-            <li class="startup-feature-item">Funding strategy development</li>
-          </ul>
-        </div>
-      </div>
+<main>
+
+<section class="section">
+  <div class="wrap">
+    <div class="beats reveal">
+      <p class="beat">Every late hire.</p>
+      <p class="beat">Every lost lead.</p>
+      <p class="beat">Every change you saw coming but couldn’t act on in time.</p>
     </div>
-  </section>
+    <p class="lead reveal">
+      Business Infinity closes that gap. Not with advice. Not with a dashboard.  
+      With a <span class="accent">boardroom that never adjourns</span> — tuned to your startup.
+    </p>
+  </div>
+</section>
 
-  <!-- Case study section -->
-  <section class="startup-case-study-section">
-    {% include section-header.html title="Success Story" %}
-    
-    <div class="startup-case-study">
-      <div class="startup-case-study-content">
-        <h3 class="startup-case-study-title">How TechNova Accelerated Their Growth</h3>
-        <p class="startup-case-study-description">
-          TechNova, a SaaS startup in the project management space, used Business Infinity to optimize their operations and growth strategy.
-        </p>
-        <ul class="startup-case-study-results">
-          <li class="startup-result-item">Reduced operational costs by 35%</li>
-          <li class="startup-result-item">Increased customer acquisition rate by 42%</li>
-          <li class="startup-result-item">Secured Series A funding within 6 months</li>
+<section class="section">
+  <div class="wrap">
+    <h2 class="h2 reveal">From reaction to orchestration</h2>
+    <div class="grid grid-2">
+      <div class="card reveal">
+        <h3 class="eyebrow">Today</h3>
+        <p>Fire‑drill sprints, gut‑feel trade‑offs, investor decks written on fumes.</p>
+      </div>
+      <div class="card emphasis reveal">
+        <h3 class="eyebrow">Tomorrow</h3>
+        <ul class="list">
+          <li><span class="li-lead">Persistent AI C‑suite:</span> CEO, CFO, COO agents watching every key metric.</li>
+          <li><span class="li-lead">Action in hours:</span> Go from “we should” to “it’s live” before the week flips.</li>
+          <li><span class="li-lead">Investor‑ready ledger:</span> Every move, rationale, and result in one place.</li>
         </ul>
-        <blockquote class="startup-case-study-quote">
-          Business Infinity helped us identify inefficiencies in our operations and provided clear strategies for growth. The AI-powered insights were game-changing for our decision-making process.
-        </blockquote>
-        <footer class="startup-quote-footer">
-          <cite>Sarah Chen, CEO of TechNova</cite>
-        </footer>
+        <p>You don’t just move faster — you <span class="accent">compound faster</span>.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA section -->
-  {% include cta.html 
-    title="Ready to Accelerate Your Startup?" 
-    description="Get started with Business Infinity today and transform how you build and scale your startup." 
-    button_text="Start Your Journey" 
-    button_url=site.linkedin_username 
-  %}
-</div>
+<section class="section">
+  <div class="wrap">
+    <h2 class="h2 reveal">Three truths for founders</h2>
+    <ul class="tenets reveal">
+      <li><span class="tenet-index">01</span><span class="tenet-text">Capital is wasted as easily by bad focus as by burn.</span></li>
+      <li><span class="tenet-index">02</span><span class="tenet-text">Every cycle without learning compounds risk.</span></li>
+      <li><span class="tenet-index">03</span><span class="tenet-text">The pitch that wins is backed by provable decisions.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="h2 reveal">The network you join</h2>
+    <p class="lead reveal">
+      Every Infinity‑run startup feeds into a commons: anonymised patterns, tested playbooks, battle‑proven evaluators.
+      Your boardroom learns from theirs; theirs learns from yours.
+    </p>
+    <div class="pills reveal">
+      <span class="pill">Shared funding plays</span>
+      <span class="pill">Proven GTM moves</span>
+      <span class="pill">Hiring that sticks</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="risk">
+  <div class="wrap">
+    <h2 class="h2 reveal">Zero‑risk adoption</h2>
+    <ul class="list card reveal">
+      <li><span class="li-lead">Read‑only first:</span> Simulate actions on your live data.</li>
+      <li><span class="li-lead">Guardrails:</span> Spend caps, experiment limits, rollback anytime.</li>
+      <li><span class="li-lead">Audit:</span> Tamper‑evident log for every decision.</li>
+    </ul>
+    <p class="subtle reveal">You don’t gamble the runway — you prove the lift before you commit.</p>
+  </div>
+</section>
+
+<section class="section" id="threshold">
+  <div class="wrap">
+    <h2 class="h2 reveal">Your threshold step</h2>
+    <p class="reveal">Pick one pain to kill in 4–6 weeks:</p>
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <h3 class="eyebrow">Lead‑to‑close</h3>
+        <p>Compress your sales cycle; raise win rates without raising spend.</p>
+      </div>
+      <div class="card reveal">
+        <h3 class="eyebrow">Cash burn</h3>
+        <p>Cut waste in tooling, ops, and campaigns without starving growth.</p>
+      </div>
+      <div class="card reveal">
+        <h3 class="eyebrow">Product‑market fit signals</h3>
+        <p>Instrument every test; scale only what wins with data.</p>
+      </div>
+    </div>
+    <div class="cta-center reveal">
+      <a href="mailto:founders@businessinfinity.ai" class="btn btn-primary btn-lg">Design your pilot</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <blockquote class="quote reveal">
+      You built this to change your market. Don’t run it on yesterday’s decision tempo.
+    </blockquote>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap foot">
+    <div><strong>Business Infinity</strong> <div class="muted">Networked intelligence. Shared orchestration.</div></div>
+    <div class="muted">© 2025 Business Infinity</div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
