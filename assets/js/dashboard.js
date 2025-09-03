@@ -18,6 +18,9 @@ class BoardroomDashboard extends HTMLElement {
     });
 
     this.render(roles, manifest.actionBindings);
+
+    // Add admin endpoint buttons
+    this.renderAdminEndpoints();
   }
 
   render(roles, bindings) {
@@ -94,13 +97,50 @@ class BoardroomDashboard extends HTMLElement {
       return;
     }
     const params = {}; // Could prompt user for paramsSchema here
-    const res = await fetch('/api/mcp', {
+    const res = await fetch('/mcp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ jsonrpc: '2.0', id: Date.now(), method: binding.mcpMethod, params })
     });
     const data = await res.json();
     alert(`${actionId} result: ${JSON.stringify(data.result || data.error)}`);
+  }
+
+  renderAdminEndpoints() {
+    const adminContainer = document.createElement('div');
+    adminContainer.className = 'admin-endpoints';
+
+    // Dashboard endpoint
+    const dashboardBtn = document.createElement('button');
+    dashboardBtn.textContent = 'Fetch Dashboard';
+    dashboardBtn.onclick = async () => {
+      const res = await fetch('/dashboard');
+      const data = await res.json();
+      alert('Dashboard: ' + JSON.stringify(data));
+    };
+    adminContainer.appendChild(dashboardBtn);
+
+    // Status endpoint
+    const statusBtn = document.createElement('button');
+    statusBtn.textContent = 'Fetch Status';
+    statusBtn.onclick = async () => {
+      const res = await fetch('/status');
+      const data = await res.json();
+      alert('Status: ' + JSON.stringify(data));
+    };
+    adminContainer.appendChild(statusBtn);
+
+    // Health endpoint
+    const healthBtn = document.createElement('button');
+    healthBtn.textContent = 'Fetch Health';
+    healthBtn.onclick = async () => {
+      const res = await fetch('/health');
+      const data = await res.json();
+      alert('Health: ' + JSON.stringify(data));
+    };
+    adminContainer.appendChild(healthBtn);
+
+    this.appendChild(adminContainer);
   }
 }
 
