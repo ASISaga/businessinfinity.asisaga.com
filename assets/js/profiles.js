@@ -1,4 +1,5 @@
-import { API, authHeader } from './utils.js';
+import { authHeader } from './utils.js';
+import { getApiPath } from './apiRoutes.js';
 
 class ProfilesUI {
   constructor() {
@@ -7,7 +8,8 @@ class ProfilesUI {
   }
 
   async loadProfiles() {
-    const res = await fetch(`${API}/agents`, { headers: authHeader() });
+  const { path, method } = getApiPath('getAgents');
+  const res = await fetch(path, { method, headers: authHeader() });
     const arr = await res.json();
     this.container.innerHTML = arr.map(a => `
       <article class="card p-3 text-center">

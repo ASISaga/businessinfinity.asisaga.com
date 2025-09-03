@@ -1,4 +1,6 @@
 // BoardroomAPI: Handles all API interactions for the Boardroom client app
+import { getApiPath } from './apiRoutes.js';
+
 export class BoardroomAPI {
   /**
    * Initialize API base URL from site config
@@ -19,7 +21,8 @@ export class BoardroomAPI {
    * Fetches list of agents (C-suite avatars)
    */
   async getAgents() {
-    return await fetch(`${this.API}/agents`, { headers: this.authHeader() }).then(r => r.json());
+    const { path, method } = getApiPath('getAgents');
+    return await fetch(path, { method, headers: this.authHeader() }).then(r => r.json());
   }
 
   /**
@@ -27,7 +30,8 @@ export class BoardroomAPI {
    * @param {string} agentId
    */
   async getAgentProfile(agentId) {
-    return await fetch(`${this.API}/agents/${agentId}`, { headers: this.authHeader() }).then(r => r.json());
+    const { path, method } = getApiPath('getAgentProfile', { agentId });
+    return await fetch(path, { method, headers: this.authHeader() }).then(r => r.json());
   }
 
   /**
@@ -35,8 +39,9 @@ export class BoardroomAPI {
    * @param {string} agentId
    */
   async startConversation(agentId) {
-    const res = await fetch(`${this.API}/conversations`, {
-      method: 'POST',
+    const { path, method } = getApiPath('startConversation');
+    const res = await fetch(path, {
+      method,
       headers: { 'Content-Type': 'application/json', ...this.authHeader() },
       body: JSON.stringify({ domain: agentId })
     });
@@ -49,8 +54,9 @@ export class BoardroomAPI {
    * @param {string} text
    */
   async sendMessage(convId, text) {
-    await fetch(`${this.API}/conversations/${convId}/messages`, {
-      method: 'POST',
+    const { path, method } = getApiPath('postConversationMessage', { id: convId });
+    await fetch(path, {
+      method,
       headers: { 'Content-Type': 'application/json', ...this.authHeader() },
       body: JSON.stringify({ message: text })
     });
@@ -61,7 +67,8 @@ export class BoardroomAPI {
    * @param {string} convId
    */
   async getMessages(convId) {
-    return await fetch(`${this.API}/conversations/${convId}/messages`, { headers: this.authHeader() })
+    const { path, method } = getApiPath('getConversationMessages', { id: convId });
+    return await fetch(path, { method, headers: this.authHeader() })
       .then(r => r.json())
       .then(b => b.messages);
   }

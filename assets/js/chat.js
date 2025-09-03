@@ -1,4 +1,5 @@
-import { API, authHeader } from './utils.js';
+import { authHeader } from './utils.js';
+import { getApiPath } from './apiRoutes.js';
 
 class ChatUI {
   constructor() {
@@ -18,15 +19,17 @@ class ChatUI {
   }
 
   async loadAgents() {
-    const res = await fetch(`${API}/agents`, { headers: authHeader() });
+  const { path, method } = getApiPath('getAgents');
+  const res = await fetch(path, { method, headers: authHeader() });
     const arr = await res.json();
     arr.forEach(a => this.agentSelect.add(new Option(a.name, a.agentId)));
   }
 
   async startConversation() {
     const domain = this.agentSelect.value;
-    const res = await fetch(`${API}/conversations`, {
-      method:'POST',
+    const { path, method } = getApiPath('startConversation');
+    const res = await fetch(path, {
+      method,
       headers:{'Content-Type':'application/json', ...authHeader()},
       body: JSON.stringify({ domain })
     });
@@ -37,8 +40,9 @@ class ChatUI {
 
   async sendMessage() {
     const txt = this.msgInp.value;
-    await fetch(`${API}/conversations/${this.convId}/messages`, {
-      method:'POST',
+    const { path, method } = getApiPath('postConversationMessage', { id: this.convId });
+    await fetch(path, {
+      method,
       headers:{'Content-Type':'application/json', ...authHeader()},
       body: JSON.stringify({ message: txt })
     });
@@ -47,7 +51,8 @@ class ChatUI {
   }
 
   async loadMsgs() {
-    const res = await fetch(`${API}/conversations/${this.convId}/messages`, { headers: authHeader() });
+  const { path, method } = getApiPath('getConversationMessages', { id: this.convId });
+  const res = await fetch(path, { method, headers: authHeader() });
     const b = await res.json();
     this.msgsDiv.innerHTML = b.messages.map(m =>
       `<div class="msg ${m.type}"><strong>${m.sender}:</strong> ${m.text}</div>`

@@ -1,5 +1,6 @@
 
-import { API, authHeader } from './utils.js';
+import { authHeader } from './utils.js';
+import { getApiPath } from './apiRoutes.js';
 
 class MentorUI {
   constructor() {
@@ -21,7 +22,8 @@ class MentorUI {
   }
 
   async loadDomains() {
-    const res = await fetch(`${API}/agents`, { headers: authHeader() });
+  const { path, method } = getApiPath('getAgents');
+  const res = await fetch(path, { method, headers: authHeader() });
     const data = await res.json();
     data.forEach(a => {
       const o = new Option(a.domain, a.domain);
@@ -32,8 +34,9 @@ class MentorUI {
   async testQuestion() {
     const domain = this.domainSelect.value;
     const q = this.questionInp.value;
-    const res = await fetch(`${API}/mentor/test`, {
-      method: 'POST',
+    const { path, method } = getApiPath('testMentorQuestion');
+    const res = await fetch(path, {
+      method,
       headers: { 'Content-Type':'application/json', ...authHeader() },
       body: JSON.stringify({ domain, question: q })
     });
@@ -43,15 +46,18 @@ class MentorUI {
 
   async loadQaPairs() {
     const domain = this.domainSelect.value;
-    const res = await fetch(`${API}/mentor/qapairs?domain=${domain}`, { headers: authHeader() });
+  const { path, method } = getApiPath('getMentorQaPairs');
+  const url = domain ? `${path}?domain=${encodeURIComponent(domain)}` : path;
+  const res = await fetch(url, { method, headers: authHeader() });
     const list = await res.json();
     this.qaList.innerHTML = list.map(p => `<li><b>Q:</b>${p.question}<br/><b>A:</b>${p.answer}</li>`).join('');
   }
 
   async fineTune() {
     const domain = this.domainSelect.value;
-    await fetch(`${API}/mentor/fine-tune`, {
-      method: 'POST',
+    const { path, method } = getApiPath('triggerMentorFineTune');
+    await fetch(path, {
+      method,
       headers: { 'Content-Type':'application/json', ...authHeader() },
       body: JSON.stringify({ domain })
     });
