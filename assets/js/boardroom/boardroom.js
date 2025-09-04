@@ -1,3 +1,4 @@
+import './ui-enhancements.js';
 import TemplateUtils from './template-utils.js';
 import MembersRenderer from './members.js';
 import MessagesRenderer from './messages.js';

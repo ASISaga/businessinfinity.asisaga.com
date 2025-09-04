@@ -1,8 +1,7 @@
 // Central script loader for Boardroom | Business Infinity
 import './common.js';
 import Boardroom from './boardroom/boardroom.js';
-import './boardroom/ui-enhancements.js';
-import './dashboard.js';
+import './dashboard/dashboard.js';
 
 // Import OpenAPI spec from backend (relative path in workspace)
 import openApiSpec from '../../../../BusinessInfinity/openapi.json';
