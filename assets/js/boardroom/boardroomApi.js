@@ -1,5 +1,5 @@
 // BoardroomAPI: Handles all API interactions for the Boardroom client app
-import { getApiPath } from './apiRoutes.js';
+import { getApiPath } from '../apiRoutes.js';
 
 export class BoardroomAPI {
   /**

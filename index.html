@@ -15,15 +15,15 @@ Uses Bootstrap's responsive grid system and components for layout and design
 {% capture product_content %}
 
 <!-- Key features section with feature cards -->
-<section id="features" class="product-section">
+<sidebar-element id="features" class="product-section">
   {% include section-header.html title=product.features.section_title %}
   {% include product-feature-grid.html 
     items=product.features.items
   %}
-</section>
+</sidebar-element>
 
 <!-- Use cases section with tabs for different business segments -->
-<section class="product-section business-use-cases-section">
+<dashboard-panel class="product-section business-use-cases-section">
   {% include section-header.html title=product.use_cases.section_title %}
   <div class="business-use-cases-nav">
     <!-- Tab navigation for different user segments -->
@@ -35,21 +35,25 @@ Uses Bootstrap's responsive grid system and components for layout and design
       {% endfor %}
     </ul>
   </div>
-</section>
+</dashboard-panel>
 
 <!-- Testimonials section -->
-{% include testimonial.html 
-  title=product.testimonials.section_title
-  testimonials=product.testimonials.items
-%}
+<mentor-element>
+  {% include testimonial.html 
+    title=product.testimonials.section_title
+    testimonials=product.testimonials.items
+  %}
+</mentor-element>
 
 <!-- Contact section -->
-{% include cta.html 
-  title=product.cta.title
-  description=product.cta.description
-  button_text=product.cta.button_text
-  button_url=product.cta.button_url
-%}
+<boardroom-app>
+  {% include cta.html 
+    title=product.cta.title
+    description=product.cta.description
+    button_text=product.cta.button_text
+    button_url=product.cta.button_url
+  %}
+</boardroom-app>
 
 {% endcapture %}
 

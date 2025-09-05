@@ -7,7 +7,7 @@ import { AgentListItem } from './AgentListItem.js';
 import { ChatMessage } from './ChatMessage.js';
 import page from 'page';
 
-class Boardroom extends HTMLElement {
+class BoardroomElement extends HTMLElement {
   constructor() {
     super();
     // Attach shadow DOM for encapsulation
@@ -128,4 +128,4 @@ class Boardroom extends HTMLElement {
   }
 }
 
-customElements.define('boardroom', Boardroom);
+customElements.define('boardroom', BoardroomElement);

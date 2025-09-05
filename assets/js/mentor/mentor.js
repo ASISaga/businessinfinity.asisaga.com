@@ -1,6 +1,5 @@
-
 import { authHeader } from './utils.js';
-import { getApiPath } from './apiRoutes.js';
+import { getApiPath } from '../apiRoutes.js';
 
 class MentorUI {
   constructor() {
