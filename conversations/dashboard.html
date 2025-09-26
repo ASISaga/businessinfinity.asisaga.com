@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Infinity - Boardroom Conversations</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🤖 Business Infinity</h1>
+        <p>Boardroom Conversations & Agent Communications</p>
+    </div>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <h3>🎭 Boardroom Agents</h3>
+            <div class="agent-list" id="agentList">
+                <div class="loading">Loading agents...</div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-primary" onclick="refreshConversations()">🔄 Refresh</button>
+                <button class="btn btn-secondary" onclick="showCreateDialog()">➕ New</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="controls">
+                <select id="statusFilter" onchange="filterConversations()">
+                    <option value="">All Statuses</option>
+                    <option value="draft">Draft</option>
+                    <option value="signed">Signed</option>
+                    <option value="completed">Completed</option>
+                    <option value="pending">Pending</option>
+                </select>
+                
+                <select id="typeFilter" onchange="filterConversations()">
+                    <option value="">All Types</option>
+                    <option value="strategic_frame">Strategic</option>
+                    <option value="investment_decision">Investment</option>
+                    <option value="technical_decision">Technical</option>
+                    <option value="budget_commitment">Financial</option>
+                </select>
+            </div>
+            
+            <div class="conversation-list" id="conversationList">
+                <div class="loading">Loading conversations...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
