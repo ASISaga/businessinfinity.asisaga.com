@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Access Control Dashboard</title>
+    <link rel="stylesheet" href="mcp_access_control.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MCP Access Control Dashboard</h1>
+            <p>Manage role-based access control for MCP servers and progressive onboarding</p>
+        </div>
+        <div class="dashboard-grid">
+            <div class="card">
+                <h2>Role Access Management</h2>
+                <div class="role-selector">
+                    <select id="roleSelect" onchange="loadRolePermissions()">
+                        <option value="">Select a role...</option>
+                        <option value="Founder">Founder</option>
+                        <option value="Investor">Investor</option>
+                        <option value="CEO">CEO</option>
+                        <option value="CFO">CFO</option>
+                        <option value="CMO">CMO</option>
+                        <option value="CTO">CTO</option>
+                        <option value="CHRO">CHRO</option>
+                        <option value="Employee">Employee</option>
+                    </select>
+                </div>
+                <div id="rolePermissions" style="display: none;">
+                    <table class="access-matrix">
+                        <thead>
+                            <tr>
+                                <th>MCP Server</th>
+                                <th>Access Level</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="accessMatrixBody">
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn" onclick="saveRolePermissions()">Save Changes</button>
+                        <button class="btn btn-secondary" onclick="resetRolePermissions()">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Progressive Onboarding</h2>
+                <div id="onboardingInfo">
+                    <div class="onboarding-stage">
+                        <div class="stage-indicator">
+                            <div class="stage-dot stage-observer"></div>
+                            <strong>Observer Stage (7 days)</strong>
+                        </div>
+                        <p>Read-only access to basic business data</p>
+                        <small>Max 10 queries/hour</small>
+                    </div>
+                    <div class="onboarding-stage">
+                        <div class="stage-indicator">
+                            <div class="stage-dot stage-participant"></div>
+                            <strong>Participant Stage (30 days)</strong>
+                        </div>
+                        <p>Limited write access to non-critical systems</p>
+                        <small>Max 50 queries/hour</small>
+                    </div>
+                    <div class="onboarding-stage">
+                        <div class="stage-indicator">
+                            <div class="stage-dot stage-trusted"></div>
+                            <strong>Trusted Stage (Permanent)</strong>
+                        </div>
+                        <p>Full access to business operations</p>
+                        <small>Max 200 queries/hour</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('permissions')">User Permissions</div>
+                <div class="tab" onclick="switchTab('agents')">Boardroom Agents</div>
+                <div class="tab" onclick="switchTab('violations')">Access Violations</div>
+                <div class="tab" onclick="switchTab('config')">Configuration</div>
+            </div>
+            <div id="permissions-tab" class="tab-content active">
+                <div class="role-selector">
+                    <select id="userRoleSelect" onchange="loadUserPermissions()">
+                        <option value="">Select user role...</option>
+                        <option value="Founder">Founder</option>
+                        <option value="Investor">Investor</option>
+                        <option value="CEO">CEO</option>
+                        <option value="CFO">CFO</option>
+                        <option value="CMO">CMO</option>
+                        <option value="CTO">CTO</option>
+                        <option value="CHRO">CHRO</option>
+                        <option value="Employee">Employee</option>
+                    </select>
+                </div>
+                <div id="userPermissionsDisplay"></div>
+            </div>
+            <div id="agents-tab" class="tab-content">
+                <h3>Boardroom Agent Onboarding</h3>
+                <p>Manage progressive onboarding of BoardRoom Agents. Each agent can be selectively enabled and progresses through onboarding stages.</p>
+                <div class="agent-grid" id="agentGrid">
+                    <!-- Agent cards will be populated by JavaScript -->
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn" onclick="refreshAgents()">Refresh Agents</button>
+                    <button class="btn btn-secondary" onclick="enableAllAgents()">Enable All</button>
+                    <button class="btn btn-danger" onclick="disableAllAgents()">Disable All</button>
+                </div>
+            </div>
+            <div id="violations-tab" class="tab-content">
+                <div style="margin-bottom: 1rem;">
+                    <button class="btn btn-secondary" onclick="loadViolations()">Refresh Violations</button>
+                    <select id="violationTimeframe" onchange="loadViolations()">
+                        <option value="1">Last 1 hour</option>
+                        <option value="24" selected>Last 24 hours</option>
+                        <option value="168">Last week</option>
+                    </select>
+                </div>
+                <div id="violationsList" class="violations-log">
+                    <p>Loading violations...</p>
+                </div>
+            </div>
+            <div id="config-tab" class="tab-content">
+                <h3>System Configuration</h3>
+                <div style="margin-bottom: 1rem;">
+                    <label><strong>Audit Logging:</strong></label>
+                    <input type="checkbox" id="auditEnabled" checked> Enable audit logging
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label><strong>Alert on Violations:</strong></label>
+                    <input type="checkbox" id="alertsEnabled" checked> Enable violation alerts
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label><strong>Log Retention (days):</strong></label>
+                    <input type="number" id="retentionDays" value="90" min="1" max="365">
+                </div>
+                <button class="btn" onclick="saveConfiguration()">Save Configuration</button>
+            </div>
+        </div>
+    </div>
+    <script src="mcp_access_control.js"></script>
+</body>
+</html>

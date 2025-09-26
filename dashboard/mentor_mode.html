@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Infinity - Mentor Mode</title>
+    <link rel="stylesheet" href="mentor_mode.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Business Infinity - Mentor Mode</h1>
+            <p>Safe, guided environment for fine-tuning and testing domain-specific business agents</p>
+        </div>
+    </div>
+    <div class="container">
+        <!-- ...existing code for tab-container and all content... -->
+    </div>
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeChatModal()">&times;</button>
+            <h3 id="modal-agent-name">Chat with Agent</h3>
+            <div class="chat-container">
+                <div id="modal-chat-messages" class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="modal-chat-input" class="chat-input" placeholder="Type your message..." onkeypress="handleModalChatKeyPress(event)">
+                    <button class="btn btn-primary" onclick="sendModalChatMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Training Modal -->
+    <div id="training-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTrainingModal()">&times;</button>
+            <h3 id="modal-training-title">Train Agent</h3>
+            <div class="form-group">
+                <label for="modal-dataset-id">Dataset ID:</label>
+                <input type="text" id="modal-dataset-id" placeholder="e.g., business_scenarios_v1">
+            </div>
+            <div class="form-group">
+                <label for="modal-training-type">Training Type:</label>
+                <select id="modal-training-type">
+                    <option value="full">Full Fine-Tuning</option>
+                    <option value="lora">LoRA Adapter</option>
+                    <option value="prompt">Prompt Engineering</option>
+                </select>
+            </div>
+            <button class="btn btn-success" onclick="startModalTraining()">Start Training</button>
+        </div>
+    </div>
+    <script src="mentor_mode.js"></script>
+</body>
+</html>

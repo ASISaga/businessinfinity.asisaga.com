@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Infinity - Onboarding</title>
+    <link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🤖 Business Infinity</h1>
+        <p>Welcome to your perpetual boardroom</p>
+    </div>
+    <div class="onboarding-container">
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 10%"></div>
+        </div>
+        <!-- Step 1: Welcome Gateway -->
+        <div class="step-card active" id="step-1">
+            <div class="step-header">
+                <div class="step-number">Step 1 of 10</div>
+                <div class="step-title">Welcome Gateway</div>
+                <div class="step-description">
+                    Welcome — this is your private boardroom. We'll only read data you allow and never change anything without permission.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>🔒 Your Security & Privacy</h4>
+                <p>Read-only connections by default; you remain in control. We follow industry best practices.</p>
+            </div>
+            <div class="compliance-badges">
+                <span class="badge">🛡️ OAuth Secure Sign-On</span>
+                <span class="badge">📋 Security & Compliance</span>
+            </div>
+            <div class="form-group">
+                <label for="company-name">Company Name (auto-detected if available):</label>
+                <input type="text" id="company-name" placeholder="Enter your company name">
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="continueWithLinkedIn()">Continue with LinkedIn</button>
+                <button class="btn secondary" onclick="continueWithEmail()">Continue with Email</button>
+            </div>
+        </div>
+        <!-- Step 2: LinkedIn Identity Capture -->
+        <div class="step-card" id="step-2">
+            <div class="step-header">
+                <div class="step-number">Step 2 of 10</div>
+                <div class="step-title">LinkedIn Identity Capture</div>
+                <div class="step-description">
+                    We'll read your profile and recent public posts to tailor the boardroom voice. Nothing will be posted or changed.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>📖 What We'll Read</h4>
+                <p>Only core profile + last 20 public posts are used. You can revoke access anytime.</p>
+            </div>
+            <div class="compliance-badges">
+                <span class="badge">✅ Consent Logged</span>
+                <span class="badge">📊 Data Minimization</span>
+            </div>
+            <div id="linkedin-auth-loading" class="loading hidden">
+                Connecting to LinkedIn...
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="authorizeLinkedIn()">Authorize LinkedIn Access</button>
+                <button class="btn secondary" onclick="skipStep()">Skip This Step</button>
+            </div>
+        </div>
+        <!-- Step 3: Website Auto-discovery -->
+        <div class="step-card" id="step-3">
+            <div class="step-header">
+                <div class="step-number">Step 3 of 10</div>
+                <div class="step-title">Website & Public Content Discovery</div>
+                <div class="step-description">
+                    We only fetch public content; we will ask before you upload any private documents.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>🌐 Public Content Only</h4>
+                <p>This was read from your public site; no writes occurred. Everything is logged and auditable.</p>
+            </div>
+            <div class="compliance-badges">
+                <span class="badge">📝 Source Attribution</span>
+                <span class="badge">👁️ Read-Only Mode</span>
+            </div>
+            <div class="form-group">
+                <label for="website-url">Company Website URL:</label>
+                <input type="url" id="website-url" placeholder="https://your-company.com">
+            </div>
+            <div id="website-preview" class="hidden">
+                <h4>Website Preview:</h4>
+                <p>Does this represent your company correctly?</p>
+                <div id="parsed-content"></div>
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="parseWebsite()">Parse Website</button>
+                <button class="btn secondary" onclick="nextStep()">Skip Website</button>
+            </div>
+        </div>
+        <!-- Step 4: Pitch Deck Upload -->
+        <div class="step-card" id="step-4">
+            <div class="step-header">
+                <div class="step-number">Step 4 of 10</div>
+                <div class="step-title">Pitch Deck Upload</div>
+                <div class="step-description">
+                    Upload your deck to make onboarding faster. Files are stored encrypted and only accessible in read-only mode to boardroom agents.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>🔐 File Security</h4>
+                <p>Stored encrypted at rest (AES-256 equivalent). Only authorized boardroom agents can read this file; audit log available.</p>
+            </div>
+            <div class="compliance-badges">
+                <span class="badge">🔑 AES-256 Encryption</span>
+                <span class="badge">📋 Audit Trail</span>
+                <span class="badge">👥 Access Control</span>
+            </div>
+            <div class="form-group">
+                <label for="pitch-deck">Upload Pitch Deck (PDF, PPT):</label>
+                <input type="file" id="pitch-deck" accept=".pdf,.ppt,.pptx" onchange="handleFileUpload(this)">
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="processDeck()">Upload & Process Deck</button>
+                <button class="btn secondary" onclick="nextStep()">I'd rather not upload now</button>
+            </div>
+        </div>
+        <!-- Step 5: Financial Documents -->
+        <div class="step-card" id="step-5">
+            <div class="step-header">
+                <div class="step-number">Step 5 of 10</div>
+                <div class="step-title">Financial Documents & Reports</div>
+                <div class="step-description">
+                    Public filings are powerful anchors. We will never alter these documents — only read and summarize.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>📊 Document Integrity</h4>
+                <p>Private files retained 30 days by default; export or delete anytime. Files are hashed to verify unchanged content.</p>
+            </div>
+            <div class="compliance-badges">
+                <span class="badge">🔗 Chain of Custody</span>
+                <span class="badge">⏱️ Retention Policy</span>
+            </div>
+            <div class="form-group">
+                <label for="financial-docs">Upload Annual Reports or Financial Documents:</label>
+                <input type="file" id="financial-docs" accept=".pdf" multiple onchange="handleFileUpload(this)">
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="processFinancials()">Upload Documents</button>
+                <button class="btn secondary" onclick="nextStep()">Skip Financial Documents</button>
+            </div>
+        </div>
+        <!-- Step 6: System Connectors -->
+        <div class="step-card" id="step-6">
+            <div class="step-header">
+                <div class="step-number">Step 6 of 10</div>
+                <div class="step-title">Connect Core Systems</div>
+                <div class="step-description">
+                    Connect systems in read-only mode so the boardroom can advise using live data. You can revoke access anytime.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>🔐 Read-Only Access</h4>
+                <p>We request read-only scope only. No writes or edits. Connections use TLS; tokens are stored encrypted.</p>
+            </div>
+            <div class="compliance-badges">
+                <span class="badge">🔒 TLS Encryption</span>
+                <span class="badge">👁️ Read-Only OAuth</span>
+                <span class="badge">🛡️ Pen Testing</span>
+            </div>
+            <div class="connector-grid">
+                <div class="connector-card" onclick="connectSystem('salesforce')">
+                    <div class="connector-logo">⚡</div>
+                    <div class="connector-name">Salesforce</div>
+                    <div class="connector-status">Read: Opportunities, Accounts, Contacts</div>
+                </div>
+                <div class="connector-card" onclick="connectSystem('hubspot')">
+                    <div class="connector-logo">🟠</div>
+                    <div class="connector-name">HubSpot</div>
+                    <div class="connector-status">Read: Deals, Companies, Contacts</div>
+                </div>
+                <div class="connector-card" onclick="connectSystem('netsuite')">
+                    <div class="connector-logo">💼</div>
+                    <div class="connector-name">NetSuite</div>
+                    <div class="connector-status">Read: Financials, Customers</div>
+                </div>
+                <div class="connector-card" onclick="connectSystem('workday')">
+                    <div class="connector-logo">👥</div>
+                    <div class="connector-name">Workday</div>
+                    <div class="connector-status">Read: Employee Data, Payroll</div>
+                </div>
+                <div class="connector-card" onclick="connectSystem('quickbooks')">
+                    <div class="connector-logo">📊</div>
+                    <div class="connector-name">QuickBooks</div>
+                    <div class="connector-status">Read: Accounts, Transactions</div>
+                </div>
+                <div class="connector-card" onclick="connectSystem('slack')">
+                    <div class="connector-logo">💬</div>
+                    <div class="connector-name">Slack</div>
+                    <div class="connector-status">Read: Public Channels</div>
+                </div>
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="nextStep()">Continue to Next Step</button>
+                <button class="btn secondary" onclick="quickBaseline()">Quick Baseline (Website + Deck Only)</button>
+            </div>
+        </div>
+        <!-- Step 7: Voice Profile -->
+        <div class="step-card" id="step-7">
+            <div class="step-header">
+                <div class="step-number">Step 7 of 10</div>
+                <div class="step-title">Voice Profile Creation</div>
+                <div class="step-description">
+                    We only analyze public posts to learn voice and priorities — nothing is published anywhere.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>🗣️ Voice Analysis</h4>
+                <p>Transparency log shows the posts parsed and you can remove any post from analysis.</p>
+            </div>
+            <div id="voice-preview" class="hidden">
+                <h4>Voice Profile Preview:</h4>
+                <div id="voice-themes"></div>
+                <button class="btn secondary" onclick="editVoiceProfile()">Edit Voice Profile</button>
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="generateVoiceProfile()">Generate Voice Profile</button>
+                <button class="btn secondary" onclick="nextStep()">Skip Voice Analysis</button>
+            </div>
+        </div>
+        <!-- Step 8: Instant Baseline -->
+        <div class="step-card" id="step-8">
+            <div class="step-header">
+                <div class="step-number">Step 8 of 10</div>
+                <div class="step-title">Instant Founder Dossier & Baseline</div>
+                <div class="step-description">
+                    Your boardroom is assembled. We've created your Founder Dossier and Company Brief. From here on, we observe and advise; nothing will be changed without your permission.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>📋 Audit & Control</h4>
+                <p>Everything is logged and auditable. You can download artifacts or request deletion; clear SLA for deletion.</p>
+            </div>
+            <div class="compliance-badges">
+                <span class="badge">📜 Audit Trail</span>
+                <span class="badge">📥 Data Export</span>
+                <span class="badge">🗑️ Data Deletion</span>
+            </div>
+            <!-- Chat interface for CEO agent -->
+            <div class="chat-interface">
+                <div class="chat-header">
+                    🤵 CEO Agent - Initial Briefing
+                </div>
+                <div class="chat-messages" id="ceo-chat">
+                    <!-- Messages will be added here -->
+                </div>
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="viewAuditTrail()">View Audit Trail</button>
+                <button class="btn" onclick="inviteTeam()">Invite Co-founder/Legal Counsel</button>
+                <button class="btn success" onclick="nextStep()">Continue</button>
+            </div>
+        </div>
+        <!-- Step 9: Governance & Privacy -->
+        <div class="step-card" id="step-9">
+            <div class="step-header">
+                <div class="step-number">Step 9 of 10</div>
+                <div class="step-title">Governance & Privacy Settings</div>
+                <div class="step-description">
+                    By default your data is private to you. Invite team members selectively. You can change these settings any time.
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>🛡️ Role-Based Access Control</h4>
+                <p>Conservative defaults: founder only, read-only for invited viewers; notification cadence = weekly.</p>
+            </div>
+            <div class="form-group">
+                <label for="notification-frequency">Notification Frequency:</label>
+                <select id="notification-frequency">
+                    <option value="weekly" selected>Weekly</option>
+                    <option value="daily">Daily</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="security-summaries" checked>
+                    Receive monthly security summaries
+                </label>
+            </div>
+            <div class="step-actions">
+                <button class="btn" onclick="saveGovernanceSettings()">Save Settings</button>
+            </div>
+        </div>
+        <!-- Step 10: Quick Actions -->
+        <div class="step-card" id="step-10">
+            <div class="step-header">
+                <div class="step-number">Step 10 of 10</div>
+                <div class="step-title">Welcome to Your Boardroom</div>
+                <div class="step-description">
+                    You're inside the boardroom. We'll surface weekly insights and urgent risks proactively. When you're ready for a full review, we'll convene. Until then, we watch, learn, and advise.
+                </div>
+            </div>
+            <!-- Final chat interface -->
+            <div class="chat-interface">
+                <div class="chat-header">
+                    🤵 CEO Agent - Quick Actions
+                </div>
+                <div class="chat-messages" id="final-chat">
+                    <div class="message agent">
+                        <div class="message-bubble">
+                            Welcome to your perpetual boardroom! I have three suggested quick actions to get started:
+                            <br><br>
+                            A) Ask CFO to build a runway model<br>
+                            B) Ask CMO for a GTM voice brief<br>
+                            C) Schedule a deep review (optional)
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="quick-action-input" placeholder="Type your choice (A, B, C) or ask a question...">
+                    <button class="btn" onclick="sendQuickAction()">Send</button>
+                </div>
+            </div>
+            <div class="reassurance-box">
+                <h4>🛡️ Security & Support</h4>
+                <p>From now on we watch, advise, and protect. You invited us in; you can leave anytime. If security or privacy is ever a concern, click Revoke Access or contact security@businessinfinity — we'll respond within 4 hours.</p>
+            </div>
+            <div class="step-actions">
+                <button class="btn success" onclick="enterBoardroom()">Enter Boardroom</button>
+                <button class="btn secondary" onclick="scheduleLater()">I'll Decide Later</button>
+            </div>
+        </div>
+    </div>
+    <script src="onboarding.js"></script>
+</body>
+</html>
