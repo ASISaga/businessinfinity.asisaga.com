@@ -251,3 +251,190 @@ function addChatMessage(chatId, sender, message) {
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
+
+// New trust and compliance functions
+async function exportMyData() {
+    try {
+        // Call export data endpoint
+        const response = await fetch('/api/compliance/export-data', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                ...getAuthHeaders()
+            },
+            body: JSON.stringify({ userId: onboardingData.userId || 'current' })
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            alert('Data export request submitted successfully. You will receive a download link via email within 24 hours.');
+        } else {
+            throw new Error('Export request failed');
+        }
+    } catch (error) {
+        console.error('Export data error:', error);
+        alert('Unable to process export request. Please try again or contact support.');
+    }
+}
+
+async function requestDataDeletion() {
+    if (confirm('Are you sure you want to request deletion of your data? This action cannot be undone and will result in permanent loss of your business insights and boardroom configuration.')) {
+        try {
+            const response = await fetch('/api/compliance/request-deletion', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    ...getAuthHeaders()
+                },
+                body: JSON.stringify({ 
+                    userId: onboardingData.userId || 'current',
+                    reason: 'User requested deletion during onboarding'
+                })
+            });
+            
+            if (response.ok) {
+                alert('Data deletion request submitted. Our team will contact you within 48 hours to confirm and process this request.');
+            } else {
+                throw new Error('Deletion request failed');
+            }
+        } catch (error) {
+            console.error('Request deletion error:', error);
+            alert('Unable to process deletion request. Please contact security@businessinfinity.asisaga.com directly.');
+        }
+    }
+}
+
+async function viewMyRoles() {
+    try {
+        const response = await fetch('/api/rbac/user-roles', {
+            method: 'GET',
+            headers: getAuthHeaders()
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            displayUserRoles(data.roles, data.permissions);
+            document.getElementById('rolesModal').style.display = 'block';
+        } else {
+            throw new Error('Failed to fetch roles');
+        }
+    } catch (error) {
+        console.error('View roles error:', error);
+        alert('Unable to load role information. Please try again later.');
+    }
+}
+
+function displayUserRoles(roles, permissions) {
+    const rolesList = document.getElementById('userRolesList');
+    const currentPermissions = document.getElementById('currentPermissions');
+    
+    // Display roles
+    rolesList.innerHTML = roles.map(role => `
+        <div class="role-item">
+            <strong>${role.name}</strong>
+            <p>${role.description}</p>
+            <small>Assigned: ${new Date(role.assignedAt).toLocaleDateString()}</small>
+        </div>
+    `).join('');
+    
+    // Display permissions
+    currentPermissions.innerHTML = `
+        <ul>
+            ${permissions.map(perm => `<li><span class="permission-name">${perm.name}:</span> ${perm.description}</li>`).join('')}
+        </ul>
+    `;
+}
+
+async function viewFullConsent() {
+    try {
+        const response = await fetch('/api/compliance/user-consent', {
+            method: 'GET',
+            headers: getAuthHeaders()
+        });
+        
+        if (response.ok) {
+            const consentData = await response.json();
+            displayConsentDetails(consentData);
+            document.getElementById('consentModal').style.display = 'block';
+        } else {
+            throw new Error('Failed to fetch consent data');
+        }
+    } catch (error) {
+        console.error('View consent error:', error);
+        alert('Unable to load consent details. Please try again later.');
+    }
+}
+
+function displayConsentDetails(consentData) {
+    const detailsContainer = document.getElementById('fullConsentDetails');
+    
+    detailsContainer.innerHTML = `
+        <div class="consent-section">
+            <h3>Data Collection Consent</h3>
+            <p><strong>Status:</strong> ${consentData.status}</p>
+            <p><strong>Granted:</strong> ${new Date(consentData.grantedAt).toLocaleString()}</p>
+            <p><strong>Purpose:</strong> ${consentData.purpose}</p>
+            
+            <h4>Specific Consents:</h4>
+            <ul>
+                ${consentData.specificConsents.map(consent => `
+                    <li><strong>${consent.type}:</strong> ${consent.granted ? 'Granted' : 'Denied'} 
+                        <small>(${new Date(consent.timestamp).toLocaleString()})</small>
+                    </li>
+                `).join('')}
+            </ul>
+            
+            <h4>Data Categories Covered:</h4>
+            <ul>
+                ${consentData.dataCategories.map(cat => `<li>${cat}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+function getAuthHeaders() {
+    const token = localStorage.getItem('access_token');
+    return token ? { 'Authorization': `Bearer ${token}` } : {};
+}
+
+// Load consent summary on page load
+async function loadConsentSummary() {
+    try {
+        const response = await fetch('/api/compliance/user-consent', {
+            method: 'GET',
+            headers: getAuthHeaders()
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById('consent-status').textContent = data.status;
+            document.getElementById('data-collection-consent').textContent = 
+                data.specificConsents.find(c => c.type === 'data_collection')?.granted ? 'Granted' : 'Pending';
+            document.getElementById('consent-timestamp').textContent = 
+                new Date(data.lastUpdated).toLocaleString();
+        }
+    } catch (error) {
+        console.error('Load consent summary error:', error);
+        // Fallback to default values already in HTML
+    }
+}
+
+// Initialize consent summary when governance step is shown
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.target.id === 'step-9' && mutation.target.classList.contains('active')) {
+                loadConsentSummary();
+            }
+        });
+    });
+    
+    const step9 = document.getElementById('step-9');
+    if (step9) {
+        observer.observe(step9, { attributes: true, attributeFilter: ['class'] });
+    }
+});

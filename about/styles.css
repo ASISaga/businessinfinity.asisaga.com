@@ -76,3 +76,157 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding: 18px 0
 @media (max-width: 768px) {
   .mast { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
+
+/* Trust & Compliance Page Styles */
+.security-contact-section, 
+.retention-policy-section, 
+.privacy-rights-section, 
+.audit-section, 
+.monitoring-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--panel);
+  border-radius: 12px;
+  border-left: 4px solid var(--brand);
+  box-shadow: var(--shadow);
+}
+
+.contact-card, 
+.policy-card, 
+.rights-card, 
+.audit-card, 
+.monitoring-card {
+  background: var(--panel);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.contact-card h4, 
+.policy-card h4, 
+.rights-card h4, 
+.audit-card h4, 
+.monitoring-card h4 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.contact-card p strong, 
+.policy-card p strong, 
+.rights-card p strong, 
+.audit-card p strong {
+  color: var(--ink);
+}
+
+.contact-card a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+.dynamic-policy {
+  background: rgba(0, 224, 255, 0.1);
+  border: 1px solid var(--brand);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.dynamic-policy h5 {
+  color: var(--brand);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.status-indicators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cert-status {
+  background: var(--panel);
+  border: 1px solid var(--ok);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cert-status.active {
+  background: rgba(53, 225, 161, 0.1);
+  border-color: var(--ok);
+}
+
+.cert-status.warning {
+  background: rgba(255, 165, 0, 0.1);
+  border-color: #ffa500;
+}
+
+.cert-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cert-badge {
+  font-size: 1.2rem;
+}
+
+.cert-status small {
+  color: var(--muted);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.contact-info {
+  background: rgba(255, 69, 58, 0.1);
+  border: 1px solid #ff453a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.contact-info h5 {
+  color: #ff453a;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+  color: var(--ink);
+}
+
+.contact-info strong {
+  color: var(--ink);
+}
+
+/* Responsive design for compliance sections */
+@media (max-width: 768px) {
+  .security-contact-section, 
+  .retention-policy-section, 
+  .privacy-rights-section, 
+  .audit-section, 
+  .monitoring-section {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+  
+  .contact-card, 
+  .policy-card, 
+  .rights-card, 
+  .audit-card, 
+  .monitoring-card {
+    padding: 1.5rem;
+  }
+  
+  .status-indicators {
+    grid-template-columns: 1fr;
+  }
+}
