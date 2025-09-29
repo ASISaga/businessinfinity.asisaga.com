@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="styles.css">
 <section id="trust-compliance">
   <div class="container">
     <h2>Trust &amp; Compliance</h2>
@@ -28,5 +29,147 @@
       <li><strong>Application‑level responsibility:</strong> Business Infinity ensures that each customer’s data is private, segregated, and accessible only to them through Azure Active Directory (Entra ID).</li>
       <li><strong>End‑to‑end trust:</strong> From onboarding to daily operations, every interaction is secured by enterprise‑grade identity and access management.</li>
     </ul>
+    <h3>Incident Response &amp; Security Contact</h3>
+    <div class="security-contact-section">
+      <div class="contact-card">
+        <h4>🚨 Security Incident Reporting</h4>
+        <p><strong>Email:</strong> <a href="mailto:security@businessinfinity.asisaga.com">security@businessinfinity.asisaga.com</a></p>
+        <p><strong>Response Time:</strong> Within 4 hours for security incidents</p>
+        <p><strong>Escalation Path:</strong> Incidents are escalated to our Chief Security Officer and Azure security team</p>
+        <p><strong>24/7 Monitoring:</strong> Our systems are continuously monitored by Azure Security Center</p>
+      </div>
+    </div>
+
+    <h3>Data Retention &amp; Deletion Policy</h3>
+    <div class="retention-policy-section">
+      <div class="policy-card">
+        <h4>📋 Data Retention Guidelines</h4>
+        <ul>
+          <li><strong>Onboarding Data:</strong> Retained for 90 days after account creation</li>
+          <li><strong>Business Analytics:</strong> Retained for the duration of your subscription + 30 days</li>
+          <li><strong>Personal Documents:</strong> Retained for 30 days by default, with user-controlled deletion</li>
+          <li><strong>System Logs:</strong> Security and audit logs retained for 1 year</li>
+          <li><strong>Backup Data:</strong> Encrypted backups retained for 90 days</li>
+        </ul>
+        
+        <h4>🗑️ Data Deletion Process</h4>
+        <p><strong>User-Initiated:</strong> You can request data deletion at any time through your account settings or by contacting us.</p>
+        <p><strong>Processing Time:</strong> Data deletion requests are processed within 48 hours</p>
+        <p><strong>Verification:</strong> We provide confirmation once data has been permanently deleted</p>
+        <p><strong>Legal Retention:</strong> Some data may be retained longer if required by law or legitimate business interests</p>
+        
+        <div class="dynamic-retention-info" id="retentionPolicyDetails">
+          <!-- Dynamic content will be loaded here from backend -->
+        </div>
+      </div>
+    </div>
+
+    <h3>Privacy Rights &amp; Data Portability</h3>
+    <div class="privacy-rights-section">
+      <div class="rights-card">
+        <h4>🔒 Your Privacy Rights</h4>
+        <ul>
+          <li><strong>Right to Access:</strong> Request a copy of all personal data we hold about you</li>
+          <li><strong>Right to Rectification:</strong> Correct inaccurate or incomplete personal data</li>
+          <li><strong>Right to Erasure:</strong> Request deletion of your personal data</li>
+          <li><strong>Right to Portability:</strong> Export your data in a machine-readable format</li>
+          <li><strong>Right to Restrict Processing:</strong> Limit how we process your personal data</li>
+          <li><strong>Right to Object:</strong> Object to certain types of data processing</li>
+        </ul>
+        
+        <p><strong>Contact for Privacy Requests:</strong> <a href="mailto:privacy@businessinfinity.asisaga.com">privacy@businessinfinity.asisaga.com</a></p>
+      </div>
+    </div>
+
+    <h3>Audit Trail &amp; Transparency</h3>
+    <div class="audit-section">
+      <div class="audit-card">
+        <h4>📊 Complete Audit Trail</h4>
+        <p>Every interaction with your data is logged and auditable:</p>
+        <ul>
+          <li>Data access events with timestamps and user identification</li>
+          <li>System integrations and API calls</li>
+          <li>Permission changes and role assignments</li>
+          <li>Data export and deletion requests</li>
+        </ul>
+        
+        <p><strong>Audit Log Access:</strong> Available through your dashboard or upon request</p>
+        <p><strong>Third-party Audits:</strong> Our compliance is verified by independent auditors annually</p>
+      </div>
+    </div>
+
+    <h3>Compliance Monitoring</h3>
+    <div class="monitoring-section" id="complianceMonitoring">
+      <div class="monitoring-card">
+        <h4>🔍 Real-time Compliance Status</h4>
+        <div id="complianceStatus">
+          <!-- Dynamic compliance status will be loaded here -->
+        </div>
+        
+        <div class="incident-contact" id="incidentContact">
+          <!-- Dynamic incident contact info will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Load dynamic compliance data
+async function loadComplianceData() {
+  try {
+    // Load retention policy details
+    const retentionResponse = await fetch('/api/compliance/retention-policy');
+    if (retentionResponse.ok) {
+      const retentionData = await retentionResponse.json();
+      document.getElementById('retentionPolicyDetails').innerHTML = `
+        <div class="dynamic-policy">
+          <h5>Current Policy Details:</h5>
+          <p><strong>Last Updated:</strong> ${new Date(retentionData.lastUpdated).toLocaleDateString()}</p>
+          <p><strong>Policy Version:</strong> ${retentionData.version}</p>
+          <p><strong>Next Review:</strong> ${new Date(retentionData.nextReview).toLocaleDateString()}</p>
+        </div>
+      `;
+    }
+
+    // Load compliance status
+    const statusResponse = await fetch('/api/compliance/status');
+    if (statusResponse.ok) {
+      const statusData = await statusResponse.json();
+      document.getElementById('complianceStatus').innerHTML = `
+        <div class="status-indicators">
+          ${statusData.certifications.map(cert => `
+            <div class="cert-status ${cert.status}">
+              <span class="cert-name">${cert.name}</span>
+              <span class="cert-badge">${cert.status === 'active' ? '✅' : '⚠️'}</span>
+              <small>Valid until: ${new Date(cert.validUntil).toLocaleDateString()}</small>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Load incident contact info
+    const contactResponse = await fetch('/api/compliance/incident-contact');
+    if (contactResponse.ok) {
+      const contactData = await contactResponse.json();
+      document.getElementById('incidentContact').innerHTML = `
+        <div class="contact-info">
+          <h5>Security Incident Contact:</h5>
+          <p><strong>Primary:</strong> ${contactData.primary.email} (${contactData.primary.phone})</p>
+          <p><strong>Backup:</strong> ${contactData.backup.email}</p>
+          <p><strong>Average Response Time:</strong> ${contactData.averageResponseTime}</p>
+        </div>
+      `;
+    }
+  } catch (error) {
+    console.error('Error loading compliance data:', error);
+    // Fallback to static content already in HTML
+  }
+}
+
+// Load data when page loads
+document.addEventListener('DOMContentLoaded', loadComplianceData);
+</script>
   </div>
 </section>
