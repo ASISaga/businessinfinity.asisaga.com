@@ -19,15 +19,27 @@ The site is both a **documentation hub** and the **Boardroom interface** — a c
 
 ## 3. Structure & Layout
 - `_layouts/` for base templates  
-- `_includes/` for reusable snippets  
+- `_includes/` for reusable snippets (boardroom toggle-strip, members-sidebar, chat-area)  
 - `_posts/` for updates or covenant logs  
 - `assets/` for SCSS, JS, images  
+  - `assets/js/` contains modular JavaScript (ES6 modules)  
+    - `boardroom/` - Boardroom-specific logic (chat, messages, profiles, agents)  
+    - `dashboard/` - Dashboard functionality  
+    - `mentor/` - Mentor mode logic  
+    - `apiRoutes.js` - API routing with OpenAPI spec integration  
+    - `config.js` - API configuration (Azure Functions backend)  
+  - `_sass/` contains SCSS modules  
+    - `pages/` - Page-specific styles  
+    - `components/boardroom/` - Boardroom component styles  
+- `client/` for standalone web components (BoardroomChat, McpDashboard, AmlDemo)  
+- `components/` for HTML templates loaded by web components  
 - `tests_playwright/` for browser‑level tests  
 
 Navigation:
 - Responsive Bootstrap navbar with dropdown support  
 - Footer with site map and external links  
 - Sidebar (if enabled) generated dynamically via Liquid  
+- Toggle strip for boardroom interface controls  
 
 ---
 
@@ -44,6 +56,22 @@ Navigation:
   - Decisions logged as covenant‑compliant records.  
   - Threading supports sagas and arbitration flows.  
 
+- **Web Components Implementation**  
+  - `<boardroom-chat>`: Real-time chat component with polling (5-second intervals) and message rendering  
+  - `<mcp-dashboard>`: Role-based dashboard with dynamic action forms  
+  - `<aml-demo>`: Azure ML integration for inference and training  
+  - `<sidebar-element>`: Collapsible sidebar navigation  
+  - `<dashboard-panel>`: Dashboard container for business use cases  
+  - `<mentor-element>`: Testimonial and mentoring content display  
+  - `<boardroom-app>`: Main boardroom application container  
+
+- **API Integration**  
+  - Backend hosted at `cloud.businessinfinity.asisaga.com`  
+  - OpenAPI specification loaded from `/openapi.json`  
+  - Operations: `getAgents`, `startConversation`, `postConversationMessage`, `getConversationMessages`  
+  - Real-time message polling with `since` parameter for incremental updates  
+  - Role-based dashboard rendering with dynamic UI schemas  
+
 ---
 
 ## 5. Styling & Theming
@@ -59,6 +87,24 @@ Navigation:
 - Bootstrap JS components (modals, dropdowns, accordions) initialized correctly.  
 - Web Components encapsulate reusable UI blocks with Shadow DOM isolation.  
 - No console errors or warnings permitted in production builds.  
+
+**Custom Web Components:**
+- All custom elements use Shadow DOM for style encapsulation  
+- Components dynamically load HTML templates from `/components/` directory  
+- Event handlers attached in `connectedCallback()` lifecycle method  
+- State management handled within component scope  
+
+**API Integration Pattern:**
+- OpenAPI spec loaded from backend at runtime  
+- `apiRoutes.js` provides helpers: `buildApiUrl()`, `getOpenApiSpec()`, `getApiPath(operationId, params)`  
+- Operations resolved dynamically from spec by `operationId`  
+- Authentication headers via `authHeader()` utility (Azure AD integration)  
+
+**Boardroom-Specific Logic:**
+- Real-time polling for messages (5-second interval)  
+- Message rendering with HTML escaping for security  
+- Agent profile cards and list items as custom components  
+- UI enhancements for better UX (toast notifications, loading overlays)  
 
 ---
 
