@@ -44,7 +44,7 @@ jobs:
     
     - name: Serve Jekyll site in background
       run: |
-        bundle exec jekyll serve --detach || jekyll serve --detach &
+        (bundle exec jekyll serve --detach 2>/dev/null || jekyll serve --detach) &
         sleep 10
         curl -I http://localhost:4000 || echo "Server starting..."
     
