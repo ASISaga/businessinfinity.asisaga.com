@@ -124,8 +124,8 @@ test.describe('Boardroom Components Integration', () => {
   test('boardroom includes chat area component', async ({ page }) => {
     await page.goto('/boardroom/');
     
-    // Wait for includes to load
-    await page.waitForTimeout(1000);
+    // Wait for page to be fully loaded
+    await page.waitForLoadState('networkidle');
     
     // Check that chat-area include was processed
     const chatArea = page.locator('[class*="chat-area"], .chat');
@@ -137,8 +137,8 @@ test.describe('Boardroom Components Integration', () => {
   test('boardroom includes members sidebar component', async ({ page }) => {
     await page.goto('/boardroom/');
     
-    // Wait for includes to load
-    await page.waitForTimeout(1000);
+    // Wait for page to be fully loaded
+    await page.waitForLoadState('networkidle');
     
     // Check that members-sidebar include was processed
     const membersSidebar = page.locator('[class*="members"], [class*="sidebar"]');
@@ -150,8 +150,8 @@ test.describe('Boardroom Components Integration', () => {
   test('boardroom includes toggle strip component', async ({ page }) => {
     await page.goto('/boardroom/');
     
-    // Wait for includes to load
-    await page.waitForTimeout(1000);
+    // Wait for page to be fully loaded
+    await page.waitForLoadState('networkidle');
     
     // Check that toggle-strip include was processed
     const toggleStrip = page.locator('[class*="toggle"]');
