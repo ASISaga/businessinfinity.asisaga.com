@@ -131,11 +131,11 @@ test.describe('Bootstrap Components', () => {
       // Click the toggle
       await toggler.click();
       
-      // Wait for menu to expand
-      await page.waitForTimeout(500);
+      // Wait for menu to expand - wait for visible state
+      const menu = page.locator('.navbar-collapse, .nav-menu');
+      await menu.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
       
       // Menu should be visible or have expanded class
-      const menu = page.locator('.navbar-collapse, .nav-menu');
       const isVisible = await menu.isVisible();
       expect(isVisible).toBeTruthy();
     }

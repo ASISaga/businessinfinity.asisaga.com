@@ -117,7 +117,7 @@ test.describe('Web Components - General', () => {
     });
     
     await page.goto('/');
-    await page.waitForTimeout(2000); // Wait for components to load
+    await page.waitForLoadState('networkidle'); // Wait for components to load
     
     expect(errors.length).toBe(0);
   });

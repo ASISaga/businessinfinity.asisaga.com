@@ -40,14 +40,14 @@ test.describe('Core Page Health', () => {
   test('dashboard page loads successfully', async ({ page }) => {
     await page.goto('/dashboard/');
     // Page should load without 404
-    const is404 = await page.locator('text=404').count() > 0;
+    const is404 = (await page.locator('text=404').count()) > 0;
     expect(is404).toBe(false);
   });
 
   test('mentor page loads successfully', async ({ page }) => {
     await page.goto('/mentor/');
     // Page should load without 404
-    const is404 = await page.locator('text=404').count() > 0;
+    const is404 = (await page.locator('text=404').count()) > 0;
     expect(is404).toBe(false);
   });
 

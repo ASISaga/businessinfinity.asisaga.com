@@ -52,8 +52,8 @@ test.describe('Example: User Interactions', () => {
     if (await button.count() > 0) {
       await button.click();
       
-      // Verify result
-      await page.waitForTimeout(500);
+      // Wait for network idle after click
+      await page.waitForLoadState('networkidle');
     }
   });
   
@@ -138,7 +138,8 @@ test.describe('Example: Responsive Tests', () => {
     const toggle = page.locator('.navbar-toggler, .menu-toggle').first();
     if (await toggle.count() > 0) {
       await toggle.click();
-      await page.waitForTimeout(500);
+      // Wait for menu to be visible after toggle
+      await page.waitForSelector('.navbar-collapse, .mobile-menu', { state: 'visible', timeout: 5000 }).catch(() => {});
     }
   });
 
@@ -228,7 +229,7 @@ test.describe('Example: API Tests', () => {
     });
     
     await page.goto('/boardroom/');
-    await page.waitForTimeout(2000);
+    await page.waitForLoadState('networkidle');
     
     // API may or may not be called depending on component loading
     expect(apiCalled).toBeDefined();
