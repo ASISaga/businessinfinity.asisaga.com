@@ -29,6 +29,13 @@ This plan ensures that all specifications are validated through automated and ma
 - [ ] ES6 modules load without syntax errors.  
 - [ ] Bootstrap JS components (modals, dropdowns, accordions) function correctly.  
 - [ ] No console errors on page load or interaction.  
+- [ ] OpenAPI spec loads successfully from backend.  
+- [ ] `apiRoutes.js` helper functions (`buildApiUrl`, `getApiPath`) resolve correctly.  
+- [ ] API operations resolved by `operationId` from OpenAPI spec.  
+- [ ] Authentication headers included in API requests.  
+- [ ] Web component templates load from `/components/` directory.  
+- [ ] Shadow DOM isolation maintains component encapsulation.  
+- [ ] Event delegation and handlers function correctly.  
 
 ---
 
@@ -36,6 +43,12 @@ This plan ensures that all specifications are validated through automated and ma
 - [ ] Custom elements render and upgrade correctly.  
 - [ ] Shadow DOM encapsulation does not break global styles.  
 - [ ] Attributes and properties reflect correctly in rendered output.  
+- [ ] `<boardroom-chat>` component initializes and polls for messages.  
+- [ ] `<mcp-dashboard>` component renders role-based UI from backend schema.  
+- [ ] `<aml-demo>` component handles inference and training form submissions.  
+- [ ] `<sidebar-element>`, `<dashboard-panel>`, `<mentor-element>`, `<boardroom-app>` load templates correctly.  
+- [ ] Component lifecycle methods (`connectedCallback`, `disconnectedCallback`) execute properly.  
+- [ ] Event handlers attached to components function without errors.  
 
 ---
 
@@ -45,6 +58,14 @@ This plan ensures that all specifications are validated through automated and ma
 - [ ] Messages tagged with roles and speech‑act types.  
 - [ ] Decisions logged as covenant‑compliant records.  
 - [ ] Threading supports sagas and arbitration flows.  
+- [ ] Real-time polling fetches new messages every 5 seconds.  
+- [ ] Message rendering includes sender, timestamp, and escaped payload.  
+- [ ] `since` parameter correctly tracks last message for incremental updates.  
+- [ ] HTML escaping prevents XSS vulnerabilities in message display.  
+- [ ] Agent selection dropdown populates from backend API.  
+- [ ] Conversation can be started with selected agent domain.  
+- [ ] Messages can be sent and appear in chat log.  
+- [ ] Loading states and error handling function correctly.  
 
 ---
 
@@ -77,3 +98,18 @@ This plan ensures that all specifications are validated through automated and ma
 - [ ] Investor oversight actions validated.  
 - [ ] C‑Suite reports and escalations logged.  
 - [ ] Consensus rituals recorded as covenant‑compliant resolutions.
+
+---
+
+## 11. API Integration
+- [ ] Backend API accessible at `cloud.businessinfinity.asisaga.com`.  
+- [ ] OpenAPI specification loads from `/openapi.json` endpoint.  
+- [ ] `getAgents` operation returns valid agent list.  
+- [ ] `startConversation` operation creates new conversation with domain.  
+- [ ] `postConversationMessage` operation sends messages successfully.  
+- [ ] `getConversationMessages` operation retrieves conversation history.  
+- [ ] Dashboard endpoint returns role-based UI schemas.  
+- [ ] AML endpoints (`/aml/infer`, `/aml/train`) handle requests correctly.  
+- [ ] Authentication tokens included in protected endpoints.  
+- [ ] Error responses handled gracefully with user feedback.  
+- [ ] API responses conform to OpenAPI schema definitions.
