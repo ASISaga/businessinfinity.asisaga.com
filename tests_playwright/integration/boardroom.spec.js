@@ -17,7 +17,7 @@ test.describe('Boardroom Page', () => {
     
     // Look for chat-related elements
     const chatArea = page.locator('.chat, .chat-area, [class*="chat"]').first();
-    const exists = await chatArea.count() > 0;
+    const exists = (await chatArea.count()) > 0;
     
     expect(exists).toBeTruthy();
   });
@@ -27,7 +27,7 @@ test.describe('Boardroom Page', () => {
     
     // Look for members/agents list
     const membersList = page.locator('.members, .agents, [class*="member"], [class*="sidebar"]').first();
-    const exists = await membersList.count() > 0;
+    const exists = (await membersList.count()) > 0;
     
     expect(exists).toBeTruthy();
   });
@@ -37,7 +37,7 @@ test.describe('Boardroom Page', () => {
     
     // Look for toggle strip or controls
     const toggle = page.locator('.toggle, [class*="toggle"]').first();
-    const exists = await toggle.count() > 0;
+    const exists = (await toggle.count()) > 0;
     
     expect(exists).toBeTruthy();
   });
@@ -76,7 +76,7 @@ test.describe('Boardroom Loading States', () => {
     await page.goto('/boardroom/');
     
     const loadingOverlay = page.locator('#boardroom-loading, .loading, [class*="loading"]');
-    const exists = await loadingOverlay.count() > 0;
+    const exists = (await loadingOverlay.count()) > 0;
     
     expect(exists).toBeTruthy();
   });
@@ -85,7 +85,7 @@ test.describe('Boardroom Loading States', () => {
     await page.goto('/boardroom/');
     
     const toastContainer = page.locator('#boardroom-toasts, .toast-container, [class*="toast"]');
-    const exists = await toastContainer.count() > 0;
+    const exists = (await toastContainer.count()) > 0;
     
     expect(exists).toBeTruthy();
   });
@@ -129,7 +129,7 @@ test.describe('Boardroom Components Integration', () => {
     
     // Check that chat-area include was processed
     const chatArea = page.locator('[class*="chat-area"], .chat');
-    const exists = await chatArea.count() > 0;
+    const exists = (await chatArea.count()) > 0;
     
     expect(exists).toBeTruthy();
   });
@@ -142,7 +142,7 @@ test.describe('Boardroom Components Integration', () => {
     
     // Check that members-sidebar include was processed
     const membersSidebar = page.locator('[class*="members"], [class*="sidebar"]');
-    const exists = await membersSidebar.count() > 0;
+    const exists = (await membersSidebar.count()) > 0;
     
     expect(exists).toBeTruthy();
   });
@@ -155,7 +155,7 @@ test.describe('Boardroom Components Integration', () => {
     
     // Check that toggle-strip include was processed
     const toggleStrip = page.locator('[class*="toggle"]');
-    const exists = await toggleStrip.count() > 0;
+    const exists = (await toggleStrip.count()) > 0;
     
     expect(exists).toBeTruthy();
   });

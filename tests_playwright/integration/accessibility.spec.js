@@ -11,9 +11,9 @@ test.describe('Accessibility - Semantic HTML', () => {
     await page.goto('/');
     
     // Check for semantic elements
-    const hasHeader = await page.locator('header').count() > 0;
-    const hasMain = await page.locator('main').count() > 0;
-    const hasFooter = await page.locator('footer').count() > 0;
+    const hasHeader = (await page.locator('header').count()) > 0;
+    const hasMain = (await page.locator('main').count()) > 0;
+    const hasFooter = (await page.locator('footer').count()) > 0;
     
     expect(hasHeader || hasMain || hasFooter).toBeTruthy();
   });
