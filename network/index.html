@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Network of Boardrooms - Business Infinity</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🌐</span>
+                <h1>Business Infinity Network</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="#discovery" class="nav-link">Discovery</a></li>
+                <li><a href="#negotiations" class="nav-link">Negotiations</a></li>
+                <li><a href="#covenants" class="nav-link">Covenants</a></li>
+                <li><a href="#verification" class="nav-link">Verification</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-secondary" id="heartbeat-btn">
+                    <span class="status-indicator active"></span>
+                    Network Status
+                </button>
+                <button class="btn-primary" id="join-network-btn">Join Network</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Network Dashboard</h2>
+                    <p>Monitor your boardroom's network presence and activities</p>
+                </div>
+
+                <!-- Network Status Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏢</div>
+                        <div class="stat-content">
+                            <h3>My Boardroom</h3>
+                            <p class="stat-value" id="boardroom-status">Verified</p>
+                            <p class="stat-label">LinkedIn Verified</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🌐</div>
+                        <div class="stat-content">
+                            <h3>Network Nodes</h3>
+                            <p class="stat-value" id="network-nodes">1,247</p>
+                            <p class="stat-label">Active Boardrooms</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤝</div>
+                        <div class="stat-content">
+                            <h3>Active Agreements</h3>
+                            <p class="stat-value" id="active-agreements">23</p>
+                            <p class="stat-label">Covenants & Contracts</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-content">
+                            <h3>Negotiations</h3>
+                            <p class="stat-value" id="active-negotiations">7</p>
+                            <p class="stat-label">In Progress</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Activity Feed -->
+                <div class="activity-section">
+                    <h3>Recent Network Activity</h3>
+                    <div class="activity-feed" id="activity-feed">
+                        <!-- Activity items will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discovery Section -->
+        <section id="discovery" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Network Discovery</h2>
+                    <p>Discover and connect with verified boardrooms across the network</p>
+                </div>
+
+                <!-- Discovery Filters -->
+                <div class="discovery-filters">
+                    <div class="filter-group">
+                        <label for="industry-filter">Industry</label>
+                        <select id="industry-filter" class="form-select">
+                            <option value="">All Industries</option>
+                            <option value="technology">Technology</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="retail">Retail</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="location-filter">Location</label>
+                        <select id="location-filter" class="form-select">
+                            <option value="">All Locations</option>
+                            <option value="north-america">North America</option>
+                            <option value="europe">Europe</option>
+                            <option value="asia-pacific">Asia Pacific</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="capability-filter">Capabilities</label>
+                        <input type="text" id="capability-filter" class="form-input" placeholder="e.g., AI, supply chain, fintech">
+                    </div>
+                    <button class="btn-primary" id="discover-btn">Discover Boardrooms</button>
+                </div>
+
+                <!-- Discovery Results -->
+                <div class="discovery-results" id="discovery-results">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Negotiations Section -->
+        <section id="negotiations" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Inter-Boardroom Negotiations</h2>
+                    <p>Manage negotiations and proposals with other boardrooms</p>
+                </div>
+
+                <div class="negotiations-tabs">
+                    <button class="tab-btn active" data-tab="active-negotiations">Active (7)</button>
+                    <button class="tab-btn" data-tab="pending-negotiations">Pending (3)</button>
+                    <button class="tab-btn" data-tab="completed-negotiations">Completed (15)</button>
+                </div>
+
+                <div class="negotiations-content" id="negotiations-content">
+                    <!-- Negotiations will be populated by JavaScript -->
+                </div>
+
+                <button class="btn-primary fab" id="new-negotiation-btn" title="Start New Negotiation">
+                    +
+                </button>
+            </div>
+        </section>
+
+        <!-- Covenants Section -->
+        <section id="covenants" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Covenant Ledger</h2>
+                    <p>View and manage inter-boardroom agreements and contracts</p>
+                </div>
+
+                <div class="covenants-grid" id="covenants-grid">
+                    <!-- Covenant cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Verification Section -->
+        <section id="verification" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>LinkedIn Verification</h2>
+                    <p>Manage your enterprise verification status</p>
+                </div>
+
+                <div class="verification-status">
+                    <div class="verification-card verified" id="verification-card">
+                        <div class="verification-icon">✅</div>
+                        <div class="verification-content">
+                            <h3>Verification Status: Verified</h3>
+                            <p>Your enterprise is LinkedIn verified and authorized to participate in the network.</p>
+                            <div class="verification-details">
+                                <p><strong>Company:</strong> <span id="company-name">Example Corp</span></p>
+                                <p><strong>Industry:</strong> <span id="company-industry">Technology</span></p>
+                                <p><strong>Verified:</strong> <span id="verification-date">2024-01-15</span></p>
+                                <p><strong>Expires:</strong> <span id="verification-expires">2025-01-15</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- New Negotiation Modal -->
+    <div id="new-negotiation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Start New Negotiation</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="new-negotiation-form">
+                    <div class="form-group">
+                        <label for="negotiation-type">Negotiation Type</label>
+                        <select id="negotiation-type" class="form-select" required>
+                            <option value="">Select Type</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="supply_chain">Supply Chain</option>
+                            <option value="joint_venture">Joint Venture</option>
+                            <option value="licensing">Licensing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="target-boardroom">Target Boardroom</label>
+                        <input type="text" id="target-boardroom" class="form-input" placeholder="Search boardrooms..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="negotiation-title">Title</label>
+                        <input type="text" id="negotiation-title" class="form-input" placeholder="Negotiation title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="negotiation-description">Description</label>
+                        <textarea id="negotiation-description" class="form-textarea" rows="4" placeholder="Describe the negotiation..." required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-negotiation">Cancel</button>
+                        <button type="submit" class="btn-primary">Start Negotiation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Network Status Modal -->
+    <div id="network-status-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Network Status</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="network-status-details" id="network-status-details">
+                    <!-- Network status details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/network.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
