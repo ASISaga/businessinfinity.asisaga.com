@@ -47,39 +47,48 @@ test.describe('Example: User Interactions', () => {
   test('user can click a button', async ({ page }) => {
     await page.goto('/');
     
-    // Find and click button
+    // Find and click button - skip if not present
     const button = page.locator('button').first();
-    if (await button.count() > 0) {
+    const count = await button.count();
+    
+    if (count > 0) {
+      await expect(button).toBeVisible();
       await button.click();
-      
-      // Verify result
-      await page.waitForTimeout(500);
+      // Button clicked successfully
+    } else {
+      test.skip();
     }
   });
   
   test('user can fill a form', async ({ page }) => {
     await page.goto('/');
     
-    // Find form fields
+    // Find form fields - skip if not present
     const input = page.locator('input[type="text"]').first();
-    if (await input.count() > 0) {
+    const count = await input.count();
+    
+    if (count > 0) {
+      await expect(input).toBeVisible();
       await input.fill('Test value');
-      
-      // Verify input
       await expect(input).toHaveValue('Test value');
+    } else {
+      test.skip();
     }
   });
   
   test('user can navigate', async ({ page }) => {
     await page.goto('/');
     
-    // Find and click link
+    // Find and click link - skip if not present
     const link = page.locator('a[href="/boardroom/"]').first();
-    if (await link.count() > 0) {
+    const count = await link.count();
+    
+    if (count > 0) {
+      await expect(link).toBeVisible();
       await link.click();
-      
-      // Verify navigation
       await expect(page).toHaveURL(/\/boardroom/);
+    } else {
+      test.skip();
     }
   });
 
@@ -136,9 +145,15 @@ test.describe('Example: Responsive Tests', () => {
     await page.goto('/');
     
     const toggle = page.locator('.navbar-toggler, .menu-toggle').first();
-    if (await toggle.count() > 0) {
+    const count = await toggle.count();
+    
+    if (count > 0) {
+      await expect(toggle).toBeVisible();
       await toggle.click();
-      await page.waitForTimeout(500);
+      // Wait for animation to complete
+      await page.waitForLoadState('networkidle');
+    } else {
+      test.skip();
     }
   });
 
@@ -228,7 +243,7 @@ test.describe('Example: API Tests', () => {
     });
     
     await page.goto('/boardroom/');
-    await page.waitForTimeout(2000);
+    await page.waitForLoadState('networkidle');
     
     // API may or may not be called depending on component loading
     expect(apiCalled).toBeDefined();

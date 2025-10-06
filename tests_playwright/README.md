@@ -13,6 +13,17 @@ The test suite validates:
 - Boardroom chat interface
 - API integration
 
+## MCP Server Compatibility
+
+These tests are designed to work with the Playwright MCP server in VS Code and with GitHub Copilot coding agents:
+
+- **Single Browser**: Tests run on Chromium by default to optimize for MCP server performance
+- **Flexible Base URL**: Tests work with any base URL via `BASE_URL` environment variable
+- **Comprehensive Timeouts**: Proper timeout configurations for reliable execution
+- **Error Filtering**: Known external errors are filtered to reduce noise
+- **Test Isolation**: Each test is independent and can run in isolation
+- **Best Practices**: Following Playwright best practices for maintainability
+
 ## Directory Structure
 
 ```
@@ -102,6 +113,44 @@ Tests are configured in `playwright.config.js`:
 
 ## Writing Tests
 
+### Using Test Utilities
+
+The `fixtures/test-utils.js` file provides helper functions for common testing patterns:
+
+```javascript
+import { test, expect } from '@playwright/test';
+import { navigateAndWait, checkAccessibility, elementExists } from '../fixtures/test-utils.js';
+
+test('example using utilities', async ({ page }) => {
+  await navigateAndWait(page, '/');
+  
+  if (await elementExists(page, 'button.submit')) {
+    const accessibility = await checkAccessibility(page, 'button.submit');
+    expect(accessibility.isAccessible).toBeTruthy();
+  }
+});
+```
+
+### Using Page Objects
+
+The `fixtures/page-objects.js` file provides page object models:
+
+```javascript
+import { test, expect } from '@playwright/test';
+import { HomePage, BoardroomPage } from '../fixtures/page-objects.js';
+
+test('navigate using page objects', async ({ page }) => {
+  const homePage = new HomePage(page);
+  await homePage.navigate();
+  
+  expect(await homePage.hasNavigation()).toBeTruthy();
+  
+  const boardroom = new BoardroomPage(page);
+  await boardroom.navigate();
+  expect(await boardroom.hasChatInterface()).toBeTruthy();
+});
+```
+
 ### Unit Tests
 
 Unit tests focus on individual components:
@@ -135,10 +184,29 @@ test('user can navigate to boardroom', async ({ page }) => {
 1. **Use descriptive test names**: Clearly describe what is being tested
 2. **Keep tests independent**: Each test should work in isolation
 3. **Use proper selectors**: Prefer semantic selectors (role, label) over CSS classes
-4. **Wait appropriately**: Use Playwright's auto-waiting, avoid fixed timeouts
+4. **Wait appropriately**: Use Playwright's auto-waiting, avoid fixed timeouts with `waitForTimeout()`
 5. **Test user behavior**: Focus on what users do, not implementation details
 6. **Clean up**: Tests should not leave side effects
 7. **Mock external APIs**: Use fixtures for API responses when needed
+8. **Use test.skip()**: Skip tests conditionally instead of silently passing
+9. **Add meaningful assertions**: Include error messages in expect() calls
+10. **Leverage page objects**: Use page object model for reusable page interactions
+
+### Anti-Patterns to Avoid
+
+❌ **Don't use `page.waitForTimeout()`** - Use proper waits like `waitForLoadState()` or `waitFor()`
+❌ **Don't check count before asserting** - Use `expect().toBeVisible()` directly
+❌ **Don't ignore errors silently** - Use `test.skip()` or proper error handling
+❌ **Don't use brittle selectors** - Use semantic HTML and ARIA attributes
+❌ **Don't test implementation details** - Test user-visible behavior
+
+### Recommended Patterns
+
+✅ **Use `test.beforeEach()`** for common setup
+✅ **Use page objects** for complex page interactions
+✅ **Use fixtures** for reusable test data and helpers
+✅ **Use auto-waiting** built into Playwright
+✅ **Filter console errors** for known external issues
 
 ## Continuous Integration
 
