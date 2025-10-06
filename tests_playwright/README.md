@@ -273,6 +273,17 @@ Current test coverage:
 - [Best Practices](https://playwright.dev/docs/best-practices)
 - [Accessibility Testing](https://playwright.dev/docs/accessibility-testing)
 - [Test Generator](https://playwright.dev/docs/codegen)
+- [Testing Guide](TESTING_GUIDE.md) - Comprehensive guide to testing best practices
+- [Test Template](TEMPLATE.spec.js) - Template for creating new tests
+
+## Quick Start
+
+1. Install dependencies: `npm install`
+2. Install browsers: `npx playwright install`
+3. Run tests: `npm test`
+4. View report: `npm run test:report`
+
+For detailed guidance on writing tests, see [TESTING_GUIDE.md](TESTING_GUIDE.md).
 
 ## Support
 

@@ -15,16 +15,14 @@ test.describe('Accessibility - Semantic HTML', () => {
     const hasMain = await page.locator('main').count() > 0;
     const hasFooter = await page.locator('footer').count() > 0;
     
-    expect(hasHeader || hasMain || hasFooter).toBeTruthy();
+    expect(hasHeader || hasMain || hasFooter, 'Page should have semantic HTML5 structure (header, main, or footer)').toBeTruthy();
   });
 
   test('navigation has proper landmarks', async ({ page }) => {
     await page.goto('/');
     
     const nav = page.locator('nav, [role="navigation"]');
-    const count = await nav.count();
-    
-    expect(count).toBeGreaterThan(0);
+    await expect(nav.first(), 'Navigation landmark should be present').toBeVisible();
   });
 
   test('headings are hierarchical', async ({ page }) => {
@@ -38,7 +36,9 @@ test.describe('Accessibility - Semantic HTML', () => {
     
     if (headings.length > 0) {
       // First heading should be h1
-      expect(headings[0]).toBe(1);
+      expect(headings[0], 'First heading should be h1').toBe(1);
+    } else {
+      test.skip();
     }
   });
 
@@ -57,7 +57,7 @@ test.describe('Accessibility - ARIA', () => {
       const ariaLabel = await button.getAttribute('aria-label');
       const title = await button.getAttribute('title');
       
-      expect(text || ariaLabel || title).toBeTruthy();
+      expect(text || ariaLabel || title, 'Button should have accessible label').toBeTruthy();
     }
   });
 
@@ -69,7 +69,7 @@ test.describe('Accessibility - ARIA', () => {
     for (const img of images.slice(0, 10)) {
       const alt = await img.getAttribute('alt');
       // Alt can be empty for decorative images, but should exist
-      expect(alt !== null).toBeTruthy();
+      expect(alt !== null, 'Image should have alt attribute').toBeTruthy();
     }
   });
 
@@ -78,9 +78,7 @@ test.describe('Accessibility - ARIA', () => {
     
     // Check for ARIA roles on chat interface
     const ariaElements = page.locator('[role], [aria-label], [aria-labelledby]');
-    const count = await ariaElements.count();
-    
-    expect(count).toBeGreaterThan(0);
+    await expect(ariaElements.first(), 'Boardroom should have ARIA attributes').toBeVisible();
   });
 
 });
@@ -98,8 +96,8 @@ test.describe('Accessibility - Keyboard Navigation', () => {
       return document.activeElement.tagName;
     });
     
-    expect(focusedElement).toBeTruthy();
-    expect(focusedElement).not.toBe('BODY');
+    expect(focusedElement, 'An element should receive focus after Tab').toBeTruthy();
+    expect(focusedElement, 'Focus should move away from BODY').not.toBe('BODY');
   });
 
   test('links are keyboard accessible', async ({ page }) => {
@@ -112,7 +110,7 @@ test.describe('Accessibility - Keyboard Navigation', () => {
     // Should be focusable
     await firstLink.focus();
     const isFocused = await firstLink.evaluate(el => el === document.activeElement);
-    expect(isFocused).toBeTruthy();
+    expect(isFocused, 'Link should be focusable').toBeTruthy();
   });
 
   test('buttons are keyboard accessible', async ({ page }) => {
@@ -123,9 +121,12 @@ test.describe('Accessibility - Keyboard Navigation', () => {
     
     if (count > 0) {
       const firstButton = buttons.first();
+      await expect(firstButton).toBeVisible();
       await firstButton.focus();
       const isFocused = await firstButton.evaluate(el => el === document.activeElement);
-      expect(isFocused).toBeTruthy();
+      expect(isFocused, 'Button should be focusable').toBeTruthy();
+    } else {
+      test.skip();
     }
   });
 
@@ -140,8 +141,8 @@ test.describe('Accessibility - Keyboard Navigation', () => {
       return document.activeElement.textContent.toLowerCase();
     });
     
-    // Skip link may or may not be present
-    expect(focusedText).toBeDefined();
+    // Skip link may or may not be present - just verify focus works
+    expect(focusedText, 'First focused element should have text').toBeDefined();
   });
 
 });
