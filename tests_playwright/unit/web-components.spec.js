@@ -12,7 +12,7 @@ test.describe('SidebarElement Component', () => {
     const isDefined = await page.evaluate(() => {
       return customElements.get('sidebar-element') !== undefined;
     });
-    expect(isDefined).toBeTruthy();
+    expect(isDefined, 'sidebar-element should be defined as custom element').toBeTruthy();
   });
 
   test('should create shadow root', async ({ page }) => {
@@ -21,7 +21,7 @@ test.describe('SidebarElement Component', () => {
       const elements = document.querySelectorAll('sidebar-element');
       return elements.length > 0 && elements[0].shadowRoot !== null;
     });
-    expect(hasShadowRoot).toBeTruthy();
+    expect(hasShadowRoot, 'sidebar-element should have shadow root').toBeTruthy();
   });
 
   test('should toggle class on click', async ({ page }) => {
@@ -34,7 +34,7 @@ test.describe('SidebarElement Component', () => {
       const hasClass = element.classList.contains('open');
       return hadClass !== hasClass; // Should have toggled
     });
-    expect(toggled).toBeTruthy();
+    expect(toggled, 'sidebar-element should toggle open class on click').toBeTruthy();
   });
 
 });
@@ -46,7 +46,7 @@ test.describe('DashboardPanel Component', () => {
     const isDefined = await page.evaluate(() => {
       return customElements.get('dashboard-panel') !== undefined;
     });
-    expect(isDefined).toBeTruthy();
+    expect(isDefined, 'dashboard-panel should be defined as custom element').toBeTruthy();
   });
 
   test('should create shadow root', async ({ page }) => {
@@ -55,7 +55,7 @@ test.describe('DashboardPanel Component', () => {
       const elements = document.querySelectorAll('dashboard-panel');
       return elements.length > 0 && elements[0].shadowRoot !== null;
     });
-    expect(hasShadowRoot).toBeTruthy();
+    expect(hasShadowRoot, 'dashboard-panel should have shadow root').toBeTruthy();
   });
 
 });
@@ -67,7 +67,7 @@ test.describe('MentorElement Component', () => {
     const isDefined = await page.evaluate(() => {
       return customElements.get('mentor-element') !== undefined;
     });
-    expect(isDefined).toBeTruthy();
+    expect(isDefined, 'mentor-element should be defined as custom element').toBeTruthy();
   });
 
   test('should create shadow root', async ({ page }) => {
@@ -76,7 +76,7 @@ test.describe('MentorElement Component', () => {
       const elements = document.querySelectorAll('mentor-element');
       return elements.length > 0 && elements[0].shadowRoot !== null;
     });
-    expect(hasShadowRoot).toBeTruthy();
+    expect(hasShadowRoot, 'mentor-element should have shadow root').toBeTruthy();
   });
 
 });

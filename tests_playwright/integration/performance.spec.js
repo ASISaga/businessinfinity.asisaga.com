@@ -15,7 +15,7 @@ test.describe('Performance - Page Load', () => {
     const loadTime = Date.now() - startTime;
     
     // Allow 5 seconds for test environment (spec says 2s for production)
-    expect(loadTime).toBeLessThan(5000);
+    expect(loadTime, `Homepage loaded in ${loadTime}ms`).toBeLessThan(5000);
   });
 
   test('boardroom page loads in under 5 seconds', async ({ page }) => {
@@ -25,7 +25,7 @@ test.describe('Performance - Page Load', () => {
     
     const loadTime = Date.now() - startTime;
     
-    expect(loadTime).toBeLessThan(5000);
+    expect(loadTime, `Boardroom page loaded in ${loadTime}ms`).toBeLessThan(5000);
   });
 
   test('DOMContentLoaded event fires quickly', async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('Performance - Page Load', () => {
     const loadTime = Date.now() - startTime;
     
     // DOM should load very quickly
-    expect(loadTime).toBeLessThan(3000);
+    expect(loadTime, `DOM loaded in ${loadTime}ms`).toBeLessThan(3000);
   });
 
 });

@@ -128,16 +128,19 @@ test.describe('Bootstrap Components', () => {
     const count = await toggler.count();
     
     if (count > 0) {
+      await expect(toggler).toBeVisible();
       // Click the toggle
       await toggler.click();
       
-      // Wait for menu to expand
-      await page.waitForTimeout(500);
+      // Wait for menu animation to complete
+      await page.waitForLoadState('networkidle');
       
       // Menu should be visible or have expanded class
       const menu = page.locator('.navbar-collapse, .nav-menu');
       const isVisible = await menu.isVisible();
       expect(isVisible).toBeTruthy();
+    } else {
+      test.skip();
     }
   });
 
