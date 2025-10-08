@@ -1,0 +1,261 @@
+/* Trust Center Styles */
+
+/* Trust quote */
+.trust-quote {
+  background: var(--bg-secondary, #f5f5f5);
+  border-left: 4px solid var(--primary-color, #0066cc);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.1rem;
+}
+
+.trust-quote p {
+  margin: 0;
+  font-style: italic;
+}
+
+.trust-quote footer {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  font-style: normal;
+}
+
+/* Compliance badges */
+.compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.compliance-badge {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.compliance-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.badge-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.compliance-badge h4 {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  color: var(--text-primary, #333);
+}
+
+.compliance-badge p {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #666);
+  margin: 0;
+}
+
+/* Metrics grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.metric-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+}
+
+.metric-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color, #0066cc);
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 1rem;
+  color: var(--text-primary, #333);
+  margin-bottom: 0.25rem;
+}
+
+.metric-target {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #666);
+}
+
+/* Status section */
+.status-section {
+  background: var(--bg-secondary, #f5f5f5);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.loading {
+  color: var(--text-secondary, #666);
+  font-style: italic;
+}
+
+.status-indicators {
+  display: grid;
+  gap: 1rem;
+}
+
+.cert-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--card-bg, #fff);
+  border-radius: 4px;
+}
+
+.cert-status.active {
+  border-left: 4px solid #28a745;
+}
+
+.cert-status.warning {
+  border-left: 4px solid #ffc107;
+}
+
+.cert-name {
+  font-weight: 600;
+}
+
+.cert-badge {
+  font-size: 1.5rem;
+}
+
+/* Incident contact */
+.incident-contact {
+  background: var(--bg-secondary, #f5f5f5);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.contact-info h5 {
+  margin-top: 0;
+  color: var(--text-primary, #333);
+}
+
+/* Retention policy */
+.retention-policy {
+  background: var(--bg-secondary, #f5f5f5);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.retention-policy h4 {
+  margin-top: 1.5rem;
+  color: var(--text-primary, #333);
+}
+
+.retention-policy h4:first-child {
+  margin-top: 0;
+}
+
+.retention-policy ul {
+  margin: 0.5rem 0;
+}
+
+/* CTA box */
+.cta-box {
+  background: linear-gradient(135deg, var(--primary-color, #0066cc) 0%, var(--secondary-color, #0052a3) 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.cta-box h3 {
+  color: white;
+  margin-top: 0;
+}
+
+.cta-box p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-box .btn {
+  background: white;
+  color: var(--primary-color, #0066cc);
+}
+
+.cta-box .btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Buttons */
+.btn-secondary {
+  background: var(--bg-secondary, #f5f5f5);
+  color: var(--text-primary, #333);
+  border: 1px solid var(--border-color, #e0e0e0);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-tertiary, #e0e0e0);
+  border-color: var(--border-color-hover, #ccc);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .trust-quote {
+  background: var(--bg-secondary-dark, #2a2a2a);
+}
+
+[data-theme="dark"] .compliance-badge,
+[data-theme="dark"] .metric-card,
+[data-theme="dark"] .cert-status {
+  background: var(--card-bg-dark, #1e1e1e);
+  border-color: var(--border-color-dark, #444);
+}
+
+[data-theme="dark"] .status-section,
+[data-theme="dark"] .incident-contact,
+[data-theme="dark"] .retention-policy {
+  background: var(--bg-secondary-dark, #2a2a2a);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--bg-secondary-dark, #2a2a2a);
+  color: var(--text-primary-dark, #e0e0e0);
+  border-color: var(--border-color-dark, #444);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--bg-tertiary-dark, #333);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .compliance-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+  }
+}
