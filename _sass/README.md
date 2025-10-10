@@ -73,7 +73,7 @@ _sass/
 │       └── toggle-strip/
 │           └── _icon-white.scss        # Icon utilities
 ├── pages/
-│   ├── index.scss              # Boardroom page styles (no underscore - entry point)
+│   ├── index.scss              # Boardroom page styles (Note: file comments say "Boardroom page styles")
 │   ├── _boardroom.scss         # Boardroom page
 │   ├── _boardroom2.scss        # Alternative boardroom page
 │   ├── _business-infinity.scss # Business Infinity page
