@@ -126,12 +126,20 @@ Updated all HTML files to reference the new consolidated asset paths:
 4. Test pages visually to confirm styles are applied
 5. Validate no console errors for missing assets
 
+## Cleanup Completed (2025-10-10)
+
+All original CSS files have been removed from the repository. The following cleanup actions were completed:
+
+1. ✅ Removed all 21 original CSS files from page directories
+2. ✅ Fixed invalid SCSS imports in `_sass/pages/index.scss` (removed non-existent theme.asisaga.com relative paths)
+3. ✅ Removed redundant `trust/trust-styles.scss` file
+
+All styles are now properly consolidated in the `_sass/pages/` directory with Jekyll entry points in `assets/css/pages/`.
+
 ## Next Steps
 
 1. Monitor GitHub Pages build for any SCSS compilation errors
 2. Test all pages for visual consistency
-3. Consider removing original CSS/JS files after confirming everything works
-4. Update any documentation or guides that reference old asset paths
 
 ## Notes
 
@@ -139,3 +147,4 @@ Updated all HTML files to reference the new consolidated asset paths:
 - All CSS files were copied as-is to SCSS (valid CSS is valid SCSS)
 - The `_sass/_main.scss` imports all pages for completeness, even though individual pages load their own styles
 - Some pages (like entrepreneur) were already using Jekyll layouts and didn't need HTML updates
+- **2025-10-10 Update**: Removed invalid imports from `_sass/pages/index.scss` that referenced non-existent local theme paths. The remote theme configured in `_config.yml` handles Bootstrap and theme imports automatically.
