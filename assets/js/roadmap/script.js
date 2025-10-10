@@ -1,0 +1,72 @@
+const OWNER = 'ASISaga';
+const REPOS = ['BusinessInfinity', 'businessinfinity.asisaga.com'];
+const TOKEN = '';
+
+async function fetchAllIssues() {
+	const headers = TOKEN ? { 'Authorization': `token ${TOKEN}` } : {};
+	try {
+		const results = await Promise.all(REPOS.map(async repo => {
+			const url = `https://api.github.com/repos/${OWNER}/${repo}/issues?state=open&per_page=100`;
+			const resp = await fetch(url, { headers });
+			if (!resp.ok) {
+				return { repo, error: resp.statusText, issues: [] };
+			}
+			const issues = await resp.json();
+			return { repo, issues };
+		}));
+		console.log('Fetched issues:', results);
+		document.getElementById('loading').style.display = 'none';
+		renderGanttChart(results);
+	} catch (err) {
+		document.getElementById('gantt').innerHTML = `<div class='error'>Error fetching issues: ${err.message}</div>`;
+		console.error('Fetch error:', err);
+	}
+}
+
+function renderGanttChart(results) {
+	// Flatten all issues from all repos
+	const allIssues = results.flatMap(({ repo, issues }) =>
+		issues.map(issue => ({ ...issue, repo }))
+	);
+	console.log('All issues for Gantt:', allIssues);
+	// Transform issues to Gantt tasks
+	const tasks = allIssues.map(issue => {
+		// Use milestone due date if available, else today + 7 days
+		let start = issue.milestone && issue.milestone.due_on ? issue.milestone.due_on : new Date().toISOString().slice(0,10);
+		let end = issue.milestone && issue.milestone.due_on ? issue.milestone.due_on : new Date(Date.now() + 7*24*60*60*1000).toISOString().slice(0,10);
+		return {
+			id: String(issue.id),
+			name: issue.title,
+			start,
+			end,
+			progress: issue.state === "closed" ? 100 : 0,
+			dependencies: "",
+			custom_class: issue.repo.replace(/\W/g, '_')
+		};
+	});
+	// If no tasks, show error
+	if (!tasks.length) {
+		document.getElementById('gantt').innerHTML = '<div class="error">No issues found.</div>';
+		return;
+	}
+	// Render Gantt chart
+	try {
+		new Gantt("#gantt", tasks, {
+			view_mode: 'Day',
+			custom_popup_html: function(task) {
+				return `<div style='padding:1em;'>
+					<strong>${task.name}</strong><br>
+					<span>Repo: ${task.custom_class.replace(/_/g, ' ')}</span><br>
+					<span>Start: ${task.start}</span><br>
+					<span>End: ${task.end}</span><br>
+					<span>Progress: ${task.progress}%</span>
+				</div>`;
+			}
+		});
+	} catch (err) {
+		document.getElementById('gantt').innerHTML = `<div class='error'>Error rendering Gantt chart: ${err.message}</div>`;
+		console.error('Gantt error:', err);
+	}
+}
+
+fetchAllIssues();

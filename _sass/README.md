@@ -34,9 +34,29 @@ _main.scss
 ├── pages/entrepreneur
 ├── pages/privacy-policy
 ├── pages/startup
+├── pages/startup1
+├── pages/startup2
 ├── pages/chat
 ├── pages/profiles
 ├── pages/mentor
+├── pages/about
+├── pages/features
+├── pages/features2
+├── pages/trust
+├── pages/enterprise
+├── pages/network
+├── pages/pitch
+├── pages/pitch1
+├── pages/framework
+├── pages/bmc
+├── pages/dashboard
+├── pages/mcp-access-control
+├── pages/mentor-mode
+├── pages/onboarding
+├── pages/conversations
+├── pages/client
+├── pages/roadmap
+├── pages/website
 └── sections/business-infinity
 ```
 
@@ -73,16 +93,36 @@ _sass/
 │       └── toggle-strip/
 │           └── _icon-white.scss        # Icon utilities
 ├── pages/
-│   ├── index.scss              # Boardroom page styles (Note: file comments say "Boardroom page styles")
+│   ├── index.scss              # Main index page
 │   ├── _boardroom.scss         # Boardroom page
 │   ├── _boardroom2.scss        # Alternative boardroom page
 │   ├── _business-infinity.scss # Business Infinity page
 │   ├── _entrepreneur.scss      # Entrepreneur page
 │   ├── _privacy-policy.scss    # Privacy policy page
-│   ├── _startup.scss           # Startup page
+│   ├── _startup.scss           # Startup page (original)
+│   ├── _startup1.scss          # Startup page variant 1
+│   ├── _startup2.scss          # Startup page variant 2
 │   ├── _chat.scss              # Chat page
 │   ├── _profiles.scss          # Profiles page
-│   └── _mentor.scss            # Mentor page
+│   ├── _mentor.scss            # Mentor page
+│   ├── _about.scss             # About page
+│   ├── _features.scss          # Features page (primary)
+│   ├── _features2.scss         # Features page variant 2
+│   ├── _trust.scss             # Trust Center page
+│   ├── _enterprise.scss        # Enterprise page
+│   ├── _network.scss           # Network page
+│   ├── _pitch.scss             # Pitch page (pitch2 consolidated)
+│   ├── _pitch1.scss            # Pitch page variant 1
+│   ├── _framework.scss         # Framework page
+│   ├── _bmc.scss               # Business model canvas page
+│   ├── _dashboard.scss         # Dashboard page
+│   ├── _mcp-access-control.scss # MCP Access Control dashboard
+│   ├── _mentor-mode.scss       # Mentor Mode dashboard
+│   ├── _onboarding.scss        # Onboarding page
+│   ├── _conversations.scss     # Conversations page
+│   ├── _client.scss            # Client components page
+│   ├── _roadmap.scss           # Roadmap page
+│   └── _website.scss           # Website structure page
 └── sections/
     └── _business-infinity.scss # Business Infinity section styles
 ```
@@ -116,18 +156,23 @@ The SCSS files are compiled by Jekyll during the GitHub Pages build process. The
 
 ## Standalone SCSS Files
 
-The following SCSS files exist outside the `_sass` directory and are compiled independently:
+All SCSS files have been consolidated into the `_sass` directory. Entry point files are created in `/assets/css/pages/` for each page, which import from `_sass/pages/`.
 
-- `trust/trust-styles.scss` - Styles for the Trust Center page
+For example, `/assets/css/pages/features.scss` imports `@import "pages/features";` which resolves to `_sass/pages/_features.scss`.
 
-These files are not part of the main import hierarchy and are included directly in their respective pages.
+## Compilation
+
+The SCSS files are compiled by Jekyll during the GitHub Pages build process. Entry point files in `/assets/css/pages/` are compiled to CSS and linked from HTML pages.
 
 ## Notes
 
+- All CSS files have been converted to SCSS and moved to `_sass/pages/`
+- JavaScript files have been consolidated to `/assets/js/` directory with subdirectories for each page/component
+- Original CSS and JS files remain in their original locations for backward compatibility
 - The `components/_boardroom.scss` file exists but is not used. It was superseded by `components/boardroom/_main.scss`.
 - Empty placeholder files (`_chat-area.scss`, `_members-sidebar.scss`) exist in `components/boardroom/` but are not imported because the actual implementations are in subdirectories.
 - Archive files (`_toggle-strip-old.scss`, `_toggle-strip-new.scss`) are kept for reference but not imported.
 
 ## Last Updated
 
-2025-10-10
+2025-10-10 (CSS/JS consolidation completed)
