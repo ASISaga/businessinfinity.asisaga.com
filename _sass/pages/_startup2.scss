@@ -1,3 +1,6 @@
+// -----------------------------
+// Design Tokens
+// -----------------------------
 :root {
   --bg-0: #ffffff;
   --bg-1: #f8fafc;
@@ -5,7 +8,7 @@
   --ink: #1b1f24;
   --muted: #5c6b80;
   --line: #e2e8f0;
-  --primary: #ec4e20; /* startup energy: warm coral */
+  --primary: #ec4e20;   // startup energy: warm coral
   --primary-2: #c63c13;
   --accent: #ff784f;
   --radius: 8px;
@@ -13,6 +16,9 @@
   --font: 'Segoe UI', 'Inter', sans-serif;
 }
 
+// -----------------------------
+// Base Styles
+// -----------------------------
 body {
   font-family: var(--font);
   font-size: 15px;
@@ -23,17 +29,169 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
+// -----------------------------
+// Hero Section
+// -----------------------------
 .hero {
   background: var(--bg-1);
   border-bottom: 1px solid var(--line);
   padding: 72px 0;
-}
-.headline { font-size: 40px; font-weight: 600; margin: 0 0 0.5em; }
-.sub { font-size: 18px; color: var(--muted); max-width: 740px; }
 
-.btn { display: inline-block; padding: 0.7rem 1.2rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
-.btn-primary { background: var(--primary); color: #fff; border: 1px solid var(--primary); }
-.btn-primary:hover { background: var(--primary-2); }
-.btn[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/AlexMercedCoder/tutorialblog/tree/f2de19c42c0c64fc23dd6c175549f755d40455f8/content%2Fblog%2F2020%2Fwebcomp1%2Findex.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/ownalazzam10/maxa/tree/7304dbc2bedef695f5164e97929e70eb894792f0/node_modules%2Fmini-css-extract-plugin%2FREADME.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "2")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/szerintedmi/roadmap-radar-chart/tree/45ee5f9f7a1d44100313358e369abb025b935cea/README.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "3")
+  &-overlay {
+    background: rgba(0,0,0,0.55);
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    border-radius: var(--radius);
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      margin: 0.5rem 0 1.5rem;
+    }
+  }
+}
+
+.headline {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0 0 0.5em;
+}
+
+.sub {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 740px;
+}
+
+// -----------------------------
+// Buttons
+// -----------------------------
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+
+  &-primary {
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--primary);
+
+    &:hover {
+      background: var(--primary-2);
+    }
+  }
+
+  &-lg {
+    padding: 1rem 1.6rem;
+    font-size: 1.1rem;
+    border-radius: calc(var(--radius) + 2px);
+  }
+
+  &-accent {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+
+    &:hover {
+      background: darken(var(--accent), 10%);
+    }
+  }
+}
+
+// -----------------------------
+// Content
+// -----------------------------
+.content {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  h2 {
+    color: var(--primary-2);
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: var(--accent);
+  }
+}
+
+.grid-3 {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+// -----------------------------
+// Tables
+// -----------------------------
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+
+  th, td {
+    border: 1px solid var(--line);
+    padding: 0.5rem;
+    text-align: center;
+  }
+}
+
+// -----------------------------
+// Notes & Footer
+// -----------------------------
+.note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-1);
+  font-size: 0.85rem;
+}
+
+// -----------------------------
+// Animations
+// -----------------------------
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulse {
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(0,180,216, 0); }
+  50% { box-shadow: 0 0 20px rgba(0,180,216, 0.6); }
+}
