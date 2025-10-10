@@ -1,19 +1,32 @@
 // -----------------------------
-// Design Tokens
+// Design Tokens (Sass + CSS vars)
 // -----------------------------
+$bg-0: #ffffff;
+$bg-1: #f8fafc;
+$panel: #ffffff;
+$ink: #1b1f24;
+$muted: #5c6b80;
+$line: #e2e8f0;
+$primary: #ec4e20;   // startup energy: warm coral
+$primary-2: #c63c13;
+$accent: #ff784f;
+$radius: 8px;
+$shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+$font: 'Segoe UI', 'Inter', sans-serif;
+
 :root {
-  --bg-0: #ffffff;
-  --bg-1: #f8fafc;
-  --panel: #ffffff;
-  --ink: #1b1f24;
-  --muted: #5c6b80;
-  --line: #e2e8f0;
-  --primary: #ec4e20;   // startup energy: warm coral
-  --primary-2: #c63c13;
-  --accent: #ff784f;
-  --radius: 8px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --font: 'Segoe UI', 'Inter', sans-serif;
+  --bg-0: #{$bg-0};
+  --bg-1: #{$bg-1};
+  --panel: #{$panel};
+  --ink: #{$ink};
+  --muted: #{$muted};
+  --line: #{$line};
+  --primary: #{$primary};
+  --primary-2: #{$primary-2};
+  --accent: #{$accent};
+  --radius: #{$radius};
+  --shadow-sm: #{$shadow-sm};
+  --font: #{$font};
 }
 
 // -----------------------------
@@ -107,7 +120,7 @@ body {
     border: 1px solid var(--accent);
 
     &:hover {
-      background: darken(var(--accent), 10%);
+      background: darken($accent, 10%); // ✅ uses Sass variable
     }
   }
 }
