@@ -1,3 +1,22 @@
+// Utility to prevent element overlap and force stacking context
+.no-overlap {
+  position: relative;
+  z-index: 1;
+  overflow: visible !important;
+}
+
+// Utility for grid children to avoid absolute/fixed stacking issues
+.no-overlap > *,
+.no-overlap .section,
+.no-overlap .grid,
+.no-overlap .main-content,
+.no-overlap article,
+.no-overlap ul,
+.no-overlap li {
+  position: relative;
+  z-index: 2;
+  overflow: visible !important;
+}
 // UI Utilities - Common utility classes and noscript fallbacks
 
 // LinkedIn button icon styling
