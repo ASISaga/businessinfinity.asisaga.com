@@ -1,0 +1,330 @@
+/* Styles extracted from mcp_access_control.html */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e5e9;
+}
+
+.card h2 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.role-selector {
+    margin-bottom: 1.5rem;
+}
+
+.role-selector select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.access-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.access-matrix th,
+.access-matrix td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.access-matrix th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.access-level {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.access-none {
+    background-color: #fed7d7;
+    color: #c53030;
+}
+
+.access-read_only {
+    background-color: #fef2de;
+    color: #d69e2e;
+}
+
+.access-limited_write {
+    background-color: #bee3f8;
+    color: #2b6cb0;
+}
+
+.access-full_write {
+    background-color: #c6f6d5;
+    color: #2f855a;
+}
+
+.access-admin {
+    background-color: #e9d8fd;
+    color: #6b46c1;
+}
+
+.btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #718096;
+}
+
+.btn-danger {
+    background: #e53e3e;
+}
+
+.permissions-list {
+    list-style: none;
+}
+
+.permissions-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e1e5e9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.permissions-list li:last-child {
+    border-bottom: none;
+}
+
+.onboarding-stage {
+    background: #f7fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border-left: 4px solid #667eea;
+}
+
+.stage-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.stage-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.stage-observer {
+    background-color: #fed7d7;
+}
+
+.stage-participant {
+    background-color: #fef2de;
+}
+
+.stage-trusted {
+    background-color: #c6f6d5;
+}
+
+.violations-log {
+    max-height: 400px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.violation-entry {
+    background: white;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    border-left: 4px solid #e53e3e;
+}
+
+.violation-entry:last-child {
+    margin-bottom: 0;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #e1e5e9;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.agent-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e1e5e9;
+    transition: all 0.3s ease;
+}
+
+.agent-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.agent-card.enabled {
+    border-left: 4px solid #48bb78;
+}
+
+.agent-card.disabled {
+    border-left: 4px solid #e53e3e;
+    opacity: 0.7;
+}
+
+.agent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.agent-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.agent-status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-enabled {
+    background-color: #c6f6d5;
+    color: #2f855a;
+}
+
+.status-disabled {
+    background-color: #fed7d7;
+    color: #c53030;
+}
+
+.agent-details {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+}
+
+.agent-stage {
+    margin-bottom: 0.5rem;
+}
+
+.agent-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-small {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .header h1 {
+        font-size: 2rem;
+    }
+}
