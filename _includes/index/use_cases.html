@@ -1,0 +1,14 @@
+<section class="use-cases-section section-container" role="complementary" aria-labelledby="use-cases-title">
+    <div class="layout-container">
+        <h2 id="use-cases-title" class="section-title">{{ product.use_cases.section_title | default: 'Use Cases' }}</h2>
+        <nav class="use-cases-nav" role="tablist" aria-label="Business segment use cases">
+            {% for segment in product.use_cases.segments %}
+            <a href="{{ segment.url }}" class="tab-link accessible-link" role="tab"
+                aria-controls="use-case-{{ forloop.index }}"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                {{ segment.title }}
+            </a>
+            {% endfor %}
+        </nav>
+    </div>
+</section>

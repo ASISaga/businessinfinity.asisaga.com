@@ -1,0 +1,22 @@
+<section id="features" class="features-section section-container" role="main" aria-labelledby="features-title">
+</section>
+<div class="layout-container">
+    <h2 id="features-title" class="section-title">{{ product.features.section_title | default: 'Key Features' }}</h2>
+    <div class="features-grid grid-container" role="list" aria-label="Business Infinity features">
+        {% for feature in product.features.items %}
+        <article class="feature-card article-container" role="listitem"
+            aria-labelledby="feature-{{ forloop.index }}-title">
+            <h3 id="feature-{{ forloop.index }}-title" class="feature-title">{{ feature.title }}</h3>
+            <p class="feature-description">{{ feature.description }}</p>
+            {% if feature.benefits %}
+            <ul class="feature-benefits list-container" aria-label="Benefits of {{ feature.title }}">
+                {% for benefit in feature.benefits %}
+                <li>{{ benefit }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+</div>
+</section>
