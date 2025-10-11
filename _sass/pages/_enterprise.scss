@@ -38,7 +38,9 @@ body {
 }
 
 .container {
-  @extend .layout-container;
+  // Layout container properties (replacing @extend for Jekyll compatibility)
+  contain: layout style;
+  isolation: isolate;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -50,15 +52,25 @@ body {
 
 // Accessibility utilities specific to enterprise pages
 .skip-to-content {
-  @extend .accessible-link;
+  // Accessible link properties (replacing @extend for Jekyll compatibility)
+  color: #1a237e;
+  text-decoration: underline;
+  transition: all 0.2s ease;
   position: absolute;
   top: -40px;
   left: 6px;
   z-index: 1000;
   padding: 8px 16px;
   
+  &:hover {
+    color: #0d47a1;
+    text-decoration-thickness: 2px;
+  }
+  
   &:focus {
     top: 6px;
+    outline: 3px solid #0066cc;
+    outline-offset: 2px;
   }
 }
 
@@ -94,7 +106,9 @@ h3 { font-size: var(--size-2); margin: 0 0 0.4em; }
 p { margin: 0 0 1em; }
 
 .section { 
-  @extend .section-container;
+  // Section container properties (replacing @extend for Jekyll compatibility)
+  contain: layout style;
+  isolation: isolate;
   padding: 4rem 0; 
   background: var(--bg-0); 
 }
@@ -105,7 +119,9 @@ p { margin: 0 0 1em; }
 }
 
 .hero {
-  @extend .section-container;
+  // Section container properties (replacing @extend for Jekyll compatibility)
+  contain: layout style;
+  isolation: isolate;
   background: var(--bg-1);
   border-bottom: 1px solid var(--line);
   padding: 5rem 0;
@@ -113,7 +129,9 @@ p { margin: 0 0 1em; }
   
   // Ensure hero content is contained properly
   .hero-content {
-    @extend .layout-container;
+    // Layout container properties (replacing @extend for Jekyll compatibility)
+    contain: layout style;
+    isolation: isolate;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -194,7 +212,10 @@ p { margin: 0 0 1em; }
 }
 
 .grid { 
-  @extend .grid-container;
+  // Grid container properties (replacing @extend for Jekyll compatibility)
+  display: grid;
+  contain: layout style;
+  isolation: isolate;
   gap: 2rem; 
 }
 
@@ -215,7 +236,9 @@ p { margin: 0 0 1em; }
 }
 
 .card {
-  @extend .article-container;
+  // Article container properties (replacing @extend for Jekyll compatibility)
+  contain: layout style;
+  isolation: isolate;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -243,7 +266,9 @@ p { margin: 0 0 1em; }
 }
 
 .list { 
-  @extend .list-container;
+  // List container properties (replacing @extend for Jekyll compatibility)
+  contain: layout style;
+  isolation: isolate;
   padding-left: 1.25rem; 
   margin: 0 0 1em; 
   color: var(--ink); 
