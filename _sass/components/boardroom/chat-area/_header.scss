@@ -54,6 +54,20 @@
   font-weight: 500;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-typing-indicator {
+  font-size: 0.875rem;
+  color: #28a745;
+  font-style: italic;
+  opacity: 0;
+  transition: none;
+  
+  &.active {
+    opacity: 1;
+  }
+}
+}
+
 .boardroom-typing-indicator {
   font-size: 0.875rem;
   color: #28a745;
@@ -82,6 +96,16 @@
   background: rgba(40, 167, 69, 0.1);
   border-radius: 50px;
   border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: none;
+}
 }
 
 .boardroom-status-indicator {
@@ -113,6 +137,37 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(108, 117, 125, 0.1);
+  border-radius: 50%;
+  color: #6c757d;
+  cursor: pointer;
+  transition: none;
+  
+  &:hover {
+    background: rgba(108, 117, 125, 0.2);
+    color: #495057;
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+}
 }
 
 .boardroom-action-btn {

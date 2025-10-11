@@ -49,6 +49,38 @@
   gap: 0.5rem;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-members-action-btn,
+.boardroom-invite-member-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(108, 117, 125, 0.1);
+  border-radius: 50%;
+  color: #6c757d;
+  cursor: pointer;
+  transition: none;
+  
+  &:hover {
+    background: rgba(108, 117, 125, 0.2);
+    color: #495057;
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+}
+}
+
 .boardroom-members-action-btn,
 .boardroom-invite-member-btn {
   display: flex;
@@ -83,7 +115,7 @@
   background: rgba(0, 123, 255, 0.1);
   color: #007bff;
   
-  &:hover {
+  &:hover, &:focus {
     background: rgba(0, 123, 255, 0.2);
     color: #0056b3;
   }

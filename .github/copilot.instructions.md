@@ -55,6 +55,49 @@ businessinfinity.asisaga.com — Custom Website Instructions
 - Use `@extend`, `@include`, or Bootstrap utilities in component/page SCSS.
 - Add descriptive comments in SCSS and HTML.
 
+## Accessibility-First Development (MANDATORY)
+### Semantic HTML Requirements
+- NEVER nest landmark elements (header, main, nav, footer, aside, section, article)
+- Each page MUST have exactly ONE main landmark with id="skip-target"
+- Each page MUST have exactly ONE banner (header) and ONE contentinfo (footer)
+- Use aria-label for duplicate landmarks: `<header aria-label="Site header">` vs `<header aria-label="Page header">`
+- ALL interactive elements MUST have minimum 44px touch targets
+- ALL text MUST meet WCAG AA contrast ratios (4.5:1 for normal, 3:1 for large)
+- NEVER use text-shadow without verifying contrast impact
+- ALL images MUST have meaningful alt attributes (empty for decorative: `alt=""`)
+- ALL form inputs MUST have associated labels
+- Skip navigation MUST be first focusable element: `<a href="#skip-target" class="sr-only focus-visible">Skip to main content</a>`
+
+### Layout & CSS Requirements
+- ALL layout containers MUST use CSS containment: `contain: layout style; isolation: isolate;`
+- NEVER use @extend in Jekyll SCSS (causes build errors) - use actual CSS properties instead
+- ALL grid containers MUST be responsive: `grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))`
+- NEVER allow horizontal overflow - use `overflow-x: hidden` on body if needed
+- ALL interactive elements MUST have focus indicators: `outline: 3px solid #0066cc; outline-offset: 2px;`
+- Colors with opacity < 0.9 are FORBIDDEN for text (accessibility violation)
+- ALL buttons/links MUST have hover states with transform/elevation effects
+
+### Color & Contrast Rules
+- Text colors MUST be solid, high-contrast: #212529 on #ffffff minimum
+- NEVER use rgba() with opacity < 0.9 for text
+- Footer/header text MUST be white (#ffffff) on dark backgrounds
+- Muted text MUST have opacity >= 0.95: `rgba(255, 255, 255, 0.95)`
+- ALL color variables MUST be tested for WCAG AA compliance
+- Text-shadow is FORBIDDEN unless contrast is verified
+
+### Responsive Design Requirements
+- Mobile-first approach MANDATORY
+- Test ALL viewports: 375px, 768px, 1440px minimum
+- NO horizontal scrolling at any breakpoint
+- Touch targets MUST be 44px minimum on mobile
+- Font sizes MUST be 16px minimum (never smaller)
+
+### Jekyll-Specific Rules
+- NEVER use @extend in SCSS files (causes Jekyll build failures)
+- Use direct CSS properties instead: `contain: layout style; isolation: isolate;`
+- Import order: theme common.scss FIRST, then subdomain main.scss
+- All includes MUST have matching SCSS partials
+
 ## Best Practices
 - Keep partials focused on a single concern/component.
 - Use semantic HTML and ARIA for accessibility.

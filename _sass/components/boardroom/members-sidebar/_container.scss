@@ -6,14 +6,19 @@
   height: 100%;
   min-height: 100vh;
   align-self: stretch;
-  border-right-width: 1px;
-  border-right-style: solid;
-  border-right-color: $border-color;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: $border-color;
+  border-right: 1px solid $border-color;
+  border-top: 1px solid $border-color;
   box-sizing: border-box;
-  &.collapsed {
+  &.collapsed {@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-members-sidebar {
+      width: 0 !important;
+      min-width: 0 !important;
+      max-width: 0 !important;
+      opacity: 0;
+      pointer-events: none;
+      transition: none;
+}
+}
     .boardroom-members-sidebar {
       width: 0 !important;
       min-width: 0 !important;

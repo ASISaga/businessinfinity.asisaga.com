@@ -90,20 +90,21 @@ body {
 // -----------------------------
 // Buttons
 // -----------------------------
+@media screen and (prefers-reduced-motion: reduce) {
 .btn {
   display: inline-block;
   padding: 0.7rem 1.2rem;
   border-radius: var(--radius);
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s;
+  transition: none;
 
   &-primary {
     background: var(--primary);
-    color: #fff;
+    color: #ffffff;
     border: 1px solid var(--primary);
 
-    &:hover {
+    &:hover, &:focus {
       background: var(--primary-2);
     }
   }
@@ -116,10 +117,45 @@ body {
 
   &-accent {
     background: var(--accent);
-    color: #fff;
+    color: #ffffff;
     border: 1px solid var(--accent);
 
-    &:hover {
+    &:hover, &:focus {
+      background: darken($accent, 10%); // ✅ uses Sass variable
+    }
+  }
+}
+}
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+
+  &-primary {
+    background: var(--primary);
+    color: #ffffff;
+    border: 1px solid var(--primary);
+
+    &:hover, &:focus {
+      background: var(--primary-2);
+    }
+  }
+
+  &-lg {
+    padding: 1rem 1.6rem;
+    font-size: 1.1rem;
+    border-radius: calc(var(--radius) + 2px);
+  }
+
+  &-accent {
+    background: var(--accent);
+    color: #ffffff;
+    border: 1px solid var(--accent);
+
+    &:hover, &:focus {
       background: darken($accent, 10%); // ✅ uses Sass variable
     }
   }
@@ -189,6 +225,18 @@ footer {
 // -----------------------------
 // Animations
 // -----------------------------
+@media screen and (prefers-reduced-motion: reduce) {
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+}
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -198,6 +246,12 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.pulse {
+  animation: none;
+}
 }
 
 .pulse {

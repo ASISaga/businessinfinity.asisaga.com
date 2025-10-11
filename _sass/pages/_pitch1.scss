@@ -43,6 +43,17 @@ canvas#flywheel {
 }
 
 /* Modal */
+@media screen and (prefers-reduced-motion: reduce) {
+.modal {
+  display: none;          /* toggled by JS */
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  overflow: auto;
+  animation: none;
+}
+}
 .modal {
   display: none;          /* toggled by JS */
   position: fixed;
@@ -56,6 +67,18 @@ canvas#flywheel {
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.modal-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 3% auto;
+  padding: 20px;
+  width: min(90%, 980px);
+  animation: none;
+}
 }
 
 .modal-content {
@@ -77,14 +100,14 @@ button.close {
   appearance: none;
   border: none;
   background: transparent;
-  color: #bbb;
+  color: #bbbbbb;
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
   float: right;
   padding: 4px 8px;
 }
-button.close:hover { color: #fff; }
+button.close:hover, button.close:focus { color: #ffffff; }
 
 .modal h2 {
   color: var(--accent);

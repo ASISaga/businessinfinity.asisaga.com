@@ -3,16 +3,16 @@
 // Variables
 $bg-secondary: var(--bg-secondary, #f5f5f5);
 $bg-secondary-dark: var(--bg-secondary-dark, #2a2a2a);
-$bg-tertiary-dark: var(--bg-tertiary-dark, #333);
+$bg-tertiary-dark: var(--bg-tertiary-dark, #333333);
 $primary-color: var(--primary-color, #0066cc);
 $secondary-color: var(--secondary-color, #0052a3);
-$text-primary: var(--text-primary, #333);
-$text-secondary: var(--text-secondary, #666);
+$text-primary: var(--text-primary, #333333);
+$text-secondary: var(--text-secondary, #666666);
 $text-primary-dark: var(--text-primary-dark, #e0e0e0);
 $border-color: var(--border-color, #e0e0e0);
-$border-color-dark: var(--border-color-dark, #444);
-$border-color-hover: var(--border-color-hover, #ccc);
-$card-bg: var(--card-bg, #fff);
+$border-color-dark: var(--border-color-dark, #444444);
+$border-color-hover: var(--border-color-hover, #cccccc);
+$card-bg: var(--card-bg, #ffffff);
 $card-bg-dark: var(--card-bg-dark, #1e1e1e);
 
 /* Trust quote */
@@ -44,6 +44,39 @@ $card-bg-dark: var(--card-bg-dark, #1e1e1e);
   margin: 2rem 0;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.compliance-badge {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  transition: none;
+
+  &:hover, &:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .badge-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    color: $text-primary;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+}
+
 .compliance-badge {
   text-align: center;
   padding: 1.5rem 1rem;
@@ -52,7 +85,7 @@ $card-bg-dark: var(--card-bg-dark, #1e1e1e);
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
 
-  &:hover {
+  &:hover, &:focus {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
@@ -208,13 +241,31 @@ $card-bg-dark: var(--card-bg-dark, #1e1e1e);
     background: white;
     color: $primary-color;
 
-    &:hover {
+    &:hover, &:focus {
       background: rgba(255, 255, 255, 0.9);
     }
   }
 }
 
 /* Buttons */
+@media screen and (prefers-reduced-motion: reduce) {
+.btn-secondary {
+  background: $bg-secondary;
+  color: $text-primary;
+  border: 1px solid $border-color;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: none;
+
+  &:hover, &:focus {
+    background: var(--bg-tertiary, #e0e0e0);
+    border-color: $border-color-hover;
+  }
+}
+}
 .btn-secondary {
   background: $bg-secondary;
   color: $text-primary;
@@ -226,7 +277,7 @@ $card-bg-dark: var(--card-bg-dark, #1e1e1e);
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 
-  &:hover {
+  &:hover, &:focus {
     background: var(--bg-tertiary, #e0e0e0);
     border-color: $border-color-hover;
   }
@@ -256,7 +307,7 @@ $card-bg-dark: var(--card-bg-dark, #1e1e1e);
     color: $text-primary-dark;
     border-color: $border-color-dark;
 
-    &:hover {
+    &:hover, &:focus {
       background: $bg-tertiary-dark;
     }
   }

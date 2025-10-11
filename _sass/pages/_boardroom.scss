@@ -51,6 +51,11 @@
 }
 
 // Smooth transitions for all interactive elements
+@media screen and (prefers-reduced-motion: reduce) {
+* {
+  transition: none;
+}
+}
 * {
   transition: all 0.2s ease;
 }
@@ -84,7 +89,7 @@ html {
   background: #c1c1c1;
   border-radius: 4px;
   
-  &:hover {
+  &:hover, &:focus {
     background: #a8a8a8;
   }
 }

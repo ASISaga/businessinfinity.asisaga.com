@@ -199,6 +199,32 @@
 }
 
 // Button base styles with accessibility
+@media screen and (prefers-reduced-motion: reduce) {
+.btn-accessible {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px; // Minimum touch target
+  min-width: 44px;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: none;
+  
+  &:focus-visible {
+    outline: 3px solid #0066cc;
+    outline-offset: 2px;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+}
 .btn-accessible {
   display: inline-flex;
   align-items: center;

@@ -11,10 +11,37 @@
 // SCSS partial for boardroom members-sidebar member item
 
 // Boardroom member item (custom layout, no Bootstrap utility classes)
+@media screen and (prefers-reduced-motion: reduce) {
 .boardroom-member-item {
   display: flex;
   gap: 0.75rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  position: relative;
+  align-items: flex-start;
+  background: $white;
+  border-bottom: 1px solid $border-color;
+  transition: none;
+  cursor: pointer;
+  outline: 0;
+  width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  &:focus,
+  &:hover {
+    background: $light;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+  }
+  &:focus-visible {
+    outline: 2px solid $primary;
+  }
+}
+}
+.boardroom-member-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.5rem;
   border-radius: 0.75rem;
   position: relative;
   align-items: flex-start;
@@ -139,10 +166,7 @@
   background-color: $danger;
   color: $white;
   border-radius: 50rem;
-  padding-top: 0.25rem; // py-1 = 0.25rem
-  padding-bottom: 0.25rem;
-  padding-left: 1rem; // px-3 = 1rem
-  padding-right: 1rem;
+  padding: 0.25rem 1rem; // py-1 = 0.25rem // px-3 = 1rem
   font-size: 1rem; // fs-6 = 1rem
   align-self: flex-start;
   margin-left: 0.5rem; // ms-2 = 0.5rem

@@ -22,7 +22,7 @@ body {
 }
 
 .header p {
-    margin: 10px 0 0 0;
+    margin: 10px 0 0;
     opacity: 0.9;
     font-size: 1.1em;
 }
@@ -54,6 +54,19 @@ body {
     margin-bottom: 30px;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.agent-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: none;
+    border: 1px solid #e5e5e7;
+}
+}
+
 .agent-item {
     display: flex;
     align-items: center;
@@ -65,7 +78,7 @@ body {
     border: 1px solid #e5e5e7;
 }
 
-.agent-item:hover {
+.agent-item:hover, .agent-item:focus {
     background-color: #f0f0f2;
     transform: translateX(4px);
 }
@@ -94,13 +107,23 @@ body {
 }
 
 .agent-info p {
-    margin: 4px 0 0 0;
+    margin: 4px 0 0;
     font-size: 0.9em;
     opacity: 0.7;
 }
 
 .conversation-list {
     margin-top: 20px;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.conversation-item {
+    border: 1px solid #e5e5e7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: none;
+}
 }
 
 .conversation-item {
@@ -111,7 +134,7 @@ body {
     transition: all 0.2s ease;
 }
 
-.conversation-item:hover {
+.conversation-item:hover, .conversation-item:focus {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transform: translateY(-2px);
 }
@@ -147,12 +170,12 @@ body {
     display: flex;
     gap: 20px;
     font-size: 0.9em;
-    color: #666;
+    color: #666666;
     margin-bottom: 12px;
 }
 
 .conversation-content {
-    color: #333;
+    color: #333333;
     line-height: 1.5;
     margin-bottom: 12px;
 }
@@ -160,7 +183,7 @@ body {
 .conversation-signatures {
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #eeeeee;
 }
 
 .signature {
@@ -190,6 +213,17 @@ body {
     flex-wrap: wrap;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: none;
+}
+}
+
 .btn {
     padding: 10px 20px;
     border: none;
@@ -204,7 +238,7 @@ body {
     color: white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus {
     background: #0056cc;
 }
 
@@ -213,14 +247,14 @@ body {
     color: white;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, .btn-secondary:focus {
     background: #545b62;
 }
 
 .loading {
     text-align: center;
     padding: 40px;
-    color: #666;
+    color: #666666;
 }
 
 .error {
@@ -234,12 +268,12 @@ body {
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    color: #666666;
 }
 
 .empty-state h3 {
     margin-bottom: 10px;
-    color: #333;
+    color: #333333;
 }
 
 @media (max-width: 768px) {

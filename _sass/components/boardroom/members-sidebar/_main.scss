@@ -7,6 +7,22 @@
   height: 100%;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-members-sidebar {
+  flex: 0 0 320px;
+  max-width: 320px;
+  min-width: 240px;
+  width: 320px;
+  height: 100%;
+  background: $white;
+  border-right: 1px solid $gray-300;
+  transition: none;
+  z-index: 1;
+  will-change: transform;
+  overflow: hidden;
+}
+}
+
 .boardroom-members-sidebar {
   flex: 0 0 320px;
   max-width: 320px;

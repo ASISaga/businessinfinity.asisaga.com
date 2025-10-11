@@ -51,6 +51,30 @@ body {
 }
 
 // Accessibility utilities specific to enterprise pages
+@media screen and (prefers-reduced-motion: reduce) {
+.skip-to-content {
+  // Accessible link properties (replacing @extend for Jekyll compatibility)
+  color: #1a237e;
+  text-decoration: underline;
+  transition: none;
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: 1000;
+  padding: 8px 16px;
+  
+  &:hover {
+    color: #0d47a1;
+    text-decoration-thickness: 2px;
+  }
+  
+  &:focus {
+    top: 6px;
+    outline: 3px solid #0066cc;
+    outline-offset: 2px;
+  }
+}
+}
 .skip-to-content {
   // Accessible link properties (replacing @extend for Jekyll compatibility)
   color: #1a237e;
@@ -151,6 +175,37 @@ p { margin: 0 0 1em; }
   }
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  font-size: var(--size-0);
+  font-weight: 600;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: none;
+  cursor: pointer;
+  
+  // Accessibility enhancements
+  min-height: 44px; // Minimum touch target
+  min-width: 44px;
+  
+  &:focus {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+  }
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+}
+
 .btn {
   display: inline-block;
   padding: 0.75rem 1.25rem;
@@ -235,6 +290,35 @@ p { margin: 0 0 1em; }
   }
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.card {
+  // Article container properties (replacing @extend for Jekyll compatibility)
+  contain: layout style;
+  isolation: isolate;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: none;
+  
+  &:hover, &:focus {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  // Ensure proper focus management for interactive cards
+  &[tabindex] {
+    cursor: pointer;
+    
+    &:focus {
+      outline: 3px solid var(--focus-color);
+      outline-offset: 2px;
+    }
+  }
+}
+}
+
 .card {
   // Article container properties (replacing @extend for Jekyll compatibility)
   contain: layout style;
@@ -246,7 +330,7 @@ p { margin: 0 0 1em; }
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   
-  &:hover {
+  &:hover, &:focus {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
@@ -343,7 +427,15 @@ p { margin: 0 0 1em; }
   color: var(--muted);
 }
 .footer a { color: var(--muted); text-decoration: none; }
-.footer a:hover { color: var(--primary); }
+.footer a:hover, .footer a:focus { color: var(--primary); }
+
+@media screen and (prefers-reduced-motion: reduce) {
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: none;
+}
+}
 
 .reveal {
   opacity: 0;

@@ -9,6 +9,25 @@
   margin-bottom: 1rem;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-members-search-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  transition: none;
+  
+  &:focus-within {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    background: #ffffff;
+  }
+}
+}
+
 .boardroom-members-search-input-container {
   position: relative;
   display: flex;
@@ -39,6 +58,32 @@
   }
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-members-search-clear-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  color: #6c757d;
+  cursor: pointer;
+  transition: none;
+  margin-right: 0.5rem;
+  
+  &:hover, &:focus {
+    background: rgba(108, 117, 125, 0.1);
+    color: #495057;
+  }
+  
+  &.active {
+    display: flex;
+  }
+}
+}
+
 .boardroom-members-search-clear-btn {
   display: none;
   align-items: center;
@@ -53,7 +98,7 @@
   transition: all 0.2s ease;
   margin-right: 0.5rem;
   
-  &:hover {
+  &:hover, &:focus {
     background: rgba(108, 117, 125, 0.1);
     color: #495057;
   }
@@ -73,6 +118,37 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.boardroom-members-filter-btn {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #e9ecef;
+  background: #ffffff;
+  color: #6c757d;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: none;
+  
+  &:hover {
+    border-color: #007bff;
+    color: #007bff;
+    background: rgba(0, 123, 255, 0.05);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  &.active {
+    border-color: #007bff;
+    background: #007bff;
+    color: #ffffff;
+  }
+}
 }
 
 .boardroom-members-filter-btn {

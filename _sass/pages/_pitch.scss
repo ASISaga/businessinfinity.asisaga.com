@@ -2,7 +2,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  color: #222;
+  color: #222222;
   background: #fafafa;
 }
 
@@ -23,10 +23,26 @@ body {
   border-radius: 8px;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: none;
+}
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s forwards;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.fade-in-delay {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: none;
+}
 }
 
 .fade-in-delay {
@@ -43,6 +59,15 @@ body {
   max-width: 960px;
   margin: 2rem auto;
   padding: 0 1rem;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.block {
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: none;
+}
 }
 
 .block {
@@ -68,21 +93,27 @@ table {
 }
 
 table th, table td {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   padding: 0.5rem;
   text-align: center;
 }
 
 .note {
   font-size: 0.85rem;
-  color: #666;
+  color: #666666;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
-  background: #eee;
+  background: #eeeeee;
   font-size: 0.85rem;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+.pulse {
+  animation: none;
+}
 }
 
 .pulse {
