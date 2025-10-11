@@ -135,7 +135,7 @@ Uses sections to clearly organize different aspects of the privacy policy
       </p>
       <p class="privacy-contact">
         <strong>Email:</strong> privacy@businessinfinity.example.com<br>
-        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" class="privacy-link" target="_blank">{{ site.linkedin_username }}</a>
+        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/{{ site.linkedin_username | default: 'businessinfinity' }}" class="privacy-link" target="_blank" aria-label="Visit our LinkedIn profile">{{ site.linkedin_username | default: 'BusinessInfinity LinkedIn' }}</a>
       </p>
     </div>
   </section>

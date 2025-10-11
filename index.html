@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Business Infinity
+title: Business Infinity - AI-Powered Business Platform
+description: Transform your business with AI-powered insights, automation, and intelligent decision-making tools.
 ---
 
 {% assign product = site.data.business_infinity %}
@@ -8,60 +9,100 @@ title: Business Infinity
 
 <!-- 
 Business Infinity product page
-This page introduces the Business Infinity product, its features, benefits and use cases
-Uses Bootstrap's responsive grid system and components for layout and design
+Enhanced with proper semantic structure, accessibility, and layout containment
 -->
 
-{% capture product_content %}
+<!-- Hero Section -->
+<section class="hero-section section-container" role="banner" aria-labelledby="hero-title">
+  <div class="layout-container">
+    <h1 id="hero-title" class="hero-title">{{ page.title }}</h1>
+    <p class="hero-description">{{ page.description | default: product.description }}</p>
+    <div class="hero-actions">
+      <a href="#features" class="btn-accessible btn-primary" aria-describedby="features-description">
+        Explore Features
+        <span id="features-description" class="sr-only">Navigate to features section to learn about Business Infinity capabilities</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- Key features section with feature cards -->
-<sidebar-element id="features" class="product-section">
-  {% include section-header.html title=product.features.section_title %}
-  {% include product-feature-grid.html 
-    items=product.features.items
-  %}
-</sidebar-element>
-
-<!-- Use cases section with tabs for different business segments -->
-<dashboard-panel class="product-section business-use-cases-section">
-  {% include section-header.html title=product.use_cases.section_title %}
-  <div class="business-use-cases-nav">
-    <!-- Tab navigation for different user segments -->
-    <ul class="business-tabs-list" role="tablist">
-      {% for segment in product.use_cases.segments %}
-      <li class="business-tab-item">
-        <a href="{{ segment.url }}" class="business-tab-link">{{ segment.title }}</a>
-      </li>
+<section id="features" class="features-section section-container" role="main" aria-labelledby="features-title">
+  <div class="layout-container">
+    <h2 id="features-title" class="section-title">{{ product.features.section_title | default: 'Key Features' }}</h2>
+    
+    <div class="features-grid grid-container" role="list" aria-label="Business Infinity features">
+      {% for feature in product.features.items %}
+      <article class="feature-card article-container" role="listitem" aria-labelledby="feature-{{ forloop.index }}-title">
+        <h3 id="feature-{{ forloop.index }}-title" class="feature-title">{{ feature.title }}</h3>
+        <p class="feature-description">{{ feature.description }}</p>
+        {% if feature.benefits %}
+        <ul class="feature-benefits list-container" aria-label="Benefits of {{ feature.title }}">
+          {% for benefit in feature.benefits %}
+          <li>{{ benefit }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </article>
       {% endfor %}
-    </ul>
+    </div>
   </div>
-</dashboard-panel>
+</section>
+
+<!-- Use cases section with accessible navigation -->
+<section class="use-cases-section section-container" role="complementary" aria-labelledby="use-cases-title">
+  <div class="layout-container">
+    <h2 id="use-cases-title" class="section-title">{{ product.use_cases.section_title | default: 'Use Cases' }}</h2>
+    
+    <!-- Accessible tab navigation -->
+    <nav class="use-cases-nav" role="tablist" aria-label="Business segment use cases">
+      {% for segment in product.use_cases.segments %}
+      <a href="{{ segment.url }}" 
+         class="tab-link accessible-link" 
+         role="tab" 
+         aria-controls="use-case-{{ forloop.index }}"
+         aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+        {{ segment.title }}
+      </a>
+      {% endfor %}
+    </nav>
+  </div>
+</section>
 
 <!-- Testimonials section -->
-<mentor-element>
-  {% include testimonial.html 
-    title=product.testimonials.section_title
-    testimonials=product.testimonials.items
-  %}
-</mentor-element>
+<section class="testimonials-section section-container" role="complementary" aria-labelledby="testimonials-title">
+  <div class="layout-container">
+    <h2 id="testimonials-title" class="section-title">{{ product.testimonials.section_title | default: 'What Our Customers Say' }}</h2>
+    
+    <div class="testimonials-grid grid-container" role="list" aria-label="Customer testimonials">
+      {% for testimonial in product.testimonials.items %}
+      <blockquote class="testimonial article-container" role="listitem" aria-labelledby="testimonial-{{ forloop.index }}-author">
+        <p class="testimonial-quote">"{{ testimonial.quote }}"</p>
+        <footer class="testimonial-attribution">
+          <cite id="testimonial-{{ forloop.index }}-author" class="testimonial-author">
+            {{ testimonial.author }}
+            {% if testimonial.company %}
+            <span class="testimonial-company">{{ testimonial.company }}</span>
+            {% endif %}
+          </cite>
+        </footer>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-<!-- Contact section -->
-<boardroom-app>
-  {% include cta.html 
-    title=product.cta.title
-    description=product.cta.description
-    button_text=product.cta.button_text
-    button_url=product.cta.button_url
-  %}
-</boardroom-app>
-
-{% endcapture %}
-
-{% include product.html 
-  title=page.title
-  description=product.description
-  product_class="business-infinity-container"
-  button_text="Explore Features"
-  button_url="#features"
-  content=product_content
-%}
+<!-- Call to action section -->
+<section class="cta-section section-container" role="complementary" aria-labelledby="cta-title">
+  <div class="layout-container">
+    <h2 id="cta-title" class="section-title">{{ product.cta.title | default: 'Get Started Today' }}</h2>
+    <p class="cta-description">{{ product.cta.description }}</p>
+    <div class="cta-actions">
+      <a href="{{ product.cta.button_url }}" 
+         class="btn-accessible btn-primary" 
+         aria-describedby="cta-description">
+        {{ product.cta.button_text | default: 'Start Free Trial' }}
+      </a>
+    </div>
+  </div>
+</section>
