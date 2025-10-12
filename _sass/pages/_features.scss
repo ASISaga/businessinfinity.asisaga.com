@@ -23,18 +23,34 @@ body{
 }
 a{color:var(--primary); text-decoration:none}
 a:hover, a:focus{color:var(--primary-dark)}
-.muted{color:var(--muted)}
-.small{font-size:13px}
+// .muted and .small: Use Bootstrap utility classes directly in HTML, or duplicate the utility CSS if needed for custom selectors.
 
-.wrap{max-width:1200px; margin:0 auto; padding:0 24px}
+.wrap {
+  @include max-width(1200px);
+  @include mar-x(auto);
+  padding-left: 24px;
+  padding-right: 24px;
+}
 
 /* Header */
 .site-header{border-bottom:1px solid var(--line); background:var(--bg)}
 .header-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
 .brand{display:flex; align-items:center; gap:12px}
-.logo{width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#005fb8,#7fb7ff)}
-.site-title{margin:0; font-size:20px; font-weight:700}
-.site-sub{color:var(--muted); font-size:14px}
+.logo {
+  width: 36px;
+  height: 36px;
+  @include border-radius(8px);
+  @include background-gradient(linear-gradient(135deg,#005fb8,#7fb7ff));
+}
+.site-title {
+  margin: 0;
+  @include font-size(20px);
+  @include font-weight(700);
+}
+.site-sub {
+  @include color(var(--muted));
+  @include font-size(14px);
+}
 .header-actions{display:flex; align-items:center; gap:8px}
 
 /* Layout */
@@ -83,7 +99,11 @@ a:hover, a:focus{color:var(--primary-dark)}
 .chip{
   padding:6px 10px; border:1px solid var(--line); border-radius:999px; background:var(--bg-alt); cursor:pointer
 }
-.chip.active{background:#ffeede; border-color:#ffd0b5; color:#7a2e10}
+.chip.active {
+  background: #ffeede;
+  border-color: #ffd0b5;
+  @include color(#7a2e10);
+}
 
 /* Roster */
 .roster h3{margin:0 0 6px}
@@ -92,9 +112,21 @@ a:hover, a:focus{color:var(--primary-dark)}
 /* Network */
 .network .net-controls{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
 .network .net-stats{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:8px}
-.network .stat{background:var(--bg-alt); border:1px solid var(--line); border-radius:10px; padding:10px 12px; min-width:160px}
-.network .label{font-size:12px; color:var(--muted)}
-.network .value{font-size:22px; font-weight:700}
+.network .stat {
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  @include border-radius(10px);
+  padding: 10px 12px;
+  min-width: 160px;
+}
+.network .label {
+  @include font-size(12px);
+  @include color(var(--muted));
+}
+.network .value {
+  @include font-size(22px);
+  @include font-weight(700);
+}
 
 /* Lists */
 .list{margin:0; padding-left:18px}
@@ -104,14 +136,32 @@ a:hover, a:focus{color:var(--primary-dark)}
 /* CTA */
 .cta{background:var(--bg-alt)}
 .cta-box{max-width:840px; margin:0 auto; text-align:center}
-.btn{display:inline-block; padding:.6rem 1rem; border-radius:8px; border:1px solid var(--line); background:#f8fafc; color:#1b1f24; font-weight:600}
+.btn {
+  display: inline-block;
+  padding: .6rem 1rem;
+  @include border-radius(8px);
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  @include color(#1b1f24);
+  @include font-weight(600);
+}
 .btn:hover, .btn:focus{background:#eef2f7}
-.btn-primary{background:var(--primary); color:#ffffff; border-color:var(--primary)}
+.btn-primary {
+  background: var(--primary);
+  @include color(#ffffff);
+  border-color: var(--primary);
+}
 .btn-primary:hover, .btn-primary:focus{background:var(--primary-dark)}
 .btn-quiet{background:transparent}
 
 /* Footer */
-.site-footer{border-top:1px solid var(--line); background:var(--bg); padding:16px 0; color:var(--muted); font-size:14px}
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  @include pad-y(2);
+  @include color(var(--muted));
+  @include font-size(14px);
+}
 .site-footer nav{display:flex; gap:12px}
 .foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
 
@@ -125,7 +175,15 @@ a:hover, a:focus{color:var(--primary-dark)}
 
 /* Skip link */
 .skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
-.skip-link:focus{position:static; width:auto; height:auto; padding:8px; background:#ffffff; border:1px solid var(--line); border-radius:6px}
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  @include border-radius(6px);
+}
 
 /* Theme: dark */
 :root[data-theme="dark"]{

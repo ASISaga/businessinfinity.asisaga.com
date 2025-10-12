@@ -6,35 +6,35 @@
   .business-features-section {
     // Styles for the feature-grid.html component are handled by _feature-grid.scss
     // section-header.html styles are handled by _section-header.scss
-    @extend .py-5; // Bootstrap padding
+    @include pad-y(5); // .py-5
   }
 
   // Use cases section
   .business-use-cases-section {
-    @extend .py-5; // Bootstrap padding
-    @extend .bg-light;
+    @include pad-y(5); // .py-5
+    @include bg-light;
 
     // section-header.html styles are handled by _section-header.scss
 
     .business-use-cases-nav {
-      @extend .container;
-      @extend .text-center;
+      @include make-container();
+      @include text-center;
 
       .business-tabs-list {
-        @extend .nav;
-        @extend .nav-pills;
-        @extend .justify-content-center;
-        @extend .mb-4; // Bootstrap margin
+        @extend .nav-alias; // No mixin available
+        @extend .nav-pills-alias; // No mixin available
+        @include justify-content(center);
+        @include mar-b(4);
 
         .business-tab-item {
-          @extend .nav-item;
-          @extend .mx-2; // Bootstrap margin
+          @extend .nav-item-alias; // No mixin available
+          @include mar-x(2);
 
           .business-tab-link {
-            @extend .btn;
-            @extend .btn-outline-primary;
-            @extend .px-4; // Bootstrap padding
-            @extend .py-2; // Bootstrap padding
+            @extend .btn-alias; // No mixin available
+            @extend .btn-outline-primary-alias; // No mixin available
+            @include pad-x(4);
+            @include pad-y(2);
 
             &:hover,
             &:focus {

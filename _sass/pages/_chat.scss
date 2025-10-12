@@ -13,9 +13,18 @@
     margin-bottom: .75rem;
   }
   .msg {
-    &.user-to-agent { text-align: right; color: $primary; }
-    &.agent-to-user { text-align: left; color: $success; }
-    &.agent-to-agent{ text-align: center;color: $warning; }
+    &.user-to-agent {
+      @include text-right;
+      color: $primary;
+    }
+    &.agent-to-user {
+      @include text-left;
+      color: $success;
+    }
+    &.agent-to-agent {
+      @include text-center;
+      color: $warning;
+    }
     margin: .25rem 0;
   }
 }

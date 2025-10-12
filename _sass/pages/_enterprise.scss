@@ -41,12 +41,13 @@ body {
   // Layout container properties (replacing @extend for Jekyll compatibility)
   contain: layout style;
   isolation: isolate;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  @include max-width(1200px);
+  @include mar-x(auto);
+  @include pad-x(3);
   
   @media (min-width: 768px) {
-    padding: 0 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -54,17 +55,18 @@ body {
 @media screen and (prefers-reduced-motion: reduce) {
 .skip-to-content {
   // Accessible link properties (replacing @extend for Jekyll compatibility)
-  color: #1a237e;
+  @include color(#1a237e);
   text-decoration: underline;
   transition: none;
-  position: absolute;
+  @include position-absolute;
   top: -40px;
   left: 6px;
   z-index: 1000;
-  padding: 8px 16px;
+  @include pad-y(2);
+  @include pad-x(3);
   
   &:hover {
-    color: #0d47a1;
+    @include color(#0d47a1);
     text-decoration-thickness: 2px;
   }
   
@@ -379,9 +381,9 @@ p { margin: 0 0 1em; }
   }
 }
 
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-center { @include text-center; }
+.text-left { @include text-left; }
+.text-right { @include text-right; }
 
 // Screen reader only text
 .visually-hidden {
@@ -410,7 +412,11 @@ p { margin: 0 0 1em; }
   flex-shrink: 0;
 }
 
-.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills {
+  @include d-flex;
+  @include flex-wrap(wrap);
+  gap: 8px;
+}
 .pill {
   padding: 4px 10px;
   border: 1px solid var(--line);
