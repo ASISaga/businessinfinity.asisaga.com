@@ -2,7 +2,7 @@
 
 ## Date: 2025-10-10
 
-## Overview
+## Overview 
 
 This document summarizes the consolidation of CSS and JavaScript files across the Business Infinity website. All standalone CSS files have been converted to SCSS and moved to the `_sass/pages/` directory, and all JavaScript files have been organized into the `assets/js/` directory structure.
 
