@@ -67,9 +67,9 @@ function ensurePush() {
 
 // Step 2: Get latest pages-build-deployment workflow run
 async function getLatestWorkflowRun() {
-    // Use the workflow file path as recognized by GitHub API
-    const workflowFile = 'dynamic/pages/pages-build-deployment';
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/${encodeURIComponent(workflowFile)}/runs?branch=${BRANCH}&per_page=1`;
+    // Use the workflow ID as per GitHub API documentation
+    const workflowId = '171259422';
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/${workflowId}/runs?branch=${BRANCH}&per_page=1`;
     const resp = await axios.get(url, {
         headers: { Authorization: `token ${GITHUB_TOKEN}` }
     });
