@@ -67,8 +67,8 @@ function ensurePush() {
 
 // Step 2: Get latest pages-build-deployment workflow run
 async function getLatestWorkflowRun() {
-    // Use only the workflow file name for GitHub API lookup
-    const workflowFile = 'pages-build-deployment.yml';
+    // Use the workflow file path as recognized by GitHub API
+    const workflowFile = 'dynamic/pages/pages-build-deployment';
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/${encodeURIComponent(workflowFile)}/runs?branch=${BRANCH}&per_page=1`;
     const resp = await axios.get(url, {
         headers: { Authorization: `token ${GITHUB_TOKEN}` }
@@ -129,31 +129,31 @@ async function main() {
     // 1. Ensure a push (real or mock)
     ensurePush();
 
-    // 2. List all workflows to help select the correct one
-    await listAllWorkflows();
-    // Comment out the rest for now to focus on workflow discovery
-    // // 2. Get latest workflow run
-    // console.log('Fetching latest workflow run...');
-    // const run = await getLatestWorkflowRun();
-    // console.log(`Latest run: #${run.run_number} (${run.status})`);
+    // 2. List all workflows to help select the correct one (optional)
+    // await listAllWorkflows();
 
-    // // 3. Wait for workflow to finish
-    // const conclusion = await waitForWorkflow(run.id);
-    // if (conclusion !== 'success') {
-    //     // 4. Download logs
-    //     console.log('Downloading workflow logs...');
-    //     const logContent = await downloadLogs(run.id);
-    //     // 5. Analyze with MCP
-    //     console.log('Analyzing logs with MCP server...');
-    //     const mcpResult = await analyzeWithMCP(logContent);
-    //     // 6. Show results
-    //     console.log('--- MCP Analysis Result ---');
-    //     console.log(JSON.stringify(mcpResult, null, 2));
-    //     // 7. Optionally, prompt for next steps or loop
-    //     // (You can add code here to auto-fix, open Copilot, or prompt user)
-    // } else {
-    //     console.log('Workflow succeeded! No errors detected.');
-    // }
+    // 2. Get latest workflow run
+    console.log('Fetching latest workflow run...');
+    const run = await getLatestWorkflowRun();
+    console.log(`Latest run: #${run.run_number} (${run.status})`);
+
+    // 3. Wait for workflow to finish
+    const conclusion = await waitForWorkflow(run.id);
+    if (conclusion !== 'success') {
+        // 4. Download logs
+        console.log('Downloading workflow logs...');
+        const logContent = await downloadLogs(run.id);
+        // 5. Analyze with MCP
+        console.log('Analyzing logs with MCP server...');
+        const mcpResult = await analyzeWithMCP(logContent);
+        // 6. Show results
+        console.log('--- MCP Analysis Result ---');
+        console.log(JSON.stringify(mcpResult, null, 2));
+        // 7. Optionally, prompt for next steps or loop
+        // (You can add code here to auto-fix, open Copilot, or prompt user)
+    } else {
+        console.log('Workflow succeeded! No errors detected.');
+    }
 }
 
 main().catch(err => {
