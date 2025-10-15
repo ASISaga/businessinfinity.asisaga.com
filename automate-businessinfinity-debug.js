@@ -143,14 +143,17 @@ async function main() {
         // 4. Download logs
         console.log('Downloading workflow logs...');
         const logContent = await downloadLogs(run.id);
-        // 5. Analyze with MCP
-        console.log('Analyzing logs with MCP server...');
-        const mcpResult = await analyzeWithMCP(logContent);
-        // 6. Show results
-        console.log('--- MCP Analysis Result ---');
-        console.log(JSON.stringify(mcpResult, null, 2));
-        // 7. Optionally, prompt for next steps or loop
-        // (You can add code here to auto-fix, open Copilot, or prompt user)
+        // 5. Extract and print error lines
+        console.log('--- Extracted Error Lines ---');
+        const errorLines = logContent.split('\n').filter(line =>
+            /error|failed|exception|traceback|not found|no such file|cannot|undefined/i.test(line)
+        );
+        if (errorLines.length === 0) {
+            console.log('No obvious error lines found.');
+        } else {
+            errorLines.forEach(line => console.log(line));
+        }
+        // Optionally, print a summary or next steps
     } else {
         console.log('Workflow succeeded! No errors detected.');
     }
