@@ -1,3 +1,19 @@
+// Utility: List all workflows for the repo
+async function listAllWorkflows() {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows`;
+    const resp = await axios.get(url, {
+        headers: { Authorization: `token ${GITHUB_TOKEN}` }
+    });
+    if (!resp.data.workflows || !resp.data.workflows.length) {
+        console.log('No workflows found.');
+        return [];
+    }
+    console.log('--- Available Workflows ---');
+    resp.data.workflows.forEach(wf => {
+        console.log(`- Name: ${wf.name}\n  ID: ${wf.id}\n  File: ${wf.path}`);
+    });
+    return resp.data.workflows;
+}
 // automate-businessinfinity-debug.js
 // Hybrid automation for iterative debugging of businessinfinity.asisaga.com
 // Uses: GitHub API for repo/workflow, MCP server for log intelligence
@@ -113,28 +129,31 @@ async function main() {
     // 1. Ensure a push (real or mock)
     ensurePush();
 
-    // 2. Get latest workflow run
-    console.log('Fetching latest workflow run...');
-    const run = await getLatestWorkflowRun();
-    console.log(`Latest run: #${run.run_number} (${run.status})`);
+    // 2. List all workflows to help select the correct one
+    await listAllWorkflows();
+    // Comment out the rest for now to focus on workflow discovery
+    // // 2. Get latest workflow run
+    // console.log('Fetching latest workflow run...');
+    // const run = await getLatestWorkflowRun();
+    // console.log(`Latest run: #${run.run_number} (${run.status})`);
 
-    // 3. Wait for workflow to finish
-    const conclusion = await waitForWorkflow(run.id);
-    if (conclusion !== 'success') {
-        // 4. Download logs
-        console.log('Downloading workflow logs...');
-        const logContent = await downloadLogs(run.id);
-        // 5. Analyze with MCP
-        console.log('Analyzing logs with MCP server...');
-        const mcpResult = await analyzeWithMCP(logContent);
-        // 6. Show results
-        console.log('--- MCP Analysis Result ---');
-        console.log(JSON.stringify(mcpResult, null, 2));
-        // 7. Optionally, prompt for next steps or loop
-        // (You can add code here to auto-fix, open Copilot, or prompt user)
-    } else {
-        console.log('Workflow succeeded! No errors detected.');
-    }
+    // // 3. Wait for workflow to finish
+    // const conclusion = await waitForWorkflow(run.id);
+    // if (conclusion !== 'success') {
+    //     // 4. Download logs
+    //     console.log('Downloading workflow logs...');
+    //     const logContent = await downloadLogs(run.id);
+    //     // 5. Analyze with MCP
+    //     console.log('Analyzing logs with MCP server...');
+    //     const mcpResult = await analyzeWithMCP(logContent);
+    //     // 6. Show results
+    //     console.log('--- MCP Analysis Result ---');
+    //     console.log(JSON.stringify(mcpResult, null, 2));
+    //     // 7. Optionally, prompt for next steps or loop
+    //     // (You can add code here to auto-fix, open Copilot, or prompt user)
+    // } else {
+    //     console.log('Workflow succeeded! No errors detected.');
+    // }
 }
 
 main().catch(err => {
