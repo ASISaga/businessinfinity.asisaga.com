@@ -18,7 +18,7 @@ const axios = require('axios');
 const REPO_OWNER = 'ASISaga';
 const REPO_NAME = 'businessinfinity.asisaga.com';
 const BRANCH = 'main';
-const MCP_SERVER = 'http://localhost:8080/mcp'; // Change if your MCP server runs elsewhere
+const MCP_SERVER = 'https://api.githubcopilot.com/mcp/'; // Updated to use github-mcp-server endpoint
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 if (!GITHUB_TOKEN) throw new Error('Set GITHUB_TOKEN env var or add it to a .env file (GITHUB_TOKEN=...)');
 
@@ -51,7 +51,9 @@ function ensurePush() {
 
 // Step 2: Get latest pages-build-deployment workflow run
 async function getLatestWorkflowRun() {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/pages-build-deployment.yml/runs?branch=${BRANCH}&per_page=1`;
+    // Use the correct workflow file path as per repo: pages/pages-build-deployment
+    const workflowFile = 'pages/pages-build-deployment';
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/${encodeURIComponent(workflowFile)}/runs?branch=${BRANCH}&per_page=1`;
     const resp = await axios.get(url, {
         headers: { Authorization: `token ${GITHUB_TOKEN}` }
     });
