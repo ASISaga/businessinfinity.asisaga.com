@@ -53,25 +53,89 @@ function run(cmd) {
     return execSync(cmd, { encoding: 'utf8' }).trim();
 }
 
-// Step 1: Check for uncommitted/unpushed changes and push or make mock change
-function ensurePush() {
-    const status = run('git status --porcelain');
-    const local = run('git rev-parse @');
-    const remote = run('git rev-parse @{u}');
-    if (status.length > 0 || local !== remote) {
-        console.log('Pushing real changes...');
-        run('git add -A');
-        run('git commit -m "chore: deploy businessinfinity changes"');
-        run('git push');
-        return true;
+
+// Step 1: Push changes to theme repo, then businessinfinity
+function pushThemeFirstThenBusinessInfinity() {
+    // 1. Push theme repo
+    const themeDir = path.resolve(__dirname, '../../theme.asisaga.com');
+    const businessDir = process.cwd();
+    let themePushed = false;
+    try {
+        process.chdir(themeDir);
+        const status = run('git status --porcelain');
+        const local = run('git rev-parse @');
+        const remote = run('git rev-parse @{u}');
+        if (status.length > 0 || local !== remote) {
+            console.log('[Theme] Pushing real changes...');
+            run('git add -A');
+            run('git commit -m "chore: deploy theme changes for businessinfinity"');
+            run('git push');
+            themePushed = true;
+        } else {
+            console.log('[Theme] No real changes, making mock change...');
+            const file = path.join(themeDir, '.theme-rebuild-trigger');
+            fs.writeFileSync(file, `Theme rebuild trigger: ${new Date().toISOString()}\n`);
+            run('git add .theme-rebuild-trigger');
+            run('git commit -m "chore: trigger theme rebuild [skip ci]"');
+            run('git push');
+            themePushed = true;
+        }
+    } catch (e) {
+        console.error('[Theme] Error pushing theme repo:', e.message);
+    } finally {
+        process.chdir(businessDir);
+    }
+    // 2. Wait for remote theme update
+    if (themePushed) {
+        console.log('Waiting 3 seconds for remote theme update...');
+        const countdown = async () => {
+            for (let i = 3; i > 0; i--) {
+                process.stdout.write(`${i}.. `);
+                await new Promise(r => setTimeout(r, 1000));
+            }
+            console.log();
+        };
+        return countdown().then(() => {
+            // 3. Push businessinfinity repo
+            const status = run('git status --porcelain');
+            const local = run('git rev-parse @');
+            const remote = run('git rev-parse @{u}');
+            if (status.length > 0 || local !== remote) {
+                console.log('[BusinessInfinity] Pushing real changes...');
+                run('git add -A');
+                run('git commit -m "chore: deploy businessinfinity changes"');
+                run('git push');
+                return true;
+            } else {
+                console.log('[BusinessInfinity] No real changes, making mock change...');
+                const file = path.join(businessDir, '.theme-rebuild-trigger');
+                fs.writeFileSync(file, `Theme rebuild trigger: ${new Date().toISOString()}\n`);
+                run('git add .theme-rebuild-trigger');
+                run('git commit -m "chore: trigger rebuild for new theme release [skip ci]"');
+                run('git push');
+                return false;
+            }
+        });
     } else {
-        console.log('No real changes, making mock change...');
-        const file = path.join(process.cwd(), '.theme-rebuild-trigger');
-        fs.writeFileSync(file, `Theme rebuild trigger: ${new Date().toISOString()}\n`);
-        run('git add .theme-rebuild-trigger');
-        run('git commit -m "chore: trigger rebuild for new theme release [skip ci]"');
-        run('git push');
-        return false;
+        // If theme not pushed, still push businessinfinity
+        const status = run('git status --porcelain');
+        const local = run('git rev-parse @');
+        const remote = run('git rev-parse @{u}');
+        if (status.length > 0 || local !== remote) {
+            console.log('[BusinessInfinity] Pushing real changes...');
+            run('git add -A');
+            run('git commit -m "chore: deploy businessinfinity changes"');
+            run('git push');
+            return true;
+        } else {
+            console.log('[BusinessInfinity] No real changes, making mock change...');
+            const file = path.join(businessDir, '.theme-rebuild-trigger');
+            fs.writeFileSync(file, `Theme rebuild trigger: ${new Date().toISOString()}\n`);
+            run('git add .theme-rebuild-trigger');
+            run('git commit -m "chore: trigger rebuild for new theme release [skip ci]"');
+            run('git push');
+            return false;
+        }
     }
 }
 
@@ -147,8 +211,8 @@ async function main() {
     const beforeRunNumber = await getLatestRunNumber();
     console.log(`Latest run number before push: #${beforeRunNumber}`);
 
-    // 2. Ensure a push (real or mock)
-    ensurePush();
+    // 2. Ensure a push (theme first, then businessinfinity)
+    await pushThemeFirstThenBusinessInfinity();
 
     // 3. Wait for a new run to appear
     let afterRunNumber = beforeRunNumber;
