@@ -57,7 +57,7 @@ function run(cmd) {
 // Step 1: Push changes to theme repo, then businessinfinity
 function pushThemeFirstThenBusinessInfinity() {
     // 1. Push theme repo
-    const themeDir = path.resolve(__dirname, '../../theme.asisaga.com');
+    const themeDir = path.resolve(__dirname, '../theme.asisaga.com');
     const businessDir = process.cwd();
     let themePushed = false;
     try {
