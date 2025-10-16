@@ -66,15 +66,20 @@ function ensurePush() {
 }
 
 // Step 2: Get latest pages-build-deployment workflow run
-async function getLatestWorkflowRun() {
+async function getWorkflowRun(runNumber = null) {
     // Use the workflow ID as per GitHub API documentation
     const workflowId = '171259422';
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/${workflowId}/runs?branch=${BRANCH}&per_page=1`;
+    let url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/${workflowId}/runs?branch=${BRANCH}&per_page=10`;
     const resp = await axios.get(url, {
         headers: { Authorization: `token ${GITHUB_TOKEN}` }
     });
     if (!resp.data.workflow_runs.length) throw new Error('No workflow runs found');
-    return resp.data.workflow_runs[0];
+    if (runNumber) {
+        const match = resp.data.workflow_runs.find(r => r.run_number === runNumber);
+        if (!match) throw new Error(`Run number ${runNumber} not found in recent runs.`);
+        return match;
+    }
+    return resp.data.workflow_runs[0]; // latest
 }
 
 // Step 3: Wait for workflow run to complete
@@ -132,20 +137,26 @@ async function main() {
     // 2. List all workflows to help select the correct one (optional)
     // await listAllWorkflows();
 
-    // 2. Get latest workflow run
-    console.log('Fetching latest workflow run...');
-    const run = await getLatestWorkflowRun();
-    console.log(`Latest run: #${run.run_number} (${run.status})`);
+    // 2. Get workflow run (latest or specified)
+    const userRunNumber = process.argv[2] ? parseInt(process.argv[2], 10) : null;
+    if (userRunNumber) {
+        console.log(`Fetching workflow run #${userRunNumber}...`);
+    } else {
+        console.log('Fetching latest workflow run...');
+    }
+    const run = await getWorkflowRun(userRunNumber);
+    console.log(`Selected run: #${run.run_number} (${run.status})`);
 
     // 3. Wait for workflow to finish
     const conclusion = await waitForWorkflow(run.id);
     if (conclusion !== 'success') {
         // 4. Download logs
         console.log('Downloading workflow logs...');
-        const logContent = await downloadLogs(run.id);
-        // 5. Extract and print error lines (improved for SCSS/Jekyll)
-        console.log('--- Extracted Error Lines (with context) ---');
-        const lines = logContent.split('\n');
+        await downloadLogs(run.id); // Unzips all logs
+        // 5. Scan all log files for errors
+        const fs = require('fs');
+        const logDir = './workflow-logs';
+        const logFiles = fs.readdirSync(logDir).filter(f => f.endsWith('.txt'));
         const patterns = [
             /error/i,
             /failed/i,
@@ -160,24 +171,31 @@ async function main() {
             /Undefined mixin/i,
             /Jekyll::Converters::Scss/i
         ];
-        // Remove ANSI color codes
         const stripAnsi = s => s.replace(/\x1b\[[0-9;]*m/g, '');
-        let found = false;
-        for (let i = 0; i < lines.length; i++) {
-            const clean = stripAnsi(lines[i]);
-            if (patterns.some(p => p.test(clean))) {
-                found = true;
-                // Print 2 lines before and 2 after for context
-                const start = Math.max(0, i - 2);
-                const end = Math.min(lines.length, i + 3);
-                for (let j = start; j < end; j++) {
-                    console.log(stripAnsi(lines[j]));
+        let foundAny = false;
+        for (const file of logFiles) {
+            const content = fs.readFileSync(`${logDir}/${file}`, 'utf8');
+            const lines = content.split('\n');
+            let found = false;
+            for (let i = 0; i < lines.length; i++) {
+                const clean = stripAnsi(lines[i]);
+                if (patterns.some(p => p.test(clean))) {
+                    if (!found) {
+                        console.log(`\n--- Errors in ${file} ---`);
+                        found = true;
+                        foundAny = true;
+                    }
+                    const start = Math.max(0, i - 2);
+                    const end = Math.min(lines.length, i + 3);
+                    for (let j = start; j < end; j++) {
+                        console.log(stripAnsi(lines[j]));
+                    }
+                    console.log('---');
                 }
-                console.log('---');
             }
         }
-        if (!found) {
-            console.log('No obvious error lines found.');
+        if (!foundAny) {
+            console.log('No obvious error lines found in any log file.');
         }
         // Optionally, print a summary or next steps
     } else {
