@@ -1,3 +1,13 @@
+// Utility: Get the latest workflow run number
+async function getLatestRunNumber() {
+    const workflowId = '171259422';
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/${workflowId}/runs?branch=${BRANCH}&per_page=1`;
+    const resp = await axios.get(url, {
+        headers: { Authorization: `token ${GITHUB_TOKEN}` }
+    });
+    if (!resp.data.workflow_runs.length) throw new Error('No workflow runs found');
+    return resp.data.workflow_runs[0].run_number;
+}
 // Utility: List all workflows for the repo
 async function listAllWorkflows() {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows`;
@@ -131,20 +141,30 @@ async function analyzeWithMCP(logContent) {
 
 // Step 6: Present results and optionally loop for fixes
 async function main() {
-    // 1. Ensure a push (real or mock)
+
+    // 1. Get latest run number before push
+    console.log('Fetching latest workflow run number before push...');
+    const beforeRunNumber = await getLatestRunNumber();
+    console.log(`Latest run number before push: #${beforeRunNumber}`);
+
+    // 2. Ensure a push (real or mock)
     ensurePush();
 
-    // 2. List all workflows to help select the correct one (optional)
-    // await listAllWorkflows();
-
-    // 2. Get workflow run (latest or specified)
-    const userRunNumber = process.argv[2] ? parseInt(process.argv[2], 10) : null;
-    if (userRunNumber) {
-        console.log(`Fetching workflow run #${userRunNumber}...`);
-    } else {
-        console.log('Fetching latest workflow run...');
+    // 3. Wait for a new run to appear
+    let afterRunNumber = beforeRunNumber;
+    let attempts = 0;
+    while (afterRunNumber <= beforeRunNumber && attempts < 20) {
+        await new Promise(r => setTimeout(r, 5000)); // Wait 5s
+        afterRunNumber = await getLatestRunNumber();
+        attempts++;
     }
-    const run = await getWorkflowRun(userRunNumber);
+    if (afterRunNumber <= beforeRunNumber) {
+        throw new Error('No new workflow run detected after push.');
+    }
+    console.log(`Latest run number after push: #${afterRunNumber}`);
+
+    // 4. Get the new workflow run
+    const run = await getWorkflowRun(afterRunNumber);
     console.log(`Selected run: #${run.run_number} (${run.status})`);
 
     // 3. Wait for workflow to finish
