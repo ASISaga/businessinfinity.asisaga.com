@@ -143,15 +143,41 @@ async function main() {
         // 4. Download logs
         console.log('Downloading workflow logs...');
         const logContent = await downloadLogs(run.id);
-        // 5. Extract and print error lines
-        console.log('--- Extracted Error Lines ---');
-        const errorLines = logContent.split('\n').filter(line =>
-            /error|failed|exception|traceback|not found|no such file|cannot|undefined/i.test(line)
-        );
-        if (errorLines.length === 0) {
+        // 5. Extract and print error lines (improved for SCSS/Jekyll)
+        console.log('--- Extracted Error Lines (with context) ---');
+        const lines = logContent.split('\n');
+        const patterns = [
+            /error/i,
+            /failed/i,
+            /exception/i,
+            /traceback/i,
+            /not found/i,
+            /no such file/i,
+            /cannot/i,
+            /undefined/i,
+            /Conversion error/i,
+            /Sass::SyntaxError/i,
+            /Undefined mixin/i,
+            /Jekyll::Converters::Scss/i
+        ];
+        // Remove ANSI color codes
+        const stripAnsi = s => s.replace(/\x1b\[[0-9;]*m/g, '');
+        let found = false;
+        for (let i = 0; i < lines.length; i++) {
+            const clean = stripAnsi(lines[i]);
+            if (patterns.some(p => p.test(clean))) {
+                found = true;
+                // Print 2 lines before and 2 after for context
+                const start = Math.max(0, i - 2);
+                const end = Math.min(lines.length, i + 3);
+                for (let j = start; j < end; j++) {
+                    console.log(stripAnsi(lines[j]));
+                }
+                console.log('---');
+            }
+        }
+        if (!found) {
             console.log('No obvious error lines found.');
-        } else {
-            errorLines.forEach(line => console.log(line));
         }
         // Optionally, print a summary or next steps
     } else {
