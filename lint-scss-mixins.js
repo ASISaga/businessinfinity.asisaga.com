@@ -1,12 +1,26 @@
 // Node.js script to lint SCSS files for missing mixins and fatal errors using Dart Sass
+
 const sass = require('sass');
 const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 
-const scssDirs = [
-    path.resolve(__dirname, '../theme.asisaga.com/_sass'),
-    path.resolve(__dirname, './_sass'),
-];
+// Read _config.yml for include paths and theme
+const configPath = path.resolve(__dirname, '_config.yml');
+let config = {};
+if (fs.existsSync(configPath)) {
+    config = yaml.load(fs.readFileSync(configPath, 'utf8')) || {};
+}
+const loadPaths = (config.sass && config.sass.load_paths) ? config.sass.load_paths : ['_sass'];
+const theme = config.remote_theme || '';
+
+// Resolve include paths relative to project root
+const scssDirs = loadPaths.map(p => path.resolve(__dirname, p));
+if (theme) {
+    // Try to add theme's _sass dir if present
+    const themeSass = path.resolve(__dirname, `../${theme.split('/').pop()}/_sass`);
+    if (fs.existsSync(themeSass)) scssDirs.push(themeSass);
+}
 let errors = [];
 
 // Collect all mixin names defined in all SCSS files
