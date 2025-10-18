@@ -291,3 +291,12 @@ main().catch(err => {
     console.error('Error:', err.message);
     process.exit(1);
 });
+// Lint SCSS for missing mixins and fatal errors before pushing
+try {
+    console.log('Linting SCSS for missing mixins and fatal errors...');
+    execSync(`node ${path.resolve(__dirname, 'lint-scss-mixins.js')}`, { stdio: 'inherit' });
+    console.log('SCSS lint passed. Proceeding with push.');
+} catch (e) {
+    console.error('SCSS lint failed. Aborting push.');
+    process.exit(1);
+}
