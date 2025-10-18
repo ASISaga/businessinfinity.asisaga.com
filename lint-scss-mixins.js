@@ -18,7 +18,12 @@ for (const dir of scssDirs) {
             sass.compile(filePath);
         } catch (e) {
             const msg = e.message || '';
-            if (/Undefined mixin/i.test(msg) || /SassError|SyntaxError|fatal/i.test(msg)) {
+            // Check for undefined mixin, fatal errors, or mixin argument mismatch
+            if (
+                /Undefined mixin/i.test(msg) ||
+                /SassError|SyntaxError|fatal/i.test(msg) ||
+                /Mixin [^ ]+ takes \d+ arguments but \d+ (was|were) passed/i.test(msg)
+            ) {
                 errors.push(`${file}: ${msg}`);
             }
         }
