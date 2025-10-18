@@ -1,324 +1,324 @@
-﻿2025-10-18T16:38:51.5978840Z Current runner version: '2.328.0'
-2025-10-18T16:38:51.6004111Z ##[group]Runner Image Provisioner
-2025-10-18T16:38:51.6004986Z Hosted Compute Agent
-2025-10-18T16:38:51.6005495Z Version: 20251013.424
-2025-10-18T16:38:51.6006089Z Commit: cfdd8bfed34d71a55b72df4d2e82343c3fc2bab3
-2025-10-18T16:38:51.6006775Z Build Date: 2025-10-13T20:22:23Z
-2025-10-18T16:38:51.6007699Z ##[endgroup]
-2025-10-18T16:38:51.6008230Z ##[group]Operating System
-2025-10-18T16:38:51.6008835Z Ubuntu
-2025-10-18T16:38:51.6009281Z 24.04.3
-2025-10-18T16:38:51.6009766Z LTS
-2025-10-18T16:38:51.6010262Z ##[endgroup]
-2025-10-18T16:38:51.6010726Z ##[group]Runner Image
-2025-10-18T16:38:51.6011294Z Image: ubuntu-24.04
-2025-10-18T16:38:51.6011739Z Version: 20251014.76.1
-2025-10-18T16:38:51.6012799Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251014.76/images/ubuntu/Ubuntu2404-Readme.md
-2025-10-18T16:38:51.6014286Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251014.76
-2025-10-18T16:38:51.6015284Z ##[endgroup]
-2025-10-18T16:38:51.6016402Z ##[group]GITHUB_TOKEN Permissions
-2025-10-18T16:38:51.6018787Z Contents: read
-2025-10-18T16:38:51.6019333Z Metadata: read
-2025-10-18T16:38:51.6019785Z Pages: write
-2025-10-18T16:38:51.6020330Z ##[endgroup]
-2025-10-18T16:38:51.6022309Z Secret source: Actions
-2025-10-18T16:38:51.6023342Z Prepare workflow directory
-2025-10-18T16:38:51.6368707Z Prepare all required actions
-2025-10-18T16:38:51.6406206Z Getting action download info
-2025-10-18T16:38:52.0003914Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
-2025-10-18T16:38:52.1846766Z Download action repository 'actions/jekyll-build-pages@v1' (SHA:44a6e6beabd48582f863aeeb6cb2151cc1716697)
-2025-10-18T16:38:52.5767524Z Download action repository 'actions/upload-pages-artifact@v3' (SHA:56afc609e74202658d3ffba0e8f6dda462b719fa)
-2025-10-18T16:38:52.8855674Z Getting action download info
-2025-10-18T16:38:53.0091417Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
-2025-10-18T16:38:53.1438435Z Complete job name: build
-2025-10-18T16:38:53.1902740Z ##[group]Pull down action image 'ghcr.io/actions/jekyll-build-pages:v1.0.13'
-2025-10-18T16:38:53.2109189Z ##[command]/usr/bin/docker pull ghcr.io/actions/jekyll-build-pages:v1.0.13
-2025-10-18T16:38:53.6432821Z v1.0.13: Pulling from actions/jekyll-build-pages
-2025-10-18T16:38:53.6434468Z efc2b5ad9eec: Pulling fs layer
-2025-10-18T16:38:53.6435995Z 165b60d1bb48: Pulling fs layer
-2025-10-18T16:38:53.6437636Z 2a328af1ca3a: Pulling fs layer
-2025-10-18T16:38:53.6438685Z 32b58fa44788: Pulling fs layer
-2025-10-18T16:38:53.6439682Z 590ab93c22d2: Pulling fs layer
-2025-10-18T16:38:53.6440660Z 26ea96c4c14c: Pulling fs layer
-2025-10-18T16:38:53.6441648Z bd7e451dfea1: Pulling fs layer
-2025-10-18T16:38:53.6442627Z c209e9dadc51: Pulling fs layer
-2025-10-18T16:38:53.6443570Z 32b58fa44788: Waiting
-2025-10-18T16:38:53.6444404Z 590ab93c22d2: Waiting
-2025-10-18T16:38:53.6445261Z 26ea96c4c14c: Waiting
-2025-10-18T16:38:53.6446162Z bd7e451dfea1: Waiting
-2025-10-18T16:38:53.6447068Z a4925b5c711a: Pulling fs layer
-2025-10-18T16:38:53.6448274Z cd9459784e3c: Pulling fs layer
-2025-10-18T16:38:53.6449208Z c209e9dadc51: Waiting
-2025-10-18T16:38:53.6450029Z a4925b5c711a: Waiting
-2025-10-18T16:38:53.6450849Z cd9459784e3c: Waiting
-2025-10-18T16:38:53.7432182Z 2a328af1ca3a: Download complete
-2025-10-18T16:38:53.7989270Z 165b60d1bb48: Verifying Checksum
-2025-10-18T16:38:53.7990500Z 165b60d1bb48: Download complete
-2025-10-18T16:38:53.8407497Z efc2b5ad9eec: Verifying Checksum
-2025-10-18T16:38:53.8409322Z efc2b5ad9eec: Download complete
-2025-10-18T16:38:53.8854224Z 590ab93c22d2: Verifying Checksum
-2025-10-18T16:38:53.9487624Z 590ab93c22d2: Download complete
-2025-10-18T16:38:53.9489631Z 32b58fa44788: Verifying Checksum
-2025-10-18T16:38:53.9491569Z 32b58fa44788: Download complete
-2025-10-18T16:38:53.9753084Z bd7e451dfea1: Verifying Checksum
-2025-10-18T16:38:53.9757754Z bd7e451dfea1: Download complete
-2025-10-18T16:38:54.0646193Z a4925b5c711a: Verifying Checksum
-2025-10-18T16:38:54.0650763Z a4925b5c711a: Download complete
-2025-10-18T16:38:54.1465304Z cd9459784e3c: Verifying Checksum
-2025-10-18T16:38:54.1471207Z cd9459784e3c: Download complete
-2025-10-18T16:38:54.1799037Z c209e9dadc51: Verifying Checksum
-2025-10-18T16:38:54.1803160Z c209e9dadc51: Download complete
-2025-10-18T16:38:54.5122963Z 26ea96c4c14c: Verifying Checksum
-2025-10-18T16:38:54.5127463Z 26ea96c4c14c: Download complete
-2025-10-18T16:38:55.2012022Z efc2b5ad9eec: Pull complete
-2025-10-18T16:38:57.5830753Z 165b60d1bb48: Pull complete
-2025-10-18T16:38:57.5947936Z 2a328af1ca3a: Pull complete
-2025-10-18T16:38:58.5911493Z 32b58fa44788: Pull complete
-2025-10-18T16:38:58.6017778Z 590ab93c22d2: Pull complete
-2025-10-18T16:39:02.7301163Z 26ea96c4c14c: Pull complete
-2025-10-18T16:39:02.7396718Z bd7e451dfea1: Pull complete
-2025-10-18T16:39:04.7895106Z c209e9dadc51: Pull complete
-2025-10-18T16:39:04.8174469Z a4925b5c711a: Pull complete
-2025-10-18T16:39:04.8277762Z cd9459784e3c: Pull complete
-2025-10-18T16:39:04.8314428Z Digest: sha256:6791ebfd912185ed59bfb5fb102664fa872496b79f87ff8b9cfba292a7345041
-2025-10-18T16:39:04.8327563Z Status: Downloaded newer image for ghcr.io/actions/jekyll-build-pages:v1.0.13
-2025-10-18T16:39:04.8339401Z ghcr.io/actions/jekyll-build-pages:v1.0.13
-2025-10-18T16:39:04.8360263Z ##[endgroup]
-2025-10-18T16:39:04.8631287Z ##[group]Run actions/checkout@v4
-2025-10-18T16:39:04.8631857Z with:
-2025-10-18T16:39:04.8632029Z   ref: main
-2025-10-18T16:39:04.8632211Z   submodules: recursive
-2025-10-18T16:39:04.8632461Z   repository: ASISaga/businessinfinity.asisaga.com
-2025-10-18T16:39:04.8632930Z   token: ***
-2025-10-18T16:39:04.8633114Z   ssh-strict: true
-2025-10-18T16:39:04.8633287Z   ssh-user: git
-2025-10-18T16:39:04.8633477Z   persist-credentials: true
-2025-10-18T16:39:04.8633687Z   clean: true
-2025-10-18T16:39:04.8633884Z   sparse-checkout-cone-mode: true
-2025-10-18T16:39:04.8634117Z   fetch-depth: 1
-2025-10-18T16:39:04.8634296Z   fetch-tags: false
-2025-10-18T16:39:04.8634489Z   show-progress: true
-2025-10-18T16:39:04.8634670Z   lfs: false
-2025-10-18T16:39:04.8634855Z   set-safe-directory: true
-2025-10-18T16:39:04.8635279Z ##[endgroup]
-2025-10-18T16:39:04.9678946Z Syncing repository: ASISaga/businessinfinity.asisaga.com
-2025-10-18T16:39:04.9680560Z ##[group]Getting Git version info
-2025-10-18T16:39:04.9681158Z Working directory is '/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com'
-2025-10-18T16:39:04.9681843Z [command]/usr/bin/git version
-2025-10-18T16:39:04.9758102Z git version 2.51.0
-2025-10-18T16:39:04.9783210Z ##[endgroup]
-2025-10-18T16:39:04.9796673Z Temporarily overriding HOME='/home/runner/work/_temp/a0a0cace-2b21-4c82-8682-d66543d5321e' before making global git config changes
-2025-10-18T16:39:04.9798066Z Adding repository directory to the temporary git global config as a safe directory
-2025-10-18T16:39:04.9809686Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com
-2025-10-18T16:39:04.9845259Z Deleting the contents of '/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com'
-2025-10-18T16:39:04.9848627Z ##[group]Initializing the repository
-2025-10-18T16:39:04.9852781Z [command]/usr/bin/git init /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com
-2025-10-18T16:39:04.9948205Z hint: Using 'master' as the name for the initial branch. This default branch name
-2025-10-18T16:39:04.9949056Z hint: is subject to change. To configure the initial branch name to use in all
-2025-10-18T16:39:04.9949650Z hint: of your new repositories, which will suppress this warning, call:
-2025-10-18T16:39:04.9949988Z hint:
-2025-10-18T16:39:04.9950385Z hint: 	git config --global init.defaultBranch <name>
-2025-10-18T16:39:04.9950693Z hint:
-2025-10-18T16:39:04.9950965Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2025-10-18T16:39:04.9951409Z hint: 'development'. The just-created branch can be renamed via this command:
-2025-10-18T16:39:04.9952036Z hint:
-2025-10-18T16:39:04.9952358Z hint: 	git branch -m <name>
-2025-10-18T16:39:04.9952717Z hint:
-2025-10-18T16:39:04.9953259Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2025-10-18T16:39:04.9954411Z Initialized empty Git repository in /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com/.git/
-2025-10-18T16:39:04.9963464Z [command]/usr/bin/git remote add origin https://github.com/ASISaga/businessinfinity.asisaga.com
-2025-10-18T16:39:04.9999576Z ##[endgroup]
-2025-10-18T16:39:05.0000105Z ##[group]Disabling automatic garbage collection
-2025-10-18T16:39:05.0003798Z [command]/usr/bin/git config --local gc.auto 0
-2025-10-18T16:39:05.0030659Z ##[endgroup]
-2025-10-18T16:39:05.0031181Z ##[group]Setting up auth
-2025-10-18T16:39:05.0037473Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-10-18T16:39:05.0066186Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-10-18T16:39:05.0532261Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-10-18T16:39:05.0561744Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-10-18T16:39:05.0780918Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2025-10-18T16:39:05.0821983Z ##[endgroup]
-2025-10-18T16:39:05.0822594Z ##[group]Fetching the repository
-2025-10-18T16:39:05.0830665Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main*:refs/remotes/origin/main* +refs/tags/main*:refs/tags/main*
-2025-10-18T16:39:05.4431955Z From https://github.com/ASISaga/businessinfinity.asisaga.com
-2025-10-18T16:39:05.4432886Z  * [new branch]      main        -> origin/main
-2025-10-18T16:39:05.4433416Z  * [new branch]      main-backup -> origin/main-backup
-2025-10-18T16:39:05.4469405Z ##[endgroup]
-2025-10-18T16:39:05.4470392Z ##[group]Determining the checkout info
-2025-10-18T16:39:05.4477984Z [command]/usr/bin/git branch --list --remote origin/main
-2025-10-18T16:39:05.4502387Z   origin/main
-2025-10-18T16:39:05.4508782Z ##[endgroup]
-2025-10-18T16:39:05.4513238Z [command]/usr/bin/git sparse-checkout disable
-2025-10-18T16:39:05.4554011Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2025-10-18T16:39:05.4581332Z ##[group]Checking out the ref
-2025-10-18T16:39:05.4586241Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2025-10-18T16:39:05.4796616Z Switched to a new branch 'main'
-2025-10-18T16:39:05.4799585Z branch 'main' set up to track 'origin/main'.
-2025-10-18T16:39:05.4806027Z ##[endgroup]
-2025-10-18T16:39:05.4806943Z ##[group]Setting up auth for fetching submodules
-2025-10-18T16:39:05.4811550Z [command]/usr/bin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2025-10-18T16:39:05.4847809Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
-2025-10-18T16:39:05.4877916Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
-2025-10-18T16:39:05.4908354Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-10753247@github.com:
-2025-10-18T16:39:05.4936180Z ##[endgroup]
-2025-10-18T16:39:05.4937621Z ##[group]Fetching submodules
-2025-10-18T16:39:05.4940975Z [command]/usr/bin/git submodule sync --recursive
-2025-10-18T16:39:05.5193778Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
-2025-10-18T16:39:05.5435913Z [command]/usr/bin/git submodule foreach --recursive git config --local gc.auto 0
-2025-10-18T16:39:05.5668863Z ##[endgroup]
-2025-10-18T16:39:05.5669458Z ##[group]Persisting credentials for submodules
-2025-10-18T16:39:05.5676599Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
-2025-10-18T16:39:05.5913982Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
-2025-10-18T16:39:05.6152956Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
-2025-10-18T16:39:05.6389520Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-10753247@github.com:'
-2025-10-18T16:39:05.6623625Z ##[endgroup]
-2025-10-18T16:39:05.6661631Z [command]/usr/bin/git log -1 --format=%H
-2025-10-18T16:39:05.6685585Z 172f19d15f88698fa4e0d9fe8d889f72d24d0b8e
-2025-10-18T16:39:05.6852608Z ##[group]Run actions/jekyll-build-pages@v1
-2025-10-18T16:39:05.6852894Z with:
-2025-10-18T16:39:05.6853051Z   source: .
-2025-10-18T16:39:05.6853217Z   destination: ./_site
-2025-10-18T16:39:05.6853396Z   future: false
-2025-10-18T16:39:05.6853623Z   build_revision: 172f19d15f88698fa4e0d9fe8d889f72d24d0b8e
-2025-10-18T16:39:05.6853895Z   verbose: true
-2025-10-18T16:39:05.6854177Z   token: ***
-2025-10-18T16:39:05.6854345Z ##[endgroup]
-2025-10-18T16:39:05.6939321Z ##[command]/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_1a0c0e --label 8b6e2c --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13
-2025-10-18T16:39:06.5523896Z To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
-2025-10-18T16:39:14.9597526Z [31m  Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss':[0m
-2025-10-18T16:39:14.9598948Z [31m                    Undefined mixin 'border-life-force-green'. on line 99[0m
-2025-10-18T16:39:14.9600556Z /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:123:in `rescue in convert': Undefined mixin 'border-life-force-green'. on line 99 (Jekyll::Converters::Scss::SyntaxError)
-2025-10-18T16:39:14.9601710Z 
-2025-10-18T16:39:14.9601879Z         raise SyntaxError, "#{e} on line #{e.sass_line}"
-2025-10-18T16:39:14.9602408Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-10-18T16:39:14.9603533Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:118:in `convert'
-2025-10-18T16:39:14.9604622Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
-2025-10-18T16:39:14.9605560Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
-2025-10-18T16:39:14.9606411Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
-2025-10-18T16:39:14.9607450Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
-2025-10-18T16:39:14.9608340Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
-2025-10-18T16:39:14.9609213Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
-2025-10-18T16:39:14.9610055Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
-2025-10-18T16:39:14.9611273Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
-2025-10-18T16:39:14.9612142Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
-2025-10-18T16:39:14.9612713Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
-2025-10-18T16:39:14.9613182Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
-2025-10-18T16:39:14.9613627Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
-2025-10-18T16:39:14.9614115Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
-2025-10-18T16:39:14.9614609Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
-2025-10-18T16:39:14.9615123Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
-2025-10-18T16:39:14.9615741Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
-2025-10-18T16:39:14.9616385Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
-2025-10-18T16:39:14.9616940Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
-2025-10-18T16:39:14.9617660Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
-2025-10-18T16:39:14.9618158Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
-2025-10-18T16:39:14.9618631Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
-2025-10-18T16:39:14.9619136Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
-2025-10-18T16:39:14.9619558Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
-2025-10-18T16:39:14.9619866Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
-2025-10-18T16:39:14.9620602Z /tmp/jekyll-remote-theme-20251018-7-j0htw8/_sass/components/_sacred-buttons.scss:99:in `border-life-force-green': Undefined mixin 'border-life-force-green'. (Sass::SyntaxError)
-2025-10-18T16:39:14.9621425Z 	from /tmp/jekyll-remote-theme-20251018-7-j0htw8/_sass/components/_sacred-buttons.scss:99
-2025-10-18T16:39:14.9621916Z 	from /tmp/jekyll-remote-theme-20251018-7-j0htw8/_sass/_common.scss:88
-2025-10-18T16:39:14.9622237Z 	from (sass):1
-2025-10-18T16:39:14.9622607Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
-2025-10-18T16:39:14.9623166Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:98:in `block in with_mixin'
-2025-10-18T16:39:14.9623629Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-2025-10-18T16:39:14.9624070Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:98:in `with_mixin'
-2025-10-18T16:39:14.9624557Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
-2025-10-18T16:39:14.9625077Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-2025-10-18T16:39:14.9625612Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-2025-10-18T16:39:14.9626273Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
-2025-10-18T16:39:14.9626732Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-2025-10-18T16:39:14.9627168Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
-2025-10-18T16:39:14.9627839Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
-2025-10-18T16:39:14.9628447Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
-2025-10-18T16:39:14.9629034Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
-2025-10-18T16:39:14.9629586Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
-2025-10-18T16:39:14.9630182Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-2025-10-18T16:39:14.9630883Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
-2025-10-18T16:39:14.9631404Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-2025-10-18T16:39:14.9631925Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-2025-10-18T16:39:14.9632447Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
-2025-10-18T16:39:14.9632896Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-2025-10-18T16:39:14.9633334Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
-2025-10-18T16:39:14.9633796Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
-2025-10-18T16:39:14.9634398Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
-2025-10-18T16:39:14.9635003Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `map'
-2025-10-18T16:39:14.9635554Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
-2025-10-18T16:39:14.9636104Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
-2025-10-18T16:39:14.9636559Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-2025-10-18T16:39:14.9636999Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
-2025-10-18T16:39:14.9637699Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
-2025-10-18T16:39:14.9638220Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-2025-10-18T16:39:14.9638748Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-2025-10-18T16:39:14.9639298Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
-2025-10-18T16:39:14.9639793Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-2025-10-18T16:39:14.9640239Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
-2025-10-18T16:39:14.9640711Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
-2025-10-18T16:39:14.9641318Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
-2025-10-18T16:39:14.9641920Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `map'
-2025-10-18T16:39:14.9642472Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
-2025-10-18T16:39:14.9643025Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
-2025-10-18T16:39:14.9643480Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-2025-10-18T16:39:14.9643926Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
-2025-10-18T16:39:14.9644560Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
-2025-10-18T16:39:14.9645069Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-2025-10-18T16:39:14.9645592Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-2025-10-18T16:39:14.9646104Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
-2025-10-18T16:39:14.9646562Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-2025-10-18T16:39:14.9646997Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
-2025-10-18T16:39:14.9647634Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
-2025-10-18T16:39:14.9648191Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-2025-10-18T16:39:14.9648727Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
-2025-10-18T16:39:14.9649358Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-2025-10-18T16:39:14.9649954Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-2025-10-18T16:39:14.9650560Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-2025-10-18T16:39:14.9651136Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-2025-10-18T16:39:14.9651683Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-2025-10-18T16:39:14.9652220Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-2025-10-18T16:39:14.9652723Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-2025-10-18T16:39:14.9653216Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
-2025-10-18T16:39:14.9653724Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
-2025-10-18T16:39:14.9654208Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
-2025-10-18T16:39:14.9654675Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:20:in `render'
-2025-10-18T16:39:14.9655115Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/engine.rb:290:in `render'
-2025-10-18T16:39:14.9655521Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass.rb:57:in `compile'
-2025-10-18T16:39:14.9656032Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:119:in `convert'
-2025-10-18T16:39:14.9656615Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
-2025-10-18T16:39:14.9657112Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
-2025-10-18T16:39:14.9657758Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
-2025-10-18T16:39:14.9658229Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
-2025-10-18T16:39:14.9658716Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
-2025-10-18T16:39:14.9659196Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
-2025-10-18T16:39:14.9659675Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
-2025-10-18T16:39:14.9660192Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
-2025-10-18T16:39:14.9660676Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
-2025-10-18T16:39:14.9661127Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
-2025-10-18T16:39:14.9661589Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
-2025-10-18T16:39:14.9662033Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
-2025-10-18T16:39:14.9662505Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
-2025-10-18T16:39:14.9663118Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
-2025-10-18T16:39:14.9663610Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
-2025-10-18T16:39:14.9664201Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
-2025-10-18T16:39:14.9664825Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
-2025-10-18T16:39:14.9665349Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
-2025-10-18T16:39:14.9665844Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
-2025-10-18T16:39:14.9666325Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
-2025-10-18T16:39:14.9666785Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
-2025-10-18T16:39:14.9667569Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
-2025-10-18T16:39:14.9668006Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
-2025-10-18T16:39:14.9668315Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
-2025-10-18T16:39:15.0053142Z ##[error] Logging at level: debug Configuration file: /github/workspace/./_config.yml GitHub Pages: github-pages v232 GitHub Pages: jekyll v3.10.0 Theme: jekyll-theme-primer Theme source: /usr/local/bundle/gems/jekyll-theme-primer-0.6.0 Requiring: jekyll-github-metadata Requiring: jekyll-seo-tag Requiring: jekyll-feed Requiring: jekyll-sitemap Requiring: jekyll-remote-theme Requiring: jekyll-coffeescript Requiring: jekyll-commonmark-ghpages Requiring: jekyll-gist Requiring: jekyll-github-metadata Requiring: jekyll-paginate Requiring: jekyll-relative-links Requiring: jekyll-optional-front-matter Requiring: jekyll-readme-index Requiring: jekyll-default-layout Requiring: jekyll-titles-from-headings Requiring: jekyll-remote-theme GitHub Metadata: Initializing... Source: /github/workspace/. Destination: /github/workspace/./_site Incremental build: disabled. Enable with --incremental Generating... Theme: asisaga/theme.asisaga.com Theme source: /tmp/jekyll-remote-theme-20251018-7-j0htw8 Remote Theme: Using theme asisaga/theme.asisaga.com Remote Theme: Downloading https://codeload.github.com/asisaga/theme.asisaga.com/zip/HEAD to /tmp/jekyll-remote-theme-20251018-7-6em2h3.zip Remote Theme: Unzipping /tmp/jekyll-remote-theme-20251018-7-6em2h3.zip to /tmp/jekyll-remote-theme-20251018-7-j0htw8 EntryFilter: excluded /README.md EntryFilter: excluded /website_structure.json EntryFilter: excluded /LICENSE EntryFilter: excluded /docs/test-plan.md EntryFilter: excluded /docs/specifications.md EntryFilter: excluded /docs/Trust.md Generating: JekyllOptionalFrontMatter::Generator finished in 0.002511849 seconds. Generating: JekyllReadmeIndex::Generator finished in 0.004097446 seconds. Jekyll Feed: Generating feed for posts Generating: JekyllFeed::Generator finished in 0.000677739 seconds. Generating: Jekyll::JekyllSitemap finished in 0.000476255 seconds. Generating: Jekyll::Paginate::Pagination finished in 6.341e-06 seconds. GitHub Metadata: Generating for ASISaga/businessinfinity.asisaga.com GitHub Metadata: Calling @client.pages("ASISaga/businessinfinity.asisaga.com", {}) Generating: JekyllRelativeLinks::Generator finished in 0.175212507 seconds. Generating: JekyllDefaultLayout::Generator finished in 0.000235578 seconds. Requiring: kramdown-parser-gfm Generating: JekyllTitlesFromHeadings::Generator finished in 0.013142189 seconds. Rendering: components/boardroom-app.html Pre-Render Hooks: components/boardroom-app.html Rendering Liquid: components/boardroom-app.html Rendering Markup: components/boardroom-app.html Rendering Layout: components/boardroom-app.html Rendering: components/dashboard-panel.html Pre-Render Hooks: components/dashboard-panel.html Rendering Liquid: components/dashboard-panel.html Rendering Markup: components/dashboard-panel.html Rendering Layout: components/dashboard-panel.html Rendering: boardroom/index-new.html Pre-Render Hooks: boardroom/index-new.html Rendering Liquid: boardroom/index-new.html Rendering Markup: boardroom/index-new.html Rendering Layout: boardroom/index-new.html Layout source: theme GitHub Metadata: Calling @client.repository("ASISaga/businessinfinity.asisaga.com", {:accept=>"application/vnd.github.drax-preview+json"}) Rendering: boardroom/index.html Pre-Render Hooks: boardroom/index.html Rendering Liquid: boardroom/index.html Rendering Markup: boardroom/index.html Rendering Layout: boardroom/index.html Layout source: theme Rendering: website/index.html Pre-Render Hooks: website/index.html Rendering Liquid: website/index.html Rendering Markup: website/index.html Rendering Layout: website/index.html Layout source: theme Rendering: privacy-policy/index.html Pre-Render Hooks: privacy-policy/index.html Rendering Liquid: privacy-policy/index.html Rendering Markup: privacy-policy/index.html Rendering Layout: privacy-policy/index.html Layout source: theme Rendering: profile/index.html Pre-Render Hooks: profile/index.html Rendering Liquid: profile/index.html Rendering Markup: profile/index.html Rendering Layout: profile/index.html Layout source: theme Rendering: entrepreneur/index.html Pre-Render Hooks: entrepreneur/
-2025-10-18T16:39:15.0850379Z Post job cleanup.
-2025-10-18T16:39:15.1771735Z [command]/usr/bin/git version
-2025-10-18T16:39:15.1806740Z git version 2.51.0
-2025-10-18T16:39:15.1850751Z Temporarily overriding HOME='/home/runner/work/_temp/9cb9fc54-1293-4b99-9272-076c8d29239a' before making global git config changes
-2025-10-18T16:39:15.1852032Z Adding repository directory to the temporary git global config as a safe directory
-2025-10-18T16:39:15.1857689Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com
-2025-10-18T16:39:15.1893493Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-10-18T16:39:15.1925788Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-10-18T16:39:15.2146938Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-10-18T16:39:15.2168740Z http.https://github.com/.extraheader
-2025-10-18T16:39:15.2181211Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2025-10-18T16:39:15.2212249Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-10-18T16:39:15.2533968Z Cleaning up orphan processes
+﻿2025-10-18T16:40:53.6519137Z Current runner version: '2.328.0'
+2025-10-18T16:40:53.6552480Z ##[group]Runner Image Provisioner
+2025-10-18T16:40:53.6554081Z Hosted Compute Agent
+2025-10-18T16:40:53.6554927Z Version: 20251013.424
+2025-10-18T16:40:53.6555873Z Commit: cfdd8bfed34d71a55b72df4d2e82343c3fc2bab3
+2025-10-18T16:40:53.6557105Z Build Date: 2025-10-13T20:22:23Z
+2025-10-18T16:40:53.6558060Z ##[endgroup]
+2025-10-18T16:40:53.6558940Z ##[group]Operating System
+2025-10-18T16:40:53.6559740Z Ubuntu
+2025-10-18T16:40:53.6560602Z 24.04.3
+2025-10-18T16:40:53.6561278Z LTS
+2025-10-18T16:40:53.6561976Z ##[endgroup]
+2025-10-18T16:40:53.6563078Z ##[group]Runner Image
+2025-10-18T16:40:53.6564027Z Image: ubuntu-24.04
+2025-10-18T16:40:53.6564839Z Version: 20251014.76.1
+2025-10-18T16:40:53.6566629Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251014.76/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-18T16:40:53.6569322Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251014.76
+2025-10-18T16:40:53.6571221Z ##[endgroup]
+2025-10-18T16:40:53.6573339Z ##[group]GITHUB_TOKEN Permissions
+2025-10-18T16:40:53.6576020Z Contents: read
+2025-10-18T16:40:53.6576884Z Metadata: read
+2025-10-18T16:40:53.6577911Z Pages: write
+2025-10-18T16:40:53.6578798Z ##[endgroup]
+2025-10-18T16:40:53.6582259Z Secret source: Actions
+2025-10-18T16:40:53.6583541Z Prepare workflow directory
+2025-10-18T16:40:53.7067015Z Prepare all required actions
+2025-10-18T16:40:53.7106963Z Getting action download info
+2025-10-18T16:40:54.1630555Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-18T16:40:54.3693754Z Download action repository 'actions/jekyll-build-pages@v1' (SHA:44a6e6beabd48582f863aeeb6cb2151cc1716697)
+2025-10-18T16:40:54.8758056Z Download action repository 'actions/upload-pages-artifact@v3' (SHA:56afc609e74202658d3ffba0e8f6dda462b719fa)
+2025-10-18T16:40:55.5516040Z Getting action download info
+2025-10-18T16:40:55.7214874Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-10-18T16:40:55.8962410Z Complete job name: build
+2025-10-18T16:40:55.9431321Z ##[group]Pull down action image 'ghcr.io/actions/jekyll-build-pages:v1.0.13'
+2025-10-18T16:40:56.0707648Z ##[command]/usr/bin/docker pull ghcr.io/actions/jekyll-build-pages:v1.0.13
+2025-10-18T16:40:58.2032997Z v1.0.13: Pulling from actions/jekyll-build-pages
+2025-10-18T16:40:58.2060011Z efc2b5ad9eec: Pulling fs layer
+2025-10-18T16:40:58.2060491Z 165b60d1bb48: Pulling fs layer
+2025-10-18T16:40:58.2060919Z 2a328af1ca3a: Pulling fs layer
+2025-10-18T16:40:58.2061307Z 32b58fa44788: Pulling fs layer
+2025-10-18T16:40:58.2061799Z 590ab93c22d2: Pulling fs layer
+2025-10-18T16:40:58.2062262Z 26ea96c4c14c: Pulling fs layer
+2025-10-18T16:40:58.2062590Z bd7e451dfea1: Pulling fs layer
+2025-10-18T16:40:58.2063058Z c209e9dadc51: Pulling fs layer
+2025-10-18T16:40:58.2063285Z a4925b5c711a: Pulling fs layer
+2025-10-18T16:40:58.2063493Z cd9459784e3c: Pulling fs layer
+2025-10-18T16:40:58.2063689Z 26ea96c4c14c: Waiting
+2025-10-18T16:40:58.2063914Z bd7e451dfea1: Waiting
+2025-10-18T16:40:58.2064156Z c209e9dadc51: Waiting
+2025-10-18T16:40:58.2064333Z a4925b5c711a: Waiting
+2025-10-18T16:40:58.2064533Z cd9459784e3c: Waiting
+2025-10-18T16:40:58.2064708Z 32b58fa44788: Waiting
+2025-10-18T16:40:58.2064884Z 590ab93c22d2: Waiting
+2025-10-18T16:40:58.3777701Z 2a328af1ca3a: Verifying Checksum
+2025-10-18T16:40:58.3778638Z 2a328af1ca3a: Download complete
+2025-10-18T16:40:58.3985309Z 165b60d1bb48: Verifying Checksum
+2025-10-18T16:40:58.3986464Z 165b60d1bb48: Download complete
+2025-10-18T16:40:58.4448950Z efc2b5ad9eec: Download complete
+2025-10-18T16:40:58.5537434Z 590ab93c22d2: Verifying Checksum
+2025-10-18T16:40:58.5539990Z 590ab93c22d2: Download complete
+2025-10-18T16:40:58.6677715Z 32b58fa44788: Verifying Checksum
+2025-10-18T16:40:58.6678283Z 32b58fa44788: Download complete
+2025-10-18T16:40:58.7038386Z bd7e451dfea1: Verifying Checksum
+2025-10-18T16:40:58.7042274Z bd7e451dfea1: Download complete
+2025-10-18T16:40:58.8815414Z a4925b5c711a: Verifying Checksum
+2025-10-18T16:40:58.8823194Z a4925b5c711a: Download complete
+2025-10-18T16:40:58.9485807Z c209e9dadc51: Verifying Checksum
+2025-10-18T16:40:58.9489022Z c209e9dadc51: Download complete
+2025-10-18T16:40:59.0322838Z cd9459784e3c: Verifying Checksum
+2025-10-18T16:40:59.0323361Z cd9459784e3c: Download complete
+2025-10-18T16:40:59.1252821Z 26ea96c4c14c: Download complete
+2025-10-18T16:40:59.7150369Z efc2b5ad9eec: Pull complete
+2025-10-18T16:41:01.3175526Z 165b60d1bb48: Pull complete
+2025-10-18T16:41:01.3364366Z 2a328af1ca3a: Pull complete
+2025-10-18T16:41:02.3423672Z 32b58fa44788: Pull complete
+2025-10-18T16:41:02.3658675Z 590ab93c22d2: Pull complete
+2025-10-18T16:41:06.5182390Z 26ea96c4c14c: Pull complete
+2025-10-18T16:41:06.5626594Z bd7e451dfea1: Pull complete
+2025-10-18T16:41:08.6070301Z c209e9dadc51: Pull complete
+2025-10-18T16:41:08.6474454Z a4925b5c711a: Pull complete
+2025-10-18T16:41:08.6620217Z cd9459784e3c: Pull complete
+2025-10-18T16:41:08.6678015Z Digest: sha256:6791ebfd912185ed59bfb5fb102664fa872496b79f87ff8b9cfba292a7345041
+2025-10-18T16:41:08.6700844Z Status: Downloaded newer image for ghcr.io/actions/jekyll-build-pages:v1.0.13
+2025-10-18T16:41:08.6744653Z ghcr.io/actions/jekyll-build-pages:v1.0.13
+2025-10-18T16:41:08.6766968Z ##[endgroup]
+2025-10-18T16:41:08.7036223Z ##[group]Run actions/checkout@v4
+2025-10-18T16:41:08.7036752Z with:
+2025-10-18T16:41:08.7036949Z   ref: main
+2025-10-18T16:41:08.7037128Z   submodules: recursive
+2025-10-18T16:41:08.7037400Z   repository: ASISaga/businessinfinity.asisaga.com
+2025-10-18T16:41:08.7037853Z   token: ***
+2025-10-18T16:41:08.7038028Z   ssh-strict: true
+2025-10-18T16:41:08.7038214Z   ssh-user: git
+2025-10-18T16:41:08.7038398Z   persist-credentials: true
+2025-10-18T16:41:08.7038619Z   clean: true
+2025-10-18T16:41:08.7038811Z   sparse-checkout-cone-mode: true
+2025-10-18T16:41:08.7039034Z   fetch-depth: 1
+2025-10-18T16:41:08.7039211Z   fetch-tags: false
+2025-10-18T16:41:08.7039390Z   show-progress: true
+2025-10-18T16:41:08.7039575Z   lfs: false
+2025-10-18T16:41:08.7039758Z   set-safe-directory: true
+2025-10-18T16:41:08.7040145Z ##[endgroup]
+2025-10-18T16:41:08.8093120Z Syncing repository: ASISaga/businessinfinity.asisaga.com
+2025-10-18T16:41:08.8094417Z ##[group]Getting Git version info
+2025-10-18T16:41:08.8095000Z Working directory is '/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com'
+2025-10-18T16:41:08.8095662Z [command]/usr/bin/git version
+2025-10-18T16:41:08.8223931Z git version 2.51.0
+2025-10-18T16:41:08.8249660Z ##[endgroup]
+2025-10-18T16:41:08.8263793Z Temporarily overriding HOME='/home/runner/work/_temp/acac3acc-b1a5-47f1-bddb-49164c14a166' before making global git config changes
+2025-10-18T16:41:08.8265053Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-18T16:41:08.8276514Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com
+2025-10-18T16:41:08.8316245Z Deleting the contents of '/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com'
+2025-10-18T16:41:08.8319427Z ##[group]Initializing the repository
+2025-10-18T16:41:08.8323842Z [command]/usr/bin/git init /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com
+2025-10-18T16:41:08.8484399Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-18T16:41:08.8485159Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-18T16:41:08.8485665Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-18T16:41:08.8486016Z hint:
+2025-10-18T16:41:08.8486289Z hint: 	git config --global init.defaultBranch <name>
+2025-10-18T16:41:08.8486594Z hint:
+2025-10-18T16:41:08.8486898Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-18T16:41:08.8487378Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-18T16:41:08.8487753Z hint:
+2025-10-18T16:41:08.8487955Z hint: 	git branch -m <name>
+2025-10-18T16:41:08.8488461Z hint:
+2025-10-18T16:41:08.8489023Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-18T16:41:08.8490192Z Initialized empty Git repository in /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com/.git/
+2025-10-18T16:41:08.8501836Z [command]/usr/bin/git remote add origin https://github.com/ASISaga/businessinfinity.asisaga.com
+2025-10-18T16:41:08.8542211Z ##[endgroup]
+2025-10-18T16:41:08.8543042Z ##[group]Disabling automatic garbage collection
+2025-10-18T16:41:08.8547665Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-18T16:41:08.8574602Z ##[endgroup]
+2025-10-18T16:41:08.8574955Z ##[group]Setting up auth
+2025-10-18T16:41:08.8581373Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-18T16:41:08.8611944Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-18T16:41:08.8991236Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-18T16:41:08.9020567Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-18T16:41:08.9242234Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-18T16:41:08.9276664Z ##[endgroup]
+2025-10-18T16:41:08.9277256Z ##[group]Fetching the repository
+2025-10-18T16:41:08.9285531Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main*:refs/remotes/origin/main* +refs/tags/main*:refs/tags/main*
+2025-10-18T16:41:09.5331392Z From https://github.com/ASISaga/businessinfinity.asisaga.com
+2025-10-18T16:41:09.5332499Z  * [new branch]      main        -> origin/main
+2025-10-18T16:41:09.5333333Z  * [new branch]      main-backup -> origin/main-backup
+2025-10-18T16:41:09.5369501Z ##[endgroup]
+2025-10-18T16:41:09.5370104Z ##[group]Determining the checkout info
+2025-10-18T16:41:09.5377886Z [command]/usr/bin/git branch --list --remote origin/main
+2025-10-18T16:41:09.5401589Z   origin/main
+2025-10-18T16:41:09.5408149Z ##[endgroup]
+2025-10-18T16:41:09.5412412Z [command]/usr/bin/git sparse-checkout disable
+2025-10-18T16:41:09.5451680Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-18T16:41:09.5479762Z ##[group]Checking out the ref
+2025-10-18T16:41:09.5484045Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-18T16:41:09.5696993Z Switched to a new branch 'main'
+2025-10-18T16:41:09.5699412Z branch 'main' set up to track 'origin/main'.
+2025-10-18T16:41:09.5705365Z ##[endgroup]
+2025-10-18T16:41:09.5705891Z ##[group]Setting up auth for fetching submodules
+2025-10-18T16:41:09.5710586Z [command]/usr/bin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-18T16:41:09.5744859Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+2025-10-18T16:41:09.5771762Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2025-10-18T16:41:09.5798928Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-10753247@github.com:
+2025-10-18T16:41:09.5823652Z ##[endgroup]
+2025-10-18T16:41:09.5824189Z ##[group]Fetching submodules
+2025-10-18T16:41:09.5827654Z [command]/usr/bin/git submodule sync --recursive
+2025-10-18T16:41:09.6056924Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+2025-10-18T16:41:09.6276861Z [command]/usr/bin/git submodule foreach --recursive git config --local gc.auto 0
+2025-10-18T16:41:09.6492936Z ##[endgroup]
+2025-10-18T16:41:09.6493597Z ##[group]Persisting credentials for submodules
+2025-10-18T16:41:09.6502052Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+2025-10-18T16:41:09.6746159Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2025-10-18T16:41:09.6986205Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+2025-10-18T16:41:09.7226410Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-10753247@github.com:'
+2025-10-18T16:41:09.7461363Z ##[endgroup]
+2025-10-18T16:41:09.7500974Z [command]/usr/bin/git log -1 --format=%H
+2025-10-18T16:41:09.7524261Z c87540ab15ccf868c74d99bc4a5ef82a940e311f
+2025-10-18T16:41:09.7687889Z ##[group]Run actions/jekyll-build-pages@v1
+2025-10-18T16:41:09.7688184Z with:
+2025-10-18T16:41:09.7688341Z   source: .
+2025-10-18T16:41:09.7688510Z   destination: ./_site
+2025-10-18T16:41:09.7688693Z   future: false
+2025-10-18T16:41:09.7688927Z   build_revision: c87540ab15ccf868c74d99bc4a5ef82a940e311f
+2025-10-18T16:41:09.7689200Z   verbose: true
+2025-10-18T16:41:09.7689504Z   token: ***
+2025-10-18T16:41:09.7689673Z ##[endgroup]
+2025-10-18T16:41:09.7776456Z ##[command]/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_7afc87 --label 1fb849 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13
+2025-10-18T16:41:11.1927242Z To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
+2025-10-18T16:41:20.0930659Z [31m  Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss':[0m
+2025-10-18T16:41:20.0932402Z [31m                    Mixin border-life-force-green takes 0 arguments but 1 was passed. on line 99[0m
+2025-10-18T16:41:20.0935024Z /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:123:in `rescue in convert': Mixin border-life-force-green takes 0 arguments but 1 was passed. on line 99 (Jekyll::Converters::Scss::SyntaxError)
+2025-10-18T16:41:20.0936835Z 
+2025-10-18T16:41:20.0937260Z         raise SyntaxError, "#{e} on line #{e.sass_line}"
+2025-10-18T16:41:20.0937823Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-18T16:41:20.0939451Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:118:in `convert'
+2025-10-18T16:41:20.0940559Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
+2025-10-18T16:41:20.0941498Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
+2025-10-18T16:41:20.0942356Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
+2025-10-18T16:41:20.0943413Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
+2025-10-18T16:41:20.0944351Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
+2025-10-18T16:41:20.0945258Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
+2025-10-18T16:41:20.0946153Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
+2025-10-18T16:41:20.0947414Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
+2025-10-18T16:41:20.0948394Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
+2025-10-18T16:41:20.0949251Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
+2025-10-18T16:41:20.0950127Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
+2025-10-18T16:41:20.0950968Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
+2025-10-18T16:41:20.0951856Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
+2025-10-18T16:41:20.0952952Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
+2025-10-18T16:41:20.0953881Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
+2025-10-18T16:41:20.0954965Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
+2025-10-18T16:41:20.0956116Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
+2025-10-18T16:41:20.0957131Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
+2025-10-18T16:41:20.0958067Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
+2025-10-18T16:41:20.0958974Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
+2025-10-18T16:41:20.0959865Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
+2025-10-18T16:41:20.0960768Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
+2025-10-18T16:41:20.0961545Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
+2025-10-18T16:41:20.0962107Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
+2025-10-18T16:41:20.0963789Z /tmp/jekyll-remote-theme-20251018-7-m3y4dd/_sass/components/_sacred-buttons.scss:99:in `border-life-force-green': Mixin border-life-force-green takes 0 arguments but 1 was passed. (Sass::SyntaxError)
+2025-10-18T16:41:20.0965469Z 	from /tmp/jekyll-remote-theme-20251018-7-m3y4dd/_sass/components/_sacred-buttons.scss:99
+2025-10-18T16:41:20.0966358Z 	from /tmp/jekyll-remote-theme-20251018-7-m3y4dd/_sass/_common.scss:88
+2025-10-18T16:41:20.0966943Z 	from (sass):1
+2025-10-18T16:41:20.0967586Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:57:in `perform_arguments'
+2025-10-18T16:41:20.0968705Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:358:in `block in visit_mixin'
+2025-10-18T16:41:20.0969728Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:98:in `block in with_mixin'
+2025-10-18T16:41:20.0970589Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-18T16:41:20.0971491Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:98:in `with_mixin'
+2025-10-18T16:41:20.0972411Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
+2025-10-18T16:41:20.0973575Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-18T16:41:20.0974755Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+2025-10-18T16:41:20.0975715Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+2025-10-18T16:41:20.0976558Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-18T16:41:20.0977358Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+2025-10-18T16:41:20.0978228Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+2025-10-18T16:41:20.0979340Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
+2025-10-18T16:41:20.0980422Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
+2025-10-18T16:41:20.0981659Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
+2025-10-18T16:41:20.0983019Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+2025-10-18T16:41:20.0984071Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
+2025-10-18T16:41:20.0985006Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-18T16:41:20.0985982Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+2025-10-18T16:41:20.0986955Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+2025-10-18T16:41:20.0987805Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-18T16:41:20.0988618Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+2025-10-18T16:41:20.0989473Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+2025-10-18T16:41:20.0990609Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+2025-10-18T16:41:20.0991729Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `map'
+2025-10-18T16:41:20.0992931Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+2025-10-18T16:41:20.0994006Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
+2025-10-18T16:41:20.0994891Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-18T16:41:20.0995729Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
+2025-10-18T16:41:20.0996657Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+2025-10-18T16:41:20.0997628Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-18T16:41:20.0998654Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+2025-10-18T16:41:20.0999672Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+2025-10-18T16:41:20.1000512Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-18T16:41:20.1001332Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+2025-10-18T16:41:20.1002185Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+2025-10-18T16:41:20.1003485Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+2025-10-18T16:41:20.1004614Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `map'
+2025-10-18T16:41:20.1005655Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+2025-10-18T16:41:20.1006680Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
+2025-10-18T16:41:20.1007564Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-18T16:41:20.1008598Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
+2025-10-18T16:41:20.1009512Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+2025-10-18T16:41:20.1010479Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-18T16:41:20.1011454Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+2025-10-18T16:41:20.1012424Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+2025-10-18T16:41:20.1013476Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-18T16:41:20.1014295Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+2025-10-18T16:41:20.1015172Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+2025-10-18T16:41:20.1016389Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+2025-10-18T16:41:20.1017424Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
+2025-10-18T16:41:20.1018356Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+2025-10-18T16:41:20.1019435Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+2025-10-18T16:41:20.1020570Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+2025-10-18T16:41:20.1021639Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+2025-10-18T16:41:20.1022852Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+2025-10-18T16:41:20.1023851Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+2025-10-18T16:41:20.1024789Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-18T16:41:20.1025721Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+2025-10-18T16:41:20.1026655Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+2025-10-18T16:41:20.1027564Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+2025-10-18T16:41:20.1028431Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:20:in `render'
+2025-10-18T16:41:20.1029254Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/engine.rb:290:in `render'
+2025-10-18T16:41:20.1029999Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass.rb:57:in `compile'
+2025-10-18T16:41:20.1030923Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:119:in `convert'
+2025-10-18T16:41:20.1032001Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
+2025-10-18T16:41:20.1033093Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
+2025-10-18T16:41:20.1033934Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
+2025-10-18T16:41:20.1034787Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
+2025-10-18T16:41:20.1035703Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
+2025-10-18T16:41:20.1036610Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
+2025-10-18T16:41:20.1037497Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
+2025-10-18T16:41:20.1038464Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
+2025-10-18T16:41:20.1039365Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
+2025-10-18T16:41:20.1040205Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
+2025-10-18T16:41:20.1041085Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
+2025-10-18T16:41:20.1042111Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
+2025-10-18T16:41:20.1043167Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
+2025-10-18T16:41:20.1044096Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
+2025-10-18T16:41:20.1045017Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
+2025-10-18T16:41:20.1046098Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
+2025-10-18T16:41:20.1047289Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
+2025-10-18T16:41:20.1048268Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
+2025-10-18T16:41:20.1049187Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
+2025-10-18T16:41:20.1050277Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
+2025-10-18T16:41:20.1051175Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
+2025-10-18T16:41:20.1052074Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
+2025-10-18T16:41:20.1053013Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
+2025-10-18T16:41:20.1053568Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
+2025-10-18T16:41:20.1423222Z ##[error] Logging at level: debug Configuration file: /github/workspace/./_config.yml GitHub Pages: github-pages v232 GitHub Pages: jekyll v3.10.0 Theme: jekyll-theme-primer Theme source: /usr/local/bundle/gems/jekyll-theme-primer-0.6.0 Requiring: jekyll-github-metadata Requiring: jekyll-seo-tag Requiring: jekyll-feed Requiring: jekyll-sitemap Requiring: jekyll-remote-theme Requiring: jekyll-coffeescript Requiring: jekyll-commonmark-ghpages Requiring: jekyll-gist Requiring: jekyll-github-metadata Requiring: jekyll-paginate Requiring: jekyll-relative-links Requiring: jekyll-optional-front-matter Requiring: jekyll-readme-index Requiring: jekyll-default-layout Requiring: jekyll-titles-from-headings Requiring: jekyll-remote-theme GitHub Metadata: Initializing... Source: /github/workspace/. Destination: /github/workspace/./_site Incremental build: disabled. Enable with --incremental Generating... Theme: asisaga/theme.asisaga.com Theme source: /tmp/jekyll-remote-theme-20251018-7-m3y4dd Remote Theme: Using theme asisaga/theme.asisaga.com Remote Theme: Downloading https://codeload.github.com/asisaga/theme.asisaga.com/zip/HEAD to /tmp/jekyll-remote-theme-20251018-7-rsxp40.zip Remote Theme: Unzipping /tmp/jekyll-remote-theme-20251018-7-rsxp40.zip to /tmp/jekyll-remote-theme-20251018-7-m3y4dd EntryFilter: excluded /README.md EntryFilter: excluded /website_structure.json EntryFilter: excluded /LICENSE EntryFilter: excluded /docs/test-plan.md EntryFilter: excluded /docs/specifications.md EntryFilter: excluded /docs/Trust.md Generating: JekyllOptionalFrontMatter::Generator finished in 0.001342363 seconds. Generating: JekyllReadmeIndex::Generator finished in 0.005329738 seconds. Jekyll Feed: Generating feed for posts Generating: JekyllFeed::Generator finished in 0.000693283 seconds. Generating: Jekyll::JekyllSitemap finished in 0.000491744 seconds. Generating: Jekyll::Paginate::Pagination finished in 6.702e-06 seconds. GitHub Metadata: Generating for ASISaga/businessinfinity.asisaga.com GitHub Metadata: Calling @client.pages("ASISaga/businessinfinity.asisaga.com", {}) Generating: JekyllRelativeLinks::Generator finished in 0.25430385 seconds. Generating: JekyllDefaultLayout::Generator finished in 0.000576413 seconds. Requiring: kramdown-parser-gfm Generating: JekyllTitlesFromHeadings::Generator finished in 0.014204369 seconds. Rendering: components/boardroom-app.html Pre-Render Hooks: components/boardroom-app.html Rendering Liquid: components/boardroom-app.html Rendering Markup: components/boardroom-app.html Rendering Layout: components/boardroom-app.html Rendering: components/dashboard-panel.html Pre-Render Hooks: components/dashboard-panel.html Rendering Liquid: components/dashboard-panel.html Rendering Markup: components/dashboard-panel.html Rendering Layout: components/dashboard-panel.html Rendering: boardroom/index-new.html Pre-Render Hooks: boardroom/index-new.html Rendering Liquid: boardroom/index-new.html Rendering Markup: boardroom/index-new.html Rendering Layout: boardroom/index-new.html Layout source: theme GitHub Metadata: Calling @client.repository("ASISaga/businessinfinity.asisaga.com", {:accept=>"application/vnd.github.drax-preview+json"}) Rendering: boardroom/index.html Pre-Render Hooks: boardroom/index.html Rendering Liquid: boardroom/index.html Rendering Markup: boardroom/index.html Rendering Layout: boardroom/index.html Layout source: theme Rendering: website/index.html Pre-Render Hooks: website/index.html Rendering Liquid: website/index.html Rendering Markup: website/index.html Rendering Layout: website/index.html Layout source: theme Rendering: privacy-policy/index.html Pre-Render Hooks: privacy-policy/index.html Rendering Liquid: privacy-policy/index.html Rendering Markup: privacy-policy/index.html Rendering Layout: privacy-policy/index.html Layout source: theme Rendering: profile/index.html Pre-Render Hooks: profile/index.html Rendering Liquid: profile/index.html Rendering Markup: profile/index.html Rendering Layout: profile/index.html Layout source: theme Rendering: entrepreneur/index.html Pre-Render Hooks: entrepreneur/i
+2025-10-18T16:41:20.2370958Z Post job cleanup.
+2025-10-18T16:41:20.3288855Z [command]/usr/bin/git version
+2025-10-18T16:41:20.3326590Z git version 2.51.0
+2025-10-18T16:41:20.3370430Z Temporarily overriding HOME='/home/runner/work/_temp/ed8a2840-a0c9-45df-b42a-dc22e646809c' before making global git config changes
+2025-10-18T16:41:20.3371719Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-18T16:41:20.3377382Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com
+2025-10-18T16:41:20.3413801Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-18T16:41:20.3448072Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-18T16:41:20.3675842Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-18T16:41:20.3697887Z http.https://github.com/.extraheader
+2025-10-18T16:41:20.3711398Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-18T16:41:20.3743184Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-18T16:41:20.4091219Z Cleaning up orphan processes
