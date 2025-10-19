@@ -47,6 +47,22 @@ function selectiveCopyAllScss() {
     const bootstrapEntry = 'bootstrap.scss';
     const bootstrapSrc = path.resolve(__dirname, '../../node_modules/bootstrap/scss');
     const bootstrapDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/bootstrap');
+    // Always copy critical Bootstrap files
+    const criticalBootstrap = [
+        '_functions.scss',
+        '_variables.scss',
+        '_variables-dark.scss',
+        '_mixins.scss',
+        '_root.scss'
+    ];
+    for (const file of criticalBootstrap) {
+        const srcFile = path.join(bootstrapSrc, file);
+        const destFile = path.join(bootstrapDest, file);
+        if (fs.existsSync(srcFile)) {
+            fs.mkdirSync(path.dirname(destFile), { recursive: true });
+            fs.copyFileSync(srcFile, destFile);
+        }
+    }
     resolveScssDeps(bootstrapEntry, bootstrapSrc, bootstrapDest);
     // Font Awesome
     const faEntry = 'fontawesome.scss';
