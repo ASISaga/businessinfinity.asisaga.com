@@ -58,9 +58,13 @@ function selectiveCopyAllScss() {
     for (const file of criticalBootstrap) {
         const srcFile = path.join(bootstrapSrc, file);
         const destFile = path.join(bootstrapDest, file);
+        console.log(`[DEBUG] Bootstrap: srcFile=${srcFile}, destFile=${destFile}`);
         if (fs.existsSync(srcFile)) {
             fs.mkdirSync(path.dirname(destFile), { recursive: true });
             fs.copyFileSync(srcFile, destFile);
+            console.log(`[DEBUG] Copied: ${srcFile} -> ${destFile}`);
+        } else {
+            console.warn(`[DEBUG] Source file does not exist: ${srcFile}`);
         }
     }
     resolveScssDeps(bootstrapEntry, bootstrapSrc, bootstrapDest);
