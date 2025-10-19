@@ -45,8 +45,8 @@ function resolveScssDeps(entryFile, scssRoot, destRoot, copied = new Set()) {
 function selectiveCopyAllScss() {
     // Bootstrap
     const bootstrapEntry = 'bootstrap.scss';
-    // Use node_modules relative to the current working directory (site root)
-    const bootstrapSrc = path.join(process.cwd(), 'node_modules', 'bootstrap', 'scss');
+    // Use node_modules in the Website directory (parent of businessinfinity.asisaga.com)
+    const bootstrapSrc = path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss');
     const bootstrapDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/bootstrap');
     // Always copy critical Bootstrap files
     const criticalBootstrap = [
