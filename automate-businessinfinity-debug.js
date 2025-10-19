@@ -50,9 +50,9 @@ function selectiveCopyAllScss() {
     const bootstrapDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/bootstrap');
     // Copy Bootstrap's vendor/rfs.scss to _sass/vendor/rfs.scss for Jekyll compatibility
     // Use _rfs.scss as the source file
-    // Copy _rfs.scss to _sass/bootstrap/scss/vendor/_rfs.scss, matching node_modules relative path
+    // Copy _rfs.scss to _sass/vendor/_rfs.scss for Jekyll compatibility with @import "vendor/rfs"
     const rfsSrc = path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'vendor', '_rfs.scss');
-    const rfsDest = path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'bootstrap', 'scss', 'vendor', '_rfs.scss');
+    const rfsDest = path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'vendor', '_rfs.scss');
     console.log(`[DEBUG] RFS: srcFile=${rfsSrc}, destFile=${rfsDest}`);
     if (fs.existsSync(rfsSrc)) {
         fs.mkdirSync(path.dirname(rfsDest), { recursive: true });
