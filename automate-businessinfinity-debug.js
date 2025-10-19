@@ -48,6 +48,17 @@ function selectiveCopyAllScss() {
     // Use node_modules in the Website directory (parent of businessinfinity.asisaga.com)
     const bootstrapSrc = path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss');
     const bootstrapDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/bootstrap');
+    // Copy Bootstrap's vendor/rfs.scss to _sass/vendor/rfs.scss for Jekyll compatibility
+    const rfsSrc = path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'vendor', 'rfs.scss');
+    const rfsDest = path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'vendor', 'rfs.scss');
+    console.log(`[DEBUG] RFS: srcFile=${rfsSrc}, destFile=${rfsDest}`);
+    if (fs.existsSync(rfsSrc)) {
+        fs.mkdirSync(path.dirname(rfsDest), { recursive: true });
+        fs.copyFileSync(rfsSrc, rfsDest);
+        console.log(`[DEBUG] Copied: ${rfsSrc} -> ${rfsDest}`);
+    } else {
+        console.warn(`[DEBUG] Source file does not exist: ${rfsSrc}`);
+    }
     // Always copy critical Bootstrap files
     const criticalBootstrap = [
         '_functions.scss',
