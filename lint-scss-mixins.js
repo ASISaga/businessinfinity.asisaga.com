@@ -106,7 +106,7 @@ let stringVars = new Set();
 let nilVars = new Set();
 let definedVars = new Set();
 
-// Collect all string and nil/null variable assignments
+// Collect all string and nil/null variable assignments, and all defined variables
 for (const { file, content } of allScss) {
     let m;
     while ((m = stringVarRegex.exec(content)) !== null) {
@@ -120,6 +120,29 @@ for (const { file, content } of allScss) {
     const varDefRegex = /([\$\w-]+)\s*:/g;
     while ((m = varDefRegex.exec(content)) !== null) {
         definedVars.add(m[1]);
+    }
+}
+
+// --- Enhancement: Check for all undefined variable usages ---
+function stripComments(scss) {
+    // Remove /* ... */ block comments
+    scss = scss.replace(/\/\*[\s\S]*?\*\//g, '');
+    // Remove // ... line comments
+    scss = scss.replace(/(^|[^:])\/\/.*$/gm, '$1');
+    return scss;
+}
+
+for (const { file, content } of allScss) {
+    const cleanContent = stripComments(content);
+    // Find all $variable usages (not followed by a colon, to avoid double-counting definitions)
+    const varUseRegex = /\$[\w-]+/g;
+    let match;
+    while ((match = varUseRegex.exec(cleanContent)) !== null) {
+        const varName = match[0];
+        // If not defined anywhere, and not a built-in (e.g., $color), report as error
+        if (!definedVars.has(varName)) {
+            errors.push(`${file}: Usage of undefined variable ${varName}`);
+        }
     }
 }
 
