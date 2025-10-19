@@ -23,14 +23,30 @@ if (theme) {
 }
 let errors = [];
 
-// Collect all mixin names defined in all SCSS files
+
+// Recursively collect all .scss files in a directory
+function getAllScssFiles(dir) {
+    let results = [];
+    if (!fs.existsSync(dir)) return results;
+    const list = fs.readdirSync(dir);
+    for (const file of list) {
+        const filePath = path.join(dir, file);
+        const stat = fs.statSync(filePath);
+        if (stat && stat.isDirectory()) {
+            results = results.concat(getAllScssFiles(filePath));
+        } else if (file.endsWith('.scss')) {
+            results.push(filePath);
+        }
+    }
+    return results;
+}
+
+// Collect all mixin names defined in all SCSS files (recursively)
 function getAllMixinNames(dirs) {
     const mixinNames = new Set();
     for (const dir of dirs) {
-        if (!fs.existsSync(dir)) continue;
-        const files = fs.readdirSync(dir).filter(f => f.endsWith('.scss'));
-        for (const file of files) {
-            const filePath = path.join(dir, file);
+        const files = getAllScssFiles(dir);
+        for (const filePath of files) {
             const content = fs.readFileSync(filePath, 'utf8');
             const mixinRegex = /@mixin\s+([\w-]+)/g;
             let match;
@@ -42,26 +58,6 @@ function getAllMixinNames(dirs) {
     return mixinNames;
 }
 
-// Scan for @include statements and check if mixin exists
-function checkIncludeMixins(dirs, mixinNames) {
-    const missingMixins = [];
-    for (const dir of dirs) {
-        if (!fs.existsSync(dir)) continue;
-        const files = fs.readdirSync(dir).filter(f => f.endsWith('.scss'));
-        for (const file of files) {
-            const filePath = path.join(dir, file);
-            const content = fs.readFileSync(filePath, 'utf8');
-            const includeRegex = /@include\s+([\w-]+)/g;
-            let match;
-            while ((match = includeRegex.exec(content)) !== null) {
-                if (!mixinNames.has(match[1])) {
-                    missingMixins.push(`${file}: @include ${match[1]} (no matching @mixin)`);
-                }
-            }
-        }
-    }
-    return missingMixins;
-}
 
 for (const dir of scssDirs) {
     if (!fs.existsSync(dir)) continue;
@@ -84,12 +80,7 @@ for (const dir of scssDirs) {
     }
 }
 
-// Proactive check for missing mixins in @include statements
-const mixinNames = getAllMixinNames(scssDirs);
-const missingMixins = checkIncludeMixins(scssDirs, mixinNames);
-if (missingMixins.length > 0) {
-    errors.push(...missingMixins);
-}
+// (Removed manual @include scan; rely on Dart Sass for missing mixin detection)
 
 // --- Additional proactive lint checks ---
 function getAllScssContents(dirs) {
