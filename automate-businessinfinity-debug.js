@@ -1,3 +1,61 @@
+// --- SELECTIVE SCSS COPY ---
+// Recursively copy only imported SCSS files from npm packages to _sass dirs
+function getScssImports(filePath, seen = new Set()) {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const importRegex = /@import\s+["']([^"']+)["']/g;
+    let match;
+    const imports = [];
+    while ((match = importRegex.exec(content))) {
+        let imp = match[1];
+        // Remove file extension and leading underscores
+        imp = imp.replace(/\.scss$/, '').replace(/^_/, '');
+        imports.push(imp);
+    }
+    return imports;
+}
+
+function resolveScssDeps(entryFile, scssRoot, destRoot, copied = new Set()) {
+    const entry = path.resolve(scssRoot, entryFile);
+    if (!fs.existsSync(entry)) return;
+    if (copied.has(entry)) return;
+    copied.add(entry);
+    // Copy file
+    const relPath = path.relative(scssRoot, entry);
+    const destPath = path.join(destRoot, relPath);
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
+    fs.copyFileSync(entry, destPath);
+    // Parse imports
+    const imports = getScssImports(entry);
+    for (const imp of imports) {
+        // Try _imp.scss, imp.scss, imp/index.scss
+        const candidates = [
+            path.join(scssRoot, `_${imp}.scss`),
+            path.join(scssRoot, `${imp}.scss`),
+            path.join(scssRoot, imp, 'index.scss')
+        ];
+        for (const cand of candidates) {
+            if (fs.existsSync(cand)) {
+                resolveScssDeps(path.relative(scssRoot, cand), scssRoot, destRoot, copied);
+                break;
+            }
+        }
+    }
+}
+
+function selectiveCopyAllScss() {
+    // Bootstrap
+    const bootstrapEntry = 'bootstrap.scss';
+    const bootstrapSrc = path.resolve(__dirname, '../../node_modules/bootstrap/scss');
+    const bootstrapDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/bootstrap');
+    resolveScssDeps(bootstrapEntry, bootstrapSrc, bootstrapDest);
+    // Font Awesome
+    const faEntry = 'fontawesome.scss';
+    const faSrc = path.resolve(__dirname, '../../node_modules/@fortawesome/fontawesome-free/scss');
+    const faDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/fontawesome');
+    resolveScssDeps(faEntry, faSrc, faDest);
+    // Optionally, add more entries as needed
+    console.log('Selective SCSS copy complete.');
+}
 // Utility: Get the latest workflow run number
 async function getLatestRunNumber() {
     const workflowId = '171259422';
@@ -291,8 +349,9 @@ main().catch(err => {
     console.error('Error:', err.message);
     process.exit(1);
 });
-// Lint SCSS for missing mixins and fatal errors before pushing
+// Selectively copy only needed SCSS files from npm packages
 try {
+    selectiveCopyAllScss();
     console.log('Linting SCSS for missing mixins and fatal errors...');
     execSync(`node ${path.resolve(__dirname, 'lint-scss-mixins.js')}`, { stdio: 'inherit' });
     console.log('SCSS lint passed. Proceeding with push.');
