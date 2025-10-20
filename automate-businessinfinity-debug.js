@@ -109,7 +109,8 @@ function alwaysCopyFontAwesomeScss() {
     }
     const allFaFiles = fs.readdirSync(faSrcDir);
     console.log(`[DEBUG] Font Awesome SCSS source contents:`, allFaFiles);
-    const faDestDir = path.join('theme.asisaga.com', '_sass', 'fontawesome');
+    // Use absolute path to theme.asisaga.com/_sass/fontawesome
+    const faDestDir = path.resolve(__dirname, '../theme.asisaga.com/_sass/fontawesome');
     fs.mkdirSync(faDestDir, { recursive: true });
     // Copy all root SCSS files
     const rootFiles = allFaFiles.filter(f => f.endsWith('.scss'));
