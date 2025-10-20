@@ -70,7 +70,7 @@ for (const dir of scssDirs) {
     for (const file of files) {
         const filePath = path.join(dir, file);
         try {
-            sass.compile(filePath);
+            sass.compile(filePath, { quietDeps: true, quiet: true });
         } catch (e) {
             const msg = e.message || '';
             // Check for undefined mixin, fatal errors, or mixin argument mismatch

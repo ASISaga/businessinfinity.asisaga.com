@@ -370,7 +370,7 @@ async function main() {
         console.log('Downloading workflow logs...');
         await downloadLogs(run.id); // Unzips all logs
         // 5. Scan all log files for errors
-    // ...existing code...
+        // ...existing code...
         const logDir = './workflow-logs';
         const logFiles = fs.readdirSync(logDir).filter(f => f.endsWith('.txt'));
         const patterns = [
