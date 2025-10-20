@@ -1,3 +1,83 @@
+// --- STAGE 1: Dart Sass Dependency Resolution & Selective Copy ---
+// Run Stage 1 automatically
+import sass from 'sass';
+import glob from 'glob';
+import fs from 'fs';
+import path from 'path';
+import axios from 'axios';
+import { execSync } from 'child_process';
+
+// For __dirname in ES modules
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Run Stage 1 automatically
+selectiveCopyBootstrapScss(
+    path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'bootstrap.scss'),
+    path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss'),
+    path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'bootstrap')
+);
+
+function getAllScssImports(filePath, loadPaths, seen = new Set()) {
+    if (seen.has(filePath)) return [];
+    seen.add(filePath);
+    const content = fs.readFileSync(filePath, 'utf8');
+    const importRegex = /@import\s+["']([^"']+)["']/g;
+    let match;
+    let imports = [];
+    while ((match = importRegex.exec(content)) !== null) {
+        let importPath = match[1];
+        // Dart Sass resolves partials and .scss extension automatically
+        let candidates = [
+            importPath + '.scss',
+            '_' + importPath + '.scss',
+            importPath,
+            '_' + importPath
+        ];
+        let resolved = null;
+        for (let candidate of candidates) {
+            for (let loadPath of loadPaths) {
+                let fullPath = path.join(loadPath, candidate);
+                if (fs.existsSync(fullPath)) {
+                    resolved = fullPath;
+                    break;
+                }
+            }
+            if (resolved) break;
+        }
+        if (resolved) {
+            imports.push(resolved);
+            // Recursively resolve imports
+            imports = imports.concat(getAllScssImports(resolved, loadPaths, seen));
+        }
+    }
+    return imports;
+}
+
+function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
+    // Find all imports recursively
+    const loadPaths = [srcDir];
+    const allImports = getAllScssImports(entryScss, loadPaths);
+    // Always include the entry file itself
+    allImports.push(entryScss);
+    // Copy each file, preserving relative path
+    for (const absPath of new Set(allImports)) {
+        const relPath = path.relative(srcDir, absPath);
+        const destPath = path.join(destDir, relPath);
+        fs.mkdirSync(path.dirname(destPath), { recursive: true });
+        fs.copyFileSync(absPath, destPath);
+        console.log(`[STAGE 1] Copied: ${absPath} -> ${destPath}`);
+    }
+    console.log('[STAGE 1] Selective SCSS copy complete.');
+}
+
+// Example usage for Stage 1:
+// selectiveCopyBootstrapScss(
+//   path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'bootstrap.scss'),
+//   path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss'),
+//   path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'bootstrap')
+// );
 // --- SELECTIVE SCSS COPY ---
 // Recursively copy only imported SCSS files from npm packages to _sass dirs
 function getScssImports(filePath, seen = new Set()) {
@@ -50,45 +130,9 @@ function selectiveCopyAllScss() {
     const bootstrapDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/bootstrap');
     // Copy Bootstrap's vendor/rfs.scss to _sass/vendor/rfs.scss for Jekyll compatibility
     // Use _rfs.scss as the source file
-    // Copy _rfs.scss to _sass/vendor/_rfs.scss for Jekyll compatibility with @import "vendor/rfs"
-    const rfsSrc = path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'vendor', '_rfs.scss');
-    const rfsDest = path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'vendor', '_rfs.scss');
-    console.log(`[DEBUG] RFS: srcFile=${rfsSrc}, destFile=${rfsDest}`);
-    if (fs.existsSync(rfsSrc)) {
-        fs.mkdirSync(path.dirname(rfsDest), { recursive: true });
-        fs.copyFileSync(rfsSrc, rfsDest);
-        console.log(`[DEBUG] Copied: ${rfsSrc} -> ${rfsDest}`);
-    } else {
-        console.warn(`[DEBUG] Source file does not exist: ${rfsSrc}`);
-    }
-    // Always copy critical Bootstrap files
-    const criticalBootstrap = [
-        '_functions.scss',
-        '_variables.scss',
-        '_variables-dark.scss',
-        '_mixins.scss',
-        '_root.scss'
-    ];
-    for (const file of criticalBootstrap) {
-        const srcFile = path.join(bootstrapSrc, file);
-        const destFile = path.join(bootstrapDest, file);
-        console.log(`[DEBUG] Bootstrap: srcFile=${srcFile}, destFile=${destFile}`);
-        if (fs.existsSync(srcFile)) {
-            fs.mkdirSync(path.dirname(destFile), { recursive: true });
-            fs.copyFileSync(srcFile, destFile);
-            console.log(`[DEBUG] Copied: ${srcFile} -> ${destFile}`);
-        } else {
-            console.warn(`[DEBUG] Source file does not exist: ${srcFile}`);
-        }
-    }
-    resolveScssDeps(bootstrapEntry, bootstrapSrc, bootstrapDest);
-    // Font Awesome
-    const faEntry = 'fontawesome.scss';
-    const faSrc = path.resolve(__dirname, '../../node_modules/@fortawesome/fontawesome-free/scss');
-    const faDest = path.resolve(__dirname, '../theme.asisaga.com/_sass/fontawesome');
-    resolveScssDeps(faEntry, faSrc, faDest);
-    // Optionally, add more entries as needed
-    console.log('Selective SCSS copy complete.');
+    // For Dart Sass, use node_modules/bootstrap/scss as a load path
+    // No need to copy SCSS files; Dart Sass will resolve imports automatically
+    console.log('No SCSS files copied. Dart Sass will resolve imports from node_modules/bootstrap/scss.');
 }
 // Utility: Get the latest workflow run number
 async function getLatestRunNumber() {
@@ -126,11 +170,7 @@ async function listAllWorkflows() {
 
 
 // Load .env if present (for GITHUB_TOKEN convenience)
-try { require('dotenv').config(); } catch (e) { /* dotenv not installed */ }
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
+try { (await import('dotenv')).config(); } catch (e) { /* dotenv not installed */ }
 
 // --- CONFIG ---
 const REPO_OWNER = 'ASISaga';
@@ -330,7 +370,7 @@ async function main() {
         console.log('Downloading workflow logs...');
         await downloadLogs(run.id); // Unzips all logs
         // 5. Scan all log files for errors
-        const fs = require('fs');
+    // ...existing code...
         const logDir = './workflow-logs';
         const logFiles = fs.readdirSync(logDir).filter(f => f.endsWith('.txt'));
         const patterns = [
@@ -379,7 +419,7 @@ async function main() {
     }
 }
 
-main().catch(err => {
+await main().catch(err => {
     console.error('Error:', err.message);
     process.exit(1);
 });
