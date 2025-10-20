@@ -50,6 +50,18 @@ function getAllScssImports(filePath, loadPaths, seen = new Set()) {
             imports.push(resolved);
             // Recursively resolve imports
             imports = imports.concat(getAllScssImports(resolved, loadPaths, seen));
+
+            // If the import is a folder, recursively scan all .scss files inside
+            if (fs.existsSync(resolved) && fs.statSync(resolved).isDirectory()) {
+                const files = fs.readdirSync(resolved).filter(f => f.endsWith('.scss'));
+                for (const file of files) {
+                    const nestedFile = path.join(resolved, file);
+                    if (!seen.has(nestedFile)) {
+                        imports.push(nestedFile);
+                        imports = imports.concat(getAllScssImports(nestedFile, loadPaths, seen));
+                    }
+                }
+            }
         }
     }
     return imports;
