@@ -1,9 +1,14 @@
 // Node.js script to lint SCSS files for missing mixins and fatal errors using Dart Sass
 
-const sass = require('sass');
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
+import sass from 'sass';
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
+
+// For __dirname in ES modules
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Read _config.yml for include paths and theme
 const configPath = path.resolve(__dirname, '_config.yml');
