@@ -98,6 +98,38 @@ function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
     console.log('[STAGE 1] Selective SCSS copy complete.');
 }
 
+function alwaysCopyFontAwesomeScss() {
+    const faSrcDir = path.join('node_modules', '@fortawesome', 'fontawesome-free', 'scss');
+    const faDestDir = path.join('theme.asisaga.com', '_sass', 'fontawesome');
+    if (!fs.existsSync(faSrcDir)) {
+        console.warn(`[STAGE 1] Font Awesome SCSS source not found: ${faSrcDir}`);
+        return;
+    }
+    fs.mkdirSync(faDestDir, { recursive: true });
+    // Copy all root SCSS files
+    const rootFiles = fs.readdirSync(faSrcDir).filter(f => f.endsWith('.scss'));
+    for (const file of rootFiles) {
+        const srcFile = path.join(faSrcDir, file);
+        const destFile = path.join(faDestDir, file);
+        fs.copyFileSync(srcFile, destFile);
+        console.log(`[STAGE 1] Copied: ${srcFile} -> ${destFile}`);
+    }
+    // Copy all subfolders and their SCSS files
+    const subfolders = fs.readdirSync(faSrcDir).filter(f => fs.statSync(path.join(faSrcDir, f)).isDirectory());
+    for (const subfolder of subfolders) {
+        const srcSub = path.join(faSrcDir, subfolder);
+        const destSub = path.join(faDestDir, subfolder);
+        fs.mkdirSync(destSub, { recursive: true });
+        const scssFiles = fs.readdirSync(srcSub).filter(f => f.endsWith('.scss'));
+        for (const file of scssFiles) {
+            const srcFile = path.join(srcSub, file);
+            const destFile = path.join(destSub, file);
+            fs.copyFileSync(srcFile, destFile);
+            console.log(`[STAGE 1] Copied: ${srcFile} -> ${destFile}`);
+        }
+    }
+}
+
 // Example usage for Stage 1:
 // selectiveCopyBootstrapScss(
 //   path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'bootstrap.scss'),
