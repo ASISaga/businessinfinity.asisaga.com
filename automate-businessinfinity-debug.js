@@ -99,7 +99,7 @@ function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
 }
 
 function alwaysCopyFontAwesomeScss() {
-    const faSrcDir = path.join('node_modules', '@fortawesome', 'fontawesome-free', 'scss');
+    const faSrcDir = path.resolve(__dirname, '..', 'node_modules', '@fortawesome', 'fontawesome-free', 'scss');
     const faDestDir = path.join('theme.asisaga.com', '_sass', 'fontawesome');
     console.log(`[DEBUG] Checking Font Awesome SCSS source: ${faSrcDir}`);
     if (!fs.existsSync(faSrcDir)) {
