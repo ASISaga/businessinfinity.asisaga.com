@@ -101,13 +101,17 @@ function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
 function alwaysCopyFontAwesomeScss() {
     const faSrcDir = path.join('node_modules', '@fortawesome', 'fontawesome-free', 'scss');
     const faDestDir = path.join('theme.asisaga.com', '_sass', 'fontawesome');
+    console.log(`[DEBUG] Checking Font Awesome SCSS source: ${faSrcDir}`);
     if (!fs.existsSync(faSrcDir)) {
         console.warn(`[STAGE 1] Font Awesome SCSS source not found: ${faSrcDir}`);
         return;
     }
+    const allFaFiles = fs.readdirSync(faSrcDir);
+    console.log(`[DEBUG] Font Awesome SCSS source contents:`, allFaFiles);
     fs.mkdirSync(faDestDir, { recursive: true });
     // Copy all root SCSS files
-    const rootFiles = fs.readdirSync(faSrcDir).filter(f => f.endsWith('.scss'));
+    const rootFiles = allFaFiles.filter(f => f.endsWith('.scss'));
+    console.log(`[DEBUG] Font Awesome root SCSS files:`, rootFiles);
     for (const file of rootFiles) {
         const srcFile = path.join(faSrcDir, file);
         const destFile = path.join(faDestDir, file);
@@ -115,12 +119,14 @@ function alwaysCopyFontAwesomeScss() {
         console.log(`[STAGE 1] Copied: ${srcFile} -> ${destFile}`);
     }
     // Copy all subfolders and their SCSS files
-    const subfolders = fs.readdirSync(faSrcDir).filter(f => fs.statSync(path.join(faSrcDir, f)).isDirectory());
+    const subfolders = allFaFiles.filter(f => fs.statSync(path.join(faSrcDir, f)).isDirectory());
+    console.log(`[DEBUG] Font Awesome SCSS subfolders:`, subfolders);
     for (const subfolder of subfolders) {
         const srcSub = path.join(faSrcDir, subfolder);
         const destSub = path.join(faDestDir, subfolder);
         fs.mkdirSync(destSub, { recursive: true });
         const scssFiles = fs.readdirSync(srcSub).filter(f => f.endsWith('.scss'));
+        console.log(`[DEBUG] Font Awesome SCSS files in ${subfolder}:`, scssFiles);
         for (const file of scssFiles) {
             const srcFile = path.join(srcSub, file);
             const destFile = path.join(destSub, file);
