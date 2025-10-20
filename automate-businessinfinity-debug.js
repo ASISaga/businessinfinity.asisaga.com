@@ -81,6 +81,19 @@ function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
         fs.copyFileSync(absPath, destPath);
         console.log(`[STAGE 1] Copied: ${absPath} -> ${destPath}`);
     }
+    // Always copy all files from mixins folder for Jekyll compatibility
+    const mixinsSrc = path.join(srcDir, 'mixins');
+    const mixinsDest = path.join(destDir, 'mixins');
+    if (fs.existsSync(mixinsSrc)) {
+        fs.mkdirSync(mixinsDest, { recursive: true });
+        const mixinFiles = fs.readdirSync(mixinsSrc).filter(f => f.endsWith('.scss'));
+        for (const file of mixinFiles) {
+            const srcFile = path.join(mixinsSrc, file);
+            const destFile = path.join(mixinsDest, file);
+            fs.copyFileSync(srcFile, destFile);
+            console.log(`[STAGE 1] Copied: ${srcFile} -> ${destFile}`);
+        }
+    }
     console.log('[STAGE 1] Selective SCSS copy complete.');
 }
 
