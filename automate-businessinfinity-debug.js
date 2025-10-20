@@ -13,11 +13,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Run Stage 1 automatically
+
 selectiveCopyBootstrapScss(
     path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'bootstrap.scss'),
     path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss'),
     path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'bootstrap')
 );
+alwaysCopyFontAwesomeScss();
 
 function getAllScssImports(filePath, loadPaths, seen = new Set()) {
     if (seen.has(filePath)) return [];
