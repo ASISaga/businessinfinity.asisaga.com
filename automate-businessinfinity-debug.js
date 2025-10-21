@@ -20,7 +20,19 @@ selectiveCopyBootstrapScss(
     path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'bootstrap')
 );
 alwaysCopyFontAwesomeScss();
+patchFontAwesomeMixins();
 
+function patchFontAwesomeMixins() {
+    // Patch _mixins.scss in theme.asisaga.com/_sass/fontawesome to classic SCSS syntax
+    const mixinsPath = path.resolve(__dirname, '../theme.asisaga.com/_sass/fontawesome/_mixins.scss');
+    if (!fs.existsSync(mixinsPath)) return;
+    let content = fs.readFileSync(mixinsPath, 'utf8');
+    // Replace Dart Sass module mixin syntax with classic SCSS
+    // Example: @mixin fa-icon($family: v.$family) { ... } => @mixin fa-icon($family) { ... }
+    content = content.replace(/@mixin fa-icon\s*\(([^)]*):[^)]*\)/, '@mixin fa-icon($1)');
+    fs.writeFileSync(mixinsPath, content);
+    console.log('[PATCH] Font Awesome _mixins.scss patched for Jekyll compatibility.');
+}
 function getAllScssImports(filePath, loadPaths, seen = new Set()) {
     if (seen.has(filePath)) return [];
     seen.add(filePath);
