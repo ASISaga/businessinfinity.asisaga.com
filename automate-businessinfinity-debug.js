@@ -476,7 +476,18 @@ async function main() {
             for (let i = 0; i < lines.length; i++) {
                 const clean = stripAnsi(lines[i]);
                 if (patterns.some(p => p.test(clean))) {
+                    // Print the error line and next 2 non-empty lines
                     console.log(clean);
+                    let count = 0;
+                    let j = i + 1;
+                    while (count < 2 && j < lines.length) {
+                        const next = stripAnsi(lines[j]);
+                        if (next.trim() !== '') {
+                            console.log(next);
+                            count++;
+                        }
+                        j++;
+                    }
                     foundAny = true;
                     break; // Only first error per file
                 }
