@@ -19,8 +19,21 @@ selectiveCopyBootstrapScss(
     path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss'),
     path.join(__dirname, '..', 'theme.asisaga.com', '_sass', 'bootstrap')
 );
+
 alwaysCopyFontAwesomeScss();
+patchFontAwesomeVariables();
 patchFontAwesomeMixins();
+
+function patchFontAwesomeVariables() {
+    // Patch _variables.scss in theme.asisaga.com/_sass/fontawesome to classic CSS value for Jekyll compatibility
+    const variablesPath = path.resolve(__dirname, '../theme.asisaga.com/_sass/fontawesome/_variables.scss');
+    if (!fs.existsSync(variablesPath)) return;
+    let content = fs.readFileSync(variablesPath, 'utf8');
+    // Replace $fw-width assignment with 1.25em !default;
+    content = content.replace(/\$fw-width\s*:\s*[^;]+;/, '$fw-width              : 1.25em !default; // 20/16 = 1.25');
+    fs.writeFileSync(variablesPath, content);
+    console.log('[PATCH] Font Awesome _variables.scss $fw-width set to 1.25em for Jekyll compatibility.');
+}
 
 function patchFontAwesomeMixins() {
     // Patch _mixins.scss in theme.asisaga.com/_sass/fontawesome to classic SCSS syntax for Jekyll
