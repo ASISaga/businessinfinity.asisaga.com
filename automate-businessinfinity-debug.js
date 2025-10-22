@@ -96,7 +96,6 @@ function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
         const destPath = path.join(destDir, relPath);
         fs.mkdirSync(path.dirname(destPath), { recursive: true });
         fs.copyFileSync(absPath, destPath);
-        console.log(`[STAGE 1] Copied: ${absPath} -> ${destPath}`);
     }
     // Always copy all SCSS files from every subfolder for Jekyll compatibility
     const subfolders = fs.readdirSync(srcDir).filter(f => fs.statSync(path.join(srcDir, f)).isDirectory());
@@ -109,7 +108,6 @@ function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
             const srcFile = path.join(srcSub, file);
             const destFile = path.join(destSub, file);
             fs.copyFileSync(srcFile, destFile);
-            console.log(`[STAGE 1] Copied: ${srcFile} -> ${destFile}`);
         }
     }
     console.log('[STAGE 1] Selective SCSS copy complete.');
@@ -134,7 +132,6 @@ function alwaysCopyFontAwesomeScss() {
         const srcFile = path.join(faSrcDir, file);
         const destFile = path.join(faDestDir, file);
         fs.copyFileSync(srcFile, destFile);
-        console.log(`[STAGE 1] Copied: ${srcFile} -> ${destFile}`);
     }
     // Copy all subfolders and their SCSS files
     const subfolders = allFaFiles.filter(f => fs.statSync(path.join(faSrcDir, f)).isDirectory());
@@ -144,12 +141,10 @@ function alwaysCopyFontAwesomeScss() {
         const destSub = path.join(faDestDir, subfolder);
         fs.mkdirSync(destSub, { recursive: true });
         const scssFiles = fs.readdirSync(srcSub).filter(f => f.endsWith('.scss'));
-        console.log(`[DEBUG] Font Awesome SCSS files in ${subfolder}:`, scssFiles);
         for (const file of scssFiles) {
             const srcFile = path.join(srcSub, file);
             const destFile = path.join(destSub, file);
             fs.copyFileSync(srcFile, destFile);
-            console.log(`[STAGE 1] Copied: ${srcFile} -> ${destFile}`);
         }
     }
 }
