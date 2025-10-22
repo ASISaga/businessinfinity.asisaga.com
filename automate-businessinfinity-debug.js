@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // Run Stage 1 automatically
 
+
 selectiveCopyBootstrapScss(
     path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss', 'bootstrap.scss'),
     path.join(__dirname, '..', 'node_modules', 'bootstrap', 'scss'),
@@ -23,6 +24,17 @@ selectiveCopyBootstrapScss(
 alwaysCopyFontAwesomeScss();
 patchFontAwesomeVariables();
 patchFontAwesomeMixins();
+
+copyBootstrapJsEsm();
+
+function copyBootstrapJsEsm() {
+    // Always copy minified Bootstrap JS ES module to theme.asisaga.com/assets/js/vendor
+    const jsSrcMin = path.join(__dirname, '..', 'node_modules', 'bootstrap', 'dist', 'js', 'bootstrap.esm.min.js');
+    const jsDestMin = path.join(__dirname, '..', 'theme.asisaga.com', 'assets', 'js', 'vendor', 'bootstrap.esm.min.js');
+    fs.mkdirSync(path.dirname(jsDestMin), { recursive: true });
+    fs.copyFileSync(jsSrcMin, jsDestMin);
+    console.log('[STAGE 1] Bootstrap JS ES module (minified) copied to assets/js/vendor.');
+}
 
 function patchFontAwesomeVariables() {
     // Patch _variables.scss in theme.asisaga.com/_sass/fontawesome to classic CSS value for Jekyll compatibility
