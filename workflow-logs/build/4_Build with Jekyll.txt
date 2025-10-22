@@ -1,85 +1,125 @@
-﻿2025-10-22T01:12:09.0200269Z ##[group]Run actions/jekyll-build-pages@v1
-2025-10-22T01:12:09.0200569Z with:
-2025-10-22T01:12:09.0200731Z   source: .
-2025-10-22T01:12:09.0200902Z   destination: ./_site
-2025-10-22T01:12:09.0201089Z   future: false
-2025-10-22T01:12:09.0201325Z   build_revision: b2accd261fb02fc94da64a56a5013f05ec13bd0b
-2025-10-22T01:12:09.0201606Z   verbose: true
-2025-10-22T01:12:09.0201926Z   token: ***
-2025-10-22T01:12:09.0202101Z ##[endgroup]
-2025-10-22T01:12:09.0293858Z ##[command]/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_c47798 --label a7be18 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13
-2025-10-22T01:12:09.9047147Z To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
-2025-10-22T01:12:24.5235989Z [31m  Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss':[0m
-2025-10-22T01:12:24.5237744Z [31m                    ".profile-placeholder-icon" failed to @extend ".fas". The selector ".fas" was not found. Use "@extend .fas !optional" if the extend should be able to fail. on line 103[0m
-2025-10-22T01:12:24.5240534Z /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:123:in `rescue in convert': ".profile-placeholder-icon" failed to @extend ".fas". (Jekyll::Converters::Scss::SyntaxError)
-2025-10-22T01:12:24.5242050Z The selector ".fas" was not found.
-2025-10-22T01:12:24.5242504Z Use "@extend .fas !optional" if the extend should be able to fail.
-2025-10-22T01:12:24.5242886Z  on line 103
-2025-10-22T01:12:24.5243001Z 
-2025-10-22T01:12:24.5243119Z         raise SyntaxError, "#{e} on line #{e.sass_line}"
-2025-10-22T01:12:24.5243409Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-10-22T01:12:24.5243889Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:118:in `convert'
-2025-10-22T01:12:24.5244506Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
-2025-10-22T01:12:24.5245036Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
-2025-10-22T01:12:24.5245527Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
-2025-10-22T01:12:24.5246022Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
-2025-10-22T01:12:24.5246541Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
-2025-10-22T01:12:24.5247055Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
-2025-10-22T01:12:24.5247810Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
-2025-10-22T01:12:24.5248554Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
-2025-10-22T01:12:24.5249061Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
-2025-10-22T01:12:24.5249544Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
-2025-10-22T01:12:24.5250052Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
-2025-10-22T01:12:24.5250514Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
-2025-10-22T01:12:24.5251014Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
-2025-10-22T01:12:24.5251520Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
-2025-10-22T01:12:24.5252043Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
-2025-10-22T01:12:24.5252662Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
-2025-10-22T01:12:24.5253290Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
-2025-10-22T01:12:24.5253834Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
-2025-10-22T01:12:24.5254350Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
-2025-10-22T01:12:24.5254855Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
-2025-10-22T01:12:24.5255325Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
-2025-10-22T01:12:24.5255825Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
-2025-10-22T01:12:24.5256256Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
-2025-10-22T01:12:24.5256568Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
-2025-10-22T01:12:24.5257250Z /tmp/jekyll-remote-theme-20251022-7-tmy0w3/_sass/layouts/_profile.scss:103: ".profile-placeholder-icon" failed to @extend ".fas". (Sass::SyntaxError)
-2025-10-22T01:12:24.5257859Z The selector ".fas" was not found.
-2025-10-22T01:12:24.5258399Z Use "@extend .fas !optional" if the extend should be able to fail.
-2025-10-22T01:12:24.5258638Z 
-2025-10-22T01:12:24.5258958Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/extend.rb:56:in `block in check_extends_fired!'
-2025-10-22T01:12:24.5259593Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/util/subset_map.rb:105:in `block in each_value'
-2025-10-22T01:12:24.5260134Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/util/subset_map.rb:105:in `each'
-2025-10-22T01:12:24.5260624Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/util/subset_map.rb:105:in `each_value'
-2025-10-22T01:12:24.5261329Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/extend.rb:51:in `check_extends_fired!'
-2025-10-22T01:12:24.5261898Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/extend.rb:16:in `visit'
-2025-10-22T01:12:24.5262386Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:39:in `css_tree'
-2025-10-22T01:12:24.5262869Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:20:in `render'
-2025-10-22T01:12:24.5263316Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/engine.rb:290:in `render'
-2025-10-22T01:12:24.5263729Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass.rb:57:in `compile'
-2025-10-22T01:12:24.5264245Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:119:in `convert'
-2025-10-22T01:12:24.5264835Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
-2025-10-22T01:12:24.5265339Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
-2025-10-22T01:12:24.5265810Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
-2025-10-22T01:12:24.5266446Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
-2025-10-22T01:12:24.5266948Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
-2025-10-22T01:12:24.5267435Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
-2025-10-22T01:12:24.5267927Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
-2025-10-22T01:12:24.5268657Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
-2025-10-22T01:12:24.5269161Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
-2025-10-22T01:12:24.5269623Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
-2025-10-22T01:12:24.5270095Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
-2025-10-22T01:12:24.5270557Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
-2025-10-22T01:12:24.5271033Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
-2025-10-22T01:12:24.5271538Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
-2025-10-22T01:12:24.5272039Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
-2025-10-22T01:12:24.5272632Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
-2025-10-22T01:12:24.5273258Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
-2025-10-22T01:12:24.5273792Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
-2025-10-22T01:12:24.5274323Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
-2025-10-22T01:12:24.5274833Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
-2025-10-22T01:12:24.5275303Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
-2025-10-22T01:12:24.5275798Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
-2025-10-22T01:12:24.5276214Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
-2025-10-22T01:12:24.5276533Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
-2025-10-22T01:12:24.5820356Z ##[error] Logging at level: debug Configuration file: /github/workspace/./_config.yml GitHub Pages: github-pages v232 GitHub Pages: jekyll v3.10.0 Theme: jekyll-theme-primer Theme source: /usr/local/bundle/gems/jekyll-theme-primer-0.6.0 Requiring: jekyll-github-metadata Requiring: jekyll-seo-tag Requiring: jekyll-feed Requiring: jekyll-sitemap Requiring: jekyll-remote-theme Requiring: jekyll-coffeescript Requiring: jekyll-commonmark-ghpages Requiring: jekyll-gist Requiring: jekyll-github-metadata Requiring: jekyll-paginate Requiring: jekyll-relative-links Requiring: jekyll-optional-front-matter Requiring: jekyll-readme-index Requiring: jekyll-default-layout Requiring: jekyll-titles-from-headings Requiring: jekyll-remote-theme GitHub Metadata: Initializing... Source: /github/workspace/. Destination: /github/workspace/./_site Incremental build: disabled. Enable with --incremental Generating... Theme: asisaga/theme.asisaga.com Theme source: /tmp/jekyll-remote-theme-20251022-7-tmy0w3 Remote Theme: Using theme asisaga/theme.asisaga.com Remote Theme: Downloading https://codeload.github.com/asisaga/theme.asisaga.com/zip/HEAD to /tmp/jekyll-remote-theme-20251022-7-f69dic.zip Remote Theme: Unzipping /tmp/jekyll-remote-theme-20251022-7-f69dic.zip to /tmp/jekyll-remote-theme-20251022-7-tmy0w3 EntryFilter: excluded /LICENSE EntryFilter: excluded /README.md EntryFilter: excluded /website_structure.json EntryFilter: excluded /docs/specifications.md EntryFilter: excluded /docs/test-plan.md EntryFilter: excluded /docs/Trust.md Generating: JekyllOptionalFrontMatter::Generator finished in 0.002538838 seconds. Generating: JekyllReadmeIndex::Generator finished in 0.003928057 seconds. Jekyll Feed: Generating feed for posts Generating: JekyllFeed::Generator finished in 0.000685763 seconds. Generating: Jekyll::JekyllSitemap finished in 0.000672147 seconds. Generating: Jekyll::Paginate::Pagination finished in 6.523e-06 seconds. GitHub Metadata: Generating for ASISaga/businessinfinity.asisaga.com GitHub Metadata: Calling @client.pages("ASISaga/businessinfinity.asisaga.com", {}) Generating: JekyllRelativeLinks::Generator finished in 0.33532117 seconds. Generating: JekyllDefaultLayout::Generator finished in 0.000288079 seconds. Requiring: kramdown-parser-gfm Generating: JekyllTitlesFromHeadings::Generator finished in 0.01182586 seconds. Rendering: components/boardroom-app.html Pre-Render Hooks: components/boardroom-app.html Rendering Liquid: components/boardroom-app.html Rendering Markup: components/boardroom-app.html Rendering Layout: components/boardroom-app.html Rendering: components/dashboard-panel.html Pre-Render Hooks: components/dashboard-panel.html Rendering Liquid: components/dashboard-panel.html Rendering Markup: components/dashboard-panel.html Rendering Layout: components/dashboard-panel.html Rendering: boardroom/index-new.html Pre-Render Hooks: boardroom/index-new.html Rendering Liquid: boardroom/index-new.html Rendering Markup: boardroom/index-new.html Rendering Layout: boardroom/index-new.html Layout source: theme GitHub Metadata: Calling @client.repository("ASISaga/businessinfinity.asisaga.com", {:accept=>"application/vnd.github.drax-preview+json"}) Rendering: boardroom2/index.html Pre-Render Hooks: boardroom2/index.html Rendering Liquid: boardroom2/index.html Rendering Markup: boardroom2/index.html Rendering Layout: boardroom2/index.html Layout source: theme Rendering: boardroom/index.html Pre-Render Hooks: boardroom/index.html Rendering Liquid: boardroom/index.html Rendering Markup: boardroom/index.html Rendering Layout: boardroom/index.html Layout source: theme Rendering: mentor/index.html Pre-Render Hooks: mentor/index.html Rendering Liquid: mentor/index.html Rendering Markup: mentor/index.html Rendering Layout: mentor/index.html Layout source: theme Rendering: privacy-policy/index.html Pre-Render Hooks: privacy-policy/index.html Rendering Liquid: privacy-policy/index.html Rendering Markup: privacy-policy/index.html Rendering Layout: privacy-policy/index.html Layout source: theme Rendering: entrepreneur/index.html Pre-Render Hooks: entre
+﻿2025-10-22T01:36:29.4650877Z ##[group]Run actions/jekyll-build-pages@v1
+2025-10-22T01:36:29.4651179Z with:
+2025-10-22T01:36:29.4651338Z   source: .
+2025-10-22T01:36:29.4651505Z   destination: ./_site
+2025-10-22T01:36:29.4651682Z   future: false
+2025-10-22T01:36:29.4651908Z   build_revision: d7e1a272540f0e39572dcd5a46eddd0c2c709f4d
+2025-10-22T01:36:29.4652188Z   verbose: true
+2025-10-22T01:36:29.4652472Z   token: ***
+2025-10-22T01:36:29.4652644Z ##[endgroup]
+2025-10-22T01:36:29.4740244Z ##[command]/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_80f5ac --label dfb4d6 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/businessinfinity.asisaga.com/businessinfinity.asisaga.com":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13
+2025-10-22T01:36:30.3672739Z To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
+2025-10-22T01:36:32.8634535Z [31m  Conversion error: Jekyll::Converters::Scss encountered an error while converting 'assets/css/style.scss':[0m
+2025-10-22T01:36:32.8635839Z [31m                    Invalid CSS after ".#{v": expected "}", was ".$css-prefix}-s..." on line 6[0m
+2025-10-22T01:36:32.8636955Z /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:123:in `rescue in convert': Invalid CSS after ".#{v": expected "}", was ".$css-prefix}-s..." on line 6 (Jekyll::Converters::Scss::SyntaxError)
+2025-10-22T01:36:32.8637706Z 
+2025-10-22T01:36:32.8637831Z         raise SyntaxError, "#{e} on line #{e.sass_line}"
+2025-10-22T01:36:32.8638302Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-22T01:36:32.8639057Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:118:in `convert'
+2025-10-22T01:36:32.8639713Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
+2025-10-22T01:36:32.8640257Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
+2025-10-22T01:36:32.8640760Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
+2025-10-22T01:36:32.8641268Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
+2025-10-22T01:36:32.8641783Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
+2025-10-22T01:36:32.8642265Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
+2025-10-22T01:36:32.8642738Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
+2025-10-22T01:36:32.8643267Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
+2025-10-22T01:36:32.8643974Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
+2025-10-22T01:36:32.8644432Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
+2025-10-22T01:36:32.8644900Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
+2025-10-22T01:36:32.8645343Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
+2025-10-22T01:36:32.8645837Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
+2025-10-22T01:36:32.8646327Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
+2025-10-22T01:36:32.8646822Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
+2025-10-22T01:36:32.8647410Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
+2025-10-22T01:36:32.8648171Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
+2025-10-22T01:36:32.8648718Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
+2025-10-22T01:36:32.8649207Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
+2025-10-22T01:36:32.8649705Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
+2025-10-22T01:36:32.8650179Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
+2025-10-22T01:36:32.8650665Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
+2025-10-22T01:36:32.8651080Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
+2025-10-22T01:36:32.8651384Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
+2025-10-22T01:36:32.8652061Z /tmp/jekyll-remote-theme-20251022-7-i8v3ip/_sass/fontawesome/_core.scss:6: Invalid CSS after ".#{v": expected "}", was ".$css-prefix}-s..." (Sass::SyntaxError)
+2025-10-22T01:36:32.8652752Z 	from /tmp/jekyll-remote-theme-20251022-7-i8v3ip/_sass/_common.scss:19
+2025-10-22T01:36:32.8653082Z 	from (sass):1
+2025-10-22T01:36:32.8653386Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
+2025-10-22T01:36:32.8653881Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/script/lexer.rb:240:in `expected!'
+2025-10-22T01:36:32.8654380Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/script/parser.rb:862:in `assert_tok'
+2025-10-22T01:36:32.8654892Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/script/parser.rb:52:in `parse_interpolated'
+2025-10-22T01:36:32.8655403Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:1164:in `sass_script'
+2025-10-22T01:36:32.8655894Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:1061:in `interpolation'
+2025-10-22T01:36:32.8656412Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:888:in `almost_any_value_token'
+2025-10-22T01:36:32.8656938Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:864:in `almost_any_value'
+2025-10-22T01:36:32.8657556Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:680:in `ruleset'
+2025-10-22T01:36:32.8658127Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
+2025-10-22T01:36:32.8658606Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+2025-10-22T01:36:32.8659084Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
+2025-10-22T01:36:32.8659544Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
+2025-10-22T01:36:32.8659978Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
+2025-10-22T01:36:32.8660413Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/engine.rb:321:in `to_tree'
+2025-10-22T01:36:32.8660933Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:323:in `block in visit_import'
+2025-10-22T01:36:32.8661491Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
+2025-10-22T01:36:32.8662091Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-22T01:36:32.8662524Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
+2025-10-22T01:36:32.8663021Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+2025-10-22T01:36:32.8663529Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-22T01:36:32.8664051Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+2025-10-22T01:36:32.8664560Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+2025-10-22T01:36:32.8665015Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-22T01:36:32.8665447Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+2025-10-22T01:36:32.8665904Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+2025-10-22T01:36:32.8666512Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+2025-10-22T01:36:32.8667103Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `map'
+2025-10-22T01:36:32.8667660Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+2025-10-22T01:36:32.8668331Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
+2025-10-22T01:36:32.8668816Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-22T01:36:32.8669254Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
+2025-10-22T01:36:32.8669773Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+2025-10-22T01:36:32.8670287Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-22T01:36:32.8670810Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+2025-10-22T01:36:32.8671331Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+2025-10-22T01:36:32.8671785Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+2025-10-22T01:36:32.8672220Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+2025-10-22T01:36:32.8672677Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+2025-10-22T01:36:32.8673237Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+2025-10-22T01:36:32.8673768Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
+2025-10-22T01:36:32.8674286Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+2025-10-22T01:36:32.8674864Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+2025-10-22T01:36:32.8675620Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+2025-10-22T01:36:32.8676201Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+2025-10-22T01:36:32.8676747Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+2025-10-22T01:36:32.8677279Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+2025-10-22T01:36:32.8677777Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+2025-10-22T01:36:32.8678369Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+2025-10-22T01:36:32.8678865Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+2025-10-22T01:36:32.8679344Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+2025-10-22T01:36:32.8679809Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/tree/root_node.rb:20:in `render'
+2025-10-22T01:36:32.8680370Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass/engine.rb:290:in `render'
+2025-10-22T01:36:32.8680774Z 	from /usr/local/bundle/gems/sass-3.7.4/lib/sass.rb:57:in `compile'
+2025-10-22T01:36:32.8681276Z 	from /usr/local/bundle/gems/jekyll-sass-converter-1.5.2/lib/jekyll/converters/scss.rb:119:in `convert'
+2025-10-22T01:36:32.8681849Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:101:in `block in convert'
+2025-10-22T01:36:32.8682338Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `each'
+2025-10-22T01:36:32.8682792Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `reduce'
+2025-10-22T01:36:32.8683255Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:99:in `convert'
+2025-10-22T01:36:32.8683736Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:83:in `render_document'
+2025-10-22T01:36:32.8684219Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/renderer.rb:62:in `run'
+2025-10-22T01:36:32.8684708Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:479:in `render_regenerated'
+2025-10-22T01:36:32.8685225Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:472:in `block in render_pages'
+2025-10-22T01:36:32.8685714Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `each'
+2025-10-22T01:36:32.8686171Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:471:in `render_pages'
+2025-10-22T01:36:32.8686639Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:192:in `render'
+2025-10-22T01:36:32.8687094Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/site.rb:71:in `process'
+2025-10-22T01:36:32.8687560Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/command.rb:28:in `process_site'
+2025-10-22T01:36:32.8688172Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:65:in `build'
+2025-10-22T01:36:32.8688670Z 	from /usr/local/bundle/gems/jekyll-3.10.0/lib/jekyll/commands/build.rb:36:in `process'
+2025-10-22T01:36:32.8689264Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:70:in `block (3 levels) in <top (required)>'
+2025-10-22T01:36:32.8689884Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `block in execute'
+2025-10-22T01:36:32.8690410Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `each'
+2025-10-22T01:36:32.8690905Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/command.rb:220:in `execute'
+2025-10-22T01:36:32.8691388Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary/program.rb:42:in `go'
+2025-10-22T01:36:32.8691848Z 	from /usr/local/bundle/gems/mercenary-0.3.6/lib/mercenary.rb:19:in `program'
+2025-10-22T01:36:32.8692321Z 	from /usr/local/bundle/gems/github-pages-232/bin/github-pages:6:in `<top (required)>'
+2025-10-22T01:36:32.8692735Z 	from /usr/local/bundle/bin/github-pages:25:in `load'
+2025-10-22T01:36:32.8693047Z 	from /usr/local/bundle/bin/github-pages:25:in `<main>'
+2025-10-22T01:36:32.9024757Z ##[error] Logging at level: debug Configuration file: /github/workspace/./_config.yml GitHub Pages: github-pages v232 GitHub Pages: jekyll v3.10.0 Theme: jekyll-theme-primer Theme source: /usr/local/bundle/gems/jekyll-theme-primer-0.6.0 Requiring: jekyll-github-metadata Requiring: jekyll-seo-tag Requiring: jekyll-feed Requiring: jekyll-sitemap Requiring: jekyll-remote-theme Requiring: jekyll-coffeescript Requiring: jekyll-commonmark-ghpages Requiring: jekyll-gist Requiring: jekyll-github-metadata Requiring: jekyll-paginate Requiring: jekyll-relative-links Requiring: jekyll-optional-front-matter Requiring: jekyll-readme-index Requiring: jekyll-default-layout Requiring: jekyll-titles-from-headings Requiring: jekyll-remote-theme GitHub Metadata: Initializing... Source: /github/workspace/. Destination: /github/workspace/./_site Incremental build: disabled. Enable with --incremental Generating... Theme: asisaga/theme.asisaga.com Theme source: /tmp/jekyll-remote-theme-20251022-7-i8v3ip Remote Theme: Using theme asisaga/theme.asisaga.com Remote Theme: Downloading https://codeload.github.com/asisaga/theme.asisaga.com/zip/HEAD to /tmp/jekyll-remote-theme-20251022-7-60js39.zip Remote Theme: Unzipping /tmp/jekyll-remote-theme-20251022-7-60js39.zip to /tmp/jekyll-remote-theme-20251022-7-i8v3ip EntryFilter: excluded /LICENSE EntryFilter: excluded /README.md EntryFilter: excluded /website_structure.json EntryFilter: excluded /docs/specifications.md EntryFilter: excluded /docs/test-plan.md EntryFilter: excluded /docs/Trust.md Generating: JekyllOptionalFrontMatter::Generator finished in 0.002955011 seconds. Generating: JekyllReadmeIndex::Generator finished in 0.004330551 seconds. Jekyll Feed: Generating feed for posts Generating: JekyllFeed::Generator finished in 0.000718277 seconds. Generating: Jekyll::JekyllSitemap finished in 0.000480945 seconds. Generating: Jekyll::Paginate::Pagination finished in 6.993e-06 seconds. GitHub Metadata: Generating for ASISaga/businessinfinity.asisaga.com GitHub Metadata: Calling @client.pages("ASISaga/businessinfinity.asisaga.com", {}) Generating: JekyllRelativeLinks::Generator finished in 0.188638999 seconds. Generating: JekyllDefaultLayout::Generator finished in 0.000292014 seconds. Requiring: kramdown-parser-gfm Generating: JekyllTitlesFromHeadings::Generator finished in 0.014152216 seconds. Rendering: components/boardroom-app.html Pre-Render Hooks: components/boardroom-app.html Rendering Liquid: components/boardroom-app.html Rendering Markup: components/boardroom-app.html Rendering Layout: components/boardroom-app.html Rendering: components/dashboard-panel.html Pre-Render Hooks: components/dashboard-panel.html Rendering Liquid: components/dashboard-panel.html Rendering Markup: components/dashboard-panel.html Rendering Layout: components/dashboard-panel.html Rendering: boardroom/index-new.html Pre-Render Hooks: boardroom/index-new.html Rendering Liquid: boardroom/index-new.html Rendering Markup: boardroom/index-new.html Rendering Layout: boardroom/index-new.html Layout source: theme GitHub Metadata: Calling @client.repository("ASISaga/businessinfinity.asisaga.com", {:accept=>"application/vnd.github.drax-preview+json"}) Rendering: boardroom2/index.html Pre-Render Hooks: boardroom2/index.html Rendering Liquid: boardroom2/index.html Rendering Markup: boardroom2/index.html Rendering Layout: boardroom2/index.html Layout source: theme Rendering: boardroom/index.html Pre-Render Hooks: boardroom/index.html Rendering Liquid: boardroom/index.html Rendering Markup: boardroom/index.html Rendering Layout: boardroom/index.html Layout source: theme Rendering: mentor/index.html Pre-Render Hooks: mentor/index.html Rendering Liquid: mentor/index.html Rendering Markup: mentor/index.html Rendering Layout: mentor/index.html Layout source: theme Rendering: privacy-policy/index.html Pre-Render Hooks: privacy-policy/index.html Rendering Liquid: privacy-policy/index.html Rendering Markup: privacy-policy/index.html Rendering Layout: privacy-policy/index.html Layout source: theme Rendering: entrepreneur/index.html Pre-Render Hooks: ent
