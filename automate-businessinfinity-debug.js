@@ -138,32 +138,32 @@ function alwaysCopyFontAwesomeScss() {
     // Use absolute path to theme.asisaga.com/_sass/fontawesome
     const faDestDir = path.resolve(__dirname, '../theme.asisaga.com/_sass/fontawesome');
     fs.mkdirSync(faDestDir, { recursive: true });
-        // Delete all files in destDir
-        for (const file of fs.readdirSync(faDestDir)) {
-            fs.unlinkSync(path.join(faDestDir, file));
-        }
-        // Copy all SCSS files from srcDir
-        const rootFiles = allFaFiles.filter(f => f.endsWith('.scss'));
-        console.log(`[DEBUG] Font Awesome root SCSS files:`, rootFiles);
-        for (const file of rootFiles) {
-            const srcFile = path.join(faSrcDir, file);
-            const destFile = path.join(faDestDir, file);
+    // Delete all files in destDir
+    for (const file of fs.readdirSync(faDestDir)) {
+        fs.unlinkSync(path.join(faDestDir, file));
+    }
+    // Copy all SCSS files from srcDir
+    const rootFiles = allFaFiles.filter(f => f.endsWith('.scss'));
+    console.log(`[DEBUG] Font Awesome root SCSS files:`, rootFiles);
+    for (const file of rootFiles) {
+        const srcFile = path.join(faSrcDir, file);
+        const destFile = path.join(faDestDir, file);
+        fs.copyFileSync(srcFile, destFile);
+    }
+    // Copy all subfolders and their SCSS files
+    const subfolders = allFaFiles.filter(f => fs.statSync(path.join(faSrcDir, f)).isDirectory());
+    console.log(`[DEBUG] Font Awesome SCSS subfolders:`, subfolders);
+    for (const subfolder of subfolders) {
+        const srcSub = path.join(faSrcDir, subfolder);
+        const destSub = path.join(faDestDir, subfolder);
+        fs.mkdirSync(destSub, { recursive: true });
+        const scssFiles = fs.readdirSync(srcSub).filter(f => f.endsWith('.scss'));
+        for (const file of scssFiles) {
+            const srcFile = path.join(srcSub, file);
+            const destFile = path.join(destSub, file);
             fs.copyFileSync(srcFile, destFile);
         }
-        // Copy all subfolders and their SCSS files
-        const subfolders = allFaFiles.filter(f => fs.statSync(path.join(faSrcDir, f)).isDirectory());
-        console.log(`[DEBUG] Font Awesome SCSS subfolders:`, subfolders);
-        for (const subfolder of subfolders) {
-            const srcSub = path.join(faSrcDir, subfolder);
-            const destSub = path.join(faDestDir, subfolder);
-            fs.mkdirSync(destSub, { recursive: true });
-            const scssFiles = fs.readdirSync(srcSub).filter(f => f.endsWith('.scss'));
-            for (const file of scssFiles) {
-                const srcFile = path.join(srcSub, file);
-                const destFile = path.join(destSub, file);
-                fs.copyFileSync(srcFile, destFile);
-            }
-        }
+    }
 }
 
 // Example usage for Stage 1:
