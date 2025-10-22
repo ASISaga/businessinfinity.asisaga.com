@@ -504,7 +504,9 @@ await main().catch(err => {
 try {
     selectiveCopyAllScss();
     console.log('Linting SCSS for missing mixins and fatal errors...');
-    execSync(`node ${path.resolve(__dirname, 'lint-scss-mixins.js')}`, { stdio: 'inherit' });
+    execSync(`node ${path.resolve(__dirname, 'lint-scss-mixins.js')} 2> lint-warnings.txt`, { stdio: ['ignore', 'ignore', 'ignore'] });
+    // Optionally, delete lint-warnings.txt if created
+    if (fs.existsSync('lint-warnings.txt')) fs.unlinkSync('lint-warnings.txt');
     console.log('SCSS lint passed. Proceeding with push.');
 } catch (e) {
     console.error('SCSS lint failed. Aborting push.');
