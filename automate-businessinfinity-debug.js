@@ -470,31 +470,19 @@ async function main() {
         ];
         const stripAnsi = s => s.replace(/\x1b\[[0-9;]*m/g, '');
         let foundAny = false;
-        let summary = [];
         for (const file of logFiles) {
             const content = fs.readFileSync(`${logDir}/${file}`, 'utf8');
             const lines = content.split('\n');
             for (let i = 0; i < lines.length; i++) {
                 const clean = stripAnsi(lines[i]);
                 if (patterns.some(p => p.test(clean))) {
-                    // Try to extract error type, message, and file/line if present
-                    let msg = clean;
-                    // Look ahead for file/line info
-                    let fileLine = '';
-                    for (let k = 1; k <= 2 && i + k < lines.length; k++) {
-                        const next = stripAnsi(lines[i + k]);
-                        if (/\.scss:\d+/.test(next)) fileLine = next;
-                    }
-                    summary.push(`- ${file}: ${msg}${fileLine ? ' | ' + fileLine : ''}`);
+                    console.log(clean);
                     foundAny = true;
                     break; // Only first error per file
                 }
             }
         }
-        console.log('Workflow error summary:');
-        if (foundAny) {
-            summary.forEach(line => console.log(line));
-        } else {
+        if (!foundAny) {
             console.log('No errors detected in any workflow log file.');
         }
     } else {
