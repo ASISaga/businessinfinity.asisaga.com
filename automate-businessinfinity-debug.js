@@ -23,15 +23,18 @@ alwaysCopyFontAwesomeScss();
 patchFontAwesomeMixins();
 
 function patchFontAwesomeMixins() {
-    // Patch _mixins.scss in theme.asisaga.com/_sass/fontawesome to classic SCSS syntax
+    // Patch _mixins.scss in theme.asisaga.com/_sass/fontawesome to classic SCSS syntax for Jekyll
     const mixinsPath = path.resolve(__dirname, '../theme.asisaga.com/_sass/fontawesome/_mixins.scss');
     if (!fs.existsSync(mixinsPath)) return;
     let content = fs.readFileSync(mixinsPath, 'utf8');
-    // Replace Dart Sass module mixin syntax with classic SCSS
-    // Example: @mixin fa-icon($family: v.$family) { ... } => @mixin fa-icon($family) { ... }
-    content = content.replace(/@mixin fa-icon\s*\(([^)]*):[^)]*\)/, '@mixin fa-icon($1)');
+    // Replace Dart Sass module variable references (v.$var) with classic SCSS ($var)
+    content = content.replace(/@use 'variables' as v;/g, '@import "variables";');
+    content = content.replace(/v\.\$([a-zA-Z0-9_-]+)/g, '$$$1');
+    // Remove any remaining Dart Sass module syntax (e.g., var(--_#{v.$css-prefix}-family))
+    // Replace #{v.$var} with #{$var}
+    content = content.replace(/#\{v\.\$([a-zA-Z0-9_-]+)\}/g, '#{$$$1}');
     fs.writeFileSync(mixinsPath, content);
-    console.log('[PATCH] Font Awesome _mixins.scss patched for Jekyll compatibility.');
+    console.log('[PATCH] Font Awesome _mixins.scss fully patched for Jekyll compatibility.');
 }
 function getAllScssImports(filePath, loadPaths, seen = new Set()) {
     if (seen.has(filePath)) return [];
@@ -448,8 +451,7 @@ async function main() {
         // 4. Download logs
         console.log('Downloading workflow logs...');
         await downloadLogs(run.id); // Unzips all logs
-        // 5. Scan all log files for errors
-        // ...existing code...
+        // 5. Scan all log files for errors (concise summary only)
         const logDir = './workflow-logs';
         const logFiles = fs.readdirSync(logDir).filter(f => f.endsWith('.txt'));
         const patterns = [
@@ -468,31 +470,33 @@ async function main() {
         ];
         const stripAnsi = s => s.replace(/\x1b\[[0-9;]*m/g, '');
         let foundAny = false;
+        let summary = [];
         for (const file of logFiles) {
             const content = fs.readFileSync(`${logDir}/${file}`, 'utf8');
             const lines = content.split('\n');
-            let found = false;
             for (let i = 0; i < lines.length; i++) {
                 const clean = stripAnsi(lines[i]);
                 if (patterns.some(p => p.test(clean))) {
-                    if (!found) {
-                        console.log(`\n--- Errors in ${file} ---`);
-                        found = true;
-                        foundAny = true;
+                    // Try to extract error type, message, and file/line if present
+                    let msg = clean;
+                    // Look ahead for file/line info
+                    let fileLine = '';
+                    for (let k = 1; k <= 2 && i + k < lines.length; k++) {
+                        const next = stripAnsi(lines[i + k]);
+                        if (/\.scss:\d+/.test(next)) fileLine = next;
                     }
-                    const start = Math.max(0, i - 2);
-                    const end = Math.min(lines.length, i + 3);
-                    for (let j = start; j < end; j++) {
-                        console.log(stripAnsi(lines[j]));
-                    }
-                    console.log('---');
+                    summary.push(`- ${file}: ${msg}${fileLine ? ' | ' + fileLine : ''}`);
+                    foundAny = true;
+                    break; // Only first error per file
                 }
             }
         }
-        if (!foundAny) {
-            console.log('No obvious error lines found in any log file.');
+        console.log('Workflow error summary:');
+        if (foundAny) {
+            summary.forEach(line => console.log(line));
+        } else {
+            console.log('No errors detected in any workflow log file.');
         }
-        // Optionally, print a summary or next steps
     } else {
         console.log('Workflow succeeded! No errors detected.');
     }
