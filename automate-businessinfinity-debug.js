@@ -127,7 +127,7 @@ function selectiveCopyBootstrapScss(entryScss, srcDir, destDir) {
 }
 
 function alwaysCopyFontAwesomeScss() {
-    const faSrcDir = path.resolve(__dirname, 'node_modules', 'font-awesome', 'scss');
+    const faSrcDir = path.resolve(__dirname, '..', 'node_modules', '@fortawesome', 'fontawesome-free', 'scss');
     console.log(`[DEBUG] alwaysCopyFontAwesomeScss running. Source: ${faSrcDir}`);
     if (!fs.existsSync(faSrcDir)) {
         console.warn(`[STAGE 1] Font Awesome SCSS source not found: ${faSrcDir}`);
