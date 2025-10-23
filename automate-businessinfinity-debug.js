@@ -3,7 +3,7 @@
 // Prerequisites: Node.js, git. Set GITHUB_TOKEN in env or provide via .env.
 
 import path from 'path';
-import { BusinessInfinityWorkflow } from './BusinessInfinityWorkflow.js';
+import { BusinessInfinityWorkflow } from '../../MCP/QualityMCP/src/QualityMCP/workflow/BusinessInfinityWorkflow.js';
 
 // Support legacy .env files for convenience during development
 try { (await import('dotenv')).config(); } catch (e) { /* optional */ }
