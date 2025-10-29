@@ -1,7 +1,8 @@
 // API base URL for backend (Azure Functions)
 export const API_BASE_URL = 'https://cloud.businessinfinity.asisaga.com';
 // OpenAPI spec location
-export const OPENAPI_SPEC_URL = `${API_BASE_URL}/openapi.json`;
+// export const OPENAPI_SPEC_URL = `${API_BASE_URL}/openapi.json`;
+export const OPENAPI_SPEC_URL = '/api/openapi.json';
 // config.js
 export const AAD_CONFIG = {
   clientId: "YOUR_CLIENT_ID",
