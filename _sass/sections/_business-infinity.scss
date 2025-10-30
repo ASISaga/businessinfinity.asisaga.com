@@ -45,6 +45,16 @@
     // Section container properties (replacing @extend for Jekyll compatibility)
     contain: layout style;
     isolation: isolate;
+    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($cosmic-deep-blue, 0.85) 100%);
+    padding: 3rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 3rem;
+    
+    .section-title {
+      color: $luminous-gold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
     
     .features-grid {
       // Grid container properties (replacing @extend for Jekyll compatibility)
@@ -108,27 +118,28 @@
       // Article container properties (replacing @extend for Jekyll compatibility)
       contain: layout style;
       isolation: isolate;
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
+      background: rgba($cosmic-deep-blue, 0.6);
+      border: 1px solid $ethereal-silver-accessible;
       border-radius: 8px;
       padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       
       &:hover, &:focus {
         transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        border-color: $luminous-gold;
       }
       
       .feature-title {
-        color: #1a237e;
+        color: $luminous-gold;
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 1rem;
       }
       
       .feature-description {
-        color: #424242;
+        color: $transcendent-white;
         margin-bottom: 1.5rem;
         line-height: 1.6;
       }
@@ -139,12 +150,12 @@
         isolation: isolate;
         
         li {
-          color: #424242;
+          color: $transcendent-white;
           margin-bottom: 0.5rem;
           
           &::before {
             content: '✓';
-            color: #2e7d32; // Accessible green
+            color: $emerald-green; // Accessible green
             font-weight: bold;
             margin-right: 0.5rem;
           }
@@ -441,6 +452,77 @@
       
       .content-list-item {
         margin-bottom: 0.5rem;
+      }
+    }
+  }
+  
+  // Testimonials section with dark theme
+  .testimonials-section {
+    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($royal-purple, 0.85) 100%);
+    padding: 3rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 3rem;
+    
+    .section-title {
+      color: $luminous-gold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .testimonial-card {
+      background: rgba($cosmic-deep-blue, 0.6);
+      border: 1px solid $ethereal-silver-accessible;
+      border-radius: 0.375rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: $transcendent-white;
+      
+      .testimonial-text {
+        color: $transcendent-white;
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+      
+      .testimonial-author {
+        color: $luminous-gold;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  // Use cases section with dark theme
+  .use-cases-section {
+    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($cosmic-deep-blue, 0.85) 100%);
+    padding: 3rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 3rem;
+    
+    .section-title {
+      color: $luminous-gold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .use-cases-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      
+      .tab-link {
+        background: rgba($cosmic-deep-blue, 0.6);
+        color: $transcendent-white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.375rem;
+        text-decoration: none;
+        border: 1px solid $ethereal-silver-accessible;
+        transition: all 0.2s ease;
+        
+        &:hover, &:focus {
+          background: rgba($luminous-gold, 0.2);
+          border-color: $luminous-gold;
+          color: $luminous-gold;
+        }
       }
     }
   }
