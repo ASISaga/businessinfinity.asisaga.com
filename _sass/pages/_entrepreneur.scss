@@ -5,6 +5,7 @@
   // Challenges section
   .entrepreneur-challenges-section {
     @extend .py-5; // Bootstrap padding
+    background-color: $bg-light; // Use theme accessible background
 
     // section-header.html styles are handled by _section-header.scss
 
@@ -18,14 +19,18 @@
         @extend .p-4; // Bootstrap padding
         @extend .mb-4; // Bootstrap margin
         @extend .text-center;
+        @extend .bg-white;
+        @extend .rounded;
+        @extend .shadow-sm;
+        border-top: 4px solid $luminous-gold; // Sacred accent color
 
         .entrepreneur-challenge-title {
           @extend .mb-3;
-          // Ensure heading level matches Bootstrap or use .fs-* classes
+          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
         }
 
         .entrepreneur-challenge-description {
-          color: var(--bs-gray-700); // Use Bootstrap CSS variable
+          color: $ethereal-silver-accessible; // WCAG compliant muted text
         }
       }
     }
@@ -33,7 +38,7 @@
 
   // Solutions section
   .entrepreneur-solutions-section {
-    @extend .bg-light;
+    background-color: $transcendent-white; // Use theme white
     @extend .py-5; // Bootstrap padding
 
     // section-header.html styles are handled by _section-header.scss
@@ -45,12 +50,17 @@
         @extend .row;
         @extend .mb-5; // Bootstrap margin
         @extend .align-items-start;
+        @extend .bg-white;
+        @extend .p-4;
+        @extend .rounded;
+        @extend .shadow-sm;
+        border-left: 4px solid $emerald-green; // Life force accent
 
         .entrepreneur-solution-icon {
           @extend .col-md-2;
           @extend .text-center;
-          // font-size: 2.5rem; // If specific size needed, create utility or use inline if truly unique
-          @extend .text-primary;
+          font-size: 2.5rem;
+          color: $luminous-gold; // Sacred gold for icons
         }
 
         .entrepreneur-solution-content {
@@ -59,10 +69,12 @@
 
         .entrepreneur-solution-title {
           @extend .mb-3;
+          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
         }
 
         .entrepreneur-solution-description {
           @extend .mb-3;
+          color: $cosmic-deep-blue; // Primary text
         }
 
         .entrepreneur-solution-features {
@@ -72,11 +84,12 @@
             @extend .ps-4; // Bootstrap padding for bullet
             @extend .position-relative;
             @extend .mb-2;
+            color: $cosmic-deep-blue; // Readable text
 
             &::before {
               content: "\2022"; // Bullet character
-              @extend .text-primary;
-              font-weight: bold; // Keep if specific, or create utility
+              color: $emerald-green; // Life force green
+              font-weight: bold;
               @extend .position-absolute;
               left: 0;
             }
@@ -89,6 +102,7 @@
   // Success story section
   .entrepreneur-success-section {
     @extend .py-5; // Bootstrap padding
+    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.05) 0%, rgba($luminous-gold, 0.08) 100%);
 
     // section-header.html styles are handled by _section-header.scss
 
@@ -97,15 +111,18 @@
       @extend .mw-800; // Assumes .mw-800 utility class exists
 
       .entrepreneur-testimonial {
-        @extend .bg-primary-light; // Assumes .bg-primary-light utility class exists
+        background-color: $transcendent-white; // Sacred white
         @extend .rounded;
         @extend .p-4; // Bootstrap padding
-        border-left: 4px solid var(--bs-primary);
+        border-left: 4px solid $luminous-gold; // Sacred gold accent
         @extend .m-0;
+        @extend .shadow;
 
         .entrepreneur-testimonial-text {
           @extend .fst-italic;
           @extend .mb-3;
+          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
+          font-size: 1.125rem;
         }
 
         .entrepreneur-testimonial-footer {
@@ -113,6 +130,7 @@
 
           .entrepreneur-testimonial-author {
             @extend .fw-medium;
+            color: $ethereal-silver-accessible; // Accessible muted color
           }
         }
       }

@@ -5,6 +5,7 @@
   // Challenges section
   .startup-challenges-section {
     @extend .py-5; // Bootstrap padding
+    background-color: $bg-light; // Use theme accessible background
 
     // section-header.html styles are handled by _section-header.scss
 
@@ -17,8 +18,8 @@
         @extend .col-md-4;
         @extend .p-4; // Bootstrap padding
         @extend .mb-4; // Bootstrap margin
-        border-top: 4px solid var(--bs-primary);
-        @extend .bg-white;
+        border-top: 4px solid $luminous-gold; // Sacred gold accent
+        background-color: $transcendent-white;
         @extend .rounded;
         @extend .shadow-sm;
         @extend .h-100;
@@ -31,10 +32,11 @@
 
         .startup-challenge-title {
           @extend .mb-3;
+          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
         }
 
         .startup-challenge-description {
-          color: var(--bs-gray-700);
+          color: $ethereal-silver-accessible; // WCAG compliant muted text
         }
       }
     }
@@ -42,7 +44,7 @@
 
   // Solutions section
   .startup-solutions-section {
-    @extend .bg-light;
+    background-color: $transcendent-white; // Use theme white
     @extend .py-5; // Bootstrap padding
 
     // section-header.html styles are handled by _section-header.scss
@@ -54,12 +56,17 @@
         @extend .row;
         @extend .mb-5; // Bootstrap margin
         @extend .align-items-start;
+        background-color: $transcendent-white;
+        @extend .p-4;
+        @extend .rounded;
+        @extend .shadow-sm;
+        border-left: 4px solid $emerald-green; // Life force accent
 
         .startup-solution-icon {
           @extend .col-md-2;
           @extend .text-center;
-          // font-size: 2.5rem; // If specific size needed, create utility or use inline if truly unique
-          @extend .text-primary;
+          font-size: 2.5rem;
+          color: $luminous-gold; // Sacred gold for icons
         }
 
         .startup-solution-content {
@@ -68,10 +75,12 @@
 
         .startup-solution-title {
           @extend .mb-3;
+          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
         }
 
         .startup-solution-description {
           @extend .mb-3;
+          color: $cosmic-deep-blue; // Primary text
         }
 
         .startup-solution-features {
@@ -81,10 +90,11 @@
             @extend .ps-4;
             @extend .position-relative;
             @extend .mb-2;
+            color: $cosmic-deep-blue; // Readable text
 
             &::before {
               content: "\2022"; // Bullet character
-              @extend .text-primary;
+              color: $emerald-green; // Life force green
               font-weight: bold;
               @extend .position-absolute;
               left: 0;
@@ -98,6 +108,7 @@
   // Case study section
   .startup-case-study-section {
     @extend .py-5; // Bootstrap padding
+    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.05) 0%, rgba($luminous-gold, 0.08) 100%);
 
     // section-header.html styles are handled by _section-header.scss
 
@@ -106,7 +117,7 @@
       @extend .mw-800; // Assumes .mw-800 utility class exists
 
       .startup-case-study-content {
-        @extend .bg-white;
+        background-color: $transcendent-white;
         @extend .p-4; // Bootstrap padding
         @extend .rounded;
         @extend .shadow-sm;
@@ -114,10 +125,12 @@
 
       .startup-case-study-title {
         @extend .mb-3;
+        color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
       }
 
       .startup-case-study-description {
         @extend .mb-3;
+        color: $cosmic-deep-blue; // Primary text
       }
 
       .startup-case-study-results {
@@ -128,10 +141,11 @@
           @extend .ps-4;
           @extend .position-relative;
           @extend .mb-2;
+          color: $cosmic-deep-blue; // Readable text
 
           &::before {
             content: "\2713"; // Checkmark character
-            color: var(--bs-success); // Using Bootstrap variable instead of extending class
+            color: $emerald-green-accessible; // WCAG compliant success color
             font-weight: bold;
             @extend .position-absolute;
             left: 0;
@@ -140,12 +154,14 @@
       }
 
       .startup-case-study-quote {
-        @extend .bg-primary-light; // Assumes .bg-primary-light utility class exists
+        background-color: $transcendent-white;
         @extend .rounded;
         @extend .p-3; // Bootstrap padding
-        border-left: 4px solid var(--bs-primary);
+        border-left: 4px solid $luminous-gold; // Sacred gold
         @extend .fst-italic;
         @extend .mb-0;
+        color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
+        font-size: 1.125rem;
       }
 
       .startup-quote-footer {
@@ -155,6 +171,7 @@
 
         cite {
           @extend .fw-medium;
+          color: $ethereal-silver-accessible; // Accessible muted color
         }
       }
     }
