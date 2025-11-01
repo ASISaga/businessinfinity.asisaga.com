@@ -1,0 +1,368 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Business Infinity API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/agents": {
+      "get": {
+        "summary": "List agents",
+        "operationId": "getAgents",
+        "responses": { "200": { "description": "Agent list" } }
+      }
+    },
+    "/agents/{agentId}": {
+      "get": {
+        "summary": "Get agent profile",
+        "operationId": "getAgentProfile",
+        "parameters": [{ "name": "agentId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Agent profile" } }
+      }
+    },
+    "/agents/{agent_id}/chat": {
+      "post": {
+        "summary": "Chat with agent",
+        "operationId": "chatWithAgent",
+        "parameters": [{ "name": "agent_id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "message": { "type": "string" } } } } } },
+        "responses": { "200": { "description": "Chat response" } }
+      }
+    },
+    "/conversations": {
+      "post": {
+        "summary": "Start conversation",
+        "operationId": "startConversation",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "domain": { "type": "string" } } } } } },
+        "responses": { "201": { "description": "Conversation started" } }
+      }
+    },
+    "/conversations/{id}/messages": {
+      "get": {
+        "summary": "Get messages for conversation",
+        "operationId": "getConversationMessages",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Messages list" } }
+      },
+      "post": {
+        "summary": "Post message to conversation",
+        "operationId": "postConversationMessage",
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "message": { "type": "string" } } } } } },
+        "responses": { "200": { "description": "Message posted" } }
+      }
+    },
+    "/mentor/test": {
+      "post": {
+        "summary": "Test mentor question",
+        "operationId": "testMentorQuestion",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "domain": { "type": "string" }, "question": { "type": "string" } } } } } },
+        "responses": { "200": { "description": "Mentor answer" } }
+      }
+    },
+    "/mentor/qapairs": {
+      "get": {
+        "summary": "List mentor Q&A pairs",
+        "operationId": "getMentorQaPairs",
+        "parameters": [{ "name": "domain", "in": "query", "required": false, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Q&A pairs list" } }
+      }
+    },
+    "/mentor/qapair": {
+      "post": {
+        "summary": "Submit mentor Q&A pair",
+        "operationId": "submitMentorQaPair",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "Q&A pair submitted" } }
+      }
+    },
+    "/mentor/fine-tune": {
+      "post": {
+        "summary": "Trigger mentor fine-tuning",
+        "operationId": "triggerMentorFineTune",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "domain": { "type": "string" } } } } } },
+        "responses": { "200": { "description": "Fine-tune triggered" } }
+      }
+    },
+    "/auth/linkedin": {
+      "get": {
+        "summary": "LinkedIn OAuth redirect",
+        "operationId": "authLinkedin",
+        "responses": { "302": { "description": "Redirect to LinkedIn" } }
+      }
+    },
+    "/auth/linkedin/callback": {
+      "get": {
+        "summary": "LinkedIn OAuth callback",
+        "operationId": "authLinkedinCallback",
+        "responses": { "200": { "description": "LinkedIn profile and email" } }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "authLogin",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "Login result" } }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "summary": "Refresh token",
+        "operationId": "authRefresh",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "Token refreshed" } }
+      }
+    },
+    "/ml/infer": {
+      "post": {
+        "summary": "ML inference",
+        "operationId": "mlInfer",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "Inference result" } }
+      }
+    },
+    "/aml/infer": {
+      "post": {
+        "summary": "AML inference",
+        "operationId": "amlInfer",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "AML inference result" } }
+      }
+    },
+    "/aml/train": {
+      "post": {
+        "summary": "AML training",
+        "operationId": "amlTrain",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "AML training result" } }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "summary": "Get dashboard",
+        "operationId": "getDashboard",
+        "responses": { "200": { "description": "Dashboard data" } }
+      }
+    },
+    "/messages": {
+      "get": {
+        "summary": "Get messages",
+        "operationId": "getMessages",
+        "responses": { "200": { "description": "Messages list" } }
+      }
+    },
+    "/action": {
+      "post": {
+        "summary": "Post UI action",
+        "operationId": "postAction",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "Action queued" } }
+      }
+    },
+    "/manifest": {
+      "get": {
+        "summary": "Get manifest",
+        "operationId": "getManifest",
+        "responses": { "200": { "description": "Manifest data" } }
+      }
+    },
+    "/mcp": {
+      "post": {
+        "summary": "MCP endpoint",
+        "operationId": "postMcp",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "200": { "description": "MCP result" } }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Get system status",
+        "operationId": "getStatus",
+        "responses": { "200": { "description": "System status" } }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "operationId": "getHealth",
+        "responses": { "200": { "description": "Health status" } }
+      }
+    },
+    "/api/onboarding/export-data": {
+      "get": {
+        "summary": "Export customer data",
+        "operationId": "exportCustomerData",
+        "description": "Export all data associated with the customer's partition in JSON format with integrity hash",
+        "security": [{"ApiKeyAuth": []}],
+        "parameters": [
+          { "name": "customer_id", "in": "query", "required": false, "schema": { "type": "string" } },
+          { "name": "x-customer-id", "in": "header", "required": true, "schema": { "type": "string" } },
+          { "name": "x-user-id", "in": "header", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { 
+          "200": { 
+            "description": "Customer data export with integrity hash",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "export_id": { "type": "string" },
+                    "customer_id": { "type": "string" },
+                    "export_timestamp": { "type": "string", "format": "date-time" },
+                    "data_types": { "type": "array", "items": { "type": "string" } },
+                    "data": { "type": "object" },
+                    "integrity_hash": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Customer ID and User ID required" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/onboarding/request-deletion": {
+      "post": {
+        "summary": "Request data deletion",
+        "operationId": "requestDataDeletion",
+        "description": "Request deletion of customer partition data with confirmation step",
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customer_id": { "type": "string" },
+                  "confirm": { "type": "boolean", "default": false },
+                  "request_id": { "type": "string", "description": "Required for confirmation step" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion request response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "request_id": { "type": "string" },
+                    "status": { "type": "string", "enum": ["pending_confirmation", "confirmed"] },
+                    "sla_days": { "type": "number" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/onboarding/rbac": {
+      "get": {
+        "summary": "Get RBAC information",
+        "operationId": "getRbacInfo",
+        "description": "Get current user's roles, permissions, and governance defaults",
+        "security": [{"ApiKeyAuth": []}],
+        "parameters": [
+          { "name": "customer_id", "in": "query", "required": false, "schema": { "type": "string" } },
+          { "name": "x-customer-id", "in": "header", "required": true, "schema": { "type": "string" } },
+          { "name": "x-user-id", "in": "header", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "User RBAC information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user_id": { "type": "string" },
+                    "customer_id": { "type": "string" },
+                    "role": { "type": "string" },
+                    "permissions": { "type": "array", "items": { "type": "string" } },
+                    "restrictions": { "type": "array", "items": { "type": "string" } },
+                    "governance_defaults": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/onboarding/incident-contact": {
+      "get": {
+        "summary": "Get incident contact information",
+        "operationId": "getIncidentContactInfo",
+        "description": "Get incident response and escalation contact information",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {
+            "description": "Incident response contact information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "incident_response": {
+                      "type": "object",
+                      "properties": {
+                        "primary_contact": { "type": "object" },
+                        "escalation_path": { "type": "array", "items": { "type": "object" } }
+                      }
+                    },
+                    "breach_notification": { "type": "object" },
+                    "compliance_officer": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/onboarding/retention-policy": {
+      "get": {
+        "summary": "Get retention policy",
+        "operationId": "getRetentionPolicy",
+        "description": "Get current data retention and deletion policy information",
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {
+            "description": "Data retention and deletion policies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_retention": { "type": "object" },
+                    "deletion_policies": { "type": "object" },
+                    "backup_policy": { "type": "object" },
+                    "gdpr_compliance": { "type": "object" },
+                    "policy_version": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-functions-key"
+      }
+    }
+  }
+}

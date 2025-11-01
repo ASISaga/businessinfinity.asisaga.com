@@ -6,7 +6,7 @@ import './dashboard-panel.js';
 import './mentor-element.js';
 
 // Import OpenAPI spec from backend (relative path in workspace)
-import openApiSpec from '../../../../BusinessInfinity/openapi.json';
+import openApiSpec from '../data/openapi.json';
 
 // Expose the spec globally for documentation, validation, or codegen
 window.openApiSpec = openApiSpec;
