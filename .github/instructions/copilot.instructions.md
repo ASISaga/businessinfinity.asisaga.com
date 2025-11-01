@@ -3,30 +3,30 @@ applyTo: "*.*,_*/*.*,_*/*/*.*,_*/*/*/*.*"
 description: "UI, SCSS, and JS design guidance for this subdomain. Applies to all HTML, SCSS, JS, and Liquid files in this repo."
 ---
 
-
 businessinfinity.asisaga.com — Custom Website Instructions
 
-## Structure & Jekyll Conventions
-- This instructions file applies to the businessinfinity.asisaga.com subdomain of asisaga.com.
-- The theme is inherited from theme.asisaga.com. Do not copy theme files here.
-- The site head (meta tags, CSS/JS includes, etc.) is managed in the theme repo and applies to all subdomains. Do not override or duplicate the head in subdomain repos.
-- All subdomain-specific HTML, SCSS, and JS MUST be placed in this repo's folders.
-- Structure MUST be documented in `website_structure.json` and kept up to date.
+**Note:** `businessinfinity.asisaga.com` is a subdomain of `asisaga.com`. The `theme.asisaga.com` repository provides the common Jekyll theme (layouts, includes, SCSS, and JS) for all subdomains of `asisaga.com`.
+
+## Jekyll Theme Inheritance & Build Process
+All Jekyll layouts—including the HTML header, navigation, footer, and many shared includes—are defined in the `theme.asisaga.com` theme. At build time, GitHub Pages automatically merges the theme into this subdomain:
+- The `_layouts`, `_includes`, `_sass`, and `assets` directories from the theme are injected into the subdomain site during the build. Any updates to the theme are reflected in all subdomains on the next build.
+- The site head (meta tags, CSS/JS includes, etc.), navigation, and footer are managed in the theme repo and apply to all subdomains. **Do not override or duplicate these in subdomain repos.**
+- Many shared includes are also defined in the theme. Only override a theme file in this repo if absolutely necessary, and only by adding a file with the same name as the theme file you wish to replace. Prefer extending via subdomain-specific files and avoid duplication.
 
 ## Jekyll & Liquid
 - Use Jekyll with Liquid templating.
-- Place reusable UI components in `_includes`.
+- Place reusable UI components in `_includes` **only if not already provided by the theme**.
 - Use `{% include component.html param="value" %}` for parameterized includes.
 - Use semantic HTML5 elements for accessibility and SEO.
 - Break complex UI into small, reusable partials.
-- Each UI component in `_includes` MUST have a matching SCSS partial in `/_sass/components/`.
+- Each UI component in `_includes` (if custom) MUST have a matching SCSS partial in `/_sass/components/`.
 - Each HTML page MUST have a matching SCSS file in `/_sass/pages/`.
 - Each HTML element in a component/page MUST have exactly one SCSS class in its respective file.
 
 ## JavaScript
 - All subdomain JS MUST go in `/assets/js`.
-- The main entry point for JS is `/assets/js/script.js` in each subdomain. This file MUST import the shared `/assets/js/common.js` from the theme first, then load any subdomain-specific JS.
-- Shared JS is in the theme's `/assets/js/common.js` — always import it, never duplicate.
+- The main entry point for JS is `/assets/js/script.js`. This file MUST import the shared `/assets/js/common.js` from the theme first (available at build time), then load any subdomain-specific JS.
+- Shared JS is in the theme's `/assets/js/common.js` — always import it, never duplicate or override unless absolutely necessary.
 - Use ES6 modules and import/export syntax.
 - Use semantic, kebab-case file names for scripts.
 - Page-specific JS: name after the page (e.g., `boardroom.js`).
@@ -39,6 +39,15 @@ businessinfinity.asisaga.com — Custom Website Instructions
 - Use event delegation for dynamic content.
 - Ensure all interactive elements are accessible.
 
+#### JavaScript Import Chain Example
+
+- `/assets/js/script.js` (subdomain entry point)
+	- imports `/assets/js/common.js` (from theme, injected at build)
+		- imports `/assets/js/common/bootstrap.js` (from theme)
+			- imports and initializes Bootstrap modules
+
+All subdomain-specific JS should be imported after `common.js` in `script.js`.
+
 ## SCSS
 - All subdomain SCSS MUST be in `/_sass`.
 - The main entry point for CSS is `/assets/css/style.scss` (in the theme). This file is compiled by GitHub Pages/Jekyll into `style.css` and included in the site head.
@@ -48,11 +57,11 @@ businessinfinity.asisaga.com — Custom Website Instructions
 - Use Bootstrap v5.3.5 (from theme) and prioritize its utilities/components.
 - Customize Bootstrap via SCSS variables, not direct overrides.
 - Use mobile-first, responsive design.
-- Each component/page MUST have a matching SCSS partial.
+- Each component/page (if custom) MUST have a matching SCSS partial.
 - Use one custom class per element, kebab-case naming.
 - Use parent selector `&` for pseudo-classes/modifiers.
 - Limit nesting to 3-4 levels.
-- Use `@extend`, `@include`, or Bootstrap utilities in component/page SCSS.
+- Use `@include` or Bootstrap utilities in component/page SCSS (do not use `@extend` in Jekyll SCSS).
 - Add descriptive comments in SCSS and HTML.
 
 ## Accessibility-First Development (MANDATORY)
@@ -96,11 +105,11 @@ businessinfinity.asisaga.com — Custom Website Instructions
 - NEVER use @extend in SCSS files (causes Jekyll build failures)
 - Use direct CSS properties instead: `contain: layout style; isolation: isolate;`
 - Import order: theme common.scss FIRST, then subdomain main.scss
-- All includes MUST have matching SCSS partials
+- Only add includes or overrides if not already provided by the theme. All custom includes MUST have matching SCSS partials.
 
 ## Best Practices
 - Keep partials focused on a single concern/component.
 - Use semantic HTML and ARIA for accessibility.
 - Update `website_structure.json` for any structure changes.
-- Do not copy theme files into this repo; update the theme for shared changes.
+- Do not copy or override theme files into this repo unless absolutely necessary; update the theme for shared changes.
 - After each Copilot Agent run, review and improve this file as needed.
