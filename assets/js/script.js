@@ -6,7 +6,20 @@ import './dashboard-panel.js';
 import './mentor-element.js';
 
 // Import OpenAPI spec from backend (relative path in workspace)
-import openApiSpec from '../data/openapi.json';
+
+// Load OpenAPI spec at runtime using fetch to avoid MIME type issues
+fetch('../data/openapi.json')
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  })
+  .then(openApiSpec => {
+    window.openApiSpec = openApiSpec;
+    console.log('Loaded OpenAPI spec:', openApiSpec);
+  })
+  .catch(error => {
+    console.error('Failed to load OpenAPI spec:', error);
+  });
 
 // Expose the spec globally for documentation, validation, or codegen
 window.openApiSpec = openApiSpec;
