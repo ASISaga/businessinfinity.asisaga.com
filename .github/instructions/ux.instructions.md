@@ -5,6 +5,8 @@ description: "UX guidance for Copilot when crafting ASI Saga's design, narrative
 
 # UX Design Principles for ASI Saga
 
+Implementation note: this document focuses on UX strategy, narrative, and accessibility. For engineering and implementation guidelines (SCSS structure, Jekyll includes, JavaScript patterns, CI enforcement), see `.github/instructions/website.instructions.md` in the same directory — that file contains concrete coding conventions and enforcement steps.
+
 ## Narrative & World-Building
 
 - Open each document with the saga's high-level premise: the evolving interplay between human creativity and artificial superintelligence.
@@ -101,3 +103,22 @@ description: "UX guidance for Copilot when crafting ASI Saga's design, narrative
 - **Design System Evolution**: Continuously refine and expand the design system based on new needs.
 - **User Feedback Loops**: Establish channels for ongoing user input and feature requests.
 - **Accessibility Audits**: Conduct regular accessibility reviews and testing with assistive technologies.
+	- **Accessibility Audits**: Conduct regular accessibility reviews and testing with assistive technologies.
+
+## Repository structure & UX artifacts
+
+This section maps where UX artifacts belong in the repository and how designers and content authors should store and reference them.
+
+- Strategy and narrative: keep high-level UX strategy, journeys, and research notes in this file: `Website/.github/instructions/ux.instructions.md`.
+- Component guidance and usage docs: place small markdown docs next to includes under `_includes/docs/` (for example `_includes/docs/chat-area.md`) or in `Website/docs/components/` when more extensive.
+- Design tokens and visual assets:
+	- Theme-level tokens (canonical): `Website/theme.asisaga.com/_sass/assets/_variables.scss` or `Website/theme.asisaga.com/assets/css/tokens.css`.
+	- Component images and icons: `Website/assets/images/components/`.
+	- Static prototypes, wireframes, and screenshots: `Website/design/prototypes/`.
+- Interactive examples, fixtures and test pages: `Website/examples/` or `Website/playwright/` (small pages that exercise components for visual regression or E2E tests).
+- Accessibility test artifacts and reports: `Website/a11y-reports/` (store axe/lighthouse outputs, remediation notes, and issue links).
+
+Guidelines:
+- Keep UX docs high-level and link to `website.instructions.md` for implementation details (SCSS, JS, Jekyll mapping, CI steps).
+- For any interaction with implementation impact (keyboard handling, focus trap, animation preferences), create a short `IMPLEMENTATION.md` beside the include (for example `_includes/components/chat-area/IMPLEMENTATION.md`) listing required data attributes, events, and token dependencies.
+- Do not duplicate design tokens. The theme's `_sass/assets/_variables.scss` is authoritative for spacing, color, and typography values. If a token is missing, request it via a theme PR rather than redefining locally.
