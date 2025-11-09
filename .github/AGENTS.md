@@ -1,38 +1,60 @@
-# Copilot Agent Procedural Rules for businessinfinity.asisaga.com
+# Copilot Agent Procedural Rules — businessinfinity.asisaga.com
 
-## Agent Responsibilities
-- Enforce accessibility-first development (WCAG AA, semantic HTML, ARIA)
-- Ensure mobile-first, responsive design for all UI
-- Validate all color and contrast rules for new components/pages
-- Require one custom SCSS class per element, kebab-case naming
-- Require matching SCSS partials for every custom include/component
-- Require JS modules to import theme's `common.js` first, then subdomain JS
-- Require descriptive comments and JSDoc for all JS/SCSS
-- Require event delegation and accessibility for interactive JS
-- Require all interactive elements to have minimum 44px touch targets
-- Require all images to have meaningful alt attributes
-- Require all form inputs to have associated labels
-- Require skip navigation as first focusable element
-- Require focus indicators for all interactive elements
-- Require no horizontal scrolling at any breakpoint
-- Require font sizes >= 16px
-- Require no use of @extend in SCSS
-- Require all grid containers to be responsive
-- Require all layout containers to use CSS containment and isolation
+Purpose: provide a concise, machine-friendly reference for automated checks the Copilot Agent runs on PRs and local changes.
 
-## Agent Workflow
-1. For every new UI component, check for matching SCSS partial and accessibility compliance
-2. For every new JS module, check import chain and event delegation
-3. For every new page, validate main/banner/footer landmarks and skip navigation
-4. For every color/contrast change, verify WCAG AA compliance
-5. For every structure change, update `website_structure.json`
-6. For every Copilot Agent run, review and improve AGENTS.md as needed
+---
 
+## Metadata
+- applyTo: Website/businessinfinity.asisaga.com/
+- alsoAffects: Website/theme.asisaga.com/
 
-## Agent Enforcement
-- Block changes that violate accessibility, responsive, or theme inheritance rules
-- Flag missing SCSS partials, JS import chains, or accessibility violations
-- Require descriptive comments and documentation for all new code
-- Block changes that override theme head, navigation, or footer unless necessary
-- Block direct CSS edits (require SCSS partials)
-- Block unnecessary copying of theme files
+## High-level responsibilities
+- Accessibility-first: enforce WCAG AA where applicable (semantic HTML, keyboard/focus, ARIA where needed).
+- Repo layout & mapping: ensure `_includes` ↔ `/_sass/components` mapping and asset/entry invariants.
+- JS ordering: require theme-level `common.js` to be imported before subdomain/component scripts.
+- SCSS conventions: prefer mixins & variables; flag raw property blocks and risky constructs like `@extend` for review.
+- Forbidden patterns: detect and block inline `<style>`/`<script>`, inline event handlers (`on*=`), `innerHTML`/template-literal HTML generation in JS, and committed `node_modules`.
+
+## Checks (run on PRs and on-demand)
+1. Fast linters
+	- ESLint, Stylelint, HTMLHint. Report failures as PR annotations.
+
+2. Structural checks (repo rules)
+	- For each `_includes/components/<name>.html` expect `/_sass/components/_<name>.scss`, or require a documented exception in the include header.
+	- Ensure `assets/js/script.js` or equivalent entry exists and imports `assets/js/common.js` first.
+
+3. Pattern scans (source-level)
+	- Inline assets: fail on `<\\s*style`, `<\\s*script`, `\\s(on\\w+)\\s*=`, or `style=\"` inside `_includes/` and `_layouts/`.
+	- HTML-in-JS: fail on `innerHTML\\s*=`, `insertAdjacentHTML\\s*\\(`, or template literals that contain `<[^>]+>` in `assets/js`.
+	- SCSS scans: warn on `@extend` (require header rationale), warn on raw property blocks in component partials.
+
+4. Accessibility smoke tests
+	- Run axe-core or headless Lighthouse/Playwright on critical pages; report top-level violations (blocking if severe).
+
+5. Vendor/idempotency checks
+	- Run vendor prepare (e.g., `npm run vendor:prepare`). If the vendor step produces uncommitted changes, fail the check and require commit or update PR.
+
+## Enforcement levels
+- Hard block (CI failure): inline `<style>`/`<script>` in templates, inline event handlers (`on*=`), committed `node_modules`, uncommitted vendor-prepare output.
+- Soft block (PR annotation/action required): missing SCSS partial for an include, missing JS entry/import order, `innerHTML` or HTML template-literal usage in JS.
+- Flag-for-review (warning): `@extend` without documented rationale, deeply-nested selectors (>4 levels), global element selectors in component partials.
+ 
+
+## Example rule patterns (regex-friendly)
+- Inline assets (fail): /<\\s*style[\\s>]/i, /<\\s*script[\\s>]/i, /\\s(on\\w+)\\s*=/i, /style=\"/i
+- HTML-in-JS (fail): /innerHTML\\s*=/, /insertAdjacentHTML\\s*\\(/, /`[\\s\\S]*<[^>]+>[\\s\\S]*`/
+- SCSS `@extend` (warn): /@extend\\s+/
+
+ 
+
+## Escalation & exceptions
+- False positive workflow: open a PR comment describing the rationale and tag maintainers. A human reviewer can approve an exception; the agent records overrides in PR metadata.
+- Theme overrides: for cross-repo changes (subdomain + theme), block automatic merges and require a coordination issue linking both PRs.
+
+## Maintenance
+- Keep this document machine-parseable: prefer top-level headers, short bullet lists, and regex examples.
+- When changing rules that affect check scripts, update corresponding scripts under `scripts/` and the examples above.
+
+---
+
+Last updated: (update via PR) — this file is authoritative for the Copilot Agent's local checks.
