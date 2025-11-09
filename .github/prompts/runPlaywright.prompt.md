@@ -10,7 +10,8 @@ Run Playwright E2E tests for the BusinessInfinity website (https://businessinfin
 Call Buddhi MCP tool `buddhi-mcp/run_playwright_tests` with:
 ```json
 {
-  "testType": "all"
+  "testType": "all",
+  "url": "https://businessinfinity.asisaga.com"
 }
 ```
 
