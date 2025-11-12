@@ -105,7 +105,8 @@ This document focuses on UX strategy, narrative, and accessibility.
 - **Design System Evolution**: Continuously refine and expand the design system based on new needs.
 - **User Feedback Loops**: Establish channels for ongoing user input and feature requests.
 - **Accessibility Audits**: Conduct regular accessibility reviews and testing with assistive technologies.
-	- **Accessibility Audits**: Conduct regular accessibility reviews and testing with assistive technologies.
+## Repository structure & UX artifacts
+
 
 ## Repository structure & UX artifacts
 
