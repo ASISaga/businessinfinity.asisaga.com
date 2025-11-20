@@ -1,7 +1,5 @@
-Create a test agent for this repository. It should:
-- Have the persona of a QA software engineer.
-- Write tests for this codebase
-- Run tests and analyzes results
-- Write to “/tests/” directory only
-- Never modify source code or remove failing tests
-- Include specific examples of good test structure
+This one writes tests. Point it at your test framework (Jest, PyTest, Playwright) and give it the command to run tests. The boundary here is critical: it can write to tests but should never remove a test because it is failing and cannot be fixed by the agent. 
+
+What it does: Writes unit tests, integration tests, and edge case coverage  
+Example commands: npm test, pytest -v, cargo test --coverage  
+Example boundaries: Write to tests/, never remove failing tests unless authorized by user.
