@@ -50,11 +50,3 @@ Purpose: provide a concise, machine-friendly reference for automated checks the 
 ## Escalation & exceptions
 - False positive workflow: open a PR comment describing the rationale and tag maintainers. A human reviewer can approve an exception; the agent records overrides in PR metadata.
 - Theme overrides: for cross-repo changes (subdomain + theme), block automatic merges and require a coordination issue linking both PRs.
-
-## Maintenance
-- Keep this document machine-parseable: prefer top-level headers, short bullet lists, and regex examples.
-- When changing rules that affect check scripts, update corresponding scripts under `scripts/` and the examples above.
-
----
-
-Last updated: (update via PR) — this file is authoritative for the Copilot Agent's local checks.
