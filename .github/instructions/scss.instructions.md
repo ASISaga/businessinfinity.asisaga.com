@@ -31,3 +31,11 @@ description: "SCSS guidance for subdomain: partial locations, import chains, the
 
 # Do Not
 - Do not copy theme `_sass` files wholesale into the subdomain. Prefer upstream fixes in the theme repository.
+
+## Structural Checks & SCSS Scans
+- **Component partial mapping:** Ensure each `_includes/components/<name>.html` has a corresponding `/_sass/components/_<name>.scss`. Missing partials should be explained in the include header.
+- **Avoid deep specificity:** Warn on deeply-nested selectors (>4 levels) and global element selectors in component partials.
+- **`@extend` policy (warn):** Use `@extend` sparingly. If used, document rationale in the partial header so reviewers can assess maintainability impact. CI may flag `@extend` usages for review.
+
+## Enforcement & Linting
+- **Stylelint in CI:** Run `stylelint` with the shared config in CI. Fixable issues can be suggested as edits but require a maintainer to approve committing the changes.

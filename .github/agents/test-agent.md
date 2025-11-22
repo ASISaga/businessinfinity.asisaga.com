@@ -26,3 +26,23 @@ Boundaries
 Examples
 - Add a Playwright smoke test for the homepage: `tests/e2e/home.spec.js` and run `npx playwright test tests/e2e/home.spec.js`.
 - Run the Python test subset: `pytest -q BusinessInfinity/tests/test_*.py`
+
+## Agent behavior & error handling
+
+- **Severity mapping:** MCP tests return `status` which maps to agent action:
+	- pass → no annotation
+	- warn → PR annotation and explanation (does not block)
+	- fail → annotate and mark required check as failed (block merge)
+- **Timeouts & retries:** If an MCP call times out, retry once with exponential backoff; if still failing, annotate the PR with `"MCP runner unavailable"` and mark as a soft-failure for human review.
+- **False positives:** Include a short guidance snippet in the annotation that instructs contributors how to request an override (open PR comment with rationale and tag maintainers). Record approved overrides in PR metadata.
+
+## Agent responsibilities (testing)
+
+- Ensure test files are present for any new logic added to build scripts or runtime helpers.
+- Prefer adding or registering tests with the Buddhi MCP server rather than adding local test tooling. Invoke tests via the MCP/Copilot integration so results and artifacts are recorded centrally.
+- Run lightweight smoke tests (lint, unit) via the MCP runner on PRs and queue heavier E2E/a11y runs for merge or scheduled jobs.
+- Record artifact paths in PR metadata when tests fail and include remediation suggestions.
+
+## Agent mapping
+
+- Copilot should convert MCP `status` values to actions as described in the "Agent behavior & error handling" section above: `pass` → no annotation, `warn` → annotate (non-blocking), `fail` → annotate and mark required check as failed (blocking merge).

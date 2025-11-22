@@ -63,14 +63,9 @@ Tip: keep prompts small and focused; large orchestration should remain on the MC
 - Storage: MCP tests should upload important artifacts (axe/lighthouse HTML, Playwright screenshots, JSON findings) to the MCP artifact store and return URLs in the test output. For long-term records of gated failures, copy artifacts into `a11y-reports/` via a maintainer-approved process.
 - PR annotations: when MCP returns structured findings, Copilot should annotate the PR with file/line links and a short remediation suggestion. Warnings should not block merges unless surfaced as `fail` by the MCP test.
 
-## Agent behavior & error handling
+## Agent behavior & error handling (agent guidance)
 
-- Severity mapping: MCP tests return `status` which maps to agent action:
-	- pass → no annotation
-	- warn → PR annotation and explanation (does not block)
-	- fail → annotate and mark required check as failed (block merge)
-- Timeouts & retries: if an MCP call times out, retry once with exponential backoff; if still failing, annotate PR with "MCP runner unavailable" and mark as soft-failure for human review.
-- False positives: include a short guidance snippet in the annotation that instructs contributors how to request an override (open PR comment with rationale and tag maintainers). The agent should record approved overrides in PR metadata.
+For agent-facing behavior relating to MCP/test runs (severity mapping, retries, and PR annotation conventions), see the agent guidance file: `.github/agents/test-agent.md`.
 
 ## Registration, versioning & lifecycle
 
@@ -143,9 +138,32 @@ For each check above, prompts should declare the test name/version to run on MCP
 
 ## CI conventions
 
-- Required checks: linting (JS/SCSS), unit tests, and the agent procedural checks from `.github/AGENTS.md` must be configured as required checks in GitHub Actions. These checks should be driven by the Buddhi MCP server and invoked via Copilot prompts where possible.
+- Required checks: linting (JS/SCSS), unit tests, and the repository procedural checks defined in the instruction files under `.github/instructions/` (for example `html.instructions.md`, `js.instructions.md`, `scss.instructions.md`, and `testing.instructions.md`) must be configured as required checks in GitHub Actions. These checks should be driven by the Buddhi MCP server and invoked via Copilot prompts where possible.
 - E2E and heavy accessibility audits may run on a schedule or on merge to main to keep PR feedback fast; schedule and retention are controlled through MCP.
 	- Artifact storage: keep test artifacts (screenshots, reports) attached to MCP/CI runs and copy them into `a11y-reports/` only when they represent a gated failure or long-term record and after maintainer approval.
+
+## Repository pattern scans & enforcement
+
+- **Forbidden patterns (scan targets):** The following checks should be provided as MCP tests and used in CI prompts for PR validation:
+	- Inline assets in templates: detect `<\s*style` and `<\s*script` inside `_includes/`, `_layouts/`, or content pages. Example regex: `/<\\s*style[\\s>]/i`, `/<\\s*script[\\s>]/i`.
+	- Inline event handlers: detect `\s(on\w+)\s*=` usage (e.g. `onclick=`). Example regex: `/\\s(on\\w+)\\s*=/i`.
+	- Inline style attributes: detect `style="` attributes in templates. Example regex: `/style=\"/i`.
+	- HTML-in-JS patterns: detect assignments to `innerHTML`, `insertAdjacentHTML`, or template literals that contain HTML tags. Example regexes: `/innerHTML\\s*=/`, `/insertAdjacentHTML\\s*\\(/`, /`[\\s\\S]*<[^>]+>[\\s\\S]*`/.
+	- SCSS `@extend` usage: flag occurrences for review. Example regex: `/@extend\\s+/`.
+
+- **Structural checks:** Validate component mapping and asset ordering:
+	- For each `_includes/components/<name>.html` expect `/_sass/components/_<name>.scss` (or a documented exception in the include header).
+	- Ensure `assets/js/script.js` (or repo entry) imports `assets/js/common.js` before subdomain scripts.
+
+- **Vendor/idempotency checks:** The vendor-prep step (for example `prepare-vendor` or a similar build step) must be run in CI; if it produces uncommitted changes relative to the PR branch, the MCP test should fail the PR until artifacts are checked in.
+
+## Enforcement levels (mapped to MCP test outcomes)
+
+- **Hard block (CI failure):** Inline `<style>`/`<script>` in templates, inline event handlers (`on*=`), committed `node_modules`, uncommitted vendor-prepare output — these should map to MCP `fail` and block merges.
+- **Soft block (PR annotation/action required):** Missing SCSS partials for an include, missing JS entry/import order, minor HTML-in-JS patterns that are likely accidental — map to MCP `warn` and annotate PR.
+- **Flag-for-review (warning):** `@extend` without rationale, deeply-nested selectors (>4 levels), global element selectors in component partials — map to MCP `warn` or `pass` with a structured advisory.
+
+
 
 ## Playwright & visual testing
 
@@ -155,10 +173,8 @@ For each check above, prompts should declare the test name/version to run on MCP
 Notes: do NOT add or document local test commands in this repository; all execution flows for tests must be routed through the Buddhi MCP server and Copilot prompts as described above.
 
 ## Agent responsibilities (testing)
-- Ensure test files are present for any new logic added to build scripts or runtime helpers.
-- Prefer adding or registering tests with the Buddhi MCP server rather than adding local test tooling. Agents should invoke tests via the MCP/Copilot integration so results and artifacts are recorded centrally.
-- Run lightweight smoke tests (lint, unit) via the MCP runner on PRs and queue heavier E2E/a11y runs for merge or scheduled jobs.
-- Record artifact paths in PR metadata when tests fail and include remediation suggestions.
+
+For operational and runtime responsibilities that Copilot/agents must follow when invoking or reporting MCP test results, see: `.github/agents/test-agent.md`.
 
 ## Maintenance
 - Keep test fixtures and example pages up to date with design tokens and theme mixins. If a fixture becomes stale, update or archive it with a short note.

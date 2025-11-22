@@ -39,3 +39,17 @@ description: "HTML and Jekyll/Liquid guidance for businessinfinity.asisaga.com: 
 # Do Not
 - Do not override global theme head, navigation, or footer unless approved and documented.
 - Do not add build-time logic in templates; keep Liquid simple and testable.
+
+## Pattern Scans & Forbidden Patterns
+- **Inline assets (fail):** Do not commit inline `<style>` or `<script>` tags inside `_includes/`, `_layouts/`, or content files. Use the theme or component partials instead.
+- **Inline event handlers (fail):** Avoid `on*=` attributes in templates (e.g., `onclick=`). Prefer unobtrusive event binding in `assets/js`.
+- **Example regexes:** Use these patterns in CI scans for template-level violations:
+	- Inline style/script: `/<\\s*style[\\s>]/i`, `/<\\s*script[\\s>]/i`
+	- Inline event handlers: `/\\s(on\\w+)\\s*=/i`, `/style=\"/i`
+
+## Structural Checks (component mapping)
+- **Component SCSS mapping:** For each `_includes/components/<name>.html` expect a corresponding `/_sass/components/_<name>.scss` partial. If a component intentionally has no partial, document the exception in the include header comment and PR description.
+
+## Accessibility Smoke Tests
+- **Run smoke audits:** CI should run lightweight accessibility audits (axe-core or headless Lighthouse) for critical pages and report top-level violations. Severe issues should block merges.
+- **Escalation:** For heavier cross-site audits, coordinate with Buddhi/MCP tooling and provide an invocation artifact under `.github/prompts/` when needed.

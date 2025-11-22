@@ -25,3 +25,13 @@ description: "JavaScript guidance for subdomain: entry points, asset ordering, v
 
 # Do Not
 - Do not override theme head scripts or modify bootstrapping done by the theme without coordination.
+
+## Forbidden Patterns & Scans
+- **HTML-in-JS (fail):** Avoid assigning raw HTML strings to DOM APIs. Patterns to fail in CI include:
+	- `innerHTML\s*=`, `insertAdjacentHTML\s*\(`
+	- Template literals that include HTML tags: /`[\\s\\S]*<[^>]+>[\\s\\S]*`/
+- **Rationale:** These constructs encourage XSS-prone code and make accessibility and structure checks harder; prefer DOM creation helpers or templating libraries with safe escaping.
+
+## Vendor & Idempotency Checks
+- **Vendor prepare:** Keep vendor artifacts in `/assets/js/vendor/` and run a vendor-prep step locally. CI should run the same vendor prepare step; if it produces uncommitted changes, fail the PR until artifacts are checked in.
+- **Idempotent initialization:** Ensure modules guard initialization so hot-reload or multiple imports do not add duplicate handlers.
