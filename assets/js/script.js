@@ -5,7 +5,8 @@ import './boardroom-app.js';
 import './dashboard-panel.js';
 import './mentor-element.js';
 
-// Import OpenAPI spec from backend (relative path in workspace)
+// Initialize OpenAPI spec placeholder
+window.openApiSpec = null;
 
 // Load OpenAPI spec at runtime using fetch to avoid MIME type issues
 fetch('../data/openapi.json')
@@ -21,11 +22,11 @@ fetch('../data/openapi.json')
     console.error('Failed to load OpenAPI spec:', error);
   });
 
-// Expose the spec globally for documentation, validation, or codegen
-window.openApiSpec = openApiSpec;
-
 // Initialize the Boardroom application when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
   // Custom elements are auto-registered. Example: log the API spec
-  console.log('Loaded OpenAPI spec:', window.openApiSpec);
+  if (window.openApiSpec) {
+    console.log('OpenAPI spec available:', window.openApiSpec);
+  }
 });
+
