@@ -84,9 +84,10 @@ window.asisaga = window.asisaga || {
    */
   debounce(fn, delay = 250) {
     let timeoutId;
-    return (...args) => {
+    return function(...args) {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => fn.apply(this, args), delay);
+      const context = this;
+      timeoutId = setTimeout(() => fn.apply(context, args), delay);
     };
   },
   
@@ -98,7 +99,7 @@ window.asisaga = window.asisaga || {
    */
   throttle(fn, limit = 250) {
     let inThrottle;
-    return (...args) => {
+    return function(...args) {
       if (!inThrottle) {
         fn.apply(this, args);
         inThrottle = true;
