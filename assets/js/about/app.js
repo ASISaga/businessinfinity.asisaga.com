@@ -16,4 +16,12 @@ themeBtn.addEventListener('click', () => {
   setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 });
 
+// Print button handler
+const printBtn = document.getElementById('printBtn');
+if (printBtn) {
+  printBtn.addEventListener('click', () => {
+    window.print();
+  });
+}
+
 console.log('%cBusiness Infinity', 'color:#00e0ff; font-weight:700;', 'Persistent AI boardroom loaded.');
