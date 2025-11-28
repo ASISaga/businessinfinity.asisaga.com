@@ -3,22 +3,6 @@ applyTo: "**/*"
 description: "Repository architecture, companion-file roles, integration points, and agent responsibilities for the subdomain."
 ---
 
-# Companion File Structure & Repository Architecture
-
-This file documents the companion-file codex and how agents should interpret the repository structure.
-
-- **README.md** — Human-facing entry point. Quick start, project overview, and contribution guide.
-- **.github/instructions/website.instructions.md** — Site-level conventions (SCSS/JS), layout rules, and UX implementation guidance.
-- **.github/instructions/ux.instructions.md** — High-level UX philosophy, accessibility rationale, tone, and design patterns.
-- **.github/instructions/testing.instructions.md** — Testing philosophy, conventions, and CI/CD hooks.
-- **.github/instructions/html.instructions.md** — Template and Jekyll/Liquid guidance, include rules, and accessibility checks.
-- **.github/instructions/js.instructions.md** — JS entry, asset ordering, vendor rules, and HTML-in-JS scans.
-- **.github/instructions/scss.instructions.md** — SCSS partial mapping, import chains, and linting guidance.
-- **.github/agents/** — Role-focused agent files (lint-agent.md, api-agent.md, docs-agent.md, test-agent.md, etc.).
-
-
-Each file is atomic: it covers one domain of guidance. Together, they form a codex for both humans and Copilot agents.
-
 ## Repository layout (agent interpretation)
 
 - `Website/` — contains all subdomain sites and a local clone of the shared theme. Agents should treat `Website/` as the root for site-level checks.

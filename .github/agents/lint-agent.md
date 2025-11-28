@@ -26,3 +26,12 @@ Boundaries
 Examples
 - Safe autofix: `npx eslint "Website/**/*.{js,ts}" --fix`  
 - Record changes in PR with the linter command used so reviewers can reproduce them.
+
+## Enforcement & Linting
+- **Stylelint in CI:** Run `stylelint` with the shared config in CI. Fixable issues can be suggested as edits but require a maintainer to approve committing the changes.
+
+# Automation & Linting
+- Run stylelint in CI with the shared config. Fixable issues can be surfaced as suggested edits, but require maintainer approval before committing.
+
+# Testing & Quality
+- Lint JS in CI and use an agreed ESLint config shared with the theme when possible.
