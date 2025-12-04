@@ -365,7 +365,9 @@ class BoardroomApp extends ChatroomApp {
     }
 }
 
-// Register the custom element
-customElements.define('boardroom-app', BoardroomApp);
+// Register the custom element if not already defined to avoid duplicate-define errors
+if (!customElements.get('boardroom-app')) {
+    customElements.define('boardroom-app', BoardroomApp);
+}
 
 export default BoardroomApp;
