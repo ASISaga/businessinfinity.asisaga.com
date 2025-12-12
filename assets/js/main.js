@@ -4,7 +4,7 @@
  */
 
 // App-specific imports moved from `script.js`
-import './sidebar-element.js';
+import './boardroom/sidebar-element.js';
 import './boardroom-app.js';
 import './dashboard-panel.js';
 import './mentor-element.js';
