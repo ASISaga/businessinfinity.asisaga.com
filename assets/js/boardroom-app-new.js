@@ -71,11 +71,14 @@ class BoardroomApp extends ChatroomApp {
 
         // Get boardroom-specific elements
         this.boardroomElements = {
-            toggleStrip: this.querySelector('.boardroom-toggle-strip'),
+            // Toggle strip in partials uses the members-sidebar naming; fall back to legacy class if present
+            toggleStrip: this.querySelector('.boardroom-members-sidebar-toggle-strip') || this.querySelector('.boardroom-toggle-strip'),
             membersSidebar: this.querySelector('.boardroom-members-sidebar'),
-            agentList: this.querySelector('#boardroom-list'),
+            // Members list container provided by Jekyll partials
+            agentList: this.querySelector('#membersListContainer'),
             chatArea: this.querySelector('.boardroom-chat-area'),
-            profileDetail: this.querySelector('#profile-detail'),
+            // Optional profile detail section; tolerate absence
+            profileDetail: this.querySelector('[data-boardroom-region="profile"]') || this.querySelector('#profile-detail'),
             loadingOverlay: this.querySelector('.boardroom-loading-overlay'),
             toastContainer: this.querySelector('.boardroom-toast-container')
         };
@@ -122,6 +125,20 @@ class BoardroomApp extends ChatroomApp {
                 this.toggleView(view);
             });
         });
+
+        const membersToggleBtn = this.querySelector('#toggleMembersBtn');
+        if (membersToggleBtn && this.boardroomElements.membersSidebar) {
+            membersToggleBtn.addEventListener('click', () => {
+                const willHide = !this.boardroomElements.membersSidebar.classList.contains('hidden');
+                this.boardroomElements.membersSidebar.classList.toggle('hidden', willHide);
+                membersToggleBtn.setAttribute('aria-expanded', (!willHide).toString());
+
+                const icon = this.querySelector('#membersSidebarToggleIcon img');
+                if (icon) {
+                    icon.setAttribute('alt', willHide ? 'Expand' : 'Collapse');
+                }
+            });
+        }
     }
 
     initializeMembersSidebar() {
