@@ -1,0 +1,199 @@
+// Boardroom page styles
+// This file contains only @extend, @include, or Bootstrap utility classes per project rules.
+// All custom property declarations must be in the unique class for each element/component.
+
+// Boardroom page root
+.boardroom-container {
+  @include container-fluid;
+}
+
+.boardroom-section {
+  @include row;
+}
+
+.boardroom-container-fluid {
+  @include container-fluid;
+}
+
+.boardroom-main-row {
+  @include row;
+}
+
+// Toggle strip
+.boardroom-members-sidebar-toggle-strip {
+  @include d-flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include bg-dark;
+  padding-top: $sp-2; // fallback: uses spacing variable; replace if project uses different spacing token
+  padding-bottom: $sp-2;
+}
+
+.boardroom-toggle-members-btn {
+  @include btn;
+  @include btn-outline-light;
+  margin-bottom: $sp-2;
+}
+
+.boardroom-other-action-btn {
+  @include btn;
+  @include btn-outline-secondary;
+  margin-bottom: $sp-2;
+}
+
+.boardroom-members-sidebar-strip-spacer {
+  @include flex-grow(1);
+}
+
+.boardroom-members-sidebar-toggle-icon {
+  margin-top: $sp-2;
+}
+
+// Members sidebar
+.boardroom-members-sidebar {
+  /* column sizing is controlled by grid; use utility class in markup if needed */
+  @include bg-light;
+  @include d-flex;
+  @include flex-direction(column);
+  padding: 0;
+}
+
+.boardroom-members-header {
+  @include d-flex;
+  @include justify-content(space-between);
+  @include align-items(center);
+  padding: $sp-3;
+  border-bottom: 1px solid rgba($border-color, 0.08);
+}
+
+.boardroom-members-title {
+  @include h5;
+  @include mb-0;
+}
+
+.boardroom-invite-member-btn {
+  @include btn;
+  @include btn-primary;
+}
+
+.boardroom-invite-member-icon {
+  margin-right: $sp-1;
+}
+
+.boardroom-members-section {
+  @include flex-grow(1);
+  overflow: auto;
+  padding: $sp-3;
+}
+
+.boardroom-members-search-form {
+  margin-bottom: $sp-3;
+  @include position-relative;
+}
+
+.boardroom-members-search-input {
+  @include form-control;
+}
+
+
+// Remove .boardroom-members-search-addon, now handled by .boardroom-members-search-icon in _boardroom-icons.scss
+
+.boardroom-members-list {
+  @include list-unstyled;
+  margin-bottom: 0;
+}
+
+.boardroom-members-empty-state {
+  @include text-center;
+  margin-top: $sp-5;
+  color: $muted-color;
+}
+
+
+// Remove .boardroom-members-empty-icon, now handled by .boardroom-members-empty-img in _boardroom-icons.scss
+
+.boardroom-members-empty-title {
+  @include fw-bold;
+}
+
+.boardroom-members-empty-desc {
+  @include small;
+}
+
+// Chat area
+.boardroom-chat-area {
+  /* grid column behavior should be applied in markup; keep layout utilities */
+  @include d-flex;
+  @include flex-direction(column);
+  padding: 0;
+}
+
+.boardroom-chat-header {
+  @include d-flex;
+  @include justify-content(space-between);
+  @include align-items(center);
+  padding: $sp-3;
+  border-bottom: 1px solid rgba($border-color, 0.08);
+}
+
+.boardroom-chat-title {
+  @include h4;
+  @include mb-0;
+}
+
+.boardroom-chat-status {
+  @include badge;
+  @include bg-primary; // map success to primary in theme; adjust if needed
+}
+
+.boardroom-chat-messages {
+  @include flex-grow(1);
+  overflow: auto;
+  padding: $sp-3;
+}
+
+.boardroom-chat-empty-state {
+  @include text-center;
+  margin-top: $sp-5;
+  color: $muted-color;
+}
+
+
+// Remove .boardroom-chat-empty-icon, now handled by .boardroom-chat-empty-icon in _boardroom-icons.scss
+
+// Message input
+.boardroom-message-input {
+  @include d-flex;
+  @include align-items(center);
+  padding: $sp-3;
+  border-top: 1px solid rgba($border-color, 0.06);
+  @include bg-light;
+}
+
+.boardroom-message-input-avatar {
+  @include border-radius(50%);
+  margin-right: $sp-2;
+  border: 1px solid rgba($border-color, 0.08);
+}
+
+.boardroom-message-input-field {
+  @include form-control;
+  margin-right: $sp-2;
+}
+
+.boardroom-message-input-attach {
+  @include btn;
+  @include btn-link;
+  margin-right: $sp-2;
+}
+
+.boardroom-message-input-emoji {
+  @include btn;
+  @include btn-link;
+  margin-right: $sp-2;
+}
+
+.boardroom-message-input-send {
+  @include btn;
+  @include btn-primary;
+}
