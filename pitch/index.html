@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Business Infinity Flywheel - Gauges + Data Pulses</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Gauge.js (for radial KPI gauges) -->
-  <script src="https://cdn.jsdelivr.net/npm/gaugeJS/dist/gauge.min.js"></script>
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <h1>Business Infinity: Recursive & Exponential Flywheel</h1>
+---
+layout: default
+title: "Business Infinity Flywheel - Gauges + Data Pulses"
+permalink: /pitch/
+---
 
-  <canvas id="flywheel"></canvas>
+<link rel="stylesheet" href="{{ '/pitch/styles.css' | relative_url }}" />
+<script src="https://cdn.jsdelivr.net/npm/gaugeJS/dist/gauge.min.js"></script>
+
+<section class="pitch">
+  <h1>Business Infinity: Recursive &amp; Exponential Flywheel</h1>
+
+  <canvas id="flywheel" aria-label="Business Infinity flywheel visualization"></canvas>
 
   <!-- Modal -->
   <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
@@ -23,8 +21,6 @@
       <div class="gauges" id="gaugeArea"></div>
     </div>
   </div>
+</section>
 
-  <!-- App logic -->
-  <script src="app.js" defer></script>
-</body>
-</html>
+<script src="{{ '/pitch/app.js' | relative_url }}" defer></script>

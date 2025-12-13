@@ -1,13 +1,12 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>Business Infinity Boardroom</title>
-  <link rel="stylesheet" href="/assets/css/pages/framework.css" />
-</head>
-<body>
+---
+layout: default
+title: "Business Infinity — Decision Framework"
+permalink: /decision-framework/
+---
+
+<section class="decision-framework page-content">
   <header>
-    <h1>ASI Saga · Business Infinity</h1>
+    <h1>Business Infinity · Decision Framework</h1>
     <p>Transcendent Pathway: Legend‑guided decisions with audit‑tight governance.</p>
   </header>
 
@@ -30,8 +29,9 @@
   <section id="mcp">
     <h2>Oversight Console</h2>
     <div>
-      <label>Node ID</label><input id="nodeId" />
-      <label>Blend</label>
+      <label for="nodeId">Node ID</label>
+      <input id="nodeId" />
+      <label for="blend">Blend</label>
       <select id="blend">
         <option>mean</option>
         <option>median</option>
@@ -40,12 +40,16 @@
       <button id="setBlend">Set Blend</button>
     </div>
     <div>
-      <label>Role</label><input id="role" />
-      <label>Legend</label><input id="legend" />
+      <label for="role">Role</label>
+      <input id="role" />
+      <label for="legend">Legend</label>
+      <input id="legend" />
       <button id="switchAdapter">Switch Adapter</button>
     </div>
   </section>
 
+  {% comment %} Page-specific stylesheet and script — left here intentionally so the default layout can include or
+  override as needed {% endcomment %}
+  <link rel="stylesheet" href="/assets/css/pages/framework.css" />
   <script src="/assets/js/framework/app.js"></script>
-</body>
-</html>
+</section>
