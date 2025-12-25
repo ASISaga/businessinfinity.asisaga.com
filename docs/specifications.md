@@ -1,8 +1,21 @@
 # Website Specifications
 
+> **Note**: This document provides a high-level overview. For detailed technical specifications, see the [specifications directory](./specifications/README.md).
+
 ## 1. Overview
 This repository (`business-infinity-site`) is the **frontend for the Business Infinity app**, deployed on **GitHub Pages** and integrated with backend services hosted on **Azure Functions**.  
 The site is both a **documentation hub** and the **Boardroom interface** — a conversational space where onboarding, governance, and daily collaboration between agents occur.
+
+## Detailed Specifications
+
+For comprehensive technical documentation, refer to the following specification documents:
+
+- **[Architecture](./specifications/architecture.md)** - System architecture, technology stack, repository structure, theme integration, deployment, security, and performance
+- **[HTML & Liquid Templates](./specifications/html-templates.md)** - Template hierarchy, Liquid syntax, semantic HTML5, accessibility, SEO, and best practices
+- **[SCSS & Styling](./specifications/scss-styling.md)** - SCSS architecture, component mapping, theming, responsive design, and styling patterns
+- **[JavaScript & Web Components](./specifications/javascript-components.md)** - Module system, web components, API integration, security patterns, and performance
+- **[API Integration](./specifications/api-integration.md)** - Backend API, OpenAPI spec, authentication, operations, error handling, and caching
+- **[Data Structures](./specifications/data-structures.md)** - Configuration data, boardroom data, API formats, state management, and validation
 
 ---
 
