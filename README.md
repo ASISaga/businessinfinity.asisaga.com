@@ -19,7 +19,14 @@ This repository hosts the Business Infinity website, deployed on GitHub Pages an
 
 ## Documentation
 
-- [Specifications](docs/specifications.md) - Technical specifications and architecture
+- [Specifications](docs/specifications.md) - High-level technical specifications and architecture
+- [Detailed Specifications](docs/specifications/) - Comprehensive technical documentation:
+  - [Architecture](docs/specifications/architecture.md) - System design and structure
+  - [HTML & Liquid Templates](docs/specifications/html-templates.md) - Template patterns and accessibility
+  - [SCSS & Styling](docs/specifications/scss-styling.md) - Styling architecture and theming
+  - [JavaScript & Web Components](docs/specifications/javascript-components.md) - JS modules and components
+  - [API Integration](docs/specifications/api-integration.md) - Backend API and authentication
+  - [Data Structures](docs/specifications/data-structures.md) - Schemas and state management
 - [Test Plan](docs/test-plan.md) - Comprehensive test coverage plan
 - [Test Suite README](tests_playwright/README.md) - Testing setup and guidelines
 
