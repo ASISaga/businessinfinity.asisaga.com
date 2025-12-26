@@ -78,22 +78,24 @@ function getAllMixinNames(dirs) {
 }
 
 
+// Compile all SCSS files to detect undefined mixins, variables, and other errors
 for (const dir of scssDirs) {
     if (!fs.existsSync(dir)) continue;
-    const files = fs.readdirSync(dir).filter(f => f.endsWith('.scss'));
-    for (const file of files) {
-        const filePath = path.join(dir, file);
+    const files = getAllScssFiles(dir);
+    for (const filePath of files) {
+        const relativePath = path.relative(__dirname, filePath);
         try {
-            sass.compile(filePath, { quietDeps: true, quiet: true });
+            sass.compile(filePath, { loadPaths: scssDirs, quietDeps: true, quiet: true });
         } catch (e) {
             const msg = e.message || '';
-            // Check for undefined mixin, fatal errors, or mixin argument mismatch
+            // Check for undefined mixin, fatal errors, undefined variable, or mixin argument mismatch
             if (
                 /Undefined mixin/i.test(msg) ||
+                /Undefined variable/i.test(msg) ||
                 /SassError|SyntaxError|fatal/i.test(msg) ||
                 /Mixin [^ ]+ takes \d+ arguments but \d+ (was|were) passed/i.test(msg)
             ) {
-                errors.push(`${file}: ${msg}`);
+                errors.push(`${relativePath}: ${msg}`);
             }
         }
     }
