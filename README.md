@@ -19,6 +19,7 @@ This repository hosts the Business Infinity website, deployed on GitHub Pages an
 
 ## Documentation
 
+- [SCSS Dependency Management](SCSS_DEPENDENCY_MANAGEMENT.md) - Guide to SCSS validation and theme dependencies
 - [Backend Integration Guide](docs/backend-integration.md) - Complete guide to the Business Infinity backend
 - [Specifications](docs/specifications.md) - High-level technical specifications and architecture
 - [Detailed Specifications](docs/specifications/) - Comprehensive technical documentation:
@@ -58,7 +59,12 @@ bundle install
 npm install
 ```
 
-4. Install Playwright browsers:
+4. Validate SCSS dependencies:
+```bash
+npm run validate
+```
+
+5. Install Playwright browsers:
 ```bash
 npx playwright install
 ```
@@ -73,6 +79,11 @@ bundle exec jekyll serve
 Site will be available at `http://localhost:4000`
 
 ### Testing
+
+Run SCSS validation:
+```bash
+npm run validate
+```
 
 Run all tests:
 ```bash

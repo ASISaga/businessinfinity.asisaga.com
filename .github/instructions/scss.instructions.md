@@ -39,3 +39,33 @@ description: "SCSS guidance for subdomain: partial locations, import chains, the
 - **Avoid deep specificity:** Warn on deeply-nested selectors (>4 levels) and global element selectors in component partials.
 - **`@extend` policy (warn):** Use `@extend` sparingly. If used, document rationale in the partial header so reviewers can assess maintainability impact. CI may flag `@extend` usages for review.
 
+## Dependency Validation & Failsafe Mechanisms
+- **Theme dependency validation:** All SCSS files must only use mixins, functions, and variables that are defined in either:
+  1. The theme repository (`ASISaga/theme.asisaga.com`)
+  2. The subdomain's own `_sass` directory
+  3. Standard Sass built-in modules
+- **Missing dependency detection:** Before committing SCSS changes, run `node lint-scss-mixins.js` to detect:
+  - Undefined mixins and functions
+  - Undefined variables
+  - Invalid math operations
+  - Type errors (e.g., using null/nil in calculations)
+- **CI enforcement:** GitHub Actions workflow validates SCSS on every PR to prevent merging code with missing dependencies.
+- **Failsafe rules when adding new SCSS:**
+  1. Never use `@include` or `@mixin` calls without verifying the mixin exists in theme or subdomain
+  2. Never reference variables (e.g., `$spacer`, `$border-color`) without confirming they're defined in theme's `_common.scss`
+  3. Document any new mixins or variables added to subdomain in comments
+  4. If a required mixin/variable is missing from theme, either:
+     - Submit a PR to theme repository to add it
+     - Create a local fallback in subdomain with clear documentation
+     - Use alternative approach that doesn't require the missing dependency
+- **Automated checks:** The linter performs these checks:
+  - Scans for undefined mixin calls
+  - Validates all variable references
+  - Detects math operations on incompatible types
+  - Ensures no Bootstrap/theme variables are set to null before use
+- **Error handling:** If validation fails:
+  1. Review the error output to identify missing dependencies
+  2. Check if dependency should exist in theme (coordinate with theme maintainers)
+  3. Add fallback or alternative implementation in subdomain if appropriate
+  4. Document the decision and rationale in code comments
+

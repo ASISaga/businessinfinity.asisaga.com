@@ -1,6 +1,6 @@
 // Node.js script to lint SCSS files for missing mixins and fatal errors using Dart Sass
 
-import sass from 'sass';
+import * as sass from 'sass';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
@@ -19,13 +19,27 @@ if (fs.existsSync(configPath)) {
 const loadPaths = (config.sass && config.sass.load_paths) ? config.sass.load_paths : ['_sass'];
 const theme = config.remote_theme || '';
 
+console.log('🔍 SCSS Dependency Validator');
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
 // Resolve include paths relative to project root
 const scssDirs = loadPaths.map(p => path.resolve(__dirname, p));
 if (theme) {
     // Try to add theme's _sass dir if present
     const themeSass = path.resolve(__dirname, `../${theme.split('/').pop()}/_sass`);
-    if (fs.existsSync(themeSass)) scssDirs.push(themeSass);
+    if (fs.existsSync(themeSass)) {
+        scssDirs.push(themeSass);
+        console.log(`✓ Theme SCSS found: ${themeSass}`);
+    } else {
+        console.log(`⚠ Theme SCSS not found at: ${themeSass}`);
+        console.log(`  Theme: ${theme}`);
+        console.log(`  This may cause validation errors if theme dependencies are used.`);
+    }
 }
+
+console.log(`✓ Scanning directories: ${scssDirs.join(', ')}`);
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+
 let errors = [];
 
 
@@ -200,10 +214,22 @@ for (const { file, content } of allScss) {
 }
 // --- End additional lint checks ---
 if (errors.length > 0) {
-    console.error('SCSS errors found:');
-    errors.forEach(err => console.error(err));
+    console.error('\n❌ SCSS VALIDATION FAILED');
+    console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.error(`Found ${errors.length} error(s):\n`);
+    errors.forEach(err => console.error(`  ✗ ${err}`));
+    console.error('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.error('💡 Troubleshooting:');
+    console.error('  1. Check if mixins/variables exist in theme repository');
+    console.error('  2. Verify _config.yml has correct remote_theme setting');
+    console.error('  3. Review .github/instructions/scss.instructions.md');
+    console.error('  4. Ensure theme is checked out in CI (see validate-scss.yml)');
+    console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
     process.exit(1);
 } else {
+    console.log('✅ SCSS VALIDATION PASSED');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('No missing mixins or fatal SCSS errors detected.');
+    console.log('All dependencies are properly defined.\n');
     process.exit(0);
 }
