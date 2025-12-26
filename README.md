@@ -19,6 +19,7 @@ This repository hosts the Business Infinity website, deployed on GitHub Pages an
 
 ## Documentation
 
+- [Backend Integration Guide](docs/backend-integration.md) - Complete guide to the Business Infinity backend
 - [Specifications](docs/specifications.md) - High-level technical specifications and architecture
 - [Detailed Specifications](docs/specifications/) - Comprehensive technical documentation:
   - [Architecture](docs/specifications/architecture.md) - System design and structure
@@ -120,11 +121,14 @@ See [tests_playwright/README.md](tests_playwright/README.md) for detailed testin
 - `<aml-demo>` - Azure ML integration
 - `<sidebar-element>`, `<dashboard-panel>`, `<mentor-element>`, `<boardroom-app>`
 
-### API Integration
-- Backend: `cloud.businessinfinity.asisaga.com`
-- OpenAPI specification at `/openapi.json`
-- Dynamic operation resolution by `operationId`
-- Azure AD authentication
+### Backend Integration
+- **Backend Repository**: [ASISaga/BusinessInfinity](https://github.com/ASISaga/BusinessInfinity)
+- **Infrastructure**: [ASISaga/AgentOperatingSystem](https://github.com/ASISaga/AgentOperatingSystem)
+- **Backend API**: `cloud.businessinfinity.asisaga.com`
+- **OpenAPI Specification**: `/api/openapi.json`
+- **Authentication**: Azure AD (Entra ID)
+- **Features**: Strategic decisions, workflows, trust & compliance, agent management
+- See [Backend Integration Guide](docs/backend-integration.md) for complete documentation
 
 ## Quality Covenant
 
