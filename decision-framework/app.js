@@ -1,4 +1,3 @@
-import { API_BASE_URL } from '../assets/js/config.js';
 import { BoardroomAPI } from '../assets/js/boardroom/boardroomApi.js';
 
 const api = new BoardroomAPI();

@@ -153,8 +153,12 @@ export class HealthStatusUI {
       const bsModal = new bootstrap.Modal(modal);
       bsModal.show();
       
-      // Clean up modal when hidden
-      modal.addEventListener('hidden.bs.modal', () => modal.remove());
+      // Clean up modal and its event listeners when hidden
+      const cleanupHandler = () => {
+        modal.removeEventListener('hidden.bs.modal', cleanupHandler);
+        modal.remove();
+      };
+      modal.addEventListener('hidden.bs.modal', cleanupHandler);
     }
   }
 

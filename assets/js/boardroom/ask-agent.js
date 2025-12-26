@@ -153,7 +153,7 @@ export class AskAgentUI {
 
       // Display the response
       responseContent.innerHTML = this.formatResponse(result.answer);
-      confidenceSpan.textContent = `${(result.confidence * 100).toFixed(0)}%`;
+      confidenceSpan.textContent = result.confidence != null ? `${(result.confidence * 100).toFixed(0)}%` : 'N/A';
 
       // Show response, hide loading
       loadingDiv.style.display = 'none';
