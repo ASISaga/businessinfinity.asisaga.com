@@ -252,7 +252,7 @@ Get incident response and escalation contact information.
   "incident_response": {
     "primary_contact": {
       "email": "security@businessinfinity.asisaga.com",
-      "phone": "+1-XXX-XXX-XXXX"
+      "phone": "+1-800-555-0100"
     },
     "escalation_path": []
   },
@@ -307,11 +307,20 @@ export const API_BASE_URL = 'https://cloud.businessinfinity.asisaga.com';
 ```
 
 **Note**: The configuration file also requires Azure AD credentials to be set up:
-- `clientId`: Your Azure AD application client ID
-- `tenantId`: Your Azure AD tenant ID
-- `functionScope`: API scope for your Azure Functions app
+- `clientId`: Your Azure AD application client ID (set via `AZURE_CLIENT_ID` environment variable)
+- `tenantId`: Your Azure AD tenant ID (set via `AZURE_TENANT_ID` environment variable)
+- `functionScope`: API scope for your Azure Functions app (set via `AZURE_FUNCTION_SCOPE` environment variable)
 
-These should be configured via environment variables in production rather than hardcoded.
+These should be configured via environment variables in production rather than hardcoded. Example:
+```javascript
+// Production configuration using environment variables
+export const AAD_CONFIG = {
+  clientId: process.env.AZURE_CLIENT_ID,
+  tenantId: process.env.AZURE_TENANT_ID,
+  functionScope: process.env.AZURE_FUNCTION_SCOPE,
+  redirectUri: window.location.origin
+};
+```
 
 ### OpenAPI Specification
 
