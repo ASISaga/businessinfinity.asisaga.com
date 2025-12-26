@@ -9,6 +9,7 @@ export class AskAgentUI {
   constructor() {
     this.api = new BoardroomAPI();
     this.currentRole = null;
+    this.keyboardListenerAdded = false;
   }
 
   /**
@@ -95,13 +96,16 @@ export class AskAgentUI {
       askBtn.addEventListener('click', () => this.handleAskAgent());
     }
 
-    // Add keyboard shortcut: Ctrl+K to open modal
-    document.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.key === 'k') {
-        e.preventDefault();
-        this.showModal();
-      }
-    });
+    // Add keyboard shortcut: Ctrl+K to open modal (only if not already added)
+    if (!this.keyboardListenerAdded) {
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'k') {
+          e.preventDefault();
+          this.showModal();
+        }
+      });
+      this.keyboardListenerAdded = true;
+    }
   }
 
   /**
@@ -130,12 +134,12 @@ export class AskAgentUI {
     const question = questionInput.value.trim();
 
     if (!role) {
-      alert('Please select an agent');
+      this.showToast('Please select an agent', 'error');
       return;
     }
 
     if (!question) {
-      alert('Please enter a question');
+      this.showToast('Please enter a question', 'error');
       return;
     }
 
@@ -158,8 +162,19 @@ export class AskAgentUI {
     } catch (error) {
       console.error('Error asking agent:', error);
       loadingDiv.style.display = 'none';
-      alert('Failed to get response from agent: ' + error.message);
+      this.showToast('Failed to get response from agent: ' + error.message, 'error');
     }
+  }
+
+  /**
+   * Show toast notification
+   */
+  showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
   }
 
   /**

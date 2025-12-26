@@ -8,7 +8,7 @@ async function runDecision() {
   try { 
     evidence = JSON.parse(document.getElementById("evidence").value || "{}"); 
   } catch { 
-    alert("Invalid JSON"); 
+    showToast('Invalid JSON format', 'error');
     return; 
   }
   

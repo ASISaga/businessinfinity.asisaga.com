@@ -48,6 +48,9 @@ export class HealthStatusUI {
    * Start health monitoring with periodic refresh
    */
   startMonitoring(interval = 30000) {
+    // Stop any existing monitoring first
+    this.stopMonitoring();
+    
     // Initial check
     this.checkHealth();
     

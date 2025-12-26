@@ -144,7 +144,7 @@ export class WorkflowUI {
             <label for="param_${param.name}" class="form-label">
               ${param.label} ${param.required ? '<span class="text-danger">*</span>' : ''}
             </label>
-            <select id="param_${param.name}" class="form-control" ${param.required ? 'required' : ''}>
+            <select id="param_${param.name}" class="form-select" ${param.required ? 'required' : ''}>
               <option value="">Select ${param.label}...</option>
               ${param.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
             </select>
@@ -179,7 +179,7 @@ export class WorkflowUI {
     const workflowName = workflowSelect.value;
     
     if (!workflowName) {
-      alert('Please select a workflow');
+      this.showToast('Please select a workflow', 'error');
       return;
     }
 
@@ -192,7 +192,7 @@ export class WorkflowUI {
       if (input) {
         params[param.name] = input.value;
         if (param.required && !params[param.name]) {
-          alert(`Please provide ${param.label}`);
+          this.showToast(`Please provide ${param.label}`, 'error');
           return;
         }
       }
@@ -223,8 +223,19 @@ export class WorkflowUI {
     } catch (error) {
       console.error('Error executing workflow:', error);
       loadingDiv.style.display = 'none';
-      alert('Failed to execute workflow: ' + error.message);
+      this.showToast('Failed to execute workflow: ' + error.message, 'error');
     }
+  }
+
+  /**
+   * Show toast notification
+   */
+  showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
   }
 
   /**
