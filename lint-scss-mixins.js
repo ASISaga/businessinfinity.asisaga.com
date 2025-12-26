@@ -10,6 +10,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Command line flags
+const VERBOSE = process.argv.includes('--verbose') || process.argv.includes('-v');
+
 // Read _config.yml for include paths and theme
 const configPath = path.resolve(__dirname, '_config.yml');
 let config = {};
@@ -85,7 +88,13 @@ for (const dir of scssDirs) {
     for (const filePath of files) {
         const relativePath = path.relative(__dirname, filePath);
         try {
-            sass.compile(filePath, { loadPaths: scssDirs, quietDeps: true, quiet: true });
+            // Use verbose mode if --verbose flag is passed, otherwise suppress dependency warnings
+            const compileOptions = { 
+                loadPaths: scssDirs, 
+                quietDeps: !VERBOSE,
+                verbose: VERBOSE
+            };
+            sass.compile(filePath, compileOptions);
         } catch (e) {
             const msg = e.message || '';
             // Check for undefined mixin, fatal errors, undefined variable, or mixin argument mismatch
@@ -101,12 +110,6 @@ for (const dir of scssDirs) {
     }
 }
 
-// --- Additional proactive lint checks ---
-// NOTE: Regex-based variable and math operation checks have been removed.
-// The Sass compiler itself is much more accurate at detecting undefined variables,
-// invalid math operations, and other SCSS errors during the compilation step above.
-// We rely solely on Sass compilation for accurate error detection.
-// --- End additional lint checks ---
 if (errors.length > 0) {
     console.error('\n❌ SCSS VALIDATION FAILED');
     console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');

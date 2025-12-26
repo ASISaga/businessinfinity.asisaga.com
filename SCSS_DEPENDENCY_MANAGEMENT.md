@@ -31,6 +31,12 @@ npm install sass js-yaml
 node lint-scss-mixins.js
 ```
 
+For verbose output including deprecation warnings:
+
+```bash
+node lint-scss-mixins.js --verbose
+```
+
 This will:
 - Check all SCSS files for compilation errors
 - Detect undefined mixins and functions
