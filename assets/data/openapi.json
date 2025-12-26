@@ -8,12 +8,14 @@
         "/agents": {
             "get": {
                 "summary": "List agents",
-                "operationId": "getAgents",
+                "operationId": "getAgentsLegacy",
                 "responses": {
                     "200": {
                         "description": "Agent list"
                     }
-                }
+                },
+                "deprecated": true,
+                "description": "Legacy endpoint - use /api/agents instead"
             }
         },
         "/agents/{agentId}": {
@@ -454,12 +456,14 @@
         "/health": {
             "get": {
                 "summary": "Health check",
-                "operationId": "getHealth",
+                "operationId": "getHealthLegacy",
                 "responses": {
                     "200": {
                         "description": "Health status"
                     }
-                }
+                },
+                "deprecated": true,
+                "description": "Legacy endpoint - use /api/health for detailed component status"
             }
         },
         "/api/onboarding/export-data": {
