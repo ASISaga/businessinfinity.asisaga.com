@@ -1,0 +1,414 @@
+# Backend Integration Guide
+
+## Overview
+
+This document describes the integration between the Business Infinity frontend (this repository) and the Business Infinity backend services.
+
+## Backend Architecture
+
+The Business Infinity backend is a Python-based serverless application built on Azure Functions and the Agent Operating System (AOS). It provides:
+
+- **Strategic Decision Making**: Multi-agent collaborative decision processes
+- **Business Workflow Orchestration**: Automated business processes (product launches, funding rounds)
+- **Agent Management**: C-Suite agents (CEO, CFO, CTO, CMO, COO), Founder, and Investor agents
+- **Trust & Compliance**: GDPR-compliant data export, deletion, and retention policies
+- **Risk Management**: Comprehensive risk tracking and mitigation
+- **Knowledge Management**: Centralized knowledge base with versioning
+- **Mentor Mode**: Agent training and fine-tuning capabilities
+- **Global Boardroom Network**: Covenant-based compliance for autonomous boardrooms
+
+## Backend Repository
+
+**Repository**: [ASISaga/BusinessInfinity](https://github.com/ASISaga/BusinessInfinity)
+
+### Key Components
+
+1. **Agent Operating System (AOS)** - Infrastructure layer providing:
+   - Agent lifecycle management
+   - Message bus for inter-agent communication
+   - Storage services (Blob, Table, Queue, Cosmos DB)
+   - ML pipeline for model training and inference
+   - Authentication and authorization
+   - MCP (Model Context Protocol) integration
+
+2. **Business Agents** - Specialized AI agents:
+   - **ChiefExecutiveOfficer**: Strategic leadership and vision
+   - **BusinessCFO**: Financial leadership and analysis
+   - **BusinessCTO**: Technology leadership and innovation
+   - **FounderAgent**: Vision, innovation, entrepreneurial leadership
+   - **InvestorAgent**: Investment analysis and funding strategy
+
+3. **Azure Functions API** - RESTful endpoints for:
+   - Health checks and system status
+   - Agent interactions and queries
+   - Strategic decision making
+   - Business workflow execution
+   - Trust and compliance operations
+
+## API Endpoints
+
+### Core Endpoints
+
+#### Health Check
+```
+GET /api/health
+```
+Returns system status and availability of core components (AOS, Service Bus, Storage, MCP).
+
+**Response**:
+```json
+{
+  "status": "ok",
+  "components": {
+    "aos": { "status": "available" },
+    "serviceBus": { "status": "available" },
+    "storage": { "status": "available" },
+    "mcp": { "status": "available" }
+  }
+}
+```
+
+#### List Agents
+```
+GET /api/agents
+```
+Returns all available business agents with their roles, status, and capabilities.
+
+**Response**:
+```json
+[
+  {
+    "role": "CEO",
+    "status": "online",
+    "capabilities": ["strategic_planning", "decision_making", "leadership"]
+  }
+]
+```
+
+#### Ask Agent
+```
+POST /api/agents/{role}/ask
+```
+Submit a question or request to a specific business agent.
+
+**Request**:
+```json
+{
+  "message": "What are our strategic priorities for Q1?",
+  "context": {}
+}
+```
+
+**Response**:
+```json
+{
+  "answer": "Based on current market analysis...",
+  "confidence": 0.85,
+  "metadata": {
+    "agent": "CEO",
+    "timestamp": "2025-01-10T14:30:00Z"
+  }
+}
+```
+
+### Strategic Decision Making
+
+#### Create Decision
+```
+POST /api/decisions
+```
+Submit a strategic decision for multi-agent collaboration and voting.
+
+**Request**:
+```json
+{
+  "type": "strategic",
+  "context": "Market expansion opportunity in Southeast Asia",
+  "stakeholders": ["CEO", "CFO", "CMO"],
+  "params": {
+    "urgency": "high",
+    "budget_impact": "significant"
+  }
+}
+```
+
+**Response**:
+```json
+{
+  "decision_id": "uuid",
+  "status": "queued"
+}
+```
+
+### Business Workflows
+
+#### Execute Workflow
+```
+POST /api/workflows/{workflow_name}
+```
+Execute a predefined business workflow (e.g., product_launch, funding_round).
+
+**Available Workflows**:
+- `product_launch`: Market analysis → Product strategy → Technical implementation → Financial planning → Launch
+- `funding_round`: Financial assessment → Investor outreach → Pitch preparation → Due diligence → Closing
+- `market_analysis`: Market research → Competitive analysis → Opportunity assessment
+
+**Request**:
+```json
+{
+  "params": {
+    "product_name": "AI Assistant Pro",
+    "target_market": "Enterprise SaaS",
+    "launch_date": "2025-Q2"
+  }
+}
+```
+
+**Response**:
+```json
+{
+  "execution_id": "uuid",
+  "status": "running",
+  "result": {}
+}
+```
+
+### Trust & Compliance
+
+#### Export Customer Data
+```
+GET /api/onboarding/export-data
+```
+GDPR-compliant data export with integrity verification.
+
+**Headers**:
+- `x-customer-id`: Customer identifier
+- `x-user-id`: User identifier
+- `x-functions-key`: API key
+
+**Response**:
+```json
+{
+  "export_id": "uuid",
+  "customer_id": "customer-123",
+  "export_timestamp": "2025-01-10T14:30:00Z",
+  "data_types": ["profile", "decisions", "conversations"],
+  "data": {},
+  "integrity_hash": "sha256-hash"
+}
+```
+
+#### Request Data Deletion
+```
+POST /api/onboarding/request-deletion
+```
+Request deletion of customer partition data with confirmation workflow.
+
+**Request**:
+```json
+{
+  "customer_id": "customer-123",
+  "confirm": false
+}
+```
+
+**Response**:
+```json
+{
+  "request_id": "uuid",
+  "status": "pending_confirmation",
+  "sla_days": 2,
+  "message": "Confirmation email sent"
+}
+```
+
+#### Get RBAC Information
+```
+GET /api/onboarding/rbac
+```
+Get current user's roles, permissions, and governance defaults.
+
+**Response**:
+```json
+{
+  "user_id": "user-123",
+  "customer_id": "customer-123",
+  "role": "Admin",
+  "permissions": ["read", "write", "delete", "admin"],
+  "restrictions": [],
+  "governance_defaults": {}
+}
+```
+
+#### Get Incident Contact Information
+```
+GET /api/onboarding/incident-contact
+```
+Get incident response and escalation contact information.
+
+**Response**:
+```json
+{
+  "incident_response": {
+    "primary_contact": {
+      "email": "security@businessinfinity.asisaga.com",
+      "phone": "+1-XXX-XXX-XXXX"
+    },
+    "escalation_path": []
+  },
+  "breach_notification": {},
+  "compliance_officer": {}
+}
+```
+
+#### Get Retention Policy
+```
+GET /api/onboarding/retention-policy
+```
+Get current data retention and deletion policy information.
+
+**Response**:
+```json
+{
+  "data_retention": {},
+  "deletion_policies": {},
+  "backup_policy": {},
+  "gdpr_compliance": {},
+  "policy_version": "1.0"
+}
+```
+
+## Frontend Integration
+
+### API Base URL
+
+**Production**: `https://cloud.businessinfinity.asisaga.com`
+
+Configured in `/assets/js/config.js`:
+```javascript
+export const API_BASE_URL = 'https://cloud.businessinfinity.asisaga.com';
+```
+
+### OpenAPI Specification
+
+The complete API specification is available at:
+- Runtime: `/api/openapi.json`
+- Cached: `/assets/data/openapi.json`
+
+### Client Libraries
+
+#### BoardroomAPI
+Located at `/assets/js/boardroom/boardroomApi.js`
+
+Provides methods for:
+- `getAgents()` - List all agents
+- `getAgentProfile(agentId)` - Get agent profile
+- `startConversation(agentId)` - Start conversation with agent
+- `sendMessage(convId, text)` - Send message to conversation
+- `getMessages(convId)` - Get conversation messages
+
+#### API Routes
+Located at `/assets/js/apiRoutes.js`
+
+Provides dynamic API route resolution using operation IDs from the OpenAPI spec.
+
+## Authentication
+
+The backend uses Azure AD (Entra ID) for authentication:
+
+1. **User Login**: Redirect to Azure AD login page
+2. **Token Exchange**: Authorization code exchanged for access token
+3. **Token Storage**: Access token stored in sessionStorage
+4. **API Calls**: Token included in Authorization header
+
+### Token Management
+
+```javascript
+function authHeader() {
+  const token = localStorage.getItem('access_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+```
+
+## Rate Limiting
+
+- **Global**: 1000 requests/hour per user
+- **Compliance Endpoints**: 10 requests/hour per user
+- **Export/Deletion**: 1 request/24 hours per user
+
+## Error Handling
+
+All API errors follow this format:
+
+```json
+{
+  "error": {
+    "code": "INVALID_REQUEST",
+    "message": "Missing required parameter: boardroomId",
+    "details": {
+      "parameter": "boardroomId",
+      "location": "query"
+    }
+  }
+}
+```
+
+**Error Codes**:
+- `INVALID_REQUEST`: Malformed request
+- `UNAUTHORIZED`: Missing or invalid authentication
+- `FORBIDDEN`: Insufficient permissions
+- `NOT_FOUND`: Resource not found
+- `RATE_LIMITED`: Too many requests
+- `INTERNAL_ERROR`: Server error
+
+## Development
+
+### Local Development
+
+1. Backend runs on Azure Functions locally: `http://localhost:7071`
+2. Frontend can connect to local backend by updating `API_BASE_URL` in `/assets/js/config.js`
+
+### Testing
+
+Use the OpenAPI specification to:
+- Generate API client code
+- Validate requests and responses
+- Test API endpoints
+
+### Monitoring
+
+Backend provides:
+- Health checks at `/api/health`
+- System status at `/status`
+- Component availability monitoring
+
+## Global Boardroom Network
+
+The backend supports covenant-based compliance for the Global Boardroom Network:
+
+- **LinkedIn Verification**: Enterprise identity verification
+- **Peer Recognition**: Network validation and compliance badges
+- **Covenant Ledger**: Immutable inter-boardroom agreement tracking
+- **Network Discovery**: Global boardroom peer discovery
+- **Federation Support**: Join and participate in boardroom federations
+
+## Related Documentation
+
+- [API Integration Specification](/docs/specifications/api-integration.md) - Detailed API integration patterns
+- [Server TODO](/docs/SERVER_TODO.md) - Backend feature requirements
+- [Backend Repository](https://github.com/ASISaga/BusinessInfinity) - Backend source code
+- [Agent Operating System](https://github.com/ASISaga/AgentOperatingSystem) - Infrastructure layer
+
+## Support
+
+For backend-related issues or questions:
+- Open an issue in the [BusinessInfinity repository](https://github.com/ASISaga/BusinessInfinity/issues)
+- Contact the development team
+
+## Changelog
+
+### 2025-01-10
+- Added comprehensive backend integration documentation
+- Updated OpenAPI specification with all backend endpoints
+- Documented trust and compliance features
+- Added Global Boardroom Network capabilities
