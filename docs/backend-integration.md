@@ -280,6 +280,23 @@ Get current data retention and deletion policy information.
 
 ## Frontend Integration
 
+### Migration from Legacy Endpoints
+
+The OpenAPI specification includes both legacy and new endpoints for backward compatibility:
+
+**Legacy Endpoints** (Deprecated):
+- `/agents` → Use `/api/agents` instead
+- `/health` → Use `/api/health` instead
+
+**Recommended Approach**:
+1. Update all new code to use `/api/*` endpoints
+2. Update existing code incrementally to use new endpoints
+3. Legacy endpoints may be removed in future versions
+
+The new endpoints provide enhanced functionality:
+- `/api/agents`: Returns detailed agent status and capabilities
+- `/api/health`: Returns component-level health status (AOS, Service Bus, Storage, MCP)
+
 ### API Base URL
 
 **Production**: `https://cloud.businessinfinity.asisaga.com`
@@ -288,6 +305,13 @@ Configured in `/assets/js/config.js`:
 ```javascript
 export const API_BASE_URL = 'https://cloud.businessinfinity.asisaga.com';
 ```
+
+**Note**: The configuration file also requires Azure AD credentials to be set up:
+- `clientId`: Your Azure AD application client ID
+- `tenantId`: Your Azure AD tenant ID
+- `functionScope`: API scope for your Azure Functions app
+
+These should be configured via environment variables in production rather than hardcoded.
 
 ### OpenAPI Specification
 
@@ -335,6 +359,36 @@ function authHeader() {
 - **Global**: 1000 requests/hour per user
 - **Compliance Endpoints**: 10 requests/hour per user
 - **Export/Deletion**: 1 request/24 hours per user
+
+### Rate Limit Headers
+
+The API includes rate limit information in response headers:
+- `X-RateLimit-Limit`: Maximum requests allowed in the time window
+- `X-RateLimit-Remaining`: Requests remaining in current window
+- `X-RateLimit-Reset`: Unix timestamp when the rate limit resets
+
+### Rate Limit Exceeded
+
+When rate limits are exceeded, the API returns:
+
+**Response Code**: `429 Too Many Requests`
+
+**Response Body**:
+```json
+{
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Too many requests. Please retry after 300 seconds.",
+    "details": {
+      "retry_after": 300,
+      "limit": 1000,
+      "window": "1 hour"
+    }
+  }
+}
+```
+
+The response includes a `Retry-After` header indicating how long to wait before retrying (in seconds).
 
 ## Error Handling
 
