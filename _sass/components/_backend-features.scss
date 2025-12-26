@@ -1,0 +1,230 @@
+// Health Status Badge Styles
+.health-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.health-indicator {
+  font-size: 1.2rem;
+  line-height: 1;
+  
+  &.health-ok {
+    color: #28a745;
+  }
+  
+  &.health-degraded {
+    color: #ffc107;
+  }
+  
+  &.health-error,
+  &.health-offline {
+    color: #dc3545;
+  }
+  
+  &.health-unknown {
+    color: #6c757d;
+  }
+}
+
+.health-text {
+  font-weight: 500;
+}
+
+// Ask Agent Modal Styles
+#askAgentModal {
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  #agentResponse {
+    .card {
+      border-left: 4px solid #007bff;
+      background-color: #f8f9fa;
+    }
+  }
+
+  #agentResponseContent {
+    p {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Workflow Modal Styles
+#workflowModal {
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  #workflowDescription {
+    font-style: italic;
+    color: #6c757d;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+  }
+
+  #workflowResult {
+    .card {
+      border-left: 4px solid #28a745;
+      background-color: #f8f9fa;
+    }
+
+    pre {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  }
+}
+
+// Decision Framework Styles
+.decision-framework {
+  #heatmap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .decision-card,
+  .card {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.25rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      
+      &.badge-queued {
+        background-color: #ffc107;
+        color: #000;
+      }
+      
+      &.badge-completed {
+        background-color: #28a745;
+        color: #fff;
+      }
+      
+      &.badge-running {
+        background-color: #007bff;
+        color: #fff;
+      }
+      
+      &.badge-requires_review {
+        background-color: #fd7e14;
+        color: #fff;
+      }
+    }
+  }
+
+  #evidence {
+    width: 100%;
+    min-height: 150px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    resize: vertical;
+  }
+
+  button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    &:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Toast Notifications
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  animation: slideIn 0.3s ease-out;
+
+  &.toast-success {
+    border-left: 4px solid #28a745;
+  }
+
+  &.toast-error {
+    border-left: 4px solid #dc3545;
+  }
+
+  &.toast-info {
+    border-left: 4px solid #007bff;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// Loading States
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3rem;
+}

@@ -72,4 +72,60 @@ export class BoardroomAPI {
       .then(r => r.json())
       .then(b => b.messages);
   }
+
+  /**
+   * Ask a specific agent a question
+   * @param {string} role - Agent role (CEO, CFO, CTO, etc.)
+   * @param {string} message - Question or request
+   * @param {object} context - Optional context
+   */
+  async askAgent(role, message, context = {}) {
+    const { path, method } = getApiPath('askAgent', { role });
+    const res = await fetch(path, {
+      method,
+      headers: { 'Content-Type': 'application/json', ...this.authHeader() },
+      body: JSON.stringify({ message, context })
+    });
+    return await res.json();
+  }
+
+  /**
+   * Create a strategic decision
+   * @param {string} type - Decision type (strategic, financial, technical, operational)
+   * @param {string} context - Decision context
+   * @param {array} stakeholders - Optional list of agent roles
+   * @param {object} params - Optional additional parameters
+   */
+  async createDecision(type, context, stakeholders = [], params = {}) {
+    const { path, method } = getApiPath('createStrategicDecision');
+    const res = await fetch(path, {
+      method,
+      headers: { 'Content-Type': 'application/json', ...this.authHeader() },
+      body: JSON.stringify({ type, context, stakeholders, params })
+    });
+    return await res.json();
+  }
+
+  /**
+   * Execute a business workflow
+   * @param {string} workflowName - Name of workflow (product_launch, funding_round, etc.)
+   * @param {object} params - Workflow-specific parameters
+   */
+  async executeWorkflow(workflowName, params = {}) {
+    const { path, method } = getApiPath('executeWorkflow', { workflow_name: workflowName });
+    const res = await fetch(path, {
+      method,
+      headers: { 'Content-Type': 'application/json', ...this.authHeader() },
+      body: JSON.stringify({ params })
+    });
+    return await res.json();
+  }
+
+  /**
+   * Get system health status
+   */
+  async getHealth() {
+    const { path, method } = getApiPath('getHealth');
+    return await fetch(path, { method, headers: this.authHeader() }).then(r => r.json());
+  }
 }
