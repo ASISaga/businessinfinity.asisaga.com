@@ -1,0 +1,48 @@
+---
+layout: default
+title: "Backend Integration Features | Business Infinity"
+permalink: /backend-features/
+---
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">Backend Integration Features</h1>
+      <p class="lead">Experience the full power of Business Infinity's AI-powered backend services.</p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Ask an Agent</h5>
+          <p class="card-text">
+            Directly consult with C-Suite agents (CEO, CFO, CTO, CMO, COO), Founder, or Investor.
+          </p>
+          <button class="btn btn-primary" onclick="window.askAgentUI?.showModal()">
+            Ask an Agent
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Execute Workflow</h5>
+          <p class="card-text">
+            Run automated business workflows like product launches and funding rounds.
+          </p>
+          <button class="btn btn-primary" onclick="window.workflowUI?.showModal()">
+            Execute Workflow
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="{{ '/assets/js/boardroom/ask-agent.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/js/boardroom/workflow.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/js/boardroom/health-status.js' | relative_url }}"></script>

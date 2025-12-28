@@ -8,12 +8,14 @@
         "/agents": {
             "get": {
                 "summary": "List agents",
-                "operationId": "getAgents",
+                "operationId": "getAgentsLegacy",
                 "responses": {
                     "200": {
                         "description": "Agent list"
                     }
-                }
+                },
+                "deprecated": true,
+                "description": "Legacy endpoint - use /api/agents instead"
             }
         },
         "/agents/{agentId}": {
@@ -454,12 +456,14 @@
         "/health": {
             "get": {
                 "summary": "Health check",
-                "operationId": "getHealth",
+                "operationId": "getHealthLegacy",
                 "responses": {
                     "200": {
                         "description": "Health status"
                     }
-                }
+                },
+                "deprecated": true,
+                "description": "Legacy endpoint - use /api/health for detailed component status"
             }
         },
         "/api/onboarding/export-data": {
@@ -1090,6 +1094,309 @@
                                         },
                                         "messaging_status": {
                                             "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/decisions": {
+            "post": {
+                "summary": "Create strategic decision",
+                "operationId": "createStrategicDecision",
+                "description": "Submit a strategic decision for multi-agent collaboration and voting",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "type",
+                                    "context"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "strategic",
+                                            "financial",
+                                            "technical",
+                                            "operational"
+                                        ],
+                                        "description": "Type of decision"
+                                    },
+                                    "context": {
+                                        "type": "string",
+                                        "description": "Decision context and parameters"
+                                    },
+                                    "stakeholders": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "description": "Optional list of agent roles to involve (CEO, CFO, etc.)"
+                                    },
+                                    "params": {
+                                        "type": "object",
+                                        "description": "Additional decision parameters"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Decision created and queued",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "decision_id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "enum": [
+                                                "queued",
+                                                "completed",
+                                                "requires_review"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/workflows/{workflow_name}": {
+            "post": {
+                "summary": "Execute business workflow",
+                "operationId": "executeWorkflow",
+                "description": "Execute a predefined business workflow (e.g., product_launch, funding_round)",
+                "parameters": [
+                    {
+                        "name": "workflow_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of workflow to execute (product_launch, funding_round, market_analysis)"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "params": {
+                                        "type": "object",
+                                        "description": "Workflow-specific parameters"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Workflow execution result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "execution_id": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "result": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/agents": {
+            "get": {
+                "summary": "List all available agents",
+                "operationId": "getAgents",
+                "description": "Returns all available business agents with their roles, status, and capabilities",
+                "responses": {
+                    "200": {
+                        "description": "List of agents",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "role": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "capabilities": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/agents/{role}/ask": {
+            "post": {
+                "summary": "Ask a specific agent",
+                "operationId": "askAgent",
+                "description": "Submit a question or request to a specific business agent",
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Agent role (CEO, CFO, CTO, CMO, COO, Founder, Investor)"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "message"
+                                ],
+                                "properties": {
+                                    "message": {
+                                        "type": "string"
+                                    },
+                                    "context": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Agent response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "answer": {
+                                            "type": "string"
+                                        },
+                                        "confidence": {
+                                            "type": "number"
+                                        },
+                                        "metadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "agent": {
+                                                    "type": "string"
+                                                },
+                                                "timestamp": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/health": {
+            "get": {
+                "summary": "Health check with component status",
+                "operationId": "getHealth",
+                "description": "Returns system status and availability of core components",
+                "responses": {
+                    "200": {
+                        "description": "Health status",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "enum": [
+                                                "ok",
+                                                "degraded"
+                                            ]
+                                        },
+                                        "components": {
+                                            "type": "object",
+                                            "properties": {
+                                                "aos": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "serviceBus": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "storage": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "mcp": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
