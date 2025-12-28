@@ -768,6 +768,336 @@
                     }
                 }
             }
+        },
+        "/agents/{agent_role}/ask": {
+            "post": {
+                "summary": "Ask an agent a question",
+                "operationId": "askAgent",
+                "description": "Send a query to a specific C-Suite agent and receive a response via AOS Service Bus",
+                "tags": [
+                    "agents",
+                    "aos"
+                ],
+                "parameters": [
+                    {
+                        "name": "agent_role",
+                        "in": "path",
+                        "required": true,
+                        "description": "Agent role (CEO, CFO, CTO, CMO, COO, CHRO, CSO)",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "CEO",
+                                "CFO",
+                                "CTO",
+                                "CMO",
+                                "COO",
+                                "CHRO",
+                                "CSO"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "message"
+                                ],
+                                "properties": {
+                                    "message": {
+                                        "type": "string",
+                                        "description": "Query message for the agent"
+                                    },
+                                    "context": {
+                                        "type": "object",
+                                        "description": "Optional context for the query"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Agent response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "agent": {
+                                            "type": "string"
+                                        },
+                                        "response": {
+                                            "type": "string"
+                                        },
+                                        "via": {
+                                            "type": "string",
+                                            "enum": [
+                                                "servicebus",
+                                                "local"
+                                            ]
+                                        },
+                                        "timestamp": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/workflows": {
+            "get": {
+                "summary": "List available workflows",
+                "operationId": "listWorkflows",
+                "description": "Get list of available workflows and their status",
+                "tags": [
+                    "workflows",
+                    "aos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of workflows",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "workflows": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "status": {
+                                                        "type": "string"
+                                                    },
+                                                    "started_at": {
+                                                        "type": "string"
+                                                    },
+                                                    "completed_at": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/workflows/{workflow_name}": {
+            "post": {
+                "summary": "Execute a workflow",
+                "operationId": "executeWorkflow",
+                "description": "Start execution of a named workflow via AOS Service Bus",
+                "tags": [
+                    "workflows",
+                    "aos"
+                ],
+                "parameters": [
+                    {
+                        "name": "workflow_name",
+                        "in": "path",
+                        "required": true,
+                        "description": "Name of the workflow to execute",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "description": "Workflow parameters"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Workflow execution result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "workflow_id": {
+                                            "type": "string"
+                                        },
+                                        "workflow_name": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "via": {
+                                            "type": "string"
+                                        },
+                                        "result": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/mcp/servers": {
+            "get": {
+                "summary": "List MCP servers",
+                "operationId": "listMcpServers",
+                "description": "Get list of registered MCP servers and their capabilities",
+                "tags": [
+                    "mcp",
+                    "aos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of MCP servers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "servers": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "status": {
+                                                        "type": "string"
+                                                    },
+                                                    "tools": {
+                                                        "type": "array"
+                                                    },
+                                                    "resources": {
+                                                        "type": "array"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aos/status": {
+            "get": {
+                "summary": "Get AOS connection status",
+                "operationId": "getAosStatus",
+                "description": "Get the Agent Operating System connection status and health",
+                "tags": [
+                    "aos",
+                    "monitoring"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AOS status information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "aos_status": {
+                                            "type": "string",
+                                            "enum": [
+                                                "connected",
+                                                "direct",
+                                                "unavailable",
+                                                "unreachable"
+                                            ]
+                                        },
+                                        "deployment_mode": {
+                                            "type": "string",
+                                            "enum": [
+                                                "servicebus",
+                                                "direct"
+                                            ]
+                                        },
+                                        "servicebus_connected": {
+                                            "type": "boolean"
+                                        },
+                                        "agents_available": {
+                                            "type": "integer"
+                                        },
+                                        "last_health_check": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aos/health": {
+            "get": {
+                "summary": "AOS health check",
+                "operationId": "getAosHealth",
+                "description": "Perform health check on Agent Operating System via Service Bus",
+                "tags": [
+                    "aos",
+                    "monitoring"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AOS health status",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "string"
+                                        },
+                                        "uptime": {
+                                            "type": "number"
+                                        },
+                                        "agents_count": {
+                                            "type": "integer"
+                                        },
+                                        "messaging_status": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -778,5 +1108,27 @@
                 "name": "x-functions-key"
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "agents",
+            "description": "C-Suite agent interactions"
+        },
+        {
+            "name": "workflows",
+            "description": "Workflow orchestration"
+        },
+        {
+            "name": "mcp",
+            "description": "Model Context Protocol servers"
+        },
+        {
+            "name": "aos",
+            "description": "Agent Operating System integration"
+        },
+        {
+            "name": "monitoring",
+            "description": "System health and monitoring"
+        }
+    ]
 }

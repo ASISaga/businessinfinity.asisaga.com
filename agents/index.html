@@ -1,0 +1,241 @@
+---
+layout: app
+title: "Agent Chat | Business Infinity"
+description: "Chat with C-Suite AI agents for strategic business guidance"
+---
+
+<div class="agents-page">
+    <div class="agents-container">
+        <div class="page-header">
+            <div class="header-content">
+                <h1>🤵 C-Suite Agent Chat</h1>
+                <p>Engage with AI-powered C-Suite executives for strategic business guidance.
+                    Each agent specializes in their domain and communicates via the Agent Operating System.</p>
+            </div>
+            <div class="header-status">
+                <aos-status compact refresh-interval="30000"></aos-status>
+            </div>
+        </div>
+
+        <div class="agents-grid">
+            <div class="agent-selector-panel">
+                <h2>Select an Agent</h2>
+                <div class="agent-list" id="agentList">
+                    <div class="agent-option" data-agent="CEO">
+                        <div class="agent-icon">👔</div>
+                        <div class="agent-info">
+                            <h3>CEO</h3>
+                            <p>Chief Executive Officer - Strategic vision and leadership</p>
+                        </div>
+                    </div>
+                    <div class="agent-option" data-agent="CFO">
+                        <div class="agent-icon">💰</div>
+                        <div class="agent-info">
+                            <h3>CFO</h3>
+                            <p>Chief Financial Officer - Financial strategy and analysis</p>
+                        </div>
+                    </div>
+                    <div class="agent-option" data-agent="CTO">
+                        <div class="agent-icon">💻</div>
+                        <div class="agent-info">
+                            <h3>CTO</h3>
+                            <p>Chief Technology Officer - Technology and innovation</p>
+                        </div>
+                    </div>
+                    <div class="agent-option" data-agent="CMO">
+                        <div class="agent-icon">📢</div>
+                        <div class="agent-info">
+                            <h3>CMO</h3>
+                            <p>Chief Marketing Officer - Marketing and brand strategy</p>
+                        </div>
+                    </div>
+                    <div class="agent-option" data-agent="COO">
+                        <div class="agent-icon">⚙️</div>
+                        <div class="agent-info">
+                            <h3>COO</h3>
+                            <p>Chief Operating Officer - Operations and efficiency</p>
+                        </div>
+                    </div>
+                    <div class="agent-option" data-agent="CHRO">
+                        <div class="agent-icon">👥</div>
+                        <div class="agent-info">
+                            <h3>CHRO</h3>
+                            <p>Chief Human Resources Officer - People and culture</p>
+                        </div>
+                    </div>
+                    <div class="agent-option" data-agent="CSO">
+                        <div class="agent-icon">🛡️</div>
+                        <div class="agent-info">
+                            <h3>CSO</h3>
+                            <p>Chief Security Officer - Security and compliance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-panel">
+                <agent-chat id="agentChat"></agent-chat>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .agents-page {
+        min-height: 100vh;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        padding: 1.5rem;
+    }
+
+    .agents-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        gap: 2rem;
+    }
+
+    .header-content h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    .header-content p {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.9375rem;
+        max-width: 600px;
+    }
+
+    .header-status {
+        flex-shrink: 0;
+        width: 300px;
+    }
+
+    .agents-grid {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+        .agents-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .page-header {
+            flex-direction: column;
+        }
+
+        .header-status {
+            width: 100%;
+        }
+    }
+
+    .agent-selector-panel {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+    }
+
+    .agent-selector-panel h2 {
+        margin: 0 0 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1e293b;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .agent-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .agent-option {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .agent-option:hover {
+        border-color: #2563eb;
+        background: #f8fafc;
+    }
+
+    .agent-option.active {
+        border-color: #2563eb;
+        background: #eff6ff;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .agent-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        flex-shrink: 0;
+    }
+
+    .agent-info h3 {
+        margin: 0;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .agent-info p {
+        margin: 0.125rem 0 0;
+        font-size: 0.75rem;
+        color: #64748b;
+        line-height: 1.3;
+    }
+
+    .chat-panel {
+        min-height: 600px;
+    }
+
+    .chat-panel agent-chat {
+        height: 100%;
+    }
+</style>
+
+<script type="module">
+    import { AOSStatus } from '{{ "/assets/js/aos-status.js" | relative_url }}';
+    import { AgentChat } from '{{ "/assets/js/agent-chat.js" | relative_url }}';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const agentOptions = document.querySelectorAll('.agent-option');
+        const agentChat = document.getElementById('agentChat');
+
+        agentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Update active state
+                agentOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+
+                // Set agent on chat component
+                const agent = option.dataset.agent;
+                agentChat.setAttribute('agent', agent);
+            });
+        });
+    });
+</script>
