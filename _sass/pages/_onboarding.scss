@@ -87,20 +87,29 @@ body {
     margin-bottom: 2rem;
     overflow: hidden;
 }
-@media screen and (prefers-reduced-motion: reduce) {
-.progress {
+
+.progress-fill {
     height: 100%;
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
     border-radius: 4px;
-    transition: none;
+    transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
-}
+
 .progress {
     height: 100%;
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
     border-radius: 4px;
     transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
+
 @media (max-width: 700px) {
     .onboarding-container {
         padding: 1rem;

@@ -40,7 +40,7 @@
                         <tbody id="accessMatrixBody">
                         </tbody>
                     </table>
-                    <div style="margin-top: 1rem;">
+                    <div class="btn-group">
                         <button class="btn" onclick="saveRolePermissions()">Save Changes</button>
                         <button class="btn btn-secondary" onclick="resetRolePermissions()">Reset</button>
                     </div>
@@ -105,14 +105,14 @@
                 <div class="agent-grid" id="agentGrid">
                     <!-- Agent cards will be populated by JavaScript -->
                 </div>
-                <div style="margin-top: 1.5rem;">
+                <div class="btn-group">
                     <button class="btn" onclick="refreshAgents()">Refresh Agents</button>
                     <button class="btn btn-secondary" onclick="enableAllAgents()">Enable All</button>
                     <button class="btn btn-danger" onclick="disableAllAgents()">Disable All</button>
                 </div>
             </div>
             <div id="violations-tab" class="tab-content">
-                <div style="margin-bottom: 1rem;">
+                <div class="violations-controls">
                     <button class="btn btn-secondary" onclick="loadViolations()">Refresh Violations</button>
                     <select id="violationTimeframe" onchange="loadViolations()">
                         <option value="1">Last 1 hour</option>
@@ -126,15 +126,15 @@
             </div>
             <div id="config-tab" class="tab-content">
                 <h3>System Configuration</h3>
-                <div style="margin-bottom: 1rem;">
+                <div class="config-field">
                     <label><strong>Audit Logging:</strong></label>
                     <input type="checkbox" id="auditEnabled" checked> Enable audit logging
                 </div>
-                <div style="margin-bottom: 1rem;">
+                <div class="config-field">
                     <label><strong>Alert on Violations:</strong></label>
                     <input type="checkbox" id="alertsEnabled" checked> Enable violation alerts
                 </div>
-                <div style="margin-bottom: 1rem;">
+                <div class="config-field">
                     <label><strong>Log Retention (days):</strong></label>
                     <input type="number" id="retentionDays" value="90" min="1" max="365">
                 </div>
