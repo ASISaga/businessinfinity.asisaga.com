@@ -1,200 +1,121 @@
-// Boardroom page styles
-// This file contains only @extend, @include, or Bootstrap utility classes per project rules.
-// All custom property declarations must be in the unique class for each element/component.
+// Boardroom Page - Genesis Ontological SCSS
 
 // Boardroom page root
 .boardroom-container {
-  @include make-container();
+  @include genesis-environment('manifest');    // Dashboard layout
 }
 
 .boardroom-section {
-  @include make-row();
+  @include genesis-entity('primary');          // Main section
 }
 
 .boardroom-container-fluid {
-  @include make-container();
+  @include genesis-environment('manifest');    // Full-width layout
 }
 
 .boardroom-main-row {
-  @include make-row();
+  @include genesis-environment('associative'); // Network layout
 }
 
 // Toggle strip
 .boardroom-members-sidebar-toggle-strip {
-  @include d-flex;
-  @include flex-direction(column);
-  @include align-items(center);
-  @include bg-dark;
-  padding-top: map-get($spacers, 2); // fallback: uses spacing variable; replace if project uses different spacing token
-  padding-bottom: map-get($spacers, 2);
+  @include genesis-entity('secondary');        // Sidebar toggle area
 }
 
 .boardroom-toggle-members-btn {
-  @include button-size(0.375rem, 0.75rem, 1rem, 0.25rem);
-  @include button-variant(transparent, $white);
-  margin-bottom: map-get($spacers, 2);
+  @include genesis-synapse('execute');         // Toggle action
 }
 
 .boardroom-other-action-btn {
-  @include button-size(0.375rem, 0.75rem, 1rem, 0.25rem);
-  
-@include button-outline-variant($secondary, $color-contrast-dark);
-  margin-bottom: map-get($spacers, 2);
-}
-
-.boardroom-members-sidebar-strip-spacer {
-  @include flex-grow(1);
-}
-
-.boardroom-members-sidebar-toggle-icon {
-  margin-top: map-get($spacers, 2);
+  @include genesis-synapse('inquiry');         // Secondary action
 }
 
 // Members sidebar
 .boardroom-members-sidebar {
-  /* column sizing is controlled by grid; use utility class in markup if needed */
-  @include bg-light;
-  @include d-flex;
-  @include flex-direction(column);
-  padding: 0;
+  @include genesis-entity('secondary');        // Sidebar container
+  @include genesis-environment('chronological'); // Vertical list
 }
 
 .boardroom-members-header {
-  @include d-flex;
-  @include justify-content(space-between);
-  @include align-items(center);
-  padding: map-get($spacers, 3);
-  border-bottom: 1px solid rgba($border-color, 0.08);
+  @include genesis-entity('primary');          // Header area
 }
 
 .boardroom-members-title {
-  @include h5;
-  @include mb-0;
+  @include genesis-cognition('axiom');         // Sidebar title
 }
 
 .boardroom-invite-member-btn {
-  @include button-size(0.375rem, 0.75rem, 1rem, 0.25rem);
-  @include btn-primary;
-}
-
-.boardroom-invite-member-icon {
-  margin-right: map-get($spacers, 1);
+  @include genesis-synapse('execute');         // Primary action
 }
 
 .boardroom-members-section {
-  @include flex-grow(1);
-  overflow: auto;
-  padding: map-get($spacers, 3);
-}
-
-.boardroom-members-search-form {
-  margin-bottom: map-get($spacers, 3);
-  @include position-relative;
+  @include genesis-entity('aggregate');        // List container
 }
 
 .boardroom-members-search-input {
-  @include form-control;
+  @include genesis-cognition('discourse');     // Input field
 }
 
-
-// Remove .boardroom-members-search-addon, now handled by .boardroom-members-search-icon in _boardroom-icons.scss
-
 .boardroom-members-list {
-  @include list-unstyled;
-  margin-bottom: 0;
+  @include genesis-entity('aggregate');        // Member list
 }
 
 .boardroom-members-empty-state {
-  @include text-center;
-  margin-top: map-get($spacers, 5);
-  color: $muted-color;
+  @include genesis-entity('latent');           // Empty state
 }
 
-
-// Remove .boardroom-members-empty-icon, now handled by .boardroom-members-empty-img in _boardroom-icons.scss
-
 .boardroom-members-empty-title {
-  @include fw-bold;
+  @include genesis-cognition('motive');        // Empty state title
 }
 
 .boardroom-members-empty-desc {
-  @include small;
+  @include genesis-cognition('gloss');         // Empty state description
 }
 
 // Chat area
 .boardroom-chat-area {
-  /* grid column behavior should be applied in markup; keep layout utilities */
-  @include d-flex;
-  @include flex-direction(column);
-  padding: 0;
+  @include genesis-entity('primary');          // Main chat container
+  @include genesis-environment('chronological'); // Message stream
 }
 
 .boardroom-chat-header {
-  @include d-flex;
-  @include justify-content(space-between);
-  @include align-items(center);
-  padding: map-get($spacers, 3);
-  border-bottom: 1px solid rgba($border-color, 0.08);
+  @include genesis-entity('secondary');        // Chat header
 }
 
 .boardroom-chat-title {
-  @include h4;
-  @include mb-0;
+  @include genesis-cognition('axiom');         // Chat title
 }
 
 .boardroom-chat-status {
-  @include badge;
-  @include bg-primary; // map success to primary in theme; adjust if needed
+  @include genesis-cognition('quantum');       // Status badge
+  @include genesis-state('stable');            // Active status
 }
 
 .boardroom-chat-messages {
-  @include flex-grow(1);
-  overflow: auto;
-  padding: map-get($spacers, 3);
+  @include genesis-entity('aggregate');        // Messages container
 }
 
 .boardroom-chat-empty-state {
-  @include text-center;
-  margin-top: map-get($spacers, 5);
-  color: $muted-color;
+  @include genesis-entity('latent');           // Empty chat state
 }
-
-
-// Remove .boardroom-chat-empty-icon, now handled by .boardroom-chat-empty-icon in _boardroom-icons.scss
 
 // Message input
 .boardroom-message-input {
-  @include d-flex;
-  @include align-items(center);
-  padding: map-get($spacers, 3);
-  border-top: 1px solid rgba($border-color, 0.06);
-  @include bg-light;
-}
-
-.boardroom-message-input-avatar {
-  @include border-radius(50%);
-  margin-right: map-get($spacers, 2);
-  border: 1px solid rgba($border-color, 0.08);
+  @include genesis-entity('secondary');        // Input area
 }
 
 .boardroom-message-input-field {
-  @include form-control;
-  margin-right: map-get($spacers, 2);
+  @include genesis-cognition('discourse');     // Text input
 }
 
 .boardroom-message-input-attach {
-  @include button-size(0.375rem, 0.75rem, 1rem, 0.25rem);
-  @include btn-link;
-  margin-right: map-get($spacers, 2);
+  @include genesis-synapse('inquiry');         // Attach action
 }
 
 .boardroom-message-input-emoji {
-  @include button-size(0.375rem, 0.75rem, 1rem, 0.25rem);
-  @include btn-link;
-  margin-right: map-get($spacers, 2);
+  @include genesis-synapse('inquiry');         // Emoji action
 }
 
 .boardroom-message-input-send {
-  @include button-size(0.375rem, 0.75rem, 1rem, 0.25rem);
-  @include btn-primary;
+  @include genesis-synapse('execute');         // Send action
 }
