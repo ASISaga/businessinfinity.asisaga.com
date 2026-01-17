@@ -35,10 +35,10 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   --bi-grid-gap: 2.5rem;
   
   /* Shadows and Effects */
-  --bi-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06);
-  --bi-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
-  --bi-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
-  --bi-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+  --bi-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --bi-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --bi-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --bi-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Base Styles */
@@ -59,9 +59,9 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgb(255 255 255 / 0.98);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgb(26 54 93 / 0.1);
+  border-bottom: 1px solid rgba(26, 54, 93, 0.1);
   transition: none;
   box-shadow: var(--bi-shadow-sm);
 }
@@ -73,9 +73,9 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgb(255 255 255 / 0.98);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgb(26 54 93 / 0.1);
+  border-bottom: 1px solid rgba(26, 54, 93, 0.1);
   transition: all 0.3s ease;
   box-shadow: var(--bi-shadow-sm);
 }
@@ -250,7 +250,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 
 .hero-headline {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  text-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-headline {
@@ -355,7 +355,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 .founder-desk-image {
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgb(26 54 93 / 0.4), rgb(44 82 130 / 0.4)),
+  background: linear-gradient(rgba(26, 54, 93, 0.4), rgba(44, 82, 130, 0.4)),
               url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect fill='%23f7fafc' width='1200' height='800' opacity='0.1'/%3E%3Cpath d='M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z' fill='%23ffffff' opacity='0.05'/%3E%3C/svg%3E");
   background-size: cover;
   background-position: center;
@@ -366,9 +366,9 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, 
-    rgb(26 54 93 / 0.9) 0%, 
-    rgb(44 82 130 / 0.8) 50%,
-    rgb(49 130 206 / 0.7) 100%);
+    rgba(26, 54, 93, 0.9) 0%, 
+    rgba(44, 82, 130, 0.8) 50%,
+    rgba(49, 130, 206, 0.7) 100%);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -615,19 +615,19 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 }
 
 .cracked-present {
-  background: linear-gradient(rgb(74 74 74 / 0.8), rgb(74 74 74 / 0.8)),
+  background: linear-gradient(rgba(74, 74, 74, 0.8), rgba(74, 74, 74, 0.8)),
               url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'%3E%3Crect fill='%23666' width='600' height='800'/%3E%3Cpath d='M100,100 L500,300 M200,200 L400,600' stroke='%23333' stroke-width='5' opacity='0.7'/%3E%3Ctext x='300' y='700' font-family='Arial' font-size='18' fill='%23999' text-anchor='middle'%3ECracked Present%3C/text%3E%3C/svg%3E");
 }
 
 .empty-office {
-  background: linear-gradient(rgb(74 74 74 / 0.8), rgb(74 74 74 / 0.8)),
+  background: linear-gradient(rgba(74, 74, 74, 0.8), rgba(74, 74, 74, 0.8)),
               url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'%3E%3Crect fill='%23555' width='600' height='800'/%3E%3Crect x='200' y='300' width='200' height='100' fill='%23444' opacity='0.5'/%3E%3Ctext x='300' y='700' font-family='Arial' font-size='18' fill='%23888' text-anchor='middle'%3EEmpty Office%3C/text%3E%3C/svg%3E");
 }
 
 .future-overlay {
   position: absolute;
   inset: 0;
-  background: rgb(45 55 72 / 0.4);
+  background: rgba(45, 55, 72, 0.4);
 }
 
 /* Section 4: Doorway */
@@ -655,7 +655,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   border-radius: 20px;
   box-shadow: 
     0 0 50px var(--bi-doorway-glow),
-    inset 0 0 50px rgb(79 209 199 / 0.2);
+    inset 0 0 50px rgba(79, 209, 199, 0.2);
   animation: none;
 }
 }
@@ -671,7 +671,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   border-radius: 20px;
   box-shadow: 
     0 0 50px var(--bi-doorway-glow),
-    inset 0 0 50px rgb(79 209 199 / 0.2);
+    inset 0 0 50px rgba(79, 209, 199, 0.2);
   animation: doorwayPulse 3s ease-in-out infinite;
 }
 
@@ -679,20 +679,20 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   0%, 100% { 
     box-shadow: 
       0 0 50px var(--bi-doorway-glow),
-      inset 0 0 50px rgb(79 209 199 / 0.2);
+      inset 0 0 50px rgba(79, 209, 199, 0.2);
   }
 
   50% { 
     box-shadow: 
       0 0 100px var(--bi-doorway-glow),
-      inset 0 0 100px rgb(79 209 199 / 0.4);
+      inset 0 0 100px rgba(79, 209, 199, 0.4);
   }
 }
 
 .doorway-overlay {
   position: absolute;
   inset: 0;
-  background: rgb(0 4 40 / 0.3);
+  background: rgba(0, 4, 40, 0.3);
 }
 
 /* Section 5: Boardroom */
@@ -711,7 +711,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   border-radius: 24px;
   padding: 2rem;
   box-shadow: var(--bi-shadow-lg);
-  border: 1px solid rgb(26 54 93 / 0.1);
+  border: 1px solid rgba(26, 54, 93, 0.1);
 }
 
 .table-center {
@@ -722,7 +722,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 .table-surface {
   width: 240px;
   height: 240px;
-  background: linear-gradient(135deg, var(--bi-accent-gold) 0%, rgb(214 158 46 / 0.8) 100%);
+  background: linear-gradient(135deg, var(--bi-accent-gold) 0%, rgba(214, 158, 46, 0.8) 100%);
   border-radius: 50%;
   opacity: 0.15;
   position: relative;
@@ -910,7 +910,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: none;
 }
 }
@@ -920,13 +920,13 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .panel-item:hover, .panel-item:focus {
   transform: translateY(-10px);
-  box-shadow: 0 8px 30px rgb(0 0 0 / 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .panel-icon {
@@ -1014,12 +1014,12 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 @keyframes highlightPulse {
   0%, 100% { 
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgb(246 213 92 / 0.7);
+    box-shadow: 0 0 0 0 rgba(246, 213, 92, 0.7);
   }
 
   50% { 
     transform: scale(1.2);
-    box-shadow: 0 0 0 10px rgb(246 213 92 / 0);
+    box-shadow: 0 0 0 10px rgba(246, 213, 92, 0);
   }
 }
 
@@ -1052,13 +1052,13 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 .horizon-view {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 60%, rgb(246 213 92 / 0.1) 80%, rgb(246 213 92 / 0.3) 100%);
+  background: linear-gradient(to bottom, transparent 60%, rgba(246, 213, 92, 0.1) 80%, rgba(246, 213, 92, 0.3) 100%);
 }
 
 .legacy-overlay {
   position: absolute;
   inset: 0;
-  background: rgb(30 42 74 / 0.3);
+  background: rgba(30, 42, 74, 0.3);
 }
 
 /* Section 9: Closing */
@@ -1119,8 +1119,8 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   gap: 2rem;
   margin-bottom: 3rem;
   padding: 2rem 0;
-  border-top: 1px solid rgb(255 255 255 / 0.2);
-  border-bottom: 1px solid rgb(255 255 255 / 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .stat-item {
@@ -1154,10 +1154,10 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: rgb(255 255 255 / 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgb(255 255 255 / 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: none;
 }
 }
@@ -1167,15 +1167,15 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: rgb(255 255 255 / 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgb(255 255 255 / 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
 .benefit-item:hover, .benefit-item:focus {
-  background: rgb(255 255 255 / 0.15);
+  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
 
@@ -1195,7 +1195,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgb(0 0 0 / 0.8);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -1218,12 +1218,12 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: var(--bi-shadow-xl);
-  border: 1px solid rgb(26 54 93 / 0.1);
+  border: 1px solid rgba(26, 54, 93, 0.1);
 }
 
 .modal-header {
   padding: 2rem 2rem 1rem;
-  border-bottom: 1px solid rgb(26 54 93 / 0.1);
+  border-bottom: 1px solid rgba(26, 54, 93, 0.1);
 }
 
 .modal-header h3 {
@@ -1339,7 +1339,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
 .form-group select:focus {
   outline: none;
   border-color: var(--bi-accent-gold);
-  box-shadow: 0 0 0 3px rgb(214 158 46 / 0.1);
+  box-shadow: 0 0 0 3px rgba(214, 158, 46, 0.1);
 }
 
 .form-group input::placeholder,
@@ -1364,7 +1364,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
   justify-content: flex-end;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgb(26 54 93 / 0.1);
+  border-top: 1px solid rgba(26, 54, 93, 0.1);
 }
 
 .form-actions .cta-button {
@@ -1420,7 +1420,7 @@ Design System: Pain sections (muted greys, deep blues) → Transformation sectio
     flex-direction: column;
     padding: 1rem 2rem 2rem;
     box-shadow: var(--bi-shadow-lg);
-    border-top: 1px solid rgb(26 54 93 / 0.1);
+    border-top: 1px solid rgba(26, 54, 93, 0.1);
   }
   
   .nav-links.active {
