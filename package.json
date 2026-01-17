@@ -12,8 +12,9 @@
   "scripts": {
     "lint:scss": "node lint-scss-mixins.js",
     "lint:scss:style": "stylelint \"_sass/**/*.scss\"",
+    "lint:scss:raw-css": "node detect-raw-css.js",
     "sass:compile": "node compile-scss.js",
-    "validate": "npm run lint:scss && npm run lint:scss:style && npm run sass:compile"
+    "validate": "npm run lint:scss && npm run lint:scss:style && npm run lint:scss:raw-css && npm run sass:compile"
   },
   "author": "ASI Saga",
   "license": "MIT",
