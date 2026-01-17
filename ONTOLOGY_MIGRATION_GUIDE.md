@@ -419,7 +419,7 @@ After migrating a component:
 ```
 
 **Benefits**:
-- ✅ 75% less code (18 lines → 5 lines of meaningful mapping)
+- ✅ Significant code reduction (from 18 mixin/property calls to 5 semantic mappings)
 - ✅ No raw CSS properties to maintain
 - ✅ Semantic clarity (code expresses intent, not implementation)
 - ✅ Single source of truth (visual changes happen in theme engine)

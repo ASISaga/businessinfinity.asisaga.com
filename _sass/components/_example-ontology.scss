@@ -217,6 +217,295 @@
 }
 
 // ============================================================================
+// ADVANCED PATTERNS: Combining Multiple Ontological Mixins
+// ============================================================================
+
+// Example 10: Complex Dashboard with Multiple States
+.analytics-dashboard {
+  @include genesis-environment('manifest');     // 12-column grid layout
+  @include genesis-atmosphere('vibrant');       // High-energy visualization
+  
+  // Live updating metric card combining multiple mixins
+  .live-metric-card {
+    @include genesis-entity('imperative');      // Urgent visual weight (pulsing border)
+    @include genesis-state('evolving');         // Live updating state (progress indicator)
+    @include genesis-atmosphere('vibrant');     // Can override parent atmosphere
+    
+    .metric-title {
+      @include genesis-cognition('motive');     // Attention-grabbing title
+    }
+    
+    .metric-value {
+      @include genesis-cognition('axiom');      // Large prominent number
+    }
+    
+    .trend-indicator {
+      @include genesis-cognition('quantum');    // Small tag/badge
+    }
+    
+    .refresh-action {
+      @include genesis-synapse('execute');      // Primary action
+    }
+  }
+  
+  // Historical/archived card combining entity + state
+  .archived-metric-card {
+    @include genesis-entity('ancestral');       // Muted historical appearance
+    @include genesis-state('deprecated');       // Strikethrough, warning icon
+    
+    .archive-date {
+      @include genesis-cognition('gloss');      // Small timestamp
+    }
+  }
+  
+  // Restricted/premium content
+  .premium-insight-card {
+    @include genesis-entity('primary');         // Main card styling
+    @include genesis-state('locked');           // Blur effect, lock icon
+    
+    .unlock-cta {
+      @include genesis-synapse('execute');      // Unlock action
+    }
+  }
+}
+
+// Example 11: Responsive Blog Layout
+// Note: Responsive behavior is handled by the theme engine based on the environment
+// You don't need media queries - the ontology handles responsive patterns
+.blog-layout {
+  @include genesis-environment('focused');      // Auto-responsive reading layout
+  @include genesis-atmosphere('ethereal');      // Light reading experience
+  
+  .article-header {
+    @include genesis-entity('primary');         // Hero section
+    
+    .article-title {
+      @include genesis-cognition('axiom');      // Large headline (auto-scales)
+    }
+    
+    .article-subtitle {
+      @include genesis-cognition('motive');     // Engaging subtitle (auto-scales)
+    }
+    
+    .author-meta {
+      @include genesis-cognition('gloss');      // Small metadata (auto-scales)
+    }
+  }
+  
+  .article-content {
+    @include genesis-cognition('discourse');    // Body text (optimal line length, auto-scaling)
+    
+    .pullquote {
+      @include genesis-entity('secondary');     // Highlighted quote block
+      @include genesis-cognition('motive');     // Emphasized text
+    }
+    
+    .code-block {
+      @include genesis-entity('secondary');     // Code container
+      @include genesis-cognition('protocol');   // Monospace code
+    }
+    
+    .footnote {
+      @include genesis-cognition('gloss');      // Small footnote text
+    }
+  }
+  
+  .article-footer {
+    @include genesis-entity('secondary');       // Supporting content area
+    
+    .tag-list {
+      .tag {
+        @include genesis-cognition('quantum');  // Small tag chips
+      }
+    }
+    
+    .share-actions {
+      .share-button {
+        @include genesis-synapse('social');     // Social sharing
+      }
+    }
+    
+    .related-link {
+      @include genesis-synapse('navigate');     // Navigation link
+    }
+  }
+}
+
+// Example 12: Interactive Form with State Management
+.contact-form {
+  @include genesis-entity('primary');           // Main form container
+  @include genesis-state('stable');             // Normal state initially
+  
+  .form-title {
+    @include genesis-cognition('axiom');        // Large form heading
+  }
+  
+  .form-description {
+    @include genesis-cognition('discourse');    // Instructions
+  }
+  
+  .field-label {
+    @include genesis-cognition('motive');       // Field labels
+  }
+  
+  .field-help-text {
+    @include genesis-cognition('gloss');        // Help text
+  }
+  
+  .submit-button {
+    @include genesis-synapse('execute');        // Primary action
+  }
+  
+  .cancel-button {
+    @include genesis-synapse('inquiry');        // Secondary action
+  }
+  
+  // Form states - can be toggled via JavaScript classes
+  &.is-submitting {
+    @include genesis-state('evolving');         // Shows loading state
+  }
+  
+  &.is-disabled {
+    @include genesis-state('locked');           // Disabled/locked state
+  }
+  
+  &.is-preview {
+    @include genesis-state('simulated');        // Preview mode
+  }
+}
+
+// Example 13: Multi-State Alert System
+.notification-center {
+  @include genesis-environment('chronological'); // Vertical stack
+  
+  // Critical alert: imperative entity + evolving state + vibrant atmosphere
+  .alert-critical {
+    @include genesis-entity('imperative');      // Urgent (pulsing neon border)
+    @include genesis-state('evolving');         // Currently active
+    @include genesis-atmosphere('vibrant');     // High-energy
+    
+    .alert-title {
+      @include genesis-cognition('axiom');      // Large bold title
+    }
+    
+    .alert-body {
+      @include genesis-cognition('discourse');  // Alert message
+    }
+    
+    .dismiss-action {
+      @include genesis-synapse('destructive');  // Dangerous action
+    }
+  }
+  
+  // Info alert: secondary entity + stable state
+  .alert-info {
+    @include genesis-entity('secondary');       // Supporting priority
+    @include genesis-state('stable');           // Normal state
+    
+    .alert-title {
+      @include genesis-cognition('motive');     // Medium title
+    }
+  }
+  
+  // Deprecated warning: ancestral entity + deprecated state
+  .alert-deprecated {
+    @include genesis-entity('ancestral');       // Legacy appearance
+    @include genesis-state('deprecated');       // Strikethrough
+    
+    .alert-title {
+      @include genesis-cognition('gloss');      // Small muted title
+    }
+  }
+}
+
+// Example 14: Network Visualization with Interaction States
+.network-graph {
+  @include genesis-environment('associative');  // Network layout (flexbox)
+  @include genesis-atmosphere('void');          // Dark immersive background
+  
+  .network-node {
+    @include genesis-entity('primary');         // Node cards
+    
+    .node-label {
+      @include genesis-cognition('quantum');    // Small compact label
+    }
+    
+    .node-value {
+      @include genesis-cognition('axiom');      // Large metric
+    }
+    
+    // Interactive states
+    &.is-active {
+      @include genesis-state('evolving');       // Highlight active node
+    }
+    
+    &.is-inactive {
+      @include genesis-entity('latent');        // Dim inactive nodes
+    }
+    
+    &.is-selected {
+      @include genesis-entity('imperative');    // Highlight selected
+    }
+  }
+  
+  .connection-link {
+    @include genesis-synapse('navigate');       // Clickable connection
+  }
+  
+  .node-details-panel {
+    @include genesis-entity('secondary');       // Side panel
+    @include genesis-atmosphere('neutral');     // Override dark background
+  }
+}
+
+// Example 15: Wizard/Multi-Step Form
+.onboarding-wizard {
+  @include genesis-environment('focused');      // Centered flow
+  
+  .wizard-step {
+    @include genesis-entity('primary');         // Current step card
+    @include genesis-state('stable');           // Normal state
+    
+    .step-title {
+      @include genesis-cognition('axiom');      // Large step heading
+    }
+    
+    .step-description {
+      @include genesis-cognition('discourse');  // Step instructions
+    }
+    
+    .next-button {
+      @include genesis-synapse('execute');      // Primary action
+    }
+    
+    .back-button {
+      @include genesis-synapse('inquiry');      // Secondary action
+    }
+    
+    // State variations
+    &.is-completed {
+      @include genesis-entity('secondary');     // Completed step (de-emphasized)
+      @include genesis-state('stable');         // Normal completed state
+    }
+    
+    &.is-locked {
+      @include genesis-entity('latent');        // Future step (dimmed)
+      @include genesis-state('locked');         // Locked/unavailable
+    }
+  }
+  
+  .wizard-progress {
+    .progress-step {
+      @include genesis-cognition('quantum');    // Small step indicator
+      
+      &.is-active {
+        @include genesis-cognition('motive');   // Highlighted current step
+      }
+    }
+  }
+}
+
+// ============================================================================
 // INCORRECT PATTERNS: Do NOT Do This (Examples of What to Avoid)
 // ============================================================================
 
