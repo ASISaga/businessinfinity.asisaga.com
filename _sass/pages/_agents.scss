@@ -1,23 +1,98 @@
-// Agent Chat Page Styles
-// Styles for the C-Suite Agent Chat interface
+// Agent Chat Page - Genesis Ontological SCSS
 
 .agents-page {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  padding: 1.5rem;
+  @include genesis-environment('manifest');     // Dashboard layout
+  @include genesis-atmosphere('vibrant');       // High-energy interface
 }
 
 .agents-container {
-  max-width: 1400px;
-  margin: 0 auto;
+  @include genesis-environment('focused');      // Centered container
 }
 
 .page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  gap: 2rem;
+  @include genesis-entity('primary');           // Header section
+  
+  .page-title {
+    @include genesis-cognition('axiom');        // Large title
+  }
+  
+  .page-subtitle {
+    @include genesis-cognition('discourse');    // Subtitle text
+  }
+}
+
+.agents-grid {
+  @include genesis-environment('distributed');  // Agent card grid
+  
+  .agent-card {
+    @include genesis-entity('primary');         // Agent card
+    
+    .agent-name {
+      @include genesis-cognition('motive');     // Agent name
+    }
+    
+    .agent-role {
+      @include genesis-cognition('gloss');      // Role text
+    }
+    
+    .agent-status {
+      @include genesis-cognition('quantum');    // Status badge
+      
+      &.online {
+        @include genesis-state('stable');       // Online state
+      }
+      
+      &.offline {
+        @include genesis-entity('latent');      // Offline state
+      }
+    }
+    
+    .chat-button {
+      @include genesis-synapse('execute');      // Chat action
+    }
+  }
+}
+
+.chat-interface {
+  @include genesis-entity('primary');           // Chat container
+  @include genesis-environment('chronological'); // Message stream
+  
+  .chat-header {
+    @include genesis-entity('secondary');       // Chat header
+    
+    .chat-title {
+      @include genesis-cognition('axiom');      // Chat title
+    }
+  }
+  
+  .chat-messages {
+    @include genesis-entity('aggregate');       // Messages list
+    
+    .message {
+      @include genesis-cognition('discourse');  // Message text
+      
+      &.user-message {
+        @include genesis-entity('primary');     // User message
+      }
+      
+      &.agent-message {
+        @include genesis-entity('secondary');   // Agent message
+      }
+    }
+  }
+  
+  .chat-input {
+    @include genesis-entity('secondary');       // Input area
+    
+    .input-field {
+      @include genesis-cognition('discourse');  // Text input
+    }
+    
+    .send-button {
+      @include genesis-synapse('execute');      // Send action
+    }
+  }
+}
   
   h1 {
     margin: 0 0 0.5rem;

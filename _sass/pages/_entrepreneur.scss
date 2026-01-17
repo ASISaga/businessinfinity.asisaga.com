@@ -1,141 +1,38 @@
-// Entrepreneur page specific styles
-.entrepreneur-container {
-  // Hero section styles are handled by _hero.scss
+// Entrepreneur Page - Genesis Ontological SCSS
 
-  // Challenges section
-  .entrepreneur-challenges-section {
-    @extend .py-5; // Bootstrap padding
-    background-color: $bg-light; // Use theme accessible background
-
-    // section-header.html styles are handled by _section-header.scss
-
-    .entrepreneur-challenges-grid {
-      @extend .container;
-      @extend .row;
-      @extend .justify-content-center;
-
-      .entrepreneur-challenge-card {
-        @extend .col-md-4;
-        @extend .p-4; // Bootstrap padding
-        @extend .mb-4; // Bootstrap margin
-        @extend .text-center;
-        @extend .bg-white;
-        @extend .rounded;
-        @extend .shadow-sm;
-        border-top: 4px solid $luminous-gold; // Sacred accent color
-
-        .entrepreneur-challenge-title {
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-        }
-
-        .entrepreneur-challenge-description {
-          color: $ethereal-silver-accessible; // WCAG compliant muted text
-        }
+.entrepreneur-page {
+  @include genesis-environment('focused');      // Marketing layout
+  
+  .hero {
+    @include genesis-entity('primary');         // Hero section
+    @include genesis-atmosphere('vibrant');     // Energetic
+    
+    h1 {
+      @include genesis-cognition('axiom');      // Main heading
+    }
+    
+    .tagline {
+      @include genesis-cognition('discourse');  // Tagline
+    }
+    
+    .cta {
+      @include genesis-synapse('execute');      // Primary action
+    }
+  }
+  
+  .benefits {
+    @include genesis-environment('distributed'); // Benefits grid
+    
+    .benefit-card {
+      @include genesis-entity('primary');       // Benefit card
+      
+      .benefit-title {
+        @include genesis-cognition('motive');   // Benefit title
+      }
+      
+      .benefit-text {
+        @include genesis-cognition('discourse'); // Benefit description
       }
     }
   }
-
-  // Solutions section
-  .entrepreneur-solutions-section {
-    background-color: $transcendent-white; // Use theme white
-    @extend .py-5; // Bootstrap padding
-
-    // section-header.html styles are handled by _section-header.scss
-
-    .entrepreneur-solutions-container {
-      @extend .container;
-
-      .entrepreneur-solution-item {
-        @extend .row;
-        @extend .mb-5; // Bootstrap margin
-        @extend .align-items-start;
-        @extend .bg-white;
-        @extend .p-4;
-        @extend .rounded;
-        @extend .shadow-sm;
-        border-left: 4px solid $emerald-green; // Life force accent
-
-        .entrepreneur-solution-icon {
-          @extend .col-md-2;
-          @extend .text-center;
-          font-size: 2.5rem;
-          color: $luminous-gold; // Sacred gold for icons
-        }
-
-        .entrepreneur-solution-content {
-          @extend .col-md-10;
-        }
-
-        .entrepreneur-solution-title {
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-        }
-
-        .entrepreneur-solution-description {
-          @extend .mb-3;
-          color: $cosmic-deep-blue; // Primary text
-        }
-
-        .entrepreneur-solution-features {
-          @extend .list-unstyled;
-
-          .entrepreneur-feature-item {
-            @extend .ps-4; // Bootstrap padding for bullet
-            @extend .position-relative;
-            @extend .mb-2;
-            color: $cosmic-deep-blue; // Readable text
-
-            &::before {
-              content: "\2022"; // Bullet character
-              color: $emerald-green; // Life force green
-              font-weight: bold;
-              @extend .position-absolute;
-              left: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // Success story section
-  .entrepreneur-success-section {
-    @extend .py-5; // Bootstrap padding
-    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.05) 0%, rgba($luminous-gold, 0.08) 100%);
-
-    // section-header.html styles are handled by _section-header.scss
-
-    .entrepreneur-success-story {
-      @extend .container;
-      @extend .mw-800; // Assumes .mw-800 utility class exists
-
-      .entrepreneur-testimonial {
-        background-color: $transcendent-white; // Sacred white
-        @extend .rounded;
-        @extend .p-4; // Bootstrap padding
-        border-left: 4px solid $luminous-gold; // Sacred gold accent
-        @extend .m-0;
-        @extend .shadow;
-
-        .entrepreneur-testimonial-text {
-          @extend .fst-italic;
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-          font-size: 1.125rem;
-        }
-
-        .entrepreneur-testimonial-footer {
-          @extend .text-end;
-
-          .entrepreneur-testimonial-author {
-            @extend .fw-medium;
-            color: $ethereal-silver-accessible; // Accessible muted color
-          }
-        }
-      }
-    }
-  }
-
-  // CTA section styles are handled by _cta.scss
 }
