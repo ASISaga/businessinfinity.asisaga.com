@@ -16,7 +16,6 @@
 .boardroom-main-row {
   @include genesis-environment('associative');  // Network layout
 }
-}
 
 // Smooth transitions for all interactive elements
 @media screen and (prefers-reduced-motion: reduce) {
@@ -24,6 +23,7 @@
   transition: none;
 }
 }
+
 * {
   transition: all 0.2s ease;
 }
@@ -34,7 +34,7 @@ input:focus,
 textarea:focus,
 [tabindex]:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.25);
 }
 
 // Smooth scrolling
@@ -64,12 +64,12 @@ html {
 
 // Selection styles
 ::selection {
-  background: rgba(0, 123, 255, 0.2);
+  background: rgb(0 123 255 / 0.2);
   color: #212529;
 }
 
 // Improved mobile responsiveness
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .boardroom-main-row {
     min-height: 100vh;
     flex-direction: column;

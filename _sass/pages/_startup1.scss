@@ -5,9 +5,9 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   background: #0a0a0a;
-  color: #ffffff;
+  color: #fff;
   overflow: hidden;
   position: relative;
 }
@@ -36,7 +36,7 @@ canvas {
   align-items: center;
   gap: 20px;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(0 0 0 / 0.7);
   padding: 15px 25px;
   border-radius: 30px;
   backdrop-filter: blur(10px);
@@ -68,7 +68,7 @@ canvas {
 
 .control-btn:hover, .control-btn:focus {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 15px rgb(102 126 234 / 0.4);
 }
 
 .control-btn:disabled {
@@ -78,7 +78,7 @@ canvas {
 }
 
 .event-indicator {
-  color: #ffffff;
+  color: #fff;
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -104,7 +104,7 @@ canvas {
   top: 50px;
   left: 50px;
   right: 50px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgb(0 0 0 / 0.8);
   padding: 20px;
   border-radius: 10px;
   font-size: 1.2rem;
@@ -121,7 +121,7 @@ canvas {
   top: 50px;
   left: 50px;
   right: 50px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgb(0 0 0 / 0.8);
   padding: 20px;
   border-radius: 10px;
   font-size: 1.2rem;
@@ -146,7 +146,7 @@ canvas {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 0.8);
   opacity: 0;
   transition: none;
 }
@@ -160,7 +160,7 @@ canvas {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 0.8);
   opacity: 0;
   transition: all 0.8s ease;
 }
@@ -179,7 +179,7 @@ canvas {
 
 .on-screen-text .highlight {
   color: #ffd700;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  text-shadow: 0 0 20px rgb(255 215 0 / 0.8);
 }
 
 .on-screen-text .emphasis {
@@ -189,15 +189,16 @@ canvas {
 
 @keyframes glow {
   from {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 0.8);
   }
+
   to {
-    text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.6);
+    text-shadow: 2px 2px 20px rgb(255 255 255 / 0.6);
   }
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .controls {
     bottom: 20px;
     padding: 10px 20px;
@@ -233,7 +234,7 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 200;
-  color: #ffffff;
+  color: #fff;
   font-size: 1.5rem;
 }
 

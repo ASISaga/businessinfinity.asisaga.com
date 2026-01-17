@@ -1,61 +1,45 @@
-// Styles for the Privacy Policy page
+// Privacy Policy page - Genesis Ontological SCSS
+
 .privacy-container {
-  @extend .container;
-  @extend .py-5; // Bootstrap padding
+  @include genesis-environment('focused');      // Centered reading layout
+}
 
-  .privacy-header-section {
-    @extend .pb-4;
-    @extend .mb-5;
-    border-bottom: 1px solid var(--bs-border-color);
+.privacy-header-section {
+  @include genesis-entity('primary');           // Header section
+}
 
-    // .privacy-title styling is handled by Bootstrap heading classes in HTML
+.privacy-last-updated {
+  @include genesis-cognition('gloss');          // Small metadata text
+}
 
-    .privacy-last-updated {
-      @extend .text-muted;
-      // Suggest using Bootstrap .fs-sm or similar in HTML for font-size
-    }
-  }
+.privacy-section {
+  @include genesis-entity('secondary');         // Content section
+}
 
-  .privacy-section {
-    @extend .mb-5;
+.privacy-section-title {
+  @include genesis-cognition('axiom');          // Section heading
+}
 
-    .privacy-section-title {
-      // Suggest using Bootstrap .h2 or similar in HTML for styling
-      @extend .mb-4;
-      color: var(--bs-primary);
-    }
+.privacy-section-content {
+  @include genesis-cognition('discourse');      // Body content
+}
 
-    .privacy-section-content {
-      .privacy-text {
-        @extend .mb-3;
-        @extend .lh-lg; // Using Bootstrap line-height utility
-      }
+.privacy-text {
+  @include genesis-cognition('discourse');      // Paragraph text
+}
 
-      .privacy-list {
-        @extend .list-unstyled;
-        @extend .ps-3;
+.privacy-list {
+  @include genesis-cognition('discourse');      // List content
+}
 
-        .privacy-list-item {
-          @extend .mb-2;
-          position: relative;
-          padding-left: 1.5em;
+.privacy-list-item {
+  @include genesis-cognition('discourse');      // List item
+}
 
-          &::before {
-            content: "\2022";
-            color: var(--bs-primary);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 0.1em;
-          }
-        }
-      }
+.privacy-contact {
+  @include genesis-cognition('discourse');      // Contact info
+}
 
-      .privacy-contact {
-        @extend .mb-3;
-
-        // .privacy-link styling is handled by Bootstrap default link styles
-      }
-    }
-  }
+.privacy-link {
+  @include genesis-synapse('navigate');         // Link styling
 }
