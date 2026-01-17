@@ -3,48 +3,192 @@
 .onboarding-page {
   @include genesis-environment('focused');      // Centered flow
   @include genesis-atmosphere('ethereal');      // Welcoming
+}
+
+.onboarding-container {
+  @include genesis-environment('focused');      // Centered container
+}
+
+.onboarding-header {
+  @include genesis-entity('primary');           // Header section
   
-  .onboarding-header {
-    @include genesis-entity('primary');         // Header
+  h1 {
+    @include genesis-cognition('axiom');        // Welcome title
+  }
+  
+  .welcome-subtitle {
+    @include genesis-cognition('discourse');    // Welcome message
+  }
+  
+  .progress-bar {
+    @include genesis-state('evolving');         // Progress indicator
+    @include genesis-entity('secondary');       // Progress bar container
     
-    h1 {
-      @include genesis-cognition('axiom');      // Welcome title
+    .progress-fill {
+      @include genesis-entity('imperative');    // Progress fill
+      @include genesis-state('evolving');       // Animated progress
     }
     
-    .progress-bar {
-      @include genesis-state('evolving');       // Progress indicator
+    .progress-label {
+      @include genesis-cognition('gloss');      // Progress text
     }
   }
   
-  .onboarding-step {
-    @include genesis-entity('primary');         // Step card
+  .step-indicator {
+    @include genesis-environment('associative'); // Step dots
     
-    .step-title {
-      @include genesis-cognition('motive');     // Step title
+    .step-dot {
+      @include genesis-entity('secondary');     // Inactive step
+      
+      &.active {
+        @include genesis-entity('imperative');  // Active step
+      }
+      
+      &.completed {
+        @include genesis-state('stable');       // Completed step
+        @include genesis-entity('primary');     // Completed styling
+      }
     }
+  }
+}
+
+.onboarding-step {
+  @include genesis-entity('primary');           // Step card
+  
+  .step-number {
+    @include genesis-cognition('quantum');      // Step number badge
+    @include genesis-entity('imperative');      // Badge styling
+  }
+  
+  .step-title {
+    @include genesis-cognition('motive');       // Step title
+  }
+  
+  .step-description {
+    @include genesis-cognition('discourse');    // Step instructions
+  }
+  
+  .step-illustration {
+    @include genesis-entity('secondary');       // Illustration area
+  }
+  
+  .step-form {
+    @include genesis-entity('secondary');       // Form area
     
-    .step-description {
-      @include genesis-cognition('discourse');  // Step instructions
-    }
-    
-    .step-form {
-      @include genesis-entity('secondary');     // Form area
+    .form-group {
+      @include genesis-entity('secondary');     // Form field group
+      
+      label {
+        @include genesis-cognition('motive');   // Field label
+      }
+      
+      input, select, textarea {
+        @include genesis-cognition('discourse'); // Input field
+      }
+      
+      .field-help {
+        @include genesis-cognition('gloss');    // Help text
+      }
+      
+      .field-error {
+        @include genesis-entity('imperative');  // Error message
+        @include genesis-cognition('gloss');    // Error text
+      }
     }
   }
   
-  .onboarding-actions {
-    @include genesis-environment('associative'); // Button group
+  .step-options {
+    @include genesis-environment('distributed'); // Option cards grid
     
-    .next-button {
-      @include genesis-synapse('execute');      // Next action
+    .option-card {
+      @include genesis-entity('secondary');     // Option card
+      @include genesis-synapse('execute');      // Selectable
+      
+      &:hover {
+        @include genesis-entity('primary');     // Hover state
+      }
+      
+      &.selected {
+        @include genesis-entity('imperative');  // Selected state
+      }
+      
+      .option-icon {
+        @include genesis-cognition('axiom');    // Option icon
+      }
+      
+      .option-title {
+        @include genesis-cognition('motive');   // Option title
+      }
+      
+      .option-description {
+        @include genesis-cognition('gloss');    // Option description
+      }
+    }
+  }
+}
+
+.onboarding-actions {
+  @include genesis-environment('associative');  // Button group
+  @include genesis-entity('secondary');         // Actions container
+  
+  .next-button {
+    @include genesis-synapse('execute');        // Next action
+  }
+  
+  .back-button {
+    @include genesis-synapse('inquiry');        // Back action
+  }
+  
+  .skip-button {
+    @include genesis-synapse('navigate');       // Skip action
+  }
+  
+  .finish-button {
+    @include genesis-synapse('execute');        // Finish action
+    @include genesis-entity('imperative');      // Emphasized finish
+  }
+}
+
+.onboarding-sidebar {
+  @include genesis-entity('secondary');         // Sidebar panel
+  
+  .sidebar-title {
+    @include genesis-cognition('motive');       // Sidebar title
+  }
+  
+  .sidebar-steps {
+    @include genesis-environment('chronological'); // Steps list
+    
+    .sidebar-step {
+      @include genesis-entity('secondary');     // Step item
+      
+      &.active {
+        @include genesis-entity('imperative');  // Active step
+      }
+      
+      &.completed {
+        @include genesis-state('stable');       // Completed step
+      }
+      
+      .step-name {
+        @include genesis-cognition('discourse'); // Step name
+      }
+    }
+  }
+  
+  .sidebar-help {
+    @include genesis-entity('secondary');       // Help section
+    
+    .help-title {
+      @include genesis-cognition('motive');     // Help title
     }
     
-    .back-button {
-      @include genesis-synapse('inquiry');      // Back action
+    .help-text {
+      @include genesis-cognition('gloss');      // Help text
     }
     
-    .skip-button {
-      @include genesis-synapse('navigate');     // Skip action
+    .help-link {
+      @include genesis-synapse('navigate');     // Help link
     }
   }
 }

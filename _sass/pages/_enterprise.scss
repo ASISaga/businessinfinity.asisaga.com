@@ -3,44 +3,208 @@
 .enterprise-page {
   @include genesis-environment('focused');      // Marketing layout
   @include genesis-atmosphere('vibrant');       // Professional energy
+}
+
+.enterprise-hero {
+  @include genesis-entity('primary');           // Hero section
+  @include genesis-atmosphere('ethereal');      // Light, professional
   
-  .enterprise-header {
-    @include genesis-entity('primary');         // Header section
+  .hero-content {
+    @include genesis-entity('primary');         // Hero content area
+  }
+  
+  .hero-title {
+    @include genesis-cognition('axiom');        // Main headline
+  }
+  
+  .hero-subtitle {
+    @include genesis-cognition('discourse');    // Hero description
+  }
+  
+  .hero-cta {
+    @include genesis-environment('associative'); // CTA buttons
     
-    .title {
-      @include genesis-cognition('axiom');      // Main title
+    .cta-primary {
+      @include genesis-synapse('execute');      // Primary CTA
     }
     
-    .subtitle {
-      @include genesis-cognition('discourse');  // Subtitle
+    .cta-secondary {
+      @include genesis-synapse('inquiry');      // Secondary CTA
+    }
+  }
+}
+
+.enterprise-header {
+  @include genesis-entity('primary');           // Header section
+  
+  .title {
+    @include genesis-cognition('axiom');        // Main title
+  }
+  
+  .subtitle {
+    @include genesis-cognition('discourse');    // Subtitle
+  }
+  
+  .header-description {
+    @include genesis-cognition('discourse');    // Header description
+  }
+}
+
+.features-section {
+  @include genesis-environment('distributed');  // Features grid
+  
+  .section-title {
+    @include genesis-cognition('axiom');        // Section heading
+  }
+  
+  .feature-card {
+    @include genesis-entity('primary');         // Feature card
+    
+    .feature-icon {
+      @include genesis-cognition('axiom');      // Large feature icon
+    }
+    
+    .feature-title {
+      @include genesis-cognition('motive');     // Feature title
+    }
+    
+    .feature-description {
+      @include genesis-cognition('discourse');  // Feature description
+    }
+    
+    .feature-list {
+      @include genesis-entity('aggregate');     // Feature list items
+      
+      li {
+        @include genesis-cognition('discourse'); // List item text
+      }
+    }
+  }
+}
+
+.pricing-section {
+  @include genesis-environment('distributed');  // Pricing grid
+  
+  .pricing-header {
+    @include genesis-entity('primary');         // Pricing header
+    
+    .pricing-title {
+      @include genesis-cognition('axiom');      // Pricing title
+    }
+    
+    .pricing-subtitle {
+      @include genesis-cognition('discourse');  // Pricing subtitle
     }
   }
   
-  .pricing-section {
-    @include genesis-environment('distributed'); // Pricing grid
+  .pricing-card {
+    @include genesis-entity('primary');         // Pricing card
     
-    .pricing-card {
-      @include genesis-entity('primary');       // Pricing card
+    &.featured {
+      @include genesis-entity('imperative');    // Featured plan
+      @include genesis-atmosphere('vibrant');   // Highlighted energy
+    }
+    
+    .pricing-tier {
+      @include genesis-entity('secondary');     // Tier header
       
-      &.featured {
-        @include genesis-entity('imperative');  // Featured plan
-      }
-      
-      .plan-name {
+      .tier-name {
         @include genesis-cognition('motive');   // Plan name
       }
       
-      .plan-price {
-        @include genesis-cognition('axiom');    // Price display
+      .tier-description {
+        @include genesis-cognition('gloss');    // Plan description
+      }
+    }
+    
+    .plan-name {
+      @include genesis-cognition('motive');     // Plan name
+    }
+    
+    .plan-price {
+      @include genesis-cognition('axiom');      // Price display
+      
+      .price-amount {
+        @include genesis-cognition('axiom');    // Price number
       }
       
-      .plan-features {
-        @include genesis-entity('aggregate');   // Features list
+      .price-period {
+        @include genesis-cognition('gloss');    // Billing period
+      }
+    }
+    
+    .plan-features {
+      @include genesis-entity('aggregate');     // Features list
+      
+      .feature-item {
+        @include genesis-cognition('discourse'); // Feature text
+        
+        &.included {
+          @include genesis-state('stable');     // Included feature
+        }
+        
+        &.not-included {
+          @include genesis-entity('latent');    // Not included
+        }
+      }
+    }
+    
+    .subscribe-button {
+      @include genesis-synapse('execute');      // Subscribe action
+    }
+    
+    .learn-more {
+      @include genesis-synapse('inquiry');      // Learn more link
+    }
+  }
+}
+
+.testimonials-section {
+  @include genesis-entity('secondary');         // Testimonials area
+  @include genesis-atmosphere('ethereal');      // Light, trustworthy
+  
+  .testimonial-grid {
+    @include genesis-environment('distributed'); // Testimonial grid
+    
+    .testimonial-card {
+      @include genesis-entity('primary');       // Testimonial card
+      
+      .testimonial-quote {
+        @include genesis-cognition('discourse'); // Quote text
       }
       
-      .subscribe-button {
-        @include genesis-synapse('execute');    // Subscribe action
+      .testimonial-author {
+        @include genesis-cognition('motive');   // Author name
       }
+      
+      .testimonial-role {
+        @include genesis-cognition('gloss');    // Author role
+      }
+      
+      .testimonial-company {
+        @include genesis-cognition('gloss');    // Company name
+      }
+    }
+  }
+}
+
+.enterprise-cta {
+  @include genesis-entity('imperative');        // Final CTA section
+  @include genesis-atmosphere('vibrant');       // High energy
+  
+  .cta-title {
+    @include genesis-cognition('axiom');        // CTA headline
+  }
+  
+  .cta-description {
+    @include genesis-cognition('discourse');    // CTA description
+  }
+  
+  .cta-buttons {
+    @include genesis-environment('associative'); // Button group
+    
+    .cta-button {
+      @include genesis-synapse('execute');      // Action button
     }
   }
 }

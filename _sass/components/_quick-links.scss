@@ -1,43 +1,122 @@
 // Quick Links Section - Genesis Ontological SCSS
+
 .quick-links-section {
-  @include genesis-entity('primary');        // Main section with glassmorphism
-  @include genesis-atmosphere('vibrant');    // High-energy presentation
+  @include genesis-entity('primary');           // Main section with glassmorphism
+  @include genesis-atmosphere('vibrant');       // High-energy presentation
+  
+  .section-header {
+    @include genesis-entity('primary');         // Header area
+  }
 
   .section-title {
-    @include genesis-cognition('axiom');     // Large headline
+    @include genesis-cognition('axiom');        // Large headline
   }
 
   .section-subtitle {
-    @include genesis-cognition('discourse'); // Supporting description
+    @include genesis-cognition('discourse');    // Supporting description
   }
 }
 
 .quick-links-grid {
-  @include genesis-environment('distributed'); // Auto-fit Bento grid
+  @include genesis-environment('distributed');  // Auto-fit Bento grid layout
 }
 
 .quick-links-category {
-  @include genesis-entity('primary');        // Card with glass effect
+  @include genesis-entity('primary');           // Card with glass effect
+  
+  &:hover {
+    @include genesis-entity('imperative');      // Hover state enhancement
+  }
+
+  .quick-links-category-header {
+    @include genesis-entity('secondary');       // Category header area
+  }
+
+  .quick-links-category-icon {
+    @include genesis-cognition('axiom');        // Large category icon
+  }
 
   .quick-links-category-title {
-    @include genesis-cognition('motive');    // Persuasive category title
+    @include genesis-cognition('motive');       // Persuasive category title
+  }
+  
+  .quick-links-category-description {
+    @include genesis-cognition('gloss');        // Category description
   }
 
   .quick-links-list {
+    @include genesis-entity('aggregate');       // Links container
+    
     a {
-      @include genesis-synapse('navigate');  // Navigation link
+      @include genesis-synapse('navigate');     // Navigation link
+      @include genesis-cognition('discourse');  // Link text
+      
+      &:hover {
+        @include genesis-entity('primary');     // Hover effect
+      }
+      
+      &:focus {
+        @include genesis-entity('imperative');  // Focus state
+      }
+    }
+    
+    .link-icon {
+      @include genesis-cognition('quantum');    // Small link icon
+    }
+    
+    .link-badge {
+      @include genesis-cognition('quantum');    // Status badge
+      @include genesis-state('stable');         // Badge state
+      
+      &.new {
+        @include genesis-entity('imperative');  // New badge
+      }
     }
   }
 }
 
 .quick-links-footer {
-  @include genesis-entity('secondary');      // Supporting footer area
+  @include genesis-entity('secondary');         // Supporting footer area
 
   p {
-    @include genesis-cognition('discourse'); // Body text
+    @include genesis-cognition('discourse');    // Body text
   }
 
   a {
-    @include genesis-synapse('navigate');    // Footer link
+    @include genesis-synapse('navigate');       // Footer link
+  }
+  
+  .footer-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .footer-button {
+      @include genesis-synapse('execute');      // Action button
+    }
+  }
+}
+
+.quick-links-search {
+  @include genesis-entity('secondary');         // Search box
+  
+  .search-input {
+    @include genesis-cognition('discourse');    // Search input field
+  }
+  
+  .search-button {
+    @include genesis-synapse('inquiry');        // Search action
+  }
+  
+  .search-results {
+    @include genesis-entity('primary');         // Results dropdown
+    @include genesis-environment('chronological'); // Vertical results list
+    
+    .result-item {
+      @include genesis-entity('secondary');     // Result item
+      @include genesis-synapse('navigate');     // Clickable result
+      
+      &:hover {
+        @include genesis-entity('primary');     // Hover state
+      }
+    }
   }
 }

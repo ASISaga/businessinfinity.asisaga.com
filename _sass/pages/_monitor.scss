@@ -2,38 +2,229 @@
 
 .monitor-page {
   @include genesis-environment('manifest');     // Dashboard layout
-  @include genesis-atmosphere('vibrant');       // Real-time data
+  @include genesis-atmosphere('vibrant');       // Real-time data energy
+}
+
+.monitor-container {
+  @include genesis-environment('manifest');     // Dashboard grid
+}
+
+.monitor-header {
+  @include genesis-entity('primary');           // Header section
   
-  .monitor-header {
-    @include genesis-entity('primary');         // Header
+  h1 {
+    @include genesis-cognition('axiom');        // Main title
+  }
+  
+  .monitor-subtitle {
+    @include genesis-cognition('discourse');    // Subtitle
+  }
+  
+  .refresh-controls {
+    @include genesis-environment('associative'); // Refresh buttons
     
-    h1 {
-      @include genesis-cognition('axiom');      // Title
+    .refresh-button {
+      @include genesis-synapse('execute');      // Manual refresh
+      @include genesis-state('evolving');       // Refresh animation
+    }
+    
+    .auto-refresh-toggle {
+      @include genesis-synapse('execute');      // Auto-refresh toggle
+    }
+    
+    .last-updated {
+      @include genesis-cognition('gloss');      // Last update timestamp
+    }
+  }
+}
+
+.metrics-grid {
+  @include genesis-environment('distributed');  // Metrics grid layout
+  
+  .metric-card {
+    @include genesis-entity('primary');         // Metric card
+    @include genesis-state('evolving');         // Live updating indicator
+    
+    &.loading {
+      @include genesis-state('evolving');       // Loading state
+    }
+    
+    &.alert {
+      @include genesis-entity('imperative');    // Alert state
+      @include genesis-atmosphere('vibrant');   // Alert emphasis
+    }
+    
+    &.warning {
+      @include genesis-state('deprecated');     // Warning state
+    }
+    
+    &.success {
+      @include genesis-state('stable');         // Success state
+    }
+    
+    .metric-header {
+      @include genesis-entity('secondary');     // Card header
+      
+      .metric-icon {
+        @include genesis-cognition('axiom');    // Metric icon
+      }
+    }
+    
+    .metric-label {
+      @include genesis-cognition('gloss');      // Metric label
+    }
+    
+    .metric-value {
+      @include genesis-cognition('axiom');      // Large metric value
+    }
+    
+    .metric-trend {
+      @include genesis-cognition('quantum');    // Trend indicator
+      
+      &.up {
+        @include genesis-state('stable');       // Positive trend
+      }
+      
+      &.down {
+        @include genesis-entity('imperative');  // Negative trend
+      }
+      
+      &.neutral {
+        @include genesis-entity('latent');      // No change
+      }
+    }
+    
+    .metric-change {
+      @include genesis-cognition('gloss');      // Change percentage
+    }
+    
+    .metric-sparkline {
+      @include genesis-entity('secondary');     // Mini chart
+      @include genesis-state('evolving');       // Animated chart
+    }
+  }
+}
+
+.chart-container {
+  @include genesis-entity('primary');           // Chart area
+  @include genesis-atmosphere('void');          // Dark chart background
+  
+  .chart-header {
+    @include genesis-entity('secondary');       // Chart header
+    
+    .chart-title {
+      @include genesis-cognition('motive');     // Chart title
+    }
+    
+    .chart-controls {
+      @include genesis-environment('associative'); // Chart controls
+      
+      .time-range-selector {
+        @include genesis-synapse('inquiry');    // Time range selector
+      }
+      
+      .chart-type-toggle {
+        @include genesis-synapse('execute');    // Chart type toggle
+      }
     }
   }
   
-  .metrics-grid {
-    @include genesis-environment('distributed'); // Metrics grid
+  .chart-canvas {
+    @include genesis-entity('primary');         // Chart canvas
+  }
+  
+  .chart-legend {
+    @include genesis-entity('secondary');       // Chart legend
+    @include genesis-environment('associative'); // Legend items
     
-    .metric-card {
-      @include genesis-entity('primary');       // Metric card
-      @include genesis-state('evolving');       // Live updating
-      
-      .metric-label {
-        @include genesis-cognition('gloss');    // Label
-      }
-      
-      .metric-value {
-        @include genesis-cognition('axiom');    // Value display
-      }
-      
-      &.alert {
-        @include genesis-entity('imperative');  // Alert state
-      }
+    .legend-item {
+      @include genesis-cognition('gloss');      // Legend text
+    }
+  }
+}
+
+.monitor-alerts {
+  @include genesis-entity('secondary');         // Alerts panel
+  
+  .alerts-header {
+    @include genesis-entity('primary');         // Alerts header
+    
+    .alerts-title {
+      @include genesis-cognition('motive');     // Alerts title
+    }
+    
+    .alerts-count {
+      @include genesis-cognition('quantum');    // Alert count badge
+      @include genesis-entity('imperative');    // Badge styling
     }
   }
   
-  .chart-container {
-    @include genesis-entity('primary');         // Chart area
+  .alerts-list {
+    @include genesis-environment('chronological'); // Alerts list
+    
+    .alert-item {
+      @include genesis-entity('secondary');     // Alert item
+      
+      &.critical {
+        @include genesis-entity('imperative');  // Critical alert
+      }
+      
+      &.warning {
+        @include genesis-state('deprecated');   // Warning alert
+      }
+      
+      &.info {
+        @include genesis-entity('primary');     // Info alert
+      }
+      
+      .alert-icon {
+        @include genesis-cognition('axiom');    // Alert icon
+      }
+      
+      .alert-message {
+        @include genesis-cognition('discourse'); // Alert message
+      }
+      
+      .alert-time {
+        @include genesis-cognition('gloss');    // Alert timestamp
+      }
+      
+      .alert-dismiss {
+        @include genesis-synapse('execute');    // Dismiss button
+      }
+    }
+  }
+}
+
+.monitor-timeline {
+  @include genesis-entity('primary');           // Timeline panel
+  @include genesis-environment('chronological'); // Timeline layout
+  
+  .timeline-header {
+    @include genesis-entity('secondary');       // Timeline header
+    
+    .timeline-title {
+      @include genesis-cognition('motive');     // Timeline title
+    }
+  }
+  
+  .timeline-events {
+    @include genesis-environment('chronological'); // Events list
+    
+    .timeline-event {
+      @include genesis-entity('secondary');     // Event item
+      
+      .event-time {
+        @include genesis-cognition('quantum');  // Event timestamp
+      }
+      
+      .event-description {
+        @include genesis-cognition('discourse'); // Event description
+      }
+      
+      .event-type {
+        @include genesis-cognition('quantum');  // Event type badge
+      }
+    }
   }
 }

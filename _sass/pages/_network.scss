@@ -3,48 +3,193 @@
 .network-page {
   @include genesis-environment('associative');  // Network layout
   @include genesis-atmosphere('void');          // Dark, immersive
+}
+
+.network-container {
+  @include genesis-environment('manifest');     // Dashboard layout
+}
+
+.network-header {
+  @include genesis-entity('primary');           // Header section
   
-  .network-header {
-    @include genesis-entity('primary');         // Header
+  h1 {
+    @include genesis-cognition('axiom');        // Main title
+  }
+  
+  .network-subtitle {
+    @include genesis-cognition('discourse');    // Subtitle
+  }
+  
+  .network-controls {
+    @include genesis-environment('associative'); // Control buttons
     
-    h1 {
-      @include genesis-cognition('axiom');      // Title
+    .control-button {
+      @include genesis-synapse('execute');      // Control action
+    }
+    
+    .filter-dropdown {
+      @include genesis-synapse('inquiry');      // Filter selector
+    }
+  }
+}
+
+.network-graph {
+  @include genesis-entity('primary');           // Graph container
+  @include genesis-atmosphere('void');          // Dark visualization
+  
+  .graph-canvas {
+    @include genesis-entity('primary');         // Canvas area
+  }
+  
+  .node {
+    @include genesis-entity('primary');         // Network node
+    
+    &.active {
+      @include genesis-entity('imperative');    // Active node
+      @include genesis-state('stable');         // Active state
+    }
+    
+    &.inactive {
+      @include genesis-entity('latent');        // Inactive node
+    }
+    
+    &.selected {
+      @include genesis-entity('imperative');    // Selected node
+    }
+    
+    .node-label {
+      @include genesis-cognition('quantum');    // Node label text
+    }
+    
+    .node-badge {
+      @include genesis-cognition('quantum');    // Status badge
+      @include genesis-state('stable');         // Badge state
     }
   }
   
-  .network-graph {
-    @include genesis-entity('primary');         // Graph container
+  .connection {
+    @include genesis-synapse('navigate');       // Connection line
     
-    .node {
-      @include genesis-entity('primary');       // Network node
-      
-      &.active {
-        @include genesis-entity('imperative');  // Active node
-      }
-      
-      &.inactive {
-        @include genesis-entity('latent');      // Inactive node
-      }
-      
-      .node-label {
-        @include genesis-cognition('quantum');  // Node label
-      }
+    &.active {
+      @include genesis-entity('imperative');    // Active connection
     }
     
-    .connection {
-      @include genesis-synapse('navigate');     // Connection line
+    &.data-flow {
+      @include genesis-state('evolving');       // Animated data flow
     }
   }
   
-  .node-details {
-    @include genesis-entity('secondary');       // Details panel
+  .node-cluster {
+    @include genesis-entity('aggregate');       // Node grouping
+  }
+}
+
+.network-sidebar {
+  @include genesis-entity('secondary');         // Sidebar panel
+  
+  .sidebar-header {
+    @include genesis-entity('primary');         // Sidebar header
     
-    .detail-title {
-      @include genesis-cognition('motive');     // Detail heading
+    h3 {
+      @include genesis-cognition('motive');     // Sidebar title
+    }
+  }
+  
+  .sidebar-content {
+    @include genesis-entity('secondary');       // Content area
+  }
+}
+
+.node-details {
+  @include genesis-entity('secondary');         // Details panel
+  
+  .detail-header {
+    @include genesis-entity('primary');         // Detail header
+    
+    .node-icon {
+      @include genesis-cognition('axiom');      // Large node icon
+    }
+  }
+  
+  .detail-title {
+    @include genesis-cognition('motive');       // Detail heading
+  }
+  
+  .detail-content {
+    @include genesis-cognition('discourse');    // Detail text
+  }
+  
+  .detail-metrics {
+    @include genesis-environment('distributed'); // Metrics grid
+    
+    .metric-item {
+      @include genesis-entity('secondary');     // Metric card
+      
+      .metric-label {
+        @include genesis-cognition('gloss');    // Metric label
+      }
+      
+      .metric-value {
+        @include genesis-cognition('axiom');    // Metric value
+      }
+    }
+  }
+  
+  .detail-connections {
+    @include genesis-entity('aggregate');       // Connections list
+    
+    .connection-item {
+      @include genesis-entity('secondary');     // Connection entry
+      @include genesis-synapse('navigate');     // Clickable connection
+      
+      &:hover {
+        @include genesis-entity('primary');     // Hover state
+      }
+    }
+  }
+}
+
+.network-legend {
+  @include genesis-entity('secondary');         // Legend panel
+  
+  .legend-title {
+    @include genesis-cognition('motive');       // Legend heading
+  }
+  
+  .legend-items {
+    @include genesis-entity('aggregate');       // Legend list
+    
+    .legend-item {
+      @include genesis-cognition('gloss');      // Legend entry
+    }
+  }
+}
+
+.network-toolbar {
+  @include genesis-entity('secondary');         // Toolbar
+  @include genesis-environment('associative');  // Tool button group
+  
+  .tool-button {
+    @include genesis-synapse('execute');        // Tool action
+    
+    &.active {
+      @include genesis-entity('imperative');    // Active tool
+    }
+  }
+  
+  .zoom-controls {
+    @include genesis-environment('associative'); // Zoom button group
+    
+    .zoom-in {
+      @include genesis-synapse('execute');      // Zoom in action
     }
     
-    .detail-content {
-      @include genesis-cognition('discourse');  // Detail text
+    .zoom-out {
+      @include genesis-synapse('execute');      // Zoom out action
+    }
+    
+    .zoom-reset {
+      @include genesis-synapse('inquiry');      // Reset zoom
     }
   }
 }

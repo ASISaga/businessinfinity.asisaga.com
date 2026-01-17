@@ -11,6 +11,15 @@
 
 .page-header {
   @include genesis-entity('primary');           // Header section
+  @include genesis-environment('associative');  // Flex layout for header items
+  
+  .header-content {
+    @include genesis-entity('primary');         // Main header content
+  }
+  
+  .header-status {
+    @include genesis-entity('secondary');       // Status display area
+  }
   
   .page-title {
     @include genesis-cognition('axiom');        // Large title
@@ -23,33 +32,55 @@
 
 .agents-grid {
   @include genesis-environment('distributed');  // Agent card grid
+}
+
+.agent-selector-panel {
+  @include genesis-entity('primary');           // Selector panel card
   
-  .agent-card {
-    @include genesis-entity('primary');         // Agent card
-    
-    .agent-name {
-      @include genesis-cognition('motive');     // Agent name
-    }
-    
-    .agent-role {
-      @include genesis-cognition('gloss');      // Role text
-    }
-    
-    .agent-status {
-      @include genesis-cognition('quantum');    // Status badge
-      
-      &.online {
-        @include genesis-state('stable');       // Online state
-      }
-      
-      &.offline {
-        @include genesis-entity('latent');      // Offline state
-      }
-    }
-    
-    .chat-button {
-      @include genesis-synapse('execute');      // Chat action
-    }
+  h2 {
+    @include genesis-cognition('motive');       // Panel heading
+  }
+}
+
+.agent-list {
+  @include genesis-environment('chronological'); // Vertical list layout
+}
+
+.agent-option {
+  @include genesis-entity('secondary');         // Agent option card
+  @include genesis-synapse('navigate');         // Selectable interaction
+  
+  &:hover {
+    @include genesis-entity('primary');         // Hover state
+  }
+  
+  &.active {
+    @include genesis-entity('imperative');      // Selected state
+  }
+}
+
+.agent-icon {
+  @include genesis-entity('primary');           // Icon container
+  @include genesis-atmosphere('vibrant');       // Gradient background
+}
+
+.agent-info {
+  @include genesis-entity('secondary');         // Agent info area
+  
+  h3 {
+    @include genesis-cognition('motive');       // Agent name
+  }
+  
+  p {
+    @include genesis-cognition('gloss');        // Agent description
+  }
+}
+
+.chat-panel {
+  @include genesis-entity('primary');           // Chat panel container
+  
+  agent-chat {
+    @include genesis-environment('chronological'); // Message stream
   }
 }
 
@@ -91,153 +122,5 @@
     .send-button {
       @include genesis-synapse('execute');      // Send action
     }
-  }
-}
-  
-  h1 {
-    margin: 0 0 0.5rem;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #1e293b;
-  }
-  
-  p {
-    margin: 0;
-    color: #64748b;
-    font-size: 0.9375rem;
-    max-width: 600px;
-  }
-}
-
-.header-content {
-  flex: 1;
-}
-
-.header-status {
-  flex-shrink: 0;
-  width: 300px;
-}
-
-.agents-grid {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 1.5rem;
-}
-
-.agent-selector-panel {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  
-  h2 {
-    margin: 0 0 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1e293b;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e5e7eb;
-  }
-}
-
-.agent-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.agent-option {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-  
-  &:hover {
-    border-color: #2563eb;
-    background: #f8fafc;
-  }
-  
-  &.active {
-    border-color: #2563eb;
-    background: #eff6ff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-}
-
-.agent-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
-.agent-info {
-  h3 {
-    margin: 0;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: #1e293b;
-  }
-  
-  p {
-    margin: 0.125rem 0 0;
-    font-size: 0.75rem;
-    color: #64748b;
-    line-height: 1.3;
-  }
-}
-
-.chat-panel {
-  min-height: 600px;
-  
-  agent-chat {
-    height: 100%;
-  }
-}
-
-// Responsive adjustments
-@media (max-width: 1024px) {
-  .agents-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .page-header {
-    flex-direction: column;
-  }
-  
-  .header-status {
-    width: 100%;
-  }
-  
-  .agent-list {
-    flex-flow: row wrap;
-    
-    .agent-option {
-      flex: 1 1 calc(50% - 0.25rem);
-      min-width: 200px;
-    }
-  }
-}
-
-@media (max-width: 640px) {
-  .agents-page {
-    padding: 0.75rem;
-  }
-  
-  .agent-list .agent-option {
-    flex: 1 1 100%;
-  }
-  
-  .chat-panel {
-    min-height: 450px;
   }
 }
