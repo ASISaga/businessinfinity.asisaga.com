@@ -2,37 +2,227 @@
 
 .entrepreneur-page {
   @include genesis-environment('focused');      // Marketing layout
+}
+
+.entrepreneur-container {
+  @include genesis-environment('focused');      // Centered container
+}
+
+.hero {
+  @include genesis-entity('primary');           // Hero section
+  @include genesis-atmosphere('vibrant');       // Energetic startup energy
   
-  .hero {
-    @include genesis-entity('primary');         // Hero section
-    @include genesis-atmosphere('vibrant');     // Energetic
+  .hero-content {
+    @include genesis-entity('primary');         // Hero content area
+  }
+  
+  h1 {
+    @include genesis-cognition('axiom');        // Main headline
+  }
+  
+  .tagline {
+    @include genesis-cognition('discourse');    // Tagline text
+  }
+  
+  .hero-description {
+    @include genesis-cognition('discourse');    // Hero description
+  }
+  
+  .cta {
+    @include genesis-synapse('execute');        // Primary action
+  }
+  
+  .cta-group {
+    @include genesis-environment('associative'); // CTA buttons
     
-    h1 {
-      @include genesis-cognition('axiom');      // Main heading
+    .cta-primary {
+      @include genesis-synapse('execute');      // Primary CTA
     }
     
-    .tagline {
-      @include genesis-cognition('discourse');  // Tagline
-    }
-    
-    .cta {
-      @include genesis-synapse('execute');      // Primary action
+    .cta-secondary {
+      @include genesis-synapse('inquiry');      // Secondary CTA
     }
   }
   
-  .benefits {
-    @include genesis-environment('distributed'); // Benefits grid
+  .hero-image {
+    @include genesis-entity('secondary');       // Hero illustration
+  }
+}
+
+.benefits {
+  @include genesis-environment('distributed');  // Benefits grid
+  
+  .benefits-header {
+    @include genesis-entity('primary');         // Benefits header
     
-    .benefit-card {
-      @include genesis-entity('primary');       // Benefit card
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // Section description
+    }
+  }
+  
+  .benefit-card {
+    @include genesis-entity('primary');         // Benefit card
+    
+    &:hover {
+      @include genesis-entity('imperative');    // Hover enhancement
+    }
+    
+    .benefit-icon {
+      @include genesis-cognition('axiom');      // Benefit icon
+      @include genesis-atmosphere('vibrant');   // Icon glow
+    }
+    
+    .benefit-title {
+      @include genesis-cognition('motive');     // Benefit title
+    }
+    
+    .benefit-text {
+      @include genesis-cognition('discourse');  // Benefit description
+    }
+    
+    .benefit-link {
+      @include genesis-synapse('navigate');     // Learn more link
+    }
+  }
+}
+
+.entrepreneur-journey {
+  @include genesis-entity('secondary');         // Journey section
+  @include genesis-environment('chronological'); // Timeline layout
+  
+  .journey-title {
+    @include genesis-cognition('axiom');        // Journey title
+  }
+  
+  .journey-steps {
+    @include genesis-environment('chronological'); // Steps list
+    
+    .journey-step {
+      @include genesis-entity('primary');       // Step card
       
-      .benefit-title {
-        @include genesis-cognition('motive');   // Benefit title
+      .step-number {
+        @include genesis-cognition('quantum');  // Step number
+        @include genesis-entity('imperative');  // Number badge
       }
       
-      .benefit-text {
-        @include genesis-cognition('discourse'); // Benefit description
+      .step-title {
+        @include genesis-cognition('motive');   // Step title
       }
+      
+      .step-description {
+        @include genesis-cognition('discourse'); // Step description
+      }
+      
+      .step-action {
+        @include genesis-synapse('execute');    // Step action button
+      }
+    }
+  }
+}
+
+.entrepreneur-testimonials {
+  @include genesis-entity('primary');           // Testimonials section
+  @include genesis-atmosphere('ethereal');      // Light, trustworthy
+  
+  .testimonials-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+  }
+  
+  .testimonials-grid {
+    @include genesis-environment('distributed'); // Testimonials grid
+    
+    .testimonial-card {
+      @include genesis-entity('secondary');     // Testimonial card
+      
+      .testimonial-quote {
+        @include genesis-cognition('discourse'); // Quote text
+      }
+      
+      .testimonial-author {
+        @include genesis-cognition('motive');   // Author name
+      }
+      
+      .testimonial-company {
+        @include genesis-cognition('gloss');    // Company info
+      }
+      
+      .testimonial-avatar {
+        @include genesis-entity('primary');     // Author avatar
+      }
+    }
+  }
+}
+
+.entrepreneur-resources {
+  @include genesis-entity('secondary');         // Resources section
+  
+  .resources-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+  }
+  
+  .resources-grid {
+    @include genesis-environment('distributed'); // Resources grid
+    
+    .resource-card {
+      @include genesis-entity('primary');       // Resource card
+      @include genesis-synapse('navigate');     // Clickable card
+      
+      &:hover {
+        @include genesis-entity('imperative');  // Hover state
+      }
+      
+      .resource-icon {
+        @include genesis-cognition('axiom');    // Resource icon
+      }
+      
+      .resource-type {
+        @include genesis-cognition('quantum');  // Resource type badge
+      }
+      
+      .resource-title {
+        @include genesis-cognition('motive');   // Resource title
+      }
+      
+      .resource-description {
+        @include genesis-cognition('gloss');    // Resource description
+      }
+    }
+  }
+}
+
+.entrepreneur-cta-final {
+  @include genesis-entity('imperative');        // Final CTA section
+  @include genesis-atmosphere('vibrant');       // High energy
+  
+  .cta-content {
+    @include genesis-entity('primary');         // CTA content
+    
+    h2 {
+      @include genesis-cognition('axiom');      // CTA headline
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // CTA description
+    }
+  }
+  
+  .cta-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .cta-button {
+      @include genesis-synapse('execute');      // Action button
     }
   }
 }

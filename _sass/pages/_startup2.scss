@@ -3,48 +3,278 @@
 .startup2-page {
   @include genesis-environment('focused');      // Marketing layout
   @include genesis-atmosphere('vibrant');       // Energetic startup vibe
+}
+
+.startup2-container {
+  @include genesis-environment('focused');      // Centered container
+}
+
+.hero-section {
+  @include genesis-entity('primary');           // Hero section
+  @include genesis-atmosphere('vibrant');       // High energy
   
-  .hero-section {
-    @include genesis-entity('primary');         // Hero
+  .hero-content {
+    @include genesis-entity('primary');         // Hero content area
+  }
+  
+  h1 {
+    @include genesis-cognition('axiom');        // Main headline
+  }
+  
+  .tagline {
+    @include genesis-cognition('motive');       // Tagline
+  }
+  
+  .hero-description {
+    @include genesis-cognition('discourse');    // Hero description
+  }
+  
+  .cta-button {
+    @include genesis-synapse('execute');        // Primary CTA
+  }
+  
+  .cta-group {
+    @include genesis-environment('associative'); // CTA buttons
     
-    h1 {
-      @include genesis-cognition('axiom');      // Main headline
+    .cta-primary {
+      @include genesis-synapse('execute');      // Primary button
     }
     
-    .tagline {
-      @include genesis-cognition('motive');     // Tagline
-    }
-    
-    .cta-button {
-      @include genesis-synapse('execute');      // Primary CTA
+    .cta-secondary {
+      @include genesis-synapse('inquiry');      // Secondary button
     }
   }
   
-  .features-grid {
-    @include genesis-environment('distributed'); // Feature grid
+  .hero-visual {
+    @include genesis-entity('secondary');       // Hero visual
+  }
+}
+
+.value-proposition {
+  @include genesis-entity('secondary');         // Value prop section
+  
+  .value-header {
+    @include genesis-entity('primary');         // Header
     
-    .feature {
-      @include genesis-entity('primary');       // Feature card
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // Section description
+    }
+  }
+  
+  .value-items {
+    @include genesis-environment('distributed'); // Value items grid
+    
+    .value-item {
+      @include genesis-entity('primary');       // Value item
       
-      .feature-title {
-        @include genesis-cognition('motive');   // Title
+      .value-icon {
+        @include genesis-cognition('axiom');    // Value icon
       }
       
-      .feature-description {
-        @include genesis-cognition('discourse'); // Description
+      .value-title {
+        @include genesis-cognition('motive');   // Value title
+      }
+      
+      .value-description {
+        @include genesis-cognition('discourse'); // Value description
+      }
+    }
+  }
+}
+
+.features-grid {
+  @include genesis-environment('distributed');  // Feature grid layout
+  
+  .feature {
+    @include genesis-entity('primary');         // Feature card
+    
+    &:hover {
+      @include genesis-entity('imperative');    // Hover state
+    }
+    
+    .feature-icon {
+      @include genesis-cognition('axiom');      // Feature icon
+      @include genesis-atmosphere('vibrant');   // Icon energy
+    }
+    
+    .feature-title {
+      @include genesis-cognition('motive');     // Feature title
+    }
+    
+    .feature-description {
+      @include genesis-cognition('discourse');  // Feature description
+    }
+    
+    .feature-link {
+      @include genesis-synapse('navigate');     // Feature link
+    }
+  }
+}
+
+.social-proof {
+  @include genesis-entity('secondary');         // Social proof section
+  @include genesis-atmosphere('ethereal');      // Trustworthy feel
+  
+  .proof-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+  }
+  
+  .proof-stats {
+    @include genesis-environment('distributed'); // Stats grid
+    
+    .stat-item {
+      @include genesis-entity('primary');       // Stat card
+      
+      .stat-value {
+        @include genesis-cognition('axiom');    // Large stat number
+      }
+      
+      .stat-label {
+        @include genesis-cognition('gloss');    // Stat label
       }
     }
   }
   
-  .pricing-section {
-    @include genesis-entity('secondary');       // Pricing area
+  .proof-logos {
+    @include genesis-environment('associative'); // Logo row
+    
+    .logo-item {
+      @include genesis-entity('secondary');     // Logo container
+    }
+  }
+}
+
+.pricing-section {
+  @include genesis-entity('secondary');         // Pricing section
+  
+  .pricing-header {
+    @include genesis-entity('primary');         // Pricing header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Pricing title
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // Pricing description
+    }
+  }
+  
+  .pricing-grid {
+    @include genesis-environment('distributed'); // Pricing cards grid
     
     .pricing-card {
       @include genesis-entity('primary');       // Price card
       
       &.featured {
         @include genesis-entity('imperative');  // Featured plan
+        @include genesis-atmosphere('vibrant'); // Highlighted plan
       }
+      
+      .plan-header {
+        @include genesis-entity('secondary');   // Plan header
+        
+        .plan-name {
+          @include genesis-cognition('motive'); // Plan name
+        }
+        
+        .plan-description {
+          @include genesis-cognition('gloss');  // Plan description
+        }
+      }
+      
+      .plan-price {
+        @include genesis-cognition('axiom');    // Price display
+        
+        .price-amount {
+          @include genesis-cognition('axiom');  // Price number
+        }
+        
+        .price-period {
+          @include genesis-cognition('gloss');  // Billing period
+        }
+      }
+      
+      .plan-features {
+        @include genesis-entity('aggregate');   // Features list
+        
+        li {
+          @include genesis-cognition('discourse'); // Feature text
+        }
+      }
+      
+      .plan-cta {
+        @include genesis-synapse('execute');    // Subscribe button
+      }
+    }
+  }
+}
+
+.testimonials-section {
+  @include genesis-entity('primary');           // Testimonials section
+  @include genesis-atmosphere('ethereal');      // Light, trustworthy
+  
+  .testimonials-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+  }
+  
+  .testimonials-carousel {
+    @include genesis-environment('chronological'); // Carousel layout
+    
+    .testimonial-slide {
+      @include genesis-entity('primary');       // Testimonial slide
+      
+      .testimonial-quote {
+        @include genesis-cognition('discourse'); // Quote text
+      }
+      
+      .testimonial-author {
+        @include genesis-cognition('motive');   // Author name
+      }
+      
+      .testimonial-role {
+        @include genesis-cognition('gloss');    // Author role
+      }
+      
+      .testimonial-avatar {
+        @include genesis-entity('primary');     // Author avatar
+      }
+    }
+  }
+}
+
+.final-cta {
+  @include genesis-entity('imperative');        // Final CTA
+  @include genesis-atmosphere('vibrant');       // High energy
+  
+  .cta-content {
+    @include genesis-entity('primary');         // CTA content
+    
+    h2 {
+      @include genesis-cognition('axiom');      // CTA headline
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // CTA description
+    }
+  }
+  
+  .cta-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .cta-button {
+      @include genesis-synapse('execute');      // Action button
     }
   }
 }
