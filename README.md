@@ -10,15 +10,34 @@ This repository hosts the Business Infinity website, deployed on GitHub Pages an
 
 - **Static Site Generator**: Jekyll (Liquid templates, Markdown content)
 - **Markup**: HTML5 (semantic, accessible structure)
-- **Styling**: SCSS compiled to CSS3
-- **Framework**: Bootstrap (responsive grid, components)
+- **Styling**: Genesis Ontological SCSS Design System (from ASI Saga theme)
+- **Legacy Support**: Bootstrap compatibility layer (gradual migration)
 - **JavaScript**: ES6+ (modular, standards-compliant)
 - **Components**: Web Components (chat, dashboard, agents)
 - **Testing**: Playwright (unit and integration tests)
 - **Deployment**: GitHub Pages + Azure Functions
 
+## SCSS Design System Migration
+
+This repository uses the **Genesis Ontological SCSS Design System** from the [ASI Saga theme](https://github.com/ASISaga/theme.asisaga.com).
+
+**Current Status**: ✅ Ontology system configured and ready for use
+
+- ✅ Ontology system imported in `_sass/_main.scss`
+- ✅ Instructions updated for ontological patterns
+- ✅ Migration guide available: [ONTOLOGY_MIGRATION_GUIDE.md](ONTOLOGY_MIGRATION_GUIDE.md)
+- ✅ Example components: `_sass/components/_example-ontology.scss`
+- 🔄 Existing SCSS files use Bootstrap mixins (backward compatible)
+- 🎯 All new development must use ontological mixins exclusively
+
+**For Developers**: 
+- Review [ONTOLOGY_MIGRATION_GUIDE.md](ONTOLOGY_MIGRATION_GUIDE.md) for complete migration workflow
+- See `.github/instructions/scss.instructions.md` for ontological system rules
+- Existing Bootstrap-based SCSS continues to work (backward compatible)
+
 ## Documentation
 
+- **[Ontology Migration Guide](ONTOLOGY_MIGRATION_GUIDE.md)** - Complete guide to Genesis Ontological SCSS Design System migration
 - [SCSS Dependency Management](SCSS_DEPENDENCY_MANAGEMENT.md) - Guide to SCSS validation and theme dependencies
 - [Backend Integration Guide](docs/backend-integration.md) - Complete guide to the Business Infinity backend
 - [Specifications](docs/specifications.md) - High-level technical specifications and architecture
