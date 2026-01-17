@@ -1,264 +1,280 @@
-// -----------------------------
-// Design Tokens (Sass + CSS vars)
-// -----------------------------
-$bg-0: #ffffff;
-$bg-1: #f8fafc;
-$panel: #ffffff;
-$ink: #1b1f24;
-$muted: #5c6b80;
-$line: #e2e8f0;
-$primary: #ec4e20;   // startup energy: warm coral
-$primary-2: #c63c13;
-$accent: #ff784f;
-$radius: 8px;
-$shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-$font: 'Segoe UI', 'Inter', sans-serif;
+// Startup2 Page - Genesis Ontological SCSS
 
-:root {
-  --bg-0: #{$bg-0};
-  --bg-1: #{$bg-1};
-  --panel: #{$panel};
-  --ink: #{$ink};
-  --muted: #{$muted};
-  --line: #{$line};
-  --primary: #{$primary};
-  --primary-2: #{$primary-2};
-  --accent: #{$accent};
-  --radius: #{$radius};
-  --shadow-sm: #{$shadow-sm};
-  --font: #{$font};
+.startup2-page {
+  @include genesis-environment('focused');      // Marketing layout
+  @include genesis-atmosphere('vibrant');       // Energetic startup vibe
 }
 
-// -----------------------------
-// Base Styles
-// -----------------------------
-body {
-  font-family: var(--font);
-  font-size: 15px;
-  line-height: 1.6;
-  background: var(--bg-0);
-  color: var(--ink);
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
+.startup2-container {
+  @include genesis-environment('focused');      // Centered container
 }
 
-.wrap {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-// -----------------------------
-// Hero Section
-// -----------------------------
-.hero {
-  background: var(--bg-1);
-  border-bottom: 1px solid var(--line);
-  padding: 72px 0;
-
-  &-overlay {
-    background: rgba(0,0,0,0.55);
-    padding: 2rem;
-    text-align: center;
-    color: white;
-    border-radius: var(--radius);
-
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
+.hero-section {
+  @include genesis-entity('primary');           // Hero section
+  @include genesis-atmosphere('vibrant');       // High energy
+  
+  .hero-content {
+    @include genesis-entity('primary');         // Hero content area
+  }
+  
+  h1 {
+    @include genesis-cognition('axiom');        // Main headline
+  }
+  
+  .tagline {
+    @include genesis-cognition('motive');       // Tagline
+  }
+  
+  .hero-description {
+    @include genesis-cognition('discourse');    // Hero description
+  }
+  
+  .cta-button {
+    @include genesis-synapse('execute');        // Primary CTA
+  }
+  
+  .cta-group {
+    @include genesis-environment('associative'); // CTA buttons
+    
+    .cta-primary {
+      @include genesis-synapse('execute');      // Primary button
     }
-
-    .tagline {
-      font-size: 1.2rem;
-      margin: 0.5rem 0 1.5rem;
+    
+    .cta-secondary {
+      @include genesis-synapse('inquiry');      // Secondary button
     }
   }
+  
+  .hero-visual {
+    @include genesis-entity('secondary');       // Hero visual
+  }
 }
 
-.headline {
-  font-size: 40px;
-  font-weight: 600;
-  margin: 0 0 0.5em;
-}
-
-.sub {
-  font-size: 18px;
-  color: var(--muted);
-  max-width: 740px;
-}
-
-// -----------------------------
-// Buttons
-// -----------------------------
-@media screen and (prefers-reduced-motion: reduce) {
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: 600;
-  transition: none;
-
-  &-primary {
-    background: var(--primary);
-    color: #ffffff;
-    border: 1px solid var(--primary);
-
-    &:hover, &:focus {
-      background: var(--primary-2);
+.value-proposition {
+  @include genesis-entity('secondary');         // Value prop section
+  
+  .value-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // Section description
     }
   }
-
-  &-lg {
-    padding: 1rem 1.6rem;
-    font-size: 1.1rem;
-    border-radius: calc(var(--radius) + 2px);
-  }
-
-  &-accent {
-    background: var(--accent);
-    color: #ffffff;
-    border: 1px solid var(--accent);
-
-    &:hover, &:focus {
-      background: darken($accent, 10%); // ✅ uses Sass variable
-    }
-  }
-}
-}
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-
-  &-primary {
-    background: var(--primary);
-    color: #ffffff;
-    border: 1px solid var(--primary);
-
-    &:hover, &:focus {
-      background: var(--primary-2);
-    }
-  }
-
-  &-lg {
-    padding: 1rem 1.6rem;
-    font-size: 1.1rem;
-    border-radius: calc(var(--radius) + 2px);
-  }
-
-  &-accent {
-    background: var(--accent);
-    color: #ffffff;
-    border: 1px solid var(--accent);
-
-    &:hover, &:focus {
-      background: darken($accent, 10%); // ✅ uses Sass variable
+  
+  .value-items {
+    @include genesis-environment('distributed'); // Value items grid
+    
+    .value-item {
+      @include genesis-entity('primary');       // Value item
+      
+      .value-icon {
+        @include genesis-cognition('axiom');    // Value icon
+      }
+      
+      .value-title {
+        @include genesis-cognition('motive');   // Value title
+      }
+      
+      .value-description {
+        @include genesis-cognition('discourse'); // Value description
+      }
     }
   }
 }
 
-// -----------------------------
-// Content
-// -----------------------------
-.content {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-
-  h2 {
-    color: var(--primary-2);
-    margin-bottom: 0.5rem;
-  }
-
-  h3 {
-    color: var(--accent);
-  }
-}
-
-.grid-3 {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.card {
-  background: var(--panel);
-  border-radius: var(--radius);
-  padding: 1rem;
-  box-shadow: var(--shadow-sm);
-}
-
-// -----------------------------
-// Tables
-// -----------------------------
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-
-  th, td {
-    border: 1px solid var(--line);
-    padding: 0.5rem;
-    text-align: center;
+.features-grid {
+  @include genesis-environment('distributed');  // Feature grid layout
+  
+  .feature {
+    @include genesis-entity('primary');         // Feature card
+    
+    &:hover {
+      @include genesis-entity('imperative');    // Hover state
+    }
+    
+    .feature-icon {
+      @include genesis-cognition('axiom');      // Feature icon
+      @include genesis-atmosphere('vibrant');   // Icon energy
+    }
+    
+    .feature-title {
+      @include genesis-cognition('motive');     // Feature title
+    }
+    
+    .feature-description {
+      @include genesis-cognition('discourse');  // Feature description
+    }
+    
+    .feature-link {
+      @include genesis-synapse('navigate');     // Feature link
+    }
   }
 }
 
-// -----------------------------
-// Notes & Footer
-// -----------------------------
-.note {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: var(--bg-1);
-  font-size: 0.85rem;
-}
-
-// -----------------------------
-// Animations
-// -----------------------------
-@media screen and (prefers-reduced-motion: reduce) {
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: none;
-
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
+.social-proof {
+  @include genesis-entity('secondary');         // Social proof section
+  @include genesis-atmosphere('ethereal');      // Trustworthy feel
+  
+  .proof-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
   }
-}
-}
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .proof-stats {
+    @include genesis-environment('distributed'); // Stats grid
+    
+    .stat-item {
+      @include genesis-entity('primary');       // Stat card
+      
+      .stat-value {
+        @include genesis-cognition('axiom');    // Large stat number
+      }
+      
+      .stat-label {
+        @include genesis-cognition('gloss');    // Stat label
+      }
+    }
+  }
+  
+  .proof-logos {
+    @include genesis-environment('associative'); // Logo row
+    
+    .logo-item {
+      @include genesis-entity('secondary');     // Logo container
+    }
   }
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
-.pulse {
-  animation: none;
-}
+.pricing-section {
+  @include genesis-entity('secondary');         // Pricing section
+  
+  .pricing-header {
+    @include genesis-entity('primary');         // Pricing header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Pricing title
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // Pricing description
+    }
+  }
+  
+  .pricing-grid {
+    @include genesis-environment('distributed'); // Pricing cards grid
+    
+    .pricing-card {
+      @include genesis-entity('primary');       // Price card
+      
+      &.featured {
+        @include genesis-entity('imperative');  // Featured plan
+        @include genesis-atmosphere('vibrant'); // Highlighted plan
+      }
+      
+      .plan-header {
+        @include genesis-entity('secondary');   // Plan header
+        
+        .plan-name {
+          @include genesis-cognition('motive'); // Plan name
+        }
+        
+        .plan-description {
+          @include genesis-cognition('gloss');  // Plan description
+        }
+      }
+      
+      .plan-price {
+        @include genesis-cognition('axiom');    // Price display
+        
+        .price-amount {
+          @include genesis-cognition('axiom');  // Price number
+        }
+        
+        .price-period {
+          @include genesis-cognition('gloss');  // Billing period
+        }
+      }
+      
+      .plan-features {
+        @include genesis-entity('aggregate');   // Features list
+        
+        li {
+          @include genesis-cognition('discourse'); // Feature text
+        }
+      }
+      
+      .plan-cta {
+        @include genesis-synapse('execute');    // Subscribe button
+      }
+    }
+  }
 }
 
-.pulse {
-  animation: pulseGlow 2s infinite;
+.testimonials-section {
+  @include genesis-entity('primary');           // Testimonials section
+  @include genesis-atmosphere('ethereal');      // Light, trustworthy
+  
+  .testimonials-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+  }
+  
+  .testimonials-carousel {
+    @include genesis-environment('chronological'); // Carousel layout
+    
+    .testimonial-slide {
+      @include genesis-entity('primary');       // Testimonial slide
+      
+      .testimonial-quote {
+        @include genesis-cognition('discourse'); // Quote text
+      }
+      
+      .testimonial-author {
+        @include genesis-cognition('motive');   // Author name
+      }
+      
+      .testimonial-role {
+        @include genesis-cognition('gloss');    // Author role
+      }
+      
+      .testimonial-avatar {
+        @include genesis-entity('primary');     // Author avatar
+      }
+    }
+  }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 rgba(0,180,216, 0); }
-  50% { box-shadow: 0 0 20px rgba(0,180,216, 0.6); }
+.final-cta {
+  @include genesis-entity('imperative');        // Final CTA
+  @include genesis-atmosphere('vibrant');       // High energy
+  
+  .cta-content {
+    @include genesis-entity('primary');         // CTA content
+    
+    h2 {
+      @include genesis-cognition('axiom');      // CTA headline
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // CTA description
+    }
+  }
+  
+  .cta-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .cta-button {
+      @include genesis-synapse('execute');      // Action button
+    }
+  }
 }

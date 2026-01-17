@@ -1,81 +1,56 @@
-// About page styles
-:root {
-  --bg: #0b0f17;
-  --panel: #121621;
-  --ink: #e9eef5;
-  --muted: #9aa3ad;
-  --line: #1f2937;
-  --brand: #00e0ff;
-  --accent: #8ab6ff;
-  --ok: #35e1a1;
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-
-[data-theme="light"] {
-  --bg: #f7fafc;
-  --panel: #ffffff;
-  --ink: #0f172a;
-  --muted: #475569;
-  --line: #e2e8f0;
-  --brand: #0ea5e9;
-  --accent: #3b82f6;
-  --shadow: 0 8px 24px rgba(2, 6, 23, .08);
-}
-
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Inter, system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-}
-
-header {
-  background: linear-gradient(180deg, rgba(11,15,23,.9), rgba(11,15,23,.65));
-  border-bottom: 1px solid var(--line);
-}
+// About Page - Genesis Ontological SCSS
 
 .wrap {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 16px;
+  @include genesis-environment('focused');     // Centered reading layout
 }
 
-.mast { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
-.brand { display:flex; align-items:center; gap:12px; }
-.logo {
-  width: 36px; height: 36px; border-radius: 8px;
-  background: radial-gradient(120% 120% at 20% 30%, var(--brand), transparent 50%), #0b1220;
+.mast {
+  @include genesis-entity('primary');          // Masthead/header
 }
-h1 { margin: 0; font-size: 1.8rem; }
-.tagline { color: var(--muted); font-size: 14px; margin-top: 2px; }
 
-.actions { display:flex; gap:8px; }
+.brand {
+  @include genesis-entity('primary');          // Brand area
+}
+
+h1 {
+  @include genesis-cognition('axiom');         // Main heading
+}
+
+.tagline {
+  @include genesis-cognition('gloss');         // Small tagline
+}
+
+.actions {
+  @include genesis-environment('associative'); // Action buttons group
+}
+
 button, .btn {
-  border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--ink);
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
+  @include genesis-synapse('execute');         // Action button
 }
-.btn-primary { background: var(--brand); color:#03121a; }
 
-main { padding: 24px 0 64px; }
-section { margin-bottom: 28px; }
-h3 { color: var(--accent); margin-top: 0; }
+.btn-primary {
+  @include genesis-synapse('execute');         // Primary action
+}
+
+main {
+  @include genesis-entity('primary');          // Main content
+}
+
+section {
+  @include genesis-entity('secondary');        // Section containers
+}
+
+h3 {
+  @include genesis-cognition('motive');        // Section headings
+}
+
 .card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: var(--shadow);
+  @include genesis-entity('primary');          // Card component
 }
 
-footer { border-top: 1px solid var(--line); color: var(--muted); padding: 18px 0 48px; margin-top: 24px; }
-
-@media (max-width: 768px) {
-  .mast { flex-direction: column; align-items: flex-start; gap: 10px; }
+footer {
+  @include genesis-entity('secondary');        // Footer area
+  @include genesis-cognition('gloss');         // Small footer text
 }
 
 /* Trust & Compliance Page Styles */
@@ -84,12 +59,7 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding: 18px 0
 .privacy-rights-section, 
 .audit-section, 
 .monitoring-section {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--panel);
-  border-radius: 12px;
-  border-left: 4px solid var(--brand);
-  box-shadow: var(--shadow);
+  @include genesis-entity('primary');          // Section cards
 }
 
 .contact-card, 
@@ -97,137 +67,57 @@ footer { border-top: 1px solid var(--line); color: var(--muted); padding: 18px 0
 .rights-card, 
 .audit-card, 
 .monitoring-card {
-  background: var(--panel);
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-}
-
-.contact-card h4, 
-.policy-card h4, 
-.rights-card h4, 
-.audit-card h4, 
-.monitoring-card h4 {
-  color: var(--accent);
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-
-.contact-card p strong, 
-.policy-card p strong, 
-.rights-card p strong, 
-.audit-card p strong {
-  color: var(--ink);
-}
-
-.contact-card a {
-  color: var(--brand);
-  text-decoration: none;
-}
-
-.contact-card a:hover, .contact-card a:focus {
-  text-decoration: underline;
+  @include genesis-entity('primary');          // Info cards
+  
+  h4 {
+    @include genesis-cognition('motive');      // Card titles
+  }
+  
+  a {
+    @include genesis-synapse('navigate');      // Links
+  }
 }
 
 .dynamic-policy {
-  background: rgba(0, 224, 255, 0.1);
-  border: 1px solid var(--brand);
-  border-radius: 6px;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.dynamic-policy h5 {
-  color: var(--brand);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  @include genesis-entity('imperative');       // Important policy notice
+  
+  h5 {
+    @include genesis-cognition('motive');      // Policy heading
+  }
 }
 
 .status-indicators {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  @include genesis-environment('distributed'); // Grid of status indicators
 }
 
 .cert-status {
-  background: var(--panel);
-  border: 1px solid var(--ok);
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cert-status.active {
-  background: rgba(53, 225, 161, 0.1);
-  border-color: var(--ok);
-}
-
-.cert-status.warning {
-  background: rgba(255, 165, 0, 0.1);
-  border-color: #ffa500;
-}
-
-.cert-name {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.cert-badge {
-  font-size: 1.2rem;
-}
-
-.cert-status small {
-  color: var(--muted);
-  display: block;
-  margin-top: 0.25rem;
+  @include genesis-entity('primary');          // Certificate status card
+  
+  &.active {
+    @include genesis-state('stable');          // Active/valid status
+  }
+  
+  &.warning {
+    @include genesis-state('evolving');        // Warning status
+  }
+  
+  .cert-name {
+    @include genesis-cognition('motive');      // Certificate name
+  }
+  
+  small {
+    @include genesis-cognition('gloss');       // Small details
+  }
 }
 
 .contact-info {
-  background: rgba(255, 69, 58, 0.1);
-  border: 1px solid #ff453a;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-top: 1rem;
-}
-
-.contact-info h5 {
-  color: #ff453a;
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.contact-info p {
-  margin: 0.5rem 0;
-  color: var(--ink);
-}
-
-.contact-info strong {
-  color: var(--ink);
-}
-
-/* Responsive design for compliance sections */
-@media (max-width: 768px) {
-  .security-contact-section, 
-  .retention-policy-section, 
-  .privacy-rights-section, 
-  .audit-section, 
-  .monitoring-section {
-    margin: 1rem 0;
-    padding: 1rem;
+  @include genesis-entity('imperative');       // Important contact info
+  
+  h5 {
+    @include genesis-cognition('motive');      // Contact heading
   }
   
-  .contact-card, 
-  .policy-card, 
-  .rights-card, 
-  .audit-card, 
-  .monitoring-card {
-    padding: 1.5rem;
-  }
-  
-  .status-indicators {
-    grid-template-columns: 1fr;
+  p {
+    @include genesis-cognition('discourse');   // Contact details
   }
 }

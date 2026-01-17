@@ -1,528 +1,188 @@
-// Business Infinity section specific styles with enhanced accessibility
+// Business Infinity Section - Genesis Ontological SCSS
+
 .business-infinity-container {
-  // Layout container properties (replacing @extend for Jekyll compatibility)
-  contain: layout style;
-  isolation: isolate;
-  width: 100%;
+  @include genesis-environment('focused');     // Centered layout
   
-  // Hero section with improved contrast and accessibility
+  // Hero section
   .hero-section {
-    // Section container properties (replacing @extend for Jekyll compatibility)
-    contain: layout style;
-    isolation: isolate;
-    background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 4rem 2rem;
-    margin-bottom: 3rem;
-    text-align: center;
+    @include genesis-entity('primary');        // Hero card
+    @include genesis-atmosphere('ethereal');   // Light, uplifting
     
     .hero-title {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #1a237e; // High contrast dark blue
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
+      @include genesis-cognition('axiom');     // Large headline
     }
     
     .hero-description {
-      font-size: 1.25rem;
-      color: #424242; // High contrast gray
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.5;
+      @include genesis-cognition('discourse'); // Body text
     }
     
     .hero-actions {
-      margin-top: 2rem;
+      @include genesis-environment('associative'); // Action buttons group
     }
   }
   
-  // Features section with grid layout
+  // Features section
   .features-section {
-    // Section container properties (replacing @extend for Jekyll compatibility)
-    contain: layout style;
-    isolation: isolate;
-    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($cosmic-deep-blue, 0.85) 100%);
-    padding: 3rem 1rem;
-    border-radius: 0.375rem;
-    margin-bottom: 3rem;
+    @include genesis-environment('distributed'); // Grid layout
+    @include genesis-entity('primary');        // Section card
     
     .section-title {
-      color: $luminous-gold;
-      text-align: center;
-      margin-bottom: 2rem;
+      @include genesis-cognition('axiom');     // Section heading
     }
     
     .features-grid {
-      // Grid container properties (replacing @extend for Jekyll compatibility)
-      display: grid;
-      contain: layout style;
-      isolation: isolate;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }@media screen and (prefers-reduced-motion: reduce) {
-.feature-card {
-      // Article container properties (replacing @extend for Jekyll compatibility)
-      contain: layout style;
-      isolation: isolate;
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: none;
-      
-      &:hover, &:focus {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      }
-      
-      .feature-title {
-        color: #1a237e;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-      
-      .feature-description {
-        color: #424242;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-      }
-      
-      .feature-benefits {
-        // List container properties (replacing @extend for Jekyll compatibility)
-        contain: layout style;
-        isolation: isolate;
-        
-        li {
-          color: #424242;
-          margin-bottom: 0.5rem;
-          
-          &::before {
-            content: '✓';
-            color: #2e7d32; // Accessible green
-            font-weight: bold;
-            margin-right: 0.5rem;
-          }
-        }
-      }
-}
-}
+      @include genesis-environment('distributed'); // Card grid
+    }
     
     .feature-card {
-      // Article container properties (replacing @extend for Jekyll compatibility)
-      contain: layout style;
-      isolation: isolate;
-      background: rgba($cosmic-deep-blue, 0.6);
-      border: 1px solid $ethereal-silver-accessible;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      
-      &:hover, &:focus {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        border-color: $luminous-gold;
-      }
+      @include genesis-entity('primary');      // Feature card
       
       .feature-title {
-        color: $luminous-gold;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
+        @include genesis-cognition('motive');  // Card title
       }
       
       .feature-description {
-        color: $transcendent-white;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
+        @include genesis-cognition('discourse'); // Description
       }
       
       .feature-benefits {
-        // List container properties (replacing @extend for Jekyll compatibility)
-        contain: layout style;
-        isolation: isolate;
-        
-        li {
-          color: $transcendent-white;
-          margin-bottom: 0.5rem;
-          
-          &::before {
-            content: '✓';
-            color: $emerald-green; // Accessible green
-            font-weight: bold;
-            margin-right: 0.5rem;
-          }
-        }
+        @include genesis-entity('aggregate');  // List container
       }
     }
   }
   
   // Feature section
   .business-feature-section {
-    margin-bottom: 3rem;
+    @include genesis-entity('secondary');      // Section container
     
     .feature-row {
-      display: flex;
-      flex-wrap: wrap;
-      margin-right: calc(var(--bs-gutter-x) * -0.5);
-      margin-left: calc(var(--bs-gutter-x) * -0.5);
-      
-      .feature-column {
-        flex: 0 0 auto;
-        width: 100%;
-        padding-right: calc(var(--bs-gutter-x) * 0.5);
-        padding-left: calc(var(--bs-gutter-x) * 0.5);
-        margin-bottom: 1.5rem;
-        
-        @media (min-width: 768px) {
-          width: 50%;
-        }
-        
-        @media (min-width: 992px) {
-          width: 33.333333%;
-        }
-      }
-    }@media screen and (prefers-reduced-motion: reduce) {
-.feature-card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      border-radius: $border-radius;
-      background-color: $white;
-      box-shadow: $box-shadow;
-      padding: 1.5rem;
-      transition: none;
-      
-      &:hover, &:focus {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      }
-      
-      .feature-icon {
-        font-size: 2.5rem;
-        color: $primary;
-        margin-bottom: 1rem;
-      }
-      
-      .feature-title {
-        font-weight: $font-weight-bold;
-        font-size: $font-size-lg;
-        color: $primary;
-        margin-bottom: 0.75rem;
-      }
-      
-      .feature-description {
-        color: $body-color;
-        margin-bottom: 1rem;
-        flex-grow: 1;
-      }
-}
-}
+      @include genesis-environment('distributed'); // Grid layout
+    }
     
     .feature-card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      border-radius: $border-radius;
-      background-color: $white;
-      box-shadow: $box-shadow;
-      padding: 1.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      
-      &:hover, &:focus {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      }
+      @include genesis-entity('primary');      // Feature card
       
       .feature-icon {
-        font-size: 2.5rem;
-        color: $primary;
-        margin-bottom: 1rem;
+        @include genesis-cognition('axiom');   // Large icon
       }
       
       .feature-title {
-        font-weight: $font-weight-bold;
-        font-size: $font-size-lg;
-        color: $primary;
-        margin-bottom: 0.75rem;
+        @include genesis-cognition('motive');  // Feature title
       }
       
       .feature-description {
-        color: $body-color;
-        margin-bottom: 1rem;
-        flex-grow: 1;
+        @include genesis-cognition('discourse'); // Description
       }
     }
   }
   
   // Pricing section
   .business-pricing-section {
-    background: $gray-100;
-    padding: 3rem 0;
-    margin-bottom: 3rem;
+    @include genesis-entity('secondary');      // Pricing section
+    @include genesis-atmosphere('vibrant');    // Energetic pricing
     
     .pricing-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
+      @include genesis-entity('primary');      // Header area
       
       .pricing-title {
-        font-size: $font-size-xl;
-        font-weight: $font-weight-bold;
-        color: $primary;
-        margin-bottom: 0.75rem;
+        @include genesis-cognition('axiom');   // Main title
       }
       
       .pricing-subtitle {
-        font-size: $font-size-lg;
-        color: $secondary;
+        @include genesis-cognition('discourse'); // Subtitle
       }
     }
     
     .pricing-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+      @include genesis-environment('distributed'); // Pricing grid
+    }
+    
+    .pricing-plan {
+      @include genesis-entity('primary');      // Pricing card
       
-      .pricing-column {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 350px;
-        
-        @media (min-width: 768px) {
-          width: calc(50% - 1rem);
-        }
-        
-        @media (min-width: 1200px) {
-          width: calc(33.333333% - 1.5rem);
-        }
+      &.featured {
+        @include genesis-entity('imperative');  // Featured plan
       }
       
-      .pricing-plan {
-        background-color: $white;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-        padding: 2rem;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+      .pricing-name {
+        @include genesis-cognition('motive');  // Plan name
+      }
+      
+      .pricing-price {
+        @include genesis-cognition('axiom');   // Large price
+      }
+      
+      .pricing-features {
+        @include genesis-entity('aggregate');  // Feature list
+      }
+      
+      .pricing-button {
+        @include genesis-synapse('execute');   // Subscribe button
         
-        &.featured {
-          border: 2px solid $primary;
-          transform: scale(1.05);
-          
-          @media (max-width: 767.98px) {
-            transform: scale(1.02);
-          }
-        }
-        
-        .pricing-name {
-          font-size: $font-size-lg;
-          font-weight: $font-weight-bold;
-          color: $primary;
-          margin-bottom: 0.5rem;
-        }
-        
-        .pricing-price {
-          font-size: 2.5rem;
-          font-weight: $font-weight-bold;
-          margin-bottom: 1.5rem;
-          
-          .pricing-duration {
-            font-size: $font-size-base;
-            color: $secondary;
-            font-weight: $font-weight-normal;
-          }
-        }
-        
-        .pricing-features {
-          margin-bottom: 1.5rem;
-          flex-grow: 1;
-          
-          .pricing-feature-item {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            
-            &:before {
-              content: '✓';
-              color: $success;
-              margin-right: 0.5rem;
-              font-weight: bold;
-            }
-          }
-        }@media screen and (prefers-reduced-motion: reduce) {
-.pricing-button {
-          display: inline-block;
-          text-align: center;
-          font-weight: $font-weight-medium;
-          padding: 0.75rem 1.5rem;
-          border-radius: 50rem;
-          text-decoration: none;
-          transition: none;
-          background-color: $primary;
-          color: $white;
-          border: 1px solid $primary;
-          
-          &:hover, &:focus {
-            background-color: darken($primary, 7.5%);
-            border-color: darken($primary, 10%);
-          }
-          
-          &.secondary {
-            background-color: transparent;
-            border-color: $primary;
-            color: $primary;
-            
-            &:hover, &:focus {
-              background-color: $primary;
-              color: $white;
-            }
-          }
-}
-}
-        
-        .pricing-button {
-          display: inline-block;
-          text-align: center;
-          font-weight: $font-weight-medium;
-          padding: 0.75rem 1.5rem;
-          border-radius: 50rem;
-          text-decoration: none;
-          transition: all 0.15s ease-in-out;
-          background-color: $primary;
-          color: $white;
-          border: 1px solid $primary;
-          
-          &:hover, &:focus {
-            background-color: darken($primary, 7.5%);
-            border-color: darken($primary, 10%);
-          }
-          
-          &.secondary {
-            background-color: transparent;
-            border-color: $primary;
-            color: $primary;
-            
-            &:hover, &:focus {
-              background-color: $primary;
-              color: $white;
-            }
-          }
+        &.secondary {
+          @include genesis-synapse('inquiry'); // Secondary action
         }
       }
     }
   }
   
-  // Privacy policy and other content pages
+  // Content section
   .business-content-section {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+    @include genesis-environment('focused');   // Reading layout
     
     .content-title {
-      font-size: $font-size-xl;
-      font-weight: $font-weight-bold;
-      color: $primary;
-      margin-bottom: 1.5rem;
+      @include genesis-cognition('axiom');     // Page title
     }
     
     .content-subtitle {
-      font-size: $font-size-lg;
-      font-weight: $font-weight-medium;
-      color: $primary;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      @include genesis-cognition('motive');    // Section heading
     }
     
     .content-text {
-      margin-bottom: 1.5rem;
+      @include genesis-cognition('discourse'); // Body text
     }
     
     .content-list {
-      margin-bottom: 2rem;
-      padding-left: 1.5rem;
-      
-      .content-list-item {
-        margin-bottom: 0.5rem;
-      }
+      @include genesis-entity('aggregate');    // List container
     }
   }
   
-  // Testimonials section with dark theme
+  // Testimonials section
   .testimonials-section {
-    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($royal-purple, 0.85) 100%);
-    padding: 3rem 1rem;
-    border-radius: 0.375rem;
-    margin-bottom: 3rem;
+    @include genesis-entity('primary');        // Testimonials container
+    @include genesis-atmosphere('void');       // Dark, immersive
     
     .section-title {
-      color: $luminous-gold;
-      text-align: center;
-      margin-bottom: 2rem;
+      @include genesis-cognition('axiom');     // Section title
     }
     
     .testimonial-card {
-      background: rgba($cosmic-deep-blue, 0.6);
-      border: 1px solid $ethereal-silver-accessible;
-      border-radius: 0.375rem;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: $transcendent-white;
+      @include genesis-entity('secondary');    // Testimonial card
       
       .testimonial-text {
-        color: $transcendent-white;
-        font-style: italic;
-        margin-bottom: 1rem;
+        @include genesis-cognition('discourse'); // Quote text
       }
       
       .testimonial-author {
-        color: $luminous-gold;
-        font-weight: 600;
+        @include genesis-cognition('motive');  // Author name
       }
     }
   }
   
-  // Use cases section with dark theme
+  // Use cases section
   .use-cases-section {
-    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($cosmic-deep-blue, 0.85) 100%);
-    padding: 3rem 1rem;
-    border-radius: 0.375rem;
-    margin-bottom: 3rem;
+    @include genesis-entity('primary');        // Use cases container
+    @include genesis-atmosphere('void');       // Dark theme
     
     .section-title {
-      color: $luminous-gold;
-      text-align: center;
-      margin-bottom: 2rem;
+      @include genesis-cognition('axiom');     // Section title
     }
     
     .use-cases-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
+      @include genesis-environment('associative'); // Tab navigation
       
       .tab-link {
-        background: rgba($cosmic-deep-blue, 0.6);
-        color: $transcendent-white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.375rem;
-        text-decoration: none;
-        border: 1px solid $ethereal-silver-accessible;
-        transition: all 0.2s ease;
-        
-        &:hover, &:focus {
-          background: rgba($luminous-gold, 0.2);
-          border-color: $luminous-gold;
-          color: $luminous-gold;
-        }
+        @include genesis-synapse('navigate');  // Tab link
       }
     }
   }

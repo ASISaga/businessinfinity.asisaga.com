@@ -1,0 +1,214 @@
+// Boardroom Chat Area - Genesis Ontological SCSS
+
+.boardroom-chat-area {
+  @include genesis-entity('primary');           // Main chat container
+  @include genesis-environment('chronological'); // Message stream layout
+}
+
+.boardroom-chat-header {
+  @include genesis-entity('secondary');         // Chat header
+  
+  .chat-title {
+    @include genesis-cognition('axiom');        // Chat title
+  }
+  
+  .chat-subtitle {
+    @include genesis-cognition('gloss');        // Chat subtitle
+  }
+  
+  .chat-actions {
+    @include genesis-environment('associative'); // Header actions
+    
+    .action-button {
+      @include genesis-synapse('execute');      // Action button
+    }
+    
+    .settings-button {
+      @include genesis-synapse('inquiry');      // Settings button
+    }
+  }
+  
+  .participants-count {
+    @include genesis-cognition('quantum');      // Participant count badge
+  }
+}
+
+.boardroom-chat-messages {
+  @include genesis-entity('aggregate');         // Messages container
+  @include genesis-environment('chronological'); // Message stream
+  
+  .message-group {
+    @include genesis-entity('secondary');       // Message group by user
+  }
+}
+
+.boardroom-chat-message {
+  @include genesis-cognition('discourse');      // Message text
+  
+  &.user-message {
+    @include genesis-entity('primary');         // User message
+  }
+  
+  &.agent-message {
+    @include genesis-entity('secondary');       // Agent message
+  }
+  
+  &.system-message {
+    @include genesis-entity('latent');          // System message
+    @include genesis-cognition('gloss');        // Small system text
+  }
+  
+  &.highlighted {
+    @include genesis-entity('imperative');      // Highlighted message
+  }
+  
+  .message-avatar {
+    @include genesis-entity('primary');         // Message avatar
+  }
+  
+  .message-header {
+    @include genesis-entity('secondary');       // Message header
+    
+    .message-author {
+      @include genesis-cognition('motive');     // Author name
+    }
+    
+    .message-time {
+      @include genesis-cognition('gloss');      // Timestamp
+    }
+    
+    .message-badge {
+      @include genesis-cognition('quantum');    // Author badge
+      
+      &.admin {
+        @include genesis-entity('imperative');  // Admin badge
+      }
+    }
+  }
+  
+  .message-content {
+    @include genesis-cognition('discourse');    // Message content
+    
+    code {
+      @include genesis-cognition('protocol');   // Inline code
+    }
+    
+    pre {
+      @include genesis-cognition('protocol');   // Code block
+      @include genesis-atmosphere('void');      // Dark code theme
+    }
+  }
+  
+  .message-attachments {
+    @include genesis-entity('aggregate');       // Attachments list
+    
+    .attachment-item {
+      @include genesis-entity('secondary');     // Attachment card
+      @include genesis-synapse('navigate');     // Clickable attachment
+      
+      .attachment-icon {
+        @include genesis-cognition('quantum');  // File icon
+      }
+      
+      .attachment-name {
+        @include genesis-cognition('discourse'); // File name
+      }
+      
+      .attachment-size {
+        @include genesis-cognition('gloss');    // File size
+      }
+    }
+  }
+  
+  .message-reactions {
+    @include genesis-environment('associative'); // Reactions row
+    
+    .reaction {
+      @include genesis-entity('secondary');     // Reaction button
+      @include genesis-synapse('execute');      // Toggle reaction
+      
+      &.active {
+        @include genesis-entity('imperative');  // User reacted
+      }
+      
+      .reaction-emoji {
+        @include genesis-cognition('quantum');  // Emoji
+      }
+      
+      .reaction-count {
+        @include genesis-cognition('gloss');    // Reaction count
+      }
+    }
+  }
+  
+  .message-actions {
+    @include genesis-environment('associative'); // Message actions
+    
+    .action-button {
+      @include genesis-synapse('execute');      // Action button
+    }
+  }
+}
+
+.boardroom-chat-input {
+  @include genesis-entity('secondary');         // Input area
+  
+  .input-container {
+    @include genesis-entity('primary');         // Input container
+  }
+  
+  .input-field {
+    @include genesis-cognition('discourse');    // Text input
+  }
+  
+  .input-toolbar {
+    @include genesis-environment('associative'); // Input toolbar
+    
+    .toolbar-button {
+      @include genesis-synapse('execute');      // Toolbar button
+    }
+    
+    .emoji-button {
+      @include genesis-synapse('execute');      // Emoji picker
+    }
+    
+    .attach-button {
+      @include genesis-synapse('execute');      // Attachment button
+    }
+  }
+  
+  .send-button {
+    @include genesis-synapse('execute');        // Send action
+    @include genesis-entity('imperative');      // Primary send button
+  }
+  
+  .typing-indicator {
+    @include genesis-cognition('gloss');        // Typing indicator
+    @include genesis-state('evolving');         // Animated typing
+  }
+}
+
+.boardroom-chat-empty {
+  @include genesis-entity('latent');            // Empty state
+  
+  .empty-icon {
+    @include genesis-cognition('axiom');        // Empty icon
+  }
+  
+  .empty-message {
+    @include genesis-cognition('discourse');    // Empty message
+  }
+  
+  .empty-action {
+    @include genesis-synapse('execute');        // Start chat action
+  }
+}
+
+.boardroom-chat-loading {
+  @include genesis-entity('secondary');         // Loading state
+  @include genesis-state('evolving');           // Loading animation
+  
+  .loading-message {
+    @include genesis-cognition('gloss');        // Loading text
+  }
+}

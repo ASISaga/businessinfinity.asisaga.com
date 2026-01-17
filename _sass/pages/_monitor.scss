@@ -1,441 +1,230 @@
-// System Monitor Page Styles
-// Real-time monitoring dashboard for BusinessInfinity and AOS
+// Monitor Page - Genesis Ontological SCSS
 
-.system-monitor-page {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  padding: 0;
+.monitor-page {
+  @include genesis-environment('manifest');     // Dashboard layout
+  @include genesis-atmosphere('vibrant');       // Real-time data energy
 }
 
-// AOS Status Card Overrides for page context
-aos-status {
-  display: block;
-  margin-bottom: 1.5rem;
+.monitor-container {
+  @include genesis-environment('manifest');     // Dashboard grid
+}
+
+.monitor-header {
+  @include genesis-entity('primary');           // Header section
   
-  &::part(card) {
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
-}
-
-// Workflow Manager Overrides
-workflow-manager {
-  display: block;
-}
-
-// System Monitor Component Overrides
-system-monitor {
-  display: block;
-}
-
-// Dashboard Layout Utilities
-.monitor-grid-full {
-  grid-column: 1 / -1;
-}
-
-.monitor-card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: box-shadow 0.2s ease;
-  
-  &:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
-}
-
-.monitor-card-header {
-  background: #f8fafc;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-  h3 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1e293b;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-}
-
-.monitor-card-body {
-  padding: 1rem;
-}
-
-// Status Indicators
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  
-  &.status-online {
-    background-color: #10b981;
-    animation: pulse 2s infinite;
+  h1 {
+    @include genesis-cognition('axiom');        // Main title
   }
   
-  &.status-offline {
-    background-color: #ef4444;
+  .monitor-subtitle {
+    @include genesis-cognition('discourse');    // Subtitle
   }
   
-  &.status-warning {
-    background-color: #f59e0b;
-    animation: pulse 1.5s infinite;
-  }
-  
-  &.status-unknown {
-    background-color: #6b7280;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-// Metric Cards
-.metric-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-}
-
-.metric-item {
-  background: #f8fafc;
-  border-radius: 8px;
-  padding: 0.75rem;
-  text-align: center;
-  
-  .metric-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2563eb;
-    line-height: 1.2;
-  }
-  
-  .metric-label {
-    font-size: 0.75rem;
-    color: #64748b;
-    margin-top: 0.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-  }
-}
-
-// Agent Interaction Cards
-.agent-interaction-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    border-color: #2563eb;
-  }
-  
-  &.active {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-}
-
-.agent-card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.agent-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: white;
-  font-size: 0.875rem;
-  flex-shrink: 0;
-}
-
-.agent-details {
-  flex: 1;
-  
-  h4 {
-    margin: 0;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: #1e293b;
-  }
-  
-  p {
-    margin: 0.125rem 0 0;
-    font-size: 0.8125rem;
-    color: #64748b;
-  }
-}
-
-.agent-input-area {
-  display: flex;
-  gap: 0.5rem;
-  
-  input {
-    flex: 1;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    font-size: 0.875rem;
+  .refresh-controls {
+    @include genesis-environment('associative'); // Refresh buttons
     
-    &:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-  }
-  
-  button {
-    padding: 0.5rem 1rem;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-    
-    &:hover:not(:disabled) {
-      background: #1d4ed8;
+    .refresh-button {
+      @include genesis-synapse('execute');      // Manual refresh
+      @include genesis-state('evolving');       // Refresh animation
     }
     
-    &:disabled {
-      background: #93c5fd;
-      cursor: not-allowed;
+    .auto-refresh-toggle {
+      @include genesis-synapse('execute');      // Auto-refresh toggle
+    }
+    
+    .last-updated {
+      @include genesis-cognition('gloss');      // Last update timestamp
     }
   }
 }
 
-.agent-response {
-  margin-top: 0.75rem;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 0.75rem;
-  font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.6;
+.metrics-grid {
+  @include genesis-environment('distributed');  // Metrics grid layout
   
-  .response-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid #e5e7eb;
-    font-size: 0.75rem;
-  }
-  
-  .via-badge {
-    font-size: 0.6875rem;
-    padding: 0.125rem 0.375rem;
-    border-radius: 4px;
-    font-weight: 500;
+  .metric-card {
+    @include genesis-entity('primary');         // Metric card
+    @include genesis-state('evolving');         // Live updating indicator
     
-    &.servicebus {
-      background: #dbeafe;
-      color: #1d4ed8;
+    &.loading {
+      @include genesis-state('evolving');       // Loading state
     }
     
-    &.local {
-      background: #d1fae5;
-      color: #059669;
+    &.alert {
+      @include genesis-entity('imperative');    // Alert state
+      @include genesis-atmosphere('vibrant');   // Alert emphasis
+    }
+    
+    &.warning {
+      @include genesis-state('deprecated');     // Warning state
+    }
+    
+    &.success {
+      @include genesis-state('stable');         // Success state
+    }
+    
+    .metric-header {
+      @include genesis-entity('secondary');     // Card header
+      
+      .metric-icon {
+        @include genesis-cognition('axiom');    // Metric icon
+      }
+    }
+    
+    .metric-label {
+      @include genesis-cognition('gloss');      // Metric label
+    }
+    
+    .metric-value {
+      @include genesis-cognition('axiom');      // Large metric value
+    }
+    
+    .metric-trend {
+      @include genesis-cognition('quantum');    // Trend indicator
+      
+      &.up {
+        @include genesis-state('stable');       // Positive trend
+      }
+      
+      &.down {
+        @include genesis-entity('imperative');  // Negative trend
+      }
+      
+      &.neutral {
+        @include genesis-entity('latent');      // No change
+      }
+    }
+    
+    .metric-change {
+      @include genesis-cognition('gloss');      // Change percentage
+    }
+    
+    .metric-sparkline {
+      @include genesis-entity('secondary');     // Mini chart
+      @include genesis-state('evolving');       // Animated chart
     }
   }
 }
 
-// Workflow Cards
-.workflow-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1rem;
-  transition: all 0.2s ease;
+.chart-container {
+  @include genesis-entity('primary');           // Chart area
+  @include genesis-atmosphere('void');          // Dark chart background
   
-  &:hover {
-    border-color: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
-  }
-}
-
-.workflow-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.workflow-title {
-  font-weight: 600;
-  color: #1e293b;
-  font-size: 0.9375rem;
-}
-
-.workflow-status {
-  font-size: 0.75rem;
-  padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
-  font-weight: 500;
-  
-  &.available {
-    background: #dbeafe;
-    color: #1d4ed8;
-  }
-  
-  &.running {
-    background: #fef3c7;
-    color: #d97706;
-  }
-  
-  &.completed {
-    background: #d1fae5;
-    color: #059669;
-  }
-  
-  &.failed {
-    background: #fee2e2;
-    color: #dc2626;
-  }
-}
-
-.workflow-description {
-  font-size: 0.8125rem;
-  color: #64748b;
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
-}
-
-.workflow-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-// MCP Server List
-.mcp-server-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.625rem;
-  border-bottom: 1px solid #f1f5f9;
-  
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.mcp-server-info {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-}
-
-.mcp-server-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-}
-
-.mcp-server-name {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #1e293b;
-}
-
-.mcp-server-status {
-  font-size: 0.75rem;
-  padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
-  
-  &.connected {
-    background: #d1fae5;
-    color: #059669;
-  }
-  
-  &.disconnected {
-    background: #fee2e2;
-    color: #dc2626;
-  }
-}
-
-// Empty States
-.empty-state {
-  text-align: center;
-  padding: 2rem;
-  color: #64748b;
-  
-  .empty-state-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.75rem;
-    opacity: 0.75;
-  }
-  
-  p {
-    margin: 0;
-    font-size: 0.875rem;
-  }
-}
-
-// Loading States
-.loading-shimmer {
-  background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 4px;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-// Responsive Adjustments
-@media (max-width: 768px) {
-  .system-monitor-page {
-    padding: 0.5rem;
-  }
-  
-  .metric-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .agent-input-area {
-    flex-direction: column;
+  .chart-header {
+    @include genesis-entity('secondary');       // Chart header
     
-    button {
-      width: 100%;
+    .chart-title {
+      @include genesis-cognition('motive');     // Chart title
+    }
+    
+    .chart-controls {
+      @include genesis-environment('associative'); // Chart controls
+      
+      .time-range-selector {
+        @include genesis-synapse('inquiry');    // Time range selector
+      }
+      
+      .chart-type-toggle {
+        @include genesis-synapse('execute');    // Chart type toggle
+      }
+    }
+  }
+  
+  .chart-canvas {
+    @include genesis-entity('primary');         // Chart canvas
+  }
+  
+  .chart-legend {
+    @include genesis-entity('secondary');       // Chart legend
+    @include genesis-environment('associative'); // Legend items
+    
+    .legend-item {
+      @include genesis-cognition('gloss');      // Legend text
+    }
+  }
+}
+
+.monitor-alerts {
+  @include genesis-entity('secondary');         // Alerts panel
+  
+  .alerts-header {
+    @include genesis-entity('primary');         // Alerts header
+    
+    .alerts-title {
+      @include genesis-cognition('motive');     // Alerts title
+    }
+    
+    .alerts-count {
+      @include genesis-cognition('quantum');    // Alert count badge
+      @include genesis-entity('imperative');    // Badge styling
+    }
+  }
+  
+  .alerts-list {
+    @include genesis-environment('chronological'); // Alerts list
+    
+    .alert-item {
+      @include genesis-entity('secondary');     // Alert item
+      
+      &.critical {
+        @include genesis-entity('imperative');  // Critical alert
+      }
+      
+      &.warning {
+        @include genesis-state('deprecated');   // Warning alert
+      }
+      
+      &.info {
+        @include genesis-entity('primary');     // Info alert
+      }
+      
+      .alert-icon {
+        @include genesis-cognition('axiom');    // Alert icon
+      }
+      
+      .alert-message {
+        @include genesis-cognition('discourse'); // Alert message
+      }
+      
+      .alert-time {
+        @include genesis-cognition('gloss');    // Alert timestamp
+      }
+      
+      .alert-dismiss {
+        @include genesis-synapse('execute');    // Dismiss button
+      }
+    }
+  }
+}
+
+.monitor-timeline {
+  @include genesis-entity('primary');           // Timeline panel
+  @include genesis-environment('chronological'); // Timeline layout
+  
+  .timeline-header {
+    @include genesis-entity('secondary');       // Timeline header
+    
+    .timeline-title {
+      @include genesis-cognition('motive');     // Timeline title
+    }
+  }
+  
+  .timeline-events {
+    @include genesis-environment('chronological'); // Events list
+    
+    .timeline-event {
+      @include genesis-entity('secondary');     // Event item
+      
+      .event-time {
+        @include genesis-cognition('quantum');  // Event timestamp
+      }
+      
+      .event-description {
+        @include genesis-cognition('discourse'); // Event description
+      }
+      
+      .event-type {
+        @include genesis-cognition('quantum');  // Event type badge
+      }
     }
   }
 }

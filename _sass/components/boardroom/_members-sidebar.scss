@@ -1,0 +1,137 @@
+// Boardroom Members Sidebar - Genesis Ontological SCSS
+
+.boardroom-members-sidebar {
+  @include genesis-entity('secondary');         // Sidebar container
+  @include genesis-environment('chronological'); // Member list layout
+}
+
+.boardroom-members-header {
+  @include genesis-entity('primary');           // Sidebar header
+  
+  .header-title {
+    @include genesis-cognition('motive');       // Header title
+  }
+  
+  .member-count {
+    @include genesis-cognition('quantum');      // Member count badge
+  }
+  
+  .invite-button {
+    @include genesis-synapse('execute');        // Invite action
+  }
+}
+
+.boardroom-members-search {
+  @include genesis-entity('secondary');         // Search area
+  
+  .search-input {
+    @include genesis-cognition('discourse');    // Search input
+  }
+  
+  .search-icon {
+    @include genesis-cognition('quantum');      // Search icon
+  }
+}
+
+.boardroom-members-list {
+  @include genesis-entity('aggregate');         // Members list container
+  @include genesis-environment('chronological'); // Vertical list
+}
+
+.boardroom-member-item {
+  @include genesis-entity('primary');           // Member item
+  @include genesis-synapse('navigate');         // Clickable member
+  
+  &:hover {
+    @include genesis-entity('imperative');      // Hover state
+  }
+  
+  &.active {
+    @include genesis-entity('imperative');      // Selected member
+  }
+  
+  &.offline {
+    @include genesis-entity('latent');          // Offline member
+  }
+  
+  .member-avatar {
+    @include genesis-entity('primary');         // Member avatar
+  }
+  
+  .member-info {
+    @include genesis-entity('secondary');       // Member info area
+    
+    .member-name {
+      @include genesis-cognition('motive');     // Member name
+    }
+    
+    .member-role {
+      @include genesis-cognition('gloss');      // Member role
+    }
+    
+    .member-title {
+      @include genesis-cognition('gloss');      // Member title
+    }
+  }
+  
+  .member-status {
+    @include genesis-cognition('quantum');      // Status badge
+    
+    &.online {
+      @include genesis-state('stable');         // Online state
+    }
+    
+    &.offline {
+      @include genesis-entity('latent');        // Offline state
+    }
+    
+    &.busy {
+      @include genesis-state('evolving');       // Busy state
+    }
+    
+    &.away {
+      @include genesis-state('deprecated');     // Away state
+    }
+  }
+  
+  .member-badge {
+    @include genesis-cognition('quantum');      // Additional badge (admin, etc.)
+    
+    &.admin {
+      @include genesis-entity('imperative');    // Admin badge
+    }
+    
+    &.moderator {
+      @include genesis-entity('primary');       // Moderator badge
+    }
+  }
+}
+
+.boardroom-members-empty {
+  @include genesis-entity('latent');            // Empty state
+  @include genesis-cognition('gloss');          // Empty message
+  
+  .empty-icon {
+    @include genesis-cognition('axiom');        // Empty state icon
+  }
+  
+  .empty-message {
+    @include genesis-cognition('discourse');    // Empty message text
+  }
+  
+  .empty-action {
+    @include genesis-synapse('execute');        // Action button
+  }
+}
+
+.boardroom-members-footer {
+  @include genesis-entity('secondary');         // Footer area
+  
+  .footer-actions {
+    @include genesis-environment('associative'); // Footer buttons
+    
+    .footer-button {
+      @include genesis-synapse('execute');      // Footer action
+    }
+  }
+}

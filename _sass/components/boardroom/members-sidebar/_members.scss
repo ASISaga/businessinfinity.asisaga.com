@@ -1,11 +1,13 @@
-// SCSS partial for boardroom members component
+// Boardroom Members - Genesis Ontological SCSS
 
-#members {
-  @extend .flex-grow-1;
-  @extend .d-flex;
-  @extend .flex-column;
-  @extend .p-0;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
+.boardroom-members {
+  @include genesis-entity('aggregate');         // Members list
+  
+  .member-item {
+    @include genesis-entity('primary');         // Member item
+    
+    &.active {
+      @include genesis-entity('imperative');    // Selected
+    }
+  }
 }

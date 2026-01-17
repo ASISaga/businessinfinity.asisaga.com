@@ -1,368 +1,155 @@
 /**
- * Boardroom Component Styles
- * Extends chatroom base styles with business-specific features
+ * Boardroom Component - Genesis Ontological SCSS
+ * Business-specific boardroom features
  */
-
-// Chatroom styles will be imported via remote_theme from theme.asisaga.com
-// The chatroom component is available through the remote theme
 
 // Boardroom Container
 .boardroom-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--bs-body-bg, #fff);
+  @include genesis-environment('manifest');    // Dashboard layout
+  @include genesis-atmosphere('void');         // Focused, immersive
 }
 
 .boardroom-section {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
+  @include genesis-entity('primary');          // Main section
 }
 
 .boardroom-container-fluid {
-  width: 100%;
-  height: 100%;
-  padding: 0;
+  @include genesis-environment('manifest');    // Full-width dashboard
 }
 
 .boardroom-main-row {
-  display: flex;
-  height: 100%;
-  gap: 0;
+  @include genesis-environment('associative'); // Network layout
 }
 
-// Boardroom Chat Area (extends chatroom)
+// Boardroom Chat Area
 .boardroom-chat-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  background-color: var(--bs-white, #fff);
+  @include genesis-entity('primary');          // Main chat container
+  @include genesis-environment('chronological'); // Time-linear messages
 }
 
 .boardroom-chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.5rem;
-  background-color: var(--bs-light, #f8f9fa);
+  @include genesis-entity('secondary');        // Messages area
 }
 
-// Boardroom Action Buttons (extends chatroom buttons)
+// Boardroom Action Buttons
 .boardroom-action-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: var(--bs-secondary, #6c757d);
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    background-color: var(--bs-light, #f8f9fa);
-    color: var(--bs-primary, #0d6efd);
-  }
-
-  &:focus {
-    outline: 2px solid var(--bs-primary, #0d6efd);
-    outline-offset: 2px;
-  }
-
-  img {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-  }
+  @include genesis-synapse('execute');         // Action button
 }
 
 // Boardroom Status Indicators
 .boardroom-status-indicator {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-
+  @include genesis-cognition('quantum');       // Small status chip
+  
   &.boardroom-status-online {
-    background-color: var(--bs-success, #198754);
+    @include genesis-state('stable');          // Online/healthy
   }
-
+  
   &.boardroom-status-offline {
-    background-color: var(--bs-secondary, #6c757d);
+    @include genesis-entity('latent');         // Offline/inactive
   }
-
+  
   &.boardroom-status-away {
-    background-color: var(--bs-warning, #ffc107);
+    @include genesis-state('evolving');        // Away/updating
   }
-
+  
   &.boardroom-status-busy {
-    background-color: var(--bs-danger, #dc3545);
+    @include genesis-entity('imperative');     // Busy/urgent
   }
 }
 
 // Agent List
 .boardroom-agent-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
-
-  &:hover {
-    background-color: var(--bs-light, #f8f9fa);
-  }
-
-  .boardroom-agent-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .boardroom-agent-info {
-    flex: 1;
-    min-width: 0;
-  }
-
+  @include genesis-entity('secondary');        // List item card
+  
   .boardroom-agent-name {
-    font-weight: 600;
-    font-size: 0.875rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @include genesis-cognition('motive');      // Agent name
   }
-
+  
   .boardroom-agent-role {
-    font-size: 0.75rem;
-    color: var(--bs-secondary, #6c757d);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @include genesis-cognition('gloss');       // Small role text
   }
-
+  
   .boardroom-agent-status {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--bs-secondary, #6c757d);
-    flex-shrink: 0;
-
+    @include genesis-cognition('quantum');     // Status indicator
+    
     &.online {
-      background-color: var(--bs-success, #198754);
+      @include genesis-state('stable');        // Online state
     }
-
+    
     &.offline {
-      background-color: var(--bs-secondary, #6c757d);
+      @include genesis-entity('latent');       // Offline state
     }
   }
-
+  
   &.active {
-    background-color: var(--bs-primary, #0d6efd);
-    color: white;
-
-    .boardroom-agent-role {
-      color: rgba(255, 255, 255, 0.8);
-    }
+    @include genesis-entity('imperative');     // Active/selected
   }
 }
 
 // Agent Profile
 .boardroom-profile-header {
-  text-align: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
-}
-
-.boardroom-profile-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 1rem;
-  display: block;
+  @include genesis-entity('primary');          // Profile header card
 }
 
 .boardroom-profile-name {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
-  font-weight: 600;
+  @include genesis-cognition('axiom');         // Profile name heading
 }
 
 .boardroom-profile-role {
-  margin: 0;
-  color: var(--bs-secondary, #6c757d);
-  font-size: 0.875rem;
-}
-
-.boardroom-profile-details {
-  padding: 1.5rem;
+  @include genesis-cognition('gloss');         // Small role text
 }
 
 .boardroom-profile-bio {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--bs-body-color, #212529);
-  margin-bottom: 1.5rem;
+  @include genesis-cognition('discourse');     // Bio text
 }
 
 .boardroom-profile-stats {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  @include genesis-environment('distributed'); // Stats grid
 }
 
 .boardroom-profile-stat {
-  flex: 1;
-  min-width: 120px;
-  padding: 1rem;
-  background-color: var(--bs-light, #f8f9fa);
-  border-radius: 0.5rem;
-  text-align: center;
-}
-
-.boardroom-profile-stat-label {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--bs-secondary, #6c757d);
-  margin-bottom: 0.25rem;
-}
-
-.boardroom-profile-stat-value {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--bs-primary, #0d6efd);
-}
-
-// Loading Overlay (boardroom-specific)
-.boardroom-loading-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-
-  &.active {
-    display: flex;
+  @include genesis-entity('secondary');        // Stat card
+  
+  .boardroom-profile-stat-label {
+    @include genesis-cognition('gloss');       // Small label
+  }
+  
+  .boardroom-profile-stat-value {
+    @include genesis-cognition('motive');      // Prominent value
   }
 }
 
-.boardroom-loading-content {
-  text-align: center;
-}
-
-.boardroom-loading-spinner {
-  width: 3rem;
-  height: 3rem;
-  border: 0.3rem solid var(--bs-light, #f8f9fa);
-  border-top-color: var(--bs-primary, #0d6efd);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
+// Loading Overlay
+.boardroom-loading-overlay {
+  @include genesis-entity('primary');          // Overlay container
+  @include genesis-state('evolving');          // Loading state
 }
 
 .boardroom-loading-text {
-  color: var(--bs-secondary, #6c757d);
-  margin: 0;
-  font-size: 0.875rem;
+  @include genesis-cognition('gloss');         // Loading message
 }
 
 // Toast Notifications
 .boardroom-toast-container {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 3000;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  @include genesis-environment('chronological'); // Vertical stack
 }
 
 .boardroom-toast {
-  padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
-  background-color: var(--bs-white, #fff);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  font-size: 0.875rem;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: all 0.3s;
-  max-width: 300px;
-
-  &.show {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
+  @include genesis-entity('primary');          // Toast card
+  
   &.boardroom-toast-info {
-    border-left: 4px solid var(--bs-info, #0dcaf0);
+    @include genesis-entity('secondary');      // Info toast
   }
-
+  
   &.boardroom-toast-success {
-    border-left: 4px solid var(--bs-success, #198754);
+    @include genesis-state('stable');          // Success toast
   }
-
+  
   &.boardroom-toast-warning {
-    border-left: 4px solid var(--bs-warning, #ffc107);
+    @include genesis-state('evolving');        // Warning toast
   }
-
+  
   &.boardroom-toast-error {
-    border-left: 4px solid var(--bs-danger, #dc3545);
-  }
-}
-
-// Utility Classes
-.hidden {
-  display: none !important;
-}
-
-// Responsive
-@media (max-width: 992px) {
-  .boardroom-main-row {
-    flex-direction: column;
-  }
-
-  .boardroom-agent-item {
-    padding: 0.5rem 0.75rem;
-  }
-
-  .boardroom-profile-stats {
-    flex-direction: column;
-  }
-
-  .boardroom-toast-container {
-    left: 1rem;
-    right: 1rem;
-  }
-
-  .boardroom-toast {
-    max-width: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .boardroom-profile-avatar {
-    width: 60px;
-    height: 60px;
-  }
-
-  .boardroom-action-btn {
-    width: 32px;
-    height: 32px;
-
-    img {
-      width: 16px;
-      height: 16px;
-    }
+    @include genesis-entity('imperative');     // Error toast
   }
 }

@@ -21,8 +21,18 @@ description: "HTML and Jekyll/Liquid guidance for businessinfinity.asisaga.com: 
 
 # Accessible Markup & Patterns
 - Mobile-first, semantic markup is required.
+- Use meaningful, semantic class names that describe WHAT the content is, not HOW it looks (e.g., `.research-paper`, not `.blue-box`).
 - Use ARIA only when necessary; prefer native semantic elements first (buttons, nav, main, header, footer, form controls).
 - Ensure interactive patterns are keyboard-accessible and that landmarks are present for screen readers.
+
+# Semantic Class Names for Ontological SCSS
+- HTML class names should be semantic and content-focused.
+- Think about WHAT the element represents, not its visual appearance.
+- Examples:
+  - ✅ CORRECT: `.dashboard-panel`, `.blog-post`, `.product-card`, `.research-paper`
+  - ❌ WRONG: `.blue-box`, `.rounded-button`, `.big-text`, `.glassmorphism-card`
+- These semantic classes will be mapped to ontological mixins in SCSS files.
+- One semantic class per element is preferred.
 
 # Color & Contrast
 - Color tokens and layout variables must meet WCAG AA contrast for normal text. If a new token is added, document use-cases and include contrast test results.
