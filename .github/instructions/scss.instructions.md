@@ -32,6 +32,70 @@ The Genesis Semantic Engine is the **required interface** for styling. It provid
 
 **Golden Rule**: NEVER use raw CSS properties (margin, padding, color, font-size, etc.) in subdomain SCSS files. All styling comes from ontological mixins.
 
+## SCSS Validation & Testing Tools
+
+This repository uses three complementary tools to ensure SCSS quality and compliance:
+
+### 1. **stylelint** - Style Linting
+Validates SCSS code style, syntax, and best practices.
+
+```bash
+# Run stylelint
+npm run lint:scss:style
+
+# Auto-fix issues
+npx stylelint "_sass/**/*.scss" --fix
+```
+
+**Configuration**: `.stylelintrc.json`
+- Enforces modern SCSS syntax
+- Validates color notation, selector patterns
+- Checks for common errors and anti-patterns
+- Configured to allow Genesis Ontological mixins
+
+### 2. **sass** - Compilation Testing
+Tests that all SCSS files compile without errors.
+
+```bash
+# Test SCSS compilation
+npm run sass:compile
+```
+
+**How it works**: 
+- Creates stub implementations of Genesis Ontological mixins
+- Compiles `_sass/_main.scss` to verify syntax validity
+- Catches compilation errors before deployment
+- Uses temporary directory `.scss-test-tmp/` (gitignored)
+
+### 3. **lint-scss-mixins.js** - Dependency Validation
+Validates that all mixin and variable references exist in the theme.
+
+```bash
+# Run dependency validation
+npm run lint:scss
+
+# Verbose mode
+node lint-scss-mixins.js --verbose
+```
+
+**What it checks**:
+- Undefined mixins (e.g., `genesis-environment` from theme)
+- Undefined variables
+- Syntax errors and fatal SCSS issues
+- Mixin argument mismatches
+
+### Running All Validation
+
+```bash
+# Run all validation tools
+npm run validate
+```
+
+This runs:
+1. `lint:scss` - Dependency validation
+2. `lint:scss:style` - Style linting  
+3. `sass:compile` - Compilation testing
+
 ## Import Chain & Entry Points
 
 - The canonical theme lives in `ASISaga/theme.asisaga.com` repository on GitHub.

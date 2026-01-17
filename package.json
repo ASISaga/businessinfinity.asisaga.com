@@ -11,12 +11,20 @@
   ],
   "scripts": {
     "lint:scss": "node lint-scss-mixins.js",
-    "validate": "npm run lint:scss"
+    "lint:scss:style": "stylelint \"_sass/**/*.scss\"",
+    "sass:compile": "node compile-scss.js",
+    "validate": "npm run lint:scss && npm run lint:scss:style && npm run sass:compile"
   },
   "author": "ASI Saga",
   "license": "MIT",
   "dependencies": {
     "js-yaml": "^4.1.1",
     "sass": "^1.97.1"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.49",
+    "stylelint": "^16.12.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-scss": "^6.10.0"
   }
 }

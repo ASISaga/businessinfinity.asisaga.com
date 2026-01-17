@@ -1,6 +1,6 @@
 :root {
   --bg: #0b0f17;
-  --ink: #ffffff;
+  --ink: #fff;
   --accent: #00e0ff;
   --surface: #111827;
   --border: #00e0ff;
@@ -49,17 +49,18 @@ canvas#flywheel {
   position: fixed;
   z-index: 10;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgb(0 0 0 / 0.85);
   overflow: auto;
   animation: none;
 }
 }
+
 .modal {
   display: none;          /* toggled by JS */
   position: fixed;
   z-index: 10;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgb(0 0 0 / 0.85);
   overflow: auto;
   animation: fadeIn 0.3s ease;
 }
@@ -100,14 +101,14 @@ button.close {
   appearance: none;
   border: none;
   background: transparent;
-  color: #bbbbbb;
+  color: #bbb;
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
   float: right;
   padding: 4px 8px;
 }
-button.close:hover, button.close:focus { color: #ffffff; }
+button.close:hover, button.close:focus { color: #fff; }
 
 .modal h2 {
   color: var(--accent);
@@ -134,8 +135,8 @@ button.close:hover, button.close:focus { color: #ffffff; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(255 255 255 / 0.06);
   padding: 12px;
   border-radius: 10px;
 }
@@ -148,7 +149,7 @@ button.close:hover, button.close:focus { color: #ffffff; }
 .gauge-value {
   margin-top: 8px;
   font-weight: 600;
-  color: #ffffff;
+  color: #fff;
 }
 
 .gauge-label {
@@ -159,7 +160,7 @@ button.close:hover, button.close:focus { color: #ffffff; }
 }
 
 /* Small screens */
-@media (max-width: 480px) {
+@media (width <= 480px) {
   h1 { font-size: 1.05rem; }
   .modal-content { width: 94%; padding: 16px; }
   .gauge-canvas { width: 140px; height: 140px; }

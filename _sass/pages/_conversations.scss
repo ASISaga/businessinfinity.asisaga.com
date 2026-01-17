@@ -14,281 +14,140 @@
 }
 
 .dashboard {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 30px;
-    max-width: 1400px;
-    @include mar-x(auto);
-    @include mar-y(0);
+  @include genesis-environment('manifest');     // Dashboard grid layout
 }
 
 .sidebar {
-    @include bg-white;
-    @include border-radius(12px);
-    @include pad(3);
-    @include box-shadow(0 4px 16px rgba(0,0,0,0.1));
-    height: fit-content;
+  @include genesis-entity('secondary');         // Sidebar container
 }
 
 .main-content {
-    @include bg-white;
-    @include border-radius(12px);
-    @include pad(3);
-    @include box-shadow(0 4px 16px rgba(0,0,0,0.1));
+  @include genesis-entity('primary');           // Main content area
 }
 
 .agent-list {
-    @include mar-b(3.75); // 30px ~ 3.75 * 8px
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-.agent-item {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    @include mar-y(1); // 8px ~ 1 * 8px
-    @include mar-x(0);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: none;
-    border: 1px solid #e5e5e7;
-}
+  @include genesis-entity('aggregate');         // Agent list container
 }
 
 .agent-item {
-    @include d-flex;
-    @include align-items(center);
-    @include pad(1.5); // 12px ~ 1.5 * 8px
-    margin: 8px 0;
-    @include border-radius(8px);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid #e5e5e7;
-}
-
-.agent-item:hover, .agent-item:focus {
-    background-color: #f0f0f2;
-    transform: translateX(4px);
-}
-
-.agent-item.selected {
-    background-color: #007aff;
-    color: white;
+  @include genesis-entity('secondary');         // Agent item
+  @include genesis-synapse('navigate');         // Clickable item
+  
+  &:hover,
+  &:focus {
+    @include genesis-state('evolving');         // Hover state
+  }
+  
+  &.selected {
+    @include genesis-entity('primary');         // Selected state
+  }
 }
 
 .agent-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    @include mar-x(0);
-    margin-right: 1.875rem; // 15px ~ 1.875 * 8px (custom, consider adding to spacers)
+  @include genesis-cognition('quantum');        // Avatar badge
 }
 
-.agent-info h4 {
-    @include mar(0);
-    font-size: 1.1em;
-}
-
-.agent-info p {
-    @include mar-y(0.5); // 4px ~ 0.5 * 8px
-    @include mar-x(0);
-    font-size: 0.9em;
-    opacity: 0.7;
+.agent-info {
+  h4 {
+    @include genesis-cognition('motive');       // Agent name
+  }
+  
+  p {
+    @include genesis-cognition('gloss');        // Agent description
+  }
 }
 
 .conversation-list {
-    @include mar-t(2.5); // 20px ~ 2.5 * 8px
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-.conversation-item {
-    border: 1px solid #e5e5e7;
-    border-radius: 8px;
-    padding: 20px;
-    @include mar-b(1.875); // 15px ~ 1.875 * 8px (custom, consider adding to spacers)
-    transition: none;
-}
+  @include genesis-entity('aggregate');         // Conversation list
 }
 
 .conversation-item {
-    border: 1px solid #e5e5e7;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 15px;
-    transition: all 0.2s ease;
-}
-
-.conversation-item:hover, .conversation-item:focus {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
+  @include genesis-entity('secondary');         // Conversation card
+  
+  &:hover,
+  &:focus {
+    @include genesis-state('evolving');         // Hover state
+  }
 }
 
 .conversation-header {
-    display: flex;
-    justify-content: between;
-    align-items: center;
-    @include mar-b(1.5); // 12px ~ 1.5 * 8px
+  @include genesis-environment('associative');  // Flex layout
 }
 
 .conversation-title {
-    font-weight: 600;
-    font-size: 1.2em;
-    color: #1d1d1f;
-    @include mar(0);
+  @include genesis-cognition('motive');         // Conversation title
 }
 
 .conversation-status {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: 600;
-    text-transform: uppercase;
+  @include genesis-cognition('quantum');        // Status badge
 }
 
 .status-draft {
-    background: #fff3cd;
-    color: #856404;
-    // No Bootstrap mixin for this bg/text combo
+  @include genesis-state('evolving');           // Draft state
 }
+
 .status-signed {
-    background: #d4edda;
-    color: #155724;
-    // No Bootstrap mixin for this bg/text combo
+  @include genesis-state('stable');             // Signed state
 }
+
 .status-completed {
-    background: #d1ecf1;
-    color: #0c5460;
-    // No Bootstrap mixin for this bg/text combo
+  @include genesis-state('stable');             // Completed state
 }
+
 .status-pending {
-    background: #f8d7da;
-    color: #721c24;
-    // No Bootstrap mixin for this bg/text combo
+  @include genesis-state('evolving');           // Pending state
 }
 
 .conversation-meta {
-    display: flex;
-    gap: 20px;
-    font-size: 0.9em;
-    color: #666666;
-    @include mar-b(1.5); // 12px ~ 1.5 * 8px
+  @include genesis-cognition('gloss');          // Metadata text
 }
 
 .conversation-content {
-    color: #333333;
-    line-height: 1.5;
-    @include mar-b(1.5); // 12px ~ 1.5 * 8px
+  @include genesis-cognition('discourse');      // Conversation body
 }
 
 .conversation-signatures {
-    @include mar-t(1.875); // 15px ~ 1.875 * 8px
-    @include pad-t(1.875); // 15px ~ 1.875 * 8px
-    border-top: 1px solid #eeeeee;
+  @include genesis-entity('aggregate');         // Signatures container
 }
 
 .signature {
-    display: flex;
-    align-items: center;
-    @include mar-b(1); // 8px ~ 1 * 8px
-    font-size: 0.9em;
+  @include genesis-cognition('gloss');          // Signature text
 }
 
 .signature-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #28a745;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.7em;
-    @include mar-x(0);
-    margin-right: 1.25rem; // 10px ~ 1.25 * 8px (custom, consider adding to spacers)
+  @include genesis-cognition('quantum');        // Signature icon
 }
 
 .controls {
-    @include mar-b(2.5); // 20px ~ 2.5 * 8px
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: none;
-}
+  @include genesis-environment('associative');  // Button group layout
 }
 
 .btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
+  @include genesis-synapse('execute');          // Action button
 }
 
 .btn-primary {
-    background: #007aff;
-    color: white;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-    background: #0056cc;
+  @include genesis-entity('primary');           // Primary button
 }
 
 .btn-secondary {
-    background: #6c757d;
-    color: white;
-}
-
-.btn-secondary:hover, .btn-secondary:focus {
-    background: #545b62;
+  @include genesis-entity('secondary');         // Secondary button
 }
 
 .loading {
-    text-align: center;
-    padding: 40px;
-    color: #666666;
+  @include genesis-entity('latent');            // Loading state
+  @include genesis-cognition('gloss');          // Loading text
 }
 
 .error {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 15px;
-    border-radius: 8px;
-    @include mar-y(1.875); // 15px ~ 1.875 * 8px
-    @include mar-x(0);
+  @include genesis-entity('imperative');        // Error message
+  @include genesis-cognition('discourse');      // Error text
 }
 
 .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: #666666;
-}
-
-.empty-state h3 {
-    @include mar-b(1.25); // 10px ~ 1.25 * 8px
-    color: #333333;
-}
-
-@media (max-width: 768px) {
-    .dashboard {
-        grid-template-columns: 1fr;
-    }
-    .header h1 {
-        font-size: 2em;
-    }
+  @include genesis-entity('latent');            // Empty state
+  
+  h3 {
+    @include genesis-cognition('motive');       // Empty state heading
+  }
 }

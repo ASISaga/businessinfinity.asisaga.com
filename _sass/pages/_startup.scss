@@ -1,181 +1,105 @@
-// Startup page specific styles
+// Startup page - Genesis Ontological SCSS
+
 .startup-container {
-  // Hero section styles are handled by _hero.scss
+  @include genesis-environment('focused');      // Marketing layout
+}
 
-  // Challenges section
-  .startup-challenges-section {
-    @extend .py-5; // Bootstrap padding
-    background-color: $bg-light; // Use theme accessible background
+.startup-challenges-section {
+  @include genesis-entity('secondary');          // Supporting section
+  @include genesis-atmosphere('ethereal');       // Light atmosphere
+}
 
-    // section-header.html styles are handled by _section-header.scss
+.startup-challenges-grid {
+  @include genesis-environment('distributed');   // Grid layout
+}
 
-    .startup-challenges-grid {
-      @extend .container;
-      @extend .row;
-      @extend .justify-content-center;
-
-      .startup-challenge-card {
-        @extend .col-md-4;
-        @extend .p-4; // Bootstrap padding
-        @extend .mb-4; // Bootstrap margin
-        border-top: 4px solid $luminous-gold; // Sacred gold accent
-        background-color: $transcendent-white;
-        @extend .rounded;
-        @extend .shadow-sm;
-        @extend .h-100;
-        @include transition(transform, 0.3s, ease);
-
-        &:hover, &:focus {
-          transform: translateY(-5px);
-          @extend .shadow;
-        }
-
-        .startup-challenge-title {
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-        }
-
-        .startup-challenge-description {
-          color: $ethereal-silver-accessible; // WCAG compliant muted text
-        }
-      }
-    }
+.startup-challenge-card {
+  @include genesis-entity('primary');            // Card styling
+  
+  &:hover,
+  &:focus {
+    @include genesis-state('evolving');          // Active state
   }
+}
 
-  // Solutions section
-  .startup-solutions-section {
-    background-color: $transcendent-white; // Use theme white
-    @extend .py-5; // Bootstrap padding
+.startup-challenge-title {
+  @include genesis-cognition('motive');          // Persuasive heading
+}
 
-    // section-header.html styles are handled by _section-header.scss
+.startup-challenge-description {
+  @include genesis-cognition('discourse');       // Body text
+}
 
-    .startup-solutions-container {
-      @extend .container;
+.startup-solutions-section {
+  @include genesis-entity('primary');            // Main section
+}
 
-      .startup-solution-item {
-        @extend .row;
-        @extend .mb-5; // Bootstrap margin
-        @extend .align-items-start;
-        background-color: $transcendent-white;
-        @extend .p-4;
-        @extend .rounded;
-        @extend .shadow-sm;
-        border-left: 4px solid $emerald-green; // Life force accent
+.startup-solutions-container {
+  @include genesis-environment('focused');       // Centered layout
+}
 
-        .startup-solution-icon {
-          @extend .col-md-2;
-          @extend .text-center;
-          font-size: 2.5rem;
-          color: $luminous-gold; // Sacred gold for icons
-        }
+.startup-solution-item {
+  @include genesis-entity('secondary');          // Solution card
+}
 
-        .startup-solution-content {
-          @extend .col-md-10;
-        }
+.startup-solution-icon {
+  @include genesis-cognition('axiom');           // Large icon
+}
 
-        .startup-solution-title {
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-        }
+.startup-solution-content {
+  @include genesis-cognition('discourse');       // Body content
+}
 
-        .startup-solution-description {
-          @extend .mb-3;
-          color: $cosmic-deep-blue; // Primary text
-        }
+.startup-solution-title {
+  @include genesis-cognition('motive');          // Persuasive heading
+}
 
-        .startup-solution-features {
-          @extend .list-unstyled;
+.startup-solution-description {
+  @include genesis-cognition('discourse');       // Body text
+}
 
-          .startup-feature-item {
-            @extend .ps-4;
-            @extend .position-relative;
-            @extend .mb-2;
-            color: $cosmic-deep-blue; // Readable text
+.startup-solution-features {
+  @include genesis-cognition('discourse');       // List content
+}
 
-            &::before {
-              content: "\2022"; // Bullet character
-              color: $emerald-green; // Life force green
-              font-weight: bold;
-              @extend .position-absolute;
-              left: 0;
-            }
-          }
-        }
-      }
-    }
-  }
+.startup-feature-item {
+  @include genesis-cognition('discourse');       // Feature item
+}
 
-  // Case study section
-  .startup-case-study-section {
-    @extend .py-5; // Bootstrap padding
-    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.05) 0%, rgba($luminous-gold, 0.08) 100%);
+.startup-case-study-section {
+  @include genesis-entity('secondary');          // Supporting section
+  @include genesis-atmosphere('vibrant');        // Energetic feel
+}
 
-    // section-header.html styles are handled by _section-header.scss
+.startup-case-study {
+  @include genesis-environment('focused');       // Centered content
+}
 
-    .startup-case-study {
-      @extend .container;
-      @extend .mw-800; // Assumes .mw-800 utility class exists
+.startup-case-study-content {
+  @include genesis-entity('primary');            // Content card
+}
 
-      .startup-case-study-content {
-        background-color: $transcendent-white;
-        @extend .p-4; // Bootstrap padding
-        @extend .rounded;
-        @extend .shadow-sm;
-      }
+.startup-case-study-title {
+  @include genesis-cognition('axiom');           // Main heading
+}
 
-      .startup-case-study-title {
-        @extend .mb-3;
-        color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-      }
+.startup-case-study-description {
+  @include genesis-cognition('discourse');       // Body text
+}
 
-      .startup-case-study-description {
-        @extend .mb-3;
-        color: $cosmic-deep-blue; // Primary text
-      }
+.startup-case-study-results {
+  @include genesis-cognition('discourse');       // Results list
+}
 
-      .startup-case-study-results {
-        @extend .list-unstyled;
-        @extend .mb-4; // Bootstrap margin
+.startup-result-item {
+  @include genesis-cognition('discourse');       // Result item
+}
 
-        .startup-result-item {
-          @extend .ps-4;
-          @extend .position-relative;
-          @extend .mb-2;
-          color: $cosmic-deep-blue; // Readable text
+.startup-case-study-quote {
+  @include genesis-entity('secondary');          // Quote container
+  @include genesis-cognition('motive');          // Persuasive text
+}
 
-          &::before {
-            content: "\2713"; // Checkmark character
-            color: $emerald-green-accessible; // WCAG compliant success color
-            font-weight: bold;
-            @extend .position-absolute;
-            left: 0;
-          }
-        }
-      }
-
-      .startup-case-study-quote {
-        background-color: $transcendent-white;
-        @extend .rounded;
-        @extend .p-3; // Bootstrap padding
-        border-left: 4px solid $luminous-gold; // Sacred gold
-        @extend .fst-italic;
-        @extend .mb-0;
-        color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-        font-size: 1.125rem;
-      }
-
-      .startup-quote-footer {
-        @extend .text-end;
-        @extend .mt-3; // Bootstrap margin
-        @extend .small; // Using Bootstrap's native .small class instead of custom fs-sm
-
-        cite {
-          @extend .fw-medium;
-          color: $ethereal-silver-accessible; // Accessible muted color
-        }
-      }
-    }
-  }
-
-  // CTA section styles are handled by _cta.scss
+.startup-quote-footer {
+  @include genesis-cognition('gloss');           // Attribution text
 }
