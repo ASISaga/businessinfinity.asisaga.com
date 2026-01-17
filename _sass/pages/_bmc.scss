@@ -1,4 +1,5 @@
 // BMC Page - Genesis Ontological SCSS
+// Migrated to use Genesis Ontological Design System exclusively
 
 header {
   @include genesis-entity('primary');           // Page header
@@ -18,49 +19,29 @@ main {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
+  @include genesis-environment('distributed');  // Grid layout for cards
 }
 
 .grid article {
-  background: #15171c;
-  padding: 0.8rem 1rem;
-  border: 1px solid #1f2937;
-  border-radius: 8px;
+  @include genesis-entity('secondary');         // Card container
 }
 
 .grid h2 {
-  font-size: 1.05rem;
-  margin-top: 0;
-  color: #8ab6ff;
+  @include genesis-cognition('motive');         // Section heading
 }
 
 ul {
-  padding-left: 18px;
+  @include genesis-entity('aggregate');         // List container
 }
 
 .actions {
-  text-align: center;
-  margin-top: 1rem;
+  @include genesis-environment('associative');  // Action button group
 }
 
 button {
-  margin: 0.3rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #1f2937;
-  background: #1f2937;
-  color: #e9eef5;
-  cursor: pointer;
+  @include genesis-synapse('inquiry');          // Secondary action button
 }
 
 button.primary {
-  background: #00e0ff;
-  color: #0b0f17;
-  border-color: #00e0ff;
-}
-
-button:hover, button:focus {
-  opacity: 0.85;
+  @include genesis-synapse('execute');          // Primary action button
 }

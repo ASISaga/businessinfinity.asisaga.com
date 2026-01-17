@@ -1,4 +1,5 @@
 // Boardroom Page Layout - Genesis Ontological SCSS
+// Migrated to use Genesis Ontological Design System exclusively
 
 .boardroom-container {
   @include genesis-environment('manifest');     // Dashboard layout
@@ -15,67 +16,4 @@
 
 .boardroom-main-row {
   @include genesis-environment('associative');  // Network layout
-}
-
-// Smooth transitions for all interactive elements
-@media screen and (prefers-reduced-motion: reduce) {
-* {
-  transition: none;
-}
-}
-
-* {
-  transition: all 0.2s ease;
-}
-
-// Focus styles for better accessibility
-button:focus,
-input:focus,
-textarea:focus,
-[tabindex]:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgb(0 123 255 / 0.25);
-}
-
-// Smooth scrolling
-html {
-  scroll-behavior: smooth;
-}
-
-// Custom scrollbar styles
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
-  
-  &:hover, &:focus {
-    background: #a8a8a8;
-  }
-}
-
-// Selection styles
-::selection {
-  background: rgb(0 123 255 / 0.2);
-  color: #212529;
-}
-
-// Improved mobile responsiveness
-@media (width <= 768px) {
-  .boardroom-main-row {
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  
-  .boardroom-container {
-    padding: 0;
-  }
 }
