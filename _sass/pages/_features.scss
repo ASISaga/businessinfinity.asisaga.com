@@ -1,207 +1,215 @@
-// Features page styles
-:root{
-  --bg:#ffffff;
-  --bg-alt:#f7f9fc;
-  --panel:#ffffff;
-  --ink:#12161c;
-  --muted:#5c6b80;
-  --line:#e2e8f0;
-  --primary:#005fb8;
-  --primary-dark:#004a91;
-  --radius:10px;
-  --shadow:0 1px 2px rgba(0,0,0,.06), 0 6px 16px rgba(0,0,0,.06);
+// Features Page - Genesis Ontological SCSS
 
-  --font:'Segoe UI','Inter',system-ui,-apple-system,Roboto,Arial,sans-serif;
-  --s-1:10px; --s0:16px; --s1:24px; --s2:36px; --s3:56px;
+.features-page {
+  @include genesis-environment('focused');      // Centered layout
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0; font-family:var(--font); color:var(--ink); background:var(--bg);
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-}
-a{color:var(--primary); text-decoration:none}
-a:hover, a:focus{color:var(--primary-dark)}
-// .muted and .small: Use Bootstrap utility classes directly in HTML, or duplicate the utility CSS if needed for custom selectors.
-
-.wrap {
-  @include max-width(1200px);
-  @include mar-x(auto);
-  padding-left: 24px;
-  padding-right: 24px;
+.features-container {
+  @include genesis-environment('focused');      // Centered container
 }
 
-/* Header */
-.site-header{border-bottom:1px solid var(--line); background:var(--bg)}
-.header-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
-.brand{display:flex; align-items:center; gap:12px}
-.logo {
-  width: 36px;
-  height: 36px;
-  @include border-radius(8px);
-  @include background-gradient(linear-gradient(135deg,#005fb8,#7fb7ff));
-}
-.site-title {
-  margin: 0;
-  @include font-size(20px);
-  @include font-weight(700);
-}
-.site-sub {
-  @include color(var(--muted));
-  @include font-size(14px);
-}
-.header-actions{display:flex; align-items:center; gap:8px}
-
-/* Layout */
-.layout{display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start; padding:var(--s1) 0}
-.toc{
-  position:sticky; top:84px; border:1px solid var(--line); border-radius:var(--radius);
-  background:var(--panel); padding:12px; box-shadow:var(--shadow)
-}
-.toc ol{list-style:none; margin:0; padding:0}
-.toc a{display:block; padding:8px 10px; border-radius:8px; color:var(--ink)}
-.toc a.active,.toc a:hover, .toc a.active,.toc a:focus{background:var(--bg-alt)}
-.content{min-width:0}
-
-/* Sections */
-.section{padding:var(--s2) 0; border-top:1px solid var(--line)}
-.section:first-of-type{border-top:none}
-.section h2{margin:0 0 var(--s0); font-size:28px; letter-spacing:-0.01em}
-.lead{font-size:18px; color:var(--ink); max-width:900px}
-
-/* Cards & grids */
-.grid-2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
-.grid-3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
-.card{
-  background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
-  padding:16px; box-shadow:var(--shadow)
-}
-.loop{
-  margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; background:var(--bg-alt); border-style:dashed
-}
-.loop-step{
-  display:flex; align-items:center; gap:8px; padding:8px 12px; border:1px dashed var(--line); border-radius:999px; background:#ffffff
-}
-.loop-step span{
-  width:24px; height:24px; display:inline-grid; place-items:center;
-  border-radius:999px; background:var(--primary); color:#ffffff; font-size:12px; font-weight:700
+.features-header {
+  @include genesis-entity('primary');           // Header section
+  
+  h1 {
+    @include genesis-cognition('axiom');        // Main title
+  }
+  
+  p {
+    @include genesis-cognition('discourse');    // Header description
+  }
+  
+  .features-subtitle {
+    @include genesis-cognition('discourse');    // Subtitle
+  }
 }
 
-/* Persona */
-.persona-tabs{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px}
-.tab{
-  padding:8px 12px; border:1px solid var(--line); border-radius:999px; background:var(--panel);
-  cursor:pointer; font-weight:600; color:var(--ink)
-}
-.tab.active{background:var(--primary); color:#ffffff; border-color:var(--primary)}
-.chips{display:flex; flex-wrap:wrap; gap:8px}
-.chip{
-  padding:6px 10px; border:1px solid var(--line); border-radius:999px; background:var(--bg-alt); cursor:pointer
-}
-.chip.active {
-  background: #ffeede;
-  border-color: #ffd0b5;
-  @include color(#7a2e10);
-}
-
-/* Roster */
-.roster h3{margin:0 0 6px}
-.roster .list li{margin:6px 0}
-
-/* Network */
-.network .net-controls{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
-.network .net-stats{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:8px}
-.network .stat {
-  background: var(--bg-alt);
-  border: 1px solid var(--line);
-  @include border-radius(10px);
-  padding: 10px 12px;
-  min-width: 160px;
-}
-.network .label {
-  @include font-size(12px);
-  @include color(var(--muted));
-}
-.network .value {
-  @include font-size(22px);
-  @include font-weight(700);
+.features-navigation {
+  @include genesis-environment('associative');  // Tab navigation
+  @include genesis-entity('secondary');         // Nav container
+  
+  .nav-tab {
+    @include genesis-synapse('navigate');       // Tab button
+    
+    &.active {
+      @include genesis-entity('imperative');    // Active tab
+    }
+    
+    .tab-icon {
+      @include genesis-cognition('quantum');    // Tab icon
+    }
+    
+    .tab-label {
+      @include genesis-cognition('motive');     // Tab label
+    }
+  }
 }
 
-/* Lists */
-.list{margin:0; padding-left:18px}
-.list.tight li{margin:4px 0}
-.list li{margin:6px 0}
-
-/* CTA */
-.cta{background:var(--bg-alt)}
-.cta-box{max-width:840px; margin:0 auto; text-align:center}
-.btn {
-  display: inline-block;
-  padding: .6rem 1rem;
-  @include border-radius(8px);
-  border: 1px solid var(--line);
-  background: #f8fafc;
-  @include color(#1b1f24);
-  @include font-weight(600);
-}
-.btn:hover, .btn:focus{background:#eef2f7}
-.btn-primary {
-  background: var(--primary);
-  @include color(#ffffff);
-  border-color: var(--primary);
-}
-.btn-primary:hover, .btn-primary:focus{background:var(--primary-dark)}
-.btn-quiet{background:transparent}
-
-/* Footer */
-.site-footer {
-  border-top: 1px solid var(--line);
-  background: var(--bg);
-  @include pad-y(2);
-  @include color(var(--muted));
-  @include font-size(14px);
-}
-.site-footer nav{display:flex; gap:12px}
-.foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
-
-/* Reveal */
-@media screen and (prefers-reduced-motion: reduce) {
-.reveal{opacity:0; transform:translateY(16px); transition:none;
-}
-}
-.reveal{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease}
-.reveal.visible{opacity:1; transform:none}
-
-/* Skip link */
-.skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
-.skip-link:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 8px;
-  background: #ffffff;
-  border: 1px solid var(--line);
-  @include border-radius(6px);
+.features-grid {
+  @include genesis-environment('distributed');  // Feature grid layout
 }
 
-/* Theme: dark */
-:root[data-theme="dark"]{
-  --bg:#0b1220; --bg-alt:#0f1628; --panel:#0f1628; --ink:#e7edf7; --muted:#9fb0c8; --line:#1f2b44;
-  --primary:#6bb7ff; --primary-dark:#2b78b5;
-  --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 14px rgba(0,0,0,.25);
+.feature {
+  @include genesis-entity('primary');           // Feature card
+  
+  &:hover {
+    @include genesis-entity('imperative');      // Hover enhancement
+  }
+  
+  &.coming-soon {
+    @include genesis-entity('latent');          // Coming soon state
+    @include genesis-state('deprecated');       // Dimmed appearance
+  }
+  
+  .feature-header {
+    @include genesis-entity('secondary');       // Feature header
+  }
+  
+  .feature-icon {
+    @include genesis-cognition('axiom');        // Large feature icon
+    @include genesis-atmosphere('vibrant');     // Icon glow
+  }
+  
+  .feature-badge {
+    @include genesis-cognition('quantum');      // Status badge
+    
+    &.new {
+      @include genesis-entity('imperative');    // New feature
+    }
+    
+    &.beta {
+      @include genesis-state('evolving');       // Beta feature
+    }
+    
+    &.premium {
+      @include genesis-atmosphere('vibrant');   // Premium feature
+    }
+  }
+  
+  .feature-name {
+    @include genesis-cognition('motive');       // Feature name
+  }
+  
+  .feature-desc {
+    @include genesis-cognition('discourse');    // Feature description
+  }
+  
+  .feature-details {
+    @include genesis-entity('secondary');       // Details area
+    
+    .detail-list {
+      @include genesis-entity('aggregate');     // Details list
+      
+      li {
+        @include genesis-cognition('discourse'); // Detail item
+      }
+    }
+  }
+  
+  .feature-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .try-button {
+      @include genesis-synapse('execute');      // Try it button
+    }
+    
+    .learn-more {
+      @include genesis-synapse('navigate');     // Learn more link
+    }
+  }
 }
-:root[data-theme="dark"] a{color:#6bb7ff}
-:root[data-theme="dark"] .loop-step{background:#0b1425}
-:root[data-theme="dark"] .chip.active{background:#2b1d15; border-color:#5a3a2c; color:#ffd8c0}
 
-/* Responsive */
-@media (max-width: 1000px){
-  .layout{grid-template-columns:1fr}
-  .toc{position:static; order:-1; display:none}
-  .toc.open{display:block}
+.features-categories {
+  @include genesis-entity('secondary');         // Categories sidebar
+  
+  .category-title {
+    @include genesis-cognition('motive');       // Category title
+  }
+  
+  .category-list {
+    @include genesis-environment('chronological'); // Category list
+    
+    .category-item {
+      @include genesis-synapse('navigate');     // Category link
+      
+      &.active {
+        @include genesis-entity('imperative');  // Active category
+      }
+      
+      .category-count {
+        @include genesis-cognition('quantum');  // Feature count
+      }
+    }
+  }
 }
-@media (max-width: 640px){
-  .grid-2, .grid-3{grid-template-columns:1fr}
-  .section h2{font-size:24px}
+
+.feature-showcase {
+  @include genesis-entity('primary');           // Featured feature
+  @include genesis-atmosphere('vibrant');       // Highlighted feature
+  
+  .showcase-header {
+    @include genesis-entity('secondary');       // Showcase header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Showcase title
+    }
+  }
+  
+  .showcase-content {
+    @include genesis-entity('primary');         // Showcase content
+    
+    .showcase-description {
+      @include genesis-cognition('discourse');  // Description
+    }
+    
+    .showcase-media {
+      @include genesis-entity('secondary');     // Media area
+    }
+  }
+  
+  .showcase-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .showcase-cta {
+      @include genesis-synapse('execute');      // Main CTA
+    }
+  }
+}
+
+.features-comparison {
+  @include genesis-entity('secondary');         // Comparison table
+  
+  .comparison-header {
+    @include genesis-entity('primary');         // Table header
+    
+    h3 {
+      @include genesis-cognition('motive');     // Header title
+    }
+  }
+  
+  .comparison-table {
+    @include genesis-entity('primary');         // Table
+    
+    thead {
+      @include genesis-entity('secondary');     // Table head
+      
+      th {
+        @include genesis-cognition('motive');   // Column header
+      }
+    }
+    
+    tbody {
+      @include genesis-entity('aggregate');     // Table body
+      
+      tr {
+        &:hover {
+          @include genesis-entity('primary');   // Row hover
+        }
+      }
+      
+      td {
+        @include genesis-cognition('discourse'); // Cell content
+      }
+    }
+  }
 }

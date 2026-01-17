@@ -1,60 +1,31 @@
-:host {
-  display: block;
-  font-family: system-ui, sans-serif;
-}
+// Dashboard Page - Genesis Ontological SCSS
 
 .dashboard {
-  background: #f5f7fa;
-  padding: 1rem;
+  @include genesis-environment('manifest');     // Dashboard grid layout
+  @include genesis-atmosphere('vibrant');       // High-energy vibe
 }
 
 .role-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #1e293b;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 6px 6px 0 0;
+  @include genesis-entity('primary');           // Header section
+  @include genesis-cognition('axiom');          // Header text
 }
 
 .scope-toggle {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.scope-toggle button {
-  padding: 0.3rem 0.8rem;
-  border: 1px solid #cccccc;
-  background: #f0f0f0;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.scope-toggle button.active {
-  background: #2563eb;
-  color: white;
-  border-color: #2563eb;
+  @include genesis-environment('associative');  // Button group
+  
+  button {
+    @include genesis-synapse('execute');        // Toggle button
+    
+    &.active {
+      @include genesis-entity('imperative');    // Active state
+    }
+  }
 }
 
 .panel {
-  background: white;
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
-  border-top: none;
-  border-radius: 0 0 6px 6px;
+  @include genesis-entity('primary');           // Content panel
 }
 
 .actions button {
-  margin-right: 0.5rem;
-  padding: 0.4rem 0.8rem;
-  border: none;
-  background: #2563eb;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.actions button:hover, .actions button:focus {
-  background: #1d4ed8;
+  @include genesis-synapse('execute');          // Action button
 }

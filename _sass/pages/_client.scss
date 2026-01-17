@@ -1,10 +1,38 @@
-body { font-family: Inter, system-ui, sans-serif; margin: 0; display: grid; grid-template-columns: 1fr 1fr; height: 100vh; }
-header { grid-column: 1 / span 2; padding: 12px 16px; background: #0b5fff; color: white; font-weight: 600; }
-section { padding: 12px; overflow: auto; }
-.panel { border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
-label { display: block; margin: 6px 0 2px; font-size: 12px; color: #374151; }
-input, select, textarea, button { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; }
-button { background: #0b5fff; color: #ffffff; cursor: pointer; }
-.msg { padding: 8px; border-bottom: 1px solid #eeeeee; }
-.msg .meta { color: #6b7280; font-size: 12px; }
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+// Client Page - Genesis Ontological SCSS
+
+header {
+  @include genesis-entity('primary');           // Page header
+  @include genesis-cognition('axiom');          // Header text
+}
+
+section {
+  @include genesis-entity('secondary');         // Content section
+}
+
+.panel {
+  @include genesis-entity('primary');           // Panel card
+}
+
+label {
+  @include genesis-cognition('gloss');          // Form label
+}
+
+input, select, textarea {
+  @include genesis-cognition('discourse');      // Form input
+}
+
+button {
+  @include genesis-synapse('execute');          // Action button
+}
+
+.msg {
+  @include genesis-cognition('discourse');      // Message text
+  
+  .meta {
+    @include genesis-cognition('gloss');        // Message metadata
+  }
+}
+
+.row {
+  @include genesis-environment('distributed');  // Grid layout
+}

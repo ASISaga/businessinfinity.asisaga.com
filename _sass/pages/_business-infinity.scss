@@ -1,52 +1,38 @@
-// Business Infinity page specific styles
-.business-infinity-container {
-  // Hero section styles are handled by _hero.scss
+// Business-infinity Page - Genesis Ontological SCSS
 
-  // Features section
-  .business-features-section {
-    // Styles for the feature-grid.html component are handled by _feature-grid.scss
-    // section-header.html styles are handled by _section-header.scss
-    @include pad-y(5); // .py-5
+.business-infinity-page {
+  @include genesis-environment('focused');      // Centered marketing layout
+  @include genesis-atmosphere('ethereal');      // Light, professional
+  
+  .hero-section {
+    @include genesis-entity('primary');         // Hero area
+    
+    .hero-title {
+      @include genesis-cognition('axiom');      // Large headline
+    }
+    
+    .hero-description {
+      @include genesis-cognition('discourse');  // Description text
+    }
+    
+    .cta-button {
+      @include genesis-synapse('execute');      // Primary CTA
+    }
   }
-
-  // Use cases section
-  .business-use-cases-section {
-    @include pad-y(5); // .py-5
-    @include bg-light;
-
-    // section-header.html styles are handled by _section-header.scss
-
-    .business-use-cases-nav {
-      @include make-container();
-      @include text-center;
-
-      .business-tabs-list {
-  // @extend .nav-alias; // Removed: selector not defined
-  // @extend .nav-pills-alias; // Removed: selector not defined
-        @include justify-content(center);
-        @include mar-b(4);
-
-        .business-tab-item {
-          // @extend .nav-item-alias; // Removed: selector not defined
-          @include mar-x(2);
-
-          .business-tab-link {
-            // @extend .btn-alias; // Removed: selector not defined
-            // @extend .btn-outline-primary-alias; // Removed: selector not defined
-            @include pad-x(4);
-            @include pad-y(2);
-
-            &:hover,
-            &:focus {
-              text-decoration: none; // Keep if specific, Bootstrap handles focus generally
-            }
-          }
-        }
+  
+  .features-section {
+    @include genesis-environment('distributed'); // Feature grid
+    
+    .feature-card {
+      @include genesis-entity('primary');       // Feature card
+      
+      .feature-title {
+        @include genesis-cognition('motive');   // Feature title
+      }
+      
+      .feature-description {
+        @include genesis-cognition('discourse'); // Feature text
       }
     }
   }
-
-  // Testimonials section styles are handled by _testimonial.scss
-
-  // Contact section styles are handled by _cta.scss
 }

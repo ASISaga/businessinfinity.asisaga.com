@@ -1,213 +1,122 @@
-// Quick Links Section Styles - WCAG AAA Compliant with Dark Theme
+// Quick Links Section - Genesis Ontological SCSS
+
 .quick-links-section {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.95) 0%, rgba($royal-purple, 0.85) 100%);
-  border-top: 1px solid rgba($ethereal-silver-accessible, 0.3);
-  border-bottom: 1px solid rgba($ethereal-silver-accessible, 0.3);
-  border-radius: 0.375rem;
-  margin-bottom: 3rem;
+  @include genesis-entity('primary');           // Main section with glassmorphism
+  @include genesis-atmosphere('vibrant');       // High-energy presentation
+  
+  .section-header {
+    @include genesis-entity('primary');         // Header area
+  }
 
   .section-title {
-    text-align: center;
-    color: $luminous-gold;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    @include genesis-cognition('axiom');        // Large headline
   }
 
   .section-subtitle {
-    text-align: center;
-    color: $transcendent-white;
-    font-size: 1.125rem;
-    margin-bottom: 3rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    @include genesis-cognition('discourse');    // Supporting description
   }
 }
 
 .quick-links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+  @include genesis-environment('distributed');  // Auto-fit Bento grid layout
 }
 
 .quick-links-category {
-  background-color: rgba($cosmic-deep-blue, 0.6);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: $box-shadow;
-  border-left: 4px solid $luminous-gold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid $ethereal-silver-accessible;
-
+  @include genesis-entity('primary');           // Card with glass effect
+  
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    border-left-color: $emerald-green;
+    @include genesis-entity('imperative');      // Hover state enhancement
   }
 
-  &:nth-child(2) {
-    border-left-color: $emerald-green;
+  .quick-links-category-header {
+    @include genesis-entity('secondary');       // Category header area
+  }
+
+  .quick-links-category-icon {
+    @include genesis-cognition('axiom');        // Large category icon
+  }
+
+  .quick-links-category-title {
+    @include genesis-cognition('motive');       // Persuasive category title
+  }
+  
+  .quick-links-category-description {
+    @include genesis-cognition('gloss');        // Category description
+  }
+
+  .quick-links-list {
+    @include genesis-entity('aggregate');       // Links container
     
-    &:hover {
-      border-left-color: $luminous-gold;
-    }
-  }
-
-  &:nth-child(3) {
-    border-left-color: $royal-purple;
-    
-    &:hover {
-      border-left-color: $luminous-gold;
-    }
-  }
-
-  &:nth-child(4) {
-    border-left-color: $ethereal-silver-accessible;
-    
-    &:hover {
-      border-left-color: $luminous-gold;
-    }
-  }
-}
-
-.quick-links-category-title {
-  color: $luminous-gold;
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  i {
-    color: $luminous-gold;
-    font-size: 1.5rem;
-  }
-}
-
-.quick-links-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    position: relative;
-
-    &::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: $emerald-green;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-
-    &:hover::before {
-      transform: translateX(4px);
-    }
-  }
-
-  a {
-    color: $transcendent-white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-    display: inline-block;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: $luminous-gold;
-      transition: width 0.3s ease;
-    }
-
-    &:hover {
-      color: $luminous-gold;
-
-      &::after {
-        width: 100%;
+    a {
+      @include genesis-synapse('navigate');     // Navigation link
+      @include genesis-cognition('discourse');  // Link text
+      
+      &:hover {
+        @include genesis-entity('primary');     // Hover effect
+      }
+      
+      &:focus {
+        @include genesis-entity('imperative');  // Focus state
       }
     }
-
-    &:focus {
-      outline: 2px solid $luminous-gold;
-      outline-offset: 2px;
-      border-radius: 2px;
+    
+    .link-icon {
+      @include genesis-cognition('quantum');    // Small link icon
+    }
+    
+    .link-badge {
+      @include genesis-cognition('quantum');    // Status badge
+      @include genesis-state('stable');         // Badge state
+      
+      &.new {
+        @include genesis-entity('imperative');  // New badge
+      }
     }
   }
 }
 
 .quick-links-footer {
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba($ethereal-silver-accessible, 0.5);
+  @include genesis-entity('secondary');         // Supporting footer area
 
   p {
-    color: $transcendent-white;
-    font-size: 1rem;
+    @include genesis-cognition('discourse');    // Body text
   }
 
   a {
-    color: $luminous-gold;
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 2px solid $luminous-gold;
-    transition: color 0.2s ease, border-color 0.2s ease;
-
-    &:hover {
-      color: $emerald-green;
-      border-color: $emerald-green;
-    }
-
-    &:focus {
-      outline: 2px solid $luminous-gold;
-      outline-offset: 2px;
-      border-radius: 2px;
+    @include genesis-synapse('navigate');       // Footer link
+  }
+  
+  .footer-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .footer-button {
+      @include genesis-synapse('execute');      // Action button
     }
   }
 }
 
-// Dark mode support
-@media (prefers-color-scheme: dark) {
-  .quick-links-section {
-    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.5) 0%, rgba($luminous-gold, 0.1) 100%);
+.quick-links-search {
+  @include genesis-entity('secondary');         // Search box
+  
+  .search-input {
+    @include genesis-cognition('discourse');    // Search input field
   }
-
-  .quick-links-category {
-    background-color: rgba($cosmic-deep-blue, 0.3);
+  
+  .search-button {
+    @include genesis-synapse('inquiry');        // Search action
   }
-
-  .quick-links-category-title,
-  .quick-links-list a {
-    color: $transcendent-white;
-  }
-
-  .section-title {
-    color: $transcendent-white;
-  }
-
-  .section-subtitle,
-  .quick-links-footer p {
-    color: $ethereal-silver;
-  }
-
-  .quick-links-footer a {
-    color: $luminous-gold;
+  
+  .search-results {
+    @include genesis-entity('primary');         // Results dropdown
+    @include genesis-environment('chronological'); // Vertical results list
+    
+    .result-item {
+      @include genesis-entity('secondary');     // Result item
+      @include genesis-synapse('navigate');     // Clickable result
+      
+      &:hover {
+        @include genesis-entity('primary');     // Hover state
+      }
+    }
   }
 }

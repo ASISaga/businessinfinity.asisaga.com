@@ -1,230 +1,123 @@
-// Health Status Badge Styles
+// Backend Features - Genesis Ontological SCSS
+
+// Health Status Badge
 .health-status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  background-color: rgba(0, 0, 0, 0.05);
-  font-size: 0.875rem;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-}
-
-.health-indicator {
-  font-size: 1.2rem;
-  line-height: 1;
+  @include genesis-cognition('quantum');      // Small chip/badge
   
   &.health-ok {
-    color: #28a745;
+    @include genesis-state('stable');         // Normal/healthy state
   }
   
   &.health-degraded {
-    color: #ffc107;
+    @include genesis-state('evolving');       // Updating/warning state
   }
   
   &.health-error,
   &.health-offline {
-    color: #dc3545;
+    @include genesis-entity('imperative');    // Critical/urgent
   }
   
   &.health-unknown {
-    color: #6c757d;
+    @include genesis-entity('latent');        // Inactive/unknown
   }
 }
 
-.health-text {
-  font-weight: 500;
-}
-
-// Ask Agent Modal Styles
+// Ask Agent Modal
 #askAgentModal {
-  .modal-body {
-    padding: 1.5rem;
-  }
+  @include genesis-entity('primary');         // Main modal container
 
   #agentResponse {
-    .card {
-      border-left: 4px solid #007bff;
-      background-color: #f8f9fa;
-    }
+    @include genesis-entity('secondary');     // Response area
   }
 
   #agentResponseContent {
-    p {
-      margin-bottom: 0.5rem;
-      line-height: 1.6;
-      
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+    @include genesis-cognition('discourse');  // Body text
   }
 }
 
-// Workflow Modal Styles
+// Workflow Modal
 #workflowModal {
-  .modal-body {
-    padding: 1.5rem;
-  }
+  @include genesis-entity('primary');         // Main modal container
 
   #workflowDescription {
-    font-style: italic;
-    color: #6c757d;
-    padding: 0.75rem;
-    background-color: #f8f9fa;
-    border-radius: 0.25rem;
+    @include genesis-cognition('gloss');      // Helper/annotation text
   }
 
   #workflowResult {
-    .card {
-      border-left: 4px solid #28a745;
-      background-color: #f8f9fa;
-    }
+    @include genesis-entity('secondary');     // Result display area
 
     pre {
-      background-color: #fff;
-      padding: 1rem;
-      border-radius: 0.25rem;
-      font-size: 0.875rem;
-      max-height: 300px;
-      overflow-y: auto;
+      @include genesis-cognition('protocol'); // Code/technical content
     }
   }
 }
 
-// Decision Framework Styles
+// Decision Framework
 .decision-framework {
   #heatmap {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    @include genesis-environment('distributed'); // Card grid layout
   }
 
   .decision-card,
   .card {
-    border: 1px solid #dee2e6;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s;
-
-    &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
-
+    @include genesis-entity('primary');       // Card with glass effect
+    
     h3 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
+      @include genesis-cognition('motive');   // Card title
     }
 
     .badge {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.25rem;
-      border-radius: 0.25rem;
-      font-size: 0.875rem;
+      @include genesis-cognition('quantum');  // Status badge
       
       &.badge-queued {
-        background-color: #ffc107;
-        color: #000;
+        @include genesis-state('evolving');   // Queued state
       }
       
       &.badge-completed {
-        background-color: #28a745;
-        color: #fff;
+        @include genesis-state('stable');     // Completed state
       }
       
       &.badge-running {
-        background-color: #007bff;
-        color: #fff;
+        @include genesis-state('evolving');   // Running state
       }
       
       &.badge-requires_review {
-        background-color: #fd7e14;
-        color: #fff;
+        @include genesis-entity('imperative'); // Needs attention
       }
     }
   }
 
   #evidence {
-    width: 100%;
-    min-height: 150px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.875rem;
-    padding: 0.75rem;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    resize: vertical;
+    @include genesis-cognition('protocol');   // Code/evidence input
   }
 
   button {
-    padding: 0.5rem 1.5rem;
-    border-radius: 0.25rem;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s;
-
-    &:hover {
-      background-color: #0056b3;
-    }
+    @include genesis-synapse('execute');      // Primary action button
 
     &:disabled {
-      background-color: #6c757d;
-      cursor: not-allowed;
+      @include genesis-entity('latent');      // Disabled state
     }
   }
 }
 
 // Toast Notifications
 .toast {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 9999;
-  animation: slideIn 0.3s ease-out;
+  @include genesis-entity('primary');         // Notification card
 
   &.toast-success {
-    border-left: 4px solid #28a745;
+    @include genesis-state('stable');         // Success state
   }
 
   &.toast-error {
-    border-left: 4px solid #dc3545;
+    @include genesis-entity('imperative');    // Error/urgent
   }
 
   &.toast-info {
-    border-left: 4px solid #007bff;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(400px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+    @include genesis-entity('secondary');     // Info message
   }
 }
 
 // Loading States
 .spinner-border {
-  width: 3rem;
-  height: 3rem;
-  border-width: 0.3rem;
+  @include genesis-state('evolving');         // Loading/updating state
 }

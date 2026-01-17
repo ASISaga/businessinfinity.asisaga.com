@@ -1,141 +1,228 @@
-// Entrepreneur page specific styles
+// Entrepreneur Page - Genesis Ontological SCSS
+
+.entrepreneur-page {
+  @include genesis-environment('focused');      // Marketing layout
+}
+
 .entrepreneur-container {
-  // Hero section styles are handled by _hero.scss
+  @include genesis-environment('focused');      // Centered container
+}
 
-  // Challenges section
-  .entrepreneur-challenges-section {
-    @extend .py-5; // Bootstrap padding
-    background-color: $bg-light; // Use theme accessible background
+.hero {
+  @include genesis-entity('primary');           // Hero section
+  @include genesis-atmosphere('vibrant');       // Energetic startup energy
+  
+  .hero-content {
+    @include genesis-entity('primary');         // Hero content area
+  }
+  
+  h1 {
+    @include genesis-cognition('axiom');        // Main headline
+  }
+  
+  .tagline {
+    @include genesis-cognition('discourse');    // Tagline text
+  }
+  
+  .hero-description {
+    @include genesis-cognition('discourse');    // Hero description
+  }
+  
+  .cta {
+    @include genesis-synapse('execute');        // Primary action
+  }
+  
+  .cta-group {
+    @include genesis-environment('associative'); // CTA buttons
+    
+    .cta-primary {
+      @include genesis-synapse('execute');      // Primary CTA
+    }
+    
+    .cta-secondary {
+      @include genesis-synapse('inquiry');      // Secondary CTA
+    }
+  }
+  
+  .hero-image {
+    @include genesis-entity('secondary');       // Hero illustration
+  }
+}
 
-    // section-header.html styles are handled by _section-header.scss
+.benefits {
+  @include genesis-environment('distributed');  // Benefits grid
+  
+  .benefits-header {
+    @include genesis-entity('primary');         // Benefits header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // Section description
+    }
+  }
+  
+  .benefit-card {
+    @include genesis-entity('primary');         // Benefit card
+    
+    &:hover {
+      @include genesis-entity('imperative');    // Hover enhancement
+    }
+    
+    .benefit-icon {
+      @include genesis-cognition('axiom');      // Benefit icon
+      @include genesis-atmosphere('vibrant');   // Icon glow
+    }
+    
+    .benefit-title {
+      @include genesis-cognition('motive');     // Benefit title
+    }
+    
+    .benefit-text {
+      @include genesis-cognition('discourse');  // Benefit description
+    }
+    
+    .benefit-link {
+      @include genesis-synapse('navigate');     // Learn more link
+    }
+  }
+}
 
-    .entrepreneur-challenges-grid {
-      @extend .container;
-      @extend .row;
-      @extend .justify-content-center;
-
-      .entrepreneur-challenge-card {
-        @extend .col-md-4;
-        @extend .p-4; // Bootstrap padding
-        @extend .mb-4; // Bootstrap margin
-        @extend .text-center;
-        @extend .bg-white;
-        @extend .rounded;
-        @extend .shadow-sm;
-        border-top: 4px solid $luminous-gold; // Sacred accent color
-
-        .entrepreneur-challenge-title {
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-        }
-
-        .entrepreneur-challenge-description {
-          color: $ethereal-silver-accessible; // WCAG compliant muted text
-        }
+.entrepreneur-journey {
+  @include genesis-entity('secondary');         // Journey section
+  @include genesis-environment('chronological'); // Timeline layout
+  
+  .journey-title {
+    @include genesis-cognition('axiom');        // Journey title
+  }
+  
+  .journey-steps {
+    @include genesis-environment('chronological'); // Steps list
+    
+    .journey-step {
+      @include genesis-entity('primary');       // Step card
+      
+      .step-number {
+        @include genesis-cognition('quantum');  // Step number
+        @include genesis-entity('imperative');  // Number badge
+      }
+      
+      .step-title {
+        @include genesis-cognition('motive');   // Step title
+      }
+      
+      .step-description {
+        @include genesis-cognition('discourse'); // Step description
+      }
+      
+      .step-action {
+        @include genesis-synapse('execute');    // Step action button
       }
     }
   }
+}
 
-  // Solutions section
-  .entrepreneur-solutions-section {
-    background-color: $transcendent-white; // Use theme white
-    @extend .py-5; // Bootstrap padding
-
-    // section-header.html styles are handled by _section-header.scss
-
-    .entrepreneur-solutions-container {
-      @extend .container;
-
-      .entrepreneur-solution-item {
-        @extend .row;
-        @extend .mb-5; // Bootstrap margin
-        @extend .align-items-start;
-        @extend .bg-white;
-        @extend .p-4;
-        @extend .rounded;
-        @extend .shadow-sm;
-        border-left: 4px solid $emerald-green; // Life force accent
-
-        .entrepreneur-solution-icon {
-          @extend .col-md-2;
-          @extend .text-center;
-          font-size: 2.5rem;
-          color: $luminous-gold; // Sacred gold for icons
-        }
-
-        .entrepreneur-solution-content {
-          @extend .col-md-10;
-        }
-
-        .entrepreneur-solution-title {
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-        }
-
-        .entrepreneur-solution-description {
-          @extend .mb-3;
-          color: $cosmic-deep-blue; // Primary text
-        }
-
-        .entrepreneur-solution-features {
-          @extend .list-unstyled;
-
-          .entrepreneur-feature-item {
-            @extend .ps-4; // Bootstrap padding for bullet
-            @extend .position-relative;
-            @extend .mb-2;
-            color: $cosmic-deep-blue; // Readable text
-
-            &::before {
-              content: "\2022"; // Bullet character
-              color: $emerald-green; // Life force green
-              font-weight: bold;
-              @extend .position-absolute;
-              left: 0;
-            }
-          }
-        }
+.entrepreneur-testimonials {
+  @include genesis-entity('primary');           // Testimonials section
+  @include genesis-atmosphere('ethereal');      // Light, trustworthy
+  
+  .testimonials-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+  }
+  
+  .testimonials-grid {
+    @include genesis-environment('distributed'); // Testimonials grid
+    
+    .testimonial-card {
+      @include genesis-entity('secondary');     // Testimonial card
+      
+      .testimonial-quote {
+        @include genesis-cognition('discourse'); // Quote text
+      }
+      
+      .testimonial-author {
+        @include genesis-cognition('motive');   // Author name
+      }
+      
+      .testimonial-company {
+        @include genesis-cognition('gloss');    // Company info
+      }
+      
+      .testimonial-avatar {
+        @include genesis-entity('primary');     // Author avatar
       }
     }
   }
+}
 
-  // Success story section
-  .entrepreneur-success-section {
-    @extend .py-5; // Bootstrap padding
-    background: linear-gradient(135deg, rgba($cosmic-deep-blue, 0.05) 0%, rgba($luminous-gold, 0.08) 100%);
-
-    // section-header.html styles are handled by _section-header.scss
-
-    .entrepreneur-success-story {
-      @extend .container;
-      @extend .mw-800; // Assumes .mw-800 utility class exists
-
-      .entrepreneur-testimonial {
-        background-color: $transcendent-white; // Sacred white
-        @extend .rounded;
-        @extend .p-4; // Bootstrap padding
-        border-left: 4px solid $luminous-gold; // Sacred gold accent
-        @extend .m-0;
-        @extend .shadow;
-
-        .entrepreneur-testimonial-text {
-          @extend .fst-italic;
-          @extend .mb-3;
-          color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-          font-size: 1.125rem;
-        }
-
-        .entrepreneur-testimonial-footer {
-          @extend .text-end;
-
-          .entrepreneur-testimonial-author {
-            @extend .fw-medium;
-            color: $ethereal-silver-accessible; // Accessible muted color
-          }
-        }
+.entrepreneur-resources {
+  @include genesis-entity('secondary');         // Resources section
+  
+  .resources-header {
+    @include genesis-entity('primary');         // Header
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Section title
+    }
+  }
+  
+  .resources-grid {
+    @include genesis-environment('distributed'); // Resources grid
+    
+    .resource-card {
+      @include genesis-entity('primary');       // Resource card
+      @include genesis-synapse('navigate');     // Clickable card
+      
+      &:hover {
+        @include genesis-entity('imperative');  // Hover state
+      }
+      
+      .resource-icon {
+        @include genesis-cognition('axiom');    // Resource icon
+      }
+      
+      .resource-type {
+        @include genesis-cognition('quantum');  // Resource type badge
+      }
+      
+      .resource-title {
+        @include genesis-cognition('motive');   // Resource title
+      }
+      
+      .resource-description {
+        @include genesis-cognition('gloss');    // Resource description
       }
     }
   }
+}
 
-  // CTA section styles are handled by _cta.scss
+.entrepreneur-cta-final {
+  @include genesis-entity('imperative');        // Final CTA section
+  @include genesis-atmosphere('vibrant');       // High energy
+  
+  .cta-content {
+    @include genesis-entity('primary');         // CTA content
+    
+    h2 {
+      @include genesis-cognition('axiom');      // CTA headline
+    }
+    
+    p {
+      @include genesis-cognition('discourse');  // CTA description
+    }
+  }
+  
+  .cta-actions {
+    @include genesis-environment('associative'); // Action buttons
+    
+    .cta-button {
+      @include genesis-synapse('execute');      // Action button
+    }
+  }
 }

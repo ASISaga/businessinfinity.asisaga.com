@@ -1,31 +1,20 @@
-body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  margin: 0;
-  background: #0b0f17;
-  color: #e9eef5;
-}
+// BMC Page - Genesis Ontological SCSS
 
 header {
-  background: #111827;
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 1px solid #1f2937;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.6rem;
-  color: #00e0ff;
-}
-
-.subtitle {
-  font-size: 0.9rem;
-  color: #9aa3ad;
-  margin-top: 4px;
+  @include genesis-entity('primary');           // Page header
+  @include genesis-atmosphere('void');          // Dark theme
+  
+  h1 {
+    @include genesis-cognition('axiom');        // Main title
+  }
+  
+  .subtitle {
+    @include genesis-cognition('gloss');        // Subtitle
+  }
 }
 
 main {
-  padding: 1rem;
+  @include genesis-environment('focused');      // Centered content
 }
 
 .grid {

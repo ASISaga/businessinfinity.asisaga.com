@@ -1,454 +1,210 @@
-// Enterprise page styles with enhanced accessibility
-:root {
-  --bg-0: #ffffff;
-  --bg-1: #f8f9fb;
-  --panel: #ffffff;
-  --ink: #212529; // Darker for better contrast
-  --muted: #495057; // Darker muted text for accessibility
-  --line: #dee2e6;
-  --primary: #0056b3; // Darker primary for better contrast
-  --primary-2: #004085;
-  --accent: #0066cc;
-  --radius: 8px;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
-  --font: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+// Enterprise Page - Genesis Ontological SCSS
 
-  --size-0: 16px; // Increased for better readability
-  --size-1: 18px;
-  --size-2: 24px;
-  --size-3: 32px;
-  --size-4: 40px;
+.enterprise-page {
+  @include genesis-environment('focused');      // Marketing layout
+  @include genesis-atmosphere('vibrant');       // Professional energy
+}
+
+.enterprise-hero {
+  @include genesis-entity('primary');           // Hero section
+  @include genesis-atmosphere('ethereal');      // Light, professional
   
-  // Accessibility color variables
-  --focus-color: #0066cc;
-  --error-color: #dc3545;
-  --success-color: #28a745;
-  --warning-color: #ffc107;
-}
-
-body {
-  font-family: var(--font);
-  font-size: var(--size-0);
-  line-height: 1.6;
-  color: var(--ink);
-  background: var(--bg-0);
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-}
-
-.container {
-  // Layout container properties (replacing @extend for Jekyll compatibility)
-  contain: layout style;
-  isolation: isolate;
-  @include max-width(1200px);
-  @include mar-x(auto);
-  @include pad-x(3);
-  
-  @media (min-width: 768px) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-// Accessibility utilities specific to enterprise pages
-@media screen and (prefers-reduced-motion: reduce) {
-.skip-to-content {
-  // Accessible link properties (replacing @extend for Jekyll compatibility)
-  @include color(#1a237e);
-  text-decoration: underline;
-  transition: none;
-  @include position-absolute;
-  top: -40px;
-  left: 6px;
-  z-index: 1000;
-  @include pad-y(2);
-  @include pad-x(3);
-  
-  &:hover {
-    @include color(#0d47a1);
-    text-decoration-thickness: 2px;
-  }
-  
-  &:focus {
-    top: 6px;
-    outline: 3px solid #0066cc;
-    outline-offset: 2px;
-  }
-}
-}
-.skip-to-content {
-  // Accessible link properties (replacing @extend for Jekyll compatibility)
-  color: #1a237e;
-  text-decoration: underline;
-  transition: all 0.2s ease;
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  z-index: 1000;
-  padding: 8px 16px;
-  
-  &:hover {
-    color: #0d47a1;
-    text-decoration-thickness: 2px;
-  }
-  
-  &:focus {
-    top: 6px;
-    outline: 3px solid #0066cc;
-    outline-offset: 2px;
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-// Focus trap for modal content
-.focus-trap {
-  &:focus {
-    outline: 3px solid var(--focus-color);
-    outline-offset: 2px;
-  }
-}
-
-h1, h2, h3 {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-h1 { font-size: var(--size-4); margin: 0 0 0.4em; }
-h2 { font-size: var(--size-3); margin: 0 0 0.6em; }
-h3 { font-size: var(--size-2); margin: 0 0 0.4em; }
-
-p { margin: 0 0 1em; }
-
-.section { 
-  // Section container properties (replacing @extend for Jekyll compatibility)
-  contain: layout style;
-  isolation: isolate;
-  padding: 4rem 0; 
-  background: var(--bg-0); 
-}
-
-.section + .section { 
-  border-top: 1px solid var(--line); 
-  margin-top: 0;
-}
-
-.hero {
-  // Section container properties (replacing @extend for Jekyll compatibility)
-  contain: layout style;
-  isolation: isolate;
-  background: var(--bg-1);
-  border-bottom: 1px solid var(--line);
-  padding: 5rem 0;
-  text-align: left;
-  
-  // Ensure hero content is contained properly
   .hero-content {
-    // Layout container properties (replacing @extend for Jekyll compatibility)
-    contain: layout style;
-    isolation: isolate;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
-
-.hero .sub {
-  font-size: var(--size-1);
-  color: var(--muted);
-  max-width: 760px;
-  line-height: 1.6;
-  margin-top: 1rem;
-  
-  // Better contrast in high contrast mode
-  @media (prefers-contrast: high) {
-    color: var(--ink);
-    opacity: 0.8;
-  }
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
-  font-size: var(--size-0);
-  font-weight: 600;
-  border-radius: var(--radius);
-  text-decoration: none;
-  transition: none;
-  cursor: pointer;
-  
-  // Accessibility enhancements
-  min-height: 44px; // Minimum touch target
-  min-width: 44px;
-  
-  &:focus {
-    outline: 3px solid var(--focus-color);
-    outline-offset: 2px;
+    @include genesis-entity('primary');         // Hero content area
   }
   
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+  .hero-title {
+    @include genesis-cognition('axiom');        // Main headline
   }
   
-  &:active {
-    transform: translateY(0);
-  }
-}
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
-  font-size: var(--size-0);
-  font-weight: 600;
-  border-radius: var(--radius);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  
-  // Accessibility enhancements
-  min-height: 44px; // Minimum touch target
-  min-width: 44px;
-  
-  &:focus {
-    outline: 3px solid var(--focus-color);
-    outline-offset: 2px;
+  .hero-subtitle {
+    @include genesis-cognition('discourse');    // Hero description
   }
   
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-  }
-  
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: white;
-  border: 2px solid var(--primary);
-  
-  &:hover { 
-    background: var(--primary-2); 
-    border-color: var(--primary-2);
-  }
-  
-  &:focus {
-    border-color: var(--focus-color);
-  }
-}
-
-.btn-quiet {
-  background: transparent;
-  border: 2px solid var(--line);
-  color: var(--ink);
-  
-  &:hover { 
-    border-color: var(--primary); 
-    color: var(--primary); 
-    background: rgba(0, 86, 179, 0.05);
-  }
-  
-  &:focus {
-    border-color: var(--focus-color);
-  }
-}
-
-.grid { 
-  // Grid container properties (replacing @extend for Jekyll compatibility)
-  display: grid;
-  contain: layout style;
-  isolation: isolate;
-  gap: 2rem; 
-}
-
-.grid-2 { 
-  grid-template-columns: repeat(2, 1fr); 
-  
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.grid-3 { 
-  grid-template-columns: repeat(3, 1fr); 
-  
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-.card {
-  // Article container properties (replacing @extend for Jekyll compatibility)
-  contain: layout style;
-  isolation: isolate;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: none;
-  
-  &:hover, &:focus {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-  
-  // Ensure proper focus management for interactive cards
-  &[tabindex] {
-    cursor: pointer;
+  .hero-cta {
+    @include genesis-environment('associative'); // CTA buttons
     
-    &:focus {
-      outline: 3px solid var(--focus-color);
-      outline-offset: 2px;
+    .cta-primary {
+      @include genesis-synapse('execute');      // Primary CTA
+    }
+    
+    .cta-secondary {
+      @include genesis-synapse('inquiry');      // Secondary CTA
     }
   }
 }
-}
 
-.card {
-  // Article container properties (replacing @extend for Jekyll compatibility)
-  contain: layout style;
-  isolation: isolate;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.enterprise-header {
+  @include genesis-entity('primary');           // Header section
   
-  &:hover, &:focus {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+  .title {
+    @include genesis-cognition('axiom');        // Main title
   }
   
-  // Ensure proper focus management for interactive cards
-  &[tabindex] {
-    cursor: pointer;
+  .subtitle {
+    @include genesis-cognition('discourse');    // Subtitle
+  }
+  
+  .header-description {
+    @include genesis-cognition('discourse');    // Header description
+  }
+}
+
+.features-section {
+  @include genesis-environment('distributed');  // Features grid
+  
+  .section-title {
+    @include genesis-cognition('axiom');        // Section heading
+  }
+  
+  .feature-card {
+    @include genesis-entity('primary');         // Feature card
     
-    &:focus {
-      outline: 3px solid var(--focus-color);
-      outline-offset: 2px;
+    .feature-icon {
+      @include genesis-cognition('axiom');      // Large feature icon
+    }
+    
+    .feature-title {
+      @include genesis-cognition('motive');     // Feature title
+    }
+    
+    .feature-description {
+      @include genesis-cognition('discourse');  // Feature description
+    }
+    
+    .feature-list {
+      @include genesis-entity('aggregate');     // Feature list items
+      
+      li {
+        @include genesis-cognition('discourse'); // List item text
+      }
     }
   }
 }
-.card.emphasis {
-  border-left: 4px solid var(--primary);
-}
 
-.list { 
-  // List container properties (replacing @extend for Jekyll compatibility)
-  contain: layout style;
-  isolation: isolate;
-  padding-left: 1.25rem; 
-  margin: 0 0 1em; 
-  color: var(--ink); 
-  line-height: 1.6;
-}
-
-.list li { 
-  margin-bottom: 0.5em;
+.pricing-section {
+  @include genesis-environment('distributed');  // Pricing grid
   
-  // Ensure good contrast for list markers
-  &::marker {
-    color: var(--primary);
+  .pricing-header {
+    @include genesis-entity('primary');         // Pricing header
+    
+    .pricing-title {
+      @include genesis-cognition('axiom');      // Pricing title
+    }
+    
+    .pricing-subtitle {
+      @include genesis-cognition('discourse');  // Pricing subtitle
+    }
+  }
+  
+  .pricing-card {
+    @include genesis-entity('primary');         // Pricing card
+    
+    &.featured {
+      @include genesis-entity('imperative');    // Featured plan
+      @include genesis-atmosphere('vibrant');   // Highlighted energy
+    }
+    
+    .pricing-tier {
+      @include genesis-entity('secondary');     // Tier header
+      
+      .tier-name {
+        @include genesis-cognition('motive');   // Plan name
+      }
+      
+      .tier-description {
+        @include genesis-cognition('gloss');    // Plan description
+      }
+    }
+    
+    .plan-name {
+      @include genesis-cognition('motive');     // Plan name
+    }
+    
+    .plan-price {
+      @include genesis-cognition('axiom');      // Price display
+      
+      .price-amount {
+        @include genesis-cognition('axiom');    // Price number
+      }
+      
+      .price-period {
+        @include genesis-cognition('gloss');    // Billing period
+      }
+    }
+    
+    .plan-features {
+      @include genesis-entity('aggregate');     // Features list
+      
+      .feature-item {
+        @include genesis-cognition('discourse'); // Feature text
+        
+        &.included {
+          @include genesis-state('stable');     // Included feature
+        }
+        
+        &.not-included {
+          @include genesis-entity('latent');    // Not included
+        }
+      }
+    }
+    
+    .subscribe-button {
+      @include genesis-synapse('execute');      // Subscribe action
+    }
+    
+    .learn-more {
+      @include genesis-synapse('inquiry');      // Learn more link
+    }
   }
 }
 
-// Text utility classes with accessibility
-.text-muted {
-  color: var(--muted);
+.testimonials-section {
+  @include genesis-entity('secondary');         // Testimonials area
+  @include genesis-atmosphere('ethereal');      // Light, trustworthy
   
-  // Ensure sufficient contrast in high contrast mode
-  @media (prefers-contrast: high) {
-    color: var(--ink);
-    opacity: 0.8;
+  .testimonial-grid {
+    @include genesis-environment('distributed'); // Testimonial grid
+    
+    .testimonial-card {
+      @include genesis-entity('primary');       // Testimonial card
+      
+      .testimonial-quote {
+        @include genesis-cognition('discourse'); // Quote text
+      }
+      
+      .testimonial-author {
+        @include genesis-cognition('motive');   // Author name
+      }
+      
+      .testimonial-role {
+        @include genesis-cognition('gloss');    // Author role
+      }
+      
+      .testimonial-company {
+        @include genesis-cognition('gloss');    // Company name
+      }
+    }
   }
 }
 
-.text-center { @include text-center; }
-.text-left { @include text-left; }
-.text-right { @include text-right; }
-
-// Screen reader only text
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-.tenets { list-style: none; padding: 0; margin: 0; }
-.tenets li {
-  display: flex;
-  align-items: flex-start;
-  border-top: 1px solid var(--line);
-  padding: 12px 0;
-}
-.tenet-index {
-  font-weight: 600;
-  color: var(--primary);
-  width: 40px;
-  flex-shrink: 0;
-}
-
-.pills {
-  @include d-flex;
-  @include flex-wrap(wrap);
-  gap: 8px;
-}
-.pill {
-  padding: 4px 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.footer {
-  background: var(--bg-1);
-  border-top: 1px solid var(--line);
-  padding: 24px 0;
-  font-size: 14px;
-  color: var(--muted);
-}
-.footer a { color: var(--muted); text-decoration: none; }
-.footer a:hover, .footer a:focus { color: var(--primary); }
-
-@media screen and (prefers-reduced-motion: reduce) {
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: none;
-}
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: none;
+.enterprise-cta {
+  @include genesis-entity('imperative');        // Final CTA section
+  @include genesis-atmosphere('vibrant');       // High energy
+  
+  .cta-title {
+    @include genesis-cognition('axiom');        // CTA headline
+  }
+  
+  .cta-description {
+    @include genesis-cognition('discourse');    // CTA description
+  }
+  
+  .cta-buttons {
+    @include genesis-environment('associative'); // Button group
+    
+    .cta-button {
+      @include genesis-synapse('execute');      // Action button
+    }
+  }
 }

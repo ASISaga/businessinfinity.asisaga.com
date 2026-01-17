@@ -1,18 +1,18 @@
+// Mentor Mode Page - Genesis Ontological SCSS
+
 .mentor-mode {
+  @include genesis-environment('focused');      // Reading/interaction layout
+  
   textarea {
-    width: 100%;
-    min-height: 5rem;
-    margin-bottom: .5rem;
+    @include genesis-cognition('protocol');     // Input text area
   }
+  
   .answer {
-    background: $gray-100;
-    padding: .75rem;
-    border-radius: .25rem;
-    margin-top: .5rem;
+    @include genesis-entity('secondary');       // Answer display
+    @include genesis-cognition('discourse');    // Answer text
   }
+  
   .new-qa {
-    display: flex;
-    gap: .5rem;
-    margin: 1rem 0;
+    @include genesis-environment('associative'); // Q&A controls group
   }
 }

@@ -1,28 +1,53 @@
+// Boardroom Mode Page - Genesis Ontological SCSS
+
 .boardroom-mode {
+  @include genesis-environment('manifest');     // Dashboard layout
+  
   .profiles-sidebar {
-    .card-img-top { width: 4rem; border-radius: 50%; }
-    li { cursor: pointer; margin-bottom: .75rem; }
-    li.active { background: $primary; color: #ffffff; border-radius: .25rem; }
-  }
-
-  .profile-detail {
-    .card-body { padding: 1rem; }
-    h5 { margin-top: 0; }
-    ul.context { list-style: disc; margin-left: 1.5rem; }
-  }
-
-  .chat-window {
-    max-height: 60vh;
-    .messages {
-      height: 30rem;
-      overflow-y: auto;
-      border: 1px solid $gray-300;
-      padding: .5rem;
-      margin-bottom: 1rem;
+    @include genesis-entity('secondary');       // Sidebar container
+    
+    li {
+      @include genesis-entity('primary');       // Profile list item
+      
+      &.active {
+        @include genesis-entity('imperative');  // Selected profile
+      }
     }
-    .msg { margin: .25rem 0; }
-    .user-to-agent { text-align: right; color: $dark; }
-    .agent-to-user { text-align: left; color: $success; }
-    .agent-to-agent { text-align: center; color: $warning; }
+  }
+  
+  .profile-detail {
+    @include genesis-entity('primary');         // Profile details card
+    
+    h5 {
+      @include genesis-cognition('axiom');      // Profile heading
+    }
+    
+    ul.context {
+      @include genesis-entity('aggregate');     // Context list
+    }
+  }
+  
+  .chat-window {
+    @include genesis-environment('chronological'); // Message stream
+    
+    .messages {
+      @include genesis-entity('secondary');     // Messages container
+    }
+    
+    .msg {
+      @include genesis-cognition('discourse');  // Message text
+    }
+    
+    .user-to-agent {
+      @include genesis-entity('primary');       // User message
+    }
+    
+    .agent-to-user {
+      @include genesis-entity('secondary');     // Agent message
+    }
+    
+    .agent-to-agent {
+      @include genesis-cognition('gloss');      // System message
+    }
   }
 }

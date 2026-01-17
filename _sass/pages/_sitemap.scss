@@ -1,147 +1,29 @@
-// Sitemap page specific styles with WCAG AAA compliant colors
-.sitemap-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
+// Sitemap Page - Genesis Ontological SCSS
 
-.sitemap-container h1 {
-  color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-.lead {
-  font-size: 1.2rem;
-  color: $ethereal-silver-accessible; // WCAG compliant muted text
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.sitemap-section {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background-color: rgba($luminous-gold, 0.05); // Subtle sacred background
-  border-radius: 8px;
-  border-left: 4px solid $luminous-gold; // Sacred gold accent
-  box-shadow: $box-shadow;
-}
-
-.sitemap-section h2 {
-  margin-top: 0;
-  color: $cosmic-deep-blue-accessible; // WCAG AAA compliant
-  border-bottom: 2px solid $emerald-green; // Life force accent
-  padding-bottom: 0.5rem;
-  font-size: 1.75rem;
-  font-weight: 600;
-}
-
-.sitemap-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-}
-
-.sitemap-list li {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid rgba($ethereal-silver, 0.3);
-  transition: background-color 0.2s ease;
+.sitemap-page {
+  @include genesis-environment('chronological'); // Hierarchical list
   
-  &:last-child {
-    border-bottom: none;
-  }
-  
-  &:hover {
-    background-color: rgba($luminous-gold, 0.08);
-    padding-left: 0.5rem;
-    border-radius: 4px;
-  }
-}
-
-.sitemap-list a {
-  color: $cosmic-deep-blue-accessible; // WCAG AAA compliant for links
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-  display: inline-block;
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: $luminous-gold;
-    transition: width 0.3s ease;
-  }
-  
-  &:hover {
-    color: $luminous-gold-accessible; // Accessible gold for hover
+  .sitemap-header {
+    @include genesis-entity('primary');         // Header
     
-    &::after {
-      width: 100%;
+    h1 {
+      @include genesis-cognition('axiom');      // Title
     }
   }
   
-  &:focus {
-    outline: 2px solid $luminous-gold;
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-}
-
-// Dark mode support
-@media (prefers-color-scheme: dark) {
   .sitemap-section {
-    background-color: rgba($cosmic-deep-blue, 0.3);
-  }
-  
-  .sitemap-container h1,
-  .sitemap-section h2 {
-    color: $transcendent-white;
-  }
-  
-  .lead {
-    color: $ethereal-silver;
-  }
-  
-  .sitemap-list li {
-    border-bottom-color: rgba($ethereal-silver, 0.2);
-  }
-  
-  .sitemap-list a {
-    color: $luminous-gold;
+    @include genesis-entity('secondary');       // Section
     
-    &:hover {
-      color: $luminous-gold-light;
+    h2 {
+      @include genesis-cognition('motive');     // Section title
     }
-  }
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .sitemap-container {
-    padding: 0 1rem;
-    margin: 1rem auto;
-  }
-  
-  .sitemap-container h1 {
-    font-size: 2rem;
-  }
-  
-  .sitemap-section {
-    padding: 1rem;
-  }
-  
-  .sitemap-section h2 {
-    font-size: 1.5rem;
-  }
-  
-  .lead {
-    font-size: 1rem;
+    
+    .sitemap-list {
+      @include genesis-entity('aggregate');     // Link list
+      
+      a {
+        @include genesis-synapse('navigate');   // Page link
+      }
+    }
   }
 }
