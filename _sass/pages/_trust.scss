@@ -3,45 +3,280 @@
 .trust-page {
   @include genesis-environment('focused');      // Documentation layout
   @include genesis-atmosphere('ethereal');      // Professional, trustworthy
+}
+
+.trust-container {
+  @include genesis-environment('focused');      // Centered container
+}
+
+.trust-header {
+  @include genesis-entity('primary');           // Header section
   
-  .trust-header {
-    @include genesis-entity('primary');         // Header
-    
-    h1 {
-      @include genesis-cognition('axiom');      // Title
-    }
+  h1 {
+    @include genesis-cognition('axiom');        // Main title
   }
   
-  .compliance-section {
-    @include genesis-entity('secondary');       // Compliance info
+  .trust-subtitle {
+    @include genesis-cognition('discourse');    // Subtitle
+  }
+  
+  .last-updated {
+    @include genesis-cognition('gloss');        // Last updated timestamp
+  }
+}
+
+.trust-nav {
+  @include genesis-entity('secondary');         // Navigation sidebar
+  @include genesis-environment('chronological'); // Vertical nav
+  
+  .nav-title {
+    @include genesis-cognition('motive');       // Nav title
+  }
+  
+  .nav-list {
+    @include genesis-environment('chronological'); // Nav list
     
-    h2 {
-      @include genesis-cognition('motive');     // Section title
-    }
-    
-    .cert-list {
-      @include genesis-entity('aggregate');     // Certifications list
+    .nav-item {
+      @include genesis-synapse('navigate');     // Nav link
       
-      .cert-badge {
-        @include genesis-cognition('quantum');  // Badge
+      &.active {
+        @include genesis-entity('imperative');  // Active nav item
+      }
+    }
+  }
+}
+
+.compliance-section {
+  @include genesis-entity('secondary');         // Compliance section
+  
+  h2 {
+    @include genesis-cognition('motive');       // Section title
+  }
+  
+  .section-description {
+    @include genesis-cognition('discourse');    // Section description
+  }
+  
+  .cert-grid {
+    @include genesis-environment('distributed'); // Certifications grid
+    
+    .cert-card {
+      @include genesis-entity('primary');       // Certification card
+      
+      .cert-icon {
+        @include genesis-cognition('axiom');    // Cert icon
+      }
+      
+      .cert-name {
+        @include genesis-cognition('motive');   // Cert name
+      }
+      
+      .cert-status {
+        @include genesis-cognition('quantum');  // Status badge
         @include genesis-state('stable');       // Certified status
+        
+        &.verified {
+          @include genesis-state('stable');     // Verified
+        }
+        
+        &.pending {
+          @include genesis-state('evolving');   // Pending verification
+        }
+      }
+      
+      .cert-details {
+        @include genesis-cognition('gloss');    // Cert details
+      }
+      
+      .cert-expiry {
+        @include genesis-cognition('gloss');    // Expiry date
       }
     }
   }
   
-  .security-section {
-    @include genesis-entity('primary');         // Security info
+  .cert-list {
+    @include genesis-entity('aggregate');       // Certifications list
     
-    .security-item {
-      @include genesis-cognition('discourse');  // Security detail
+    .cert-badge {
+      @include genesis-cognition('quantum');    // Badge
+      @include genesis-state('stable');         // Certified status
+    }
+  }
+}
+
+.security-section {
+  @include genesis-entity('primary');           // Security section
+  @include genesis-atmosphere('void');          // Secure, technical theme
+  
+  h2 {
+    @include genesis-cognition('axiom');        // Section title
+  }
+  
+  .security-grid {
+    @include genesis-environment('distributed'); // Security features grid
+    
+    .security-card {
+      @include genesis-entity('primary');       // Security card
+      
+      .security-icon {
+        @include genesis-cognition('axiom');    // Security icon
+      }
+      
+      .security-title {
+        @include genesis-cognition('motive');   // Security feature title
+      }
+      
+      .security-description {
+        @include genesis-cognition('discourse'); // Feature description
+      }
     }
   }
   
-  .contact-section {
-    @include genesis-entity('imperative');      // Contact info
+  .security-item {
+    @include genesis-cognition('discourse');    // Security detail
+  }
+  
+  .security-features {
+    @include genesis-entity('aggregate');       // Features list
     
-    .contact-button {
-      @include genesis-synapse('execute');      // Contact action
+    li {
+      @include genesis-cognition('discourse');  // Feature item
+    }
+  }
+}
+
+.privacy-section {
+  @include genesis-entity('secondary');         // Privacy section
+  
+  h2 {
+    @include genesis-cognition('axiom');        // Section title
+  }
+  
+  .privacy-content {
+    @include genesis-cognition('discourse');    // Privacy policy text
+  }
+  
+  .privacy-highlights {
+    @include genesis-entity('imperative');      // Key privacy points
+    @include genesis-entity('aggregate');       // List container
+    
+    .highlight-item {
+      @include genesis-cognition('motive');     // Highlight text
+    }
+  }
+}
+
+.audit-section {
+  @include genesis-entity('primary');           // Audit section
+  
+  h2 {
+    @include genesis-cognition('axiom');        // Section title
+  }
+  
+  .audit-timeline {
+    @include genesis-environment('chronological'); // Audit timeline
+    
+    .audit-event {
+      @include genesis-entity('secondary');     // Timeline event
+      
+      .event-date {
+        @include genesis-cognition('quantum');  // Event date
+      }
+      
+      .event-title {
+        @include genesis-cognition('motive');   // Event title
+      }
+      
+      .event-description {
+        @include genesis-cognition('discourse'); // Event description
+      }
+      
+      .event-status {
+        @include genesis-cognition('quantum');  // Status badge
+        @include genesis-state('stable');       // Completed status
+      }
+    }
+  }
+  
+  .audit-reports {
+    @include genesis-entity('aggregate');       // Reports list
+    
+    .report-item {
+      @include genesis-entity('secondary');     // Report card
+      @include genesis-synapse('navigate');     // Downloadable
+      
+      .report-title {
+        @include genesis-cognition('motive');   // Report title
+      }
+      
+      .report-date {
+        @include genesis-cognition('gloss');    // Report date
+      }
+      
+      .download-link {
+        @include genesis-synapse('execute');    // Download button
+      }
+    }
+  }
+}
+
+.contact-section {
+  @include genesis-entity('imperative');        // Contact section
+  @include genesis-atmosphere('vibrant');       // Action-focused
+  
+  h2 {
+    @include genesis-cognition('axiom');        // Contact title
+  }
+  
+  .contact-description {
+    @include genesis-cognition('discourse');    // Contact description
+  }
+  
+  .contact-methods {
+    @include genesis-environment('distributed'); // Contact methods grid
+    
+    .contact-method {
+      @include genesis-entity('primary');       // Contact method card
+      
+      .method-icon {
+        @include genesis-cognition('axiom');    // Method icon
+      }
+      
+      .method-title {
+        @include genesis-cognition('motive');   // Method title
+      }
+      
+      .method-details {
+        @include genesis-cognition('discourse'); // Method details
+      }
+      
+      .method-button {
+        @include genesis-synapse('execute');    // Action button
+      }
+    }
+  }
+  
+  .contact-button {
+    @include genesis-synapse('execute');        // Contact action
+  }
+  
+  .contact-form {
+    @include genesis-entity('primary');         // Contact form
+    
+    .form-group {
+      @include genesis-entity('secondary');     // Form field group
+      
+      label {
+        @include genesis-cognition('motive');   // Field label
+      }
+      
+      input, textarea {
+        @include genesis-cognition('discourse'); // Input field
+      }
+    }
+    
+    .submit-button {
+      @include genesis-synapse('execute');      // Submit button
     }
   }
 }
