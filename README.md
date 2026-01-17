@@ -38,6 +38,7 @@ This repository uses the **Genesis Ontological SCSS Design System** from the [AS
 ## Documentation
 
 - **[Ontology Migration Guide](ONTOLOGY_MIGRATION_GUIDE.md)** - Complete guide to Genesis Ontological SCSS Design System migration
+- **[SCSS Validation Implementation](SCSS_VALIDATION_IMPLEMENTATION.md)** - Guide to stylelint, sass compilation, and SCSS validation tools
 - [SCSS Dependency Management](SCSS_DEPENDENCY_MANAGEMENT.md) - Guide to SCSS validation and theme dependencies
 - [Backend Integration Guide](docs/backend-integration.md) - Complete guide to the Business Infinity backend
 - [Specifications](docs/specifications.md) - High-level technical specifications and architecture
@@ -99,10 +100,31 @@ Site will be available at `http://localhost:4000`
 
 ### Testing
 
-Run SCSS validation:
+**SCSS Validation** (New as of 2026-01):
+
+Run all SCSS validation tools:
 ```bash
 npm run validate
 ```
+
+This runs:
+- `lint:scss` - Validates theme dependencies (mixins, variables)
+- `lint:scss:style` - Style linting with stylelint
+- `sass:compile` - Test SCSS compilation
+
+Run individual validation:
+```bash
+npm run lint:scss         # Dependency validation
+npm run lint:scss:style   # Style linting
+npm run sass:compile      # Compilation test
+```
+
+Auto-fix style issues:
+```bash
+npx stylelint "_sass/**/*.scss" --fix
+```
+
+**Playwright Tests**:
 
 Run all tests:
 ```bash
