@@ -1,0 +1,261 @@
+// Example Component - Ontological SCSS Design System
+// This file demonstrates the correct usage of the Genesis Ontological SCSS Design System
+// All new SCSS files should follow this pattern
+
+// REQUIRED: Main SCSS entry (_main.scss) must import ontology:
+// @import "ontology/index";
+
+// ============================================================================
+// CORRECT PATTERN: Ontological Mixins Only (No Raw CSS)
+// ============================================================================
+
+// Example 1: Dashboard Layout
+.dashboard-page {
+  @include genesis-environment('manifest');     // 12-column dashboard grid
+  @include genesis-atmosphere('vibrant');       // High-energy data visualization
+  
+  .dashboard-header {
+    @include genesis-entity('primary');         // Elevated glassmorphism card
+    
+    .page-title {
+      @include genesis-cognition('axiom');      // Large, bold headline
+    }
+    
+    .page-subtitle {
+      @include genesis-cognition('gloss');      // Small, muted subtitle
+    }
+  }
+  
+  .metric-card {
+    @include genesis-entity('primary');         // Card with glass effect
+    @include genesis-state('evolving');         // Shows live updating indicator
+    
+    .metric-value {
+      @include genesis-cognition('axiom');      // Large number display
+    }
+    
+    .metric-label {
+      @include genesis-cognition('gloss');      // Small label
+    }
+  }
+  
+  .refresh-button {
+    @include genesis-synapse('execute');        // Primary action button
+  }
+}
+
+// Example 2: Blog Post / Article Layout
+.blog-post {
+  @include genesis-environment('focused');      // Reading-optimized single column
+  @include genesis-atmosphere('ethereal');      // Light, minimal reading experience
+  
+  .post-header {
+    @include genesis-entity('primary');         // Hero section with glass
+    
+    .post-title {
+      @include genesis-cognition('axiom');      // Large article headline
+    }
+    
+    .post-meta {
+      @include genesis-cognition('gloss');      // Small metadata (author, date)
+    }
+  }
+  
+  .post-content {
+    @include genesis-cognition('discourse');    // Body text, optimized for reading
+    
+    .code-snippet {
+      @include genesis-cognition('protocol');   // Technical/code content
+    }
+  }
+  
+  .post-tags {
+    .tag {
+      @include genesis-cognition('quantum');    // Small tag/chip
+    }
+  }
+  
+  .read-more-link {
+    @include genesis-synapse('navigate');       // Link to related content
+  }
+  
+  .share-button {
+    @include genesis-synapse('social');         // Social sharing action
+  }
+}
+
+// Example 3: Product Grid
+.product-grid {
+  @include genesis-environment('distributed');  // Auto-fit Bento grid
+  
+  .product-card {
+    @include genesis-entity('primary');         // Glassmorphism card
+    
+    .product-name {
+      @include genesis-cognition('motive');     // Persuasive product name
+    }
+    
+    .product-description {
+      @include genesis-cognition('discourse');  // Product details
+    }
+    
+    .product-price {
+      @include genesis-cognition('axiom');      // Prominent price display
+    }
+    
+    .buy-button {
+      @include genesis-synapse('execute');      // Primary purchase action
+    }
+    
+    .wishlist-button {
+      @include genesis-synapse('inquiry');      // Secondary action
+    }
+  }
+}
+
+// Example 4: Alert / Notification System
+.alert-container {
+  @include genesis-environment('chronological'); // Stacked notification list
+  
+  .critical-alert {
+    @include genesis-entity('imperative');      // Urgent, pulsing neon border
+    @include genesis-state('evolving');         // Currently active/updating
+    
+    .alert-title {
+      @include genesis-cognition('axiom');      // Large, bold alert title
+    }
+    
+    .alert-message {
+      @include genesis-cognition('discourse');  // Alert details
+    }
+    
+    .dismiss-button {
+      @include genesis-synapse('destructive');  // Dangerous action (removes alert)
+    }
+  }
+  
+  .info-alert {
+    @include genesis-entity('secondary');       // Lower visual priority
+    @include genesis-state('stable');           // Normal state
+  }
+}
+
+// Example 5: Archive / Historical Content
+.archive-page {
+  @include genesis-environment('chronological'); // Time-linear stream
+  
+  .archive-item {
+    @include genesis-entity('ancestral');       // Archived/historical appearance
+    @include genesis-state('deprecated');       // No longer current
+    
+    .archive-title {
+      @include genesis-cognition('motive');     // Medium-weight title
+    }
+    
+    .archive-date {
+      @include genesis-cognition('gloss');      // Small date stamp
+    }
+  }
+}
+
+// Example 6: Network / Relationship View
+.network-diagram {
+  @include genesis-environment('associative');  // Network where connections matter
+  
+  .network-node {
+    @include genesis-entity('primary');         // Individual network entity
+    
+    .node-label {
+      @include genesis-cognition('quantum');    // Small, compact label
+    }
+  }
+}
+
+// Example 7: Code Editor / Technical Interface
+.code-editor-container {
+  @include genesis-atmosphere('void');          // Dark, immersive, focused
+  
+  .editor-panel {
+    @include genesis-entity('primary');         // Main editor area
+    
+    .editor-content {
+      @include genesis-cognition('protocol');   // Monospace code display
+    }
+    
+    .editor-line-numbers {
+      @include genesis-cognition('gloss');      // Muted line numbers
+    }
+  }
+  
+  .run-button {
+    @include genesis-synapse('execute');        // Execute code action
+  }
+}
+
+// Example 8: Locked / Restricted Content
+.premium-content {
+  @include genesis-entity('primary');           // Main content card
+  @include genesis-state('locked');             // Blur effect, lock icon
+  
+  .unlock-button {
+    @include genesis-synapse('execute');        // Unlock/purchase action
+  }
+}
+
+// Example 9: Preview / Draft Content
+.content-preview {
+  @include genesis-entity('primary');           // Main content
+  @include genesis-state('simulated');          // Dashed border, "preview" indicator
+  
+  .preview-warning {
+    @include genesis-cognition('gloss');        // Small warning text
+  }
+  
+  .publish-button {
+    @include genesis-synapse('execute');        // Publish action
+  }
+}
+
+// ============================================================================
+// INCORRECT PATTERNS: Do NOT Do This (Examples of What to Avoid)
+// ============================================================================
+
+// ❌ WRONG: Raw CSS properties
+// .bad-example {
+//   padding: 2rem;
+//   margin-bottom: 1rem;
+//   background-color: #1a1a2e;
+//   border-radius: 12px;
+//   color: white;
+//   font-size: 1.5rem;
+// }
+
+// ❌ WRONG: Bootstrap mixins (use for gradual migration only, not new code)
+// .bad-example {
+//   @include make-container();
+//   @include d-flex;
+//   @include bg-light;
+// }
+
+// ❌ WRONG: CSS custom properties / tokens directly
+// .bad-example {
+//   padding: var(--space-bento);
+//   background: var(--glass-surface);
+// }
+
+// ✅ CORRECT: Only ontological mixins
+// .good-example {
+//   @include genesis-entity('primary');
+//   @include genesis-cognition('axiom');
+// }
+
+// ============================================================================
+// Key Principles
+// ============================================================================
+// 1. ZERO raw CSS properties in subdomain SCSS
+// 2. Use semantic class names (WHAT, not HOW)
+// 3. SCSS nesting mirrors HTML DOM hierarchy
+// 4. Apply one primary mixin from each ontological category as needed
+// 5. Let the theme engine handle ALL visual styling
+// 6. Think semantically: role, purpose, intent - not appearance
+// ============================================================================
