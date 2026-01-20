@@ -5,12 +5,12 @@ This document explains how SCSS dependencies are validated and managed in this s
 ## Overview
 
 This repository uses a shared theme from [ASISaga/theme.asisaga.com](https://github.com/ASISaga/theme.asisaga.com) which provides:
-- Bootstrap framework mixins and variables
+- **Genesis Ontological SCSS Design System** - Six ontological categories for semantic styling
 - Common SCSS utilities and functions
-- Base styling and design tokens
+- Base styling and design tokens (150+ CSS custom properties)
 - Shared layout components
 
-The subdomain's SCSS files in `_sass/` extend and customize the theme.
+The subdomain's SCSS files in `_sass/` use only ontological mixins - no raw CSS properties are allowed.
 
 ## Dependency Validation
 
@@ -24,17 +24,33 @@ Every PR that modifies SCSS files triggers automated validation via GitHub Actio
 
 ### Manual Validation
 
-Before committing SCSS changes, run the validator locally:
+Before committing SCSS changes, install dependencies and run all validators:
 
 ```bash
-npm install sass js-yaml
-node lint-scss-mixins.js
+npm install
+npm run validate
 ```
 
-For verbose output including deprecation warnings:
+This runs all validation tools:
+- `lint:scss` - Dependency validation (lint-scss-mixins.js)
+- `lint:scss:style` - Style linting (stylelint)
+- `lint:scss:raw-css` - Raw CSS detection (detect-raw-css.js)
+- `sass:compile` - Compilation testing (compile-scss.js)
+
+For individual validators:
 
 ```bash
-node lint-scss-mixins.js --verbose
+# Dependency validation
+npm run lint:scss
+
+# Style linting
+npm run lint:scss:style
+
+# Raw CSS detection
+npm run lint:scss:raw-css
+
+# Compilation testing
+npm run sass:compile
 ```
 
 This will:
@@ -44,18 +60,19 @@ This will:
 - Identify invalid math operations
 - Flag null/nil variable usage in calculations
 
-## What the Validator Checks
+## What the Validators Check
 
-### 1. Missing Mixins
+### 1. Missing Mixins (lint-scss-mixins.js)
 ```scss
 // ❌ FAIL: Mixin not defined in theme or subdomain
 .my-component {
   @include undefined-mixin();
 }
 
-// ✅ PASS: Mixin exists in theme
+// ✅ PASS: Genesis Ontological mixin from theme
 .my-component {
-  @include make-container();
+  @include genesis-environment('distributed');
+  @include genesis-entity('primary');
 }
 ```
 
@@ -86,19 +103,41 @@ $my-var: null;
 }
 ```
 
-### 4. Type Errors
+### 4. Type Errors (lint-scss-mixins.js)
 ```scss
 // ❌ FAIL: Null variable in calculation
-$bootstrap-var: null;
+$undefined-var: null;
 .my-component {
-  margin: $bootstrap-var / 2;
+  margin: $undefined-var / 2;
 }
 
-// ✅ PASS: Proper value
+// ✅ PASS: Use ontological mixins instead of raw CSS
 .my-component {
-  margin: $spacer / 2;
+  @include genesis-entity('primary');  // All spacing from theme engine
 }
 ```
+
+### 5. Raw CSS Properties (detect-raw-css.js)
+```scss
+// ❌ FAIL: Raw CSS properties violate Genesis Ontological system
+.my-component {
+  padding: 2rem;
+  background: #1a1a2e;
+  color: white;
+}
+
+// ✅ PASS: Only ontological mixins
+.my-component {
+  @include genesis-entity('primary');  // All styling from theme engine
+}
+```
+
+### 6. Code Style (stylelint)
+- Modern SCSS syntax
+- Consistent color notation
+- Proper selector patterns
+- No duplicate selectors
+- Consistent formatting
 
 ## Failsafe Mechanisms
 
@@ -171,25 +210,52 @@ If the CI check fails:
 ❌ Skip local testing before pushing
 ❌ Use magic values instead of theme tokens
 
-## Common Theme Dependencies
+## Genesis Ontological SCSS Design System
 
-### Bootstrap Mixins (from theme)
-- `@include make-container()`
-- `@include make-row()`
-- `@include button-size()`
-- `@include d-flex`, `@include flex-direction()`, etc.
+The theme provides six ontological categories for all styling. **All subdomain SCSS must use only these mixins - no raw CSS properties.**
 
-### Theme Variables (from theme)
-- `$spacer` - Base spacing unit
-- `$border-color` - Border color token
-- `$muted-color` - Muted text color
-- `$sp-1`, `$sp-2`, `$sp-3`, etc. - Spacing scale
+### 1. genesis-environment($logic) - Layout Organization
+- `'distributed'` - Bento grid layout (auto-fit, responsive)
+- `'focused'` - Single column for reading (max 70ch, centered)
+- `'associative'` - Network layout (flexbox wrap)
+- `'chronological'` - Time-linear vertical stream
+- `'manifest'` - High-density dashboard (12-column grid)
 
-### Bootstrap Utilities (from theme)
-- Typography: `@include h1`, `@include h2`, etc.
-- Text: `@include text-center`, `@include fw-bold`, etc.
-- Display: `@include d-flex`, `@include d-none`, etc.
-- Spacing: `@include mb-0`, `@include p-3`, etc.
+### 2. genesis-entity($nature) - Visual Presence
+- `'primary'` - Main content (glassmorphism, elevated)
+- `'secondary'` - Supporting content (lighter glass)
+- `'imperative'` - Urgent signal (pulsing neon)
+- `'latent'` - Inactive content (dimmed)
+- `'aggregate'` - Container styling
+- `'ancestral'` - Archived data (muted)
+
+### 3. genesis-cognition($intent) - Information Type
+- `'axiom'` - Headlines (2-3.5rem, bold)
+- `'discourse'` - Body prose (1-1.125rem, serif)
+- `'protocol'` - Code/technical (monospace)
+- `'gloss'` - Annotations (0.8-0.875rem, muted)
+- `'motive'` - Persuasive text (semibold, accent)
+- `'quantum'` - Tags/chips (tiny, uppercase)
+
+### 4. genesis-synapse($vector) - Interaction
+- `'navigate'` - Portal to different page
+- `'execute'` - Local state change (button)
+- `'inquiry'` - Request more data (search)
+- `'destructive'` - Permanent removal (danger)
+- `'social'` - Social sharing
+
+### 5. genesis-state($condition) - Temporal State
+- `'stable'` - Normal state
+- `'evolving'` - Being updated (progress)
+- `'deprecated'` - No longer verified
+- `'locked'` - Immutable (blur)
+- `'simulated'` - Projection (dashed)
+
+### 6. genesis-atmosphere($vibe) - Sensory Texture
+- `'neutral'` - Standard transparency
+- `'ethereal'` - Light-based (bright)
+- `'void'` - Deep-space (dark, immersive)
+- `'vibrant'` - High-energy (colorful)
 
 ## Troubleshooting
 
@@ -233,4 +299,4 @@ Error: Undefined variable.
 - [SCSS Instructions](.github/instructions/scss.instructions.md) - Detailed SCSS guidelines
 - [Theme Repository](https://github.com/ASISaga/theme.asisaga.com) - Shared theme source
 - [Sass Documentation](https://sass-lang.com/documentation) - Official Sass docs
-- [Bootstrap SCSS](https://getbootstrap.com/docs/5.3/customize/sass/) - Bootstrap customization guide
+- [Genesis Ontological System](https://github.com/ASISaga/theme.asisaga.com/blob/main/GENOME.md) - Ontology variants and evolution

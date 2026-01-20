@@ -130,7 +130,7 @@ docs/specifications/
 
 #### Coding Standards
 - **HTML**: Semantic HTML5, WCAG AA accessibility
-- **SCSS**: BEM methodology, mobile-first, WCAG AA colors
+- **SCSS**: Genesis Ontological SCSS Design System, zero raw CSS, WCAG AA colors
 - **JavaScript**: ES6+, no HTML-in-JS, XSS prevention
 - **API**: RESTful, Azure AD auth, error handling
 
@@ -201,7 +201,7 @@ These specifications should be updated when:
 ### External Documentation
 - [Jekyll Documentation](https://jekyllrb.com/docs/)
 - [Liquid Templating](https://shopify.github.io/liquid/)
-- [Bootstrap Documentation](https://getbootstrap.com/docs/)
+- [Genesis Ontological System](https://github.com/ASISaga/theme.asisaga.com/blob/main/GENOME.md)
 - [MDN Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - [OpenAPI Specification](https://swagger.io/specification/)
 

@@ -1,0 +1,63 @@
+name: Validate SCSS
+
+on:
+  pull_request:
+    paths:
+      - '_sass/**'
+      - 'assets/css/**'
+      - '*.scss'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.stylelintrc.json'
+      - 'lint-scss-mixins.js'
+      - 'compile-scss.js'
+      - 'detect-raw-css.js'
+  push:
+    branches:
+      - main
+    paths:
+      - '_sass/**'
+      - 'assets/css/**'
+      - '*.scss'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.stylelintrc.json'
+      - 'lint-scss-mixins.js'
+      - 'compile-scss.js'
+      - 'detect-raw-css.js'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run SCSS Dependency Validation
+        run: npm run lint:scss
+        continue-on-error: false
+      
+      - name: Run Stylelint Style Linting
+        run: npm run lint:scss:style
+        continue-on-error: false
+      
+      - name: Run Raw CSS Detection
+        run: npm run lint:scss:raw-css
+        continue-on-error: false
+      
+      - name: Run SCSS Compilation Test
+        run: npm run sass:compile
+        continue-on-error: false
+      
+      - name: All Validations Passed
+        run: echo "✅ All SCSS validation checks passed!"
