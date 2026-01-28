@@ -11,7 +11,8 @@
 
 .hero-section {
   @include genesis-entity('primary');           // Hero section
-  @include genesis-atmosphere('vibrant');       // High energy
+  @include genesis-atmosphere('viewport-aware'); // ⭐ NEW v2.2.0: Viewport-aware hero
+  @include genesis-atmosphere('spacious-mobile'); // ⭐ NEW v2.1.0: Touch-friendly spacing
   
   .hero-content {
     @include genesis-entity('primary');         // Hero content area
@@ -46,7 +47,7 @@
   }
   
   .hero-visual {
-    @include genesis-entity('secondary');       // Hero visual
+    @include genesis-entity('image-adaptive');  // ⭐ NEW v2.1.0: Responsive image
   }
 }
 
@@ -88,6 +89,7 @@
 
 .features-grid {
   @include genesis-environment('distributed');  // Feature grid layout
+  @include genesis-atmosphere('dense-desktop'); // ⭐ NEW v2.1.0: High density on desktop
   
   .feature {
     @include genesis-entity('primary');         // Feature card
@@ -248,7 +250,7 @@
       }
       
       .testimonial-avatar {
-        @include genesis-entity('primary');     // Author avatar
+        @include genesis-entity('image-adaptive');  // ⭐ NEW v2.1.0: Responsive image
       }
     }
   }
