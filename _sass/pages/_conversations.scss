@@ -18,6 +18,7 @@
 }
 
 .sidebar {
+  @include genesis-environment('navigation-sidebar'); // ⭐ NEW v2.3.0: Sidebar navigation
   @include genesis-entity('secondary');         // Sidebar container
 }
 
@@ -39,12 +40,12 @@
   }
   
   &.selected {
-    @include genesis-entity('primary');         // Selected state
+    @include genesis-state('active');           // ⭐ NEW v2.3.0: Active state
   }
 }
 
 .agent-avatar {
-  @include genesis-cognition('quantum');        // Avatar badge
+  @include genesis-entity('image-adaptive');    // ⭐ NEW v2.1.0: Responsive image
 }
 
 .agent-info {

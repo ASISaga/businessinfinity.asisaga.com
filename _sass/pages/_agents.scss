@@ -55,7 +55,7 @@
   }
   
   &.active {
-    @include genesis-entity('imperative');      // Selected state
+    @include genesis-state('active');           // ⭐ NEW v2.3.0: Active state
   }
 }
 
@@ -113,10 +113,11 @@
   }
   
   .chat-input {
+    @include genesis-environment('interaction-form'); // ⭐ NEW v2.2.0: Form layout
     @include genesis-entity('secondary');       // Input area
     
     .input-field {
-      @include genesis-cognition('discourse');  // Text input
+      @include genesis-synapse('input-primary'); // ⭐ NEW v2.2.0: Responsive input
     }
     
     .send-button {
