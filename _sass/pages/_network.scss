@@ -45,8 +45,7 @@
     @include genesis-entity('primary');         // Network node
     
     &.active {
-      @include genesis-entity('imperative');    // Active node
-      @include genesis-state('stable');         // Active state
+      @include genesis-state('active');         // ⭐ NEW v2.3.0: Active state
     }
     
     &.inactive {
@@ -85,6 +84,7 @@
 }
 
 .network-sidebar {
+  @include genesis-environment('navigation-sidebar'); // ⭐ NEW v2.3.0: Sidebar navigation
   @include genesis-entity('secondary');         // Sidebar panel
   
   .sidebar-header {
@@ -173,7 +173,7 @@
     @include genesis-synapse('execute');        // Tool action
     
     &.active {
-      @include genesis-entity('imperative');    // Active tool
+      @include genesis-state('active');         // ⭐ NEW v2.3.0: Active tool state
     }
   }
   

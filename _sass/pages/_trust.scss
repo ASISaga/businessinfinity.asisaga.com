@@ -26,8 +26,8 @@
 }
 
 .trust-nav {
+  @include genesis-environment('navigation-sidebar'); // ⭐ NEW v2.3.0: Sidebar navigation
   @include genesis-entity('secondary');         // Navigation sidebar
-  @include genesis-environment('chronological'); // Vertical nav
   
   .nav-title {
     @include genesis-cognition('motive');       // Nav title
@@ -37,10 +37,10 @@
     @include genesis-environment('chronological'); // Nav list
     
     .nav-item {
-      @include genesis-synapse('navigate');     // Nav link
+      @include genesis-synapse('anchor');       // ⭐ NEW v2.3.0: In-page navigation
       
       &.active {
-        @include genesis-entity('imperative');  // Active nav item
+        @include genesis-state('active');       // ⭐ NEW v2.3.0: Active nav state
       }
     }
   }
@@ -261,6 +261,7 @@
   }
   
   .contact-form {
+    @include genesis-environment('interaction-form'); // ⭐ NEW v2.2.0: Form layout
     @include genesis-entity('primary');         // Contact form
     
     .form-group {
@@ -271,7 +272,7 @@
       }
       
       input, textarea {
-        @include genesis-cognition('discourse'); // Input field
+        @include genesis-synapse('input-primary'); // ⭐ NEW v2.2.0: Responsive form input
       }
     }
     

@@ -7,7 +7,8 @@
 
 .enterprise-hero {
   @include genesis-entity('primary');           // Hero section
-  @include genesis-atmosphere('ethereal');      // Light, professional
+  @include genesis-atmosphere('viewport-aware'); // ⭐ NEW v2.2.0: Viewport-aware hero
+  @include genesis-atmosphere('spacious-mobile'); // ⭐ NEW v2.1.0: Touch-friendly spacing
   
   .hero-content {
     @include genesis-entity('primary');         // Hero content area
@@ -52,6 +53,7 @@
 
 .features-section {
   @include genesis-environment('distributed');  // Features grid
+  @include genesis-atmosphere('dense-desktop'); // ⭐ NEW v2.1.0: High density on desktop
   
   .section-title {
     @include genesis-cognition('axiom');        // Section heading

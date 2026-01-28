@@ -10,7 +10,7 @@
 
 .hero {
   @include genesis-entity('primary');           // Hero section
-  @include genesis-atmosphere('vibrant');       // Energetic startup energy
+  @include genesis-atmosphere('viewport-aware'); // ⭐ NEW v2.2.0: Viewport-aware hero
   
   .hero-content {
     @include genesis-entity('primary');         // Hero content area
@@ -45,12 +45,13 @@
   }
   
   .hero-image {
-    @include genesis-entity('secondary');       // Hero illustration
+    @include genesis-entity('image-adaptive');  // ⭐ NEW v2.1.0: Responsive image
   }
 }
 
 .benefits {
   @include genesis-environment('distributed');  // Benefits grid
+  @include genesis-atmosphere('dense-desktop'); // ⭐ NEW v2.1.0: High density on desktop
   
   .benefits-header {
     @include genesis-entity('primary');         // Benefits header
@@ -155,7 +156,7 @@
       }
       
       .testimonial-avatar {
-        @include genesis-entity('primary');     // Author avatar
+        @include genesis-entity('image-adaptive');  // ⭐ NEW v2.1.0: Responsive image
       }
     }
   }
