@@ -1,8 +1,8 @@
 // Boardroom Members Sidebar - Genesis Ontological SCSS
 
 .boardroom-members-sidebar {
+  @include genesis-environment('navigation-sidebar'); // ⭐ NEW v2.3.0: Sidebar navigation
   @include genesis-entity('secondary');         // Sidebar container
-  @include genesis-environment('chronological'); // Member list layout
 }
 
 .boardroom-members-header {
@@ -22,10 +22,11 @@
 }
 
 .boardroom-members-search {
+  @include genesis-environment('interaction-form'); // ⭐ NEW v2.2.0: Form layout
   @include genesis-entity('secondary');         // Search area
   
   .search-input {
-    @include genesis-cognition('discourse');    // Search input
+    @include genesis-synapse('input-primary');  // ⭐ NEW v2.2.0: Responsive form input
   }
   
   .search-icon {
@@ -47,7 +48,7 @@
   }
   
   &.active {
-    @include genesis-entity('imperative');      // Selected member
+    @include genesis-state('active');           // ⭐ NEW v2.3.0: Active member state
   }
   
   &.offline {
@@ -125,6 +126,7 @@
 }
 
 .boardroom-members-footer {
+  @include genesis-environment('navigation-footer'); // ⭐ NEW v2.3.0: Footer navigation
   @include genesis-entity('secondary');         // Footer area
   
   .footer-actions {

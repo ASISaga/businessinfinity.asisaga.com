@@ -25,14 +25,14 @@
 }
 
 .features-navigation {
-  @include genesis-environment('associative');  // Tab navigation
+  @include genesis-environment('navigation-tabs'); // ⭐ NEW v2.3.0: Tab navigation
   @include genesis-entity('secondary');         // Nav container
   
   .nav-tab {
-    @include genesis-synapse('navigate');       // Tab button
+    @include genesis-synapse('tab');            // ⭐ NEW v2.3.0: Tab switcher
     
     &.active {
-      @include genesis-entity('imperative');    // Active tab
+      @include genesis-state('active');         // ⭐ NEW v2.3.0: Active tab state
     }
     
     .tab-icon {
@@ -120,6 +120,7 @@
 }
 
 .features-categories {
+  @include genesis-environment('navigation-sidebar'); // ⭐ NEW v2.3.0: Sidebar navigation
   @include genesis-entity('secondary');         // Categories sidebar
   
   .category-title {
@@ -130,10 +131,10 @@
     @include genesis-environment('chronological'); // Category list
     
     .category-item {
-      @include genesis-synapse('navigate');     // Category link
+      @include genesis-synapse('anchor');       // ⭐ NEW v2.3.0: Anchor navigation
       
       &.active {
-        @include genesis-entity('imperative');  // Active category
+        @include genesis-state('active');       // ⭐ NEW v2.3.0: Active category
       }
       
       .category-count {

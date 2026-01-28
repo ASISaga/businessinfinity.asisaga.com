@@ -38,15 +38,14 @@
     @include genesis-environment('associative'); // Step dots
     
     .step-dot {
-      @include genesis-entity('secondary');     // Inactive step
+      @include genesis-synapse('step');         // ⭐ NEW v2.3.0: Multi-step process navigation
       
       &.active {
-        @include genesis-entity('imperative');  // Active step
+        @include genesis-state('active');       // ⭐ NEW v2.3.0: Active step state
       }
       
       &.completed {
         @include genesis-state('stable');       // Completed step
-        @include genesis-entity('primary');     // Completed styling
       }
     }
   }
@@ -73,6 +72,7 @@
   }
   
   .step-form {
+    @include genesis-environment('interaction-form'); // ⭐ NEW v2.2.0: Form layout
     @include genesis-entity('secondary');       // Form area
     
     .form-group {
@@ -83,7 +83,7 @@
       }
       
       input, select, textarea {
-        @include genesis-cognition('discourse'); // Input field
+        @include genesis-synapse('input-primary'); // ⭐ NEW v2.2.0: Responsive form input
       }
       
       .field-help {
@@ -150,6 +150,7 @@
 }
 
 .onboarding-sidebar {
+  @include genesis-environment('navigation-sidebar'); // ⭐ NEW v2.3.0: Sidebar navigation
   @include genesis-entity('secondary');         // Sidebar panel
   
   .sidebar-title {
@@ -160,10 +161,10 @@
     @include genesis-environment('chronological'); // Steps list
     
     .sidebar-step {
-      @include genesis-entity('secondary');     // Step item
+      @include genesis-synapse('step');         // ⭐ NEW v2.3.0: Step indicator
       
       &.active {
-        @include genesis-entity('imperative');  // Active step
+        @include genesis-state('active');       // ⭐ NEW v2.3.0: Active step state
       }
       
       &.completed {
