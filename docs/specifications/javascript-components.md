@@ -1,4 +1,20 @@
-# JavaScript & Web Components Specification
+---
+layout: docs
+title: JavaScript & Web Components Specification
+description: JavaScript modules, web components, and API integration patterns
+search: true
+breadcrumbs:
+  - title: Docs
+    url: /docs/
+  - title: Specifications
+    url: /docs/specifications/
+prev:
+  title: SCSS & Styling
+  url: /docs/specifications/scss-styling
+next:
+  title: API Integration
+  url: /docs/specifications/api-integration
+---
 
 ## Overview
 

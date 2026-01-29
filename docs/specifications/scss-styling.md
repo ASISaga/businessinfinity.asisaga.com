@@ -1,4 +1,20 @@
-# SCSS & Styling Specification
+---
+layout: docs
+title: SCSS & Styling Specification
+description: SCSS architecture, Genesis Ontological Design System, and styling conventions
+search: true
+breadcrumbs:
+  - title: Docs
+    url: /docs/
+  - title: Specifications
+    url: /docs/specifications/
+prev:
+  title: HTML & Templates
+  url: /docs/specifications/html-templates
+next:
+  title: JavaScript & Components
+  url: /docs/specifications/javascript-components
+---
 
 ## Overview
 

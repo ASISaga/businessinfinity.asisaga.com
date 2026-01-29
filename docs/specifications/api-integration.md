@@ -1,4 +1,20 @@
-# API Integration Specification
+---
+layout: docs
+title: API Integration Specification
+description: Backend API integration and communication patterns
+search: true
+breadcrumbs:
+  - title: Docs
+    url: /docs/
+  - title: Specifications
+    url: /docs/specifications/
+prev:
+  title: JavaScript & Components
+  url: /docs/specifications/javascript-components
+next:
+  title: Data Structures
+  url: /docs/specifications/data-structures
+---
 
 ## Overview
 

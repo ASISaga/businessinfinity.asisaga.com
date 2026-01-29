@@ -1,4 +1,20 @@
-# HTML & Liquid Templates Specification
+---
+layout: docs
+title: HTML & Liquid Templates Specification
+description: HTML structure, Liquid templating, and accessibility requirements
+search: true
+breadcrumbs:
+  - title: Docs
+    url: /docs/
+  - title: Specifications
+    url: /docs/specifications/
+prev:
+  title: Architecture
+  url: /docs/specifications/architecture
+next:
+  title: SCSS & Styling
+  url: /docs/specifications/scss-styling
+---
 
 ## Overview
 

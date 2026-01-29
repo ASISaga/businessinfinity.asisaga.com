@@ -1,4 +1,20 @@
-# Data Structures Specification
+---
+layout: docs
+title: Data Structures Specification
+description: Data formats, schemas, and state management for Business Infinity
+search: true
+breadcrumbs:
+  - title: Docs
+    url: /docs/
+  - title: Specifications
+    url: /docs/specifications/
+prev:
+  title: API Integration
+  url: /docs/specifications/api-integration
+next:
+  title: Back to Index
+  url: /docs/specifications/
+---
 
 ## Overview
 
