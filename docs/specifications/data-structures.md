@@ -10,7 +10,7 @@ breadcrumbs:
     url: /docs/specifications/
 prev:
   title: API Integration
-  url: /docs/specifications/api-integration.html
+  url: /docs/specifications/api-integration
 next:
   title: Back to Index
   url: /docs/specifications/

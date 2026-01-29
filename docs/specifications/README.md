@@ -5,17 +5,17 @@ description: Detailed technical specifications for the Business Infinity platfor
 search: true
 nav_items:
   - title: Architecture
-    url: /docs/specifications/architecture.html
+    url: /docs/specifications/architecture
   - title: HTML & Templates
-    url: /docs/specifications/html-templates.html
+    url: /docs/specifications/html-templates
   - title: SCSS & Styling
-    url: /docs/specifications/scss-styling.html
+    url: /docs/specifications/scss-styling
   - title: JavaScript & Components
-    url: /docs/specifications/javascript-components.html
+    url: /docs/specifications/javascript-components
   - title: API Integration
-    url: /docs/specifications/api-integration.html
+    url: /docs/specifications/api-integration
   - title: Data Structures
-    url: /docs/specifications/data-structures.html
+    url: /docs/specifications/data-structures
 ---
 
 This directory contains detailed technical specifications for the Business Infinity platform. Each specification document provides comprehensive information about a specific aspect of the architecture, implementation, and best practices.

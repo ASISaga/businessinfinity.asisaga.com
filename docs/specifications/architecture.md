@@ -10,7 +10,7 @@ breadcrumbs:
     url: /docs/specifications/
 next:
   title: HTML & Templates
-  url: /docs/specifications/html-templates.html
+  url: /docs/specifications/html-templates
 ---
 
 ## Overview

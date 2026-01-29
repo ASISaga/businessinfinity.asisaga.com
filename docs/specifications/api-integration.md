@@ -10,10 +10,10 @@ breadcrumbs:
     url: /docs/specifications/
 prev:
   title: JavaScript & Components
-  url: /docs/specifications/javascript-components.html
+  url: /docs/specifications/javascript-components
 next:
   title: Data Structures
-  url: /docs/specifications/data-structures.html
+  url: /docs/specifications/data-structures
 ---
 
 ## Overview

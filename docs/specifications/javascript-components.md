@@ -10,10 +10,10 @@ breadcrumbs:
     url: /docs/specifications/
 prev:
   title: SCSS & Styling
-  url: /docs/specifications/scss-styling.html
+  url: /docs/specifications/scss-styling
 next:
   title: API Integration
-  url: /docs/specifications/api-integration.html
+  url: /docs/specifications/api-integration
 ---
 
 ## Overview

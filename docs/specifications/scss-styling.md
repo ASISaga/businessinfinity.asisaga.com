@@ -10,10 +10,10 @@ breadcrumbs:
     url: /docs/specifications/
 prev:
   title: HTML & Templates
-  url: /docs/specifications/html-templates.html
+  url: /docs/specifications/html-templates
 next:
   title: JavaScript & Components
-  url: /docs/specifications/javascript-components.html
+  url: /docs/specifications/javascript-components
 ---
 
 ## Overview

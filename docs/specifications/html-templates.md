@@ -10,10 +10,10 @@ breadcrumbs:
     url: /docs/specifications/
 prev:
   title: Architecture
-  url: /docs/specifications/architecture.html
+  url: /docs/specifications/architecture
 next:
   title: SCSS & Styling
-  url: /docs/specifications/scss-styling.html
+  url: /docs/specifications/scss-styling
 ---
 
 ## Overview
