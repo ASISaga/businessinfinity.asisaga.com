@@ -1,4 +1,17 @@
-# Architecture Specification
+---
+layout: docs
+title: Architecture Specification
+description: System architecture, technology stack, and deployment overview
+search: true
+breadcrumbs:
+  - title: Docs
+    url: /docs/
+  - title: Specifications
+    url: /docs/specifications/
+next:
+  title: HTML & Templates
+  url: /docs/specifications/html-templates.html
+---
 
 ## Overview
 

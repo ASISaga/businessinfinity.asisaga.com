@@ -1,4 +1,22 @@
-# Technical Specifications
+---
+layout: docs
+title: Technical Specifications
+description: Detailed technical specifications for the Business Infinity platform
+search: true
+nav_items:
+  - title: Architecture
+    url: /docs/specifications/architecture.html
+  - title: HTML & Templates
+    url: /docs/specifications/html-templates.html
+  - title: SCSS & Styling
+    url: /docs/specifications/scss-styling.html
+  - title: JavaScript & Components
+    url: /docs/specifications/javascript-components.html
+  - title: API Integration
+    url: /docs/specifications/api-integration.html
+  - title: Data Structures
+    url: /docs/specifications/data-structures.html
+---
 
 This directory contains detailed technical specifications for the Business Infinity platform. Each specification document provides comprehensive information about a specific aspect of the architecture, implementation, and best practices.
 
