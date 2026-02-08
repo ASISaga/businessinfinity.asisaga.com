@@ -1,16 +1,26 @@
 ---
-layout: app
-class: sacred-foundation
-title: "Website | Business Infinity"
-description: "Business Infinity - The Invitation: Transform your business from founder-dependent to self-evolving
-enterprise"
+layout: landing
+title: "Business Infinity | The Invitation"
+description: "Transform your business from founder-dependent to self-evolving enterprise"
+hero:
+  title: "Business Infinity"
+  subtitle: "Transform your business from founder-dependent to self-evolving enterprise"
+  cta:
+    url: "/about/"
+    text: "Learn More"
+final_cta:
+  title: "Ready to Begin?"
+  description: "The future of business is already running — the invitation is to join it."
+  text: "Get Started"
+  url: "/boardroom/"
 ---
 
-{% include website/nav.html %}
-{% include website/hero.html %}
-{% include website/pain_points.html %}
-{% include website/default_future.html %}
-{% include website/doorway.html %}
-{% include website/contact_modal.html %}
+{% include section-header.html
+  title="The Challenge"
+  description="Every founder hits the ceiling where their genius becomes the bottleneck."
+%}
 
-<script src="/assets/js/website/business-infinity.js"></script>
+{% include feature-grid.html
+  title="The Solution"
+  items=site.data.business_infinity.features.items
+%}
