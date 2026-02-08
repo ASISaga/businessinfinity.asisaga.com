@@ -59,7 +59,9 @@ This is the main boardroom interface. Access via:
 Requires Jekyll includes:
 - `_includes/boardroom/toggle-strip.html`
 - `_includes/boardroom/members-sidebar.html`
-- `_includes/boardroom/chat-area.html`
+- `_includes/chatroom/header.html` (from remote theme)
+- `_includes/chatroom/input.html` (from remote theme)
+- `_includes/boardroom/chat-area/empty-state.html`
 
 Layout:
 - `_layouts/chatroom.html` (from remote theme)
