@@ -1,25 +1,30 @@
 ---
-layout: default
+layout: landing
 title: Business Infinity - AI-Powered Business Platform
-description: Transform your business with AI-powered insights, automation, and intelligent decision-making tools. 
+description: Transform your business with AI-powered insights, automation, and intelligent decision-making tools.
+hero:
+  title: Business Infinity - AI-Powered Business Platform
+  subtitle: Transform your business with AI-powered insights, automation, and intelligent decision-making tools.
+  cta:
+    url: "#features"
+    text: Explore Features
+final_cta:
+  title: Ready to Transform Your Business?
+  description: Get started with Business Infinity today and experience the power of AI in business management.
+  text: Contact Us
+  url: linkedin
 ---
 
-{% assign product = site.data.business_infinity %}
-{% assign product_id = "business_infinity" %}
-
-<!-- 
-Business Infinity product page 
-Enhanced with proper semantic structure, accessibility, and layout containment
--->
-
-{% include index/hero.html %}
-
-{% include index/features.html %}
+{% include feature-grid.html
+  title=site.data.business_infinity.features.section_title
+  items=site.data.business_infinity.features.items
+%}
 
 {% include index/quick-links.html %}
 
 {% include index/use_cases.html %}
 
-{% include index/testimonials.html %}
-
-{% include index/cta.html %}
+{% include testimonial.html
+  title=site.data.business_infinity.testimonials.section_title
+  testimonials=site.data.business_infinity.testimonials.items
+%}

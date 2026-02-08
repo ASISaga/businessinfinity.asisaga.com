@@ -1,7 +1,5 @@
-# theme: jekyll-theme-minimal
-title: ASI Saga
+title: Business Infinity
 description: Genesis of Artificial Superintelligence
-ignore_theme_config: true
 
 sass:
   load_paths:
@@ -15,17 +13,24 @@ plugins:
 
 remote_theme: ASISaga/theme.asisaga.com
 
-# Exclude specific directories and files from being processed by Jekyll
 exclude:
   - docs/
   - LICENSE
   - README.md
   - website_structure.json
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - lint-scss-mixins.js
+  - compile-scss.js
+  - detect-raw-css.js
+  - automate-businessinfinity-debug.js
+  - playwright.config.js
+  - .stylelintrc.json
 
-# The defaults section allows you to set default values for certain variables
-  # The scope key defines the default values for specific types of files
+defaults:
   - scope:
-      path: "" # Applies to all files in your site
-      type: "html" # Targets only HTML files
-    values: # Default values for the specified scope
-      layout: default # The name of the layout you want to apply
+      path: ""
+      type: "pages"
+    values:
+      layout: default
