@@ -10,11 +10,13 @@ This directory contains the main boardroom interface using Jekyll layouts.
 ## Implementation
 
 This version uses Jekyll includes and layouts:
-- Layout: `app`
+- Layout: `chatroom` (from theme)
 - Includes:
   - `boardroom/toggle-strip.html` - Control strip
   - `boardroom/members-sidebar.html` - Member list
-  - `boardroom/chat-area.html` - Chat interface
+  - `chatroom/header.html` - Chat header (from theme)
+  - `chatroom/input.html` - Chat input area (from theme)
+  - `boardroom/chat-area/empty-state.html` - Empty state message
 
 ### Features
 - Loading overlay for connection state
@@ -57,10 +59,12 @@ This is the main boardroom interface. Access via:
 Requires Jekyll includes:
 - `_includes/boardroom/toggle-strip.html`
 - `_includes/boardroom/members-sidebar.html`
-- `_includes/boardroom/chat-area.html`
+- `_includes/chatroom/header.html` (from remote theme)
+- `_includes/chatroom/input.html` (from remote theme)
+- `_includes/boardroom/chat-area/empty-state.html`
 
 Layout:
-- `_layouts/app.html`
+- `_layouts/chatroom.html` (from remote theme)
 
 ## Last Updated
-2025-01-10
+2026-02-08 - Migrated from `app` layout to `chatroom` layout
