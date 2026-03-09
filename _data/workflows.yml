@@ -1,0 +1,327 @@
+# User-facing Business Workflows
+# Source: assets/js/boardroom/workflow.js, assets/js/workflow-manager.js
+# Backend: .github/specs/workflows.md, .github/specs/enterprise-capabilities.md
+
+# ----- Boardroom UI workflows -----
+# Interactive workflows triggered by users from the boardroom panel.
+# Each workflow collects parameters via a form before execution.
+boardroom_workflows:
+  - id: product_launch
+    title: Product Launch
+    description: "Market analysis → Product strategy → Technical implementation → Financial planning → Launch"
+    category: growth
+    params:
+      - name: product_name
+        label: Product Name
+        type: text
+        required: true
+      - name: target_market
+        label: Target Market
+        type: text
+        required: true
+      - name: launch_date
+        label: Launch Date
+        type: text
+        placeholder: "2025-Q2"
+        required: false
+
+  - id: funding_round
+    title: Funding Round
+    description: "Financial assessment → Investor outreach → Pitch preparation → Due diligence → Closing"
+    category: finance
+    params:
+      - name: round_type
+        label: Round Type
+        type: select
+        options:
+          - Seed
+          - Series A
+          - Series B
+          - Series C
+        required: true
+      - name: target_amount
+        label: Target Amount
+        type: number
+        required: true
+      - name: valuation
+        label: Valuation
+        type: number
+        required: false
+
+  - id: market_analysis
+    title: Market Analysis
+    description: "Market research → Competitive analysis → Opportunity assessment"
+    category: strategy
+    params:
+      - name: market_segment
+        label: Market Segment
+        type: text
+        required: true
+      - name: geography
+        label: Geography
+        type: text
+        required: true
+      - name: timeframe
+        label: Timeframe
+        type: text
+        placeholder: "2025"
+        required: false
+
+# ----- Agent-led operational workflows -----
+# Executed by the WorkflowManager web component via /api/workflows/{id}.
+# Each workflow is owned by a primary C-suite agent.
+agent_workflows:
+  - id: strategic_planning
+    title: Strategic Planning
+    description: "C-Suite collaborative planning workflow"
+    category: strategy
+    agents:
+      - ceo
+      - cfo
+      - cmo
+      - coo
+      - cto
+      - cso
+
+  - id: market_analysis
+    title: Market Analysis
+    description: "CMO-led market research workflow"
+    category: marketing
+    agents:
+      - cmo
+
+  - id: financial_review
+    title: Financial Review
+    description: "CFO quarterly review workflow"
+    category: finance
+    agents:
+      - cfo
+
+  - id: tech_assessment
+    title: Tech Assessment
+    description: "CTO technology evaluation workflow"
+    category: technology
+    agents:
+      - cto
+
+  - id: hr_onboarding
+    title: HR Onboarding
+    description: "CHRO employee onboarding workflow"
+    category: operations
+    agents:
+      - coo
+
+  - id: security_audit
+    title: Security Audit
+    description: "CSO security review workflow"
+    category: security
+    agents:
+      - cso
+
+  - id: operations_review
+    title: Operations Review
+    description: "COO operational efficiency workflow"
+    category: operations
+    agents:
+      - coo
+
+# ----- Backend orchestration workflows -----
+# Purpose-driven perpetual orchestrations started via Azure Functions.
+# Source: .github/specs/workflows.md
+orchestration_workflows:
+  - id: strategic-review
+    title: Strategic Review
+    description: "Perpetual strategic alignment, review, and improvement across the organisation"
+    purpose: "Drive strategic review and continuous organisational improvement"
+    purpose_scope: "C-suite strategic alignment and cross-functional coordination"
+    variant: perpetual
+    category: strategy
+    agents:
+      - ceo
+      - cfo
+      - cmo
+      - coo
+      - cto
+      - cso
+    request_example:
+      quarter: "Q1-2026"
+      focus_areas:
+        - revenue
+        - growth
+
+  - id: market-analysis
+    title: Market Analysis
+    description: "Continuous market monitoring, competitor analysis, and opportunity identification led by the CMO"
+    purpose: "Continuously analyse markets and surface competitive insights"
+    purpose_scope: "Market intelligence, competitor monitoring, and opportunity identification"
+    variant: hierarchical
+    category: marketing
+    agents:
+      - ceo
+      - cmo
+    request_example:
+      market: "EU SaaS"
+      competitors:
+        - AcmeCorp
+        - Globex
+
+  - id: budget-approval
+    title: Budget Approval
+    description: "Perpetual budget governance, spend monitoring, and financial decision oversight"
+    purpose: "Govern budget allocation and ensure fiscal responsibility"
+    purpose_scope: "Financial governance, budget oversight, and resource allocation"
+    variant: sequential
+    category: finance
+    agents:
+      - ceo
+      - cfo
+    request_example:
+      department: Marketing
+      amount: 500000
+      justification: "Q2 campaign"
+
+# ----- Enterprise capability workflows -----
+# Thin-delegate workflows for knowledge, risk, decisions, covenants, and MCP.
+# Source: .github/specs/enterprise-capabilities.md
+enterprise_workflows:
+  - id: knowledge-search
+    title: Knowledge Search
+    description: "Full-text search of the AOS knowledge base"
+    category: knowledge
+    params:
+      - name: query
+        label: Search Query
+        type: text
+        required: true
+      - name: doc_type
+        label: Document Type
+        type: text
+        required: false
+      - name: limit
+        label: Result Limit
+        type: number
+        default: 10
+        required: false
+
+  - id: risk-register
+    title: Risk Register
+    description: "Register a new organisational risk in the AOS risk registry"
+    category: governance
+    params:
+      - name: title
+        label: Risk Title
+        type: text
+        required: true
+      - name: description
+        label: Description
+        type: textarea
+        required: true
+      - name: category
+        label: Category
+        type: select
+        options:
+          - operational
+          - financial
+          - strategic
+          - compliance
+          - technology
+        required: true
+      - name: owner
+        label: Risk Owner (Agent ID)
+        type: text
+        required: true
+
+  - id: risk-assess
+    title: Risk Assessment
+    description: "Update likelihood and impact scores for a registered risk"
+    category: governance
+    params:
+      - name: risk_id
+        label: Risk ID
+        type: text
+        required: true
+      - name: likelihood
+        label: Likelihood (0.0–1.0)
+        type: number
+        required: true
+      - name: impact
+        label: Impact (0.0–1.0)
+        type: number
+        required: true
+
+  - id: log-decision
+    title: Log Decision
+    description: "Record a boardroom decision in the immutable AOS audit trail"
+    category: governance
+    params:
+      - name: title
+        label: Decision Title
+        type: text
+        required: true
+      - name: rationale
+        label: Rationale
+        type: textarea
+        required: true
+      - name: agent_id
+        label: Deciding Agent ID
+        type: text
+        required: true
+
+  - id: covenant-create
+    title: Create Covenant
+    description: "Create a formal business covenant between designated parties"
+    category: governance
+    params:
+      - name: title
+        label: Covenant Title
+        type: text
+        required: true
+      - name: parties
+        label: Parties (comma-separated agent IDs)
+        type: text
+        required: true
+
+  - id: ask-agent
+    title: Ask Agent
+    description: "Send a synchronous question to a single named agent and receive an answer"
+    category: interaction
+    params:
+      - name: agent_id
+        label: Agent ID
+        type: text
+        required: true
+      - name: message
+        label: Question
+        type: textarea
+        required: true
+      - name: context
+        label: Context (optional JSON)
+        type: textarea
+        required: false
+
+  - id: mcp-orchestration
+    title: MCP Orchestration
+    description: "Start a C-suite orchestration with MCP server access for ERP and CRM tools"
+    category: integration
+    agents:
+      - ceo
+      - cmo
+    mcp_servers:
+      ceo:
+        - erp
+      cmo:
+        - crm
+        - analytics
+    params:
+      - name: purpose
+        label: Orchestration Purpose
+        type: text
+        required: true
+      - name: erp_api_key
+        label: ERP API Key
+        type: password
+        required: true
+      - name: crm_token
+        label: CRM Token
+        type: password
+        required: true
