@@ -1,6 +1,6 @@
 # User-facing Business Workflows
 # Source: assets/js/boardroom/workflow.js, assets/js/workflow-manager.js
-# Backend: .github/specs/workflows.md, .github/specs/enterprise-capabilities.md
+# Backend: ASISaga/BusinessInfinity src/business_infinity/workflows/
 
 # ----- Boardroom UI workflows -----
 # Interactive workflows triggered by users from the boardroom panel.
@@ -127,8 +127,29 @@ agent_workflows:
 
 # ----- Backend orchestration workflows -----
 # Purpose-driven perpetual orchestrations started via Azure Functions.
-# Source: .github/specs/workflows.md
+# Source: src/business_infinity/workflows/orchestrations.py
 orchestration_workflows:
+  - id: boardroom-session
+    title: Boardroom Session
+    description: "Primary perpetual autonomous boardroom — all C-suite agents collaborate on strategic decisions, operational reviews, and governance indefinitely"
+    purpose: "Run autonomous boardroom with perpetual strategic governance and decision-making"
+    purpose_scope: "Full C-suite collaboration, strategic planning, operational reviews, and covenant compliance"
+    variant: perpetual
+    category: boardroom
+    agents:
+      - ceo
+      - cfo
+      - cmo
+      - coo
+      - cto
+      - cso
+      - chro
+    request_example:
+      agenda:
+        - "Q1 review"
+        - "hiring plan"
+      mode: autonomous
+
   - id: strategic-review
     title: Strategic Review
     description: "Perpetual strategic alignment, review, and improvement across the organisation"
@@ -180,9 +201,177 @@ orchestration_workflows:
       amount: 500000
       justification: "Q2 campaign"
 
+  - id: risk-assessment
+    title: Risk Assessment
+    description: "Perpetual risk governance — continuously monitors, assesses, and mitigates enterprise risks"
+    purpose: "Continuously monitor, assess, and mitigate enterprise risks"
+    purpose_scope: "Risk identification, assessment, mitigation, and governance across all domains"
+    variant: perpetual
+    category: governance
+    agents:
+      - cso
+      - cto
+      - coo
+    request_example:
+      risk_domain: cybersecurity
+      risk_tolerance: moderate
+
+  - id: covenant-compliance
+    title: Covenant Compliance
+    description: "Perpetual covenant compliance monitoring — ensures all operations comply with governance standards"
+    purpose: "Ensure continuous covenant compliance and governance adherence"
+    purpose_scope: "Compliance monitoring, audit trail validation, and covenant enforcement"
+    variant: perpetual
+    category: governance
+    agents:
+      - ceo
+      - coo
+      - cso
+    request_example:
+      compliance_standard: BIC
+      scope: global
+
+  - id: talent-management
+    title: Talent Management
+    description: "Perpetual talent strategy — manages organisational development and HR governance"
+    purpose: "Drive talent strategy, organizational development, and workforce optimization"
+    purpose_scope: "Talent acquisition, retention, development, culture, and HR governance"
+    variant: perpetual
+    category: operations
+    agents:
+      - chro
+      - ceo
+      - coo
+    request_example:
+      focus: retention
+      departments:
+        - engineering
+        - marketing
+
+  - id: technology-review
+    title: Technology Review
+    description: "Perpetual technology review — evaluates technology strategy and engineering excellence"
+    purpose: "Drive technology strategy, architecture excellence, and innovation"
+    purpose_scope: "Technology roadmap, architecture review, engineering practices, and innovation pipeline"
+    variant: perpetual
+    category: technology
+    agents:
+      - cto
+      - ceo
+      - cso
+    request_example:
+      focus_areas:
+        - cloud
+        - ai
+        - security
+      review_scope: quarterly
+
+# ----- Conversation workflows -----
+# Boardroom conversation and A2A messaging workflows.
+# Source: src/business_infinity/workflows/conversations.py
+conversation_workflows:
+  - id: list-conversations
+    title: List Conversations
+    description: "List boardroom conversations with optional filtering by champion and status"
+    category: conversations
+    params:
+      - name: champion
+        label: Champion Agent
+        type: text
+        required: false
+      - name: status
+        label: Status
+        type: select
+        options:
+          - open
+          - closed
+        required: false
+      - name: limit
+        label: Limit
+        type: number
+        default: 50
+        required: false
+
+  - id: create-conversation
+    title: Create Conversation
+    description: "Create and start a new boardroom conversation via AOS orchestration"
+    category: conversations
+    params:
+      - name: conversation_type
+        label: Conversation Type
+        type: text
+        required: true
+      - name: champion
+        label: Champion Agent
+        type: text
+        required: true
+      - name: title
+        label: Title
+        type: text
+        required: true
+      - name: content
+        label: Content
+        type: textarea
+        required: true
+
+  - id: sign-conversation
+    title: Sign Conversation
+    description: "Sign a boardroom conversation with a signer record"
+    category: conversations
+    params:
+      - name: conversation_id
+        label: Conversation ID
+        type: text
+        required: true
+      - name: signer_role
+        label: Signer Role
+        type: text
+        required: true
+      - name: signer_name
+        label: Signer Name
+        type: text
+        required: true
+
+  - id: create-a2a-message
+    title: Agent-to-Agent Message
+    description: "Initiate agent-to-agent communication via AOS orchestration"
+    category: conversations
+    params:
+      - name: from_agent
+        label: From Agent
+        type: text
+        required: true
+      - name: to_agent
+        label: To Agent
+        type: text
+        required: true
+      - name: conversation_type
+        label: Conversation Type
+        type: text
+        required: true
+      - name: message
+        label: Message
+        type: textarea
+        required: true
+
+  - id: get-conversation-events
+    title: Conversation Events
+    description: "Get recent boardroom conversation events for polling updates"
+    category: conversations
+    params:
+      - name: since
+        label: Since (ISO 8601)
+        type: text
+        required: false
+      - name: limit
+        label: Limit
+        type: number
+        default: 100
+        required: false
+
 # ----- Enterprise capability workflows -----
 # Thin-delegate workflows for knowledge, risk, decisions, covenants, and MCP.
-# Source: .github/specs/enterprise-capabilities.md
+# Source: src/business_infinity/workflows/enterprise.py
 enterprise_workflows:
   - id: knowledge-search
     title: Knowledge Search
@@ -249,6 +438,26 @@ enterprise_workflows:
         type: number
         required: true
 
+  - id: risk-heatmap
+    title: Risk Heatmap
+    description: "Get risk heatmap for the boardroom by category"
+    category: governance
+    params:
+      - name: category
+        label: Category
+        type: text
+        required: false
+
+  - id: risk-summary
+    title: Risk Summary
+    description: "Get aggregate risk summary by category"
+    category: governance
+    params:
+      - name: category
+        label: Category
+        type: text
+        required: false
+
   - id: log-decision
     title: Log Decision
     description: "Record a boardroom decision in the immutable AOS audit trail"
@@ -266,6 +475,25 @@ enterprise_workflows:
         label: Deciding Agent ID
         type: text
         required: true
+
+  - id: compliance-report
+    title: Compliance Report
+    description: "Generate a compliance report for regulatory submissions"
+    category: governance
+    params:
+      - name: start_time
+        label: Start Time (ISO 8601)
+        type: text
+        required: true
+      - name: end_time
+        label: End Time (ISO 8601)
+        type: text
+        required: true
+      - name: report_type
+        label: Report Type
+        type: text
+        default: decisions
+        required: false
 
   - id: covenant-create
     title: Create Covenant
@@ -299,6 +527,45 @@ enterprise_workflows:
         type: textarea
         required: false
 
+  - id: create-alert
+    title: Create Alert
+    description: "Create a metric alert for threshold-based notifications"
+    category: monitoring
+    params:
+      - name: metric_name
+        label: Metric Name
+        type: text
+        required: true
+      - name: threshold
+        label: Threshold
+        type: number
+        required: true
+      - name: condition
+        label: Condition
+        type: select
+        options:
+          - gt
+          - gte
+          - lt
+          - lte
+          - eq
+        default: gt
+        required: false
+
+  - id: register-webhook
+    title: Register Webhook
+    description: "Register a webhook for external event notifications"
+    category: integration
+    params:
+      - name: url
+        label: Webhook URL
+        type: text
+        required: true
+      - name: events
+        label: Events (comma-separated)
+        type: text
+        required: true
+
   - id: mcp-orchestration
     title: MCP Orchestration
     description: "Start a C-suite orchestration with MCP server access for ERP and CRM tools"
@@ -325,3 +592,373 @@ enterprise_workflows:
         label: CRM Token
         type: password
         required: true
+
+# ----- Beyond-SDK enhancement workflows -----
+# Advanced capabilities not yet in the AOS Client SDK.
+# Source: src/business_infinity/workflows/beyond_sdk.py
+beyond_sdk_workflows:
+  - id: find-agents
+    title: Find Agents
+    description: "Find agents by capability requirements with scoring"
+    category: discovery
+    params:
+      - name: required_capabilities
+        label: Required Capabilities (comma-separated)
+        type: text
+        required: false
+      - name: preferred_capabilities
+        label: Preferred Capabilities (comma-separated)
+        type: text
+        required: false
+      - name: min_score
+        label: Minimum Score (0.0–1.0)
+        type: number
+        default: 0.0
+        required: false
+
+  - id: start-orchestration-group
+    title: Start Orchestration Group
+    description: "Start multiple orchestrations and register them as a named group"
+    category: orchestration
+    params:
+      - name: group_name
+        label: Group Name
+        type: text
+        required: false
+
+  - id: get-group-status
+    title: Get Group Status
+    description: "Get aggregate status for an orchestration group"
+    category: orchestration
+    params:
+      - name: group_id
+        label: Group ID
+        type: text
+        required: true
+
+  - id: stop-orchestration-group
+    title: Stop Orchestration Group
+    description: "Stop all orchestrations in a group"
+    category: orchestration
+    params:
+      - name: group_id
+        label: Group ID
+        type: text
+        required: true
+
+  - id: checkpoint-orchestration
+    title: Checkpoint Orchestration
+    description: "Save a checkpoint for a perpetual orchestration"
+    category: orchestration
+    params:
+      - name: orchestration_id
+        label: Orchestration ID
+        type: text
+        required: true
+
+  - id: resume-orchestration
+    title: Resume Orchestration
+    description: "Resume a perpetual orchestration from its latest checkpoint"
+    category: orchestration
+    params:
+      - name: orchestration_id
+        label: Orchestration ID
+        type: text
+        required: true
+      - name: purpose
+        label: Purpose
+        type: text
+        required: true
+
+  - id: register-conditional-webhook
+    title: Register Conditional Webhook
+    description: "Register a webhook with an optional event filter"
+    category: integration
+    params:
+      - name: url
+        label: Webhook URL
+        type: text
+        required: true
+      - name: events
+        label: Events (comma-separated)
+        type: text
+        required: true
+
+  - id: verify-audit-integrity
+    title: Verify Audit Integrity
+    description: "Verify the audit trail integrity using SHA-256 hash chain"
+    category: governance
+    params:
+      - name: start_time
+        label: Start Time (ISO 8601)
+        type: text
+        required: false
+      - name: end_time
+        label: End Time (ISO 8601)
+        type: text
+        required: false
+
+  - id: start-workflow-chain
+    title: Start Workflow Chain
+    description: "Start a workflow while advertising its upstream dependencies"
+    category: orchestration
+    params:
+      - name: workflow_name
+        label: Workflow Name
+        type: text
+        required: true
+
+  - id: generate-api-docs
+    title: Generate API Docs
+    description: "Generate API documentation for all registered workflows"
+    category: documentation
+
+# ----- Mentor mode workflows -----
+# LoRA fine-tuning management and mentor-chat with individual C-suite agents.
+# Source: src/business_infinity/workflows/mentor.py
+mentor_workflows:
+  - id: mentor-list-agents
+    title: List Mentor Agents
+    description: "List all agents with Mentor-Mode / LoRA metadata"
+    category: mentor
+
+  - id: mentor-chat
+    title: Mentor Chat
+    description: "Chat with a specific agent in Mentor Mode"
+    category: mentor
+    params:
+      - name: agent_id
+        label: Agent ID
+        type: text
+        required: true
+      - name: message
+        label: Message
+        type: textarea
+        required: true
+
+  - id: mentor-fine-tune
+    title: Fine-Tune Agent
+    description: "Start a LoRA fine-tuning job for an agent"
+    category: mentor
+    params:
+      - name: agent_id
+        label: Agent ID
+        type: text
+        required: true
+      - name: dataset_id
+        label: Dataset ID
+        type: text
+        required: true
+
+  - id: mentor-training-logs
+    title: Training Logs
+    description: "Get training logs for a fine-tuning job"
+    category: mentor
+    params:
+      - name: job_id
+        label: Job ID
+        type: text
+        required: true
+
+  - id: mentor-deploy-adapter
+    title: Deploy Adapter
+    description: "Deploy a trained LoRA adapter for an agent"
+    category: mentor
+    params:
+      - name: agent_id
+        label: Agent ID
+        type: text
+        required: true
+      - name: version
+        label: Version
+        type: text
+        required: true
+
+# ----- Network management workflows -----
+# Global Boardroom Network membership, peer negotiations, and agreements.
+# Source: src/business_infinity/workflows/network.py
+network_workflows:
+  - id: network-status
+    title: Network Status
+    description: "Get current network node status for this BusinessInfinity instance"
+    category: network
+
+  - id: join-network
+    title: Join Network
+    description: "Join the Global Boardroom Network with LinkedIn verification"
+    category: network
+    params:
+      - name: linkedin_url
+        label: LinkedIn URL
+        type: text
+        required: true
+      - name: company_name
+        label: Company Name
+        type: text
+        required: false
+      - name: covenant_id
+        label: Covenant ID
+        type: text
+        required: false
+
+  - id: discover-boardrooms
+    title: Discover Boardrooms
+    description: "Discover peer boardrooms in the Global Boardroom Network"
+    category: network
+    params:
+      - name: industry
+        label: Industry
+        type: text
+        required: false
+      - name: location
+        label: Location
+        type: text
+        required: false
+      - name: max_results
+        label: Max Results
+        type: number
+        default: 20
+        required: false
+
+  - id: create-negotiation
+    title: Create Negotiation
+    description: "Create a negotiation record with a peer boardroom"
+    category: network
+    params:
+      - name: title
+        label: Title
+        type: text
+        required: true
+      - name: type
+        label: Type
+        type: select
+        options:
+          - partnership
+          - investment
+          - acquisition
+          - joint-venture
+        required: true
+      - name: target_enterprise
+        label: Target Enterprise
+        type: text
+        required: true
+
+  - id: sign-agreement
+    title: Sign Agreement
+    description: "Sign a business agreement or covenant with a peer"
+    category: network
+    params:
+      - name: agreement_id
+        label: Agreement ID
+        type: text
+        required: true
+      - name: signer_role
+        label: Signer Role
+        type: text
+        required: true
+      - name: covenant_id
+        label: Covenant ID
+        type: text
+        required: false
+
+# ----- Onboarding workflows -----
+# Founder onboarding journey: website parsing, system connection, voice profile, GDPR.
+# Source: src/business_infinity/workflows/onboarding.py
+onboarding_workflows:
+  - id: onboarding-parse-website
+    title: Parse Website
+    description: "Parse a company website during onboarding to extract profile data"
+    category: onboarding
+    params:
+      - name: url
+        label: Website URL
+        type: text
+        required: true
+
+  - id: onboarding-connect-system
+    title: Connect System
+    description: "Generate an OAuth authorization URL to connect an external system"
+    category: onboarding
+    params:
+      - name: system
+        label: System
+        type: select
+        options:
+          - salesforce
+          - hubspot
+          - netsuite
+          - workday
+          - quickbooks
+          - slack
+        required: true
+      - name: user_id
+        label: User ID
+        type: text
+        required: false
+      - name: customer_id
+        label: Customer ID
+        type: text
+        required: false
+
+  - id: onboarding-voice-profile
+    title: Voice Profile
+    description: "Generate a founder voice profile from LinkedIn and public content"
+    category: onboarding
+    params:
+      - name: linkedin_url
+        label: LinkedIn URL
+        type: text
+        required: false
+      - name: company_name
+        label: Company Name
+        type: text
+        required: false
+
+  - id: onboarding-export-data
+    title: Export Data
+    description: "Export all onboarding data for a customer (GDPR data portability)"
+    category: onboarding
+    params:
+      - name: customer_id
+        label: Customer ID
+        type: text
+        required: true
+
+  - id: onboarding-delete-data
+    title: Delete Data
+    description: "Submit a data-deletion request for a customer (GDPR right to erasure)"
+    category: onboarding
+    params:
+      - name: customer_id
+        label: Customer ID
+        type: text
+        required: true
+      - name: user_id
+        label: User ID
+        type: text
+        required: false
+
+# ----- Health & analytics workflows -----
+# Liveness checks and KPI dashboards for monitoring.
+# Source: src/business_infinity/workflows/health.py
+health_workflows:
+  - id: system-health
+    title: System Health
+    description: "Return a health summary for the BusinessInfinity instance"
+    category: monitoring
+
+  - id: business-analytics
+    title: Business Analytics
+    description: "Return business KPIs, performance metrics, and agent summary"
+    category: analytics
+    params:
+      - name: include_kpis
+        label: Include KPIs
+        type: boolean
+        default: true
+        required: false
+      - name: include_agent_summary
+        label: Include Agent Summary
+        type: boolean
+        default: true
+        required: false
