@@ -9,7 +9,7 @@
 }
 
 .features-header {
-  @include genesis-entity('primary');           // Header section
+  @include genesis-environment('focused');      // Header layout container
   
   h1 {
     @include genesis-cognition('axiom');        // Main title
@@ -26,7 +26,6 @@
 
 .features-navigation {
   @include genesis-environment('navigation-tabs'); // ⭐ NEW v2.3.0: Tab navigation
-  @include genesis-entity('secondary');         // Nav container
   
   .nav-tab {
     @include genesis-synapse('tab');            // ⭐ NEW v2.3.0: Tab switcher
@@ -62,7 +61,7 @@
   }
   
   .feature-header {
-    @include genesis-entity('secondary');       // Feature header
+    @include genesis-cognition('motive');       // Feature header text
   }
   
   .feature-icon {
@@ -98,7 +97,7 @@
     @include genesis-entity('secondary');       // Details area
     
     .detail-list {
-      @include genesis-entity('aggregate');     // Details list
+      @include genesis-environment('chronological'); // Details list layout
       
       li {
         @include genesis-cognition('discourse'); // Detail item
@@ -121,7 +120,6 @@
 
 .features-categories {
   @include genesis-environment('navigation-sidebar'); // ⭐ NEW v2.3.0: Sidebar navigation
-  @include genesis-entity('secondary');         // Categories sidebar
   
   .category-title {
     @include genesis-cognition('motive');       // Category title
@@ -149,7 +147,7 @@
   @include genesis-atmosphere('vibrant');       // Highlighted feature
   
   .showcase-header {
-    @include genesis-entity('secondary');       // Showcase header
+    @include genesis-cognition('axiom');        // Showcase heading text
     
     h2 {
       @include genesis-cognition('axiom');      // Showcase title
@@ -157,7 +155,7 @@
   }
   
   .showcase-content {
-    @include genesis-entity('primary');         // Showcase content
+    @include genesis-environment('focused');    // Showcase content layout
     
     .showcase-description {
       @include genesis-cognition('discourse');  // Description
@@ -178,10 +176,10 @@
 }
 
 .features-comparison {
-  @include genesis-entity('secondary');         // Comparison table
+  @include genesis-environment('focused');      // Comparison layout container
   
   .comparison-header {
-    @include genesis-entity('primary');         // Table header
+    @include genesis-cognition('motive');       // Table header text
     
     h3 {
       @include genesis-cognition('motive');     // Header title
@@ -192,16 +190,12 @@
     @include genesis-entity('primary');         // Table
     
     thead {
-      @include genesis-entity('secondary');     // Table head
-      
       th {
         @include genesis-cognition('motive');   // Column header
       }
     }
     
     tbody {
-      @include genesis-entity('aggregate');     // Table body
-      
       tr {
         &:hover {
           @include genesis-entity('primary');   // Row hover

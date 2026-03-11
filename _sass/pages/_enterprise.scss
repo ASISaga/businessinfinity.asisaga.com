@@ -11,7 +11,7 @@
   @include genesis-atmosphere('spacious-mobile'); // ⭐ NEW v2.1.0: Touch-friendly spacing
   
   .hero-content {
-    @include genesis-entity('primary');         // Hero content area
+    @include genesis-environment('focused');    // Hero content layout
   }
   
   .hero-title {
@@ -36,7 +36,7 @@
 }
 
 .enterprise-header {
-  @include genesis-entity('primary');           // Header section
+  @include genesis-environment('focused');      // Header layout container
   
   .title {
     @include genesis-cognition('axiom');        // Main title
@@ -75,7 +75,7 @@
     }
     
     .feature-list {
-      @include genesis-entity('aggregate');     // Feature list items
+      @include genesis-environment('chronological'); // Feature list layout
       
       li {
         @include genesis-cognition('discourse'); // List item text
@@ -88,7 +88,7 @@
   @include genesis-environment('distributed');  // Pricing grid
   
   .pricing-header {
-    @include genesis-entity('primary');         // Pricing header
+    @include genesis-environment('focused');    // Pricing header layout
     
     .pricing-title {
       @include genesis-cognition('axiom');      // Pricing title
@@ -108,7 +108,7 @@
     }
     
     .pricing-tier {
-      @include genesis-entity('secondary');     // Tier header
+      @include genesis-cognition('motive');     // Tier header text
       
       .tier-name {
         @include genesis-cognition('motive');   // Plan name
@@ -136,7 +136,7 @@
     }
     
     .plan-features {
-      @include genesis-entity('aggregate');     // Features list
+      @include genesis-environment('chronological'); // Features list layout
       
       .feature-item {
         @include genesis-cognition('discourse'); // Feature text
@@ -146,7 +146,7 @@
         }
         
         &.not-included {
-          @include genesis-entity('latent');    // Not included
+          @include genesis-entity('latent');    // Feature not included in tier (inactive/dimmed)
         }
       }
     }
@@ -162,7 +162,6 @@
 }
 
 .testimonials-section {
-  @include genesis-entity('secondary');         // Testimonials area
   @include genesis-atmosphere('ethereal');      // Light, trustworthy
   
   .testimonial-grid {

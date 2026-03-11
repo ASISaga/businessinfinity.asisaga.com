@@ -13,7 +13,7 @@
   @include genesis-atmosphere('viewport-aware'); // ⭐ NEW v2.2.0: Viewport-aware hero
   
   .hero-content {
-    @include genesis-entity('primary');         // Hero content area
+    @include genesis-environment('focused');    // Hero content layout
   }
   
   h1 {
@@ -54,7 +54,7 @@
   @include genesis-atmosphere('dense-desktop'); // ⭐ NEW v2.1.0: High density on desktop
   
   .benefits-header {
-    @include genesis-entity('primary');         // Benefits header
+    @include genesis-environment('focused');    // Section header layout
     
     h2 {
       @include genesis-cognition('axiom');      // Section title
@@ -92,7 +92,6 @@
 }
 
 .entrepreneur-journey {
-  @include genesis-entity('secondary');         // Journey section
   @include genesis-environment('chronological'); // Timeline layout
   
   .journey-title {
@@ -126,11 +125,10 @@
 }
 
 .entrepreneur-testimonials {
-  @include genesis-entity('primary');           // Testimonials section
   @include genesis-atmosphere('ethereal');      // Light, trustworthy
   
   .testimonials-header {
-    @include genesis-entity('primary');         // Header
+    @include genesis-environment('focused');    // Section header layout
     
     h2 {
       @include genesis-cognition('axiom');      // Section title
@@ -163,10 +161,10 @@
 }
 
 .entrepreneur-resources {
-  @include genesis-entity('secondary');         // Resources section
+  @include genesis-environment('distributed');  // Resources layout
   
   .resources-header {
-    @include genesis-entity('primary');         // Header
+    @include genesis-environment('focused');    // Section header layout
     
     h2 {
       @include genesis-cognition('axiom');      // Section title
@@ -208,7 +206,7 @@
   @include genesis-atmosphere('vibrant');       // High energy
   
   .cta-content {
-    @include genesis-entity('primary');         // CTA content
+    @include genesis-environment('focused');    // CTA content layout
     
     h2 {
       @include genesis-cognition('axiom');      // CTA headline

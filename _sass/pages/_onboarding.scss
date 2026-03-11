@@ -10,7 +10,7 @@
 }
 
 .onboarding-header {
-  @include genesis-entity('primary');           // Header section
+  @include genesis-environment('focused');      // Header layout
   
   h1 {
     @include genesis-cognition('axiom');        // Welcome title
@@ -22,7 +22,6 @@
   
   .progress-bar {
     @include genesis-state('evolving');         // Progress indicator
-    @include genesis-entity('secondary');       // Progress bar container
     
     .progress-fill {
       @include genesis-entity('imperative');    // Progress fill
@@ -68,15 +67,14 @@
   }
   
   .step-illustration {
-    @include genesis-entity('secondary');       // Illustration area
+    @include genesis-cognition('discourse');    // Illustration context
   }
   
   .step-form {
     @include genesis-environment('interaction-form'); // ⭐ NEW v2.2.0: Form layout
-    @include genesis-entity('secondary');       // Form area
     
     .form-group {
-      @include genesis-entity('secondary');     // Form field group
+      @include genesis-environment('chronological'); // Form field layout
       
       label {
         @include genesis-cognition('motive');   // Field label
@@ -129,7 +127,6 @@
 
 .onboarding-actions {
   @include genesis-environment('associative');  // Button group
-  @include genesis-entity('secondary');         // Actions container
   
   .next-button {
     @include genesis-synapse('execute');        // Next action
@@ -178,7 +175,7 @@
   }
   
   .sidebar-help {
-    @include genesis-entity('secondary');       // Help section
+    @include genesis-cognition('gloss');        // Help section text
     
     .help-title {
       @include genesis-cognition('motive');     // Help title

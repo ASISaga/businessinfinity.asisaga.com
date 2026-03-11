@@ -10,7 +10,7 @@
 }
 
 .monitor-header {
-  @include genesis-entity('primary');           // Header section
+  @include genesis-environment('associative');  // Header layout
   
   h1 {
     @include genesis-cognition('axiom');        // Main title
@@ -63,7 +63,7 @@
     }
     
     .metric-header {
-      @include genesis-entity('secondary');     // Card header
+      @include genesis-cognition('axiom');      // Card header text
       
       .metric-icon {
         @include genesis-cognition('axiom');    // Metric icon
@@ -110,7 +110,7 @@
   @include genesis-atmosphere('void');          // Dark chart background
   
   .chart-header {
-    @include genesis-entity('secondary');       // Chart header
+    @include genesis-environment('associative'); // Chart header layout
     
     .chart-title {
       @include genesis-cognition('motive');     // Chart title
@@ -130,12 +130,11 @@
   }
   
   .chart-canvas {
-    @include genesis-entity('primary');         // Chart canvas
+    @include genesis-environment('focused');    // Chart canvas layout
   }
   
   .chart-legend {
-    @include genesis-entity('secondary');       // Chart legend
-    @include genesis-environment('associative'); // Legend items
+    @include genesis-environment('associative'); // Legend items layout
     
     .legend-item {
       @include genesis-cognition('gloss');      // Legend text
@@ -144,10 +143,10 @@
 }
 
 .monitor-alerts {
-  @include genesis-entity('secondary');         // Alerts panel
+  @include genesis-environment('chronological'); // Alerts list layout
   
   .alerts-header {
-    @include genesis-entity('primary');         // Alerts header
+    @include genesis-environment('associative'); // Alerts header layout
     
     .alerts-title {
       @include genesis-cognition('motive');     // Alerts title
@@ -201,7 +200,7 @@
   @include genesis-environment('chronological'); // Timeline layout
   
   .timeline-header {
-    @include genesis-entity('secondary');       // Timeline header
+    @include genesis-cognition('motive');       // Timeline title text
     
     .timeline-title {
       @include genesis-cognition('motive');     // Timeline title

@@ -10,7 +10,7 @@
 }
 
 .network-header {
-  @include genesis-entity('primary');           // Header section
+  @include genesis-environment('associative');  // Header layout
   
   h1 {
     @include genesis-cognition('axiom');        // Main title
@@ -38,7 +38,7 @@
   @include genesis-atmosphere('void');          // Dark visualization
   
   .graph-canvas {
-    @include genesis-entity('primary');         // Canvas area
+    @include genesis-environment('focused');    // Canvas layout area
   }
   
   .node {
@@ -79,7 +79,7 @@
   }
   
   .node-cluster {
-    @include genesis-entity('aggregate');       // Node grouping
+    @include genesis-environment('associative'); // Node cluster layout
   }
 }
 
@@ -88,15 +88,15 @@
   @include genesis-entity('secondary');         // Sidebar panel
   
   .sidebar-header {
-    @include genesis-entity('primary');         // Sidebar header
+    @include genesis-cognition('motive');       // Sidebar title text
     
     h3 {
-      @include genesis-cognition('motive');     // Sidebar title
+      @include genesis-cognition('motive');     // Sidebar heading
     }
   }
   
   .sidebar-content {
-    @include genesis-entity('secondary');       // Content area
+    @include genesis-environment('chronological'); // Sidebar content layout
   }
 }
 
@@ -104,7 +104,7 @@
   @include genesis-entity('secondary');         // Details panel
   
   .detail-header {
-    @include genesis-entity('primary');         // Detail header
+    @include genesis-cognition('axiom');        // Detail header text
     
     .node-icon {
       @include genesis-cognition('axiom');      // Large node icon
@@ -136,7 +136,7 @@
   }
   
   .detail-connections {
-    @include genesis-entity('aggregate');       // Connections list
+    @include genesis-environment('chronological'); // Connections list layout
     
     .connection-item {
       @include genesis-entity('secondary');     // Connection entry
@@ -157,7 +157,7 @@
   }
   
   .legend-items {
-    @include genesis-entity('aggregate');       // Legend list
+    @include genesis-environment('chronological'); // Legend list layout
     
     .legend-item {
       @include genesis-cognition('gloss');      // Legend entry

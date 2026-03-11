@@ -15,7 +15,7 @@
   @include genesis-atmosphere('spacious-mobile'); // ⭐ NEW v2.1.0: Touch-friendly spacing
   
   .hero-content {
-    @include genesis-entity('primary');         // Hero content area
+    @include genesis-environment('focused');    // Hero content layout
   }
   
   h1 {
@@ -52,10 +52,10 @@
 }
 
 .value-proposition {
-  @include genesis-entity('secondary');         // Value prop section
+  @include genesis-environment('distributed');  // Value items layout
   
   .value-header {
-    @include genesis-entity('primary');         // Header
+    @include genesis-environment('focused');    // Section header layout
     
     h2 {
       @include genesis-cognition('axiom');      // Section title
@@ -118,11 +118,10 @@
 }
 
 .social-proof {
-  @include genesis-entity('secondary');         // Social proof section
   @include genesis-atmosphere('ethereal');      // Trustworthy feel
   
   .proof-header {
-    @include genesis-entity('primary');         // Header
+    @include genesis-environment('focused');    // Section header layout
     
     h2 {
       @include genesis-cognition('axiom');      // Section title
@@ -155,10 +154,10 @@
 }
 
 .pricing-section {
-  @include genesis-entity('secondary');         // Pricing section
+  @include genesis-environment('distributed');  // Pricing layout
   
   .pricing-header {
-    @include genesis-entity('primary');         // Pricing header
+    @include genesis-environment('focused');    // Pricing header layout
     
     h2 {
       @include genesis-cognition('axiom');      // Pricing title
@@ -181,7 +180,7 @@
       }
       
       .plan-header {
-        @include genesis-entity('secondary');   // Plan header
+        @include genesis-cognition('motive');   // Plan header text
         
         .plan-name {
           @include genesis-cognition('motive'); // Plan name
@@ -205,7 +204,7 @@
       }
       
       .plan-features {
-        @include genesis-entity('aggregate');   // Features list
+        @include genesis-environment('chronological'); // Features list layout
         
         li {
           @include genesis-cognition('discourse'); // Feature text
@@ -220,11 +219,10 @@
 }
 
 .testimonials-section {
-  @include genesis-entity('primary');           // Testimonials section
   @include genesis-atmosphere('ethereal');      // Light, trustworthy
   
   .testimonials-header {
-    @include genesis-entity('primary');         // Header
+    @include genesis-environment('focused');    // Section header layout
     
     h2 {
       @include genesis-cognition('axiom');      // Section title
@@ -261,7 +259,7 @@
   @include genesis-atmosphere('vibrant');       // High energy
   
   .cta-content {
-    @include genesis-entity('primary');         // CTA content
+    @include genesis-environment('focused');    // CTA content layout
     
     h2 {
       @include genesis-cognition('axiom');      // CTA headline
