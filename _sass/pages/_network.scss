@@ -10,7 +10,7 @@
 }
 
 .network-header {
-  @include genesis-entity('primary');           // Header section
+  @include genesis-environment('associative');  // Header layout
   
   h1 {
     @include genesis-cognition('axiom');        // Main title
@@ -38,7 +38,7 @@
   @include genesis-atmosphere('void');          // Dark visualization
   
   .graph-canvas {
-    @include genesis-entity('primary');         // Canvas area
+    @include genesis-environment('focused');    // Canvas layout area
   }
   
   .node {
@@ -88,15 +88,11 @@
   @include genesis-entity('secondary');         // Sidebar panel
   
   .sidebar-header {
-    @include genesis-entity('primary');         // Sidebar header
-    
-    h3 {
-      @include genesis-cognition('motive');     // Sidebar title
-    }
+    @include genesis-cognition('motive');       // Sidebar title text
   }
   
   .sidebar-content {
-    @include genesis-entity('secondary');       // Content area
+    @include genesis-environment('chronological'); // Sidebar content layout
   }
 }
 
@@ -104,11 +100,7 @@
   @include genesis-entity('secondary');         // Details panel
   
   .detail-header {
-    @include genesis-entity('primary');         // Detail header
-    
-    .node-icon {
-      @include genesis-cognition('axiom');      // Large node icon
-    }
+    @include genesis-cognition('axiom');        // Detail header text
   }
   
   .detail-title {
