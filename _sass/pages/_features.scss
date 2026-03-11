@@ -148,6 +148,10 @@
   
   .showcase-header {
     @include genesis-cognition('axiom');        // Showcase heading text
+    
+    h2 {
+      @include genesis-cognition('axiom');      // Showcase title
+    }
   }
   
   .showcase-content {
@@ -176,14 +180,16 @@
   
   .comparison-header {
     @include genesis-cognition('motive');       // Table header text
+    
+    h3 {
+      @include genesis-cognition('motive');     // Header title
+    }
   }
   
   .comparison-table {
     @include genesis-entity('primary');         // Table
     
     thead {
-      @include genesis-cognition('motive');     // Table head text
-      
       th {
         @include genesis-cognition('motive');   // Column header
       }

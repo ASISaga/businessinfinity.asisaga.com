@@ -11,7 +11,7 @@
   @include genesis-atmosphere('spacious-mobile'); // ⭐ NEW v2.1.0: Touch-friendly spacing
   
   .hero-content {
-    @include genesis-entity('primary');         // Hero content area
+    @include genesis-environment('focused');    // Hero content layout
   }
   
   .hero-title {
@@ -36,7 +36,7 @@
 }
 
 .enterprise-header {
-  @include genesis-entity('primary');           // Header section
+  @include genesis-environment('focused');      // Header layout container
   
   .title {
     @include genesis-cognition('axiom');        // Main title
@@ -75,7 +75,7 @@
     }
     
     .feature-list {
-      @include genesis-entity('aggregate');     // Feature list items
+      @include genesis-environment('chronological'); // Feature list layout
       
       li {
         @include genesis-cognition('discourse'); // List item text
@@ -136,7 +136,7 @@
     }
     
     .plan-features {
-      @include genesis-entity('aggregate');     // Features list
+      @include genesis-environment('chronological'); // Features list layout
       
       .feature-item {
         @include genesis-cognition('discourse'); // Feature text
@@ -146,7 +146,7 @@
         }
         
         &.not-included {
-          @include genesis-entity('latent');    // Not included
+          @include genesis-state('deprecated'); // Not included / deprecated feature
         }
       }
     }

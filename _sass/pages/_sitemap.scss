@@ -4,7 +4,7 @@
   @include genesis-environment('chronological'); // Hierarchical list
   
   .sitemap-header {
-    @include genesis-entity('primary');         // Header
+    @include genesis-environment('focused');    // Header layout
     
     h1 {
       @include genesis-cognition('axiom');      // Title
@@ -12,14 +12,14 @@
   }
   
   .sitemap-section {
-    @include genesis-entity('secondary');       // Section
+    @include genesis-entity('secondary');       // Section card
     
     h2 {
       @include genesis-cognition('motive');     // Section title
     }
     
     .sitemap-list {
-      @include genesis-entity('aggregate');     // Link list
+      @include genesis-environment('chronological'); // Link list layout
       
       a {
         @include genesis-synapse('navigate');   // Page link

@@ -94,7 +94,7 @@
   }
   
   .chat-messages {
-    @include genesis-entity('aggregate');       // Messages list
+    @include genesis-environment('chronological'); // Messages stream layout
     
     .message {
       @include genesis-cognition('discourse');  // Message text

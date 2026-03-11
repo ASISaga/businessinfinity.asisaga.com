@@ -79,7 +79,7 @@
   }
   
   .node-cluster {
-    @include genesis-entity('aggregate');       // Node grouping
+    @include genesis-environment('associative'); // Node cluster layout
   }
 }
 
@@ -89,6 +89,10 @@
   
   .sidebar-header {
     @include genesis-cognition('motive');       // Sidebar title text
+    
+    h3 {
+      @include genesis-cognition('motive');     // Sidebar heading
+    }
   }
   
   .sidebar-content {
@@ -101,6 +105,10 @@
   
   .detail-header {
     @include genesis-cognition('axiom');        // Detail header text
+    
+    .node-icon {
+      @include genesis-cognition('axiom');      // Large node icon
+    }
   }
   
   .detail-title {
@@ -128,7 +136,7 @@
   }
   
   .detail-connections {
-    @include genesis-entity('aggregate');       // Connections list
+    @include genesis-environment('chronological'); // Connections list layout
     
     .connection-item {
       @include genesis-entity('secondary');     // Connection entry
@@ -149,7 +157,7 @@
   }
   
   .legend-items {
-    @include genesis-entity('aggregate');       // Legend list
+    @include genesis-environment('chronological'); // Legend list layout
     
     .legend-item {
       @include genesis-cognition('gloss');      // Legend entry

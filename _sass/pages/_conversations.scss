@@ -26,7 +26,7 @@
 }
 
 .agent-list {
-  @include genesis-entity('aggregate');         // Agent list container
+  @include genesis-environment('chronological'); // Agent list layout
 }
 
 .agent-item {
@@ -58,7 +58,7 @@
 }
 
 .conversation-list {
-  @include genesis-entity('aggregate');         // Conversation list
+  @include genesis-environment('chronological'); // Conversation list layout
 }
 
 .conversation-item {
@@ -107,7 +107,7 @@
 }
 
 .conversation-signatures {
-  @include genesis-entity('aggregate');         // Signatures container
+  @include genesis-environment('associative');  // Signatures layout
 }
 
 .signature {
