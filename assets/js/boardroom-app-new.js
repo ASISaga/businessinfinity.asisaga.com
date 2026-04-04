@@ -397,7 +397,7 @@ class BoardroomApp extends ChatroomApp {
             // Stream the response from CopilotKit runtime
             await this.copilotKit.sendMessage(text, {
                 context: this.currentAgent
-                    ? [{ description: `Active boardroom agent: ${this.currentAgent.name} (${this.currentAgent.role || ''})` }]
+                    ? [{ description: `Active boardroom agent: ${this.currentAgent.name} (${this.currentAgent.role || 'C-suite Executive'})` }]
                     : [],
             });
         } catch (error) {
@@ -445,18 +445,30 @@ class BoardroomApp extends ChatroomApp {
         const messagesEl = this.querySelector('#chatMessages');
         if (!messagesEl) return;
 
-        const safeText = this._escapeHtml(text);
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
         const article = document.createElement('article');
         article.className = 'boardroom-message-row flex-row-reverse';
         article.setAttribute('aria-label', 'Your message');
-        article.innerHTML = `
-            <div class="boardroom-message-content">
-                <div class="boardroom-message-bubble bg-primary text-white">${safeText}</div>
-                <div class="boardroom-message-meta boardroom-message-meta-sent">
-                    <span class="boardroom-message-timestamp">${time}</span>
-                </div>
-            </div>`;
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'boardroom-message-content';
+
+        const bubble = document.createElement('div');
+        bubble.className = 'boardroom-message-bubble bg-primary text-white';
+        bubble.textContent = text;
+
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'boardroom-message-meta boardroom-message-meta-sent';
+
+        const timestamp = document.createElement('span');
+        timestamp.className = 'boardroom-message-timestamp';
+        timestamp.textContent = time;
+
+        metaDiv.appendChild(timestamp);
+        contentDiv.appendChild(bubble);
+        contentDiv.appendChild(metaDiv);
+        article.appendChild(contentDiv);
         messagesEl.appendChild(article);
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
@@ -473,30 +485,65 @@ class BoardroomApp extends ChatroomApp {
         const agent = agentName || this.currentAgent?.name || 'AI';
         const role = this.currentAgent?.role || 'AI Assistant';
         const avatar = this.currentAgent?.avatar || '';
-        const avatarHtml = avatar
-            ? `<img src="${this._escapeHtml(avatar)}" alt="${this._escapeHtml(agent)}" class="boardroom-message-avatar" width="40" height="40">`
-            : '';
 
         const article = document.createElement('article');
         article.className = 'boardroom-message-row';
         article.id = `copilotkit-msg-${messageId}`;
         article.setAttribute('aria-label', `Message from ${agent}`);
-        article.innerHTML = `
-            <div class="boardroom-message-avatar-block">
-                ${avatarHtml}
-                <div class="boardroom-message-avatar-meta">
-                    <span class="boardroom-message-avatar-name">${this._escapeHtml(agent)}</span><br>
-                    <span class="boardroom-message-avatar-role">${this._escapeHtml(role)}</span>
-                </div>
-            </div>
-            <div class="boardroom-message-content">
-                <div class="boardroom-message-bubble bg-white text-dark" id="copilotkit-bubble-${messageId}">
-                    <span class="boardroom-streaming-cursor">▍</span>
-                </div>
-                <div class="boardroom-message-meta boardroom-message-meta-received">
-                    <span class="boardroom-message-timestamp" id="copilotkit-time-${messageId}">…</span>
-                </div>
-            </div>`;
+
+        const avatarBlock = document.createElement('div');
+        avatarBlock.className = 'boardroom-message-avatar-block';
+
+        if (avatar) {
+            const img = document.createElement('img');
+            img.src = avatar;
+            img.alt = agent;
+            img.className = 'boardroom-message-avatar';
+            img.width = 40;
+            img.height = 40;
+            avatarBlock.appendChild(img);
+        }
+
+        const avatarMeta = document.createElement('div');
+        avatarMeta.className = 'boardroom-message-avatar-meta';
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'boardroom-message-avatar-name';
+        nameSpan.textContent = agent;
+        avatarMeta.appendChild(nameSpan);
+        avatarMeta.appendChild(document.createElement('br'));
+
+        const roleSpan = document.createElement('span');
+        roleSpan.className = 'boardroom-message-avatar-role';
+        roleSpan.textContent = role;
+        avatarMeta.appendChild(roleSpan);
+        avatarBlock.appendChild(avatarMeta);
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'boardroom-message-content';
+
+        const bubble = document.createElement('div');
+        bubble.className = 'boardroom-message-bubble bg-white text-dark';
+        bubble.id = `copilotkit-bubble-${messageId}`;
+
+        const cursor = document.createElement('span');
+        cursor.className = 'boardroom-streaming-cursor';
+        cursor.textContent = '▍';
+        bubble.appendChild(cursor);
+
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'boardroom-message-meta boardroom-message-meta-received';
+
+        const timeSpan = document.createElement('span');
+        timeSpan.className = 'boardroom-message-timestamp';
+        timeSpan.id = `copilotkit-time-${messageId}`;
+        timeSpan.textContent = '…';
+        metaDiv.appendChild(timeSpan);
+
+        contentDiv.appendChild(bubble);
+        contentDiv.appendChild(metaDiv);
+        article.appendChild(avatarBlock);
+        article.appendChild(contentDiv);
         messagesEl.appendChild(article);
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
@@ -562,13 +609,6 @@ class BoardroomApp extends ChatroomApp {
         if (messagesEl) {
             messagesEl.scrollTop = messagesEl.scrollHeight;
         }
-    }
-
-    /** Minimal HTML escaping to prevent XSS when inserting untrusted content */
-    _escapeHtml(str) {
-        const div = document.createElement('div');
-        div.textContent = String(str ?? '');
-        return div.innerHTML;
     }
 
     // Boardroom-specific features

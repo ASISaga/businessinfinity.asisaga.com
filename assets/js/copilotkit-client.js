@@ -12,16 +12,18 @@
 export class CopilotKitClient {
   /**
    * @param {object} options
-   * @param {string} options.runtimeUrl  - URL of the CopilotKit runtime endpoint
-   * @param {string} [options.threadId]  - Existing thread ID for conversation continuity
-   * @param {string} [options.agentName] - Default agent name to route messages to
-   * @param {object} [options.headers]   - Extra HTTP headers (e.g. Authorization)
+   * @param {string} options.runtimeUrl    - URL of the CopilotKit runtime endpoint
+   * @param {string} [options.threadId]    - Existing thread ID for conversation continuity
+   * @param {string} [options.agentName]   - Default agent name to route messages to
+   * @param {object} [options.headers]     - Extra HTTP headers (e.g. Authorization)
+   * @param {number} [options.maxHistory]  - Maximum messages to retain in history (default: 50)
    */
   constructor(options = {}) {
     this.runtimeUrl = options.runtimeUrl || '/api/copilotkit';
     this.threadId = options.threadId || CopilotKitClient.randomUUID();
     this.agentName = options.agentName || null;
     this.extraHeaders = options.headers || {};
+    this.maxHistory = options.maxHistory ?? 50;
     this.messages = [];
     this.abortController = null;
 
@@ -58,6 +60,11 @@ export class CopilotKitClient {
     this.agentName = agentName || null;
   }
 
+  /** Return a copy of the current message history (for debugging / state inspection) */
+  getMessages() {
+    return [...this.messages];
+  }
+
   // ── Message history ──────────────────────────────────────────────────────
 
   _addMessage(role, content) {
@@ -66,6 +73,10 @@ export class CopilotKitClient {
       role,
       content,
     });
+    // Trim history to stay within the configured maximum
+    if (this.messages.length > this.maxHistory) {
+      this.messages = this.messages.slice(-this.maxHistory);
+    }
   }
 
   // ── Core send ────────────────────────────────────────────────────────────
@@ -108,6 +119,9 @@ export class CopilotKitClient {
       ...options.headers,
     };
 
+    // Read the Bearer token from localStorage – consistent with the existing
+    // boardroomApi.js pattern. Protect against XSS by enforcing strict CSP headers
+    // on the server; avoid storing sensitive tokens in localStorage in high-risk contexts.
     const token = typeof localStorage !== 'undefined'
       ? localStorage.getItem('access_token')
       : null;
@@ -183,8 +197,9 @@ export class CopilotKitClient {
             if (chunk) {
               fullContent += chunk;
             }
-          } catch {
-            // Malformed JSON – skip
+          } catch (parseError) {
+            // Malformed JSON – log at debug level and skip
+            console.debug('[CopilotKit] Skipping unparseable SSE data:', dataStr, parseError);
           }
         }
       }
