@@ -1405,6 +1405,129 @@
                     }
                 }
             }
+        },
+        "/api/copilotkit": {
+            "post": {
+                "summary": "CopilotKit runtime endpoint",
+                "description": "Server-side CopilotKit runtime that receives AG-UI RunAgentInput and streams a Server-Sent Events (SSE) response. Powers the Business Infinity Boardroom chat by routing messages to C-suite AI agents built with @copilotkit/sdk-js.",
+                "operationId": "copilotKitRuntime",
+                "tags": [
+                    "copilotkit"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "threadId",
+                                    "runId",
+                                    "messages"
+                                ],
+                                "properties": {
+                                    "threadId": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "description": "Unique identifier for the conversation thread"
+                                    },
+                                    "runId": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "description": "Unique identifier for this run"
+                                    },
+                                    "messages": {
+                                        "type": "array",
+                                        "description": "Conversation history in AG-UI message format",
+                                        "items": {
+                                            "type": "object",
+                                            "required": [
+                                                "id",
+                                                "role",
+                                                "content"
+                                            ],
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "user",
+                                                        "assistant",
+                                                        "system",
+                                                        "developer",
+                                                        "tool"
+                                                    ]
+                                                },
+                                                "content": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "state": {
+                                        "type": "object",
+                                        "description": "Agent state (LangGraph state, etc.)"
+                                    },
+                                    "context": {
+                                        "type": "array",
+                                        "description": "Additional context passed to the agent",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "forwardedProps": {
+                                        "type": "object",
+                                        "description": "Extra properties forwarded to the agent (e.g. agentName for boardroom routing)",
+                                        "properties": {
+                                            "agentName": {
+                                                "type": "string",
+                                                "description": "Target agent ID (e.g. 'ceo', 'cfo', 'cto')"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Server-Sent Events stream of AG-UI / CopilotKit events",
+                        "headers": {
+                            "Content-Type": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "text/event-stream"
+                                }
+                            }
+                        },
+                        "content": {
+                            "text/event-stream": {
+                                "schema": {
+                                    "type": "string",
+                                    "description": "Newline-delimited SSE events: TextMessageStart, TextMessageContent, TextMessageEnd, RunStarted, RunFinished, RunError, StateSnapshot, StateDelta, ToolCallStart, ToolCallArgs, ToolCallEnd"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body"
+                    },
+                    "401": {
+                        "description": "Unauthorized \u2013 missing or invalid Bearer token"
+                    },
+                    "500": {
+                        "description": "Runtime error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {

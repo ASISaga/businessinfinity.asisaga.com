@@ -4,6 +4,7 @@ title: AI Boardroom
 description: AI C-suite agents collaborate in real-time to drive strategic decisions, operational reviews, and business governance.
 boardroom:
   api_base: "/api/boardroom"
+  copilotkit_runtime_url: "https://cloud.businessinfinity.asisaga.com/api/copilotkit"
   show_avatar: true
   show_toolbar: true
   show_typing_indicator: true
@@ -33,6 +34,7 @@ boardroom:
   {% if page.boardroom.enable_file_attach %}enable-file-attach{% endif %}
   {% if page.boardroom.enable_formatting %}enable-formatting{% endif %}
   api-base="{{ page.boardroom.api_base }}"
+  copilotkit-runtime-url="{{ page.boardroom.copilotkit_runtime_url }}"
   {% if page.boardroom.auto_refresh %}auto-refresh refresh-interval="{{ page.boardroom.refresh_interval }}"{% endif %}
 >
   <main class="boardroom-container">
