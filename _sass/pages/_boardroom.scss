@@ -3,16 +3,45 @@
 .boardroom-container {
   @include genesis-environment('manifest');
   @include genesis-atmosphere('ethereal');
+  // Structural: fill available height so the app shell spans the full viewport.
+  // Mirrors the approach used in the theme's _chatroom.scss (.chatroom-layout).
+  height: 100%;
+  min-height: 0;
 }
 
 .boardroom-section {
   @include genesis-entity('primary');
+  // Structural: pass the full height down to the container fluid wrapper.
+  height: 100%;
+  min-height: 0;
 }
 
 .boardroom-container-fluid {
   @include genesis-environment('manifest');     // Full-width wrapper
+  // Structural: pass the full height down to the main row.
+  height: 100%;
+  min-height: 0;
 }
 
 .boardroom-main-row {
   @include genesis-environment('panelled');     // ← App shell: panels + fluid chat
+  // Structural: fill the available height so the chat panel can expand.
+  height: 100%;
+}
+
+// Chat area: flex column so header, messages, and input stack vertically.
+// Uses higher specificity to override overflow:auto from panelled environment.
+[data-panel="main"].boardroom-chat-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chatroom-messages.boardroom-chat-messages {
+  // Structural: scrollable message feed fills remaining space between header
+  // and input bar inside the chat column.
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
