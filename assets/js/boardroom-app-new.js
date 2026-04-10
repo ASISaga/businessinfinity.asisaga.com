@@ -40,6 +40,209 @@ class BoardroomApp extends ChatroomApp {
         this.copilotKit = null;
     }
 
+    /**
+     * Override _render() from ChatroomApp to inject the chatroom layout into the
+     * boardroom's `#chatArea` container instead of replacing all children of this
+     * element.  This preserves the boardroom-specific wrappers (toggle strip,
+     * members sidebar, loading overlay, toast container) that live alongside the
+     * chat area in the static HTML.
+     *
+     * Boardroom-specific header actions (Screen Share, Video Call, etc.) are
+     * appended to the chatroom header's actions container after the template is
+     * cloned and populated.
+     */
+    _render() {
+        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages = [] } = this.config;
+
+        const layout = this._cloneTemplate('template-chatroom-layout');
+        if (!layout) return;
+
+        // Populate title
+        const titleEl = layout.querySelector('.chatroom-title');
+        if (titleEl) titleEl.textContent = title;
+
+        // Conditionally show participants count
+        const participantsEl = layout.querySelector('.chatroom-participants');
+        if (participantsEl && participants) {
+            participantsEl.textContent = `${participants} agents in session`;
+            participantsEl.hidden = false;
+        }
+
+        // Conditionally show connection status badge
+        const statusContainer = layout.querySelector('.chatroom-status-container');
+        if (statusContainer && showConnectionStatus) {
+            statusContainer.hidden = false;
+        }
+
+        // Conditionally show MCP apps toggle button in the header
+        const mcpToggle = layout.querySelector('.chatroom-mcp-apps-toggle');
+        if (mcpToggle && mcpApps.length > 0) {
+            mcpToggle.hidden = false;
+        }
+
+        // Insert MCP apps panel before the messages container
+        if (mcpApps.length > 0) {
+            const panel = this._buildMcpPanel(mcpApps);
+            if (panel) {
+                const messagesEl = layout.querySelector('.chatroom-messages');
+                if (messagesEl) layout.insertBefore(panel, messagesEl);
+            }
+        }
+
+        // Populate messages container with pre-loaded data
+        const messagesEl = layout.querySelector('.chatroom-messages');
+        if (messagesEl && chatMessages.length > 0) {
+            messagesEl.replaceChildren();
+            chatMessages.forEach(m => {
+                const el = this._buildMessage(m);
+                if (el) messagesEl.appendChild(el);
+            });
+        }
+
+        // Add boardroom-specific header actions (Screen Share, Video Call, etc.)
+        this._addBoardroomHeaderActions(layout);
+
+        // Insert input area at the end of the layout
+        const inputEl = this._buildInput(placeholder, showToolbar, mcpApps);
+        if (inputEl) {
+            // Add boardroom-specific toolbar buttons when formatting is enabled
+            if (this.boardroomConfig.enableFormatting) {
+                this._addBoardroomToolbarButtons(inputEl);
+            }
+            // Add file attach button to the toolbar
+            if (this.boardroomConfig.enableFileAttach) {
+                this._addFileAttachButton(inputEl);
+            }
+            layout.appendChild(inputEl);
+        }
+
+        // Inject into the boardroom chat area container only, preserving the
+        // surrounding boardroom layout (toggle strip, members sidebar, etc.)
+        const chatArea = this.querySelector('#chatArea');
+        if (chatArea) {
+            chatArea.replaceChildren(layout);
+        } else {
+            // Fallback: replace all children (same as ChatroomApp default)
+            this.replaceChildren(layout);
+        }
+
+        // Scroll to bottom of any pre-loaded messages
+        if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    /**
+     * Add boardroom-specific action buttons (Screen Share, Video Call, More Options)
+     * to the chatroom header's actions container.
+     * @param {Element} layout  Cloned chatroom-layout element
+     */
+    _addBoardroomHeaderActions(layout) {
+        const actionsEl = layout.querySelector('.chatroom-actions');
+        if (!actionsEl) return;
+
+        const cdnBase = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons';
+
+        if (this.boardroomConfig.enableVideoCall) {
+            const btn = document.createElement('button');
+            btn.className = 'chatroom-header-btn boardroom-action-btn';
+            btn.title = 'Video Call';
+            btn.setAttribute('aria-label', 'Video Call');
+            const img = document.createElement('img');
+            img.src = `${cdnBase}/camera-video.svg`;
+            img.alt = 'Video Call';
+            img.width = 18;
+            img.height = 18;
+            btn.appendChild(img);
+            actionsEl.insertBefore(btn, actionsEl.firstChild);
+        }
+
+        if (this.boardroomConfig.enableScreenShare) {
+            const btn = document.createElement('button');
+            btn.className = 'chatroom-header-btn boardroom-action-btn';
+            btn.title = 'Screen Share';
+            btn.setAttribute('aria-label', 'Screen Share');
+            const img = document.createElement('img');
+            img.src = `${cdnBase}/display.svg`;
+            img.alt = 'Screen Share';
+            img.width = 18;
+            img.height = 18;
+            btn.appendChild(img);
+            actionsEl.insertBefore(btn, actionsEl.firstChild);
+        }
+
+        // Always show a More Options button at the end
+        const moreBtn = document.createElement('button');
+        moreBtn.className = 'chatroom-header-btn boardroom-action-btn';
+        moreBtn.title = 'More Options';
+        moreBtn.setAttribute('aria-label', 'More Options');
+        const moreImg = document.createElement('img');
+        moreImg.src = `${cdnBase}/three-dots.svg`;
+        moreImg.alt = 'More Options';
+        moreImg.width = 18;
+        moreImg.height = 18;
+        moreBtn.appendChild(moreImg);
+        actionsEl.appendChild(moreBtn);
+    }
+
+    /**
+     * Add boardroom formatting buttons (Bold, Italic, Code) to the toolbar's
+     * left slot when `enable-formatting` is set.
+     * @param {Element} inputEl  Cloned chatroom-input element
+     */
+    _addBoardroomToolbarButtons(inputEl) {
+        const toolbarLeft = inputEl.querySelector('.chatroom-input-toolbar-left');
+        if (!toolbarLeft) return;
+
+        const cdnBase = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons';
+        const formatButtons = [
+            { title: 'Bold', icon: 'type-bold' },
+            { title: 'Italic', icon: 'type-italic' },
+            { title: 'Code', icon: 'code' },
+        ];
+
+        formatButtons.forEach(({ title, icon }) => {
+            const btn = document.createElement('button');
+            btn.className = 'chatroom-input-format-btn';
+            btn.type = 'button';
+            btn.title = title;
+            btn.setAttribute('aria-label', title);
+            const img = document.createElement('img');
+            img.src = `${cdnBase}/${icon}.svg`;
+            img.alt = title;
+            img.width = 14;
+            img.height = 14;
+            btn.appendChild(img);
+            toolbarLeft.appendChild(btn);
+        });
+    }
+
+    /**
+     * Add a file-attach button to the toolbar's right slot.
+     * @param {Element} inputEl  Cloned chatroom-input element
+     */
+    _addFileAttachButton(inputEl) {
+        const toolbarRight = inputEl.querySelector('.chatroom-input-toolbar-right');
+        if (!toolbarRight) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'chatroom-input-action-btn';
+        btn.type = 'button';
+        btn.title = 'Attach File';
+        btn.setAttribute('aria-label', 'Attach File');
+        const img = document.createElement('img');
+        img.src = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons/paperclip.svg';
+        img.alt = 'Attach';
+        img.width = 18;
+        img.height = 18;
+        btn.appendChild(img);
+        // Insert before the send button
+        const sendBtn = toolbarRight.querySelector('.chatroom-input-send-btn');
+        if (sendBtn) {
+            toolbarRight.insertBefore(btn, sendBtn);
+        } else {
+            toolbarRight.appendChild(btn);
+        }
+    }
+
     async connectedCallback() {
         // Call parent connectedCallback
         await super.connectedCallback();
@@ -385,9 +588,13 @@ class BoardroomApp extends ChatroomApp {
         this._updateCharCount(inputEl);
 
         // Dismiss the empty-state placeholder if shown
-        const emptyState = this.querySelector('#chat-empty-state');
+        const messagesEl = (this.elements && this.elements.messagesContainer)
+            || this.querySelector('.chatroom-messages');
+        const emptyState = messagesEl
+            ? messagesEl.querySelector('.chatroom-empty-state')
+            : this.querySelector('.chatroom-empty-state');
         if (emptyState) {
-            emptyState.style.display = 'none';
+            emptyState.hidden = true;
         }
 
         // Render the user's message immediately
@@ -412,37 +619,39 @@ class BoardroomApp extends ChatroomApp {
     /** Get the chat textarea element */
     _getChatInputElement() {
         return (
+            (this.elements && this.elements.inputField) ||
+            this.querySelector('.chatroom-input-field') ||
             this.querySelector('textarea[name="message"]') ||
             this.querySelector('#chat-input') ||
-            this.querySelector('.chatroom-input-textarea') ||
             this.querySelector('textarea')
         );
     }
 
     /** Update character-count display after clearing input */
     _updateCharCount(inputEl) {
-        const counter = this.querySelector('#char-count');
+        const counter = (this.elements && this.elements.charCount)
+            || this.querySelector('.chatroom-char-count');
         if (counter) {
-            counter.textContent = `0/${inputEl.maxLength > 0 ? inputEl.maxLength : 1000}`;
+            counter.textContent = `0/${inputEl.maxLength > 0 ? inputEl.maxLength : (this.config.maxLength || 1000)}`;
         }
     }
 
     /** Clear all messages from the chat area */
     _clearMessages() {
-        const messagesEl = this.querySelector('#chatMessages');
+        const messagesEl = (this.elements && this.elements.messagesContainer)
+            || this.querySelector('.chatroom-messages');
         if (messagesEl) {
-            messagesEl.innerHTML = '';
-        }
-        // Re-show empty state if it exists
-        const emptyState = this.querySelector('#chat-empty-state');
-        if (emptyState) {
-            emptyState.style.display = '';
+            messagesEl.replaceChildren();
+            // Re-show the empty state placeholder
+            const emptyState = messagesEl.querySelector('.chatroom-empty-state');
+            if (emptyState) emptyState.hidden = false;
         }
     }
 
     /** Append the user's own message bubble to the chat */
     _appendUserMessage(text) {
-        const messagesEl = this.querySelector('#chatMessages');
+        const messagesEl = (this.elements && this.elements.messagesContainer)
+            || this.querySelector('.chatroom-messages');
         if (!messagesEl) return;
 
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -479,7 +688,8 @@ class BoardroomApp extends ChatroomApp {
      * @param {string} [agentName] - Display name of the responding agent
      */
     _createStreamingBubble(messageId, agentName) {
-        const messagesEl = this.querySelector('#chatMessages');
+        const messagesEl = (this.elements && this.elements.messagesContainer)
+            || this.querySelector('.chatroom-messages');
         if (!messagesEl) return;
 
         const agent = agentName || this.currentAgent?.name || 'AI';
@@ -570,7 +780,8 @@ class BoardroomApp extends ChatroomApp {
         newCursor.textContent = '▍';
         bubble.appendChild(newCursor);
 
-        const messagesEl = this.querySelector('#chatMessages');
+        const messagesEl = (this.elements && this.elements.messagesContainer)
+            || this.querySelector('.chatroom-messages');
         if (messagesEl) {
             messagesEl.scrollTop = messagesEl.scrollHeight;
         }
@@ -605,7 +816,8 @@ class BoardroomApp extends ChatroomApp {
             });
         }
 
-        const messagesEl = this.querySelector('#chatMessages');
+        const messagesEl = (this.elements && this.elements.messagesContainer)
+            || this.querySelector('.chatroom-messages');
         if (messagesEl) {
             messagesEl.scrollTop = messagesEl.scrollHeight;
         }
