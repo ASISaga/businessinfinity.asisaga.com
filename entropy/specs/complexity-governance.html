@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>complexity_governance Workflow Spec — Business Infinity</title>
+<meta name="description" content="Public specification for the complexity_governance workflow. Governed by the W. Edwards Deming agent. View the YAML logic spec that powers autonomous consultations for organizational entropy &amp; complexity bloat.">
+<link rel="canonical" href="https://businessinfinity.asisaga.com/specs/complexity-governance">
+<style>:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --border: #1e1e2e;
+  --text: #e0e0e8;
+  --muted: #8888a0;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --gold: #f59e0b;
+  --danger: #ef4444;
+  --success: #22c55e;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  line-height: 1.7; max-width: 960px; margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #fff; }
+h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+h3 { font-size: 1.15rem; margin: 1.8rem 0 0.5rem; color: var(--gold); font-style: italic; }
+p { margin-bottom: 1rem; }
+.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.card h3 { margin-top: 0; }
+.tag {
+  display: inline-block; font-size: 0.75rem; padding: 2px 10px;
+  border-radius: 9999px; border: 1px solid var(--border);
+  color: var(--muted); margin-right: 0.5rem; margin-bottom: 0.3rem;
+}
+.tag--technical { border-color: var(--accent); color: var(--accent); }
+.tag--emotional { border-color: var(--danger); color: var(--danger); }
+.tag--financial { border-color: var(--success); color: var(--success); }
+.diagnostic { color: var(--muted); font-size: 0.97rem; margin-bottom: 0.8rem; }
+.cta {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600;
+  font-size: 0.95rem; margin-top: 0.5rem; margin-right: 0.5rem;
+  transition: background 0.2s;
+}
+.cta:hover { background: var(--accent-hover); text-decoration: none; }
+.cta--secondary {
+  background: transparent; border: 1px solid var(--accent); color: var(--accent);
+}
+.cta--secondary:hover { background: var(--accent); color: #fff; }
+.legend-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--surface); border: 1px solid var(--gold);
+  border-radius: 8px; padding: 0.3rem 0.8rem; font-size: 0.85rem;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.breadcrumb { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.breadcrumb a { color: var(--muted); }
+.breadcrumb a:hover { color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.stat { text-align: center; padding: 1.5rem; }
+.stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
+.stat-label { color: var(--muted); font-size: 0.9rem; }
+nav { margin-bottom: 2rem; }
+nav a.nav-link {
+  display: inline-block; padding: 0.4rem 0.8rem; margin: 0.2rem;
+  border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.85rem; color: var(--muted);
+}
+nav a.nav-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+pre {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem; overflow-x: auto;
+  font-size: 0.88rem; line-height: 1.6; color: var(--muted);
+}
+code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+footer {
+  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 0.85rem; text-align: center;
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "complexity_governance \u2014 Business Infinity Workflow Spec",
+  "description": "Scale outpaces governance \u2014 every new hire adds process, not velocity. The company has outgrown its human coordination capacity.",
+  "codeRepository": "https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/complexity-governance.yaml",
+  "programmingLanguage": "YAML",
+  "targetProduct": {
+    "@type": "SoftwareApplication",
+    "name": "Business Infinity",
+    "applicationCategory": "Autonomous Strategic Governance",
+    "operatingSystem": "Agent Operating System (AOS)"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="breadcrumb">
+  <a href="https://businessinfinity.asisaga.com/entropy-index">The Entropy Index</a> &rsaquo;
+  <a href="https://businessinfinity.asisaga.com/entropy-index/organizational-entropy">Organizational Entropy &amp; Complexity Bloat</a> &rsaquo;
+  Workflow Spec
+</div>
+
+<h1>Workflow Spec: <code>complexity_governance</code></h1>
+<p class="subtitle">
+  A structured consultation governed by the W. Edwards Deming
+  agent (Chief Operating Officer), addressing organizational entropy &amp; complexity bloat.
+</p>
+
+<div class="legend-badge">W. Edwards Deming &mdash; Chief Operating Officer</div>
+
+<div class="card">
+  <p><strong>Workflow ID:</strong> <code>complexity_governance</code></p>
+  <p><strong>Version:</strong> 1.0.0</p>
+  <p><strong>Owner:</strong> coo (W. Edwards Deming)</p>
+  <p><strong>Pain Category:</strong>
+    <a href="https://businessinfinity.asisaga.com/entropy-index/organizational-entropy">2. Organizational Entropy &amp; Complexity Bloat</a>
+  </p>
+</div>
+
+<div style="margin-bottom:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=complexity_governance&amp;agent=coo">
+    Activate This Workflow &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/complexity-governance.yaml">
+    View Source on GitHub
+  </a>
+</div>
+
+<h2>Conversation Steps</h2>
+<p>
+  This workflow is a YAML specification that governs a step-by-step
+  consultation. Each step presents a narrative, receives a response from
+  the legendary agent, and offers actions. The AOS executes this spec
+  in real-time through the chatroom interface.
+</p>
+
+
+<div class="card">
+  <h3>The Hiring Paradox</h3>
+  <p><strong>Narrative:</strong> You raised a Series B to accelerate. You hired 50 more people. Six months later, your release cycle is slower, your burn rate has tripled, and you spend more time in alignment meetings than building product. What went wrong?</p>
+  <p class="diagnostic"><strong>Response:</strong> Nothing went wrong with your people. Something went wrong with your governance. Every new hire adds a node to your coordination graph. At 50 people the graph has 1,225 edges. At 150 it has 11,175. Human bandwidth cannot govern that graph. The complexity is not a failure — it is a structural limit.</p>
+  
+</div>
+<div class="card">
+  <h3>The Entropy Engine</h3>
+  <p><strong>Narrative:</strong> Every department now speaks a different language. Engineering talks in sprints, Sales talks in quarters, Finance talks in fiscal years, and Operations talks in shifts. The translation layer between them is you — and you are the bottleneck.</p>
+  <p class="diagnostic"><strong>Response:</strong> Organizational entropy is not chaos. It is the natural state of any system that grows faster than its governance model. Your company has outgrown its human coordination capacity. The question is whether to add more coordinators — or to add a coordination intelligence.</p>
+  <ul><li><strong>Entropy Diagnostic</strong>: Map your company&#x27;s coordination graph and identify the bottlenecks</li></ul>
+</div>
+<div class="card">
+  <h3>Meetings About Meetings</h3>
+  <p><strong>Narrative:</strong> Your calendar is full of meetings that exist only to align people who were misaligned by the last meeting. You have a project manager whose entire job is to ensure that three teams are working on the same version of the same spec. This is not management — this is entropy tax.</p>
+  <p class="diagnostic"><strong>Response:</strong> The entropy tax compounds with every hire. At your current trajectory, 40% of your headcount will be coordination overhead within two years. That is not a team — that is a bureaucracy. And bureaucracies do not ship product.</p>
+  <ul><li><strong>Coordination Overhead Calculator</strong>: Estimate the percentage of your headcount spent on alignment vs. execution</li></ul>
+</div>
+<div class="card">
+  <h3>Unified Consciousness</h3>
+  <p><strong>Narrative:</strong> Business Infinity connects to every system in your stack — GitHub, Salesforce, NetSuite, ERP, CRM, Slack — through MCP. Instead of humans translating between silos, the boardroom reads all systems simultaneously and maintains a single, cross-functional source of truth.</p>
+  <p class="diagnostic"><strong>Response:</strong> This is not another integration platform. It is a governance intelligence. The Deming agent reads your operational data. The Buffett agent reads your financials. The Ogilvy agent reads your market signals. They do not need alignment meetings because they share one consciousness.</p>
+  <ul><li><strong>MCP Integrations</strong>: See all available business system connections</li></ul>
+</div>
+<div class="card">
+  <h3>Purpose As Constitution</h3>
+  <p><strong>Narrative:</strong> In a human organization, alignment requires constant communication. In a Business Infinity company, alignment is structural. Every autonomous action is scored for resonance with your company&#x27;s stated purpose. Departments cannot drift because the purpose is the constitution — not a poster on the wall.</p>
+  <p class="diagnostic"><strong>Response:</strong> Purpose-driven governance replaces committee-driven governance. The boardroom does not need consensus — it needs resonance. An action that resonates with purpose executes. An action that does not, stops. The complexity is governed by meaning, not meetings.</p>
+  <ul><li><strong>Purpose Governance Model</strong>: How resonance scoring replaces alignment meetings</li></ul>
+</div>
+<div class="card">
+  <h3>Day One At Any Scale</h3>
+  <p><strong>Narrative:</strong> Bezos called it &#x27;Day 1&#x27; — the principle that a company at any size should operate with the urgency and customer obsession of its first day. Business Infinity makes Day 1 structural. The CEO agent monitors every department for signs of &#x27;Day 2&#x27; — optimizing for optics over customer intent, adding process for its own sake, hiring to fill chairs rather than solve problems.</p>
+  <p class="diagnostic"><strong>Response:</strong> You do not need to be in every room to maintain your company&#x27;s soul. The boardroom carries your intent into every system, every decision, every department — 24 hours a day. Your company scales. Its purpose does not dilute.</p>
+  <ul><li><strong>Start Onboarding</strong>: Activate purpose-driven governance for your company</li><li><strong>Governance Brief</strong>: A focused conversation about your specific complexity challenges</li></ul>
+</div>
+
+<h2>Source Specification</h2>
+<pre><code>workflow_id: &quot;complexity_governance&quot;
+version: &quot;1.0.0&quot;
+owner: &quot;coo&quot;
+
+steps:
+  the_hiring_paradox:
+    narrative: &quot;You raised a Series B to accelerate. You hired 50 more people. Six months later, your release cycle is slower, your burn rate has tripled, and you spend more time in alignment meetings than building product. What went wrong?&quot;
+    response: &quot;Nothing went wrong with your people. Something went wrong with your governance. Every new hire adds a node to your coordination graph. At 50 people the graph has 1,225 edges. At 150 it has 11,175. Human bandwidth cannot govern that graph. The complexity is not a failure — it is a structural limit.&quot;
+    actions: []
+    navigation:
+      next: &quot;the_entropy_engine&quot;
+
+  the_entropy_engine:
+    narrative: &quot;Every department now speaks a different language. Engineering talks in sprints, Sales talks in quarters, Finance talks in fiscal years, and Operations talks in shifts. The translation layer between them is you — and you are the bottleneck.&quot;
+    response: &quot;Organizational entropy is not chaos. It is the natural state of any system that grows faster than its governance model. Your company has outgrown its human coordination capacity. The question is whether to add more coordinators — or to add a coordination intelligence.&quot;
+    actions:
+      - label: &quot;Entropy Diagnostic&quot;
+        description: &quot;Map your company&#x27;s coordination graph and identify the bottlenecks&quot;
+        url: &quot;entropy-diagnostic&quot;
+    navigation:
+      next: &quot;meetings_about_meetings&quot;
+      back: &quot;the_hiring_paradox&quot;
+
+  meetings_about_meetings:
+    narrative: &quot;Your calendar is full of meetings that exist only to align people who were misaligned by the last meeting. You have a project manager whose entire job is to ensure that three teams are working on the same version of the same spec. This is not management — this is entropy tax.&quot;
+    response: &quot;The entropy tax compounds with every hire. At your current trajectory, 40% of your headcount will be coordination overhead within two years. That is not a team — that is a bureaucracy. And bureaucracies do not ship product.&quot;
+    actions:
+      - label: &quot;Coordination Overhead Calculator&quot;
+        description: &quot;Estimate the percentage of your headcount spent on alignment vs. execution&quot;
+        url: &quot;coordination-overhead&quot;
+    navigation:
+      next: &quot;unified_consciousness&quot;
+      back: &quot;the_entropy_engine&quot;
+
+  unified_consciousness:
+    narrative: &quot;Business Infinity connects to every system in your stack — GitHub, Salesforce, NetSuite, ERP, CRM, Slack — through MCP. Instead of humans translating between silos, the boardroom reads all systems simultaneously and maintains a single, cross-functional source of truth.&quot;
+    response: &quot;This is not another integration platform. It is a governance intelligence. The Deming agent reads your operational data. The Buffett agent reads your financials. The Ogilvy agent reads your market signals. They do not need alignment meetings because they share one consciousness.&quot;
+    actions:
+      - label: &quot;MCP Integrations&quot;
+        description: &quot;See all available business system connections&quot;
+        url: &quot;mcp-integrations&quot;
+    navigation:
+      next: &quot;purpose_as_constitution&quot;
+      back: &quot;meetings_about_meetings&quot;
+
+  purpose_as_constitution:
+    narrative: &quot;In a human organization, alignment requires constant communication. In a Business Infinity company, alignment is structural. Every autonomous action is scored for resonance with your company&#x27;s stated purpose. Departments cannot drift because the purpose is the constitution — not a poster on the wall.&quot;
+    response: &quot;Purpose-driven governance replaces committee-driven governance. The boardroom does not need consensus — it needs resonance. An action that resonates with purpose executes. An action that does not, stops. The complexity is governed by meaning, not meetings.&quot;
+    actions:
+      - label: &quot;Purpose Governance Model&quot;
+        description: &quot;How resonance scoring replaces alignment meetings&quot;
+        url: &quot;resonance&quot;
+    navigation:
+      next: &quot;day_one_at_any_scale&quot;
+      back: &quot;unified_consciousness&quot;
+
+  day_one_at_any_scale:
+    narrative: &quot;Bezos called it &#x27;Day 1&#x27; — the principle that a company at any size should operate with the urgency and customer obsession of its first day. Business Infinity makes Day 1 structural. The CEO agent monitors every department for signs of &#x27;Day 2&#x27; — optimizing for optics over customer intent, adding process for its own sake, hiring to fill chairs rather than solve problems.&quot;
+    response: &quot;You do not need to be in every room to maintain your company&#x27;s soul. The boardroom carries your intent into every system, every decision, every department — 24 hours a day. Your company scales. Its purpose does not dilute.&quot;
+    actions:
+      - label: &quot;Start Onboarding&quot;
+        description: &quot;Activate purpose-driven governance for your company&quot;
+        url: &quot;onboarding&quot;
+      - label: &quot;Governance Brief&quot;
+        description: &quot;A focused conversation about your specific complexity challenges&quot;
+        url: &quot;schedule&quot;
+    navigation:
+      back: &quot;purpose_as_constitution&quot;
+</code></pre>
+
+<div style="margin-top:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=complexity_governance&amp;agent=coo">
+    Initialize W. Edwards Deming Consultation &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://businessinfinity.asisaga.com/entropy-index/organizational-entropy">
+    &larr; Back to Organizational Entropy &amp; Complexity Bloat
+  </a>
+</div>
+
+<footer>
+  <p>&copy; ASI Saga &mdash; Business Infinity &mdash; The Entropy Index</p>
+  <p>
+    <a href="https://businessinfinity.asisaga.com">Home</a> &middot;
+    <a href="https://businessinfinity.asisaga.com/entropy-index">Entropy Index</a> &middot;
+    <a href="https://github.com/ASISaga/business-infinity">GitHub</a>
+  </p>
+</footer>
+</body>
+</html>

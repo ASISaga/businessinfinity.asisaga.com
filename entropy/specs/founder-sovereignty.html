@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>founder_sovereignty Workflow Spec — Business Infinity</title>
+<meta name="description" content="Public specification for the founder_sovereignty workflow. Governed by the Steve Jobs agent. View the YAML logic spec that powers autonomous consultations for cognitive &amp; decision overload.">
+<link rel="canonical" href="https://businessinfinity.asisaga.com/specs/founder-sovereignty">
+<style>:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --border: #1e1e2e;
+  --text: #e0e0e8;
+  --muted: #8888a0;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --gold: #f59e0b;
+  --danger: #ef4444;
+  --success: #22c55e;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  line-height: 1.7; max-width: 960px; margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #fff; }
+h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+h3 { font-size: 1.15rem; margin: 1.8rem 0 0.5rem; color: var(--gold); font-style: italic; }
+p { margin-bottom: 1rem; }
+.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.card h3 { margin-top: 0; }
+.tag {
+  display: inline-block; font-size: 0.75rem; padding: 2px 10px;
+  border-radius: 9999px; border: 1px solid var(--border);
+  color: var(--muted); margin-right: 0.5rem; margin-bottom: 0.3rem;
+}
+.tag--technical { border-color: var(--accent); color: var(--accent); }
+.tag--emotional { border-color: var(--danger); color: var(--danger); }
+.tag--financial { border-color: var(--success); color: var(--success); }
+.diagnostic { color: var(--muted); font-size: 0.97rem; margin-bottom: 0.8rem; }
+.cta {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600;
+  font-size: 0.95rem; margin-top: 0.5rem; margin-right: 0.5rem;
+  transition: background 0.2s;
+}
+.cta:hover { background: var(--accent-hover); text-decoration: none; }
+.cta--secondary {
+  background: transparent; border: 1px solid var(--accent); color: var(--accent);
+}
+.cta--secondary:hover { background: var(--accent); color: #fff; }
+.legend-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--surface); border: 1px solid var(--gold);
+  border-radius: 8px; padding: 0.3rem 0.8rem; font-size: 0.85rem;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.breadcrumb { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.breadcrumb a { color: var(--muted); }
+.breadcrumb a:hover { color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.stat { text-align: center; padding: 1.5rem; }
+.stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
+.stat-label { color: var(--muted); font-size: 0.9rem; }
+nav { margin-bottom: 2rem; }
+nav a.nav-link {
+  display: inline-block; padding: 0.4rem 0.8rem; margin: 0.2rem;
+  border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.85rem; color: var(--muted);
+}
+nav a.nav-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+pre {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem; overflow-x: auto;
+  font-size: 0.88rem; line-height: 1.6; color: var(--muted);
+}
+code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+footer {
+  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 0.85rem; text-align: center;
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "founder_sovereignty \u2014 Business Infinity Workflow Spec",
+  "description": "Human bandwidth ceiling \u2014 the leader moves from finance to marketing to production in a single afternoon, crushed by context switches.",
+  "codeRepository": "https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/founder-sovereignty.yaml",
+  "programmingLanguage": "YAML",
+  "targetProduct": {
+    "@type": "SoftwareApplication",
+    "name": "Business Infinity",
+    "applicationCategory": "Autonomous Strategic Governance",
+    "operatingSystem": "Agent Operating System (AOS)"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="breadcrumb">
+  <a href="https://businessinfinity.asisaga.com/entropy-index">The Entropy Index</a> &rsaquo;
+  <a href="https://businessinfinity.asisaga.com/entropy-index/cognitive-decision-overload">Cognitive &amp; Decision Overload</a> &rsaquo;
+  Workflow Spec
+</div>
+
+<h1>Workflow Spec: <code>founder_sovereignty</code></h1>
+<p class="subtitle">
+  A structured consultation governed by the Steve Jobs
+  agent (Chief Executive Officer), addressing cognitive &amp; decision overload.
+</p>
+
+<div class="legend-badge">Steve Jobs &mdash; Chief Executive Officer</div>
+
+<div class="card">
+  <p><strong>Workflow ID:</strong> <code>founder_sovereignty</code></p>
+  <p><strong>Version:</strong> 1.0.0</p>
+  <p><strong>Owner:</strong> ceo (Steve Jobs)</p>
+  <p><strong>Pain Category:</strong>
+    <a href="https://businessinfinity.asisaga.com/entropy-index/cognitive-decision-overload">1. Cognitive &amp; Decision Overload</a>
+  </p>
+</div>
+
+<div style="margin-bottom:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=founder_sovereignty&amp;agent=ceo">
+    Activate This Workflow &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/founder-sovereignty.yaml">
+    View Source on GitHub
+  </a>
+</div>
+
+<h2>Conversation Steps</h2>
+<p>
+  This workflow is a YAML specification that governs a step-by-step
+  consultation. Each step presents a narrative, receives a response from
+  the legendary agent, and offers actions. The AOS executes this spec
+  in real-time through the chatroom interface.
+</p>
+
+
+<div class="card">
+  <h3>The Burning Question</h3>
+  <p><strong>Narrative:</strong> Let&#x27;s start with one question. In a typical week, how many hours do you spend in meetings aligning your team—versus actually thinking about where this company should go?</p>
+  <p class="diagnostic"><strong>Response:</strong> For most Series B founders the honest answer is 15 to 25 hours. That&#x27;s half the working week spent on alignment instead of architecture. That gap is what we call the Complexity Tax.</p>
+  
+</div>
+<div class="card">
+  <h3>The Complexity Tax</h3>
+  <p><strong>Narrative:</strong> You raised capital to accelerate. Instead, hiring 50 more people made things slower. Every new manager adds a layer of coordination, every new system adds a silo, and every silo costs you $20,000 a day in delayed decisions.</p>
+  <p class="diagnostic"><strong>Response:</strong> The Complexity Tax isn&#x27;t a management failure—it&#x27;s a structural limit of human bandwidth. No founder can hold 150 people&#x27;s work in their head. The question is whether that limit belongs to you or to a system.</p>
+  <ul><li><strong>Burn Rate Calculator</strong>: See the true cost of human decision latency at your scale</li></ul>
+</div>
+<div class="card">
+  <h3>Signal Vs Noise</h3>
+  <p><strong>Narrative:</strong> You have 20 tabs open: Jira, Salesforce, NetSuite, Slack, GitHub, and six dashboards. None of them tells you whether your company is actually performing or just running. You are an air traffic controller, not a pilot.</p>
+  <p class="diagnostic"><strong>Response:</strong> Software records what happened. It has no opinion about what should happen next. The synthesis layer—the intelligence between your data and your decisions—is still a human bottleneck. That human is you.</p>
+  <ul><li><strong>The Synthesis Gap</strong>: Why data abundance does not produce strategic clarity</li></ul>
+</div>
+<div class="card">
+  <h3>The Decision Gap</h3>
+  <p><strong>Narrative:</strong> Six months ago your board agreed on a strategy. Today, your engineering team is refactoring code that is about to be deprecated, and your sales team is promising a feature that was killed in the last sprint. They are not being reckless—they simply have no shared source of truth.</p>
+  <p class="diagnostic"><strong>Response:</strong> This is the Strategy–Execution Divorce. Intent lives in a slide deck; execution lives in disconnected tools. The gap compounds with every hire and every quarter.</p>
+  <ul><li><strong>Alignment Report</strong>: How Business Infinity detects and closes the strategy–execution gap</li></ul>
+</div>
+<div class="card">
+  <h3>Legendary Offload</h3>
+  <p><strong>Narrative:</strong> Business Infinity gives you a boardroom of legendary CXO agents—Jobs for vision and narrative, Buffett for financial discipline, Deming for operational precision, Ogilvy for market intelligence, Drucker for people and culture, Turing for technology, Sun Tzu for strategy. They run perpetually, connected to your ERP, CRM, and GitHub, and they handle the L1 and L2 strategic decisions without you in the loop.</p>
+  <p class="diagnostic"><strong>Response:</strong> You are not replaced. You are elevated. The boardroom handles the 90% that can be governed by purpose. You preside over the final 10% that requires your unique judgment. Twenty hours a week return to you—immediately.</p>
+  <ul><li><strong>Meet the Boardroom</strong>: The seven legendary CXO archetypes and their domains</li></ul>
+</div>
+<div class="card">
+  <h3>Purpose As Governor</h3>
+  <p><strong>Narrative:</strong> You might ask: how do you trust autonomous decisions? The answer is resonance. Every proposed action is scored against your company&#x27;s stated purpose before it executes. If it does not resonate, it does not run. Your purpose is the only authority above the boardroom.</p>
+  <p class="diagnostic"><strong>Response:</strong> Resonance is not consensus—it is alignment with meaning. A high-resonance action can be bold and uncomfortable. But it will always be true to who your company is. The boardroom cannot drift from your vision because your vision is the governor.</p>
+  <ul><li><strong>Resonance Explained</strong>: How purpose-driven scoring governs every autonomous action</li></ul>
+</div>
+<div class="card">
+  <h3>The Sovereign Role</h3>
+  <p><strong>Narrative:</strong> Imagine entering your next board meeting having already pre-gamed every scenario with a boardroom of Buffetts and Jobses, working from your live ERP and CRM data. You walk in as the highest-integrity person in the room—not because you are the smartest, but because your system never sleeps.</p>
+  <p class="diagnostic"><strong>Response:</strong> This is sovereignty. You stop being a janitor of complexity and return to being the architect of a saga. The boardroom handles the machine. You hold the vision.</p>
+  <ul><li><strong>Board Preparation Workflow</strong>: See how the boardroom prepares a founder for a high-stakes meeting</li></ul>
+</div>
+<div class="card">
+  <h3>Reclaim Your Saga</h3>
+  <p><strong>Narrative:</strong> You built this company to change something. The complexity you are managing right now is not the work—it is the overhead. Business Infinity removes the overhead. For the cost of one mid-level hire, you get a 24/7 boardroom that executes your intent with the wisdom of legends.</p>
+  <p class="diagnostic"><strong>Response:</strong> Onboarding takes minutes. Your boardroom starts running immediately. The first thing it does is read your existing systems and surface the three decisions you have been deferring. Let&#x27;s begin.</p>
+  <ul><li><strong>Start Onboarding</strong>: Set up your Business Infinity boardroom now</li><li><strong>Schedule a Deep Dive</strong>: Talk to our team about your specific complexity challenge</li></ul>
+</div>
+
+<h2>Source Specification</h2>
+<pre><code>workflow_id: &quot;founder_sovereignty&quot;
+version: &quot;1.0.0&quot;
+owner: &quot;ceo&quot;
+
+steps:
+  the_burning_question:
+    narrative: &quot;Let&#x27;s start with one question. In a typical week, how many hours do you spend in meetings aligning your team—versus actually thinking about where this company should go?&quot;
+    response: &quot;For most Series B founders the honest answer is 15 to 25 hours. That&#x27;s half the working week spent on alignment instead of architecture. That gap is what we call the Complexity Tax.&quot;
+    actions: []
+    navigation:
+      next: &quot;the_complexity_tax&quot;
+
+  the_complexity_tax:
+    narrative: &quot;You raised capital to accelerate. Instead, hiring 50 more people made things slower. Every new manager adds a layer of coordination, every new system adds a silo, and every silo costs you $20,000 a day in delayed decisions.&quot;
+    response: &quot;The Complexity Tax isn&#x27;t a management failure—it&#x27;s a structural limit of human bandwidth. No founder can hold 150 people&#x27;s work in their head. The question is whether that limit belongs to you or to a system.&quot;
+    actions:
+      - label: &quot;Burn Rate Calculator&quot;
+        description: &quot;See the true cost of human decision latency at your scale&quot;
+        url: &quot;complexity-tax&quot;
+    navigation:
+      next: &quot;signal_vs_noise&quot;
+      back: &quot;the_burning_question&quot;
+
+  signal_vs_noise:
+    narrative: &quot;You have 20 tabs open: Jira, Salesforce, NetSuite, Slack, GitHub, and six dashboards. None of them tells you whether your company is actually performing or just running. You are an air traffic controller, not a pilot.&quot;
+    response: &quot;Software records what happened. It has no opinion about what should happen next. The synthesis layer—the intelligence between your data and your decisions—is still a human bottleneck. That human is you.&quot;
+    actions:
+      - label: &quot;The Synthesis Gap&quot;
+        description: &quot;Why data abundance does not produce strategic clarity&quot;
+        url: &quot;synthesis-gap&quot;
+    navigation:
+      next: &quot;the_decision_gap&quot;
+      back: &quot;the_complexity_tax&quot;
+
+  the_decision_gap:
+    narrative: &quot;Six months ago your board agreed on a strategy. Today, your engineering team is refactoring code that is about to be deprecated, and your sales team is promising a feature that was killed in the last sprint. They are not being reckless—they simply have no shared source of truth.&quot;
+    response: &quot;This is the Strategy–Execution Divorce. Intent lives in a slide deck; execution lives in disconnected tools. The gap compounds with every hire and every quarter.&quot;
+    actions:
+      - label: &quot;Alignment Report&quot;
+        description: &quot;How Business Infinity detects and closes the strategy–execution gap&quot;
+        url: &quot;alignment-report&quot;
+    navigation:
+      next: &quot;legendary_offload&quot;
+      back: &quot;signal_vs_noise&quot;
+
+  legendary_offload:
+    narrative: &quot;Business Infinity gives you a boardroom of legendary CXO agents—Jobs for vision and narrative, Buffett for financial discipline, Deming for operational precision, Ogilvy for market intelligence, Drucker for people and culture, Turing for technology, Sun Tzu for strategy. They run perpetually, connected to your ERP, CRM, and GitHub, and they handle the L1 and L2 strategic decisions without you in the loop.&quot;
+    response: &quot;You are not replaced. You are elevated. The boardroom handles the 90% that can be governed by purpose. You preside over the final 10% that requires your unique judgment. Twenty hours a week return to you—immediately.&quot;
+    actions:
+      - label: &quot;Meet the Boardroom&quot;
+        description: &quot;The seven legendary CXO archetypes and their domains&quot;
+        url: &quot;agent-catalogue&quot;
+    navigation:
+      next: &quot;purpose_as_governor&quot;
+      back: &quot;the_decision_gap&quot;
+
+  purpose_as_governor:
+    narrative: &quot;You might ask: how do you trust autonomous decisions? The answer is resonance. Every proposed action is scored against your company&#x27;s stated purpose before it executes. If it does not resonate, it does not run. Your purpose is the only authority above the boardroom.&quot;
+    response: &quot;Resonance is not consensus—it is alignment with meaning. A high-resonance action can be bold and uncomfortable. But it will always be true to who your company is. The boardroom cannot drift from your vision because your vision is the governor.&quot;
+    actions:
+      - label: &quot;Resonance Explained&quot;
+        description: &quot;How purpose-driven scoring governs every autonomous action&quot;
+        url: &quot;resonance&quot;
+    navigation:
+      next: &quot;the_sovereign_role&quot;
+      back: &quot;legendary_offload&quot;
+
+  the_sovereign_role:
+    narrative: &quot;Imagine entering your next board meeting having already pre-gamed every scenario with a boardroom of Buffetts and Jobses, working from your live ERP and CRM data. You walk in as the highest-integrity person in the room—not because you are the smartest, but because your system never sleeps.&quot;
+    response: &quot;This is sovereignty. You stop being a janitor of complexity and return to being the architect of a saga. The boardroom handles the machine. You hold the vision.&quot;
+    actions:
+      - label: &quot;Board Preparation Workflow&quot;
+        description: &quot;See how the boardroom prepares a founder for a high-stakes meeting&quot;
+        url: &quot;board-prep&quot;
+    navigation:
+      next: &quot;reclaim_your_saga&quot;
+      back: &quot;purpose_as_governor&quot;
+
+  reclaim_your_saga:
+    narrative: &quot;You built this company to change something. The complexity you are managing right now is not the work—it is the overhead. Business Infinity removes the overhead. For the cost of one mid-level hire, you get a 24/7 boardroom that executes your intent with the wisdom of legends.&quot;
+    response: &quot;Onboarding takes minutes. Your boardroom starts running immediately. The first thing it does is read your existing systems and surface the three decisions you have been deferring. Let&#x27;s begin.&quot;
+    actions:
+      - label: &quot;Start Onboarding&quot;
+        description: &quot;Set up your Business Infinity boardroom now&quot;
+        url: &quot;onboarding&quot;
+      - label: &quot;Schedule a Deep Dive&quot;
+        description: &quot;Talk to our team about your specific complexity challenge&quot;
+        url: &quot;schedule&quot;
+    navigation:
+      back: &quot;the_sovereign_role&quot;
+</code></pre>
+
+<div style="margin-top:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=founder_sovereignty&amp;agent=ceo">
+    Initialize Steve Jobs Consultation &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://businessinfinity.asisaga.com/entropy-index/cognitive-decision-overload">
+    &larr; Back to Cognitive &amp; Decision Overload
+  </a>
+</div>
+
+<footer>
+  <p>&copy; ASI Saga &mdash; Business Infinity &mdash; The Entropy Index</p>
+  <p>
+    <a href="https://businessinfinity.asisaga.com">Home</a> &middot;
+    <a href="https://businessinfinity.asisaga.com/entropy-index">Entropy Index</a> &middot;
+    <a href="https://github.com/ASISaga/business-infinity">GitHub</a>
+  </p>
+</footer>
+</body>
+</html>

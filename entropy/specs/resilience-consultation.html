@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>resilience_consultation Workflow Spec — Business Infinity</title>
+<meta name="description" content="Public specification for the resilience_consultation workflow. Governed by the Sun Tzu agent. View the YAML logic spec that powers autonomous consultations for operational fragility &amp; supply-chain chaos.">
+<link rel="canonical" href="https://businessinfinity.asisaga.com/specs/resilience-consultation">
+<style>:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --border: #1e1e2e;
+  --text: #e0e0e8;
+  --muted: #8888a0;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --gold: #f59e0b;
+  --danger: #ef4444;
+  --success: #22c55e;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  line-height: 1.7; max-width: 960px; margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #fff; }
+h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+h3 { font-size: 1.15rem; margin: 1.8rem 0 0.5rem; color: var(--gold); font-style: italic; }
+p { margin-bottom: 1rem; }
+.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.card h3 { margin-top: 0; }
+.tag {
+  display: inline-block; font-size: 0.75rem; padding: 2px 10px;
+  border-radius: 9999px; border: 1px solid var(--border);
+  color: var(--muted); margin-right: 0.5rem; margin-bottom: 0.3rem;
+}
+.tag--technical { border-color: var(--accent); color: var(--accent); }
+.tag--emotional { border-color: var(--danger); color: var(--danger); }
+.tag--financial { border-color: var(--success); color: var(--success); }
+.diagnostic { color: var(--muted); font-size: 0.97rem; margin-bottom: 0.8rem; }
+.cta {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600;
+  font-size: 0.95rem; margin-top: 0.5rem; margin-right: 0.5rem;
+  transition: background 0.2s;
+}
+.cta:hover { background: var(--accent-hover); text-decoration: none; }
+.cta--secondary {
+  background: transparent; border: 1px solid var(--accent); color: var(--accent);
+}
+.cta--secondary:hover { background: var(--accent); color: #fff; }
+.legend-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--surface); border: 1px solid var(--gold);
+  border-radius: 8px; padding: 0.3rem 0.8rem; font-size: 0.85rem;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.breadcrumb { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.breadcrumb a { color: var(--muted); }
+.breadcrumb a:hover { color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.stat { text-align: center; padding: 1.5rem; }
+.stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
+.stat-label { color: var(--muted); font-size: 0.9rem; }
+nav { margin-bottom: 2rem; }
+nav a.nav-link {
+  display: inline-block; padding: 0.4rem 0.8rem; margin: 0.2rem;
+  border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.85rem; color: var(--muted);
+}
+nav a.nav-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+pre {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem; overflow-x: auto;
+  font-size: 0.88rem; line-height: 1.6; color: var(--muted);
+}
+code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+footer {
+  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 0.85rem; text-align: center;
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "resilience_consultation \u2014 Business Infinity Workflow Spec",
+  "description": "Brittle integration \u2014 as systems become more automated, they become more fragile. Geopolitical volatility compresses planning horizons to 48 hours.",
+  "codeRepository": "https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/resilience-consultation.yaml",
+  "programmingLanguage": "YAML",
+  "targetProduct": {
+    "@type": "SoftwareApplication",
+    "name": "Business Infinity",
+    "applicationCategory": "Autonomous Strategic Governance",
+    "operatingSystem": "Agent Operating System (AOS)"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="breadcrumb">
+  <a href="https://businessinfinity.asisaga.com/entropy-index">The Entropy Index</a> &rsaquo;
+  <a href="https://businessinfinity.asisaga.com/entropy-index/operational-fragility-supply-chain">Operational Fragility &amp; Supply-Chain Chaos</a> &rsaquo;
+  Workflow Spec
+</div>
+
+<h1>Workflow Spec: <code>resilience_consultation</code></h1>
+<p class="subtitle">
+  A structured consultation governed by the Sun Tzu
+  agent (Chief Strategy Officer), addressing operational fragility &amp; supply-chain chaos.
+</p>
+
+<div class="legend-badge">Sun Tzu &mdash; Chief Strategy Officer</div>
+
+<div class="card">
+  <p><strong>Workflow ID:</strong> <code>resilience_consultation</code></p>
+  <p><strong>Version:</strong> 1.0.0</p>
+  <p><strong>Owner:</strong> cso (Sun Tzu)</p>
+  <p><strong>Pain Category:</strong>
+    <a href="https://businessinfinity.asisaga.com/entropy-index/operational-fragility-supply-chain">9. Operational Fragility &amp; Supply-Chain Chaos</a>
+  </p>
+</div>
+
+<div style="margin-bottom:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=resilience_consultation&amp;agent=cso">
+    Activate This Workflow &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/resilience-consultation.yaml">
+    View Source on GitHub
+  </a>
+</div>
+
+<h2>Conversation Steps</h2>
+<p>
+  This workflow is a YAML specification that governs a step-by-step
+  consultation. Each step presents a narrative, receives a response from
+  the legendary agent, and offers actions. The AOS executes this spec
+  in real-time through the chatroom interface.
+</p>
+
+
+<div class="card">
+  <h3>The 48 Hour Window</h3>
+  <p><strong>Narrative:</strong> A new trade restriction was announced 90 minutes ago. It affects three of your top five suppliers. Your team is waiting for guidance. Your planning cycle assumes a 90-day horizon. You now have 48 hours. What does your company do in the next two hours?</p>
+  <p class="diagnostic"><strong>Response:</strong> For most companies the answer is a war room of tired executives making decisions with yesterday&#x27;s data, a cascade of Slack messages to suppliers who are also scrambling, and a CRM full of customer commitments that may now be impossible to keep.</p>
+  
+</div>
+<div class="card">
+  <h3>Cascade Failure</h3>
+  <p><strong>Narrative:</strong> Operational fragility is not the fault of any one system. It is the fault of the gaps between them. Your MES tells you what is on the shop floor. Your ERP tells you what is in the warehouse. Your CRM tells you what you have promised. None of them tells you what happens to each other when one breaks.</p>
+  <p class="diagnostic"><strong>Response:</strong> The cascade starts when a disruption in one node outpaces the communication speed between your systems. By the time the MES failure shows up in the CRM as a delivery risk, you have already made three promises you cannot keep.</p>
+  <ul><li><strong>Cascade Failure Map</strong>: How cross-system fragility compounds during disruption</li></ul>
+</div>
+<div class="card">
+  <h3>The Response Gap</h3>
+  <p><strong>Narrative:</strong> The gap between when a disruption occurs and when your leadership team converges on a response is where companies lose the most value. It is not the disruption itself—it is the hours of uncoordinated reaction, duplicated decisions, and contradictory customer communications that destroy trust.</p>
+  <p class="diagnostic"><strong>Response:</strong> Every hour of the response gap costs you in one of three ways: margin erosion from expedited alternatives, customer trust from missed commitments, or competitive position from a competitor who moved faster. Speed of coordinated response is the competitive advantage you cannot buy with software alone.</p>
+  <ul><li><strong>Response Gap Analysis</strong>: Quantify your company&#x27;s current time-to-coordinated-response</li></ul>
+</div>
+<div class="card">
+  <h3>Spontaneous War Room</h3>
+  <p><strong>Narrative:</strong> When a disruption event hits a Business Infinity company, the boardroom does not wait to be convened. The CSO agent detects the competitive and strategic signal. The COO agent assesses operational impact across all connected systems simultaneously. The CMO agent drafts customer communication. The CFO agent models the financial exposure. All of this happens in seconds, not hours.</p>
+  <p class="diagnostic"><strong>Response:</strong> This is the spontaneous war room. No calendar invite. No alignment meeting. No waiting for the CEO to read the news. The boardroom activates the moment the signal enters any connected system, and every CXO domain responds in parallel.</p>
+  <ul><li><strong>See the War Room in Action</strong>: Watch a boardroom activation during a simulated supply-chain disruption</li></ul>
+</div>
+<div class="card">
+  <h3>Cross Domain Convergence</h3>
+  <p><strong>Narrative:</strong> Resilience is not surviving a disruption—it is improving because of it. While your competitors are still holding their emergency call, your boardroom has already proposed five strategic pathways, debated them against your purpose, scored them for resonance, and is executing the highest-integrity response.</p>
+  <p class="diagnostic"><strong>Response:</strong> The CSO positions the company against the new competitive landscape. The COO routes the operations around the broken node. The CMO issues proactive customer communication before the first complaint arrives. The CFO has already identified the alternative cash flow pathway. All within minutes.</p>
+  <ul><li><strong>Cross-Domain Response</strong>: How the full boardroom converges on a unified resilience pathway</li></ul>
+</div>
+<div class="card">
+  <h3>Antifragility By Design</h3>
+  <p><strong>Narrative:</strong> Resilience means surviving disruption. Antifragility means getting stronger from it. Business Infinity does not just respond to disruption—it learns from each event, updates the boardroom&#x27;s institutional memory, and uses that intelligence to make the next response faster and more precise.</p>
+  <p class="diagnostic"><strong>Response:</strong> Every disruption response is scored for resonance with your company&#x27;s purpose and logged as institutional memory. The boardroom that faced your last supply chain crisis is smarter than the one that faced the previous one. Your company compounds its resilience with every challenge it survives.</p>
+  <ul><li><strong>Antifragility Framework</strong>: How Business Infinity compounds resilience over time</li></ul>
+</div>
+<div class="card">
+  <h3>Fortify Your Company</h3>
+  <p><strong>Narrative:</strong> The next disruption will not announce itself. A tariff, a shipping route closure, a regulatory change, a competitor move—any of these can compress your planning horizon to hours. Business Infinity does not predict disruptions. It ensures that when one arrives, your company responds faster and with greater integrity than any competitor still running on human reaction time.</p>
+  <p class="diagnostic"><strong>Response:</strong> Onboarding takes minutes. Your boardroom connects to your existing systems immediately. The first thing it does is map your current operational dependencies and identify the three points of greatest fragility. Let&#x27;s start there.</p>
+  <ul><li><strong>Start Onboarding</strong>: Activate your resilience boardroom now</li><li><strong>Resilience Brief</strong>: A focused conversation about your highest operational fragility risks</li></ul>
+</div>
+
+<h2>Source Specification</h2>
+<pre><code>workflow_id: &quot;resilience_consultation&quot;
+version: &quot;1.0.0&quot;
+owner: &quot;cso&quot;
+
+steps:
+  the_48_hour_window:
+    narrative: &quot;A new trade restriction was announced 90 minutes ago. It affects three of your top five suppliers. Your team is waiting for guidance. Your planning cycle assumes a 90-day horizon. You now have 48 hours. What does your company do in the next two hours?&quot;
+    response: &quot;For most companies the answer is a war room of tired executives making decisions with yesterday&#x27;s data, a cascade of Slack messages to suppliers who are also scrambling, and a CRM full of customer commitments that may now be impossible to keep.&quot;
+    actions: []
+    navigation:
+      next: &quot;cascade_failure&quot;
+
+  cascade_failure:
+    narrative: &quot;Operational fragility is not the fault of any one system. It is the fault of the gaps between them. Your MES tells you what is on the shop floor. Your ERP tells you what is in the warehouse. Your CRM tells you what you have promised. None of them tells you what happens to each other when one breaks.&quot;
+    response: &quot;The cascade starts when a disruption in one node outpaces the communication speed between your systems. By the time the MES failure shows up in the CRM as a delivery risk, you have already made three promises you cannot keep.&quot;
+    actions:
+      - label: &quot;Cascade Failure Map&quot;
+        description: &quot;How cross-system fragility compounds during disruption&quot;
+        url: &quot;cascade-failure&quot;
+    navigation:
+      next: &quot;the_response_gap&quot;
+      back: &quot;the_48_hour_window&quot;
+
+  the_response_gap:
+    narrative: &quot;The gap between when a disruption occurs and when your leadership team converges on a response is where companies lose the most value. It is not the disruption itself—it is the hours of uncoordinated reaction, duplicated decisions, and contradictory customer communications that destroy trust.&quot;
+    response: &quot;Every hour of the response gap costs you in one of three ways: margin erosion from expedited alternatives, customer trust from missed commitments, or competitive position from a competitor who moved faster. Speed of coordinated response is the competitive advantage you cannot buy with software alone.&quot;
+    actions:
+      - label: &quot;Response Gap Analysis&quot;
+        description: &quot;Quantify your company&#x27;s current time-to-coordinated-response&quot;
+        url: &quot;response-gap&quot;
+    navigation:
+      next: &quot;spontaneous_war_room&quot;
+      back: &quot;cascade_failure&quot;
+
+  spontaneous_war_room:
+    narrative: &quot;When a disruption event hits a Business Infinity company, the boardroom does not wait to be convened. The CSO agent detects the competitive and strategic signal. The COO agent assesses operational impact across all connected systems simultaneously. The CMO agent drafts customer communication. The CFO agent models the financial exposure. All of this happens in seconds, not hours.&quot;
+    response: &quot;This is the spontaneous war room. No calendar invite. No alignment meeting. No waiting for the CEO to read the news. The boardroom activates the moment the signal enters any connected system, and every CXO domain responds in parallel.&quot;
+    actions:
+      - label: &quot;See the War Room in Action&quot;
+        description: &quot;Watch a boardroom activation during a simulated supply-chain disruption&quot;
+        url: &quot;boardroom-demo&quot;
+    navigation:
+      next: &quot;cross_domain_convergence&quot;
+      back: &quot;the_response_gap&quot;
+
+  cross_domain_convergence:
+    narrative: &quot;Resilience is not surviving a disruption—it is improving because of it. While your competitors are still holding their emergency call, your boardroom has already proposed five strategic pathways, debated them against your purpose, scored them for resonance, and is executing the highest-integrity response.&quot;
+    response: &quot;The CSO positions the company against the new competitive landscape. The COO routes the operations around the broken node. The CMO issues proactive customer communication before the first complaint arrives. The CFO has already identified the alternative cash flow pathway. All within minutes.&quot;
+    actions:
+      - label: &quot;Cross-Domain Response&quot;
+        description: &quot;How the full boardroom converges on a unified resilience pathway&quot;
+        url: &quot;cross-domain-response&quot;
+    navigation:
+      next: &quot;antifragility_by_design&quot;
+      back: &quot;spontaneous_war_room&quot;
+
+  antifragility_by_design:
+    narrative: &quot;Resilience means surviving disruption. Antifragility means getting stronger from it. Business Infinity does not just respond to disruption—it learns from each event, updates the boardroom&#x27;s institutional memory, and uses that intelligence to make the next response faster and more precise.&quot;
+    response: &quot;Every disruption response is scored for resonance with your company&#x27;s purpose and logged as institutional memory. The boardroom that faced your last supply chain crisis is smarter than the one that faced the previous one. Your company compounds its resilience with every challenge it survives.&quot;
+    actions:
+      - label: &quot;Antifragility Framework&quot;
+        description: &quot;How Business Infinity compounds resilience over time&quot;
+        url: &quot;antifragility&quot;
+    navigation:
+      next: &quot;fortify_your_company&quot;
+      back: &quot;cross_domain_convergence&quot;
+
+  fortify_your_company:
+    narrative: &quot;The next disruption will not announce itself. A tariff, a shipping route closure, a regulatory change, a competitor move—any of these can compress your planning horizon to hours. Business Infinity does not predict disruptions. It ensures that when one arrives, your company responds faster and with greater integrity than any competitor still running on human reaction time.&quot;
+    response: &quot;Onboarding takes minutes. Your boardroom connects to your existing systems immediately. The first thing it does is map your current operational dependencies and identify the three points of greatest fragility. Let&#x27;s start there.&quot;
+    actions:
+      - label: &quot;Start Onboarding&quot;
+        description: &quot;Activate your resilience boardroom now&quot;
+        url: &quot;onboarding&quot;
+      - label: &quot;Resilience Brief&quot;
+        description: &quot;A focused conversation about your highest operational fragility risks&quot;
+        url: &quot;schedule&quot;
+    navigation:
+      back: &quot;antifragility_by_design&quot;
+</code></pre>
+
+<div style="margin-top:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=resilience_consultation&amp;agent=cso">
+    Initialize Sun Tzu Consultation &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://businessinfinity.asisaga.com/entropy-index/operational-fragility-supply-chain">
+    &larr; Back to Operational Fragility &amp; Supply-Chain Chaos
+  </a>
+</div>
+
+<footer>
+  <p>&copy; ASI Saga &mdash; Business Infinity &mdash; The Entropy Index</p>
+  <p>
+    <a href="https://businessinfinity.asisaga.com">Home</a> &middot;
+    <a href="https://businessinfinity.asisaga.com/entropy-index">Entropy Index</a> &middot;
+    <a href="https://github.com/ASISaga/business-infinity">GitHub</a>
+  </p>
+</footer>
+</body>
+</html>

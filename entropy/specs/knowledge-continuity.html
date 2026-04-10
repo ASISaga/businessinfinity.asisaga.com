@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>knowledge_continuity Workflow Spec — Business Infinity</title>
+<meta name="description" content="Public specification for the knowledge_continuity workflow. Governed by the Peter Drucker agent. View the YAML logic spec that powers autonomous consultations for key-person &amp; knowledge fragility.">
+<link rel="canonical" href="https://businessinfinity.asisaga.com/specs/knowledge-continuity">
+<style>:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --border: #1e1e2e;
+  --text: #e0e0e8;
+  --muted: #8888a0;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --gold: #f59e0b;
+  --danger: #ef4444;
+  --success: #22c55e;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  line-height: 1.7; max-width: 960px; margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #fff; }
+h2 { font-size: 1.6rem; margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+h3 { font-size: 1.15rem; margin: 1.8rem 0 0.5rem; color: var(--gold); font-style: italic; }
+p { margin-bottom: 1rem; }
+.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.card h3 { margin-top: 0; }
+.tag {
+  display: inline-block; font-size: 0.75rem; padding: 2px 10px;
+  border-radius: 9999px; border: 1px solid var(--border);
+  color: var(--muted); margin-right: 0.5rem; margin-bottom: 0.3rem;
+}
+.tag--technical { border-color: var(--accent); color: var(--accent); }
+.tag--emotional { border-color: var(--danger); color: var(--danger); }
+.tag--financial { border-color: var(--success); color: var(--success); }
+.diagnostic { color: var(--muted); font-size: 0.97rem; margin-bottom: 0.8rem; }
+.cta {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600;
+  font-size: 0.95rem; margin-top: 0.5rem; margin-right: 0.5rem;
+  transition: background 0.2s;
+}
+.cta:hover { background: var(--accent-hover); text-decoration: none; }
+.cta--secondary {
+  background: transparent; border: 1px solid var(--accent); color: var(--accent);
+}
+.cta--secondary:hover { background: var(--accent); color: #fff; }
+.legend-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--surface); border: 1px solid var(--gold);
+  border-radius: 8px; padding: 0.3rem 0.8rem; font-size: 0.85rem;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.breadcrumb { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.breadcrumb a { color: var(--muted); }
+.breadcrumb a:hover { color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.stat { text-align: center; padding: 1.5rem; }
+.stat-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
+.stat-label { color: var(--muted); font-size: 0.9rem; }
+nav { margin-bottom: 2rem; }
+nav a.nav-link {
+  display: inline-block; padding: 0.4rem 0.8rem; margin: 0.2rem;
+  border: 1px solid var(--border); border-radius: 6px;
+  font-size: 0.85rem; color: var(--muted);
+}
+nav a.nav-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+pre {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem; overflow-x: auto;
+  font-size: 0.88rem; line-height: 1.6; color: var(--muted);
+}
+code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+footer {
+  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 0.85rem; text-align: center;
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "knowledge_continuity \u2014 Business Infinity Workflow Spec",
+  "description": "Non-scalable wisdom \u2014 the company's strategic DNA lives in 2\u20133 people's heads. When they leave, the soul leaves with them.",
+  "codeRepository": "https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/knowledge-continuity.yaml",
+  "programmingLanguage": "YAML",
+  "targetProduct": {
+    "@type": "SoftwareApplication",
+    "name": "Business Infinity",
+    "applicationCategory": "Autonomous Strategic Governance",
+    "operatingSystem": "Agent Operating System (AOS)"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ASI Saga",
+    "url": "https://asisaga.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="breadcrumb">
+  <a href="https://businessinfinity.asisaga.com/entropy-index">The Entropy Index</a> &rsaquo;
+  <a href="https://businessinfinity.asisaga.com/entropy-index/key-person-knowledge-fragility">Key-Person &amp; Knowledge Fragility</a> &rsaquo;
+  Workflow Spec
+</div>
+
+<h1>Workflow Spec: <code>knowledge_continuity</code></h1>
+<p class="subtitle">
+  A structured consultation governed by the Peter Drucker
+  agent (Chief Human Resources Officer), addressing key-person &amp; knowledge fragility.
+</p>
+
+<div class="legend-badge">Peter Drucker &mdash; Chief Human Resources Officer</div>
+
+<div class="card">
+  <p><strong>Workflow ID:</strong> <code>knowledge_continuity</code></p>
+  <p><strong>Version:</strong> 1.0.0</p>
+  <p><strong>Owner:</strong> chro (Peter Drucker)</p>
+  <p><strong>Pain Category:</strong>
+    <a href="https://businessinfinity.asisaga.com/entropy-index/key-person-knowledge-fragility">4. Key-Person &amp; Knowledge Fragility</a>
+  </p>
+</div>
+
+<div style="margin-bottom:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=knowledge_continuity&amp;agent=chro">
+    Activate This Workflow &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/knowledge-continuity.yaml">
+    View Source on GitHub
+  </a>
+</div>
+
+<h2>Conversation Steps</h2>
+<p>
+  This workflow is a YAML specification that governs a step-by-step
+  consultation. Each step presents a narrative, receives a response from
+  the legendary agent, and offers actions. The AOS executes this spec
+  in real-time through the chatroom interface.
+</p>
+
+
+<div class="card">
+  <h3>The Empty Chair</h3>
+  <p><strong>Narrative:</strong> Think of the one person in your company whose departure would cause the most damage—not because of their title, but because of what they carry in their head. Now ask yourself: if they resigned tomorrow, how long would recovery take?</p>
+  <p class="diagnostic"><strong>Response:</strong> For most companies at scale, the honest answer is months—sometimes years. That single person is not a resource. They are the living memory of your company&#x27;s most critical decisions.</p>
+  
+</div>
+<div class="card">
+  <h3>What Walks Out</h3>
+  <p><strong>Narrative:</strong> When a senior engineer, a veteran operations lead, or a founding team member leaves, they take more than their skills. They take the &#x27;why&#x27; behind every architectural choice, every process shortcut, and every hard-won lesson your company paid dearly to learn.</p>
+  <p class="diagnostic"><strong>Response:</strong> Documentation captures the &#x27;what.&#x27; It almost never captures the &#x27;why.&#x27; The reasoning behind your most important decisions lives nowhere except in the minds of the people who made them. That is not a knowledge base—it is a fragility.</p>
+  <ul><li><strong>Knowledge Fragility Assessment</strong>: Map the concentration of critical knowledge in your company</li></ul>
+</div>
+<div class="card">
+  <h3>The Reinvention Tax</h3>
+  <p><strong>Narrative:</strong> New hires make the same mistakes your team solved two years ago because no one told them the solution existed. Different teams rebuild the same infrastructure because search reveals tickets, not decisions. The compound interest of your company&#x27;s intelligence is being reset with every departure.</p>
+  <p class="diagnostic"><strong>Response:</strong> This is the Reinvention Tax. It is invisible in any single quarter, but it compounds into millions of wasted engineering hours and months of lost runway. High-growth companies pay it hardest because they hire fastest.</p>
+  <ul><li><strong>Reinvention Tax Calculator</strong>: Estimate the true cost of knowledge loss in your organisation</li></ul>
+</div>
+<div class="card">
+  <h3>The Wisdom Gap</h3>
+  <p><strong>Narrative:</strong> Most companies respond to knowledge loss with documentation sprints, Notion wikis, and Confluence pages. These help. But they capture facts, not judgment. The wisdom of a senior leader—when to act, when to wait, which signals matter, which data to distrust—cannot be written down in a wiki article.</p>
+  <p class="diagnostic"><strong>Response:</strong> The gap between information and wisdom is the gap between knowing that a decision was made and understanding why it was the right decision in that specific context. Closing that gap requires more than a knowledge base—it requires a living intelligence.</p>
+  <ul><li><strong>Wisdom vs. Information</strong>: Why documentation alone cannot prevent institutional amnesia</li></ul>
+</div>
+<div class="card">
+  <h3>Perpetual Memory</h3>
+  <p><strong>Narrative:</strong> Business Infinity captures your company&#x27;s institutional intelligence across four dimensions: Manas—the living memory of decisions and context; Buddhi—the domain knowledge, skills, and reasoning frameworks; Ahankara—the identity and mandate of each function; and Chitta—the pure strategic intelligence that transcends any individual.</p>
+  <p class="diagnostic"><strong>Response:</strong> These are not static documents. They are the structured mind of each CXO agent, continuously updated as the company evolves. When a new team member arrives, they inherit not just documentation but a reasoning partner who carries the institutional DNA.</p>
+  <ul><li><strong>The Agent Mind</strong>: How Business Infinity structures and preserves organisational intelligence</li></ul>
+</div>
+<div class="card">
+  <h3>Legends Dont Leave</h3>
+  <p><strong>Narrative:</strong> Each CXO agent in your Business Infinity boardroom is modelled on a legendary archetype: Drucker for people and culture, Deming for operational excellence, Buffett for financial judgment. These archetypes carry domain wisdom that your best employees aspire to—and they are permanently embedded in your company&#x27;s operating system.</p>
+  <p class="diagnostic"><strong>Response:</strong> Your veteran operations lead retires. The Deming agent does not. Your founding CFO moves on. The Buffett agent does not. The institutional wisdom your company has earned does not walk out the door—it becomes part of the boardroom that never sleeps.</p>
+  <ul><li><strong>Meet the CXO Agents</strong>: The legendary archetypes that carry your company&#x27;s institutional intelligence</li></ul>
+</div>
+<div class="card">
+  <h3>Succession Begins</h3>
+  <p><strong>Narrative:</strong> Business Infinity does not just preserve the past—it actively uses it. When a situation arises that resembles a challenge your company solved two years ago, the boardroom surfaces that historical context instantly. New hires do not start from zero. They start from the accumulated intelligence of everyone who came before them.</p>
+  <p class="diagnostic"><strong>Response:</strong> Onboarding takes minutes. Within hours, your boardroom is reading your existing systems and building the first layer of institutional memory. The knowledge that is most at risk right now can be the first thing we preserve.</p>
+  <ul><li><strong>Start Onboarding</strong>: Begin building your company&#x27;s permanent institutional intelligence</li><li><strong>Knowledge Continuity Brief</strong>: A focused conversation about your highest-risk knowledge gaps</li></ul>
+</div>
+
+<h2>Source Specification</h2>
+<pre><code>workflow_id: &quot;knowledge_continuity&quot;
+version: &quot;1.0.0&quot;
+owner: &quot;chro&quot;
+
+steps:
+  the_empty_chair:
+    narrative: &quot;Think of the one person in your company whose departure would cause the most damage—not because of their title, but because of what they carry in their head. Now ask yourself: if they resigned tomorrow, how long would recovery take?&quot;
+    response: &quot;For most companies at scale, the honest answer is months—sometimes years. That single person is not a resource. They are the living memory of your company&#x27;s most critical decisions.&quot;
+    actions: []
+    navigation:
+      next: &quot;what_walks_out&quot;
+
+  what_walks_out:
+    narrative: &quot;When a senior engineer, a veteran operations lead, or a founding team member leaves, they take more than their skills. They take the &#x27;why&#x27; behind every architectural choice, every process shortcut, and every hard-won lesson your company paid dearly to learn.&quot;
+    response: &quot;Documentation captures the &#x27;what.&#x27; It almost never captures the &#x27;why.&#x27; The reasoning behind your most important decisions lives nowhere except in the minds of the people who made them. That is not a knowledge base—it is a fragility.&quot;
+    actions:
+      - label: &quot;Knowledge Fragility Assessment&quot;
+        description: &quot;Map the concentration of critical knowledge in your company&quot;
+        url: &quot;knowledge-assessment&quot;
+    navigation:
+      next: &quot;the_reinvention_tax&quot;
+      back: &quot;the_empty_chair&quot;
+
+  the_reinvention_tax:
+    narrative: &quot;New hires make the same mistakes your team solved two years ago because no one told them the solution existed. Different teams rebuild the same infrastructure because search reveals tickets, not decisions. The compound interest of your company&#x27;s intelligence is being reset with every departure.&quot;
+    response: &quot;This is the Reinvention Tax. It is invisible in any single quarter, but it compounds into millions of wasted engineering hours and months of lost runway. High-growth companies pay it hardest because they hire fastest.&quot;
+    actions:
+      - label: &quot;Reinvention Tax Calculator&quot;
+        description: &quot;Estimate the true cost of knowledge loss in your organisation&quot;
+        url: &quot;reinvention-tax&quot;
+    navigation:
+      next: &quot;the_wisdom_gap&quot;
+      back: &quot;what_walks_out&quot;
+
+  the_wisdom_gap:
+    narrative: &quot;Most companies respond to knowledge loss with documentation sprints, Notion wikis, and Confluence pages. These help. But they capture facts, not judgment. The wisdom of a senior leader—when to act, when to wait, which signals matter, which data to distrust—cannot be written down in a wiki article.&quot;
+    response: &quot;The gap between information and wisdom is the gap between knowing that a decision was made and understanding why it was the right decision in that specific context. Closing that gap requires more than a knowledge base—it requires a living intelligence.&quot;
+    actions:
+      - label: &quot;Wisdom vs. Information&quot;
+        description: &quot;Why documentation alone cannot prevent institutional amnesia&quot;
+        url: &quot;wisdom-gap&quot;
+    navigation:
+      next: &quot;perpetual_memory&quot;
+      back: &quot;the_reinvention_tax&quot;
+
+  perpetual_memory:
+    narrative: &quot;Business Infinity captures your company&#x27;s institutional intelligence across four dimensions: Manas—the living memory of decisions and context; Buddhi—the domain knowledge, skills, and reasoning frameworks; Ahankara—the identity and mandate of each function; and Chitta—the pure strategic intelligence that transcends any individual.&quot;
+    response: &quot;These are not static documents. They are the structured mind of each CXO agent, continuously updated as the company evolves. When a new team member arrives, they inherit not just documentation but a reasoning partner who carries the institutional DNA.&quot;
+    actions:
+      - label: &quot;The Agent Mind&quot;
+        description: &quot;How Business Infinity structures and preserves organisational intelligence&quot;
+        url: &quot;agent-mind&quot;
+    navigation:
+      next: &quot;legends_dont_leave&quot;
+      back: &quot;the_wisdom_gap&quot;
+
+  legends_dont_leave:
+    narrative: &quot;Each CXO agent in your Business Infinity boardroom is modelled on a legendary archetype: Drucker for people and culture, Deming for operational excellence, Buffett for financial judgment. These archetypes carry domain wisdom that your best employees aspire to—and they are permanently embedded in your company&#x27;s operating system.&quot;
+    response: &quot;Your veteran operations lead retires. The Deming agent does not. Your founding CFO moves on. The Buffett agent does not. The institutional wisdom your company has earned does not walk out the door—it becomes part of the boardroom that never sleeps.&quot;
+    actions:
+      - label: &quot;Meet the CXO Agents&quot;
+        description: &quot;The legendary archetypes that carry your company&#x27;s institutional intelligence&quot;
+        url: &quot;agent-catalogue&quot;
+    navigation:
+      next: &quot;succession_begins&quot;
+      back: &quot;perpetual_memory&quot;
+
+  succession_begins:
+    narrative: &quot;Business Infinity does not just preserve the past—it actively uses it. When a situation arises that resembles a challenge your company solved two years ago, the boardroom surfaces that historical context instantly. New hires do not start from zero. They start from the accumulated intelligence of everyone who came before them.&quot;
+    response: &quot;Onboarding takes minutes. Within hours, your boardroom is reading your existing systems and building the first layer of institutional memory. The knowledge that is most at risk right now can be the first thing we preserve.&quot;
+    actions:
+      - label: &quot;Start Onboarding&quot;
+        description: &quot;Begin building your company&#x27;s permanent institutional intelligence&quot;
+        url: &quot;onboarding&quot;
+      - label: &quot;Knowledge Continuity Brief&quot;
+        description: &quot;A focused conversation about your highest-risk knowledge gaps&quot;
+        url: &quot;schedule&quot;
+    navigation:
+      back: &quot;legends_dont_leave&quot;
+</code></pre>
+
+<div style="margin-top:2rem">
+  <a class="cta" href="https://businessinfinity.asisaga.com/chat?workflow=knowledge_continuity&amp;agent=chro">
+    Initialize Peter Drucker Consultation &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://businessinfinity.asisaga.com/entropy-index/key-person-knowledge-fragility">
+    &larr; Back to Key-Person &amp; Knowledge Fragility
+  </a>
+</div>
+
+<footer>
+  <p>&copy; ASI Saga &mdash; Business Infinity &mdash; The Entropy Index</p>
+  <p>
+    <a href="https://businessinfinity.asisaga.com">Home</a> &middot;
+    <a href="https://businessinfinity.asisaga.com/entropy-index">Entropy Index</a> &middot;
+    <a href="https://github.com/ASISaga/business-infinity">GitHub</a>
+  </p>
+</footer>
+</body>
+</html>
