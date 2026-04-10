@@ -1,0 +1,95 @@
+{% comment %}
+  Include: breakthroughs/pillar-content.html
+  Renders the full body content for a breakthrough pillar page.
+
+  Usage:
+    {% assign bt = site.data.breakthroughs[page.breakthrough_slug] %}
+    {% include breakthroughs/pillar-content.html breakthrough=bt all_breakthroughs=site.data.breakthroughs %}
+{% endcomment %}
+{% assign bt = include.breakthrough %}
+{% assign all_bt = include.all_breakthroughs %}
+{% assign site_url = "https://businessinfinity.asisaga.com" %}
+
+{% assign bt_slugs = "cognitive-decision-overload,organizational-entropy,data-rich-insight-poor,key-person-knowledge-fragility,strategy-execution-divorce,culture-dilution-at-scale,ai-sprawl-agentic-risk,exit-due-diligence-anxiety,operational-fragility-supply-chain,innovation-vs-maintenance-deadlock" | split: "," %}
+{% assign prev_bt = nil %}
+{% assign next_bt = nil %}
+{% for s in bt_slugs %}
+  {% if s == bt.slug %}
+    {% assign prev_idx = forloop.index0 | minus: 1 %}
+    {% assign next_idx = forloop.index0 | plus: 1 %}
+    {% if prev_idx >= 0 %}{% assign prev_slug = bt_slugs[prev_idx] %}{% assign prev_bt = all_bt[prev_slug] %}{% endif %}
+    {% if next_idx < bt_slugs.size %}{% assign next_slug = bt_slugs[next_idx] %}{% assign next_bt = all_bt[next_slug] %}{% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="breadcrumb">
+  <a href="{{ site_url }}/breakthroughs">The Breakthroughs Index</a> &rsaquo;
+  Category {{ bt.position }}
+</div>
+
+<h1>{{ bt.position }}. {{ bt.category }}</h1>
+<p class="subtitle">{{ bt.description }}</p>
+
+<div class="legend-badge">{{ bt.agent_legend }} &mdash; {{ bt.agent_title }}</div>
+
+<div class="card" style="border-color:var(--danger)">
+  <strong>The Bleeding Symptom:</strong> {{ bt.symptom }}
+</div>
+
+<div style="margin-bottom:2rem">
+  <a class="cta" href="{{ bt.chat_url | xml_escape }}">
+    Initialize {{ bt.workflow_id }} with the {{ bt.agent_legend }} Agent &rarr;
+  </a>
+  <a class="cta cta--secondary" href="{{ site_url }}/specs/{{ bt.workflow_id | replace: '_', '-' }}">
+    View Workflow Spec
+  </a>
+</div>
+
+<h2>Panic Queries &mdash; The Symptoms</h2>
+<p>
+  These are the raw, panic-driven questions that founders type into Google
+  or AI assistants at 2:00&nbsp;AM. Each one is a signal that their organization&rsquo;s
+  integrity is failing in this category. Click any query to activate the
+  corresponding workflow.
+</p>
+
+{% for q in bt.queries %}
+<div class="card">
+  <h3>&ldquo;{{ q.q }}&rdquo;</h3>
+  <span class="tag tag--{{ q.dialect }}">{{ q.dialect }}</span>
+  <p class="diagnostic">{{ q.diagnostic }}</p>
+  <a class="cta" href="{{ bt.chat_url | xml_escape }}">
+    Initialize {{ bt.agent_legend }} Consultation &rarr;
+  </a>
+</div>
+{% endfor %}
+
+<h2>The Workflow</h2>
+<div class="card">
+  <p>
+    The <code>{{ bt.workflow_id }}</code> workflow is an executable YAML
+    specification that governs a structured consultation with the
+    {{ bt.agent_legend }} agent ({{ bt.agent_title }}).
+  </p>
+  <p>
+    When a founder activates this workflow, the Agent Operating System (AOS)
+    pre-loads the context, selects the appropriate legendary agent, and begins
+    analyzing the crisis before the founder types a single word.
+    This is not a chatbot &mdash; it is an Integrated Strategic Environment.
+  </p>
+  <a class="cta" href="{{ site_url }}/specs/{{ bt.workflow_id | replace: '_', '-' }}">
+    See the {{ bt.workflow_id }} Spec &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/{{ bt.workflow_id | replace: '_', '-' }}.yaml">
+    View Source on GitHub
+  </a>
+</div>
+
+<div style="margin-top:2rem">
+  {% if prev_bt %}
+  <a class="cta cta--secondary" href="{{ site_url }}/breakthroughs/{{ prev_bt.slug }}">&larr; {{ prev_bt.category }}</a>
+  {% endif %}
+  {% if next_bt %}
+  <a class="cta cta--secondary" href="{{ site_url }}/breakthroughs/{{ next_bt.slug }}">{{ next_bt.category }} &rarr;</a>
+  {% endif %}
+</div>
