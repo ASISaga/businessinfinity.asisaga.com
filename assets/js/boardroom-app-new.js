@@ -52,7 +52,7 @@ class BoardroomApp extends ChatroomApp {
      * cloned and populated.
      */
     _render() {
-        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages } = this.config;
+        const { title, participants, placeholder, showToolbar, showConnectionStatus, mcpApps, chatMessages = [] } = this.config;
 
         const layout = this._cloneTemplate('template-chatroom-layout');
         if (!layout) return;
@@ -632,7 +632,7 @@ class BoardroomApp extends ChatroomApp {
         const counter = (this.elements && this.elements.charCount)
             || this.querySelector('.chatroom-char-count');
         if (counter) {
-            counter.textContent = `0/${inputEl.maxLength > 0 ? inputEl.maxLength : this.config.maxLength}`;
+            counter.textContent = `0/${inputEl.maxLength > 0 ? inputEl.maxLength : (this.config.maxLength || 1000)}`;
         }
     }
 
