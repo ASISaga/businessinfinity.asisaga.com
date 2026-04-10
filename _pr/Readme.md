@@ -87,7 +87,7 @@ Hide the indicator for dynamic discussion mode.
 
 ### 6. Owner Agent Display
 
-Show the workflow owner's name and role (e.g. "CMO — David Ogilvy") in the
+Show the workflow owner's name and role (e.g. "CMO — Seth Godin") in the
 chat header during structured workflows.  Show "Boardroom" for dynamic
 discussions.
 
