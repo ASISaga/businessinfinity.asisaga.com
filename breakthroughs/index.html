@@ -1,0 +1,117 @@
+---
+layout: default
+title: "The Breakthroughs Index"
+description: "The Breakthroughs Index: 101 panic-driven search queries organized into 10 categories of organizational pain, each governed by a legendary CXO agent. Business Infinity meets founders when their integrity is failing."
+permalink: /breakthroughs/
+---
+{% assign site_url = "https://businessinfinity.asisaga.com" %}
+{% assign bt_slugs = "cognitive-decision-overload,organizational-entropy,data-rich-insight-poor,key-person-knowledge-fragility,strategy-execution-divorce,culture-dilution-at-scale,ai-sprawl-agentic-risk,exit-due-diligence-anxiety,operational-fragility-supply-chain,innovation-vs-maintenance-deadlock" | split: "," %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://asisaga.com",
+      "name": "ASI Saga",
+      "url": "https://asisaga.com"
+    },
+    {
+      "@type": "Product",
+      "@id": "{{ site_url }}",
+      "name": "Business Infinity",
+      "description": "Autonomous Strategic Governance platform for founders and enterprise leaders — powered by a legendary AI C-suite.",
+      "url": "{{ site_url }}",
+      "manufacturer": { "@id": "https://asisaga.com" }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "{{ site_url }}/breakthroughs",
+      "name": "The Breakthroughs Index — Business Infinity Pain Taxonomy",
+      "description": "A comprehensive map of 10 organizational pain categories, each governed by a legendary CXO agent and backed by an executable workflow. Business Infinity meets founders at the exact moment their integrity is failing.",
+      "provider": { "@id": "https://asisaga.com" },
+      "isRelatedTo": { "@id": "{{ site_url }}" },
+      "numberOfItems": 10,
+      "itemListElement": [
+        {% for slug in bt_slugs %}{% assign bt = site.data.breakthroughs[slug] %}
+        {
+          "@type": "ListItem",
+          "position": {{ bt.position }},
+          "item": {
+            "@type": "Service",
+            "@id": "{{ site_url }}/breakthroughs/{{ slug }}",
+            "name": {{ bt.category | jsonify }},
+            "provider": { "@id": "https://asisaga.com" },
+            "isRelatedTo": { "@id": "{{ site_url }}" }
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
+</script>
+
+<h1>The Breakthroughs Index</h1>
+<p class="subtitle">
+  101 panic-driven queries that founders type at 2:00&nbsp;AM &mdash;
+  organized into the 10 categories of organizational pain that
+  Business&nbsp;Infinity resolves.
+</p>
+
+<div class="grid" style="margin-bottom:2rem">
+  <div class="card stat">
+    <div class="stat-number">101</div>
+    <div class="stat-label">Panic Queries Indexed</div>
+  </div>
+  <div class="card stat">
+    <div class="stat-number">10</div>
+    <div class="stat-label">Pain Categories</div>
+  </div>
+  <div class="card stat">
+    <div class="stat-number">7</div>
+    <div class="stat-label">Legendary CXO Agents</div>
+  </div>
+</div>
+
+<h2>The Pain Taxonomy</h2>
+<p>
+  Every pain maps to one of ten categories. Each category is owned by a
+  legendary CXO agent and backed by an executable workflow that a founder
+  can activate in seconds.
+</p>
+
+<div class="grid">
+{% for slug in bt_slugs %}
+  {% assign bt = site.data.breakthroughs[slug] %}
+  <a href="{{ site_url }}/breakthroughs/{{ slug }}" class="card" style="text-decoration:none;display:block">
+    <div class="legend-badge">{{ bt.agent_legend }} &mdash; {{ bt.agent_title }}</div>
+    <h3 style="color:var(--text);font-style:normal">{{ bt.position }}. {{ bt.category }}</h3>
+    <p class="diagnostic">{{ bt.description }}</p>
+    <span class="tag">{{ bt.queries | size }} panic queries</span>
+    <span class="tag">Workflow: <code>{{ bt.workflow_id }}</code></span>
+  </a>
+{% endfor %}
+</div>
+
+<h2>How It Works</h2>
+<div class="card">
+  <p><strong>1. Search</strong> &mdash; Founder types a panic query into Google or an AI assistant.</p>
+  <p><strong>2. Find</strong> &mdash; This Breakthroughs Index appears as a Featured Snippet with the legendary diagnostic.</p>
+  <p><strong>3. Click</strong> &mdash; The founder clicks a deep-link that carries their specific intent.</p>
+  <p><strong>4. Activate</strong> &mdash; The chatroom opens with the correct workflow and legend pre-loaded.</p>
+  <p><strong>5. Resolve</strong> &mdash; The AOS is already analyzing their crisis before they type a word.</p>
+</div>
+
+<h2>Public Workflow Specs</h2>
+<p>
+  Every workflow is an open-source YAML specification that governs the
+  conversation. Transparency is integrity.
+</p>
+<nav>
+{% for slug in bt_slugs %}
+  {% assign bt = site.data.breakthroughs[slug] %}
+  <a class="nav-link" href="{{ site_url }}/specs/{{ bt.workflow_id | replace: '_', '-' }}">{{ bt.category }}</a>
+{% endfor %}
+</nav>

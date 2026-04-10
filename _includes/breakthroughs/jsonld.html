@@ -1,0 +1,85 @@
+{% comment %}
+  Include: breakthroughs/jsonld.html
+  Outputs Schema.org JSON-LD <script> blocks for a breakthrough pillar page.
+
+  Usage:
+    {% assign bt = site.data.breakthroughs[page.breakthrough_slug] %}
+    {% include breakthroughs/jsonld.html breakthrough=bt %}
+
+  Outputs two <script type="application/ld+json"> blocks:
+    1. The @graph (Organization + Product + Service) structured data
+    2. The FAQPage structured data
+{% endcomment %}
+{% assign bt = include.breakthrough %}
+{% assign graph_nodes = bt["@graph"] %}
+
+{% assign service_node = nil %}
+{% assign faq_node = nil %}
+{% assign org_node = nil %}
+{% assign product_node = nil %}
+{% for node in graph_nodes %}
+  {% if node["@type"] == "Organization" %}{% assign org_node = node %}{% endif %}
+  {% if node["@type"] == "Product" %}{% assign product_node = node %}{% endif %}
+  {% if node["@type"] == "Service" %}{% assign service_node = node %}{% endif %}
+  {% if node["@type"] == "FAQPage" %}{% assign faq_node = node %}{% endif %}
+{% endfor %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": {{ org_node["@id"] | jsonify }},
+      "name": {{ org_node["name"] | jsonify }},
+      "url": {{ org_node["url"] | jsonify }}
+    },
+    {
+      "@type": "Product",
+      "@id": {{ product_node["@id"] | jsonify }},
+      "name": {{ product_node["name"] | jsonify }},
+      "description": {{ product_node["description"] | jsonify }},
+      "url": {{ product_node["url"] | jsonify }},
+      "manufacturer": { "@id": {{ org_node["@id"] | jsonify }} }
+    },
+    {
+      "@type": "Service",
+      "@id": {{ service_node["@id"] | jsonify }},
+      "name": {{ service_node["name"] | jsonify }},
+      "description": {{ service_node["description"] | jsonify }},
+      "category": {{ service_node["category"] | jsonify }},
+      "provider": { "@id": {{ org_node["@id"] | jsonify }} },
+      "isRelatedTo": { "@id": {{ product_node["@id"] | jsonify }} },
+      "serviceType": {{ service_node["serviceType"] | jsonify }},
+      "areaServed": {{ service_node["areaServed"] | jsonify }},
+      "offers": {
+        "@type": "Offer",
+        "name": {{ service_node.offers.name | jsonify }},
+        "description": {{ service_node.offers.description | jsonify }},
+        "url": {{ service_node.offers.url | jsonify }}
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": {{ faq_node["name"] | jsonify }},
+  "description": {{ faq_node["description"] | jsonify }},
+  "mainEntity": [
+    {% for q in bt.queries %}{% assign qi = q %}
+    {
+      "@type": "Question",
+      "name": {{ qi.q | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ qi.answer | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
