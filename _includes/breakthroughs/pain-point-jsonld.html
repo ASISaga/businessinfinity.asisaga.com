@@ -1,0 +1,77 @@
+{% comment %}
+  Include: breakthroughs/pain-point-jsonld.html
+  Outputs Schema.org JSON-LD <script> blocks for an individual pain point page.
+
+  Usage:
+    {% assign bt = site.data.breakthroughs[page.breakthrough_slug] %}
+    {% assign query_pos = page.query_position %}
+    {% assign pq = nil %}
+    {% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+    {% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+
+  Outputs:
+    1. @graph (Organization + Product + Service) structured data
+    2. FAQPage with the single question/answer for this pain point
+{% endcomment %}
+{% assign pq = include.query %}
+{% assign bt = include.breakthrough %}
+{% assign site_url = "https://businessinfinity.asisaga.com" %}
+{% assign canonical_url = site_url | append: "/breakthroughs/" | append: bt.slug | append: "/" | append: pq.slug | default: "" %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://asisaga.com",
+      "name": "ASI Saga",
+      "url": "https://asisaga.com"
+    },
+    {
+      "@type": "Product",
+      "@id": {{ site_url | jsonify }},
+      "name": "Business Infinity",
+      "description": "Autonomous Strategic Governance platform for founders and enterprise leaders — powered by a legendary AI C-suite.",
+      "url": {{ site_url | jsonify }},
+      "manufacturer": { "@id": "https://asisaga.com" }
+    },
+    {
+      "@type": "Service",
+      "@id": {{ site_url | append: "/breakthroughs/" | append: bt.slug | jsonify }},
+      "name": {{ "Business Infinity — " | append: bt.category | jsonify }},
+      "description": {{ bt.description | jsonify }},
+      "category": {{ bt.category | jsonify }},
+      "provider": { "@id": "https://asisaga.com" },
+      "isRelatedTo": { "@id": {{ site_url | jsonify }} },
+      "serviceType": "Autonomous Strategic Governance",
+      "areaServed": "Global",
+      "offers": {
+        "@type": "Offer",
+        "name": {{ "The " | append: bt.agent_legend | append: " Agent — " | append: bt.agent_title | jsonify }},
+        "description": {{ "The " | append: bt.agent_legend | append: " agent (" | append: bt.agent_title | append: ") addresses " | append: bt.category | append: " through the " | append: bt.workflow_id | append: " workflow." | jsonify }},
+        "url": {{ bt.chat_url | jsonify }}
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": {{ "The Entropy Index — " | append: bt.category | jsonify }},
+  "description": {{ bt.description | jsonify }},
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": {{ pq.q | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ pq.answer | jsonify }}
+      }
+    }
+  ]
+}
+</script>

@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Engineering velocity dropping as team size increases — Innovation vs. Maintenance Deadlock — Breakthroughs Index — Business Infinity"
+description: "Engineering velocity dropping as team size increases: Turing would observe that velocity drops because communication overhead grows quadratically while value creation grows linearly. The fix is not process improvem"
+breakthrough_slug: innovation-vs-maintenance-deadlock
+query_position: 1
+permalink: /breakthroughs/innovation-vs-maintenance-deadlock/engineering-velocity-dropping-as-team-size-increases/
+---
+{% assign bt = site.data.breakthroughs["innovation-vs-maintenance-deadlock"] %}
+{% assign query_pos = 1 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["innovation-vs-maintenance-deadlock"]["engineering-velocity-dropping-as-team-size-increases"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

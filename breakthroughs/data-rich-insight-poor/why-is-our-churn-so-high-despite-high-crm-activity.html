@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Why is our churn so high despite high CRM activity? — Data-Rich / Insight-Poor Trap — Breakthroughs Index — Business Infinity"
+description: "Why is our churn so high despite high CRM activity?: High CRM activity means your team is busy. It does not mean they are effective. The best marketing thinkers distinguish between 'noise' and 'signal' — your CRM"
+breakthrough_slug: data-rich-insight-poor
+query_position: 7
+permalink: /breakthroughs/data-rich-insight-poor/why-is-our-churn-so-high-despite-high-crm-activity/
+---
+{% assign bt = site.data.breakthroughs["data-rich-insight-poor"] %}
+{% assign query_pos = 7 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["data-rich-insight-poor"]["why-is-our-churn-so-high-despite-high-crm-activity"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

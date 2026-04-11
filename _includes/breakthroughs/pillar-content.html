@@ -49,19 +49,16 @@
 <p>
   These are the raw, panic-driven questions that founders type into Google
   or AI assistants at 2:00&nbsp;AM. Each one is a signal that their organization&rsquo;s
-  integrity is failing in this category. Click any query to activate the
-  corresponding workflow.
+  integrity is failing in this category. Click any query for the dedicated deep-dive page.
 </p>
 
 {% for q in bt.queries %}
-<div class="card">
+<a href="{{ site_url }}/breakthroughs/{{ bt.slug }}/{{ q.slug }}" class="card" style="text-decoration:none;display:block">
   <h3>&ldquo;{{ q.q }}&rdquo;</h3>
   <span class="tag tag--{{ q.dialect }}">{{ q.dialect }}</span>
   <p class="diagnostic">{{ q.diagnostic }}</p>
-  <a class="cta" href="{{ bt.chat_url | xml_escape }}">
-    Initialize {{ bt.agent_legend }} Consultation &rarr;
-  </a>
-</div>
+  <span class="cta" style="display:inline-block;margin-top:0.5rem">Read the Deep-Dive &rarr;</span>
+</a>
 {% endfor %}
 
 <h2>The Workflow</h2>

@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Internal alignment tools for 200+ employees — Organizational Entropy & Complexity Bloat — Breakthroughs Index — Business Infinity"
+description: "Internal alignment tools for 200+ employees: Alignment tools fail because they add another layer atop existing layers. What you need is not another tool — it is a unified consciousness that sits above all"
+breakthrough_slug: organizational-entropy
+query_position: 7
+permalink: /breakthroughs/organizational-entropy/internal-alignment-tools-for-200-employees/
+---
+{% assign bt = site.data.breakthroughs["organizational-entropy"] %}
+{% assign query_pos = 7 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["organizational-entropy"]["internal-alignment-tools-for-200-employees"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

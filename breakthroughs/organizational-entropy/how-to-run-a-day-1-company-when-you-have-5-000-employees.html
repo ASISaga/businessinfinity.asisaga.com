@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to run a 'Day 1' company when you have 5,000 employees — Organizational Entropy & Complexity Bloat — Breakthroughs Index — Business Infinity"
+description: "How to run a 'Day 1' company when you have 5,000 employees: Day 1 is not a headcount — it is a governance philosophy. At 5,000 employees you need an autonomous system that enforces Day 1 thinking at every level, not a CE"
+breakthrough_slug: organizational-entropy
+query_position: 3
+permalink: /breakthroughs/organizational-entropy/how-to-run-a-day-1-company-when-you-have-5-000-employees/
+---
+{% assign bt = site.data.breakthroughs["organizational-entropy"] %}
+{% assign query_pos = 3 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["organizational-entropy"]["how-to-run-a-day-1-company-when-you-have-5-000-employees"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

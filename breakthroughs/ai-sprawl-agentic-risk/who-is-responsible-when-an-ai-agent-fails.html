@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Who is responsible when an AI agent fails? — AI Sprawl & Agentic Risk — Breakthroughs Index — Business Infinity"
+description: "Who is responsible when an AI agent fails?: Responsibility requires traceability. If you cannot trace an AI decision back to a human-authored specification and a purpose score, nobody is responsible — whi"
+breakthrough_slug: ai-sprawl-agentic-risk
+query_position: 9
+permalink: /breakthroughs/ai-sprawl-agentic-risk/who-is-responsible-when-an-ai-agent-fails/
+---
+{% assign bt = site.data.breakthroughs["ai-sprawl-agentic-risk"] %}
+{% assign query_pos = 9 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["ai-sprawl-agentic-risk"]["who-is-responsible-when-an-ai-agent-fails"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

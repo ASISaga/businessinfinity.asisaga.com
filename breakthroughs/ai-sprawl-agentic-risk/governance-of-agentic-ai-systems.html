@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Governance of agentic AI systems — AI Sprawl & Agentic Risk — Breakthroughs Index — Business Infinity"
+description: "Governance of agentic AI systems: Agentic governance requires every autonomous action to be scored against a stated purpose before execution. Without this, you have autonomous tools with no acco"
+breakthrough_slug: ai-sprawl-agentic-risk
+query_position: 2
+permalink: /breakthroughs/ai-sprawl-agentic-risk/governance-of-agentic-ai-systems/
+---
+{% assign bt = site.data.breakthroughs["ai-sprawl-agentic-risk"] %}
+{% assign query_pos = 2 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["ai-sprawl-agentic-risk"]["governance-of-agentic-ai-systems"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

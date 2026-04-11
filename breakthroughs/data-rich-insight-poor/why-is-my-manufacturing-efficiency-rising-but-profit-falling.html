@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Why is my manufacturing efficiency rising but profit falling? — Data-Rich / Insight-Poor Trap — Breakthroughs Index — Business Infinity"
+description: "Why is my manufacturing efficiency rising but profit falling?: Efficiency and profit decouple when trade barriers, energy costs, or material prices shift faster than your production mix. A boardroom that reads MES and ERP s"
+breakthrough_slug: data-rich-insight-poor
+query_position: 9
+permalink: /breakthroughs/data-rich-insight-poor/why-is-my-manufacturing-efficiency-rising-but-profit-falling/
+---
+{% assign bt = site.data.breakthroughs["data-rich-insight-poor"] %}
+{% assign query_pos = 9 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["data-rich-insight-poor"]["why-is-my-manufacturing-efficiency-rising-but-profit-falling"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

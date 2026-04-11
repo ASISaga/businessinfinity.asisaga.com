@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to detect low-quality revenue in real-time — Data-Rich / Insight-Poor Trap — Breakthroughs Index — Business Infinity"
+description: "How to detect low-quality revenue in real-time: Low-quality revenue is the silent killer of SaaS. It looks like growth in the CRM but shows up as churn in the ERP six months later. The Capital Steward agent c"
+breakthrough_slug: data-rich-insight-poor
+query_position: 11
+permalink: /breakthroughs/data-rich-insight-poor/how-to-detect-low-quality-revenue-in-real-time/
+---
+{% assign bt = site.data.breakthroughs["data-rich-insight-poor"] %}
+{% assign query_pos = 11 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["data-rich-insight-poor"]["how-to-detect-low-quality-revenue-in-real-time"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to delegate strategic thinking to AI — Cognitive & Decision Overload — Breakthroughs Index — Business Infinity"
+description: "How to delegate strategic thinking to AI: The question is not whether AI can think strategically — it is whether you can define your strategy clearly enough for an autonomous boardroom to execute it. De"
+breakthrough_slug: cognitive-decision-overload
+query_position: 2
+permalink: /breakthroughs/cognitive-decision-overload/how-to-delegate-strategic-thinking-to-ai/
+---
+{% assign bt = site.data.breakthroughs["cognitive-decision-overload"] %}
+{% assign query_pos = 2 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["cognitive-decision-overload"]["how-to-delegate-strategic-thinking-to-ai"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

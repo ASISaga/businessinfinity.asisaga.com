@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Preparing for Series C due diligence in 2026 — Exit & Due-Diligence Anxiety — Breakthroughs Index — Business Infinity"
+description: "Preparing for Series C due diligence in 2026: If preparing for due diligence requires a multi-month sprint, your company has operational debt that will show up as a valuation discount. The fix is not prepar"
+breakthrough_slug: exit-due-diligence-anxiety
+query_position: 4
+permalink: /breakthroughs/exit-due-diligence-anxiety/preparing-for-series-c-due-diligence-in-2026/
+---
+{% assign bt = site.data.breakthroughs["exit-due-diligence-anxiety"] %}
+{% assign query_pos = 4 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["exit-due-diligence-anxiety"]["preparing-for-series-c-due-diligence-in-2026"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

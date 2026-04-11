@@ -1,0 +1,98 @@
+{% comment %}
+  Include: breakthroughs/pain-point-content.html
+  Renders the full body content for an individual pain point page.
+
+  Usage:
+    {% assign bt = site.data.breakthroughs[page.breakthrough_slug] %}
+    {% assign query_pos = page.query_position %}
+    {% assign pq = nil %}
+    {% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+    {% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}
+{% endcomment %}
+{% assign pq = include.query %}
+{% assign bt = include.breakthrough %}
+{% assign all_bt = include.all_breakthroughs %}
+{% assign site_url = "https://businessinfinity.asisaga.com" %}
+
+{% comment %} Build prev/next within the same category {% endcomment %}
+{% assign prev_q = nil %}
+{% assign next_q = nil %}
+{% for q in bt.queries %}
+  {% if q.position == pq.position %}
+    {% assign prev_idx = forloop.index0 | minus: 1 %}
+    {% assign next_idx = forloop.index0 | plus: 1 %}
+    {% if prev_idx >= 0 %}{% assign prev_q = bt.queries[prev_idx] %}{% endif %}
+    {% if next_idx < bt.queries.size %}{% assign next_q = bt.queries[next_idx] %}{% endif %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} Build ordered category slugs for breadcrumb position context {% endcomment %}
+{% assign bt_slugs = "cognitive-decision-overload,organizational-entropy,data-rich-insight-poor,key-person-knowledge-fragility,strategy-execution-divorce,culture-dilution-at-scale,ai-sprawl-agentic-risk,exit-due-diligence-anxiety,operational-fragility-supply-chain,innovation-vs-maintenance-deadlock" | split: "," %}
+
+<div class="breadcrumb">
+  <a href="{{ site_url }}/breakthroughs">The Breakthroughs Index</a> &rsaquo;
+  <a href="{{ site_url }}/breakthroughs/{{ bt.slug }}">{{ bt.category }}</a> &rsaquo;
+  Query {{ pq.position }} of {{ bt.queries.size }}
+</div>
+
+<h1>&ldquo;{{ pq.q }}&rdquo;</h1>
+
+<div style="margin:0.75rem 0 1.5rem">
+  <span class="tag tag--{{ pq.dialect }}">{{ pq.dialect }}</span>
+  <span class="tag">Pain Query {{ pq.position }} / {{ bt.queries.size }}</span>
+</div>
+
+<div class="card">
+  <strong>The Diagnostic:</strong>
+  <p class="diagnostic" style="margin-top:0.5rem">{{ pq.diagnostic }}</p>
+</div>
+
+<div class="legend-badge" style="margin-top:1.25rem">{{ bt.agent_legend }} &mdash; {{ bt.agent_title }}</div>
+
+<div style="margin:1.5rem 0">
+  <a class="cta" href="{{ bt.chat_url | xml_escape }}">
+    Initialize {{ bt.workflow_id }} with the {{ bt.agent_legend }} Agent &rarr;
+  </a>
+</div>
+
+<h2>About This Pain Pattern</h2>
+<div class="card">
+  <p>
+    This query belongs to the <strong>{{ bt.category }}</strong> pain category &mdash;
+    {{ bt.description }}
+  </p>
+  <div class="card" style="border-color:var(--danger);margin-top:0.75rem">
+    <strong>The Bleeding Symptom:</strong> {{ bt.symptom }}
+  </div>
+  <a class="cta cta--secondary" href="{{ site_url }}/breakthroughs/{{ bt.slug }}" style="margin-top:1rem;display:inline-block">
+    See all {{ bt.queries.size }} queries in this category &rarr;
+  </a>
+</div>
+
+<h2>The Workflow</h2>
+<div class="card">
+  <p>
+    The <code>{{ bt.workflow_id }}</code> workflow governs a structured consultation with the
+    {{ bt.agent_legend }} agent ({{ bt.agent_title }}).
+    When activated, the Agent Operating System pre-loads the context and begins
+    analyzing the crisis before a single word is typed.
+  </p>
+  <a class="cta" href="{{ site_url }}/specs/{{ bt.workflow_id | replace: '_', '-' }}">
+    See the {{ bt.workflow_id }} Spec &rarr;
+  </a>
+  <a class="cta cta--secondary" href="https://github.com/ASISaga/business-infinity/blob/main/docs/workflow/samples/{{ bt.workflow_id | replace: '_', '-' }}.yaml">
+    View Source on GitHub
+  </a>
+</div>
+
+{% include copyright-disclaimer.html %}
+
+<div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+  {% if prev_q %}
+  <a class="cta cta--secondary" href="{{ site_url }}/breakthroughs/{{ bt.slug }}/{{ prev_q.slug }}">&larr; Previous query</a>
+  {% endif %}
+  <a class="cta cta--secondary" href="{{ site_url }}/breakthroughs/{{ bt.slug }}">Back to {{ bt.category }}</a>
+  {% if next_q %}
+  <a class="cta cta--secondary" href="{{ site_url }}/breakthroughs/{{ bt.slug }}/{{ next_q.slug }}">Next query &rarr;</a>
+  {% endif %}
+</div>

@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Impact of information silos on Series C valuation — Strategy–Execution Divorce — Breakthroughs Index — Business Infinity"
+description: "Impact of information silos on Series C valuation: Information silos are not just inefficient — they are a valuation risk. Due diligence teams see siloed operations as a sign of fragile governance. The fix is no"
+breakthrough_slug: strategy-execution-divorce
+query_position: 6
+permalink: /breakthroughs/strategy-execution-divorce/impact-of-information-silos-on-series-c-valuation/
+---
+{% assign bt = site.data.breakthroughs["strategy-execution-divorce"] %}
+{% assign query_pos = 6 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["strategy-execution-divorce"]["impact-of-information-silos-on-series-c-valuation"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

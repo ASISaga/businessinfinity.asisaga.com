@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Delegating high-stakes technical decisions — Cognitive & Decision Overload — Breakthroughs Index — Business Infinity"
+description: "Delegating high-stakes technical decisions: High-stakes decisions paralyze because the cost of error is existential. A purpose-governed boardroom reduces that cost by ensuring every decision is aligned wi"
+breakthrough_slug: cognitive-decision-overload
+query_position: 8
+permalink: /breakthroughs/cognitive-decision-overload/delegating-high-stakes-technical-decisions/
+---
+{% assign bt = site.data.breakthroughs["cognitive-decision-overload"] %}
+{% assign query_pos = 8 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["cognitive-decision-overload"]["delegating-high-stakes-technical-decisions"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

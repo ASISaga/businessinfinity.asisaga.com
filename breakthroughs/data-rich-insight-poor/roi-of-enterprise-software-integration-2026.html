@@ -1,0 +1,18 @@
+---
+layout: default
+title: "ROI of enterprise software integration 2026 — Data-Rich / Insight-Poor Trap — Breakthroughs Index — Business Infinity"
+description: "ROI of enterprise software integration 2026: Integration connects pipes. Intelligence reads what flows through them. The ROI of integration is near zero without a synthesis layer that transforms connected"
+breakthrough_slug: data-rich-insight-poor
+query_position: 8
+permalink: /breakthroughs/data-rich-insight-poor/roi-of-enterprise-software-integration-2026/
+---
+{% assign bt = site.data.breakthroughs["data-rich-insight-poor"] %}
+{% assign query_pos = 8 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["data-rich-insight-poor"]["roi-of-enterprise-software-integration-2026"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

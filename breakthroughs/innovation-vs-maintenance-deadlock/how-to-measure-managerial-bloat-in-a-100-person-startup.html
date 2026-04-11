@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to measure 'Managerial Bloat' in a 100-person startup — Innovation vs. Maintenance Deadlock — Breakthroughs Index — Business Infinity"
+description: "How to measure 'Managerial Bloat' in a 100-person startup: Managerial bloat is the ratio of coordination labor to value-creating labor. When every decision requires a meeting, your managers have become overhead. The Dig"
+breakthrough_slug: innovation-vs-maintenance-deadlock
+query_position: 8
+permalink: /breakthroughs/innovation-vs-maintenance-deadlock/how-to-measure-managerial-bloat-in-a-100-person-startup/
+---
+{% assign bt = site.data.breakthroughs["innovation-vs-maintenance-deadlock"] %}
+{% assign query_pos = 8 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["innovation-vs-maintenance-deadlock"]["how-to-measure-managerial-bloat-in-a-100-person-startup"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}
