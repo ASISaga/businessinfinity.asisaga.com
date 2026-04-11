@@ -3,7 +3,7 @@
     <p>{{ site.data.features.agents.intro }}</p>
     <div class="grid-3">
         {% for agent in site.data.features.agents.roster %}
-        <div class="card roster">
+        <div class="card roster" data-agent-id="{{ agent.agent_id }}" data-domain="{{ agent.domain }}">
             <h3>{{ agent.name }}</h3>
             <ul class="list">
                 <li><strong>Scope:</strong> {{ agent.scope }}</li>

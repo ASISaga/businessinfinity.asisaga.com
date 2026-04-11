@@ -33,7 +33,7 @@ permalink: /enterprise/
   <div class="wrap">
     <div class="beats reveal" data-reveal="up">
       {% for beat in site.data.enterprise.intro.beats %}
-      <p class="beat">{{ beat }}</p>
+      <p class="beat">{{ beat.text }}</p>
       {% endfor %}
     </div>
     <p class="lead reveal" data-reveal="fade" data-delay="150">
@@ -86,7 +86,7 @@ permalink: /enterprise/
     <p class="lead reveal" data-reveal="fade">{{ site.data.enterprise.network.body }}</p>
     <div class="pills reveal" data-reveal="up" data-delay="100">
       {% for pill in site.data.enterprise.network.pills %}
-      <span class="pill">{{ pill }}</span>
+      <span class="pill">{{ pill.text }}</span>
       {% endfor %}
     </div>
     <p class="subtle reveal" data-reveal="fade" data-delay="150">{{ site.data.enterprise.network.footnote }}</p>

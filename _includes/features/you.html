@@ -4,13 +4,13 @@
     <div class="persona">
         <div class="persona-tabs" role="tablist" aria-label="Choose your seat">
             {% for persona in site.data.features.you.personas %}
-            <button class="tab{% if forloop.first %} active{% endif %}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-persona="{{ persona | downcase }}">{{ persona }}</button>
+            <button class="tab{% if forloop.first %} active{% endif %}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-persona="{{ persona.id }}" data-domain="{{ persona.domain }}">{{ persona.label }}</button>
             {% endfor %}
         </div>
         <div class="objectives">
             <div class="chips" aria-label="Your objectives">
                 {% for obj in site.data.features.you.objectives %}
-                <button class="chip" data-obj="{{ obj.id }}">{{ obj.label }}</button>
+                <button class="chip" data-obj="{{ obj.id }}" data-metric="{{ obj.metric_type }}" data-direction="{{ obj.direction }}">{{ obj.label }}</button>
                 {% endfor %}
             </div>
         </div>
