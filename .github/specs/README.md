@@ -47,6 +47,13 @@ This directory contains specifications and frameworks for the agent intelligence
   - Voice, tone, and writing standards
   - SEO, accessibility, and metadata requirements
 
+- **`data.md`** - `_data/` directory specification (copy/markup separation pattern)
+  - Directory structure mirroring the page hierarchy
+  - YAML schema conventions: section keys, copy fields, lists, CTAs
+  - How Liquid templates reference `site.data.*`
+  - Shared vs page-scoped data guidelines
+  - Validation rules for data files
+
 - **`repository.md`** - Repository-specific spec (one per repository, same standard name)
   - Repository name, description, and role in the ecosystem
   - Technology stack and coding patterns

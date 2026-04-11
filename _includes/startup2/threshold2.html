@@ -1,23 +1,17 @@
 <section class="section" id="threshold">
     <div class="wrap">
-        <h2 class="h2 reveal">Your threshold step</h2>
-        <p class="reveal">Pick one pain to kill in 4–6 weeks:</p>
+        <h2 class="h2 reveal">{{ site.data.startup2.threshold2.heading }}</h2>
+        <p class="reveal">{{ site.data.startup2.threshold2.intro }}</p>
         <div class="grid grid-3">
+            {% for item in site.data.startup2.threshold2.items %}
             <div class="card reveal">
-                <h3 class="eyebrow">Lead‑to‑close</h3>
-                <p>Compress your sales cycle; raise win rates without raising spend.</p>
+                <h3 class="eyebrow">{{ item.eyebrow }}</h3>
+                <p>{{ item.body }}</p>
             </div>
-            <div class="card reveal">
-                <h3 class="eyebrow">Cash burn</h3>
-                <p>Cut waste in tooling, ops, and campaigns without starving growth.</p>
-            </div>
-            <div class="card reveal">
-                <h3 class="eyebrow">Product‑market fit signals</h3>
-                <p>Instrument every test; scale only what wins with data.</p>
-            </div>
+            {% endfor %}
         </div>
         <div class="cta-center reveal">
-            <a href="mailto:founders@businessinfinity.ai" class="btn btn-primary btn-lg">Design your pilot</a>
+            <a href="{{ site.data.startup2.threshold2.cta.url }}" class="btn btn-primary btn-lg">{{ site.data.startup2.threshold2.cta.label }}</a>
         </div>
     </div>
 </section>

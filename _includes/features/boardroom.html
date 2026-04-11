@@ -1,27 +1,17 @@
 <section id="boardroom" class="section reveal">
-    <h2>Perpetual boardroom</h2>
-    <p>Deliberation never stops. Agents keep a shared, long‑horizon memory; decisions are made when the moment is
-        right, not when calendars align.</p>
+    <h2>{{ site.data.features.boardroom.heading }}</h2>
+    <p>{{ site.data.features.boardroom.intro }}</p>
     <div class="grid-3">
+        {% for feature in site.data.features.boardroom.features %}
         <div class="card">
-            <h3>Always‑on awareness</h3>
-            <p>Signals streamed from ERP/MES/CRM/SaaS; agents monitor KPIs, risks, and opportunities continuously.</p>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
         </div>
-        <div class="card">
-            <h3>Quorum deliberation</h3>
-            <p>Agents propose, challenge, and converge under chartered rules — not single‑shot replies.</p>
-        </div>
-        <div class="card">
-            <h3>Action with guardrails</h3>
-            <p>Dry‑runs, approvals, scope caps, and instant rollback. Every write is observable and reversible.</p>
-        </div>
+        {% endfor %}
     </div>
     <div class="loop card">
-        <div class="loop-step"><span>1</span> Observe</div>
-        <div class="loop-step"><span>2</span> Deliberate</div>
-        <div class="loop-step"><span>3</span> Decide</div>
-        <div class="loop-step"><span>4</span> Act</div>
-        <div class="loop-step"><span>5</span> Measure</div>
-        <div class="loop-step"><span>6</span> Learn & update</div>
+        {% for step in site.data.features.boardroom.loop_steps %}
+        <div class="loop-step"><span>{{ forloop.index }}</span> {{ step }}</div>
+        {% endfor %}
     </div>
 </section>

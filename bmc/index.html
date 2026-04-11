@@ -4,95 +4,22 @@ title: "Business Infinity — Business Model Canvas"
 ---
 
 <header class="page-header">
-  <h1>Business Infinity — Business Model Canvas</h1>
-  <div class="subtitle">ASI Saga’s AI Boardroom: Dual‑Market Vision with Recursive & Exponential Network Effect</div>
+  <h1>{{ site.data.bmc.page_title }}</h1>
+  <div class="subtitle">{{ site.data.bmc.subtitle }}</div>
 </header>
 
 <main>
   <section class="grid">
+    {% for section in site.data.bmc.sections %}
     <article>
-      <h2>Customer Segments</h2>
+      <h2>{{ section.heading }}</h2>
       <ul data-field>
-        <li>Startups & scale‑ups: seed to Series‑C across all sectors</li>
-        <li>Enterprises & industrial conglomerates</li>
-        <li>Supply chain networks & consortia</li>
+        {% for item in section.items %}
+        <li>{{ item }}</li>
+        {% endfor %}
       </ul>
     </article>
-    <article>
-      <h2>Value Propositions</h2>
-      <ul data-field>
-        <li>Persistent AI C‑suite agents trained on domain‑pioneer knowledge</li>
-        <li>Seamless orchestration over ERP, MES, CRM & SaaS</li>
-        <li>Inter‑boardroom protocols enabling 24/7 supply chain collaboration</li>
-        <li>Enterprise‑grade decision power for startups without enterprise bloat</li>
-        <li>Recursive learning loops — every node makes the network smarter</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Channels</h2>
-      <ul data-field>
-        <li>Startup accelerators & VC portfolios</li>
-        <li>ERP/MES/CRM vendor co‑sell</li>
-        <li>Industry events & thought leadership</li>
-        <li>Founder networks</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Customer Relationships</h2>
-      <ul data-field>
-        <li>Co‑created agent charters & governance workshops</li>
-        <li>Community of practice across boardrooms</li>
-        <li>Self‑serve onboarding for startups</li>
-        <li>High‑touch enterprise deployment & governance councils</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Revenue Streams</h2>
-      <ul data-field>
-        <li>Subscription per boardroom instance (role‑based tiers)</li>
-        <li>Usage‑based inter‑boardroom negotiation fees</li>
-        <li>Premium ERP/MES/CRM integrations</li>
-        <li>Domain tuning & charter design services</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Key Resources</h2>
-      <ul data-field>
-        <li>Domain‑specific LLM models & LoRA adapters</li>
-        <li>Integration middleware for ERP/MES/CRM/SaaS</li>
-        <li>Boardroom ontology, decision ledger & observability stack</li>
-        <li>Governance frameworks & escalation protocols</li>
-        <li>Partner ecosystem & domain corpora</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Key Activities</h2>
-      <ul data-field>
-        <li>Maintain & retrain domain‑tuned agents</li>
-        <li>Integrate enterprise & startup SaaS tools</li>
-        <li>Operate inter‑boardroom comms protocols</li>
-        <li>Facilitate recursive learning loops</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Key Partners</h2>
-      <ul data-field>
-        <li>ERP/MES/CRM vendors (SAP, D365, Salesforce, Odoo, Zoho)</li>
-        <li>System integrators & startup tech enablers</li>
-        <li>Incubators, accelerators, cloud credit programs</li>
-        <li>Industry consortia & regulatory bodies</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Cost Structure</h2>
-      <ul data-field>
-        <li>Model hosting & training</li>
-        <li>Integration & API maintenance</li>
-        <li>Security, compliance & audit</li>
-        <li>Customer success & community management</li>
-        <li>R&D for new agents & protocols</li>
-      </ul>
-    </article>
+    {% endfor %}
   </section>
 
   <section class="actions">

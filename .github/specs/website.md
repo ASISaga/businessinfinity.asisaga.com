@@ -213,6 +213,7 @@ Content reviews should verify:
 ## References
 
 → **Copyright protection strategy**: `_copyright/actions.md`  
+→ **Data directory spec**: `.github/specs/data.md`  
 → **Repository spec**: `.github/specs/repository.md`  
 → **HTML & Liquid standards**: `.github/instructions/html.instructions.md`  
 → **SCSS standards**: `.github/instructions/scss.instructions.md`  

@@ -1,18 +1,11 @@
 <section id="integrations" class="section reveal">
-    <h2>Integrations</h2>
+    <h2>{{ site.data.features.integrations.heading }}</h2>
     <div class="grid-3">
+        {% for item in site.data.features.integrations.items %}
         <div class="card">
-            <h3>Read</h3>
-            <p>APIs/SQL, CDC, and events from ERP/MES/CRM/data platform. Semantic layer aligns language across domains.
-            </p>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
         </div>
-        <div class="card">
-            <h3>Write</h3>
-            <p>Idempotent adapters with retries; guarded writes with caps, canary, and rollback.</p>
-        </div>
-        <div class="card">
-            <h3>Identity & policy</h3>
-            <p>SSO/SCIM, ABAC/RBAC, policy engines and residency controls built‑in.</p>
-        </div>
+        {% endfor %}
     </div>
 </section>

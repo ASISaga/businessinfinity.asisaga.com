@@ -1,17 +1,11 @@
 <section id="assurance" class="section reveal">
-    <h2>Assurance & safety</h2>
+    <h2>{{ site.data.features.assurance.heading }}</h2>
     <div class="grid-3">
+        {% for item in site.data.features.assurance.items %}
         <div class="card">
-            <h3>Charters & limits</h3>
-            <p>Explicit powers and escalation paths per agent. Risk budgets by domain.</p>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
         </div>
-        <div class="card">
-            <h3>Runtime evaluators</h3>
-            <p>Policy, finance, privacy checks on every decision and action.</p>
-        </div>
-        <div class="card">
-            <h3>Observability</h3>
-            <p>Decision traces, action telemetry, drift monitors, and alerts.</p>
-        </div>
+        {% endfor %}
     </div>
 </section>
