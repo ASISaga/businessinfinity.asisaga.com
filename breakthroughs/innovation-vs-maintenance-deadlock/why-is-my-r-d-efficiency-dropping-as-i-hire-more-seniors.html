@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Why is my R&D efficiency dropping as I hire more seniors? — Innovation vs. Maintenance Deadlock — Breakthroughs Index — Business Infinity"
+description: "Why is my R&D efficiency dropping as I hire more seniors?: Senior engineers hired into a system with no governance spend most of their time navigating complexity rather than applying expertise. The fix is not better hir"
+breakthrough_slug: innovation-vs-maintenance-deadlock
+query_position: 5
+permalink: /breakthroughs/innovation-vs-maintenance-deadlock/why-is-my-r-d-efficiency-dropping-as-i-hire-more-seniors/
+---
+{% assign bt = site.data.breakthroughs["innovation-vs-maintenance-deadlock"] %}
+{% assign query_pos = 5 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["innovation-vs-maintenance-deadlock"]["why-is-my-r-d-efficiency-dropping-as-i-hire-more-seniors"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

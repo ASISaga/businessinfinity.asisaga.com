@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to maintain CEO oversight in fully autonomous workflows — AI Sprawl & Agentic Risk — Breakthroughs Index — Business Infinity"
+description: "How to maintain CEO oversight in fully autonomous workflows: Oversight does not mean reviewing every decision — it means defining the purpose and constraints. A CEO governs through purpose; the boardroom executes within t"
+breakthrough_slug: ai-sprawl-agentic-risk
+query_position: 7
+permalink: /breakthroughs/ai-sprawl-agentic-risk/how-to-maintain-ceo-oversight-in-fully-autonomous-workflows/
+---
+{% assign bt = site.data.breakthroughs["ai-sprawl-agentic-risk"] %}
+{% assign query_pos = 7 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["ai-sprawl-agentic-risk"]["how-to-maintain-ceo-oversight-in-fully-autonomous-workflows"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

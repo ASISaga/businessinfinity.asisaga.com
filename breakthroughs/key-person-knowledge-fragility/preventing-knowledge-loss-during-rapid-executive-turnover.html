@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Preventing knowledge loss during rapid executive turnover — Key-Person & Knowledge Fragility — Breakthroughs Index — Business Infinity"
+description: "Preventing knowledge loss during rapid executive turnover: Every departing executive takes a piece of the company's consciousness. People-centric management theory holds the purpose of management is to make people effec"
+breakthrough_slug: key-person-knowledge-fragility
+query_position: 10
+permalink: /breakthroughs/key-person-knowledge-fragility/preventing-knowledge-loss-during-rapid-executive-turnover/
+---
+{% assign bt = site.data.breakthroughs["key-person-knowledge-fragility"] %}
+{% assign query_pos = 10 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["key-person-knowledge-fragility"]["preventing-knowledge-loss-during-rapid-executive-turnover"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

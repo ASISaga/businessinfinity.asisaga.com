@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Retraining middle management for an AI-augmented workflow — Culture Dilution at Scale — Breakthroughs Index — Business Infinity"
+description: "Retraining middle management for an AI-augmented workflow: Retraining fails when it focuses on tools. It succeeds when it reframes the manager's role: from coordinator to cultivator. A boardroom that handles coordinatio"
+breakthrough_slug: culture-dilution-at-scale
+query_position: 8
+permalink: /breakthroughs/culture-dilution-at-scale/retraining-middle-management-for-an-ai-augmented-workflow/
+---
+{% assign bt = site.data.breakthroughs["culture-dilution-at-scale"] %}
+{% assign query_pos = 8 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["culture-dilution-at-scale"]["retraining-middle-management-for-an-ai-augmented-workflow"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

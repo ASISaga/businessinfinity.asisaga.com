@@ -1,0 +1,18 @@
+---
+layout: default
+title: "AI tools for restoring cultural accountability in remote-first firms — Culture Dilution at Scale — Breakthroughs Index — Business Infinity"
+description: "AI tools for restoring cultural accountability in remote-first firms: Cultural accountability in remote firms requires a system that detects when the 'Pressure to Perform' violates the 'Commitment to People.' The People Strategist"
+breakthrough_slug: culture-dilution-at-scale
+query_position: 10
+permalink: /breakthroughs/culture-dilution-at-scale/ai-tools-for-restoring-cultural-accountability-in-remote-first-firms/
+---
+{% assign bt = site.data.breakthroughs["culture-dilution-at-scale"] %}
+{% assign query_pos = 10 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["culture-dilution-at-scale"]["ai-tools-for-restoring-cultural-accountability-in-remote-first-firms"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Automating high-level strategic pivots to save runway — Organizational Entropy & Complexity Bloat — Breakthroughs Index — Business Infinity"
+description: "Automating high-level strategic pivots to save runway: A strategic pivot that takes two weeks of C-suite meetings costs $40,000 in executive time alone. An autonomous boardroom makes the same decision in seconds, gr"
+breakthrough_slug: organizational-entropy
+query_position: 8
+permalink: /breakthroughs/organizational-entropy/automating-high-level-strategic-pivots-to-save-runway/
+---
+{% assign bt = site.data.breakthroughs["organizational-entropy"] %}
+{% assign query_pos = 8 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["organizational-entropy"]["automating-high-level-strategic-pivots-to-save-runway"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

@@ -1,0 +1,18 @@
+---
+layout: default
+title: "IPO readiness checklist for tech startups — Exit & Due-Diligence Anxiety — Breakthroughs Index — Business Infinity"
+description: "IPO readiness checklist for tech startups: Buffett does not invest in companies that need a checklist to prove they are ready. He invests in companies whose integrity is continuous. Business Infinity kee"
+breakthrough_slug: exit-due-diligence-anxiety
+query_position: 1
+permalink: /breakthroughs/exit-due-diligence-anxiety/ipo-readiness-checklist-for-tech-startups/
+---
+{% assign bt = site.data.breakthroughs["exit-due-diligence-anxiety"] %}
+{% assign query_pos = 1 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["exit-due-diligence-anxiety"]["ipo-readiness-checklist-for-tech-startups"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

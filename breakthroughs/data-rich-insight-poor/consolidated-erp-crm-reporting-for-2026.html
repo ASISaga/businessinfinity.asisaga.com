@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Consolidated ERP-CRM reporting for 2026 — Data-Rich / Insight-Poor Trap — Breakthroughs Index — Business Infinity"
+description: "Consolidated ERP-CRM reporting for 2026: Consolidating reports from two systems still gives you reports. What you need is an intelligence that reads both systems and tells you the one thing neither sys"
+breakthrough_slug: data-rich-insight-poor
+query_position: 5
+permalink: /breakthroughs/data-rich-insight-poor/consolidated-erp-crm-reporting-for-2026/
+---
+{% assign bt = site.data.breakthroughs["data-rich-insight-poor"] %}
+{% assign query_pos = 5 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["data-rich-insight-poor"]["consolidated-erp-crm-reporting-for-2026"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

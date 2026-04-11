@@ -1,0 +1,18 @@
+---
+layout: default
+title: "CEO dashboard for 20+ disconnected SaaS tools — Cognitive & Decision Overload — Breakthroughs Index — Business Infinity"
+description: "CEO dashboard for 20+ disconnected SaaS tools: Another dashboard is another tab. What you need is not a view of your data but a mind that synthesizes it. Dashboards show you what happened; a boardroom tells"
+breakthrough_slug: cognitive-decision-overload
+query_position: 5
+permalink: /breakthroughs/cognitive-decision-overload/ceo-dashboard-for-20-disconnected-saas-tools/
+---
+{% assign bt = site.data.breakthroughs["cognitive-decision-overload"] %}
+{% assign query_pos = 5 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["cognitive-decision-overload"]["ceo-dashboard-for-20-disconnected-saas-tools"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

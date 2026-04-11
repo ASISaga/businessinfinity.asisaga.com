@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Measuring organizational health beyond financial metrics — Culture Dilution at Scale — Breakthroughs Index — Business Infinity"
+description: "Measuring organizational health beyond financial metrics: Financial metrics are lagging indicators of cultural health. Leading indicators — engagement integrity, decision quality, innovation velocity — require a synthe"
+breakthrough_slug: culture-dilution-at-scale
+query_position: 9
+permalink: /breakthroughs/culture-dilution-at-scale/measuring-organizational-health-beyond-financial-metrics/
+---
+{% assign bt = site.data.breakthroughs["culture-dilution-at-scale"] %}
+{% assign query_pos = 9 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["culture-dilution-at-scale"]["measuring-organizational-health-beyond-financial-metrics"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

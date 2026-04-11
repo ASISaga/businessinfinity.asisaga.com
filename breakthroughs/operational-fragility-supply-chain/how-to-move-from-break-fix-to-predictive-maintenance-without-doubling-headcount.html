@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to move from 'Break-Fix' to 'Predictive Maintenance' without doubling headcount — Operational Fragility & Supply-Chain Chaos — Breakthroughs Index — Business Infinity"
+description: "How to move from 'Break-Fix' to 'Predictive Maintenance' without doubling headcount: Predictive maintenance does not require more people — it requires a smarter system. The Systems Architect agent sits atop IoT and FSM data, identifying failure"
+breakthrough_slug: operational-fragility-supply-chain
+query_position: 8
+permalink: /breakthroughs/operational-fragility-supply-chain/how-to-move-from-break-fix-to-predictive-maintenance-without-doubling-headcount/
+---
+{% assign bt = site.data.breakthroughs["operational-fragility-supply-chain"] %}
+{% assign query_pos = 8 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["operational-fragility-supply-chain"]["how-to-move-from-break-fix-to-predictive-maintenance-without-doubling-headcount"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

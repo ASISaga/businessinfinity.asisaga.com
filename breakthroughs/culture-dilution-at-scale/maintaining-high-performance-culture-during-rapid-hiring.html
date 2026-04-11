@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Maintaining high-performance culture during rapid hiring — Culture Dilution at Scale — Breakthroughs Index — Business Infinity"
+description: "Maintaining high-performance culture during rapid hiring: Rapid hiring dilutes culture unless every new hire is onboarded into a system that actively enforces the standards that made the A-players join. Business Infini"
+breakthrough_slug: culture-dilution-at-scale
+query_position: 4
+permalink: /breakthroughs/culture-dilution-at-scale/maintaining-high-performance-culture-during-rapid-hiring/
+---
+{% assign bt = site.data.breakthroughs["culture-dilution-at-scale"] %}
+{% assign query_pos = 4 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["culture-dilution-at-scale"]["maintaining-high-performance-culture-during-rapid-hiring"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

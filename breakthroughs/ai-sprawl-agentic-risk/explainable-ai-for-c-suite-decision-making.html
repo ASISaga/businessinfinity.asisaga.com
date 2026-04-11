@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Explainable AI for C-suite decision making — AI Sprawl & Agentic Risk — Breakthroughs Index — Business Infinity"
+description: "Explainable AI for C-suite decision making: Explainability is not a feature — it is a governance requirement. Every decision in the boardroom is tied to a specific specification, a resonance score, and a"
+breakthrough_slug: ai-sprawl-agentic-risk
+query_position: 4
+permalink: /breakthroughs/ai-sprawl-agentic-risk/explainable-ai-for-c-suite-decision-making/
+---
+{% assign bt = site.data.breakthroughs["ai-sprawl-agentic-risk"] %}
+{% assign query_pos = 4 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["ai-sprawl-agentic-risk"]["explainable-ai-for-c-suite-decision-making"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

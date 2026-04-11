@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to codify founder's decision-making logic — Key-Person & Knowledge Fragility — Breakthroughs Index — Business Infinity"
+description: "How to codify founder's decision-making logic: The founder's decision logic is not a flowchart — it is a set of values, priorities, and pattern recognitions. Business Infinity encodes this as a purpose speci"
+breakthrough_slug: key-person-knowledge-fragility
+query_position: 8
+permalink: /breakthroughs/key-person-knowledge-fragility/how-to-codify-founder-s-decision-making-logic/
+---
+{% assign bt = site.data.breakthroughs["key-person-knowledge-fragility"] %}
+{% assign query_pos = 8 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["key-person-knowledge-fragility"]["how-to-codify-founder-s-decision-making-logic"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

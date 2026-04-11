@@ -1,0 +1,18 @@
+---
+layout: default
+title: "MES-to-Shipping delay causes for Q1 2026 — Operational Fragility & Supply-Chain Chaos — Breakthroughs Index — Business Infinity"
+description: "MES-to-Shipping delay causes for Q1 2026: The delay is rarely in shipping — it is in a bottleneck upstream that your MES is not configured to flag. A Goldratt agent reads the MES flow holistically and i"
+breakthrough_slug: operational-fragility-supply-chain
+query_position: 6
+permalink: /breakthroughs/operational-fragility-supply-chain/mes-to-shipping-delay-causes-for-q1-2026/
+---
+{% assign bt = site.data.breakthroughs["operational-fragility-supply-chain"] %}
+{% assign query_pos = 6 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["operational-fragility-supply-chain"]["mes-to-shipping-delay-causes-for-q1-2026"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

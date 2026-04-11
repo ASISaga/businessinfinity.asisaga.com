@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Why does hiring more engineers slow down our release cycle? — Organizational Entropy & Complexity Bloat — Breakthroughs Index — Business Infinity"
+description: "Why does hiring more engineers slow down our release cycle?: Deming would call this the 'coordination tax.' Each new engineer adds communication overhead that grows quadratically. The solution is not fewer people — it is"
+breakthrough_slug: organizational-entropy
+query_position: 1
+permalink: /breakthroughs/organizational-entropy/why-does-hiring-more-engineers-slow-down-our-release-cycle/
+---
+{% assign bt = site.data.breakthroughs["organizational-entropy"] %}
+{% assign query_pos = 1 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["organizational-entropy"]["why-does-hiring-more-engineers-slow-down-our-release-cycle"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

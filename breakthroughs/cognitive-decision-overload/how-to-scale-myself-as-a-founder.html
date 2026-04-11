@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to scale myself as a founder — Cognitive & Decision Overload — Breakthroughs Index — Business Infinity"
+description: "How to scale myself as a founder: You cannot scale yourself. You can only scale your intent. Encode your decision logic into an autonomous boardroom and let it carry your standards into every co"
+breakthrough_slug: cognitive-decision-overload
+query_position: 7
+permalink: /breakthroughs/cognitive-decision-overload/how-to-scale-myself-as-a-founder/
+---
+{% assign bt = site.data.breakthroughs["cognitive-decision-overload"] %}
+{% assign query_pos = 7 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["cognitive-decision-overload"]["how-to-scale-myself-as-a-founder"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

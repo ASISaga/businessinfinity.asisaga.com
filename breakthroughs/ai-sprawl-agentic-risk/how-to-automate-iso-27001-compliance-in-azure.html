@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to automate ISO 27001 compliance in Azure — AI Sprawl & Agentic Risk — Breakthroughs Index — Business Infinity"
+description: "How to automate ISO 27001 compliance in Azure: Compliance automation fails when it is bolted on after the fact. Business Infinity builds compliance into the governance fabric: every agent action is auditable"
+breakthrough_slug: ai-sprawl-agentic-risk
+query_position: 10
+permalink: /breakthroughs/ai-sprawl-agentic-risk/how-to-automate-iso-27001-compliance-in-azure/
+---
+{% assign bt = site.data.breakthroughs["ai-sprawl-agentic-risk"] %}
+{% assign query_pos = 10 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["ai-sprawl-agentic-risk"]["how-to-automate-iso-27001-compliance-in-azure"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

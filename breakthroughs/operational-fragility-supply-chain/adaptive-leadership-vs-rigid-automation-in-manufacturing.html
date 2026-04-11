@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Adaptive leadership vs. rigid automation in manufacturing — Operational Fragility & Supply-Chain Chaos — Breakthroughs Index — Business Infinity"
+description: "Adaptive leadership vs. rigid automation in manufacturing: Rigid automation breaks. Adaptive automation learns. Strategic resilience thinking teaches that victory belongs to the side that adapts faster. A boardroom that"
+breakthrough_slug: operational-fragility-supply-chain
+query_position: 3
+permalink: /breakthroughs/operational-fragility-supply-chain/adaptive-leadership-vs-rigid-automation-in-manufacturing/
+---
+{% assign bt = site.data.breakthroughs["operational-fragility-supply-chain"] %}
+{% assign query_pos = 3 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["operational-fragility-supply-chain"]["adaptive-leadership-vs-rigid-automation-in-manufacturing"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

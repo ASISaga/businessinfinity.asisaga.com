@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to detect 'Quiet Quitting' in middle management — Strategy–Execution Divorce — Breakthroughs Index — Business Infinity"
+description: "How to detect 'Quiet Quitting' in middle management: Quiet quitting is invisible to standard HR metrics. It shows up as decreased initiative, risk-avoidance, and 'safe' decisions. The People Strategist agent analy"
+breakthrough_slug: strategy-execution-divorce
+query_position: 9
+permalink: /breakthroughs/strategy-execution-divorce/how-to-detect-quiet-quitting-in-middle-management/
+---
+{% assign bt = site.data.breakthroughs["strategy-execution-divorce"] %}
+{% assign query_pos = 9 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["strategy-execution-divorce"]["how-to-detect-quiet-quitting-in-middle-management"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

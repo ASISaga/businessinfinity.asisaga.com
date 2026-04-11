@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Culture strategies for 'Day 1' companies in 2026 — Culture Dilution at Scale — Breakthroughs Index — Business Infinity"
+description: "Culture strategies for 'Day 1' companies in 2026: Day 1 culture is not a poster on the wall — it is a governance mechanism. A Bezos-inspired agent monitors when teams optimize for optics over customer intent, k"
+breakthrough_slug: culture-dilution-at-scale
+query_position: 6
+permalink: /breakthroughs/culture-dilution-at-scale/culture-strategies-for-day-1-companies-in-2026/
+---
+{% assign bt = site.data.breakthroughs["culture-dilution-at-scale"] %}
+{% assign query_pos = 6 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["culture-dilution-at-scale"]["culture-strategies-for-day-1-companies-in-2026"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Preparing for a predatory technical audit — Exit & Due-Diligence Anxiety — Breakthroughs Index — Business Infinity"
+description: "Preparing for a predatory technical audit: A predatory auditor looks for the gap between what you claim and what you can prove. Business Infinity eliminates that gap by creating a permanent, immutable re"
+breakthrough_slug: exit-due-diligence-anxiety
+query_position: 6
+permalink: /breakthroughs/exit-due-diligence-anxiety/preparing-for-a-predatory-technical-audit/
+---
+{% assign bt = site.data.breakthroughs["exit-due-diligence-anxiety"] %}
+{% assign query_pos = 6 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["exit-due-diligence-anxiety"]["preparing-for-a-predatory-technical-audit"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

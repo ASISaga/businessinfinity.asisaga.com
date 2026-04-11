@@ -1,0 +1,18 @@
+---
+layout: default
+title: "How to maintain speed of execution after a large funding round — Organizational Entropy & Complexity Bloat — Breakthroughs Index — Business Infinity"
+description: "How to maintain speed of execution after a large funding round: The paradox of funding: capital enables hiring, but hiring enables complexity. The companies that maintain velocity post-raise are the ones that invest in gover"
+breakthrough_slug: organizational-entropy
+query_position: 9
+permalink: /breakthroughs/organizational-entropy/how-to-maintain-speed-of-execution-after-a-large-funding-round/
+---
+{% assign bt = site.data.breakthroughs["organizational-entropy"] %}
+{% assign query_pos = 9 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["organizational-entropy"]["how-to-maintain-speed-of-execution-after-a-large-funding-round"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}

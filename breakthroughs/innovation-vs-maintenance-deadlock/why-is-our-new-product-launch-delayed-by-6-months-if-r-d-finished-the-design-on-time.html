@@ -1,0 +1,18 @@
+---
+layout: default
+title: "Why is our new product launch delayed by 6 months if R&D finished the design on time? — Innovation vs. Maintenance Deadlock — Breakthroughs Index — Business Infinity"
+description: "Why is our new product launch delayed by 6 months if R&D finished the design on time?: The delay is in the gap between design (PLM) and sourcing (SCM). R&D designed a masterpiece that the supply chain cannot build on time. A boardroom that reads b"
+breakthrough_slug: innovation-vs-maintenance-deadlock
+query_position: 7
+permalink: /breakthroughs/innovation-vs-maintenance-deadlock/why-is-our-new-product-launch-delayed-by-6-months-if-r-d-finished-the-design-on-time/
+---
+{% assign bt = site.data.breakthroughs["innovation-vs-maintenance-deadlock"] %}
+{% assign query_pos = 7 %}
+{% assign pq = nil %}
+{% for q in bt.queries %}{% if q.position == query_pos %}{% assign pq = q %}{% endif %}{% endfor %}
+{%- comment -%}
+  Pain point data also available at:
+  site.data.breakthroughs.queries["innovation-vs-maintenance-deadlock"]["why-is-our-new-product-launch-delayed-by-6-months-if-r-d-finished-the-design-on-time"]
+{%- endcomment -%}
+{% include breakthroughs/pain-point-jsonld.html query=pq breakthrough=bt %}
+{% include breakthroughs/pain-point-content.html query=pq breakthrough=bt all_breakthroughs=site.data.breakthroughs %}
