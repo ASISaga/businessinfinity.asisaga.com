@@ -1,43 +1,91 @@
+_schema:
+  version: "2.0"
+  type: knowledge_base
+  domain: business_infinity
+  page_path: /business-infinity/
+  last_reviewed: 2026-04-11
+  content_types:
+    - product_overview
+    - feature_list
+    - audience_segment
+    - testimonial
+    - call_to_action
+
 title: "Business Infinity"
 description: "Leverage artificial intelligence to streamline operations, identify growth opportunities, and scale your business efficiently."
 page_title: "Business Infinity"
 
 # Features section
 features:
+  _meta:
+    content_type: feature_list
+    intent: inform
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: consideration
+    priority: high
   section_title: "Key Features"
   items:
-    - title: "Comprehensive Business Analysis"
+    - _type: product_capability
+      title: "Comprehensive Business Analysis"
       icon: "business-icon-analysis"
       description: "Gain deep insights into your business operations with AI-powered analytics that identify inefficiencies and growth opportunities."
+      domain: analytics
     
-    - title: "Intelligent Strategy Development"
+    - _type: product_capability
+      title: "Intelligent Strategy Development"
       icon: "business-icon-strategy"
       description: "Create data-driven business strategies tailored to your industry, market conditions, and business goals."
+      domain: strategy
     
-    - title: "Operations Automation"
+    - _type: product_capability
+      title: "Operations Automation"
       icon: "business-icon-automation"
       description: "Streamline repetitive tasks across all business functions with intelligent automation solutions."
+      domain: automation
 
 # Use cases section
 use_cases:
+  _meta:
+    content_type: audience_segment
+    intent: qualify
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: awareness
   section_title: "Who Can Benefit"
   segments:
-    - title: "Entrepreneurs"
+    - _type: target_audience
+      title: "Entrepreneurs"
       url: "/business-infinity/entrepreneur/"
+      audience_id: entrepreneur
     
-    - title: "Startups"
+    - _type: target_audience
+      title: "Startups"
       url: "/business-infinity/startup/"
+      audience_id: startup
 
 # Testimonials section
 testimonials:
+  _meta:
+    content_type: testimonial
+    intent: persuade
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: decision
   section_title: "What Our Users Say"
   items:
-    - text: "Business Infinity helped me identify inefficiencies in my operations and increased productivity by 40% within three months."
+    - _type: customer_quote
+      text: "Business Infinity helped me identify inefficiencies in my operations and increased productivity by 40% within three months."
       name: "John Doe"
       company: "CEO, Tech Startup Inc."
+      outcome_metric: "40% productivity increase"
+      outcome_timeframe: "3 months"
 
 # Call to action
 cta:
+  _meta:
+    content_type: call_to_action
+    intent: convert
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: decision
+    priority: critical
   title: "Ready to Transform Your Business?"
   description: "Get started with Business Infinity today and experience the power of AI in business management."
   button_text: "Contact Us"

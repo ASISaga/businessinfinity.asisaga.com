@@ -1,7 +1,7 @@
 <nav class="toc" aria-label="Table of contents">
     <ol>
         {% for item in site.data.trust.toc.items %}
-        <li><a href="#{{ item.id }}">{{ item.label }}</a></li>
+        <li><a href="#{{ item.id }}" data-content-type="{{ item.content_type }}">{{ item.label }}</a></li>
         {% endfor %}
     </ol>
 </nav>

@@ -1,4 +1,23 @@
+_schema:
+  version: "2.0"
+  type: knowledge_base
+  domain: business_infinity
+  page_path: /startup/
+  last_reviewed: 2026-04-11
+  content_types:
+    - hero_header
+    - challenge_list
+    - solution_list
+    - case_study
+    - call_to_action
+
 hero:
+  _meta:
+    content_type: hero_header
+    intent: attract
+    audience: [startup]
+    funnel_stage: awareness
+    priority: critical
   title: "Business Infinity for Startups"
   description: "AI-powered solution designed specifically for startups to accelerate growth and streamline operations."
   cta:
@@ -6,53 +25,108 @@ hero:
     url: "#challenges"
 
 challenges:
+  _meta:
+    content_type: challenge_list
+    intent: empathise
+    audience: [startup]
+    funnel_stage: awareness
+    priority: high
   section_title: "Common Startup Challenges"
   section_description: "We understand the unique challenges that startups face in today's competitive environment."
   items:
-    - title: "Limited Resources"
+    - _type: pain_point
+      title: "Limited Resources"
       description: "Managing growth with limited budgets, small teams, and constrained infrastructure."
-    - title: "Market Validation"
+      domain: operations
+    - _type: pain_point
+      title: "Market Validation"
       description: "Testing ideas quickly and pivoting based on real market feedback and data."
-    - title: "Scaling Operations"
+      domain: product
+    - _type: pain_point
+      title: "Scaling Operations"
       description: "Building processes and systems that can scale as your startup grows."
+      domain: growth
 
 solutions:
+  _meta:
+    content_type: solution_list
+    intent: persuade
+    audience: [startup]
+    funnel_stage: consideration
+    priority: high
+    relates_to: [challenges]
   section_title: "How Business Infinity Helps"
   items:
-    - title: "AI-Powered Analysis"
+    - _type: solution_offering
+      title: "AI-Powered Analysis"
       icon: "startup-icon-analysis"
       description: "Leverage advanced analytics to make data-driven decisions without needing a dedicated data science team."
+      domain: analytics
       features:
-        - "Market trend identification"
-        - "Competitive landscape mapping"
-        - "Customer behavior insights"
-    - title: "Automated Operations"
+        - text: "Market trend identification"
+          _type: feature_detail
+        - text: "Competitive landscape mapping"
+          _type: feature_detail
+        - text: "Customer behavior insights"
+          _type: feature_detail
+    - _type: solution_offering
+      title: "Automated Operations"
       icon: "startup-icon-operations"
       description: "Streamline workflows and automate repetitive tasks to maximize your small team's productivity."
+      domain: automation
       features:
-        - "Process automation templates"
-        - "Resource allocation optimization"
-        - "Scalable workflow design"
-    - title: "Growth Planning"
+        - text: "Process automation templates"
+          _type: feature_detail
+        - text: "Resource allocation optimization"
+          _type: feature_detail
+        - text: "Scalable workflow design"
+          _type: feature_detail
+    - _type: solution_offering
+      title: "Growth Planning"
       icon: "startup-icon-growth"
       description: "Create data-backed growth strategies with clear milestones and execution plans."
+      domain: strategy
       features:
-        - "Market expansion roadmaps"
-        - "Customer acquisition planning"
-        - "Funding strategy development"
+        - text: "Market expansion roadmaps"
+          _type: feature_detail
+        - text: "Customer acquisition planning"
+          _type: feature_detail
+        - text: "Funding strategy development"
+          _type: feature_detail
 
 case_study:
+  _meta:
+    content_type: case_study
+    intent: persuade
+    audience: [startup]
+    funnel_stage: decision
+    priority: medium
   section_title: "Success Story"
   title: "How TechNova Accelerated Their Growth"
   description: "TechNova, a SaaS startup in the project management space, used Business Infinity to optimize their operations and growth strategy."
   results:
-    - "Reduced operational costs by 35%"
-    - "Increased customer acquisition rate by 42%"
-    - "Secured Series A funding within 6 months"
+    - text: "Reduced operational costs by 35%"
+      _type: measurable_outcome
+      metric_category: cost
+      improvement: "35%"
+    - text: "Increased customer acquisition rate by 42%"
+      _type: measurable_outcome
+      metric_category: growth
+      improvement: "42%"
+    - text: "Secured Series A funding within 6 months"
+      _type: measurable_outcome
+      metric_category: funding
+      timeframe: "6 months"
   quote: "Business Infinity helped us identify inefficiencies in our operations and provided clear strategies for growth. The AI-powered insights were game-changing for our decision-making process."
   attribution: "Sarah Chen, CEO of TechNova"
 
 cta:
+  _meta:
+    content_type: call_to_action
+    intent: convert
+    audience: [startup]
+    funnel_stage: decision
+    priority: critical
   title: "Ready to Accelerate Your Startup?"
   description: "Get started with Business Infinity today and transform how you build and scale your startup."
   button_text: "Start Your Journey"

@@ -3,7 +3,7 @@
     <div class="card">
         <ul>
             {% for item in site.data.trust.privacy.items %}
-            <li>{{ item }}</li>
+            <li data-right-type="{{ item.right_type }}">{{ item.text }}</li>
             {% endfor %}
         </ul>
     </div>

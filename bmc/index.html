@@ -11,11 +11,11 @@ title: "Business Infinity — Business Model Canvas"
 <main>
   <section class="grid">
     {% for section in site.data.bmc.sections %}
-    <article>
+    <article data-canvas-position="{{ section.canvas_position }}">
       <h2>{{ section.heading }}</h2>
       <ul data-field>
         {% for item in section.items %}
-        <li>{{ item }}</li>
+        <li>{{ item.text }}</li>
         {% endfor %}
       </ul>
     </article>

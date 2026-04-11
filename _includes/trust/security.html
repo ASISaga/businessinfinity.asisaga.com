@@ -3,7 +3,7 @@
     <div class="card">
         <ul>
             {% for item in site.data.trust.security.items %}
-            <li>{{ item }}</li>
+            <li data-layer="{{ item.layer }}">{{ item.text }}</li>
             {% endfor %}
         </ul>
     </div>

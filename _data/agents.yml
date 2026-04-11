@@ -2,66 +2,100 @@
 # Source: assets/js/boardroom/ask-agent.js
 # Backend: ASISaga/BusinessInfinity src/business_infinity/workflows/_app.py
 
+_schema:
+  version: "2.0"
+  type: knowledge_base
+  domain: business_infinity
+  entity_type: agent_catalogue
+  last_reviewed: 2026-04-11
+
 agents:
   - id: ceo
+    _type: c_suite_agent
     role: CEO
     title: Chief Executive Officer
     description: Strategic Leadership
     specialization: "Business strategy, vision, leadership, organisational direction"
     type: CEOAgent
+    domain: executive_leadership
+    decision_scope: [strategy, portfolio, capital_allocation]
 
   - id: cfo
+    _type: c_suite_agent
     role: CFO
     title: Chief Financial Officer
     description: Financial Analysis
     specialization: "Financial planning, budgeting, investment decisions, fiscal governance"
     type: CFOAgent
+    domain: finance
+    decision_scope: [forecasting, budgeting, investment, audit]
 
   - id: cto
+    _type: c_suite_agent
     role: CTO
     title: Chief Technology Officer
     description: Technology & Innovation
     specialization: "Technology strategy, engineering leadership, innovation, digital transformation"
     type: CTOAgent
+    domain: technology
+    decision_scope: [architecture, engineering, innovation, security]
 
   - id: cmo
+    _type: c_suite_agent
     role: CMO
     title: Chief Marketing Officer
     description: Marketing Strategy
     specialization: "Market analysis, brand strategy, customer acquisition, competitive intelligence"
     type: CMOAgent
+    domain: marketing
+    decision_scope: [brand, acquisition, retention, market_intelligence]
 
   - id: coo
+    _type: c_suite_agent
     role: COO
     title: Chief Operating Officer
     description: Operations Excellence
     specialization: "Operational efficiency, process optimisation, resource management, execution"
     type: COOAgent
+    domain: operations
+    decision_scope: [supply_chain, process, resource_allocation, execution]
 
   - id: cso
+    _type: c_suite_agent
     role: CSO
     title: Chief Security Officer
     description: Security & Compliance
     specialization: "Security governance, risk management, compliance, threat assessment"
     type: CSOAgent
+    domain: security
+    decision_scope: [risk, compliance, threat_assessment, governance]
 
   - id: chro
+    _type: c_suite_agent
     role: CHRO
     title: Chief Human Resources Officer
     description: Talent & Culture
     specialization: "Talent strategy, organisational development, workforce optimisation, HR governance"
     type: LeadershipAgent
+    domain: human_resources
+    decision_scope: [talent, culture, org_design, workforce]
 
   - id: founder
+    _type: leadership_agent
     role: Founder
     title: Founder
     description: Vision & Innovation
     specialization: "Entrepreneurial vision, product direction, investor relations, company culture"
     type: FounderAgent
+    domain: entrepreneurship
+    decision_scope: [vision, product, fundraising, culture]
 
   - id: investor
+    _type: advisory_agent
     role: Investor
     title: Investor
     description: Investment Analysis
     specialization: "Financial returns, market opportunity, risk assessment, portfolio strategy"
     type: InvestorAgent
+    domain: investment
+    decision_scope: [returns, opportunity, risk, portfolio]

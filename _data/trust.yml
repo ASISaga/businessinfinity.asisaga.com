@@ -1,4 +1,27 @@
+_schema:
+  version: "2.0"
+  type: knowledge_base
+  domain: business_infinity
+  page_path: /trust/
+  last_reviewed: 2026-04-11
+  content_types:
+    - hero_header
+    - navigation
+    - trust_overview
+    - trust_principle
+    - compliance_item
+    - security_item
+    - privacy_item
+    - transparency_item
+    - audit_item
+    - contact_channel
+
 header:
+  _meta:
+    content_type: hero_header
+    intent: orient
+    audience: [enterprise]
+    funnel_stage: decision
   title: Business Infinity
   subtitle: Trust Center
   nav:
@@ -8,25 +31,44 @@ header:
     url: /features
   - label: Sitemap
     url: /sitemap
+
 toc:
+  _meta:
+    content_type: navigation
+    intent: orient
   items:
   - id: overview
     label: Trust Center
+    content_type: trust_overview
   - id: principles
     label: Trust Principles
+    content_type: trust_principle
   - id: compliance
     label: Compliance
+    content_type: compliance_item
   - id: security
     label: Security
+    content_type: security_item
   - id: privacy
     label: Privacy Rights
+    content_type: privacy_item
   - id: transparency
     label: Transparency
+    content_type: transparency_item
   - id: audit
     label: Audit Trail
+    content_type: audit_item
   - id: contact
     label: Contact
+    content_type: contact_channel
+
 overview:
+  _meta:
+    content_type: trust_overview
+    intent: reassure
+    audience: [enterprise, startup]
+    funnel_stage: decision
+    priority: critical
   heading: Trust Center
   lead: At Business Infinity, trust is not a marketing claim — it is a measurable
     outcome of transparency, reliability, and accountability.
@@ -35,68 +77,168 @@ overview:
   body: This Trust Center provides comprehensive information about our security, compliance,
     and privacy practices. Everything here is backed by concrete implementation, not
     just policy documents.
+
 principles:
+  _meta:
+    content_type: trust_principle
+    intent: reassure
+    audience: [enterprise]
+    funnel_stage: decision
+    priority: high
   heading: Our Trust Principles
   intro: 'We organize our trust commitments across five dimensions:'
   cards:
-  - icon: 🔍
+  - _type: trust_dimension
+    icon: 🔍
     title: Product-Level Trust
+    dimension: product
     items:
-    - label: 'Transparency:'
+    - _type: trust_commitment
+      label: 'Transparency:'
       text: Every decision is explainable with clear audit trails
-    - label: 'Reliability:'
+      domain: observability
+    - _type: trust_commitment
+      label: 'Reliability:'
       text: Enterprise-grade uptime and performance SLAs
-    - label: 'Compliance:'
+      domain: availability
+    - _type: trust_commitment
+      label: 'Compliance:'
       text: Aligned with SOC 2, ISO 27001, GDPR, HIPAA
-    - label: 'User Control:'
+      domain: regulatory
+    - _type: trust_commitment
+      label: 'User Control:'
       text: You own your data — export, review, or delete anytime
-  - icon: 📋
+      domain: data_sovereignty
+  - _type: trust_dimension
+    icon: 📋
     title: Process-Level Trust
+    dimension: process
     items:
-    - label: 'Validation:'
+    - _type: trust_commitment
+      label: 'Validation:'
       text: Independent audits and reproducible benchmarks
-    - label: 'Risk Management:'
+      domain: verification
+    - _type: trust_commitment
+      label: 'Risk Management:'
       text: Explicit risk modeling and mitigation
-    - label: 'Customer Engagement:'
+      domain: risk
+    - _type: trust_commitment
+      label: 'Customer Engagement:'
       text: Transparent roadmaps and feedback loops
+      domain: communication
+
 compliance:
+  _meta:
+    content_type: compliance_item
+    intent: reassure
+    audience: [enterprise]
+    funnel_stage: decision
+    priority: high
   heading: Compliance
   items:
-  - SOC 2, ISO 27001, GDPR, HIPAA
-  - Independent audits and certifications
-  - Continuous monitoring and reporting
+  - text: SOC 2, ISO 27001, GDPR, HIPAA
+    _type: certification_set
+    scope: regulatory
+  - text: Independent audits and certifications
+    _type: verification_method
+    scope: assurance
+  - text: Continuous monitoring and reporting
+    _type: operational_practice
+    scope: monitoring
+
 security:
+  _meta:
+    content_type: security_item
+    intent: reassure
+    audience: [enterprise]
+    funnel_stage: decision
+    priority: high
   heading: Security
   items:
-  - Role-based access control
-  - Encryption at rest and in transit
-  - Continuous vulnerability assessment
+  - text: Role-based access control
+    _type: security_control
+    layer: access
+  - text: Encryption at rest and in transit
+    _type: security_control
+    layer: data
+  - text: Continuous vulnerability assessment
+    _type: security_control
+    layer: monitoring
+
 privacy:
+  _meta:
+    content_type: privacy_item
+    intent: reassure
+    audience: [enterprise]
+    funnel_stage: decision
+    priority: high
   heading: Privacy Rights
   items:
-  - Data access, correction, and deletion
-  - Privacy by design
-  - Compliance with global privacy laws
+  - text: Data access, correction, and deletion
+    _type: privacy_right
+    right_type: data_subject
+  - text: Privacy by design
+    _type: privacy_right
+    right_type: architectural
+  - text: Compliance with global privacy laws
+    _type: privacy_right
+    right_type: regulatory
+
 transparency:
+  _meta:
+    content_type: transparency_item
+    intent: reassure
+    audience: [enterprise]
+    funnel_stage: decision
   heading: Transparency
   items:
-  - Audit trails for all actions
-  - Open communication on incidents
-  - Customer access to logs
+  - text: Audit trails for all actions
+    _type: transparency_measure
+    mechanism: logging
+  - text: Open communication on incidents
+    _type: transparency_measure
+    mechanism: disclosure
+  - text: Customer access to logs
+    _type: transparency_measure
+    mechanism: self_service
+
 audit:
+  _meta:
+    content_type: audit_item
+    intent: reassure
+    audience: [enterprise]
+    funnel_stage: decision
   heading: Audit Trail
   items:
-  - Comprehensive logging of all actions
-  - Immutable records for compliance
-  - Customer access to audit data
+  - text: Comprehensive logging of all actions
+    _type: audit_capability
+    scope: complete
+  - text: Immutable records for compliance
+    _type: audit_capability
+    scope: tamper_proof
+  - text: Customer access to audit data
+    _type: audit_capability
+    scope: self_service
+
 contact:
+  _meta:
+    content_type: contact_channel
+    intent: support
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: retention
   heading: Contact
   items:
-  - label: Email
+  - _type: contact_method
+    label: Email
     value: support@businessinfinity.asisaga.com
     url: mailto:support@businessinfinity.asisaga.com
-  - label: Phone
+    channel: email
+  - _type: contact_method
+    label: Phone
     value: +1-800-123-4567
-  - label: Support portal
+    channel: phone
+  - _type: contact_method
+    label: Support portal
     value: support.businessinfinity.asisaga.com
     url: https://support.businessinfinity.asisaga.com
+    channel: web

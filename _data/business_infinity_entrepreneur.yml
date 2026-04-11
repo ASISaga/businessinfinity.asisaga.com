@@ -1,9 +1,28 @@
+_schema:
+  version: "2.0"
+  type: knowledge_base
+  domain: business_infinity
+  page_path: /entrepreneur/
+  last_reviewed: 2026-04-11
+  content_types:
+    - hero_header
+    - challenge_list
+    - solution_list
+    - success_story
+    - call_to_action
+
 title: "Business Infinity for Entrepreneurs"
 description: "Empower your entrepreneurial journey with AI-powered business intelligence and strategic planning."
 page_title: "Business Infinity for Entrepreneurs"
 
 # Hero section
 hero:
+  _meta:
+    content_type: hero_header
+    intent: attract
+    audience: [entrepreneur]
+    funnel_stage: awareness
+    priority: critical
   title: "Business Infinity for Entrepreneurs"
   description: "Empower your entrepreneurial journey with AI-powered business intelligence and strategic planning."
   button_text: "Learn More"
@@ -11,51 +30,100 @@ hero:
 
 # Challenges section
 challenges:
+  _meta:
+    content_type: challenge_list
+    intent: empathise
+    audience: [entrepreneur]
+    funnel_stage: awareness
+    priority: high
   section_title: "Entrepreneur Challenges"
   section_description: "We understand the unique challenges entrepreneurs face when building and growing their businesses."
   items:
-    - title: "Decision Making"
+    - _type: pain_point
+      title: "Decision Making"
       description: "Making critical business decisions with limited information and resources."
-    - title: "Time Management"
+      domain: strategy
+    - _type: pain_point
+      title: "Time Management"
       description: "Balancing multiple roles and responsibilities while focusing on strategic growth."
-    - title: "Business Strategy"
+      domain: operations
+    - _type: pain_point
+      title: "Business Strategy"
       description: "Developing effective long-term plans while navigating short-term challenges."
+      domain: planning
 
 # Solutions section
 solutions:
+  _meta:
+    content_type: solution_list
+    intent: persuade
+    audience: [entrepreneur]
+    funnel_stage: consideration
+    priority: high
+    relates_to: [challenges]
   section_title: "How Business Infinity Helps"
   items:
-    - title: "Strategic Intelligence"
+    - _type: solution_offering
+      title: "Strategic Intelligence"
       icon: "entrepreneur-icon-intelligence"
       description: "Make informed decisions with AI-powered insights and analysis of market trends and opportunities."
+      domain: strategy
       features:
-        - "Market opportunity identification"
-        - "Risk assessment and mitigation"
-        - "Competitive intelligence"
-    - title: "Operational Efficiency"
+        - text: "Market opportunity identification"
+          _type: feature_detail
+        - text: "Risk assessment and mitigation"
+          _type: feature_detail
+        - text: "Competitive intelligence"
+          _type: feature_detail
+    - _type: solution_offering
+      title: "Operational Efficiency"
       icon: "entrepreneur-icon-efficiency"
       description: "Streamline your business operations and automate routine tasks to focus on growth and innovation."
+      domain: operations
       features:
-        - "Process optimization"
-        - "Workflow automation"
-        - "Resource management"
-    - title: "Growth Planning"
+        - text: "Process optimization"
+          _type: feature_detail
+        - text: "Workflow automation"
+          _type: feature_detail
+        - text: "Resource management"
+          _type: feature_detail
+    - _type: solution_offering
+      title: "Growth Planning"
       icon: "entrepreneur-icon-growth"
       description: "Develop comprehensive growth strategies with actionable steps and measurable milestones."
+      domain: growth
       features:
-        - "Business model analysis"
-        - "Market expansion strategies"
-        - "Revenue growth projections"
+        - text: "Business model analysis"
+          _type: feature_detail
+        - text: "Market expansion strategies"
+          _type: feature_detail
+        - text: "Revenue growth projections"
+          _type: feature_detail
 
 # Success story section
 success_story:
+  _meta:
+    content_type: success_story
+    intent: persuade
+    audience: [entrepreneur]
+    funnel_stage: decision
+    priority: medium
   section_title: "Entrepreneur Success Story"
   testimonial:
+    _type: customer_quote
     text: "As a solo entrepreneur, Business Infinity has been like having a team of business analysts and strategists at my fingertips. The platform helped me identify my most profitable customer segments and optimize my service offerings, resulting in a 47% revenue increase in just six months."
     author: "James Wilson, Founder of ConsultEase"
+    outcome_metric: "47% revenue increase"
+    outcome_timeframe: "6 months"
 
 # CTA section
 cta:
+  _meta:
+    content_type: call_to_action
+    intent: convert
+    audience: [entrepreneur]
+    funnel_stage: decision
+    priority: critical
   title: "Take Your Business to the Next Level"
   description: "Harness the power of AI to grow your business and achieve your entrepreneurial goals."
   button_text: "Get Started Today"
