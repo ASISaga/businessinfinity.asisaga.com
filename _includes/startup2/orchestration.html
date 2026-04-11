@@ -1,24 +1,19 @@
 <section class="section">
     <div class="wrap">
-        <h2 class="h2 reveal">From reaction to orchestration</h2>
+        <h2 class="h2 reveal">{{ site.data.startup2.orchestration.heading }}</h2>
         <div class="grid grid-2">
             <div class="card reveal">
-                <h3 class="eyebrow">Today</h3>
-                <p>Fire‑drill sprints, gut‑feel trade‑offs, investor decks written on fumes.</p>
+                <h3 class="eyebrow">{{ site.data.startup2.orchestration.today.eyebrow }}</h3>
+                <p>{{ site.data.startup2.orchestration.today.body }}</p>
             </div>
             <div class="card emphasis reveal">
-                <h3 class="eyebrow">Tomorrow</h3>
+                <h3 class="eyebrow">{{ site.data.startup2.orchestration.tomorrow.eyebrow }}</h3>
                 <ul class="list">
-                    <li><span class="li-lead">Persistent AI C‑suite:</span> CEO, CFO, COO agents watching every key
-                        metric.
-                    </li>
-                    <li><span class="li-lead">Action in hours:</span> Go from “we should” to “it’s live” before the week
-                        flips.</li>
-                    <li><span class="li-lead">Investor‑ready ledger:</span> Every move, rationale, and result in one
-                        place.
-                    </li>
+                    {% for item in site.data.startup2.orchestration.tomorrow.items %}
+                    <li><span class="li-lead">{{ item.lead }}</span> {{ item.text }}</li>
+                    {% endfor %}
                 </ul>
-                <p>You don’t just move faster — you <span class="accent">compound faster</span>.</p>
+                <p>{{ site.data.startup2.orchestration.tomorrow.closing }} <span class="accent">{{ site.data.startup2.orchestration.tomorrow.closing_accent }}</span>{{ site.data.startup2.orchestration.tomorrow.closing_end }}</p>
             </div>
         </div>
     </div>

@@ -4,14 +4,14 @@
         <div class="brand">
             <div class="logo" aria-hidden="true"></div>
             <div>
-                <h1 class="site-title">Business Infinity</h1>
-                <div class="site-sub">Trust Center</div>
+                <h1 class="site-title">{{ site.data.trust.header.title }}</h1>
+                <div class="site-sub">{{ site.data.trust.header.subtitle }}</div>
             </div>
         </div>
         <div class="header-actions">
-            <a class="btn btn-quiet" href="/">Home</a>
-            <a class="btn btn-quiet" href="/features">Features</a>
-            <a class="btn btn-quiet" href="/sitemap">Sitemap</a>
+            {% for link in site.data.trust.header.nav %}
+            <a class="btn btn-quiet" href="{{ link.url }}">{{ link.label }}</a>
+            {% endfor %}
         </div>
     </div>
 </header>

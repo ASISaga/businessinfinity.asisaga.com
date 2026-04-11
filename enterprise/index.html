@@ -16,30 +16,28 @@ permalink: /enterprise/
 
 <header class="hero">
   <div class="wrap hero-inner">
-    <h1 class="headline reveal" data-reveal="up">Stop managing the gaps</h1>
+    <h1 class="headline reveal" data-reveal="up">{{ site.data.enterprise.hero.headline }}</h1>
     <p class="sub lead reveal" data-reveal="fade" data-delay="100">
-      The silent tax isn’t in your ERP, MES, CRM, or planning tools. <br />
-      It’s in the space between them.
+      {{ site.data.enterprise.hero.subhead_line1 }}<br />
+      {{ site.data.enterprise.hero.subhead_line2 }}
     </p>
     <div class="hero-cta reveal" data-reveal="up" data-delay="200">
-      <a href="#threshold" class="btn btn-primary">Cross the threshold</a>
-      <a href="#risk" class="btn btn-quiet">See how it earns trust</a>
+      <a href="{{ site.data.enterprise.hero.cta_primary.url }}" class="btn btn-primary">{{ site.data.enterprise.hero.cta_primary.label }}</a>
+      <a href="{{ site.data.enterprise.hero.cta_secondary.url }}" class="btn btn-quiet">{{ site.data.enterprise.hero.cta_secondary.label }}</a>
     </div>
   </div>
 </header>
 
-<!-- Page sections: inserted inside the default layout's main content -->
 <!-- Manifesto intro -->
 <section class="section section-intro">
   <div class="wrap">
     <div class="beats reveal" data-reveal="up">
-      <p class="beat">Every delayed hand‑off.</p>
-      <p class="beat">Every re‑decision.</p>
-      <p class="beat">Every plan that dies before the first action.</p>
+      {% for beat in site.data.enterprise.intro.beats %}
+      <p class="beat">{{ beat }}</p>
+      {% endfor %}
     </div>
     <p class="lead reveal" data-reveal="fade" data-delay="150">
-      Business Infinity closes that space forever. Not with another dashboard —
-      with a <span class="accent">boardroom that never adjourns</span>.
+      {{ site.data.enterprise.intro.body_prefix }} <span class="accent">{{ site.data.enterprise.intro.body_accent }}</span>{{ site.data.enterprise.intro.body_suffix }}
     </p>
   </div>
 </section>
@@ -47,23 +45,20 @@ permalink: /enterprise/
 <!-- From Lag to Flow -->
 <section class="section section-flow">
   <div class="wrap">
-    <h2 class="h2 reveal" data-reveal="up">From lag to flow</h2>
+    <h2 class="h2 reveal" data-reveal="up">{{ site.data.enterprise.flow.heading }}</h2>
     <div class="grid grid-2">
       <article class="card reveal" data-reveal="up">
-        <h3 class="eyebrow">Today</h3>
-        <p>
-          Every function optimises its lane. Decisions crawl toward consensus. By the time the convoy moves,
-          the market has shifted.
-        </p>
+        <h3 class="eyebrow">{{ site.data.enterprise.flow.today.eyebrow }}</h3>
+        <p>{{ site.data.enterprise.flow.today.body }}</p>
       </article>
       <article class="card emphasis reveal" data-reveal="up" data-delay="120">
-        <h3 class="eyebrow">Tomorrow</h3>
+        <h3 class="eyebrow">{{ site.data.enterprise.flow.tomorrow.eyebrow }}</h3>
         <ul class="list">
-          <li><span class="li-lead">Domain agents:</span> CEO, CFO, COO, CRO, CHRO debating in real time.</li>
-          <li><span class="li-lead">Guarded actions:</span> Instant writes into ERP/MES/CRM with rollback.</li>
-          <li><span class="li-lead">Living ledger:</span> Every trade‑off, decision, and outcome captured.</li>
+          {% for item in site.data.enterprise.flow.tomorrow.items %}
+          <li><span class="li-lead">{{ item.lead }}</span> {{ item.text }}</li>
+          {% endfor %}
         </ul>
-        <p>Your enterprise doesn’t just act faster. It <span class="accent">remembers faster</span>.</p>
+        <p>{{ site.data.enterprise.flow.tomorrow.closing }} <span class="accent">{{ site.data.enterprise.flow.tomorrow.closing_accent }}</span>{{ site.data.enterprise.flow.tomorrow.closing_end }}</p>
       </article>
     </div>
   </div>
@@ -72,20 +67,14 @@ permalink: /enterprise/
 <!-- Three Irreversibles -->
 <section class="section section-tenets">
   <div class="wrap">
-    <h2 class="h2 reveal" data-reveal="up">Three irreversibles</h2>
+    <h2 class="h2 reveal" data-reveal="up">{{ site.data.enterprise.tenets.heading }}</h2>
     <ul class="tenets reveal" data-reveal="fade">
+      {% for tenet in site.data.enterprise.tenets.items %}
       <li>
-        <span class="tenet-index">01</span>
-        <span class="tenet-text">A decision is only as good as the moment it’s made.</span>
+        <span class="tenet-index">{{ tenet.index }}</span>
+        <span class="tenet-text">{{ tenet.text }}</span>
       </li>
-      <li>
-        <span class="tenet-index">02</span>
-        <span class="tenet-text">If learning doesn’t propagate, it wasn’t learning.</span>
-      </li>
-      <li>
-        <span class="tenet-index">03</span>
-        <span class="tenet-text">Strategy that stops at the org chart isn’t strategy — it’s theatre.</span>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 </section>
@@ -93,40 +82,29 @@ permalink: /enterprise/
 <!-- Network Shift -->
 <section class="section section-network">
   <div class="wrap">
-    <h2 class="h2 reveal" data-reveal="up">The network shift</h2>
-    <p class="lead reveal" data-reveal="fade">
-      When your suppliers, plants, channels, and partners run Infinity: capacity reroutes to where it creates the
-      most value now,
-      capital flows with the same intelligence, and everyone sees the same “now” — acting without waiting for you to
-      convene.
-    </p>
+    <h2 class="h2 reveal" data-reveal="up">{{ site.data.enterprise.network.heading }}</h2>
+    <p class="lead reveal" data-reveal="fade">{{ site.data.enterprise.network.body }}</p>
     <div class="pills reveal" data-reveal="up" data-delay="100">
-      <span class="pill">Zero‑latency negotiation</span>
-      <span class="pill">Shared scenario sims</span>
-      <span class="pill">Crisis re‑routing</span>
+      {% for pill in site.data.enterprise.network.pills %}
+      <span class="pill">{{ pill }}</span>
+      {% endfor %}
     </div>
-    <p class="subtle reveal" data-reveal="fade" data-delay="150">This isn’t alignment. It’s self‑alignment at
-      network scale.</p>
+    <p class="subtle reveal" data-reveal="fade" data-delay="150">{{ site.data.enterprise.network.footnote }}</p>
   </div>
 </section>
 
 <!-- Hard Levers -->
 <section class="section section-levers">
   <div class="wrap">
-    <h2 class="h2 reveal" data-reveal="up">The hard levers</h2>
+    <h2 class="h2 reveal" data-reveal="up">{{ site.data.enterprise.levers.heading }}</h2>
     <div class="grid grid-3">
-      <article class="card kpi reveal" data-reveal="up">
-        <h3 class="eyebrow">Revenue & margin</h3>
-        <p>Faster, better allocations in mix, pricing, and fill rate.</p>
+      {% assign levers = site.data.enterprise.levers.items %}
+      {% for lever in levers %}
+      <article class="card kpi reveal" data-reveal="up"{% if forloop.index0 > 0 %} data-delay="{{ forloop.index0 | times: 100 }}"{% endif %}>
+        <h3 class="eyebrow">{{ lever.eyebrow }}</h3>
+        <p>{{ lever.body }}</p>
       </article>
-      <article class="card kpi reveal" data-reveal="up" data-delay="100">
-        <h3 class="eyebrow">Cost‑to‑serve</h3>
-        <p>Fewer fire‑drills. Less expedite waste.</p>
-      </article>
-      <article class="card kpi reveal" data-reveal="up" data-delay="200">
-        <h3 class="eyebrow">Working capital</h3>
-        <p>Shorter cycles, lighter inventories, released cash.</p>
-      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -134,18 +112,16 @@ permalink: /enterprise/
 <!-- Risk -->
 <section class="section section-risk" id="risk">
   <div class="wrap">
-    <h2 class="h2 reveal" data-reveal="up">Risk is a design variable</h2>
-    <p class="reveal" data-reveal="fade">Before Infinity ever writes back to your systems, it proves itself under:
-    </p>
+    <h2 class="h2 reveal" data-reveal="up">{{ site.data.enterprise.risk.heading }}</h2>
+    <p class="reveal" data-reveal="fade">{{ site.data.enterprise.risk.intro }}</p>
     <div class="grid grid-2">
       <ul class="list card reveal" data-reveal="up">
-        <li><span class="li-lead">Read‑only:</span> Simulations and diffs on live data.</li>
-        <li><span class="li-lead">Approvals:</span> Segregation of duties and explicit limits.</li>
-        <li><span class="li-lead">Rollback:</span> Canary, caps, kill switch.</li>
-        <li><span class="li-lead">Audit:</span> Tamper‑evident decision ledger.</li>
+        {% for item in site.data.enterprise.risk.items %}
+        <li><span class="li-lead">{{ item.lead }}</span> {{ item.text }}</li>
+        {% endfor %}
       </ul>
       <div class="card callout reveal" data-reveal="up" data-delay="120">
-        <p>You don’t trust it into production — you <span class="accent">watch it earn its way</span>.</p>
+        <p>{{ site.data.enterprise.risk.callout }} <span class="accent">{{ site.data.enterprise.risk.callout_accent }}</span>{{ site.data.enterprise.risk.callout_end }}</p>
       </div>
     </div>
   </div>
@@ -154,26 +130,20 @@ permalink: /enterprise/
 <!-- Threshold -->
 <section class="section section-threshold" id="threshold">
   <div class="wrap">
-    <h2 class="h2 reveal" data-reveal="up">Your threshold step</h2>
-    <p class="reveal" data-reveal="fade">One pilot flow. One measurable, high‑friction process:</p>
+    <h2 class="h2 reveal" data-reveal="up">{{ site.data.enterprise.threshold.heading }}</h2>
+    <p class="reveal" data-reveal="fade">{{ site.data.enterprise.threshold.intro }}</p>
     <div class="grid grid-3">
-      <div class="card reveal" data-reveal="up">
-        <h3 class="eyebrow">Order‑to‑cash</h3>
-        <p>Start with a region or priority segment; measure cycle time, DSO, and SLA lift.</p>
+      {% assign threshold_items = site.data.enterprise.threshold.items %}
+      {% for item in threshold_items %}
+      <div class="card reveal" data-reveal="up"{% if forloop.index0 > 0 %} data-delay="{{ forloop.index0 | times: 100 }}"{% endif %}>
+        <h3 class="eyebrow">{{ item.eyebrow }}</h3>
+        <p>{{ item.body }}</p>
       </div>
-      <div class="card reveal" data-reveal="up" data-delay="100">
-        <h3 class="eyebrow">Plant changeover</h3>
-        <p>Stabilise windows; reduce variance; protect throughput without overtime spikes.</p>
-      </div>
-      <div class="card reveal" data-reveal="up" data-delay="200">
-        <h3 class="eyebrow">Supplier lane</h3>
-        <p>Capacity and lead‑time realism; fewer expedites; shared sims for what‑ifs.</p>
-      </div>
+      {% endfor %}
     </div>
-    <p class="subtle reveal" data-reveal="fade" data-delay="150">4–8 weeks. Continuous deliberation, guarded
-      actions, measured deltas in time, service, cost, and cash.</p>
+    <p class="subtle reveal" data-reveal="fade" data-delay="150">{{ site.data.enterprise.threshold.footnote }}</p>
     <div class="cta-center reveal" data-reveal="up" data-delay="200">
-      <a href="mailto:enterprise@businessinfinity.ai" class="btn btn-primary btn-lg">Design your pilot</a>
+      <a href="{{ site.data.enterprise.threshold.cta.url }}" class="btn btn-primary btn-lg">{{ site.data.enterprise.threshold.cta.label }}</a>
     </div>
   </div>
 </section>
@@ -181,12 +151,9 @@ permalink: /enterprise/
 <!-- Invitation -->
 <section class="section section-invite">
   <div class="wrap">
-    <blockquote class="quote reveal" data-reveal="fade">
-      You’ve already felt the drag. The question is whether you keep paying it. The future is already running — the
-      invitation is to join it.
-    </blockquote>
+    <blockquote class="quote reveal" data-reveal="fade">{{ site.data.enterprise.invite.quote }}</blockquote>
     <div class="cta-center reveal" data-reveal="up" data-delay="120">
-      <a href="#skip-target" class="btn btn-quiet">Back to top</a>
+      <a href="{{ site.data.enterprise.invite.back_url }}" class="btn btn-quiet">{{ site.data.enterprise.invite.back_label }}</a>
     </div>
   </div>
 </section>

@@ -1,10 +1,10 @@
 <section id="transparency" class="section reveal">
-    <h2>Transparency</h2>
+    <h2>{{ site.data.trust.transparency.heading }}</h2>
     <div class="card">
         <ul>
-            <li>Audit trails for all actions</li>
-            <li>Open communication on incidents</li>
-            <li>Customer access to logs</li>
+            {% for item in site.data.trust.transparency.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
         </ul>
     </div>
 </section>

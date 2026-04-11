@@ -1,29 +1,21 @@
 <section id="you" class="section reveal">
-    <h2>Start with you</h2>
-    <p class="lead">Pick your seat and the outcomes you need this quarter. The boardroom adapts.</p>
+    <h2>{{ site.data.features.you.heading }}</h2>
+    <p class="lead">{{ site.data.features.you.lead }}</p>
     <div class="persona">
         <div class="persona-tabs" role="tablist" aria-label="Choose your seat">
-            <button class="tab active" role="tab" aria-selected="true" data-persona="ceo">CEO</button>
-            <button class="tab" role="tab" aria-selected="false" data-persona="cfo">CFO</button>
-            <button class="tab" role="tab" aria-selected="false" data-persona="coo">COO</button>
-            <button class="tab" role="tab" aria-selected="false" data-persona="cro">CRO</button>
-            <button class="tab" role="tab" aria-selected="false" data-persona="cpo">CPO</button>
-            <button class="tab" role="tab" aria-selected="false" data-persona="chro">CHRO</button>
+            {% for persona in site.data.features.you.personas %}
+            <button class="tab{% if forloop.first %} active{% endif %}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-persona="{{ persona | downcase }}">{{ persona }}</button>
+            {% endfor %}
         </div>
         <div class="objectives">
             <div class="chips" aria-label="Your objectives">
-                <button class="chip" data-obj="arr">Grow ARR</button>
-                <button class="chip" data-obj="nrr">Lift NRR</button>
-                <button class="chip" data-obj="cycle">Reduce cycle time</button>
-                <button class="chip" data-obj="adherence">Improve plan adherence</button>
-                <button class="chip" data-obj="wc">Free working capital</button>
-                <button class="chip" data-obj="cost">Lower cost‑to‑serve</button>
-                <button class="chip" data-obj="forecast">Increase forecast accuracy</button>
-                <button class="chip" data-obj="talent">Strengthen hiring quality</button>
+                {% for obj in site.data.features.you.objectives %}
+                <button class="chip" data-obj="{{ obj.id }}">{{ obj.label }}</button>
+                {% endfor %}
             </div>
         </div>
         <div class="panel card">
-            <h3 id="summaryTitle">For the CEO: what changes</h3>
+            <h3 id="summaryTitle">{{ site.data.features.you.panel_title }}</h3>
             <ul id="summaryList" class="list">
                 <!-- dynamic bullets filled by JS -->
             </ul>

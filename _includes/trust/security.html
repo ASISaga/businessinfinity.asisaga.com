@@ -1,10 +1,10 @@
 <section id="security" class="section reveal">
-    <h2>Security</h2>
+    <h2>{{ site.data.trust.security.heading }}</h2>
     <div class="card">
         <ul>
-            <li>Role-based access control</li>
-            <li>Encryption at rest and in transit</li>
-            <li>Continuous vulnerability assessment</li>
+            {% for item in site.data.trust.security.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
         </ul>
     </div>
 </section>

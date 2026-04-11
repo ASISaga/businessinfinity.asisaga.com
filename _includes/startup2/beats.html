@@ -1,13 +1,12 @@
 <section class="section">
     <div class="wrap">
         <div class="beats reveal">
-            <p class="beat">Every late hire.</p>
-            <p class="beat">Every lost lead.</p>
-            <p class="beat">Every change you saw coming but couldn’t act on in time.</p>
+            {% for beat in site.data.startup2.beats.items %}
+            <p class="beat">{{ beat }}</p>
+            {% endfor %}
         </div>
         <p class="lead reveal">
-            Business Infinity closes that gap. Not with advice. Not with a dashboard.
-            With a <span class="accent">boardroom that never adjourns</span> — tuned to your startup.
+            {{ site.data.startup2.beats.body_prefix }} <span class="accent">{{ site.data.startup2.beats.body_accent }}</span> {{ site.data.startup2.beats.body_suffix }}
         </p>
     </div>
 </section>

@@ -1,11 +1,10 @@
 <section id="roadmap">
-    <h3>Roadmap</h3>
+    <h3>{{ site.data.about.roadmap.heading }}</h3>
     <div class="card">
         <ol>
-            <li>Complete ASI Saga showcase deployment</li>
-            <li>Onboard first external pilot customers</li>
-            <li>Establish shared decision commons</li>
-            <li>Scale to cross‑industry network of persistent AI boardrooms</li>
+            {% for item in site.data.about.roadmap.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
         </ol>
     </div>
 </section>

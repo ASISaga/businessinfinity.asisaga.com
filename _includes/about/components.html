@@ -1,11 +1,10 @@
 <section id="components">
-    <h3>Core Components</h3>
+    <h3>{{ site.data.about.components.heading }}</h3>
     <div class="card">
         <ul>
-            <li>Domain‑tuned C‑suite AI agents</li>
-            <li>Persistent deliberation memory and decision ledger</li>
-            <li>Live data integration with enterprise systems</li>
-            <li>Governance‑by‑protocol for transparent decision‑flow</li>
+            {% for item in site.data.about.components.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
         </ul>
     </div>
 </section>
