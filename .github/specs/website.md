@@ -165,7 +165,7 @@ Headlines must:
 ### Meta Description Requirements
 
 Every page must have a unique `<meta name="description">` that:
-- Summarises the page content in 150–160 characters
+- Summarizes the page content in 150–160 characters
 - Uses archetype names (not celebrity names) when referencing agents
 - Includes a relevant keyword naturally (do not keyword-stuff)
 
@@ -175,7 +175,7 @@ Pages featuring agent archetypes should include JSON-LD structured data using ar
 
 ### Canonical URLs
 
-All pages must specify a canonical URL via `<link rel="canonical">` to prevent duplicate content indexing.
+All pages must specify a canonical URL via `<link rel="canonical">` to prevent duplicate content indexing. The canonical URL must follow the pattern `https://businessinfinity.asisaga.com/[path]` — for example, `https://businessinfinity.asisaga.com/breakthroughs/` for the Breakthroughs Index.
 
 ---
 
