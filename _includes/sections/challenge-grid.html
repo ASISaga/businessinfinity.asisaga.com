@@ -1,16 +1,17 @@
 {% assign s = include.section.source %}
 {% assign e = include.entity %}
 {% assign items = e.items | default: s.items %}
-<section id="challenges" class="{{ include.section.id }}-challenges-section">
+{% assign prefix = include.section.css_prefix | default: include.section.id %}
+<section id="challenges" class="{{ prefix }}-challenges-section">
     {% include section-header.html
       title=s.section_title
       description=s.section_description
     %}
-    <div class="{{ include.section.id }}-challenges-grid">
+    <div class="{{ prefix }}-challenges-grid">
         {% for challenge in items %}
-        <div class="{{ include.section.id }}-challenge-card">
-            <h3 class="{{ include.section.id }}-challenge-title">{{ challenge.title }}</h3>
-            <p class="{{ include.section.id }}-challenge-description">{{ challenge.description }}</p>
+        <div class="{{ prefix }}-challenge-card">
+            <h3 class="{{ prefix }}-challenge-title">{{ challenge.title }}</h3>
+            <p class="{{ prefix }}-challenge-description">{{ challenge.description }}</p>
         </div>
         {% endfor %}
     </div>

@@ -1,6 +1,6 @@
 # _data Directory Specification
 
-**Version**: 2.0.0  
+**Version**: 3.0.0  
 **Status**: Active  
 **Last Updated**: 2026-04-11  
 **Applies To**: `_data/**` in businessinfinity.asisaga.com
@@ -9,22 +9,25 @@
 
 ## Overview
 
-The `_data/` directory is a **structured knowledge base** for all website content on businessinfinity.asisaga.com. Each data file is a semantically-typed collection of **knowledge objects** — not just copy strings, but structured entities that carry semantic meaning and functional metadata.
+The `_data/` directory is a **Relational Knowledge Graph** for all website content on businessinfinity.asisaga.com. Content is decomposed into atomic **Entity Collections** with persistent UIDs, a global **Ontological Source of Truth**, and **Page Manifests** that subscribe to entity UIDs rather than hosting local text strings.
 
 This architecture enforces:
 
 | Layer | What it contains | Where it lives |
 |-------|-----------------|---------------|
-| **Knowledge Objects** | Typed, metadata-rich content: headlines, claims, principles, capabilities, metrics | `_data/` YAML files |
-| **Markup** | HTML structure, CSS classes, ARIA attributes, Liquid expressions | `.html` page files and `_includes/` |
-| **Schema** | File-level type definitions, content taxonomies, validation rules | `_schema` blocks in each data file |
+| **Ontology** | Global brand identity, core definitions, legal, contacts | `_data/ontology.yml` |
+| **Entity Collections** | Typed, UID-tagged atoms: concepts, propositions, guarantees, etc. | `_data/entities/*.yml` |
+| **Page Manifests** | Section ordering, entity subscriptions, intent mappings | `_data/manifests/*.yml` |
+| **Section Components** | Reusable HTML templates that resolve entity UIDs | `_includes/sections/*.html` |
+| **Manifest Renderer** | Iterates manifests and dispatches to section components | `_includes/manifest-renderer.html` |
 
 ### Key principles
 
-1. **Every content item is a typed object** — no bare strings in arrays. Every list item is an object with `_type` and either `text` (for narrative content) or `label` (for navigation/UI labels).
-2. **Every section carries metadata** — `_meta` blocks declare content_type, intent, audience, funnel_stage, and priority.
-3. **Every file declares its schema** — `_schema` blocks define the knowledge base version, domain, page path, and content type taxonomy.
-4. **HTML templates consume metadata** — templates expose metadata as `data-*` attributes for JS/CSS hooks and progressive enhancement.
+1. **Zero Redundancy (DRY)** — any single piece of copy exists in exactly one location within `_data/`.
+2. **Unique Identification** — every content fragment has a persistent UID for relational cross-referencing.
+3. **Semantic Integrity** — strict separation between Message (Entity Collections) and Structure (HTML/Liquid).
+4. **Manifest-Driven Orchestration** — pages subscribe to entity UIDs via manifests; intent dictates component selection.
+5. **Multi-Endpoint Scalability** — the same entities can be rendered across different subdomains or formats without modification.
 
 ---
 
@@ -36,45 +39,39 @@ Every data file begins with a `_schema` block:
 
 ```yaml
 _schema:
-  version: "2.0"                    # Schema version
-  type: knowledge_base              # Always "knowledge_base"
-  domain: business_infinity         # Product domain
-  page_path: /features/             # URL this file serves
+  version: "3.0"                    # Schema version
+  type: entity_collection           # entity_collection | page_manifest | ontological_source
+  entity_type: concept              # Type of entities in this collection
+  description: "..."                # Human-readable description
   last_reviewed: 2026-04-11         # Last editorial review date
-  content_types:                    # Taxonomy of types used in this file
-    - hero_header
-    - capability
-    - agent_roster
-    - call_to_action
 ```
 
-### Section-level metadata (`_meta`)
+### Entity structure
 
-Each section has a `_meta` block describing its semantic role:
+Each entity is keyed by its UID and carries typed metadata:
 
 ```yaml
-hero:
-  _meta:
-    content_type: hero_header       # What kind of content this section is
-    intent: attract                 # attract | empathise | inform | persuade | reassure | convert | support
-    audience: [enterprise, startup] # Target audiences
-    funnel_stage: awareness         # awareness | consideration | decision | retention
-    priority: critical              # critical | high | medium | low
-    relates_to: [cta]              # Cross-references to other sections (optional)
-  headline: "..."
-  subhead: "..."
+network-effects:
+  uid: network-effects
+  _type: concept
+  headline: Network Effects
+  body: >
+    Every decision improves not just one boardroom but the network —
+    insights propagate, models upgrade, and the collective capability compounds.
+  tags: [network, learning, compounding]
 ```
 
-### Item-level typing (`_type`)
+### Manifest structure
 
-Every item in a list is a typed object:
+Each manifest defines page sections that subscribe to entity UIDs:
 
 ```yaml
-items:
-  - _type: capability_claim         # Semantic type of this item
-    title: "Always-on awareness"
-    description: "Signals streamed from ERP/MES/CRM/SaaS..."
-    domain: monitoring              # Functional domain (optional, type-specific)
+sections:
+  - id: network
+    component: pills-section        # Which section component to render
+    intent: persuade                # Semantic intent
+    entity_collection: propositions # Which entity collection
+    entity_ref: network-enterprise  # UID within that collection
 ```
 
 ---
@@ -91,39 +88,36 @@ items:
 | `inform` | Feature descriptions, architecture, FAQ |
 | `persuade` | Value propositions, comparisons, principles |
 | `reassure` | Trust, risk mitigation, safety guarantees |
-| `qualify` | Audience segmentation, use case targeting |
+| `engage` | Interactive elements, persona selectors |
 | `convert` | CTAs, pilot offers, closing invitations |
 | `support` | Contact channels, documentation |
-
-### Funnel stages
-
-| Stage | Description |
-|-------|------------|
-| `awareness` | Visitor first discovers the product |
-| `consideration` | Visitor evaluates features and fit |
-| `decision` | Visitor is ready to commit |
-| `retention` | Existing customer support |
 
 ### Common `_type` values
 
 | `_type` | Used for |
 |---------|---------|
+| `concept` | Core philosophical/business concepts |
 | `pain_signal` | Problems the audience experiences |
+| `pain_point` | Specific audience challenges |
+| `pain_set` | Collection of pain signals for an audience |
+| `state_comparison` | Today vs tomorrow comparisons |
 | `capability_claim` | What the product can do |
-| `process_step` | Steps in a process/loop |
+| `product_capability` | Detailed product capability |
+| `process_loop` | Steps in a process/loop |
 | `core_principle` | Foundational beliefs or tenets |
+| `principle_set` | Collection of principles for an audience |
 | `measurable_outcome` | KPI improvements or metrics |
 | `safety_guarantee` | Risk mitigation measures |
-| `pilot_scenario` | Specific pilot/trial offerings |
-| `agent_capability` | C-suite agent definitions |
-| `trust_commitment` | Trust-related promises |
-| `network_capability` | Network effect features |
-| `platform_component` | System architecture components |
-| `milestone` | Roadmap items with status |
+| `pilot_offer` | Pilot/trial offerings with scenarios |
+| `pilot_scenario` | Specific pilot scenario |
+| `call_to_action` | CTA with headline, body, button |
 | `solution_offering` | Product solutions with features |
-| `feature_detail` | Individual feature within a solution |
-| `canvas_block` | Business Model Canvas sections |
-| `contact_method` | Contact channel definitions |
+| `network_proposition` | Network effect messaging |
+| `case_study` | Customer success story with results |
+| `testimonial` | Customer quote with attribution |
+| `trust_statement` | Trust center overview content |
+| `trust_dimension` | Trust principle category |
+| `canvas_block` | Business Model Canvas section |
 
 ---
 
@@ -131,20 +125,36 @@ items:
 
 ```
 _data/
-├── nav.json                          # Site-wide navigation links
-├── agents.yml                        # C-suite agent catalogue (shared, schema v2.0)
-├── products.yml                      # Product catalogue (shared, schema v2.0)
-├── workflows.yml                     # Workflow definitions (shared)
+├── ontology.yml                      # Global source of truth (brand, legal, contacts)
 │
-├── about.yml                         # /about/ — knowledge base
-├── bmc.yml                           # /bmc/ — Business Model Canvas knowledge base
-├── business_infinity.yml             # /business-infinity/ — product knowledge base
-├── business_infinity_entrepreneur.yml # /entrepreneur/ — knowledge base
-├── enterprise.yml                    # /enterprise/ — knowledge base
-├── features.yml                      # /features/ — knowledge base
-├── startup.yml                       # /startup/ — knowledge base
-├── startup2.yml                      # /startup2/ — knowledge base
-├── trust.yml                         # /trust/ — knowledge base
+├── entities/                         # Atomic entity collections
+│   ├── concepts.yml                  # Core philosophical concepts (10 entities)
+│   ├── propositions.yml              # Value propositions & solutions (9 entities)
+│   ├── guarantees.yml                # Safety guarantees (8 entities)
+│   ├── principles.yml                # Core principles/tenets (3 sets)
+│   ├── capabilities.yml              # Platform capabilities (7 entities)
+│   ├── evidence.yml                  # Testimonials, case studies, KPIs (6 entities)
+│   ├── actions.yml                   # CTAs, pilot offers (6 entities)
+│   ├── personas.yml                  # Audience personas & objectives (3 sets)
+│   ├── pain_points.yml               # Customer challenges (6 sets)
+│   ├── integrations.yml              # Integration layers (3 entities)
+│   └── compliance.yml                # Security, privacy, audit (6 sets)
+│
+├── manifests/                        # Page manifests (subscribe to entity UIDs)
+│   ├── about.yml                     # /about/ manifest
+│   ├── bmc.yml                       # /bmc/ manifest
+│   ├── enterprise.yml                # /enterprise/ manifest
+│   ├── entrepreneur.yml              # /entrepreneur/ manifest
+│   ├── features.yml                  # /features/ manifest
+│   ├── startup.yml                   # /startup/ manifest
+│   ├── startup2.yml                  # /startup2/ manifest
+│   └── trust.yml                     # /trust/ manifest
+│
+├── agents.yml                        # C-suite agent catalogue (shared)
+├── business_infinity.yml             # Product overview (shared)
+├── nav.json                          # Site-wide navigation links
+├── products.yml                      # Product catalogue (shared)
+├── workflows.yml                     # Workflow definitions (shared)
 │
 └── breakthroughs/                    # /breakthroughs/ (one file per breakthrough)
     ├── index.yml                     # Breakthroughs index page copy
@@ -153,88 +163,80 @@ _data/
 
 ---
 
-## YAML Schema Rules
+## Manifest-Driven Page Assembly
 
-1. **Every file** starts with `_schema:` block.
-2. **Every section** has a `_meta:` block with at least `content_type` and `intent`.
-3. **No bare strings in arrays** — every list item is an object with `_type` and either `text` (for narrative content) or `label` (for navigation/UI items).
-4. **Section keys** match the corresponding `_includes/` filename.
-5. **CTA blocks** are nested objects with `label:` and `url:` fields.
-6. **No HTML markup** in data values. Plain text only.
-7. **No Liquid expressions** in data values.
-8. **Metadata fields** use underscore prefix: `_schema`, `_meta`, `_type`.
+### How it works
 
-### Example: complete section
+1. **Page file** assigns manifest: `{% assign manifest = site.data.manifests.about %}`
+2. **Manifest renderer** iterates sections: `{% include manifest-renderer.html manifest=manifest %}`
+3. **For each section**, the renderer resolves entity data and dispatches to the correct component
+4. **Section components** render HTML using resolved entity data and local overrides
 
-```yaml
-levers:
-  _meta:
-    content_type: kpi_lever
-    intent: persuade
-    audience: [enterprise]
-    funnel_stage: decision
-    priority: high
-  heading: "The hard levers"
-  items:
-    - _type: measurable_outcome
-      eyebrow: "Revenue & margin"
-      body: "Faster, better allocations in mix, pricing, and fill rate."
-      metric_category: revenue
-    - _type: measurable_outcome
-      eyebrow: "Cost-to-serve"
-      body: "Fewer fire-drills. Less expedite waste."
-      metric_category: cost
+### Manifest section fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `id` | Yes | Section HTML id attribute |
+| `component` | Yes | Which `_includes/sections/*.html` template to use |
+| `intent` | Yes | Semantic intent (attract, persuade, convert, etc.) |
+| `entity_collection` | No | Name of entity collection to resolve from |
+| `entity_ref` | No | UID of entity within collection |
+| `entity_refs` | No | List of UIDs or nested UID map |
+| `css_prefix` | No | Override CSS class prefix (default: section id) |
+| `source` | No | Local data overrides (headings, extra fields) |
+
+### Entity resolution in components
+
+```liquid
+{% assign coll = site.data.entities[sec.entity_collection] %}
+{% assign entity = coll[sec.entity_ref] %}
+<h2>{{ entity.headline }}</h2>
+<p>{{ entity.body }}</p>
 ```
 
 ---
 
-## Accessing Data in Templates
+## Section Components
 
-### Direct field access (unchanged)
+Available in `_includes/sections/`:
 
-```liquid
-{{ site.data.enterprise.hero.headline }}
-{{ site.data.enterprise.hero.cta_primary.label }}
-```
-
-### Object items (text field)
-
-```liquid
-{% for beat in site.data.enterprise.intro.beats %}
-  <p class="beat">{{ beat.text }}</p>
-{% endfor %}
-```
-
-### Exposing metadata as data attributes
-
-```liquid
-{% for agent in site.data.features.agents.roster %}
-<div class="card roster" data-agent-id="{{ agent.agent_id }}" data-domain="{{ agent.domain }}">
-  <h3>{{ agent.name }}</h3>
-</div>
-{% endfor %}
-```
-
-### Section metadata in templates
-
-```liquid
-{% for item in site.data.about.roadmap.items %}
-<li data-status="{{ item.status }}" data-phase="{{ item.phase }}">{{ item.text }}</li>
-{% endfor %}
-```
-
----
-
-## Shared vs Page-Scoped Data
-
-| File | Shared content | Schema |
-|------|---------------|--------|
-| `agents.yml` | C-suite agent catalogue with domain/decision_scope | v2.0 |
-| `nav.json` | Primary navigation links | — |
-| `products.yml` | Product catalogue with domain/audience | v2.0 |
-| `workflows.yml` | Orchestration workflow definitions | — |
-
-Page-scoped data files **must not** duplicate shared data.
+| Component | Intent | Entity Type |
+|-----------|--------|-------------|
+| `hero.html` | orient | ontology brand |
+| `hero-enterprise.html` | attract | local source |
+| `hero-simple.html` | attract | local source |
+| `features-header.html` | orient | ontology brand |
+| `text-block.html` | inform/persuade | concept |
+| `list-section.html` | inform | component set |
+| `card-grid.html` | inform/reassure | any with title/body |
+| `comparison.html` | persuade | state_comparison |
+| `beats.html` | empathise | pain_set |
+| `principles.html` | persuade | principle_set |
+| `pills-section.html` | persuade | network_proposition |
+| `kpi-grid.html` | persuade | measurable_outcome |
+| `risk.html` | reassure | safety_guarantee |
+| `risk-startup.html` | reassure | safety_guarantee |
+| `threshold.html` | convert | pilot_offer |
+| `cta.html` | convert | call_to_action |
+| `cta-simple.html` | convert | call_to_action |
+| `quote.html` | convert | local source |
+| `closing-quote.html` | convert | local source |
+| `toc.html` | orient | local source |
+| `persona-selector.html` | engage | persona/objective sets |
+| `boardroom.html` | inform | capability + loop |
+| `agent-roster.html` | inform | agents.yml |
+| `solutions.html` | persuade | solution_offering |
+| `challenge-grid.html` | empathise | challenge_set |
+| `case-study.html` | persuade | case_study |
+| `testimonial.html` | persuade | testimonial |
+| `roadmap.html` | inform | local source |
+| `faq.html` | inform | local source |
+| `footer-legal.html` | inform | ontology legal |
+| `canvas.html` | inform | canvas_block |
+| `trust-overview.html` | reassure | trust_statement |
+| `trust-principles.html` | reassure | trust_dimension |
+| `trust-list.html` | reassure | compliance sets |
+| `contact.html` | support | ontology contacts |
 
 ---
 
@@ -244,9 +246,8 @@ Before committing `_data/` changes:
 
 - [ ] YAML file is valid (no indentation errors)
 - [ ] File starts with `_schema:` block
-- [ ] Every section has `_meta:` with `content_type` and `intent`
-- [ ] No bare strings in arrays — every item is an object with `text` and `_type`
-- [ ] Section keys match the corresponding `_includes/` filenames
+- [ ] Entity UIDs are unique within their collection
+- [ ] Manifest entity_ref UIDs exist in the referenced entity_collection
 - [ ] No HTML markup in data values
 - [ ] No Liquid expressions in data values
 - [ ] Metadata fields use `_` prefix convention
@@ -259,23 +260,22 @@ python3 -c "import yaml, sys; [yaml.safe_load(open(f)) for f in sys.argv[1:]]" _
 grep -r '<[a-z]' _data/ --include="*.yml" && echo "WARNING: HTML found in data files"
 
 # Check all files have _schema
-for f in _data/*.yml; do grep -q '_schema:' "$f" || echo "MISSING _schema: $f"; done
+for f in _data/entities/*.yml _data/manifests/*.yml _data/ontology.yml; do grep -q '_schema:' "$f" || echo "MISSING _schema: $f"; done
 ```
 
 ---
 
-## Migration from v1.0
+## Migration from v2.0
 
-The v2.0 schema is a superset of v1.0. Key changes:
+The v3.0 schema replaces page-coupled data files with an entity-centric knowledge graph:
 
-| v1.0 (copy) | v2.0 (knowledge base) |
-|-------------|----------------------|
-| Bare string arrays | Object arrays with `_type` and `text` or `label` |
-| No section metadata | `_meta` blocks on every section |
-| No file schema | `_schema` header on every file |
-| Simple key-value items | Enriched objects with semantic fields |
-
-HTML templates were updated to access `item.text` instead of `item` for converted arrays, and to expose metadata as `data-*` attributes.
+| v2.0 (page-coupled) | v3.0 (entity-centric) |
+|---------------------|----------------------|
+| One data file per page | Entity collections + page manifests |
+| Content duplicated across pages | Single source of truth per entity |
+| Pages embed data references | Pages subscribe to entity UIDs |
+| Page-specific includes | Reusable section components |
+| No cross-referencing | Persistent UIDs enable relational queries |
 
 ---
 
@@ -284,4 +284,6 @@ HTML templates were updated to access `item.text` instead of `item` for converte
 → **Website editorial spec**: `.github/specs/website.md`  
 → **HTML & Liquid standards**: `.github/instructions/html.instructions.md`  
 → **Repository spec**: `.github/specs/repository.md`  
-→ **Entrepreneur example** (reference implementation): `entrepreneur/index.html` + `_data/business_infinity_entrepreneur.yml`
+→ **Manifest renderer**: `_includes/manifest-renderer.html`  
+→ **Section components**: `_includes/sections/`  
+→ **Ontology**: `_data/ontology.yml`
