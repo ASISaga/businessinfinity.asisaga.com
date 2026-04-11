@@ -3,7 +3,7 @@
     <div class="card">
         <ol>
             {% for item in site.data.about.roadmap.items %}
-            <li>{{ item }}</li>
+            <li data-status="{{ item.status }}" data-phase="{{ item.phase }}">{{ item.text }}</li>
             {% endfor %}
         </ol>
     </div>

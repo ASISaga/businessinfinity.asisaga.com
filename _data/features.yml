@@ -1,149 +1,352 @@
+_schema:
+  version: "2.0"
+  type: knowledge_base
+  domain: business_infinity
+  page_path: /features/
+  last_reviewed: 2026-04-11
+  content_types:
+    - hero_header
+    - navigation
+    - personalisation
+    - capability
+    - agent_roster
+    - value_proposition
+    - integration_spec
+    - trust_assurance
+    - call_to_action
+
 header:
+  _meta:
+    content_type: hero_header
+    intent: orient
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: awareness
   title: Business Infinity
   subtitle: Perpetual agents boardroom. Networked orchestration.
   theme_toggle_label: Dark mode
   cta:
     label: Design your pilot
     url: '#cta'
+
 toc:
+  _meta:
+    content_type: navigation
+    intent: orient
   items:
-  - id: you
+  - _type: nav_item
+    id: you
     label: Start with you
-  - id: boardroom
+    content_type: personalisation
+  - _type: nav_item
+    id: boardroom
     label: Perpetual boardroom
-  - id: agents
+    content_type: capability
+  - _type: nav_item
+    id: agents
     label: PhD‑grade agents
-  - id: unison
+    content_type: agent_roster
+  - _type: nav_item
+    id: unison
     label: Unison toward objectives
-  - id: ledger
+    content_type: value_proposition
+  - _type: nav_item
+    id: ledger
     label: Decision ledger & governance
-  - id: network
+    content_type: value_proposition
+  - _type: nav_item
+    id: network
     label: Networked value chains
-  - id: integrations
+    content_type: value_proposition
+  - _type: nav_item
+    id: integrations
     label: Integrations
-  - id: assurance
+    content_type: integration_spec
+  - _type: nav_item
+    id: assurance
     label: Assurance & safety
-  - id: cta
+    content_type: trust_assurance
+  - _type: nav_item
+    id: cta
     label: Pilot
+    content_type: call_to_action
+
 you:
+  _meta:
+    content_type: personalisation
+    intent: engage
+    audience: [enterprise, startup]
+    funnel_stage: consideration
+    priority: critical
   heading: Start with you
   lead: Pick your seat and the outcomes you need this quarter. The boardroom adapts.
   personas:
-  - CEO
-  - CFO
-  - COO
-  - CRO
-  - CPO
-  - CHRO
+  - _type: persona
+    label: CEO
+    id: ceo
+    domain: executive_leadership
+  - _type: persona
+    label: CFO
+    id: cfo
+    domain: finance
+  - _type: persona
+    label: COO
+    id: coo
+    domain: operations
+  - _type: persona
+    label: CRO
+    id: cro
+    domain: revenue
+  - _type: persona
+    label: CPO
+    id: cpo
+    domain: procurement
+  - _type: persona
+    label: CHRO
+    id: chro
+    domain: human_resources
   objectives:
-  - label: Grow ARR
+  - _type: business_objective
+    label: Grow ARR
     id: arr
-  - label: Lift NRR
+    metric_type: revenue
+    direction: increase
+  - _type: business_objective
+    label: Lift NRR
     id: nrr
-  - label: Reduce cycle time
+    metric_type: retention
+    direction: increase
+  - _type: business_objective
+    label: Reduce cycle time
     id: cycle
-  - label: Improve plan adherence
+    metric_type: efficiency
+    direction: decrease
+  - _type: business_objective
+    label: Improve plan adherence
     id: adherence
-  - label: Free working capital
+    metric_type: governance
+    direction: increase
+  - _type: business_objective
+    label: Free working capital
     id: wc
-  - label: Lower cost‑to‑serve
+    metric_type: capital
+    direction: increase
+  - _type: business_objective
+    label: Lower cost‑to‑serve
     id: cost
-  - label: Increase forecast accuracy
+    metric_type: cost
+    direction: decrease
+  - _type: business_objective
+    label: Increase forecast accuracy
     id: forecast
-  - label: Strengthen hiring quality
+    metric_type: planning
+    direction: increase
+  - _type: business_objective
+    label: Strengthen hiring quality
     id: talent
+    metric_type: talent
+    direction: increase
   panel_title: 'For the CEO: what changes'
+
 boardroom:
+  _meta:
+    content_type: capability
+    intent: inform
+    audience: [enterprise, startup]
+    funnel_stage: consideration
+    priority: high
   heading: Perpetual boardroom
   intro: Deliberation never stops. Agents keep a shared, long‑horizon memory; decisions
     are made when the moment is right, not when calendars align.
   features:
-  - title: Always‑on awareness
+  - _type: capability_claim
+    title: Always‑on awareness
     description: Signals streamed from ERP/MES/CRM/SaaS; agents monitor KPIs, risks,
       and opportunities continuously.
-  - title: Quorum deliberation
+    domain: monitoring
+  - _type: capability_claim
+    title: Quorum deliberation
     description: Agents propose, challenge, and converge under chartered rules — not
       single‑shot replies.
-  - title: Action with guardrails
+    domain: decision_making
+  - _type: capability_claim
+    title: Action with guardrails
     description: Dry‑runs, approvals, scope caps, and instant rollback. Every write
       is observable and reversible.
+    domain: execution
   loop_steps:
-  - Observe
-  - Deliberate
-  - Decide
-  - Act
-  - Measure
-  - Learn & update
+  - text: Observe
+    _type: process_step
+    sequence: 1
+  - text: Deliberate
+    _type: process_step
+    sequence: 2
+  - text: Decide
+    _type: process_step
+    sequence: 3
+  - text: Act
+    _type: process_step
+    sequence: 4
+  - text: Measure
+    _type: process_step
+    sequence: 5
+  - text: Learn & update
+    _type: process_step
+    sequence: 6
+
 agents:
+  _meta:
+    content_type: agent_roster
+    intent: inform
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: consideration
+    priority: high
   heading: PhD‑grade C‑suite agents
   intro: Each agent embodies expert‑level, evidence‑based domain models — synthesizing
     frontier research, benchmark playbooks, and operator wisdom — calibrated to your
     context.
   roster:
-  - name: CEO agent
+  - _type: agent_capability
+    name: CEO agent
+    agent_id: ceo
     scope: Strategy, portfolio, capital allocation
     strength: System‑level trade‑off analysis
     gives: Clarity under uncertainty
-  - name: CFO agent
+    domain: executive_leadership
+  - _type: agent_capability
+    name: CFO agent
+    agent_id: cfo
     scope: Forecasts, margins, working capital
     strength: Unit economics & policy checks
     gives: Capital efficiency, clean audit
-  - name: COO agent
+    domain: finance
+  - _type: agent_capability
+    name: COO agent
+    agent_id: coo
     scope: Supply, schedules, constraints
     strength: Scenario sims & replans
     gives: Throughput & resilience
-  - name: CRO agent
+    domain: operations
+  - _type: agent_capability
+    name: CRO agent
+    agent_id: cro
     scope: Pipeline, pricing, retention
     strength: Experiment design & lift
     gives: ARR & NRR growth
-  - name: CPO agent
+    domain: revenue
+  - _type: agent_capability
+    name: CPO agent
+    agent_id: cpo
     scope: Sourcing, terms, supplier risk
     strength: Negotiation frames, TCO
     gives: Cost, continuity, quality
-  - name: CHRO agent
+    domain: procurement
+  - _type: agent_capability
+    name: CHRO agent
+    agent_id: chro
     scope: Talent, culture, org design
     strength: Engagement, retention, upskilling
     gives: Talent pipeline, culture
+    domain: human_resources
+
 unison:
+  _meta:
+    content_type: value_proposition
+    intent: persuade
+    audience: [enterprise, startup]
+    funnel_stage: consideration
+    priority: medium
   heading: Unison toward objectives
   body: Agents deliberate as a team, not in isolation. They align on objectives, share
     context, and coordinate actions for compounding results.
+
 ledger:
+  _meta:
+    content_type: value_proposition
+    intent: persuade
+    audience: [enterprise]
+    funnel_stage: consideration
+    priority: medium
+    relates_to: [assurance]
   heading: Decision ledger & governance
   body: Every decision, rationale, and outcome is logged. Transparent, auditable,
     and ready for review.
+
 network:
+  _meta:
+    content_type: value_proposition
+    intent: persuade
+    audience: [enterprise]
+    funnel_stage: consideration
+    priority: medium
   heading: Networked value chains
   body: Each boardroom is a node in a learning network. Insights and models propagate,
     compounding value across the network.
+
 integrations:
+  _meta:
+    content_type: integration_spec
+    intent: inform
+    audience: [enterprise]
+    funnel_stage: decision
+    priority: high
   heading: Integrations
   items:
-  - title: Read
+  - _type: integration_layer
+    title: Read
     body: APIs/SQL, CDC, and events from ERP/MES/CRM/data platform. Semantic layer
       aligns language across domains.
-  - title: Write
+    direction: inbound
+  - _type: integration_layer
+    title: Write
     body: Idempotent adapters with retries; guarded writes with caps, canary, and
       rollback.
-  - title: Identity & policy
+    direction: outbound
+  - _type: integration_layer
+    title: Identity & policy
     body: SSO/SCIM, ABAC/RBAC, policy engines and residency controls built‑in.
+    direction: control_plane
+
 assurance:
+  _meta:
+    content_type: trust_assurance
+    intent: reassure
+    audience: [enterprise]
+    funnel_stage: decision
+    priority: high
+    relates_to: [ledger]
   heading: Assurance & safety
   items:
-  - title: Charters & limits
+  - _type: safety_guarantee
+    title: Charters & limits
     body: Explicit powers and escalation paths per agent. Risk budgets by domain.
-  - title: Runtime evaluators
+    domain: governance
+  - _type: safety_guarantee
+    title: Runtime evaluators
     body: Policy, finance, privacy checks on every decision and action.
-  - title: Observability
+    domain: compliance
+  - _type: safety_guarantee
+    title: Observability
     body: Decision traces, action telemetry, drift monitors, and alerts.
+    domain: monitoring
+
 cta:
+  _meta:
+    content_type: call_to_action
+    intent: convert
+    audience: [enterprise, startup, entrepreneur]
+    funnel_stage: decision
+    priority: critical
   heading: Cross the threshold with a zero‑regret pilot
   body: 4–8 weeks. Read‑only first. Guarded writes where safe. Evidence that pays
     for itself.
   button:
     label: Request a briefing
     url: mailto:hello@businessinfinity.ai
+
 footer:
+  _meta:
+    content_type: legal
+    intent: inform
   copyright: © 2026 ASI Saga. All rights reserved.
   disclaimer: Business Infinity agents are original archetypes created by ASI Saga.
     Not affiliated with any individual, estate, or organisation referenced in methodology

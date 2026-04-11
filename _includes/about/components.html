@@ -3,7 +3,7 @@
     <div class="card">
         <ul>
             {% for item in site.data.about.components.items %}
-            <li>{{ item }}</li>
+            <li data-domain="{{ item.domain }}">{{ item.text }}</li>
             {% endfor %}
         </ul>
     </div>

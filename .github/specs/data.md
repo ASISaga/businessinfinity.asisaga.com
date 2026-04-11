@@ -1,6 +1,6 @@
 # _data Directory Specification
 
-**Version**: 1.0.0  
+**Version**: 2.0.0  
 **Status**: Active  
 **Last Updated**: 2026-04-11  
 **Applies To**: `_data/**` in businessinfinity.asisaga.com
@@ -9,196 +9,217 @@
 
 ## Overview
 
-The `_data/` directory is the **single source of truth for all website copy** on businessinfinity.asisaga.com. Copy (the text a visitor reads — headlines, body paragraphs, labels, CTAs, list items) is stored as structured YAML data files. HTML pages and `_includes/` templates contain only markup and Liquid expressions that reference this data. No hard-coded copy appears in `.html` files.
+The `_data/` directory is a **structured knowledge base** for all website content on businessinfinity.asisaga.com. Each data file is a semantically-typed collection of **knowledge objects** — not just copy strings, but structured entities that carry semantic meaning and functional metadata.
 
-This separation enforces the Copy / Markup duality:
+This architecture enforces:
 
 | Layer | What it contains | Where it lives |
 |-------|-----------------|---------------|
-| **Copy** | Headlines, paragraphs, labels, CTAs, list items | `_data/` YAML files |
+| **Knowledge Objects** | Typed, metadata-rich content: headlines, claims, principles, capabilities, metrics | `_data/` YAML files |
 | **Markup** | HTML structure, CSS classes, ARIA attributes, Liquid expressions | `.html` page files and `_includes/` |
+| **Schema** | File-level type definitions, content taxonomies, validation rules | `_schema` blocks in each data file |
+
+### Key principles
+
+1. **Every content item is a typed object** — no bare strings in arrays. Every list item is an object with `_type` and either `text` (for narrative content) or `label` (for navigation/UI labels).
+2. **Every section carries metadata** — `_meta` blocks declare content_type, intent, audience, funnel_stage, and priority.
+3. **Every file declares its schema** — `_schema` blocks define the knowledge base version, domain, page path, and content type taxonomy.
+4. **HTML templates consume metadata** — templates expose metadata as `data-*` attributes for JS/CSS hooks and progressive enhancement.
 
 ---
 
-## Scope
+## Schema Architecture
 
-- Directory structure and file naming conventions
-- YAML schema conventions for page-level data files
-- How Liquid templates reference data
-- Relationship between data files and the page hierarchy
-- Validation and maintenance guidelines
+### File-level schema (`_schema`)
+
+Every data file begins with a `_schema` block:
+
+```yaml
+_schema:
+  version: "2.0"                    # Schema version
+  type: knowledge_base              # Always "knowledge_base"
+  domain: business_infinity         # Product domain
+  page_path: /features/             # URL this file serves
+  last_reviewed: 2026-04-11         # Last editorial review date
+  content_types:                    # Taxonomy of types used in this file
+    - hero_header
+    - capability
+    - agent_roster
+    - call_to_action
+```
+
+### Section-level metadata (`_meta`)
+
+Each section has a `_meta` block describing its semantic role:
+
+```yaml
+hero:
+  _meta:
+    content_type: hero_header       # What kind of content this section is
+    intent: attract                 # attract | empathise | inform | persuade | reassure | convert | support
+    audience: [enterprise, startup] # Target audiences
+    funnel_stage: awareness         # awareness | consideration | decision | retention
+    priority: critical              # critical | high | medium | low
+    relates_to: [cta]              # Cross-references to other sections (optional)
+  headline: "..."
+  subhead: "..."
+```
+
+### Item-level typing (`_type`)
+
+Every item in a list is a typed object:
+
+```yaml
+items:
+  - _type: capability_claim         # Semantic type of this item
+    title: "Always-on awareness"
+    description: "Signals streamed from ERP/MES/CRM/SaaS..."
+    domain: monitoring              # Functional domain (optional, type-specific)
+```
+
+---
+
+## Content Type Taxonomy
+
+### Intent values
+
+| Intent | When to use |
+|--------|------------|
+| `attract` | Hero sections, first impressions |
+| `empathise` | Pain points, problem statements |
+| `orient` | Navigation, headers, table of contents |
+| `inform` | Feature descriptions, architecture, FAQ |
+| `persuade` | Value propositions, comparisons, principles |
+| `reassure` | Trust, risk mitigation, safety guarantees |
+| `qualify` | Audience segmentation, use case targeting |
+| `convert` | CTAs, pilot offers, closing invitations |
+| `support` | Contact channels, documentation |
+
+### Funnel stages
+
+| Stage | Description |
+|-------|------------|
+| `awareness` | Visitor first discovers the product |
+| `consideration` | Visitor evaluates features and fit |
+| `decision` | Visitor is ready to commit |
+| `retention` | Existing customer support |
+
+### Common `_type` values
+
+| `_type` | Used for |
+|---------|---------|
+| `pain_signal` | Problems the audience experiences |
+| `capability_claim` | What the product can do |
+| `process_step` | Steps in a process/loop |
+| `core_principle` | Foundational beliefs or tenets |
+| `measurable_outcome` | KPI improvements or metrics |
+| `safety_guarantee` | Risk mitigation measures |
+| `pilot_scenario` | Specific pilot/trial offerings |
+| `agent_capability` | C-suite agent definitions |
+| `trust_commitment` | Trust-related promises |
+| `network_capability` | Network effect features |
+| `platform_component` | System architecture components |
+| `milestone` | Roadmap items with status |
+| `solution_offering` | Product solutions with features |
+| `feature_detail` | Individual feature within a solution |
+| `canvas_block` | Business Model Canvas sections |
+| `contact_method` | Contact channel definitions |
 
 ---
 
 ## Directory Structure
 
-The `_data/` directory mirrors the website's page hierarchy. Each top-level page or section has a corresponding YAML data file.
-
 ```
 _data/
 ├── nav.json                          # Site-wide navigation links
-├── agents.yml                        # C-suite agent definitions (shared)
-├── products.yml                      # Product catalogue entries (shared)
+├── agents.yml                        # C-suite agent catalogue (shared, schema v2.0)
+├── products.yml                      # Product catalogue (shared, schema v2.0)
 ├── workflows.yml                     # Workflow definitions (shared)
 │
-├── index.yml                         # / — Home / Boardroom page copy
-├── about.yml                         # /about/
-├── bmc.yml                           # /bmc/  — Business Model Canvas
-├── enterprise.yml                    # /enterprise/
-├── features.yml                      # /features/
-├── startup.yml                       # /startup/
-├── startup2.yml                      # /startup2/
-├── trust.yml                         # /trust/
+├── about.yml                         # /about/ — knowledge base
+├── bmc.yml                           # /bmc/ — Business Model Canvas knowledge base
+├── business_infinity.yml             # /business-infinity/ — product knowledge base
+├── business_infinity_entrepreneur.yml # /entrepreneur/ — knowledge base
+├── enterprise.yml                    # /enterprise/ — knowledge base
+├── features.yml                      # /features/ — knowledge base
+├── startup.yml                       # /startup/ — knowledge base
+├── startup2.yml                      # /startup2/ — knowledge base
+├── trust.yml                         # /trust/ — knowledge base
 │
 └── breakthroughs/                    # /breakthroughs/ (one file per breakthrough)
     ├── index.yml                     # Breakthroughs index page copy
-    └── *.json                        # Individual breakthrough data (existing pattern)
+    └── *.json                        # Individual breakthrough data
 ```
 
-New page sections are added as top-level YAML files using the page's URL slug as the filename.
-
 ---
 
-## File Naming Convention
+## YAML Schema Rules
 
-| Page URL | Data file |
-|----------|-----------|
-| `/` | `_data/index.yml` |
-| `/about/` | `_data/about.yml` |
-| `/bmc/` | `_data/bmc.yml` |
-| `/enterprise/` | `_data/enterprise.yml` |
-| `/features/` | `_data/features.yml` |
-| `/startup/` | `_data/startup.yml` |
-| `/startup2/` | `_data/startup2.yml` |
-| `/trust/` | `_data/trust.yml` |
-| `/breakthroughs/` | `_data/breakthroughs/index.yml` |
+1. **Every file** starts with `_schema:` block.
+2. **Every section** has a `_meta:` block with at least `content_type` and `intent`.
+3. **No bare strings in arrays** — every list item is an object with `_type` and either `text` (for narrative content) or `label` (for navigation/UI items).
+4. **Section keys** match the corresponding `_includes/` filename.
+5. **CTA blocks** are nested objects with `label:` and `url:` fields.
+6. **No HTML markup** in data values. Plain text only.
+7. **No Liquid expressions** in data values.
+8. **Metadata fields** use underscore prefix: `_schema`, `_meta`, `_type`.
 
-Use **kebab-case** for multi-word page slugs (e.g., `decision-framework.yml`).
-
----
-
-## YAML Schema Conventions
-
-### Top-level structure
-
-Each data file is organized by **section**, matching the page's visual sections (and, for pages using `_includes/`, matching the include names):
+### Example: complete section
 
 ```yaml
-# _data/page-slug.yml
-
-# Page-level metadata (optional)
-page:
-  title: "Page Title"
-  description: "Meta description for SEO"
-
-# Section keys match the include name or logical section
-hero:
-  headline: "..."
-  subhead: "..."
-  cta:
-    label: "..."
-    url: "..."
-
-section_name:
-  heading: "..."
-  body: "..."
+levers:
+  _meta:
+    content_type: kpi_lever
+    intent: persuade
+    audience: [enterprise]
+    funnel_stage: decision
+    priority: high
+  heading: "The hard levers"
   items:
-    - title: "..."
-      description: "..."
-```
-
-### Key schema rules
-
-1. **Section keys** match the corresponding `_includes/` filename (e.g., `hero:` for `_includes/page/hero.html`).
-2. **Copy fields** use semantic names: `heading`, `subhead`, `body`, `label`, `description`, `quote`.
-3. **Lists of items** use an `items:` array where each item has consistent field names.
-4. **CTA blocks** are nested objects with `label:` and `url:` fields.
-5. **No HTML markup** in data values. Plain text only. Use YAML block scalars (`|`) for multi-sentence paragraphs.
-6. **No Liquid expressions** in data values. Data is pure content, not template logic.
-
-### Example: complete page data file
-
-```yaml
-# _data/enterprise.yml
-
-hero:
-  headline: "Stop managing the gaps"
-  subhead: |
-    The silent tax isn't in your ERP, MES, CRM, or planning tools.
-    It's in the space between them.
-  cta_primary:
-    label: "Cross the threshold"
-    url: "#threshold"
-  cta_secondary:
-    label: "See how it earns trust"
-    url: "#risk"
-
-intro:
-  beats:
-    - "Every delayed hand‑off."
-    - "Every re‑decision."
-    - "Every plan that dies before the first action."
-  body: >
-    Business Infinity closes that space forever. Not with another dashboard —
-    with a boardroom that never adjourns.
-
-flow:
-  heading: "From lag to flow"
-  today:
-    eyebrow: "Today"
-    body: "Every function optimises its lane..."
-  tomorrow:
-    eyebrow: "Tomorrow"
-    items:
-      - lead: "Domain agents:"
-        text: "CEO, CFO, COO, CRO, CHRO debating in real time."
-      - lead: "Guarded actions:"
-        text: "Instant writes into ERP/MES/CRM with rollback."
-      - lead: "Living ledger:"
-        text: "Every trade‑off, decision, and outcome captured."
-    closing: "Your enterprise doesn't just act faster. It remembers faster."
+    - _type: measurable_outcome
+      eyebrow: "Revenue & margin"
+      body: "Faster, better allocations in mix, pricing, and fill rate."
+      metric_category: revenue
+    - _type: measurable_outcome
+      eyebrow: "Cost-to-serve"
+      body: "Fewer fire-drills. Less expedite waste."
+      metric_category: cost
 ```
 
 ---
 
 ## Accessing Data in Templates
 
-### In page files (`.html`)
+### Direct field access (unchanged)
 
 ```liquid
 {{ site.data.enterprise.hero.headline }}
 {{ site.data.enterprise.hero.cta_primary.label }}
+```
 
+### Object items (text field)
+
+```liquid
 {% for beat in site.data.enterprise.intro.beats %}
-  <p class="beat">{{ beat }}</p>
+  <p class="beat">{{ beat.text }}</p>
 {% endfor %}
 ```
 
-### In `_includes/` files
-
-Includes access data via the same `site.data.PAGE_SLUG.SECTION.*` path. The section key should match the include's own name:
+### Exposing metadata as data attributes
 
 ```liquid
-{# _includes/enterprise/hero.html #}
-<h1 class="headline reveal">{{ site.data.enterprise.hero.headline }}</h1>
-<p class="sub lead reveal">{{ site.data.enterprise.hero.subhead }}</p>
-<a href="{{ site.data.enterprise.hero.cta_primary.url }}" class="btn btn-primary">
-  {{ site.data.enterprise.hero.cta_primary.label }}
-</a>
+{% for agent in site.data.features.agents.roster %}
+<div class="card roster" data-agent-id="{{ agent.agent_id }}" data-domain="{{ agent.domain }}">
+  <h3>{{ agent.name }}</h3>
+</div>
+{% endfor %}
 ```
 
-### Iterating over lists
+### Section metadata in templates
 
 ```liquid
-{% for item in site.data.features.agents.roster %}
-  <div class="card roster">
-    <h3>{{ item.name }}</h3>
-    <ul class="list">
-      <li><strong>Scope:</strong> {{ item.scope }}</li>
-      <li><strong>Strength:</strong> {{ item.strength }}</li>
-      <li><strong>Gives you:</strong> {{ item.gives }}</li>
-    </ul>
-  </div>
+{% for item in site.data.about.roadmap.items %}
+<li data-status="{{ item.status }}" data-phase="{{ item.phase }}">{{ item.text }}</li>
 {% endfor %}
 ```
 
@@ -206,23 +227,14 @@ Includes access data via the same `site.data.PAGE_SLUG.SECTION.*` path. The sect
 
 ## Shared vs Page-Scoped Data
 
-Some data is **shared** across many pages and lives at the top level of `_data/`:
+| File | Shared content | Schema |
+|------|---------------|--------|
+| `agents.yml` | C-suite agent catalogue with domain/decision_scope | v2.0 |
+| `nav.json` | Primary navigation links | — |
+| `products.yml` | Product catalogue with domain/audience | v2.0 |
+| `workflows.yml` | Orchestration workflow definitions | — |
 
-| File | Shared content |
-|------|---------------|
-| `agents.yml` | C-suite agent definitions (name, role, archetype name, agent ID) |
-| `nav.json` | Primary navigation links |
-| `products.yml` | Product catalogue entries |
-| `workflows.yml` | Orchestration workflow definitions |
-
-Page-scoped data files **must not** duplicate shared data. Reference shared data by key instead:
-
-```liquid
-{# Reference shared agent data, not page-specific copy #}
-{% for agent in site.data.agents %}
-  <span>{{ agent.archetype_name }}</span>
-{% endfor %}
-```
+Page-scoped data files **must not** duplicate shared data.
 
 ---
 
@@ -230,12 +242,14 @@ Page-scoped data files **must not** duplicate shared data. Reference shared data
 
 Before committing `_data/` changes:
 
-- [ ] YAML file is valid (no indentation errors, no unquoted colons in values)
+- [ ] YAML file is valid (no indentation errors)
+- [ ] File starts with `_schema:` block
+- [ ] Every section has `_meta:` with `content_type` and `intent`
+- [ ] No bare strings in arrays — every item is an object with `text` and `_type`
 - [ ] Section keys match the corresponding `_includes/` filenames
 - [ ] No HTML markup in data values
 - [ ] No Liquid expressions in data values
-- [ ] Copy uses archetype names (not celebrity names) for public-facing agent references
-- [ ] Long paragraphs use YAML block scalars (`|` or `>`) for readability
+- [ ] Metadata fields use `_` prefix convention
 
 ```bash
 # Validate YAML syntax
@@ -243,7 +257,25 @@ python3 -c "import yaml, sys; [yaml.safe_load(open(f)) for f in sys.argv[1:]]" _
 
 # Verify no HTML tags in data values
 grep -r '<[a-z]' _data/ --include="*.yml" && echo "WARNING: HTML found in data files"
+
+# Check all files have _schema
+for f in _data/*.yml; do grep -q '_schema:' "$f" || echo "MISSING _schema: $f"; done
 ```
+
+---
+
+## Migration from v1.0
+
+The v2.0 schema is a superset of v1.0. Key changes:
+
+| v1.0 (copy) | v2.0 (knowledge base) |
+|-------------|----------------------|
+| Bare string arrays | Object arrays with `_type` and `text` or `label` |
+| No section metadata | `_meta` blocks on every section |
+| No file schema | `_schema` header on every file |
+| Simple key-value items | Enriched objects with semantic fields |
+
+HTML templates were updated to access `item.text` instead of `item` for converted arrays, and to expose metadata as `data-*` attributes.
 
 ---
 

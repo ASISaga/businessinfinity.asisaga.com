@@ -1,45 +1,43 @@
 ---
 applyTo: "_data/**"
-description: "Authoring standards for _data/ copy files: YAML structure, naming, and Liquid integration for the copy/markup separation pattern."
+description: "Authoring standards for _data/ knowledge base files: YAML structure, schema, typing, metadata, and Liquid integration."
 ---
 
-# _data/ Copy Files Instructions
+# _data/ Knowledge Base Instructions
 
-All website copy lives in `_data/` as structured YAML. HTML pages and `_includes/` contain only markup and Liquid expressions — **never hard-coded text strings**.
+All website content lives in `_data/` as a **structured knowledge base**. Each file is a collection of semantically-typed knowledge objects — not just copy strings, but structured entities with metadata.
 
-## File Naming
+## File Structure
 
-- One YAML file per top-level page, named after the page's URL slug
-- Match the page hierarchy: `/features/` → `_data/features.yml`
-- Use kebab-case for multi-word slugs: `decision-framework.yml`
-
-## YAML Structure
-
-Organize by **section**, with section keys matching the corresponding `_includes/` filename:
+Every YAML file starts with a `_schema` block, followed by sections with `_meta` blocks:
 
 ```yaml
+_schema:
+  version: "2.0"
+  type: knowledge_base
+  domain: business_infinity
+  page_path: /features/
+  last_reviewed: 2026-04-11
+  content_types: [hero_header, capability, call_to_action]
+
 hero:
+  _meta:
+    content_type: hero_header
+    intent: attract
+    audience: [enterprise, startup]
+    funnel_stage: awareness
+    priority: critical
   headline: "..."
   subhead: "..."
-  cta:
-    label: "..."
-    url: "..."
-
-section_name:
-  heading: "..."
-  body: "..."
-  items:
-    - title: "..."
-      description: "..."
 ```
 
 ## Content Rules
 
+- **No bare strings in arrays** — every list item is an object with `_type` and either `text` (narrative) or `label` (UI elements)
 - **Plain text only** — no HTML tags, no Liquid expressions in values
-- **Multi-sentence paragraphs** — use YAML block scalars (`|` literal or `>` folded)
-- **Lists of items** — use `items:` arrays with consistent field names per array
+- **Every section** must have a `_meta` block with `content_type` and `intent`
+- **Metadata fields** use underscore prefix: `_schema`, `_meta`, `_type`
 - **CTAs** — always a nested object with `label:` and `url:` fields
-- **Archetype names** — use canonical archetype names for public-facing agent copy (see `.github/specs/website.md`)
 
 ## Accessing Data in Templates
 
@@ -47,7 +45,7 @@ section_name:
 {{ site.data.page_slug.section.field }}
 
 {% for item in site.data.page_slug.section.items %}
-  {{ item.title }} — {{ item.description }}
+  <li data-domain="{{ item.domain }}">{{ item.text }}</li>
 {% endfor %}
 ```
 
@@ -57,8 +55,8 @@ Do not duplicate content from shared files (`agents.yml`, `nav.json`, `products.
 
 ## Reference Implementation
 
-→ `_data/business_infinity_entrepreneur.yml` + `entrepreneur/index.html` — gold-standard example of the copy/markup separation pattern
+→ `_data/business_infinity_entrepreneur.yml` + `entrepreneur/index.html` — gold-standard example
 
 ## Full Specification
 
-→ `.github/specs/data.md` — complete data directory specification with schema, examples, and validation rules
+→ `.github/specs/data.md` — complete knowledge base specification with schema, type taxonomy, and validation rules

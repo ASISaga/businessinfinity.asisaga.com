@@ -3,7 +3,7 @@
     <div class="card">
         <ul>
             {% for item in site.data.trust.transparency.items %}
-            <li>{{ item }}</li>
+            <li data-mechanism="{{ item.mechanism }}">{{ item.text }}</li>
             {% endfor %}
         </ul>
     </div>

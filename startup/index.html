@@ -44,7 +44,7 @@ title: Business Infinity for Startups
           <p class="startup-solution-description">{{ solution.description }}</p>
           <ul class="startup-solution-features">
             {% for feature in solution.features %}
-            <li class="startup-feature-item">{{ feature }}</li>
+            <li class="startup-feature-item">{{ feature.text }}</li>
             {% endfor %}
           </ul>
         </div>
@@ -63,7 +63,7 @@ title: Business Infinity for Startups
         <p class="startup-case-study-description">{{ site.data.startup.case_study.description }}</p>
         <ul class="startup-case-study-results">
           {% for result in site.data.startup.case_study.results %}
-          <li class="startup-result-item">{{ result }}</li>
+          <li class="startup-result-item">{{ result.text }}</li>
           {% endfor %}
         </ul>
         <blockquote class="startup-case-study-quote">

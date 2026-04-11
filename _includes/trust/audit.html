@@ -3,7 +3,7 @@
     <div class="card">
         <ul>
             {% for item in site.data.trust.audit.items %}
-            <li>{{ item }}</li>
+            <li data-scope="{{ item.scope }}">{{ item.text }}</li>
             {% endfor %}
         </ul>
     </div>
