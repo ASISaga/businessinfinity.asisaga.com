@@ -4,7 +4,7 @@
     <div class="persona">
         <div class="persona-tabs" role="tablist" aria-label="Choose your seat">
             {% for persona in site.data.features.you.personas %}
-            <button class="tab{% if forloop.first %} active{% endif %}" role="tab" aria-selected="{{ forloop.first | downcase }}" data-persona="{{ persona | downcase }}">{{ persona }}</button>
+            <button class="tab{% if forloop.first %} active{% endif %}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-persona="{{ persona | downcase }}">{{ persona }}</button>
             {% endfor %}
         </div>
         <div class="objectives">

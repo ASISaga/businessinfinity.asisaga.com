@@ -18,7 +18,8 @@ permalink: /enterprise/
   <div class="wrap hero-inner">
     <h1 class="headline reveal" data-reveal="up">{{ site.data.enterprise.hero.headline }}</h1>
     <p class="sub lead reveal" data-reveal="fade" data-delay="100">
-      {{ site.data.enterprise.hero.subhead }}
+      {{ site.data.enterprise.hero.subhead_line1 }}<br />
+      {{ site.data.enterprise.hero.subhead_line2 }}
     </p>
     <div class="hero-cta reveal" data-reveal="up" data-delay="200">
       <a href="{{ site.data.enterprise.hero.cta_primary.url }}" class="btn btn-primary">{{ site.data.enterprise.hero.cta_primary.label }}</a>
@@ -36,7 +37,7 @@ permalink: /enterprise/
       {% endfor %}
     </div>
     <p class="lead reveal" data-reveal="fade" data-delay="150">
-      {{ site.data.enterprise.intro.body }}<span class="accent">{{ site.data.enterprise.intro.accent }}</span>.
+      {{ site.data.enterprise.intro.body_prefix }} <span class="accent">{{ site.data.enterprise.intro.body_accent }}</span>{{ site.data.enterprise.intro.body_suffix }}
     </p>
   </div>
 </section>
