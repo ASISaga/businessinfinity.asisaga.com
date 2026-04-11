@@ -5,7 +5,7 @@
     <div class="card">
         <ul>
             {% for item in e.items %}
-            <li{% if item.scope %} data-scope="{{ item.scope }}"{% endif %}{% if item.layer %} data-layer="{{ item.layer }}"{% endif %}{% if item.right_type %} data-right-type="{{ item.right_type }}"{% endif %}{% if item.mechanism %} data-mechanism="{{ item.mechanism }}"{% endif %}>{{ item.text }}</li>
+            <li>{{ item.text }}</li>
             {% endfor %}
         </ul>
     </div>

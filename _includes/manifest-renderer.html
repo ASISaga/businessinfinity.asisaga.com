@@ -2,6 +2,11 @@
   Manifest Renderer — iterates a page manifest's sections array
   and dispatches each section to the correct component include.
 
+  Entity resolution:
+    - entity_ref (singular): resolved here and passed as `entity` parameter
+    - entity_refs (plural, list or map): resolved by the section component
+      itself, which accesses site.data.entities[sec.entity_collection] directly
+
   Usage:
     {% assign manifest = site.data.manifests.about %}
     {% include manifest-renderer.html manifest=manifest %}
@@ -10,7 +15,7 @@
 {% for section in include.manifest.sections %}
   {% assign sec = section %}
 
-  {% comment %} Resolve entity data if entity_collection + entity_ref are specified {% endcomment %}
+  {% comment %} Resolve single entity_ref if specified {% endcomment %}
   {% if sec.entity_collection and sec.entity_ref %}
     {% assign _coll = site.data.entities[sec.entity_collection] %}
     {% assign _entity = _coll[sec.entity_ref] %}
