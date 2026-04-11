@@ -33,7 +33,7 @@ hero:
 
 ## Content Rules
 
-- **No bare strings in arrays** — every list item is an object with at least `text` and `_type` fields
+- **No bare strings in arrays** — every list item is an object with `_type` and either `text` (narrative) or `label` (UI elements)
 - **Plain text only** — no HTML tags, no Liquid expressions in values
 - **Every section** must have a `_meta` block with `content_type` and `intent`
 - **Metadata fields** use underscore prefix: `_schema`, `_meta`, `_type`

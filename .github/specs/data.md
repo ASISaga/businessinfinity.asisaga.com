@@ -21,7 +21,7 @@ This architecture enforces:
 
 ### Key principles
 
-1. **Every content item is a typed object** — no bare strings in arrays. Every list item is an object with at least `text` and `_type` fields.
+1. **Every content item is a typed object** — no bare strings in arrays. Every list item is an object with `_type` and either `text` (for narrative content) or `label` (for navigation/UI labels).
 2. **Every section carries metadata** — `_meta` blocks declare content_type, intent, audience, funnel_stage, and priority.
 3. **Every file declares its schema** — `_schema` blocks define the knowledge base version, domain, page path, and content type taxonomy.
 4. **HTML templates consume metadata** — templates expose metadata as `data-*` attributes for JS/CSS hooks and progressive enhancement.
@@ -157,7 +157,7 @@ _data/
 
 1. **Every file** starts with `_schema:` block.
 2. **Every section** has a `_meta:` block with at least `content_type` and `intent`.
-3. **No bare strings in arrays** — every list item is an object with `text` and `_type`.
+3. **No bare strings in arrays** — every list item is an object with `_type` and either `text` (for narrative content) or `label` (for navigation/UI items).
 4. **Section keys** match the corresponding `_includes/` filename.
 5. **CTA blocks** are nested objects with `label:` and `url:` fields.
 6. **No HTML markup** in data values. Plain text only.
@@ -270,7 +270,7 @@ The v2.0 schema is a superset of v1.0. Key changes:
 
 | v1.0 (copy) | v2.0 (knowledge base) |
 |-------------|----------------------|
-| Bare string arrays | Object arrays with `text` and `_type` |
+| Bare string arrays | Object arrays with `_type` and `text` or `label` |
 | No section metadata | `_meta` blocks on every section |
 | No file schema | `_schema` header on every file |
 | Simple key-value items | Enriched objects with semantic fields |
