@@ -1,0 +1,64 @@
+_schema:
+  version: "3.0"
+  type: entity_collection
+  entity_type: guarantee
+  description: >
+    Safety and risk mitigation promises. Single source for all
+    trust-earning, de-risking content across audience pages.
+  last_reviewed: 2026-04-11
+
+read-only:
+  uid: read-only
+  _type: safety_guarantee
+  lead: "Read‑only:"
+  text: Simulations and diffs on live data.
+  phase: validation
+
+approvals:
+  uid: approvals
+  _type: safety_guarantee
+  lead: "Approvals:"
+  text: Segregation of duties and explicit limits.
+  phase: governance
+
+rollback:
+  uid: rollback
+  _type: safety_guarantee
+  lead: "Rollback:"
+  text: Canary, caps, kill switch.
+  phase: execution
+
+audit-log:
+  uid: audit-log
+  _type: safety_guarantee
+  lead: "Audit:"
+  text: Tamper‑evident decision ledger.
+  phase: compliance
+
+guardrails:
+  uid: guardrails
+  _type: safety_guarantee
+  lead: "Guardrails:"
+  text: Spend caps, experiment limits, rollback anytime.
+  phase: execution
+
+charters-limits:
+  uid: charters-limits
+  _type: safety_guarantee
+  title: Charters & limits
+  text: Explicit powers and escalation paths per agent. Risk budgets by domain.
+  domain: governance
+
+runtime-evaluators:
+  uid: runtime-evaluators
+  _type: safety_guarantee
+  title: Runtime evaluators
+  text: Policy, finance, privacy checks on every decision and action.
+  domain: compliance
+
+observability:
+  uid: observability
+  _type: safety_guarantee
+  title: Observability
+  text: Decision traces, action telemetry, drift monitors, and alerts.
+  domain: monitoring

@@ -1,52 +1,79 @@
 ---
 applyTo: "_data/**"
-description: "Authoring standards for _data/ knowledge base files: YAML structure, schema, typing, metadata, and Liquid integration."
+description: "Authoring standards for _data/ relational knowledge graph: entity collections, ontology, manifests, and Liquid integration."
 ---
 
-# _data/ Knowledge Base Instructions
+# _data/ Relational Knowledge Graph Instructions
 
-All website content lives in `_data/` as a **structured knowledge base**. Each file is a collection of semantically-typed knowledge objects — not just copy strings, but structured entities with metadata.
+All website content lives in `_data/` as a **Relational Knowledge Graph**. Content is decomposed into atomic Entity Collections with persistent UIDs, a global Ontological Source of Truth, and Page Manifests that subscribe to entity UIDs.
 
-## File Structure
+## Architecture
 
-Every YAML file starts with a `_schema` block, followed by sections with `_meta` blocks:
+| Layer | Location | Purpose |
+|-------|----------|---------|
+| Ontology | `_data/ontology.yml` | Global brand identity, legal, contacts |
+| Entities | `_data/entities/*.yml` | Atomic, UID-tagged content atoms |
+| Manifests | `_data/manifests/*.yml` | Page section ordering + entity subscriptions |
+
+## Entity Collections
+
+Every entity file starts with `_schema` and contains keyed entities:
 
 ```yaml
 _schema:
-  version: "2.0"
-  type: knowledge_base
-  domain: business_infinity
-  page_path: /features/
+  version: "3.0"
+  type: entity_collection
+  entity_type: concept
   last_reviewed: 2026-04-11
-  content_types: [hero_header, capability, call_to_action]
 
-hero:
-  _meta:
-    content_type: hero_header
-    intent: attract
-    audience: [enterprise, startup]
-    funnel_stage: awareness
-    priority: critical
-  headline: "..."
-  subhead: "..."
+network-effects:
+  uid: network-effects
+  _type: concept
+  headline: Network Effects
+  body: "Every decision improves not just one boardroom but the network..."
+  tags: [network, learning]
+```
+
+## Page Manifests
+
+Manifests define section order, component selection, and entity subscriptions:
+
+```yaml
+_schema:
+  version: "3.0"
+  type: page_manifest
+  page_path: /enterprise/
+
+sections:
+  - id: network
+    component: pills-section
+    intent: persuade
+    entity_collection: propositions
+    entity_ref: network-enterprise
 ```
 
 ## Content Rules
 
-- **No bare strings in arrays** — every list item is an object with `_type` and either `text` (narrative) or `label` (UI elements)
+- **Zero redundancy** — each piece of copy exists in exactly one entity
+- **Persistent UIDs** — every entity has a unique `uid` for cross-referencing
 - **Plain text only** — no HTML tags, no Liquid expressions in values
-- **Every section** must have a `_meta` block with `content_type` and `intent`
-- **Metadata fields** use underscore prefix: `_schema`, `_meta`, `_type`
-- **CTAs** — always a nested object with `label:` and `url:` fields
+- **No bare strings in arrays** — every list item is a typed object
+- **Metadata fields** use underscore prefix: `_schema`, `_type`
 
 ## Accessing Data in Templates
 
 ```liquid
-{{ site.data.page_slug.section.field }}
+{% comment %} Via manifest renderer (preferred) {% endcomment %}
+{% assign manifest = site.data.manifests.about %}
+{% include manifest-renderer.html manifest=manifest %}
 
-{% for item in site.data.page_slug.section.items %}
-  <li data-domain="{{ item.domain }}">{{ item.text }}</li>
-{% endfor %}
+{% comment %} Direct entity access {% endcomment %}
+{% assign concept = site.data.entities.concepts["network-effects"] %}
+{{ concept.headline }}
+
+{% comment %} Ontology global access {% endcomment %}
+{{ site.data.ontology.brand.name }}
+{{ site.data.ontology.legal.copyright }}
 ```
 
 ## Shared Data
@@ -55,8 +82,9 @@ Do not duplicate content from shared files (`agents.yml`, `nav.json`, `products.
 
 ## Reference Implementation
 
-→ `_data/business_infinity_entrepreneur.yml` + `entrepreneur/index.html` — gold-standard example
+→ `_data/manifests/enterprise.yml` + `enterprise/index.html` — manifest-driven page example
+→ `_data/entities/concepts.yml` — entity collection example
 
 ## Full Specification
 
-→ `.github/specs/data.md` — complete knowledge base specification with schema, type taxonomy, and validation rules
+→ `.github/specs/data.md` — complete knowledge graph specification with schema, type taxonomy, and validation rules

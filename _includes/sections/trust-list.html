@@ -1,0 +1,12 @@
+{% assign s = include.section.source %}
+{% assign e = include.entity %}
+<section id="{{ include.section.id }}" class="section reveal">
+    <h2>{{ s.heading }}</h2>
+    <div class="card">
+        <ul>
+            {% for item in e.items %}
+            <li>{{ item.text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

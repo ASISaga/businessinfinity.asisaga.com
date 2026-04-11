@@ -1,0 +1,21 @@
+{% assign e = include.entity %}
+<section class="startup-case-study-section">
+    {% include section-header.html title="Success Story" %}
+    <div class="startup-case-study">
+        <div class="startup-case-study-content">
+            <h3 class="startup-case-study-title">{{ e.title }}</h3>
+            <p class="startup-case-study-description">{{ e.description }}</p>
+            <ul class="startup-case-study-results">
+                {% for result in e.results %}
+                <li class="startup-result-item">{{ result.text }}</li>
+                {% endfor %}
+            </ul>
+            <blockquote class="startup-case-study-quote">
+                {{ e.quote }}
+            </blockquote>
+            <footer class="startup-quote-footer">
+                <cite>{{ e.attribution }}</cite>
+            </footer>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+{% assign s = include.section.source %}
+{% assign sec = include.section %}
+{% assign personas_entity = site.data.entities.personas[sec.entity_refs.personas] %}
+{% assign objectives_entity = site.data.entities.personas[sec.entity_refs.objectives] %}
+<section id="{{ sec.id }}" class="section reveal">
+    <h2>{{ s.heading }}</h2>
+    <p class="lead">{{ s.lead }}</p>
+    <div class="persona">
+        <div class="persona-tabs" role="tablist" aria-label="Choose your seat">
+            {% for persona in personas_entity.items %}
+            <button class="tab{% if forloop.first %} active{% endif %}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-persona="{{ persona.id }}" data-domain="{{ persona.domain }}">{{ persona.label }}</button>
+            {% endfor %}
+        </div>
+        <div class="objectives">
+            <div class="chips" aria-label="Your objectives">
+                {% for obj in objectives_entity.items %}
+                <button class="chip" data-obj="{{ obj.id }}" data-metric="{{ obj.metric_type }}" data-direction="{{ obj.direction }}">{{ obj.label }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="panel card">
+            <h3 id="summaryTitle">{{ s.panel_title }}</h3>
+            <ul id="summaryList" class="list">
+                <!-- dynamic bullets filled by JS -->
+            </ul>
+        </div>
+    </div>
+</section>

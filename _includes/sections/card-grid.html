@@ -1,0 +1,17 @@
+{% assign s = include.section.source %}
+{% assign sec = include.section %}
+{% assign coll = site.data.entities[sec.entity_collection] %}
+<section id="{{ sec.id }}" class="section reveal">
+    <h2>{{ s.heading }}</h2>
+    <div class="grid-3">
+        {% if sec.entity_refs %}
+          {% for ref in sec.entity_refs %}
+            {% assign item = coll[ref] %}
+            <div class="card">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.body | default: item.text }}</p>
+            </div>
+          {% endfor %}
+        {% endif %}
+    </div>
+</section>

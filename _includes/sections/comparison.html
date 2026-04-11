@@ -1,0 +1,21 @@
+{% assign e = include.entity %}
+<section class="section section-flow">
+  <div class="wrap">
+    <h2 class="h2 reveal" data-reveal="up">{{ e.heading }}</h2>
+    <div class="grid grid-2">
+      <article class="card reveal" data-reveal="up">
+        <h3 class="eyebrow">{{ e.today.eyebrow }}</h3>
+        <p>{{ e.today.body }}</p>
+      </article>
+      <article class="card emphasis reveal" data-reveal="up" data-delay="120">
+        <h3 class="eyebrow">{{ e.tomorrow.eyebrow }}</h3>
+        <ul class="list">
+          {% for item in e.tomorrow.items %}
+          <li><span class="li-lead">{{ item.lead }}</span> {{ item.text }}</li>
+          {% endfor %}
+        </ul>
+        <p>{{ e.tomorrow.closing }} <span class="accent">{{ e.tomorrow.closing_accent }}</span>{{ e.tomorrow.closing_end }}</p>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{% assign e = include.entity %}
+<section class="section section-network">
+  <div class="wrap">
+    <h2 class="h2 reveal" data-reveal="up">{{ e.headline }}</h2>
+    <p class="lead reveal" data-reveal="fade">{{ e.body }}</p>
+    <div class="pills reveal" data-reveal="up" data-delay="100">
+      {% for pill in e.pills %}
+      <span class="pill">{{ pill.text }}</span>
+      {% endfor %}
+    </div>
+    {% if e.footnote %}
+    <p class="subtle reveal" data-reveal="fade" data-delay="150">{{ e.footnote }}</p>
+    {% endif %}
+  </div>
+</section>

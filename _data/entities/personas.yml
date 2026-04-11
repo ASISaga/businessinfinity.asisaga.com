@@ -1,0 +1,111 @@
+_schema:
+  version: "3.0"
+  type: entity_collection
+  entity_type: persona
+  description: >
+    Boardroom persona definitions for the interactive features
+    page persona selector, and business objectives.
+  last_reviewed: 2026-04-11
+
+boardroom-personas:
+  uid: boardroom-personas
+  _type: persona_set
+  items:
+    - uid: persona-ceo
+      _type: persona
+      label: CEO
+      id: ceo
+      domain: executive_leadership
+    - uid: persona-cfo
+      _type: persona
+      label: CFO
+      id: cfo
+      domain: finance
+    - uid: persona-coo
+      _type: persona
+      label: COO
+      id: coo
+      domain: operations
+    - uid: persona-cro
+      _type: persona
+      label: CRO
+      id: cro
+      domain: revenue
+    - uid: persona-cpo
+      _type: persona
+      label: CPO
+      id: cpo
+      domain: procurement
+    - uid: persona-chro
+      _type: persona
+      label: CHRO
+      id: chro
+      domain: human_resources
+
+business-objectives:
+  uid: business-objectives
+  _type: objective_set
+  items:
+    - uid: obj-arr
+      _type: business_objective
+      label: Grow ARR
+      id: arr
+      metric_type: revenue
+      direction: increase
+    - uid: obj-nrr
+      _type: business_objective
+      label: Lift NRR
+      id: nrr
+      metric_type: retention
+      direction: increase
+    - uid: obj-cycle
+      _type: business_objective
+      label: Reduce cycle time
+      id: cycle
+      metric_type: efficiency
+      direction: decrease
+    - uid: obj-adherence
+      _type: business_objective
+      label: Improve plan adherence
+      id: adherence
+      metric_type: governance
+      direction: increase
+    - uid: obj-wc
+      _type: business_objective
+      label: Free working capital
+      id: wc
+      metric_type: capital
+      direction: increase
+    - uid: obj-cost
+      _type: business_objective
+      label: Lower cost‑to‑serve
+      id: cost
+      metric_type: cost
+      direction: decrease
+    - uid: obj-forecast
+      _type: business_objective
+      label: Increase forecast accuracy
+      id: forecast
+      metric_type: planning
+      direction: increase
+    - uid: obj-talent
+      _type: business_objective
+      label: Strengthen hiring quality
+      id: talent
+      metric_type: talent
+      direction: increase
+
+target-audiences:
+  uid: target-audiences
+  _type: audience_set
+  items:
+    - uid: seg-entrepreneur
+      _type: target_audience
+      title: Entrepreneurs
+      url: "/business-infinity/entrepreneur/"
+      audience_id: entrepreneur
+    - uid: seg-startup
+      _type: target_audience
+      title: Startups
+      url: "/business-infinity/startup/"
+      audience_id: startup

@@ -1,0 +1,34 @@
+_schema:
+  version: "3.0"
+  type: entity_collection
+  entity_type: integration
+  description: >
+    Integration layers and technology connection points.
+    Single source for all integration messaging.
+  last_reviewed: 2026-04-11
+
+layer-read:
+  uid: layer-read
+  _type: integration_layer
+  title: Read
+  body: >
+    APIs/SQL, CDC, and events from ERP/MES/CRM/data platform.
+    Semantic layer aligns language across domains.
+  direction: inbound
+
+layer-write:
+  uid: layer-write
+  _type: integration_layer
+  title: Write
+  body: >
+    Idempotent adapters with retries; guarded writes with caps,
+    canary, and rollback.
+  direction: outbound
+
+layer-identity:
+  uid: layer-identity
+  _type: integration_layer
+  title: Identity & policy
+  body: >
+    SSO/SCIM, ABAC/RBAC, policy engines and residency controls built‑in.
+  direction: control_plane

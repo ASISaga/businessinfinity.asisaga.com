@@ -1,0 +1,13 @@
+{% assign e = include.entity %}
+<section class="section section-intro">
+  <div class="wrap">
+    <div class="beats reveal" data-reveal="up">
+      {% for beat in e.items %}
+      <p class="beat">{{ beat.text }}</p>
+      {% endfor %}
+    </div>
+    <p class="lead reveal" data-reveal="fade" data-delay="150">
+      {{ e.body_prefix }} <span class="accent">{{ e.body_accent }}</span>{{ e.body_suffix }}
+    </p>
+  </div>
+</section>

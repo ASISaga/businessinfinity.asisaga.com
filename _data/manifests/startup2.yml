@@ -1,0 +1,73 @@
+_schema:
+  version: "3.0"
+  type: page_manifest
+  page_path: /startup2/
+  title: "Startup | Business Infinity"
+  description: "For startups ready to play at enterprise strategic depth without losing speed. Cross the threshold to a persistent AI boardroom."
+  layout: app
+
+sections:
+  - id: hero
+    component: hero-enterprise
+    intent: attract
+    source:
+      headline: "Your runway deserves more than guesswork"
+      subhead: "Burn, churn, pivots — you already know the odds. The hidden killer isn't just capital; it's decision drag."
+      cta_primary:
+        label: Cross the threshold
+        url: "#threshold"
+      cta_secondary:
+        label: See how we de‑risk it
+        url: "#risk"
+
+  - id: beats
+    component: beats
+    intent: empathise
+    entity_collection: pain_points
+    entity_ref: startup-pain-signals
+
+  - id: orchestration
+    component: comparison
+    intent: persuade
+    entity_collection: pain_points
+    entity_ref: startup-reaction
+
+  - id: tenets
+    component: principles
+    intent: persuade
+    entity_collection: principles
+    entity_ref: startup-truths
+
+  - id: network
+    component: pills-section
+    intent: persuade
+    entity_collection: propositions
+    entity_ref: network-startup
+
+  - id: risk2
+    component: risk-startup
+    intent: reassure
+    entity_collection: guarantees
+    entity_refs:
+      - read-only
+      - guardrails
+      - audit-log
+    source:
+      heading: Zero‑risk adoption
+      footnote: "You don't gamble the runway — you prove the lift before you commit."
+
+  - id: threshold2
+    component: threshold
+    intent: convert
+    entity_collection: actions
+    entity_ref: pilot-startup
+
+  - id: quote
+    component: closing-quote
+    intent: convert
+    source:
+      text: "You built this to change your market. Don't run it on yesterday's decision tempo."
+
+  - id: footer2
+    component: footer-legal
+    intent: inform

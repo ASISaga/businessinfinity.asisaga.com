@@ -1,0 +1,9 @@
+{% assign s = include.section.source %}
+<!-- Sticky ToC -->
+<nav id="toc" class="toc" aria-label="Table of contents">
+    <ol>
+        {% for item in s.items %}
+        <li><a href="#{{ item.id }}">{{ item.label }}</a></li>
+        {% endfor %}
+    </ol>
+</nav>

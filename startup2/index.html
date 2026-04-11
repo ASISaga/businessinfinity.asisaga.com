@@ -5,36 +5,41 @@ description: "For startups ready to play at enterprise strategic depth without l
 persistent AI boardroom."
 ---
 
-
-{% include startup2/hero.html %}
+{% assign manifest = site.data.manifests.startup2 %}
+{% assign hero_sec = manifest.sections | where: "id", "hero" | first %}
+{% include sections/hero-enterprise.html section=hero_sec %}
 
 <main>
+  {% for sec in manifest.sections %}
+    {% unless sec.id == 'hero' or sec.id == 'footer2' %}
+      {% if sec.entity_collection and sec.entity_ref %}
+        {% assign _coll = site.data.entities[sec.entity_collection] %}
+        {% assign _entity = _coll[sec.entity_ref] %}
+      {% else %}
+        {% assign _entity = nil %}
+      {% endif %}
 
-
-  {% include startup2/beats.html %}
-
-
-  {% include startup2/orchestration.html %}
-
-
-  {% include startup2/tenets.html %}
-
-
-  {% include startup2/network.html %}
-
-
-  {% include startup2/risk2.html %}
-
-
-  {% include startup2/threshold2.html %}
-
-
-  {% include startup2/quote.html %}
-
-
+      {% case sec.component %}
+        {% when 'beats' %}
+          {% include sections/beats.html section=sec entity=_entity %}
+        {% when 'comparison' %}
+          {% include sections/comparison.html section=sec entity=_entity %}
+        {% when 'principles' %}
+          {% include sections/principles.html section=sec entity=_entity %}
+        {% when 'pills-section' %}
+          {% include sections/pills-section.html section=sec entity=_entity %}
+        {% when 'risk-startup' %}
+          {% include sections/risk-startup.html section=sec entity=_entity %}
+        {% when 'threshold' %}
+          {% include sections/threshold.html section=sec entity=_entity %}
+        {% when 'closing-quote' %}
+          {% include sections/closing-quote.html section=sec entity=_entity %}
+      {% endcase %}
+    {% endunless %}
+  {% endfor %}
 </main>
 
-
-{% include startup2/footer2.html %}
+{% assign footer_sec = manifest.sections | where: "id", "footer2" | first %}
+{% include sections/footer-legal.html section=footer_sec %}
 
 <script src="/assets/js/startup/scripts.js"></script>

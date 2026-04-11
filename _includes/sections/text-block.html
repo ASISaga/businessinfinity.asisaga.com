@@ -1,0 +1,11 @@
+{% assign s = include.section.source %}
+{% assign e = include.entity %}
+{% assign heading = include.section.heading_override | default: s.heading | default: e.headline %}
+{% assign body = s.body | default: e.body %}
+<section id="{{ include.section.id }}">
+    <h3>{{ heading }}</h3>
+    <div class="card">
+        {% if s.brand %}<p><strong>{{ s.brand }}</strong> {{ body }}</p>
+        {% else %}<p>{{ body }}</p>{% endif %}
+    </div>
+</section>

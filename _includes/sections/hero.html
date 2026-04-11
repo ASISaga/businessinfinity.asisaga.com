@@ -1,0 +1,17 @@
+{% assign s = include.section.source %}
+<header>
+    <div class="wrap mast">
+        <div class="brand">
+            <div class="logo" aria-hidden="true"></div>
+            <div>
+                <h1>{{ site.data.ontology.brand.name }}</h1>
+                <div class="tagline">{{ site.data.ontology.brand.tagline }}</div>
+            </div>
+        </div>
+        <div class="actions">
+            {% if s.theme_btn_label %}<button id="themeBtn" title="{{ s.theme_btn_label }}">{{ s.theme_btn_label }}</button>{% endif %}
+            {% if s.print_btn_label %}<button id="printBtn" title="{{ s.print_btn_label }}">{{ s.print_btn_label }}</button>{% endif %}
+            {% if s.cta %}<a class="btn btn-primary" href="{{ s.cta.url }}">{{ s.cta.label }}</a>{% endif %}
+        </div>
+    </div>
+</header>

@@ -4,17 +4,8 @@ title: "Trust Center | Business Infinity"
 description: "Our commitment to security, compliance, and transparency. Trust is earned through evidence, not claimed
 through words."
 ---
-
-{% include trust/header.html %}
-{% include trust/toc.html %}
-{% include trust/overview.html %}
-{% include trust/principles.html %}
-{% include trust/compliance.html %}
-{% include trust/security.html %}
-{% include trust/privacy.html %}
-{% include trust/transparency.html %}
-{% include trust/audit.html %}
-{% include trust/contact.html %}
+{% assign manifest = site.data.manifests.trust %}
+{% include manifest-renderer.html manifest=manifest %}
 
 <script src="/assets/js/trust/scripts.js"></script>
 <noscript>

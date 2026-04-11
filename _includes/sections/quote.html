@@ -1,0 +1,11 @@
+{% assign s = include.section.source %}
+<section class="section section-invite">
+  <div class="wrap">
+    <blockquote class="quote reveal" data-reveal="fade">{{ s.text }}</blockquote>
+    {% if s.back_label %}
+    <div class="cta-center reveal" data-reveal="up" data-delay="120">
+      <a href="{{ s.back_url }}" class="btn btn-quiet">{{ s.back_label }}</a>
+    </div>
+    {% endif %}
+  </div>
+</section>

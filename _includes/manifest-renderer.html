@@ -1,0 +1,134 @@
+{% comment %}
+  Manifest Renderer — iterates a page manifest's sections array
+  and dispatches each section to the correct component include.
+
+  Entity resolution:
+    - entity_ref (singular): resolved here and passed as `entity` parameter
+    - entity_refs (plural, list or map): resolved by the section component
+      itself, which accesses site.data.entities[sec.entity_collection] directly
+
+  Usage:
+    {% assign manifest = site.data.manifests.about %}
+    {% include manifest-renderer.html manifest=manifest %}
+{% endcomment %}
+
+{% for section in include.manifest.sections %}
+  {% assign sec = section %}
+
+  {% comment %} Resolve single entity_ref if specified {% endcomment %}
+  {% if sec.entity_collection and sec.entity_ref %}
+    {% assign _coll = site.data.entities[sec.entity_collection] %}
+    {% assign _entity = _coll[sec.entity_ref] %}
+  {% else %}
+    {% assign _entity = nil %}
+  {% endif %}
+
+  {% case sec.component %}
+
+    {% when 'hero' %}
+      {% include sections/hero.html section=sec entity=_entity %}
+
+    {% when 'hero-enterprise' %}
+      {% include sections/hero-enterprise.html section=sec entity=_entity %}
+
+    {% when 'hero-simple' %}
+      {% include sections/hero-simple.html section=sec entity=_entity %}
+
+    {% when 'features-header' %}
+      {% include sections/features-header.html section=sec entity=_entity %}
+
+    {% when 'text-block' %}
+      {% include sections/text-block.html section=sec entity=_entity %}
+
+    {% when 'list-section' %}
+      {% include sections/list-section.html section=sec entity=_entity %}
+
+    {% when 'card-grid' %}
+      {% include sections/card-grid.html section=sec entity=_entity %}
+
+    {% when 'comparison' %}
+      {% include sections/comparison.html section=sec entity=_entity %}
+
+    {% when 'beats' %}
+      {% include sections/beats.html section=sec entity=_entity %}
+
+    {% when 'principles' %}
+      {% include sections/principles.html section=sec entity=_entity %}
+
+    {% when 'pills-section' %}
+      {% include sections/pills-section.html section=sec entity=_entity %}
+
+    {% when 'kpi-grid' %}
+      {% include sections/kpi-grid.html section=sec entity=_entity %}
+
+    {% when 'risk' %}
+      {% include sections/risk.html section=sec entity=_entity %}
+
+    {% when 'risk-startup' %}
+      {% include sections/risk-startup.html section=sec entity=_entity %}
+
+    {% when 'threshold' %}
+      {% include sections/threshold.html section=sec entity=_entity %}
+
+    {% when 'cta' %}
+      {% include sections/cta.html section=sec entity=_entity %}
+
+    {% when 'cta-simple' %}
+      {% include sections/cta-simple.html section=sec entity=_entity %}
+
+    {% when 'quote' %}
+      {% include sections/quote.html section=sec entity=_entity %}
+
+    {% when 'closing-quote' %}
+      {% include sections/closing-quote.html section=sec entity=_entity %}
+
+    {% when 'toc' %}
+      {% include sections/toc.html section=sec entity=_entity %}
+
+    {% when 'persona-selector' %}
+      {% include sections/persona-selector.html section=sec entity=_entity %}
+
+    {% when 'boardroom' %}
+      {% include sections/boardroom.html section=sec entity=_entity %}
+
+    {% when 'agent-roster' %}
+      {% include sections/agent-roster.html section=sec entity=_entity %}
+
+    {% when 'solutions' %}
+      {% include sections/solutions.html section=sec entity=_entity %}
+
+    {% when 'challenge-grid' %}
+      {% include sections/challenge-grid.html section=sec entity=_entity %}
+
+    {% when 'case-study' %}
+      {% include sections/case-study.html section=sec entity=_entity %}
+
+    {% when 'testimonial' %}
+      {% include sections/testimonial.html section=sec entity=_entity %}
+
+    {% when 'roadmap' %}
+      {% include sections/roadmap.html section=sec entity=_entity %}
+
+    {% when 'faq' %}
+      {% include sections/faq.html section=sec entity=_entity %}
+
+    {% when 'footer-legal' %}
+      {% include sections/footer-legal.html section=sec entity=_entity %}
+
+    {% when 'canvas' %}
+      {% include sections/canvas.html section=sec entity=_entity %}
+
+    {% when 'trust-overview' %}
+      {% include sections/trust-overview.html section=sec entity=_entity %}
+
+    {% when 'trust-principles' %}
+      {% include sections/trust-principles.html section=sec entity=_entity %}
+
+    {% when 'trust-list' %}
+      {% include sections/trust-list.html section=sec entity=_entity %}
+
+    {% when 'contact' %}
+      {% include sections/contact.html section=sec entity=_entity %}
+
+  {% endcase %}
+{% endfor %}

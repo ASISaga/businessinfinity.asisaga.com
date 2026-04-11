@@ -1,0 +1,21 @@
+{% assign e = include.entity %}
+<section class="section section-threshold" id="threshold">
+  <div class="wrap">
+    <h2 class="h2 reveal" data-reveal="up">{{ e.headline }}</h2>
+    <p class="reveal" data-reveal="fade">{{ e.intro }}</p>
+    <div class="grid grid-3">
+      {% for item in e.scenarios %}
+      <div class="card reveal" data-reveal="up"{% if forloop.index0 > 0 %} data-delay="{{ forloop.index0 | times: 100 }}"{% endif %}>
+        <h3 class="eyebrow">{{ item.eyebrow }}</h3>
+        <p>{{ item.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% if e.footnote %}
+    <p class="subtle reveal" data-reveal="fade" data-delay="150">{{ e.footnote }}</p>
+    {% endif %}
+    <div class="cta-center reveal" data-reveal="up" data-delay="200">
+      <a href="{{ e.cta.url }}" class="btn btn-primary btn-lg">{{ e.cta.label }}</a>
+    </div>
+  </div>
+</section>

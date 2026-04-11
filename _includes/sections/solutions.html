@@ -1,0 +1,28 @@
+{% assign s = include.section.source %}
+{% assign sec = include.section %}
+{% assign coll = site.data.entities[sec.entity_collection] %}
+{% assign prefix = sec.css_prefix | default: sec.id %}
+<section class="{{ prefix }}-solutions-section">
+    {% include section-header.html title=s.section_title %}
+    <div class="{{ prefix }}-solutions-container">
+        {% for ref in sec.entity_refs %}
+          {% assign solution = coll[ref] %}
+          <div class="{{ prefix }}-solution-item">
+              <div class="{{ prefix }}-solution-icon">
+                  <i class="{{ solution.icon }}"></i>
+              </div>
+              <div class="{{ prefix }}-solution-content">
+                  <h3 class="{{ prefix }}-solution-title">{{ solution.title }}</h3>
+                  <p class="{{ prefix }}-solution-description">{{ solution.description }}</p>
+                  {% if solution.features %}
+                  <ul class="{{ prefix }}-solution-features">
+                      {% for feature in solution.features %}
+                      <li class="{{ prefix }}-feature-item">{{ feature.text }}</li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+              </div>
+          </div>
+        {% endfor %}
+    </div>
+</section>

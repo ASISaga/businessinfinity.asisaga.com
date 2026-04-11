@@ -1,0 +1,15 @@
+{% assign s = include.section.source %}
+{% assign e = include.entity %}
+<section class="entrepreneur-success-section">
+    {% include section-header.html title=s.section_title %}
+    <div class="entrepreneur-success-story">
+        <blockquote class="entrepreneur-testimonial">
+            <p class="entrepreneur-testimonial-text">
+                "{{ e.text }}"
+            </p>
+            <footer class="entrepreneur-testimonial-footer">
+                <cite class="entrepreneur-testimonial-author">{{ e.author }}</cite>
+            </footer>
+        </blockquote>
+    </div>
+</section>

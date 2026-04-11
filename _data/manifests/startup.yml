@@ -1,0 +1,52 @@
+_schema:
+  version: "3.0"
+  type: page_manifest
+  page_path: /startup/
+  title: "Business Infinity for Startups"
+  description: "AI-powered solution designed specifically for startups to accelerate growth and streamline operations."
+  layout: default
+
+sections:
+  - id: hero
+    component: hero-simple
+    intent: attract
+    source:
+      title: "Business Infinity for Startups"
+      description: "AI-powered solution designed specifically for startups to accelerate growth and streamline operations."
+      cta:
+        label: Get Started
+        url: "#challenges"
+
+  - id: challenges
+    component: challenge-grid
+    intent: empathise
+    entity_collection: pain_points
+    entity_ref: startup-challenges
+    css_prefix: startup
+    source:
+      section_title: Common Startup Challenges
+      section_description: "We understand the unique challenges that startups face in today's competitive environment."
+
+  - id: solutions
+    component: solutions
+    intent: persuade
+    entity_collection: propositions
+    css_prefix: startup
+    entity_refs:
+      - solution-ai-analysis
+      - solution-automated-ops
+      - solution-startup-growth
+    source:
+      section_title: How Business Infinity Helps
+
+  - id: case-study
+    component: case-study
+    intent: persuade
+    entity_collection: evidence
+    entity_ref: technova-case-study
+
+  - id: cta
+    component: cta-simple
+    intent: convert
+    entity_collection: actions
+    entity_ref: cta-startup-accelerate
