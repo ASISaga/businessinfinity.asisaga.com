@@ -1,0 +1,17 @@
+{% assign e = include.entity %}
+<section id="principles" class="section reveal">
+    <h2>{{ e.headline }}</h2>
+    {% if e.intro %}<p>{{ e.intro }}</p>{% endif %}
+    <div class="grid-2">
+        {% for card in e.items %}
+        <div class="card">
+            <h3>{{ card.icon }} {{ card.title }}</h3>
+            <ul>
+                {% for item in card.commitments %}
+                <li><strong>{{ item.label }}</strong> {{ item.text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</section>

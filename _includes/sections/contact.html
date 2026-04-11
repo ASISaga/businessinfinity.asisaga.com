@@ -1,0 +1,20 @@
+{% assign contact = site.data.ontology.contacts.support %}
+<section id="contact" class="section reveal">
+    <h2>Contact</h2>
+    <div class="card">
+        <ul>
+            <li>
+                Email:
+                <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+            </li>
+            <li>
+                Phone:
+                {{ contact.phone }}
+            </li>
+            <li>
+                Support portal:
+                <a href="{{ contact.portal_url }}">{{ contact.portal }}</a>
+            </li>
+        </ul>
+    </div>
+</section>

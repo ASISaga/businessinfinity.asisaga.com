@@ -1,0 +1,14 @@
+{% assign s = include.section.source %}
+{% assign manifest = include.section %}
+<section class="grid">
+    {% for block in s.blocks %}
+    <article data-canvas-position="{{ block.canvas_position }}">
+        <h2>{{ block.heading }}</h2>
+        <ul data-field>
+            {% for item in block.items %}
+            <li>{{ item.text }}</li>
+            {% endfor %}
+        </ul>
+    </article>
+    {% endfor %}
+</section>

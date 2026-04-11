@@ -1,0 +1,14 @@
+{% assign e = include.entity %}
+<section class="section section-tenets">
+  <div class="wrap">
+    <h2 class="h2 reveal" data-reveal="up">{{ e.headline }}</h2>
+    <ul class="tenets reveal" data-reveal="fade">
+      {% for tenet in e.items %}
+      <li>
+        <span class="tenet-index">{{ tenet.index }}</span>
+        <span class="tenet-text">{{ tenet.text }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

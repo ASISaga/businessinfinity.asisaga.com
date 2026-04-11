@@ -1,0 +1,14 @@
+{% assign s = include.section.source %}
+{% assign e = include.entity %}
+{% assign heading = include.section.heading_override | default: s.heading | default: e.headline %}
+{% assign items = e.items | default: s.items %}
+<section id="{{ include.section.id }}">
+    <h3>{{ heading }}</h3>
+    <div class="card">
+        <ul>
+            {% for item in items %}
+            <li{% if item.domain %} data-domain="{{ item.domain }}"{% endif %}>{{ item.text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

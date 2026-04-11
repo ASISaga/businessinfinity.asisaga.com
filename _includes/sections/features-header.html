@@ -1,0 +1,26 @@
+{% assign s = include.section.source %}
+<!-- Header -->
+<header class="site-header">
+    <div class="wrap header-inner">
+        <div class="brand">
+            <div class="logo" aria-hidden="true"></div>
+            <div>
+                <h1 class="site-title">{% if s.title == '{{ ontology.brand.name }}' %}{{ site.data.ontology.brand.name }}{% else %}{{ s.title }}{% endif %}</h1>
+                <div class="site-sub">{{ s.subtitle }}</div>
+            </div>
+        </div>
+        <div class="header-actions">
+            {% if s.theme_toggle_label %}
+            <button id="themeToggle" class="btn btn-quiet" aria-pressed="false">{{ s.theme_toggle_label }}</button>
+            {% endif %}
+            {% if s.nav %}
+              {% for link in s.nav %}
+              <a class="btn btn-quiet" href="{{ link.url }}">{{ link.label }}</a>
+              {% endfor %}
+            {% endif %}
+            {% if s.cta %}
+            <a class="btn btn-primary" href="{{ s.cta.url }}">{{ s.cta.label }}</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

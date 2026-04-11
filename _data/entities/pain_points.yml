@@ -1,0 +1,145 @@
+_schema:
+  version: "3.0"
+  type: entity_collection
+  entity_type: pain_point
+  description: >
+    Customer challenges and pain signals, organised by audience.
+    Single source for all empathy-driven content.
+  last_reviewed: 2026-04-11
+
+enterprise-pain-signals:
+  uid: enterprise-pain-signals
+  _type: pain_set
+  audience: [enterprise]
+  items:
+    - uid: pain-delayed-handoff
+      _type: pain_signal
+      text: Every delayed hand‑off.
+    - uid: pain-re-decision
+      _type: pain_signal
+      text: Every re‑decision.
+    - uid: pain-dead-plan
+      _type: pain_signal
+      text: Every plan that dies before the first action.
+  body_prefix: "Business Infinity closes that space forever. Not with another dashboard — with a"
+  body_accent: "boardroom that never adjourns"
+  body_suffix: "."
+
+startup-pain-signals:
+  uid: startup-pain-signals
+  _type: pain_set
+  audience: [startup]
+  items:
+    - uid: pain-late-hire
+      _type: pain_signal
+      text: Every late hire.
+    - uid: pain-lost-lead
+      _type: pain_signal
+      text: Every lost lead.
+    - uid: pain-too-late
+      _type: pain_signal
+      text: Every change you saw coming but couldn't act on in time.
+  body_prefix: "Business Infinity closes that gap. Not with advice. Not with a dashboard. With a"
+  body_accent: "boardroom that never adjourns"
+  body_suffix: "— tuned to your startup."
+
+entrepreneur-challenges:
+  uid: entrepreneur-challenges
+  _type: challenge_set
+  audience: [entrepreneur]
+  items:
+    - uid: pain-decision-making
+      _type: pain_point
+      title: Decision Making
+      description: Making critical business decisions with limited information and resources.
+      domain: strategy
+    - uid: pain-time-mgmt
+      _type: pain_point
+      title: Time Management
+      description: Balancing multiple roles and responsibilities while focusing on strategic growth.
+      domain: operations
+    - uid: pain-business-strategy
+      _type: pain_point
+      title: Business Strategy
+      description: Developing effective long-term plans while navigating short-term challenges.
+      domain: planning
+
+startup-challenges:
+  uid: startup-challenges
+  _type: challenge_set
+  audience: [startup]
+  items:
+    - uid: pain-limited-resources
+      _type: pain_point
+      title: Limited Resources
+      description: Managing growth with limited budgets, small teams, and constrained infrastructure.
+      domain: operations
+    - uid: pain-market-validation
+      _type: pain_point
+      title: Market Validation
+      description: Testing ideas quickly and pivoting based on real market feedback and data.
+      domain: product
+    - uid: pain-scaling
+      _type: pain_point
+      title: Scaling Operations
+      description: Building processes and systems that can scale as your startup grows.
+      domain: growth
+
+enterprise-lag:
+  uid: enterprise-lag
+  _type: state_comparison
+  audience: [enterprise]
+  heading: From lag to flow
+  today:
+    eyebrow: Today
+    body: >
+      Every function optimises its lane. Decisions crawl toward consensus.
+      By the time the convoy moves, the market has shifted.
+  tomorrow:
+    eyebrow: Tomorrow
+    items:
+      - uid: flow-domain-agents
+        _type: capability_claim
+        lead: "Domain agents:"
+        text: "CEO, CFO, COO, CRO, CHRO debating in real time."
+        domain: agent_engine
+      - uid: flow-guarded-actions
+        _type: capability_claim
+        lead: "Guarded actions:"
+        text: "Instant writes into ERP/MES/CRM with rollback."
+        domain: execution
+      - uid: flow-living-ledger
+        _type: capability_claim
+        lead: "Living ledger:"
+        text: "Every trade‑off, decision, and outcome captured."
+        domain: governance
+    closing: "Your enterprise doesn't just act faster. It"
+    closing_accent: "remembers faster"
+    closing_end: "."
+
+startup-reaction:
+  uid: startup-reaction
+  _type: state_comparison
+  audience: [startup]
+  heading: From reaction to orchestration
+  today:
+    eyebrow: Today
+    body: "Fire‑drill sprints, gut‑feel trade‑offs, investor decks written on fumes."
+  tomorrow:
+    eyebrow: Tomorrow
+    items:
+      - uid: orch-persistent-csuite
+        _type: capability_claim
+        lead: "Persistent AI C‑suite:"
+        text: "CEO, CFO, COO agents watching every key metric."
+      - uid: orch-action-hours
+        _type: capability_claim
+        lead: "Action in hours:"
+        text: "Go from \"we should\" to \"it's live\" before the week flips."
+      - uid: orch-investor-ledger
+        _type: capability_claim
+        lead: "Investor‑ready ledger:"
+        text: "Every move, rationale, and result in one place."
+    closing: "You don't just move faster — you"
+    closing_accent: "compound faster"
+    closing_end: "."

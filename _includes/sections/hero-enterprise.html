@@ -1,0 +1,18 @@
+{% assign s = include.section.source %}
+<header class="hero">
+  <div class="wrap hero-inner">
+    <h1 class="headline reveal" data-reveal="up">{{ s.headline }}</h1>
+    {% if s.subhead_line1 %}
+    <p class="sub lead reveal" data-reveal="fade" data-delay="100">
+      {{ s.subhead_line1 }}<br />
+      {{ s.subhead_line2 }}
+    </p>
+    {% elsif s.subhead %}
+    <p class="sub lead reveal" data-reveal="fade" data-delay="100">{{ s.subhead }}</p>
+    {% endif %}
+    <div class="hero-cta reveal" data-reveal="up" data-delay="200">
+      {% if s.cta_primary %}<a href="{{ s.cta_primary.url }}" class="btn btn-primary">{{ s.cta_primary.label }}</a>{% endif %}
+      {% if s.cta_secondary %}<a href="{{ s.cta_secondary.url }}" class="btn btn-quiet">{{ s.cta_secondary.label }}</a>{% endif %}
+    </div>
+  </div>
+</header>

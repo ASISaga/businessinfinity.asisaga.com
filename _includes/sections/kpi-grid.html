@@ -1,0 +1,17 @@
+{% assign s = include.section.source %}
+{% assign sec = include.section %}
+{% assign coll = site.data.entities[sec.entity_collection] %}
+<section class="section section-levers">
+  <div class="wrap">
+    <h2 class="h2 reveal" data-reveal="up">{{ s.heading }}</h2>
+    <div class="grid grid-3">
+      {% for ref in sec.entity_refs %}
+        {% assign lever = coll[ref] %}
+        <article class="card kpi reveal" data-reveal="up"{% if forloop.index0 > 0 %} data-delay="{{ forloop.index0 | times: 100 }}"{% endif %}>
+          <h3 class="eyebrow">{{ lever.eyebrow }}</h3>
+          <p>{{ lever.body }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

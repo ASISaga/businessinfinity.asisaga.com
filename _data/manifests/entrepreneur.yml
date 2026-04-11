@@ -1,0 +1,52 @@
+_schema:
+  version: "3.0"
+  type: page_manifest
+  page_path: /entrepreneur/
+  title: "Business Infinity for Entrepreneurs"
+  description: "Empower your entrepreneurial journey with AI-powered business intelligence and strategic planning."
+  layout: default
+
+sections:
+  - id: hero
+    component: hero-simple
+    intent: attract
+    source:
+      title: "Business Infinity for Entrepreneurs"
+      description: "Empower your entrepreneurial journey with AI-powered business intelligence and strategic planning."
+      cta:
+        label: Learn More
+        url: "#challenges"
+
+  - id: challenges
+    component: challenge-grid
+    intent: empathise
+    entity_collection: pain_points
+    entity_ref: entrepreneur-challenges
+    source:
+      section_title: Entrepreneur Challenges
+      section_description: "We understand the unique challenges entrepreneurs face when building and growing their businesses."
+
+  - id: solutions
+    component: solutions
+    intent: persuade
+    entity_collection: propositions
+    entity_refs:
+      - solution-strategic-intelligence
+      - solution-operational-efficiency
+      - solution-growth-planning
+    source:
+      section_title: How Business Infinity Helps
+
+  - id: success-story
+    component: testimonial
+    intent: persuade
+    entity_collection: evidence
+    entity_ref: consultease-testimonial
+    source:
+      section_title: Entrepreneur Success Story
+
+  - id: cta
+    component: cta-simple
+    intent: convert
+    entity_collection: actions
+    entity_ref: cta-entrepreneur-grow

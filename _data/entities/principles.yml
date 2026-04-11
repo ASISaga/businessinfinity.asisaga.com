@@ -1,0 +1,100 @@
+_schema:
+  version: "3.0"
+  type: entity_collection
+  entity_type: principle
+  description: >
+    Core tenets and philosophical principles. Each set is
+    audience-tuned but draws from the same foundational truths.
+  last_reviewed: 2026-04-11
+
+enterprise-irreversibles:
+  uid: enterprise-irreversibles
+  _type: principle_set
+  headline: Three irreversibles
+  audience: [enterprise]
+  items:
+    - uid: prin-timeliness
+      _type: core_principle
+      index: "01"
+      text: A decision is only as good as the moment it's made.
+      theme: timeliness
+    - uid: prin-propagation
+      _type: core_principle
+      index: "02"
+      text: If learning doesn't propagate, it wasn't learning.
+      theme: network_learning
+    - uid: prin-execution
+      _type: core_principle
+      index: "03"
+      text: Strategy that stops at the org chart isn't strategy — it's theatre.
+      theme: execution
+
+startup-truths:
+  uid: startup-truths
+  _type: principle_set
+  headline: Three truths for founders
+  audience: [startup]
+  items:
+    - uid: prin-focus
+      _type: core_principle
+      index: "01"
+      text: Capital is wasted as easily by bad focus as by burn.
+      theme: focus
+    - uid: prin-learning-velocity
+      _type: core_principle
+      index: "02"
+      text: Every cycle without learning compounds risk.
+      theme: learning_velocity
+    - uid: prin-evidence
+      _type: core_principle
+      index: "03"
+      text: The pitch that wins is backed by provable decisions.
+      theme: evidence
+
+trust-dimensions:
+  uid: trust-dimensions
+  _type: principle_set
+  headline: Our Trust Principles
+  audience: [enterprise]
+  intro: "We organize our trust commitments across five dimensions:"
+  items:
+    - uid: trust-product
+      _type: trust_dimension
+      icon: 🔍
+      title: Product-Level Trust
+      dimension: product
+      commitments:
+        - uid: trust-transparency
+          label: "Transparency:"
+          text: Every decision is explainable with clear audit trails
+          domain: observability
+        - uid: trust-reliability
+          label: "Reliability:"
+          text: Enterprise-grade uptime and performance SLAs
+          domain: availability
+        - uid: trust-compliance
+          label: "Compliance:"
+          text: Aligned with SOC 2, ISO 27001, GDPR, HIPAA
+          domain: regulatory
+        - uid: trust-user-control
+          label: "User Control:"
+          text: You own your data — export, review, or delete anytime
+          domain: data_sovereignty
+    - uid: trust-process
+      _type: trust_dimension
+      icon: 📋
+      title: Process-Level Trust
+      dimension: process
+      commitments:
+        - uid: trust-validation
+          label: "Validation:"
+          text: Independent audits and reproducible benchmarks
+          domain: verification
+        - uid: trust-risk-mgmt
+          label: "Risk Management:"
+          text: Explicit risk modeling and mitigation
+          domain: risk
+        - uid: trust-engagement
+          label: "Customer Engagement:"
+          text: Transparent roadmaps and feedback loops
+          domain: communication

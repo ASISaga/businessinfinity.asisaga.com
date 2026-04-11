@@ -1,0 +1,100 @@
+_schema:
+  version: "3.0"
+  type: page_manifest
+  page_path: /trust/
+  title: "Trust Center | Business Infinity"
+  description: "Our commitment to security, compliance, and transparency. Trust is earned through evidence, not claimed through words."
+  layout: default
+
+sections:
+  - id: header
+    component: features-header
+    intent: orient
+    source:
+      title: "{{ ontology.brand.name }}"
+      subtitle: Trust Center
+      nav:
+        - label: Home
+          url: /
+        - label: Features
+          url: /features
+        - label: Sitemap
+          url: /sitemap
+
+  - id: toc
+    component: toc
+    intent: orient
+    source:
+      items:
+        - id: overview
+          label: Trust Center
+        - id: principles
+          label: Trust Principles
+        - id: compliance
+          label: Compliance
+        - id: security
+          label: Security
+        - id: privacy
+          label: Privacy Rights
+        - id: transparency
+          label: Transparency
+        - id: audit
+          label: Audit Trail
+        - id: contact
+          label: Contact
+
+  - id: overview
+    component: trust-overview
+    intent: reassure
+    entity_collection: compliance
+    entity_ref: trust-overview
+
+  - id: principles
+    component: trust-principles
+    intent: reassure
+    entity_collection: principles
+    entity_ref: trust-dimensions
+
+  - id: compliance
+    component: trust-list
+    intent: reassure
+    entity_collection: compliance
+    entity_ref: compliance-items
+    source:
+      heading: Compliance
+
+  - id: security
+    component: trust-list
+    intent: reassure
+    entity_collection: compliance
+    entity_ref: security-items
+    source:
+      heading: Security
+
+  - id: privacy
+    component: trust-list
+    intent: reassure
+    entity_collection: compliance
+    entity_ref: privacy-items
+    source:
+      heading: Privacy Rights
+
+  - id: transparency
+    component: trust-list
+    intent: reassure
+    entity_collection: compliance
+    entity_ref: transparency-items
+    source:
+      heading: Transparency
+
+  - id: audit
+    component: trust-list
+    intent: reassure
+    entity_collection: compliance
+    entity_ref: audit-items
+    source:
+      heading: Audit Trail
+
+  - id: contact
+    component: contact
+    intent: support

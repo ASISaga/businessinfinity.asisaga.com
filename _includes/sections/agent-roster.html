@@ -1,0 +1,16 @@
+{% assign s = include.section.source %}
+<section id="{{ include.section.id }}" class="section reveal">
+    <h2>{{ s.heading }}</h2>
+    <p>{{ s.intro }}</p>
+    <div class="grid-3">
+        {% for agent in site.data.agents.agents %}
+        <div class="card roster" data-agent-id="{{ agent.id }}" data-domain="{{ agent.domain }}">
+            <h3>{{ agent.role }} agent</h3>
+            <ul class="list">
+                <li><strong>Scope:</strong> {{ agent.specialization }}</li>
+                <li><strong>Domain:</strong> {{ agent.domain }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</section>

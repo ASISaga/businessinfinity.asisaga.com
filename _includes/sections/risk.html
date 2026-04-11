@@ -1,0 +1,20 @@
+{% assign s = include.section.source %}
+{% assign sec = include.section %}
+{% assign coll = site.data.entities[sec.entity_collection] %}
+<section class="section section-risk" id="risk">
+  <div class="wrap">
+    <h2 class="h2 reveal" data-reveal="up">{{ s.heading }}</h2>
+    <p class="reveal" data-reveal="fade">{{ s.intro }}</p>
+    <div class="grid grid-2">
+      <ul class="list card reveal" data-reveal="up">
+        {% for ref in sec.entity_refs %}
+          {% assign item = coll[ref] %}
+          <li><span class="li-lead">{{ item.lead }}</span> {{ item.text }}</li>
+        {% endfor %}
+      </ul>
+      <div class="card callout reveal" data-reveal="up" data-delay="120">
+        <p>{{ s.callout }} <span class="accent">{{ s.callout_accent }}</span>{{ s.callout_end }}</p>
+      </div>
+    </div>
+  </div>
+</section>

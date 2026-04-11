@@ -1,0 +1,127 @@
+_schema:
+  version: "3.0"
+  type: page_manifest
+  page_path: /features/
+  title: "Features | Business Infinity"
+  description: "Perpetual AI boardroom with PhD-grade C-suite agents working in unison on your objectives — and a network of value chains that learns and acts together."
+  layout: default
+
+sections:
+  - id: header
+    component: features-header
+    intent: orient
+    source:
+      title: "{{ ontology.brand.name }}"
+      subtitle: Perpetual agents boardroom. Networked orchestration.
+      theme_toggle_label: Dark mode
+      cta:
+        label: Design your pilot
+        url: "#cta"
+
+  - id: toc
+    component: toc
+    intent: orient
+    source:
+      items:
+        - id: you
+          label: Start with you
+        - id: boardroom
+          label: Perpetual boardroom
+        - id: agents
+          label: PhD‑grade agents
+        - id: unison
+          label: Unison toward objectives
+        - id: ledger
+          label: Decision ledger & governance
+        - id: network
+          label: Networked value chains
+        - id: integrations
+          label: Integrations
+        - id: assurance
+          label: Assurance & safety
+        - id: cta
+          label: Pilot
+
+  - id: you
+    component: persona-selector
+    intent: engage
+    entity_collection: personas
+    entity_refs:
+      personas: boardroom-personas
+      objectives: business-objectives
+    source:
+      heading: Start with you
+      lead: Pick your seat and the outcomes you need this quarter. The boardroom adapts.
+      panel_title: "For the CEO: what changes"
+
+  - id: boardroom
+    component: boardroom
+    intent: inform
+    entity_collection: capabilities
+    entity_refs:
+      features:
+        - always-on-awareness
+        - quorum-deliberation
+        - action-with-guardrails
+      loop: boardroom-loop
+    source:
+      heading: Perpetual boardroom
+      intro: "Deliberation never stops. Agents keep a shared, long‑horizon memory; decisions are made when the moment is right, not when calendars align."
+
+  - id: agents
+    component: agent-roster
+    intent: inform
+    entity_collection: agents
+    source:
+      heading: PhD‑grade C‑suite agents
+      intro: "Each agent embodies expert‑level, evidence‑based domain models — synthesizing frontier research, benchmark playbooks, and operator wisdom — calibrated to your context."
+
+  - id: unison
+    component: text-block
+    intent: persuade
+    entity_collection: concepts
+    entity_ref: unison-objectives
+
+  - id: ledger
+    component: text-block
+    intent: persuade
+    entity_collection: concepts
+    entity_ref: decision-ledger
+
+  - id: network
+    component: text-block
+    intent: persuade
+    entity_collection: concepts
+    entity_ref: networked-value-chains
+
+  - id: integrations
+    component: card-grid
+    intent: inform
+    entity_collection: integrations
+    entity_refs:
+      - layer-read
+      - layer-write
+      - layer-identity
+    source:
+      heading: Integrations
+
+  - id: assurance
+    component: card-grid
+    intent: reassure
+    entity_collection: guarantees
+    entity_refs:
+      - charters-limits
+      - runtime-evaluators
+      - observability
+    source:
+      heading: Assurance & safety
+
+  - id: cta
+    component: cta
+    intent: convert
+    entity_collection: actions
+    entity_ref: cta-zero-regret
+
+  - id: footer
+    component: footer-legal
+    intent: inform

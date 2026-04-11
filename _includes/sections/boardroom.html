@@ -1,0 +1,24 @@
+{% assign s = include.section.source %}
+{% assign sec = include.section %}
+{% assign coll = site.data.entities[sec.entity_collection] %}
+{% assign loop_entity = coll[sec.entity_refs.loop] %}
+<section id="{{ sec.id }}" class="section reveal">
+    <h2>{{ s.heading }}</h2>
+    <p>{{ s.intro }}</p>
+    <div class="grid-3">
+        {% for ref in sec.entity_refs.features %}
+          {% assign feature = coll[ref] %}
+          <div class="card" data-domain="{{ feature.domain }}">
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.description }}</p>
+          </div>
+        {% endfor %}
+    </div>
+    {% if loop_entity %}
+    <div class="loop card">
+        {% for step in loop_entity.steps %}
+        <div class="loop-step" data-sequence="{{ step.sequence }}"><span>{{ step.sequence }}</span> {{ step.text }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>

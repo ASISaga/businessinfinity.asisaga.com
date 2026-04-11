@@ -1,0 +1,88 @@
+_schema:
+  version: "3.0"
+  type: entity_collection
+  entity_type: capability
+  description: >
+    Platform capabilities and features. Shared across feature pages
+    and audience-specific pitches.
+  last_reviewed: 2026-04-11
+
+always-on-awareness:
+  uid: always-on-awareness
+  _type: capability_claim
+  title: Always‑on awareness
+  description: >
+    Signals streamed from ERP/MES/CRM/SaaS; agents monitor KPIs,
+    risks, and opportunities continuously.
+  domain: monitoring
+
+quorum-deliberation:
+  uid: quorum-deliberation
+  _type: capability_claim
+  title: Quorum deliberation
+  description: >
+    Agents propose, challenge, and converge under chartered rules —
+    not single‑shot replies.
+  domain: decision_making
+
+action-with-guardrails:
+  uid: action-with-guardrails
+  _type: capability_claim
+  title: Action with guardrails
+  description: >
+    Dry‑runs, approvals, scope caps, and instant rollback.
+    Every write is observable and reversible.
+  domain: execution
+
+business-analysis:
+  uid: business-analysis
+  _type: product_capability
+  title: Comprehensive Business Analysis
+  icon: business-icon-analysis
+  description: >
+    Gain deep insights into your business operations with AI-powered
+    analytics that identify inefficiencies and growth opportunities.
+  domain: analytics
+
+strategy-development:
+  uid: strategy-development
+  _type: product_capability
+  title: Intelligent Strategy Development
+  icon: business-icon-strategy
+  description: >
+    Create data-driven business strategies tailored to your industry,
+    market conditions, and business goals.
+  domain: strategy
+
+operations-automation:
+  uid: operations-automation
+  _type: product_capability
+  title: Operations Automation
+  icon: business-icon-automation
+  description: >
+    Streamline repetitive tasks across all business functions with
+    intelligent automation solutions.
+  domain: automation
+
+boardroom-loop:
+  uid: boardroom-loop
+  _type: process_loop
+  steps:
+    - uid: step-observe
+      text: Observe
+      sequence: 1
+    - uid: step-deliberate
+      text: Deliberate
+      sequence: 2
+    - uid: step-decide
+      text: Decide
+      sequence: 3
+    - uid: step-act
+      text: Act
+      sequence: 4
+    - uid: step-measure
+      text: Measure
+      sequence: 5
+    - uid: step-learn
+      text: Learn & update
+      sequence: 6
