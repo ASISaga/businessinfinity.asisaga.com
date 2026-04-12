@@ -146,6 +146,24 @@ const ontologyStub = `
 
 fs.writeFileSync(path.join(ontologyDir, 'index.scss'), ontologyStub);
 
+// Create stubs for theme-provided SCSS partials (includes/core/* and layouts/*)
+// These files are provided by the remote theme at Jekyll build time but are unavailable locally.
+const themeStubs = {
+    'includes/core/_bento-engine.scss':    '// Stub: bento-engine (theme)',
+    'includes/core/_genesis-core.scss':    '// Stub: genesis-core (theme)',
+    'includes/core/_genesis-header.scss':  '// Stub: genesis-header (theme)',
+    'includes/core/_genesis-footer.scss':  '// Stub: genesis-footer (theme)',
+    'includes/core/_header.scss':          '// Stub: header (theme)',
+    'includes/core/_navbar.scss':          '// Stub: navbar (theme)',
+    'includes/core/_footer.scss':          '// Stub: footer (theme)',
+    'layouts/_chatroom.scss':              '// Stub: chatroom layout (theme)',
+};
+for (const [relPath, content] of Object.entries(themeStubs)) {
+    const stubPath = path.join(tmpDir, relPath);
+    fs.mkdirSync(path.dirname(stubPath), { recursive: true });
+    fs.writeFileSync(stubPath, content);
+}
+
 // Add tmp directory to load paths
 const testLoadPaths = [tmpDir, ...scssDirs];
 
