@@ -1,6 +1,87 @@
 ---
-layout: chatroom
-title: "Boardroom | Business Infinity"
+layout: default
+body_class: chatroom-body
+main_class: chatroom-main
+title: AI Boardroom
+description: AI C-suite agents collaborate in real-time to drive strategic decisions, operational reviews, and business governance.
 permalink: /boardroom/
+boardroom:
+  api_base: "/api/boardroom"
+  copilotkit_runtime_url: "https://cloud.businessinfinity.asisaga.com/api/copilotkit"
+  show_avatar: true
+  show_toolbar: true
+  show_typing_indicator: true
+  show_connection_status: true
+  show_toggle_strip: true
+  show_members_sidebar: true
+  show_agent_profiles: true
+  enable_screen_share: true
+  enable_video_call: true
+  enable_file_attach: true
+  enable_formatting: true
+  auto_refresh: true
+  refresh_interval: 3000
 ---
-<!-- Quick navigation to features, settings, and documentation -->
+
+{% comment %}Chatroom HTML templates — cloned at runtime by boardroom-app-new.js via ChatroomApp{% endcomment %}
+<div id="chatroom-templates" hidden aria-hidden="true">
+  {% include layouts/chatroom/chatroom-layout.html %}
+  {% include layouts/chatroom/chatroom-message-ai.html %}
+  {% include layouts/chatroom/chatroom-message-own.html %}
+  {% include layouts/chatroom/chatroom-message-system.html %}
+  {% include layouts/chatroom/chatroom-message-typing.html %}
+  {% include layouts/chatroom/chatroom-mcp-panel.html %}
+  {% include layouts/chatroom/chatroom-mcp-item.html %}
+  {% include layouts/chatroom/chatroom-input.html %}
+  {% include layouts/chatroom/chatroom-tool-result-item.html %}
+</div>
+
+<boardroom-app
+  title="{{ page.title }}"
+  {% if page.boardroom.show_toolbar %}show-toolbar{% endif %}
+  {% if page.boardroom.show_connection_status %}show-connection-status{% endif %}
+  {% if page.boardroom.show_toggle_strip %}show-toggle-strip{% endif %}
+  {% if page.boardroom.show_members_sidebar %}show-members-sidebar{% endif %}
+  {% if page.boardroom.show_agent_profiles %}show-agent-profiles{% endif %}
+  {% if page.boardroom.enable_screen_share %}enable-screen-share{% endif %}
+  {% if page.boardroom.enable_video_call %}enable-video-call{% endif %}
+  {% if page.boardroom.enable_file_attach %}enable-file-attach{% endif %}
+  {% if page.boardroom.enable_formatting %}enable-formatting{% endif %}
+  api-base="{{ page.boardroom.api_base }}"
+  copilotkit-runtime-url="{{ page.boardroom.copilotkit_runtime_url }}"
+  placeholder="Type your message..."
+  {% if page.boardroom.auto_refresh %}auto-refresh refresh-interval="{{ page.boardroom.refresh_interval }}"{% endif %}
+>
+  <main class="boardroom-container">
+    <section class="boardroom-section" aria-label="Boardroom Interface">
+      <div class="boardroom-container-fluid">
+        <div class="boardroom-main-row">
+          {% include boardroom/toggle-strip.html %}
+          {% include boardroom/members-sidebar.html %}
+
+          <!-- Chat Area: populated at runtime by BoardroomApp._render() from chatroom templates -->
+          <section id="chatArea" class="boardroom-chat-area" data-panel="main" aria-label="Chat Area">
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading overlay -->
+    <div class="boardroom-loading-overlay" id="boardroom-loading" role="status" aria-live="polite" aria-label="Loading">
+      <div class="boardroom-loading-content">
+        <div class="boardroom-loading-spinner"></div>
+        <p class="boardroom-loading-text">Connecting to boardroom...</p>
+      </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div class="boardroom-toast-container" id="boardroom-toasts" aria-live="polite" aria-atomic="true"></div>
+  </main>
+</boardroom-app>
+<noscript>
+  <div class="boardroom-noscript">
+    JavaScript is required for the live boardroom experience. Please enable JavaScript to interact with AI agents and collaborate in real time.
+  </div>
+</noscript>
+
+<script type="module" src="{{ '/assets/js/boardroom-app-new.js' | relative_url }}"></script>
