@@ -7,6 +7,11 @@
   // Mirrors the approach used in the theme's _chatroom.scss (.chatroom-layout).
   height: 100%;
   min-height: 0;
+  // Structural: single-column override — boardroom is a full-width app shell,
+  // not a dashboard grid, so the manifest multi-column layout must be collapsed.
+  grid-template-columns: 1fr;
+  // Structural: positioning context for the loading overlay.
+  position: relative;
 }
 
 .boardroom-section {
@@ -21,6 +26,8 @@
   // Structural: pass the full height down to the main row.
   height: 100%;
   min-height: 0;
+  // Structural: single-column override — fluid wrapper holds the full-width panel row.
+  grid-template-columns: 1fr;
 }
 
 .boardroom-main-row {
@@ -44,4 +51,17 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+}
+
+// Loading overlay: absolute over the boardroom container so it covers the full
+// app shell without displacing other elements.
+// Structural: overlay positioning has no ontological equivalent — the app shell
+// requires position:absolute/inset:0 to layer above content during connection.
+.boardroom-loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
